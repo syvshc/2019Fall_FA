@@ -2,8 +2,6 @@
 \usepackage{mathtools,extarrows,amsfonts,amssymb,bm,mathrsfs} %数学式宏包, 更多箭头, 黑板体等数学字体,leqslant等符号
 \usepackage{amsthm} %定理环境
 \DeclareMathOperator{\rad}{rad}
-%\DeclareMathOperator{\mi}{i}
-%\DeclareMathOperator{\me}{e}
 \newcommand\me{\mathrm{e}}
 \newcommand\imag{\mathrm{i}}
 \newcommand\C{\mathbb{C}}
@@ -13,7 +11,7 @@
 \newcommand\N{\mathbb{N}}
 \renewcommand\Re{\mathrm{Re\,}}
 \renewcommand\Im{\mathrm{Im\,}}
-\newcommand{\dint}[2]{{\displaystyle\int_{#1}^{#2}}}
+\newcommand{\dint}{\displaystyle\int}
 \newcommand{\diff}{\,\mathrm{d}}
 \usepackage{tasks}
 \NewTasks[counter-format=(tsk[1]), item-indent=2em, label-offset=1em]{lpbn}
@@ -39,7 +37,7 @@
 %交叉引用
 \usepackage{nameref}
 \usepackage{prettyref}
-\usepackage{hyperref}
+\usepackage[colorlinks, linkcolor=Sumire]{hyperref}
 \usepackage{graphicx}
 
 %浮动体
@@ -67,21 +65,25 @@
 {}% Theorem head spec (can be left empty, meaning `normal' )
 
 %新定义定理环境
+
 \theoremstyle{Thm}
-\newtheorem{Thm}{Theorem}
-\newtheorem{Thmn}{Theorem}
+\newtheorem{Thm}{定理}[section]
+\newtheorem{Thmn}{定理}
 \renewcommand{\theThmn}{\theThm'}
 \theoremstyle{normal}
+\newtheorem{Lemma}{引理}[section]
+%\newtheorem{Exp}{例}[subsection]
+\newtheorem*{Prf}{证明}
+\newtheorem*{Rmk}{注}
+\newtheorem*{Solve}{解}
+\newtheorem{Def}{定义}[section]
+\newtheorem{Defn}{定义}
+\renewcommand{\theDefn}{\theDef'}
+\newtheorem{Cor}{推论}
 
-\newtheorem*{Rmk}{Remark}
-
-\newtheorem{Def}{Definition}
-\newtheorem{Defn}{Definition}
-\renewcommand{\theDefn}{\theDef$^\prime$}
-\newtheorem{Cor}{Corallary}
-\newcommand{\degree}{\ensuremath{^{\circ}}}
 
 
 %新定义命令
 \newcommand{\abs}[1]{\ensuremath{\left| \,#1\, \right| }}
 \newcommand{\lrangle}[1]{\langle #1 \rangle}
+\newcommand{\degree}{\ensuremath{^{\circ}}}
