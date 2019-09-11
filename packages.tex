@@ -1,0 +1,85 @@
+%数学式
+\usepackage{mathtools,extarrows,amsfonts,amssymb,bm,mathrsfs} %数学式宏包, 更多箭头, 黑板体等数学字体,leqslant等符号
+\usepackage{amsthm} %定理环境
+\DeclareMathOperator{\rad}{rad}
+%\DeclareMathOperator{\mi}{i}
+%\DeclareMathOperator{\me}{e}
+\newcommand\me{\mathrm{e}}
+\newcommand\imag{\mathrm{i}}
+\newcommand\R{\mathbb{R}}
+\renewcommand\Re{\mathrm{Re\,}}
+\renewcommand\Im{\mathrm{Im\,}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\dint}[2]{{\displaystyle\int_{#1}^{#2}}}
+\newcommand{\diff}{\,\mathrm{d}}
+\usepackage{tasks}
+\NewTasks[counter-format=(tsk[1]), item-indent=2em, label-offset=1em]{lpbn}
+\NewTasks[counter-format=(tsk[a]), item-indent=2em, label-offset=1em]{alpbn}
+\NewTasks[counter-format=tsk[A].]{xrze}[*]
+
+%版式
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry} %边距
+\setlength{\headheight}{13pt}
+\usepackage{fancyhdr} % 页眉页脚
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\fangsong \leftmark}
+\fancyhead[C]{\fangsong \rightmark}
+\fancyhead[R]{\thepage}
+
+%辅助
+\usepackage{array,diagbox,booktabs,tabularx} %数组环境, 表格中可以添加对角线, 可以调整表格中线的宽度, 可以控制表格宽度并使其自动换行
+\usepackage{enumerate} %列表环境
+
+
+
+%交叉引用
+\usepackage{nameref}
+\usepackage{prettyref}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+%浮动体
+\usepackage{caption} %使用浮动体标题
+\usepackage{subfig} %子浮动体
+
+%新定义定理环境类型
+\newtheoremstyle{normal}% name
+{3pt}% Space above
+{3pt}% Space below
+{}% Body font
+{2\ccwd}% Indent amount
+{\bfseries}% Theorem head font
+{}% Punctuation after theorem head
+{1\ccwd}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning `normal' )
+\newtheoremstyle{Thm}% hnamei
+{3pt}% Space above
+{3pt}% Space below
+{\itshape}% Body font
+{2\ccwd}% Indent amount
+{\bfseries}% Theorem head font
+{}% Punctuation after theorem head
+{1\ccwd}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning `normal' )
+
+%新定义定理环境
+\theoremstyle{Thm}
+\newtheorem{Thm}{Theorem}
+\newtheorem{Thmn}{Theorem}
+\renewcommand{\theThmn}{\theThm'}
+\theoremstyle{normal}
+
+\newtheorem*{Rmk}{Remark}
+
+\newtheorem{Def}{Definition}
+\newtheorem{Defn}{Definition}
+\renewcommand{\theDefn}{\theDef$^\prime$}
+\newtheorem{Cor}{Corallary}
+\newcommand{\degree}{\ensuremath{^{\circ}}}
+
+
+%新定义命令
+\newcommand{\abs}[1]{\ensuremath{\left| \,#1\, \right| }}
+\newcommand{\lrangle}[1]{\langle #1 \rangle}
