@@ -44,6 +44,10 @@
 \usepackage{caption} %使用浮动体标题
 \usepackage{subfig} %子浮动体
 
+% 新定义计数器
+\newcounter{FA}[chapter]
+\renewcommand{\theFA}{\thesection.\arabic{FA}}
+
 %新定义定理环境类型
 \newtheoremstyle{normal}% name
 {3pt}% Space above
@@ -57,7 +61,7 @@
 \newtheoremstyle{Thm}% hnamei
 {3pt}% Space above
 {3pt}% Space below
-{\itshape}% Body font
+{\kaishu}% Body font
 {2\ccwd}% Indent amount
 {\bfseries}% Theorem head font
 {}% Punctuation after theorem head
@@ -65,22 +69,22 @@
 {}% Theorem head spec (can be left empty, meaning `normal' )
 
 %新定义定理环境
-
-\theoremstyle{Thm}
-\newtheorem{Thm}{定理}[section]
-\newtheorem{Thmn}{定理}
-\renewcommand{\theThmn}{\theThm'}
 \theoremstyle{normal}
-\newtheorem{Lemma}{引理}[section]
+%\theoremstyle{Thm}
+\newtheorem{Thm}[FA]{定理}
+\newtheorem{Thmn}{定理}
+\renewcommand{\theThmn}{\theFA$'$}
+
+\newtheorem{Lemma}[FA]{引理}
 %\newtheorem{Exp}{例}[subsection]
 \newtheorem*{Prf}{证明}
-\newtheorem*{Rmk}{注}
+\newtheorem{Rmk}[FA]{注}
 \newtheorem*{Solve}{解}
-\newtheorem{Def}{定义}[section]
+\newtheorem{Def}[FA]{定义}
 \newtheorem{Defn}{定义}
-\renewcommand{\theDefn}{\theDef'}
-\newtheorem{Cor}{推论}
-
+\renewcommand{\theDefn}{\thefA$'$}
+\newtheorem{Cor}[FA]{推论}
+\newtheorem{Ex}[FA]{例}
 
 
 %新定义命令
