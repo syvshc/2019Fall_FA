@@ -30,7 +30,10 @@
 
 %辅助
 \usepackage{array,diagbox,booktabs,tabularx} %数组环境, 表格中可以添加对角线, 可以调整表格中线的宽度, 可以控制表格宽度并使其自动换行
-\usepackage{enumerate} %列表环境
+%\usepackage{enumerate} %列表环境
+\usepackage[shortlabels]{enumitem} % 继承并扩展了enumerate宏包的功能
+\setlist[1]{left=\parindent..2\parindent}
+
 
 
 
@@ -85,9 +88,11 @@
 \renewcommand{\theDefn}{\thefA$'$}
 \newtheorem{Cor}[FA]{推论}
 \newtheorem{Ex}[FA]{例}
+\newtheorem{Prop}[FA]{命题}
 
 
 %新定义命令
 \newcommand{\abs}[1]{\ensuremath{\left| \,#1\, \right| }}
 \newcommand{\lrangle}[1]{\langle #1 \rangle}
 \newcommand{\degree}{\ensuremath{^{\circ}}}
+%\renewcommand{\labelenumi}{(\theenumi)}
