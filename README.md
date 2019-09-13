@@ -24,7 +24,7 @@
     |定理(theorem)|`thm`|`Thm`|
     |引理(lemma)|`lemma`|`Lemma`|
     |推论(corollary)|`cor`|`Cor`
-    ||命题(Propsition)|`Prop`|`prop`|
+    |命题(Propsition)|`Prop`|`prop`|
     |注{Remark}|`rmk`|`Rmk`|
     |解(Solve)|×|`Solve`|
     |证明{Proof}|×|`Prf`|
