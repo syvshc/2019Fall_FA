@@ -23,10 +23,12 @@
     |定义(defination)|`def`|`Def`|
     |定理(theorem)|`thm`|`Thm`|
     |引理(lemma)|`lemma`|`Lemma`|
-    |推论(corollary)|`cor`|`Cor`|
+    |推论(corollary)|`cor`|`Cor`
+    ||命题(Propsition)|`Prop`|`prop`|
     |注{Remark}|`rmk`|`Rmk`|
     |解(Solve)|×|`Solve`|
     |证明{Proof}|×|`Prf`|
+    
 
     - 如果不希望图片表格浮动请不要使用浮动体环境`figure`和`table`, 用`\includegrpics`或`tabular`环境+`captionof`来插入图片和表格;
     - 对于定理和定义环境添加了对应带`'`的环境, 环境名分别为`Thmn`和`Defn`;
