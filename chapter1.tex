@@ -1,0 +1,71 @@
+% !TeX root = main.tex
+\chapter{拓扑空间与度量空间}
+\pagenumbering{arabic}
+\section{基本概念}
+
+ \begin{Def}[拓扑空间]\label{def:拓扑空间}
+      设 $ E $ 是一个集合, 称 $ E $ 的子集族 $ \tau $ 是一个\textbf{拓扑}\index{T!拓扑}, 若 $ \tau $ 满足: 
+     \begin{enumerate}[(1)]
+          \item $ E, \varnothing\in \tau $;
+          \item $ \tau $ 中任意多元素的并仍是 $ \tau $ 中元素 (任意并);
+          \item $ \tau $ 中有限多元素的交仍是 $ \tau $ 中的元素(有限交) . 
+     \end{enumerate}
+     并称 $ (E, \tau) $ 为一个\textbf{拓扑空间}\index{T!拓扑空间}, $ \tau $ 中的元素称为\textbf{开集}\index{K!开集}. 
+ \end{Def}
+ \begin{Rmk}\label{rmk:平凡离散}
+      对集合 $ E $ , 称 $ \tau=\{ E, \varnothing \} $ 为\textbf{平凡拓扑}\index{P!平凡拓扑}, 称 $ \tau=2^{E} $ 为\textbf{离散拓扑} \index{L!离散拓扑}. 
+ \end{Rmk}
+ \begin{Ex}
+      $ E=\R $, 取 $ \tau=\Big\{ \bigcup\limits_{j\in\Z}(x_{j}, x_{j+1}), (x_{j})_{j\in\Z}\subset \R\cup\{ \pm\infty \} \Big\} $是一个拓扑, 这一拓扑称为 $ E $ 的\textbf{自然拓扑}\index{Z!自然拓扑}. 
+ \end{Ex}
+ \begin{Def}[度量空间]\label{def:度量空间}
+      设 $ E $ 是非空集合, $ d: E\times E\to \R $ 满足 $ \forall x, y\in E $
+      \begin{enumerate}[(1)]
+           \item 非负性: $ d(x, y)\geqslant 0 $;
+           \item 正定性: $ d(x, y)=0\Leftrightarrow x=y $ ;
+           \item 对称性: $ d(x, y)=d(y, x) $ ;
+           \item 三角不等式: $ d(x, z)\leqslant d(x, y)+d(y, z) $ 
+      \end{enumerate}
+      则称 $ (E, d) $ 是一个\textbf{度量空间}\index{D!度量空间}, 并称 $ d $ 是 $ E $ 上的\textbf{度量}\index{D!度量}
+ \end{Def}
+ \begin{Rmk}\label{rmk:度量不唯一}
+      度量并不唯一, 例如对 $ (E, d) $ 定义度量
+      \begin{equation*}
+          \begin{aligned}
+               r(x, y) = \min\{ d(x, y), 1 \}, \\
+               d'(x, y) = rd(x, y), r\in\R_{+},
+          \end{aligned}
+      \end{equation*}
+      就是两个不同的度量. 
+ \end{Rmk}
+ 
+ 度量空间也是拓扑空间, 记 $ B(x, r)=\{ y: d(y, x)<r \} $ 可将 $ \tau $ 中的元素定义为: 
+ \[
+      U\in E, U\in \tau\Leftrightarrow \forall x\in U\exists r>0(B(x, r)\subset U)
+ \] 
+ 该拓扑 $ \tau $ 称为由度量 $ d $ \textbf{诱导}的拓扑. 
+
+ \begin{Ex} 
+      在实 Euclid 空间 $ \R^{n} $ 上赋以度量
+      \begin{equation}
+           d(x, y)=\bigg( \sum_{i=1}^{n}(x_{i}-y_{i})^{2} \bigg)^{1/2}\tag{Euclid距离}
+      \end{equation}
+     以 $ C[a, b] $ 以在 $ [a, b] $ 上的连续函数全体, 在其上赋以度量
+     \begin{equation}
+          d(x, y) = \max_{t\in [a, b]} |x(t)-y(t)|\tag{一致距离}
+     \end{equation}
+ \end{Ex}
+ \begin{Def}[闭集]\label{def:闭集}
+      设 $ (E, d) $ 是一个拓扑空间, $ A\subset E $ , 若 $ A^{c} $ 是开集, 则称 $ A $ 是 $ E $ 上(关于 $ \tau $ )的\textbf{闭集}.\index{B!闭集}
+ \end{Def}
+ \begin{Ex}
+      设 $ (E, d) $ 是一个度量空间, 则闭球 $ \bar{B}(x, r)=\{ y: d(y, x)\leqslant r \} $ 是闭集. 
+ \end{Ex} 
+ \begin{Prop}\label{prop:闭集的性质}
+      闭集具有以下性质:
+      \begin{enumerate}[(1)]
+           \item 全空间 $ E $ 和空集 $ \varnothing $ 是闭集;
+           \item 任意多个闭集的交仍是闭集(任意交);
+           \item 有限多个闭集的并仍是闭集(有限并).
+      \end{enumerate}
+ \end{Prop}
