@@ -1,0 +1,98 @@
+%数学式
+\usepackage{mathtools,extarrows,amsfonts,amssymb,bm,mathrsfs} %数学式宏包, 更多箭头, 黑板体等数学字体,leqslant等符号
+\usepackage{amsthm} %定理环境
+\DeclareMathOperator{\rad}{rad}
+\newcommand\me{\mathrm{e}}
+\newcommand\imag{\mathrm{i}}
+\newcommand\C{\mathbb{C}}
+\newcommand\R{\mathbb{R}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\N{\mathbb{N}}
+\renewcommand\Re{\mathrm{Re\,}}
+\renewcommand\Im{\mathrm{Im\,}}
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\diff}{\,\mathrm{d}}
+\usepackage{tasks}
+\NewTasks[counter-format=(tsk[1]), item-indent=2em, label-offset=1em]{lpbn}
+\NewTasks[counter-format=(tsk[a]), item-indent=2em, label-offset=1em]{alpbn}
+\NewTasks[counter-format=tsk[A].]{xrze}[*]
+
+%版式
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry} %边距
+\setlength{\headheight}{13pt}
+\usepackage{fancyhdr} % 页眉页脚
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[OL]{\fangsong \rightmark}
+\fancyhead[ER]{\fangsong \leftmark}
+\fancyhead[OR,EL]{\thepage}
+
+%辅助
+\usepackage{array,diagbox,booktabs,tabularx} %数组环境, 表格中可以添加对角线, 可以调整表格中线的宽度, 可以控制表格宽度并使其自动换行
+%\usepackage{enumerate} %列表环境
+\usepackage[shortlabels]{enumitem} % 继承并扩展了enumerate宏包的功能
+\setlist[1]{left=\parindent..2\parindent}
+
+
+
+
+%交叉引用
+\usepackage{nameref}
+\usepackage{prettyref}
+\usepackage[colorlinks, linkcolor=Sumire]{hyperref}
+\usepackage{graphicx}
+
+%浮动体
+\usepackage{caption} %使用浮动体标题
+\usepackage{subfig} %子浮动体
+
+% 新定义计数器
+\newcounter{FA}[chapter]
+\renewcommand{\theFA}{\thesection.\arabic{FA}}
+
+%新定义定理环境类型
+\newtheoremstyle{normal}% name
+{3pt}% Space above
+{3pt}% Space below
+{}% Body font
+{2\ccwd}% Indent amount
+{\bfseries}% Theorem head font
+{}% Punctuation after theorem head
+{1\ccwd}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning `normal' )
+\newtheoremstyle{Thm}% hnamei
+{3pt}% Space above
+{3pt}% Space below
+{\kaishu}% Body font
+{2\ccwd}% Indent amount
+{\bfseries}% Theorem head font
+{}% Punctuation after theorem head
+{1\ccwd}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning `normal' )
+
+%新定义定理环境
+\theoremstyle{normal}
+%\theoremstyle{Thm}
+\newtheorem{Thm}[FA]{定理}
+\newtheorem{Thmn}{定理}
+\renewcommand{\theThmn}{\theFA$'$}
+
+\newtheorem{Lemma}[FA]{引理}
+%\newtheorem{Exp}{例}[subsection]
+\newtheorem*{Prf}{证明}
+\newtheorem{Rmk}[FA]{注}
+\newtheorem*{Solve}{解}
+\newtheorem{Def}[FA]{定义}
+\newtheorem{Defn}{定义}
+\renewcommand{\theDefn}{\thefA$'$}
+\newtheorem{Cor}[FA]{推论}
+\newtheorem{Ex}[FA]{例}
+\newtheorem{Prop}[FA]{命题}
+
+
+%新定义命令
+\newcommand{\abs}[1]{\ensuremath{\left| \,#1\, \right| }}
+\newcommand{\lrangle}[1]{\langle #1 \rangle}
+\newcommand{\degree}{\ensuremath{^{\circ}}}
+%\renewcommand{\labelenumi}{(\theenumi)}

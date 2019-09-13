@@ -1,0 +1,75 @@
+\usepackage{xcolor}
+\definecolor{Sumire}{RGB}{102,50,124}
+\definecolor{Shion}{RGB}{143,119,181}
+
+\usepackage{titlesec}
+\usepackage{titleps}
+\usepackage{tikz}
+
+\newcommand{\chapnumfont}{%
+	\fontsize{100}{100}\usefont{T1}{ptm}{b}{n}%
+}
+
+\colorlet{chapbgcolor}{gray!75}
+\colorlet{chapnumcolor}{black!60}
+
+
+\newcommand{\chaptitlenumbered}[1]{%
+	\begin{tikzpicture}
+	\fill[chapbgcolor!70,rounded corners=0pt] (0,2.3) rectangle (\linewidth,0);
+	\node[
+	align=right,
+	anchor=south east,
+	inner sep=8pt,
+	font=\huge\normalfont\bfseries
+	] at (0.987\linewidth,0) {\strut#1};
+	\node[
+	align=right,
+	font=\fontsize{60}{62}\usefont{OT1}{ptm}{b}{it},
+	text=chapnumcolor
+	] at (0.975\linewidth,2.3) {\thechapter};
+	\end{tikzpicture}%
+}
+
+\newcommand{\chaptitleunnumbered}[1]{%
+	\begin{tikzpicture}
+	\fill[chapbgcolor!70,rounded corners=0pt] (0,2.3) rectangle (\linewidth,0);
+	\node[
+	align=right,
+	anchor=south east,
+	inner sep=8pt,
+	font=\huge\normalfont\bfseries
+	] at (0.987\linewidth,0) {\strut#1};
+	\end{tikzpicture}%
+}
+
+\titleformat{name=\chapter}[display]
+{\normalfont\huge\bfseries\sffamily}
+{}
+{40pt}
+{\chaptitlenumbered}
+\titleformat{name=\chapter,numberless}[display]
+{\normalfont\huge\bfseries\sffamily}
+{}
+{25pt}
+{\chaptitleunnumbered}
+\titlespacing*{\chapter}
+{0pt}
+{-126pt}
+{33pt}
+
+\setlength\headheight{15pt}
+
+\usepackage{dsfont}
+
+\usepackage{mathrsfs}
+
+\usepackage{cite}
+\usepackage{titlesec}
+
+\usepackage[final]{pdfpages}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\renewcommand\sectionmark[1]{%
+	\markright{\thesection\quad #1}}
