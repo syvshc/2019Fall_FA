@@ -1,7 +1,7 @@
 # 2019Fall_FA
 2019秋季学期泛函分析笔记, 授课教师吴劲松, 使用教材许全华编写的《泛函分析讲义》
 
-相关笔记的`pdf`文档可以在`release`中找到
+相关笔记的`pdf`文档可以在 [release](https://github.com/syvshc/2019Fall_FA/releases) 中找到
 
 关于书写的要求
 
