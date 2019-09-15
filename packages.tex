@@ -2,13 +2,17 @@
 \usepackage{mathtools,extarrows,amsfonts,amssymb,bm,mathrsfs} %数学式宏包, 更多箭头, 黑板体等数学字体,leqslant等符号
 \usepackage{amsthm} %定理环境
 \DeclareMathOperator{\rad}{rad}
-\newcommand\me{\mathrm{e}}
+\DeclareMathOperator{\diam}{diam}
+\newcommand\me{\ensuremath{\mathrm{e}}}
 \newcommand\imag{\mathrm{i}}
-\newcommand\C{\mathbb{C}}
-\newcommand\R{\mathbb{R}}
-\newcommand\Q{\mathbb{Q}}
-\newcommand\Z{\mathbb{Z}}
-\newcommand\N{\mathbb{N}}
+
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\J{\ensuremath{\mathbb{J}}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\CN{\mathcal{N}}
+\newcommand\CB{\mathcal{B}}
 \renewcommand\Re{\mathrm{Re\,}}
 \renewcommand\Im{\mathrm{Im\,}}
 \newcommand{\dint}{\displaystyle\int}
@@ -42,7 +46,7 @@
 \usepackage{prettyref}
 \usepackage[colorlinks, linkcolor=Sumire]{hyperref}
 \usepackage{graphicx}
-
+\renewcommand\C{\ensuremath{\mathbb{C}}}
 %浮动体
 \usepackage{caption} %使用浮动体标题
 \usepackage{subfig} %子浮动体
