@@ -22,7 +22,7 @@
       设 $ E $ 是非空集合, $ d: E\times E\to \R $ 满足 $ \forall x, y\in E $
       \begin{enumerate}[(1)]
            \item 非负性: $ d(x, y)\geqslant 0 $;
-           \item 正定性: $ d(x, y)=0\Leftrightarrow x=y $ ;
+           \item 正定性: $ d(x, y)=0\Longleftrightarrow x=y $ ;
            \item 对称性: $ d(x, y)=d(y, x) $ ;
            \item 三角不等式: $ d(x, z)\leqslant d(x, y)+d(y, z) $ 
       \end{enumerate}
@@ -160,15 +160,15 @@
       设 $ (E,d) $ 是度量空间, $ F\subset E $, 取 $ \delta=d|_{F\times F} $ 则 $ (F, \delta) $ 是度量空间, 且当 $ E,  F $ 分别赋以 $ d, \delta $ 诱导的拓扑时,  $ F $ 是 $ E $ 的拓扑子空间. 
  \end{Ex}
  \begin{Prop}
-      设 $ F\subset E, A\subset F $ 则 $ A $ 是 $ F $ 中的闭集 $ \Leftrightarrow $ 存在闭集 $ B\subset E $ s.t. $ A=B\cap F $ . 
+      设 $ F\subset E, A\subset F $ 则 $ A $ 是 $ F $ 中的闭集 $ \Longleftrightarrow $ 存在闭集 $ B\subset E $ s.t. $ A=B\cap F $ . 
  \end{Prop}
  \begin{Prf}
        由闭集性质可以知道
        \[
           \begin{aligned}
-               A \text{\,是\,} F \text{\,中闭集\,} & \Leftrightarrow F\bs A \text{\,是\,} F \text{\,中开集\,} ;\\
-               & \Leftrightarrow \exists D\in \tau(F\bs A=D\cap F);\\
-               & \Leftrightarrow A=D^{c}\cap F
+               A \text{\,是\,} F \text{\,中闭集\,} & \Longleftrightarrow F\bs A \text{\,是\,} F \text{\,中开集\,} ;\\
+               & \Longleftrightarrow \exists D\in \tau(F\bs A=D\cap F);\\
+               & \Longleftrightarrow A=D^{c}\cap F
           \end{aligned}     
        \]
        其中$ D^{c} $是闭集. 	 \qed
@@ -187,12 +187,11 @@
       所有离散拓扑空间都是 Hausdorff空间, 所有度量空间都是 Hausdorff空间, 元素个数多于一个的平凡拓扑空间不是 Hausdorff空间(因为所有元素都只有一个邻域, 即 $ E $ ). 
  \end{Ex}
  \begin{Prop}
-      以下4个命题相互等价
+     由 Hausdorff空间的定义可以知道
       \begin{enumerate}[(1)]
-           \item  $ E $ 是 Hausdorff空间;
-           \item $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$;
-           \item $\bigcap \CN(x)=\{x\}$;
-           \item $ \forall F\subset E $, $ F $ 也是Hausdorff空间. 
+           \item  $ E $ 是 Hausdorff空间 $ \Longleftrightarrow $ $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$
+           \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $\bigcap \CN(x)=\{x\}$;
+           \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $ \forall F\subset E $, $ F $ 也是Hausdorff空间. 
       \end{enumerate}
  \end{Prop}
  
