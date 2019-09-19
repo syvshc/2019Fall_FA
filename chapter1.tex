@@ -22,7 +22,7 @@
       设 $ E $ 是非空集合, $ d: E\times E\to \R $ 满足 $ \forall x, y\in E $
       \begin{enumerate}[(1)]
            \item 非负性: $ d(x, y)\geqslant 0 $;
-           \item 正定性: $ d(x, y)=0\Leftrightarrow x=y $ ;
+           \item 正定性: $ d(x, y)=0\Longleftrightarrow x=y $ ;
            \item 对称性: $ d(x, y)=d(y, x) $ ;
            \item 三角不等式: $ d(x, z)\leqslant d(x, y)+d(y, z) $ 
       \end{enumerate}
@@ -79,31 +79,31 @@
             \[
                  \exists U\in \tau(x\in U\wedge U\subset V)
             \]
-            则称 $ V $ 是 $ x $ 的一个\textbf{邻域}\index{L!邻域}, 并记 $ \CN(x) $ 为全体 $ x $ 的邻域的集合, 称为 $ x $ 的\textbf{邻域系};
-            \item 若 $ \CN(x) $ 的子集族 $ \CB(x) $ 满足
+            则称 $ V $ 是 $ x $ 的一个\textbf{邻域}\index{L!邻域}, 并记 $ \CN{x} $ 为全体 $ x $ 的邻域的集合, 称为 $ x $ 的\textbf{邻域系};
+            \item 若 $ \CN{x} $ 的子集族 $ \CB{x} $ 满足
             \[
-                 \forall V\in \CN(x)\exists U\in \CB(x)(U\subset V)
+                 \forall V\in \CN{x}\exists U\in \CB{x}(U\subset V)
             \]  
-            则称 $ \CB(x) $ 是 $ x $的\textbf{邻域基}\index{L!邻域基}. 
+            则称 $ \CB{x} $ 是 $ x $的\textbf{邻域基}\index{L!邻域基}. 
        \end{enumerate}
  \end{Def}
  \begin{Rmk}
-      $ \CN(x) $是 $ x $  的邻域基; 包含 $ x $ 的所有开集的集合是 $ x $ 的邻域基. 
+      $ \CN{x} $是 $ x $  的邻域基; 包含 $ x $ 的所有开集的集合是 $ x $ 的邻域基. 
  \end{Rmk}
  \begin{Ex}
       设 $ (E, d) $ 是一个度量空间, $ x\in E $, 则 
       \[
-          \CB(x)=\left\{ B(x,\frac{1}{n}): n\geqslant 1 \right\} 
+          \CB{x}=\left\{ B(x,\frac{1}{n}): n\geqslant 1 \right\} 
       \]
       是 $ x $ 的邻域基. (可用来描述极限)
  \end{Ex}
  \begin{Def}[粘着集]
      设 $ (E, \tau) $ 是一个拓扑空间, $ A\subset E $ 
      \begin{enumerate}[(1)]
-          \item 设 $ x\in E $ , 若 $ \forall V\in \CN(x)((V\cap A)\bs \{ x \}\neq\varnothing) $, 则称 $ x $ 是 $ A $ 的\textbf{凝聚点}\index{N!凝聚点};
+          \item 设 $ x\in E $ , 若 $ \forall V\in \CN{x}((V\cap A)\bs \{ x \}\neq\varnothing) $, 则称 $ x $ 是 $ A $ 的\textbf{凝聚点}\index{N!凝聚点};
           \item 若 $ x\in A $ 或 $ A $  的凝聚点, 则称 $ x $ 是 $ A $ 的\textbf{粘着点}, 记 $ A $ 的粘着点的全体为 $ \baro{A} $ , 称为 $ A $ 的\textbf{粘着集}\index{N!粘着集}, 也即
           \[
-               x\in \baro{A}\Leftrightarrow \forall V\in \CN(V\cap A\neq\varnothing).    
+               x\in \baro{A}\Leftrightarrow \forall V\in \CN{x}(V\cap A\neq\varnothing).    
           \]
      \end{enumerate}
  \end{Def}
@@ -117,7 +117,7 @@
       有利数集 $ \Q $ 与无理数集 $ \mathbb{J} $ 都在 \R 中稠密. 
  \end{Ex}
  \begin{Def}[内部]\label{def:内部}
-       设 $ A\subset E $, 若 $ A\in\CN(x) $ , 则称 $ x $ 是 $ A $ 的\textbf{内点},  $ A $ 的内点的全体称为 $ A $ 的\textbf{内部}\index{N!内部}, 记作 $ \mathring{A} $ 或 $ \mathrm{Int}(A) $.  
+       设 $ A\subset E $, 若 $ A\in\CN{x} $ , 则称 $ x $ 是 $ A $ 的\textbf{内点},  $ A $ 的内点的全体称为 $ A $ 的\textbf{内部}\index{N!内部}, 记作 $ \mathring{A} $ 或 $ \mathrm{Int}(A) $.  
  \end{Def}
  \begin{Def}[边界]\label{def:边界}
        设 $ A\subset E $, 称 $ \partial A = \baro{A}\bs\mathring{A} $ 是 $ A $ 的\textbf{边界}\index{B!边界}.
@@ -160,15 +160,15 @@
       设 $ (E,d) $ 是度量空间, $ F\subset E $, 取 $ \delta=d|_{F\times F} $ 则 $ (F, \delta) $ 是度量空间, 且当 $ E,  F $ 分别赋以 $ d, \delta $ 诱导的拓扑时,  $ F $ 是 $ E $ 的拓扑子空间. 
  \end{Ex}
  \begin{Prop}
-      设 $ F\subset E, A\subset F $ 则 $ A $ 是 $ F $ 中的闭集 $ \Leftrightarrow $ 存在闭集 $ B\subset E $ s.t. $ A=B\cap F $ . 
+      设 $ F\subset E, A\subset F $ 则 $ A $ 是 $ F $ 中的闭集 $ \Longleftrightarrow $ 存在闭集 $ B\subset E $ s.t. $ A=B\cap F $ . 
  \end{Prop}
  \begin{Prf}
        由闭集性质可以知道
        \[
           \begin{aligned}
-               A \text{\,是\,} F \text{\,中闭集\,} & \Leftrightarrow F\bs A \text{\,是\,} F \text{\,中开集\,} ;\\
-               & \Leftrightarrow \exists D\in \tau(F\bs A=D\cap F);\\
-               & \Leftrightarrow A=D^{c}\cap F
+               A \text{\,是\,} F \text{\,中闭集\,} & \Longleftrightarrow F\bs A \text{\,是\,} F \text{\,中开集\,} ;\\
+               & \Longleftrightarrow \exists D\in \tau(F\bs A=D\cap F);\\
+               & \Longleftrightarrow A=D^{c}\cap F
           \end{aligned}     
        \]
        其中$ D^{c} $是闭集. 	 \qed
@@ -179,7 +179,7 @@
  \begin{Def}[Hausdorff空间]\label{def:Hausdorff空间}
        设 $ (E, \tau) $ 是拓扑空间, 若 
        \[
-          \forall x, y\in E(x\neq y)\exists U\in \CN(x)\exists V\in\CN(x) (U\cap V)=\varnothing
+          \forall x, y\in E(x\neq y)\exists U\in \CN{x}\exists V\in\CN{x} (U\cap V)=\varnothing
        \]
        则称 $ (E, \tau) $ 是\textbf{Hausdorff空间}\index{H!Hausdorff空间}或\textbf{分离空间}. 
  \end{Def}
@@ -187,12 +187,11 @@
       所有离散拓扑空间都是 Hausdorff空间, 所有度量空间都是 Hausdorff空间, 元素个数多于一个的平凡拓扑空间不是 Hausdorff空间(因为所有元素都只有一个邻域, 即 $ E $ ). 
  \end{Ex}
  \begin{Prop}
-      以下4个命题相互等价
+     由 Hausdorff空间的定义可以知道
       \begin{enumerate}[(1)]
-           \item  $ E $ 是 Hausdorff空间;
-           \item $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$;
-           \item $\bigcap \CN(x)=\{x\}$;
-           \item $ \forall F\subset E $, $ F $ 也是Hausdorff空间. 
+           \item  $ E $ 是 Hausdorff空间 $ \Longleftrightarrow $ $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$
+           \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $\bigcap \CN{x}=\{x\}$;
+           \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $ \forall F\subset E $, $ F $ 也是Hausdorff空间. 
       \end{enumerate}
  \end{Prop}
  
@@ -201,7 +200,7 @@
  \begin{Def}[极限]\label{def:极限}
        设 $ (E, \tau) $ 是拓扑空间, $ (x_{n})_{n\geqslant 1} $ 是 $ E $ 中的序列,  $ x\in E $, 若
        \[
-            \forall V\in\CN(x)\exists n_{0}\in\N(n\geqslant n_{0}\Leftarrow x_{n}\in V)
+            \forall V\in\CN{x}\exists n_{0}\in\N(n\geqslant n_{0}\Rightarrow x_{n}\in V)
        \]
        则称 $ (x_{n})_{n\geqslant1} $ \textbf{收敛}于 $ x $, 并称 $ x $ 是序列 $ (x_{n})_{n\geqslant1} $ 的极限, 记作
        \[
@@ -210,15 +209,16 @@
        当不引起歧义的时候, 前面的 $ \tau- $ 可以省略. 
  \end{Def}
 \begin{Rmk}
+     对定义\ref{def:极限}进行几点说明:
      \begin{enumerate}[(1)]
-          \item 上述定义中的 $ \CN(x) $ 可换成 $ \CB(x) $ ;
-          \item \R 中序列的极限至多只有一个, 例如 $\lim\limits_{n\to\infty}\frac{1}{n}=0 $, $ \lim\limits_{n\to\infty} =\infty$(无极限), 取 $ (x_{n})_{n\geqslant1}=\left\{ 1, -1, 1,  -1\ldots \right\} $ 也无极限;
+          \item 上述定义中的 $ \CN{x} $ 可换成 $ \CB{x} $ ;
+          \item \R 中序列的极限至多只有一个, 例如 $\lim\limits_{n\to\infty}\frac{1}{n}=0 $, $ \lim\limits_{n\to\infty} n=\infty$(无极限), 取 $ (x_{n})_{n\geqslant1}=\left\{ 1, -1, 1,  -1\ldots \right\} $ 也无极限;
           \item 一般地, Hausdorff空间中的序列至多只有一个极限, 而平凡拓扑空间中的任意序列收敛到任意元素;
           \item 对度量空间 $ (E, d) $ , 有
           \[
                \lim_{n\to \infty}x_{n}=x \Leftrightarrow \lim_{n\to\infty}d(x_{n}, x)=0, 
           \]
-          取邻域基 $ \CB(x)=\left\{ B(x, \frac{1}{n}): n\geqslant1 \right\} $即可.  
+          取邻域基 $ \CB{x}=\left\{ B(x, \frac{1}{n}): n\geqslant1 \right\} $即可.  
      \end{enumerate}
 \end{Rmk}
 \begin{Prop}
@@ -227,11 +227,11 @@
 \begin{Prf}
      \textit{必要性}. 若 $ x_{0}\notin A $, 则 $ \exists r>0 (B(x, r)\cap A=\varnothing) $, 而由极限的定义知 
      \[
-          \exists n_{0}\in\N(n\geqslant n_{0}\Rightarrow x_{n}\in B(x, r))\Rightarrow x_{n}\in A. 
+          \exists n_{0}\in\N(n\geqslant n_{0}\Rightarrow x_{n}\in B(x, r))\Rightarrow x_{n}\notin A. 
      \]
      与 $ (x_{n})_{n\geqslant1}\subset A $ 矛盾. 
 
-     \textit{充分性}. 只需证 $ A^{c} $ 是开集, 用反证法, 若 $ A^{c} $ 是闭集, 则有
+     \textit{充分性}. 只需证 $ A^{c} $ 是开集, 用反证法, 若 $ A^{c} $ 不是开集, 则有
      \[
           \exists x\in A^{c}\,\forall r>0(B(x, r)\cap A\neq\varnothing),
      \]
@@ -240,7 +240,7 @@
 \begin{Def}[序列的粘着值]\label{def:序列的粘着值}
       设 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中的序列,  $ x\in E $, 若
       \[
-           \forall V\in\CN(x)\,\forall n_{0}\in\N\,\exists n\geqslant n_{0}(x_{n}\in V),
+           \forall V\in\CN{x}\,\forall n_{0}\in\N\,\exists n\geqslant n_{0}(x_{n}\in V),
       \]
       则称 $ x $ 是序列 $ (x_{n})_{n\geqslant1} $ 的\textbf{粘着值}\index{N!粘着值}.  
 \end{Def}
@@ -248,7 +248,7 @@
      \R 中序列 $ (1, -1, 1, -1\ldots) $ 的粘着值为 $ 1, -1 $.  
 \end{Ex}
 \begin{Rmk}
-     序列的粘着值与集合的粘着点没有关系, 如 \R 上的序列 $ (x_{n})_{n\geqslant1}=(1, 0.8, {1}/{2}, {1}/{2}-0.2, {1}/{3}, {1}/{3}-0.2, \ldots, {1}/{n}, {1}/{n}-0.2, \ldots) $, 该序列的粘着值 $ 0, -0.2 $ 均不在序列中, 而集合 $ A=\{ x_{n} \}_{n\geqslant1} $ 的粘着集为 $ A\cup\{ 0,-0.2 \} $. 
+     序列的粘着值与集合的粘着点没有关系, 如 \R 上的序列 $ (x_{n})_{n\geqslant1}=(1, 1-\sqrt{2}, {1}/{2}, {1}/{2}-\sqrt{2}, {1}/{3}, {1}/{3}-\sqrt{2}, \ldots, {1}/{n}, {1}/{n}-\sqrt{2}, \ldots) $, 该序列的粘着值 $ 0, \sqrt{2} $ 均不在序列中, 而集合 $ A=\{ x_{n} \}_{n\geqslant1} $ 的粘着集为 $ A\cup\{ 0,-\sqrt{2} \} $. 
 
      再取 $ (x_{n})_{n\geqslant1}=(1, 1, \ldots) $ 则该序列的粘着值为$1$,  但 $ 1 $ 不是 $ A=\{ 1 \} $ 的凝聚点.  
 \end{Rmk}
@@ -352,3 +352,114 @@
      (2) 任取 $ (x_{n})_{n\geqslant1} $ 是 $ A $ 中的Cauchy列, 则 $ (x_{n})_{n\geqslant1} $ 也是 $ E $ 中的Cauchy列, 而 $ (E, d) $ 完备, 故 $ (x_{n})_{n\geqslant1} $ 收敛, 记 $ \lim\limits x_{n}=x $, 由 $ A $ 是闭集知 $ x\in A $, 故 $ (A, d) $ 完备. \qed
 \end{Prf}
 \section{连续映射与不动点定理}
+\subsection{连续与一致连续}
+\begin{Def}[连续]\label{def:连续}
+      设 $ E $, $ F $ 为拓扑空间,  $ f:E\to F, x\in E $, 若
+      \[
+           \forall V\in\CN[f(x)]\,\exists U\in\CN{x}\,(f(U)\subset V),
+      \]
+      则称 $ f $ 在 $ x $ 处\textbf{连续}\index{L!连续}, 或等价地
+      \[
+           \forall V\in\CN{x}[f(x)]\,(f^{-1}(V)\in\CN{x})
+      \]
+      若 $ f $ 在 $ E $ 的每一点都连续, 则称 $ f $ 在 $ E $ 上连续. 
+\end{Def}
+\begin{Rmk}
+     若 $ E $ , $ F $ 为度量空间, 若任取序列 $ (x_{n})_{n\geqslant1} $ 收敛到 $ x $ , 都有 $ \lim\limits_{n\to\infty}f(x_{n})=f(x) $, 则称 $ f $ 在 $ x $ 处连续. 
+\end{Rmk}
+\begin{Prop}
+     连续映射具有以下性质:
+     \begin{enumerate}[(1)]
+          \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的开集 $ V $ , 有 $ f^{-1}(V) $ 是 $ E $ 中开集;\\
+          \phantom{$ f $ 在 $ E $ 上连续} $ \Longleftrightarrow $ 对 $ F $ 上的闭集 $ B $ , 有 $ f^{-1}(B) $ 是 $ E $ 中闭集;
+          \item 连续映射的符合是连续映射;
+          \item $ \tau $, $ \tau' $ 是 $ E $ 中拓扑,  $ \tau $, 是 $ \tau' $ 的强拓扑 $ \Longleftrightarrow $ $ \mathrm{id}_{E}:(E, \tau)\to(E, \tau') $ 连续. 
+     \end{enumerate}
+\end{Prop}
+\begin{Def}[开映射, 同胚]\label{def:开映射, 同胚}
+      设 $ E $, $ F $ 是拓扑空间,  $ f:E\to F $ 
+      \begin{enumerate}[(1)]
+           \item 若任取开集 $ U\subset E $ , 有 $ f(U) $ 是 $ F $ 中开集, 则称 $ F $ 是一个\textbf{开映射}\index{K!开映射};
+           \item 若 $ f $ 是双射, 且 $ f\text{\,与\,}f^{-1} $ 连续, 则称 $ f $ 是\textbf{同胚映射}\index{T!同胚}, 若 $ E $, $ F $ 间有同胚映射, 则称 $ E\text{\,与\,}F $ 同胚.  
+      \end{enumerate}
+\end{Def}
+\begin{Def}[一致连续]\label{def:一致连续}
+      设 $ (E, d) $ 与 $ (F, \delta) $ 是度量空间, 若 $ f:E\to F $ 满足
+      \[
+           \forall\varepsilon>0\,\exists\eta>0\,(d(x, y)<\eta\Rightarrow\delta(f(x), f(y))<\varepsilon),
+      \]
+     则称 $ f $ 是\textbf{一致连续映射}\index{Y!一致连续映射}. 
+\end{Def}
+\begin{Rmk}
+     一致连续映射一定是连续映射, 它将 Cauchy列映成 Cauchy列.
+
+     $ f(x)=x $ 在\R 上一致连续,  $ f(x)=x^{2} $ 在认可\R 的有限区间上一致连续, 而在无限区间上不一致连续.  
+\end{Rmk}
+\begin{Thm}[一致连续映射的扩展]
+      设 $ (E, d)\text{\,与\,}(F, \delta) $ 是度量空间,  $ (F, \delta) $ 完备,  $ E_{0}\text{\,是\,}E $ 的稠子集, 若 $ f:E_{0}\to F $ 一致连续, 则 $ f $ 可唯一地扩展成 $ (E, d)\text{\,到\,}(F, \delta) $ 的一致连续映射 $ \tilde{f}:E\to F $.  
+\end{Thm}
+\begin{Prf}
+     (Step 1) 构造 $ \tilde{f} $. 
+     
+     由 $ E_{0}\text{\,在\,}E $ 中稠密可知 
+     \[
+          \forall x\in E\,\exists (x_{n})_{n\geqslant1}\subset E_{0}(\lim_{n\to\infty}x_{n}=x), 
+     \] 
+     定义 $ \tilde{f}(x)=\lim\limits_{n\to\infty}f(x_{n}) $ , 需证明 $ (f(x_{n}))_{n\geqslant1} $ 也是 Cauchy列, 且 $ \tilde{f}(x) $ 不依赖 $ (x_{n})_{n\geqslant1} $ 的选取. 
+     \begin{enumerate}[1\degree]
+          \item 因为 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, $ f $ 一致连续, 知 $ (f(x_{n}))_{n\geqslant1} $ 也是 Cauchy列. 因为 $ (F, \delta) $ 完备, 故存在 $ \tilde{f}(x) $ 使得 $ \lim\limits_{n\to\infty}f(x_{n})=\tilde{f}(x) $.
+          \item 设 $ (x'_{n})_{n\geqslant1}\subset E_{0} $, 且 $ \lim\limits_{n\to\infty}x'_{n}=x $ , 记 $ y'=\lim\limits_{n\to\infty}f(x'_{n}) $ , 令 $ y=\tilde{f}(x) $ 则
+          \[
+               \begin{aligned}
+                    \delta(y, y') & \leqslant \delta(y, f(x_{n}))+\delta(f(x_{n}), f(x'_{n}))+\delta(f(x'_{n}), y)\\
+                    & \to 0\,(n\to\infty)
+               \end{aligned}
+          \]
+          即 $ y=y' $ , 从而 $ \tilde{f} $ 在 $ E $ 上是良定的. 
+     \end{enumerate} 
+     (Step 2) 证明 $ \tilde{f} $ 是一致连续映射. 
+
+     对任意 $ \varepsilon>0 $ , 因为 $ f $ 一致连续, 则 $ d(x, y)<\eta/3 $ 时, $ \delta(f(x), f(y))<\varepsilon $, 而 
+     \[
+          \forall x', y'\in E\,\exists  (x_{n})_{n\geqslant1}\subset E_{0} \,\exists  (y_{n})_{n\geqslant1}\subset E_{0} \,(\lim_{n\to\infty}x_{n}=x'\wedge \lim_{n\to\infty}y_{n}=y' ), 
+     \]  
+     也即 
+     \[
+          \exists n_{0}\in\N\,\forall n\geqslant n_{0}\,(d(x_{n}, x')<\frac{\eta}{3}\wedge d(y_{n}, y')<\frac{\eta}{3}), 
+     \] 
+     则当 $ d(x', y')<\eta/3 $ 时, 有
+     \[
+          \begin{aligned}
+               d(x_{n}, y_{n}) & \leqslant d(x_{n}, x')+d(x', y')+d(y', y_{n})\\
+               & < \frac{\eta}{3}+\frac{\eta}{3}+\frac{\eta}{3}=\eta.
+          \end{aligned}
+     \]
+     又因为 $ f $ 一致连续, 故 $ \delta(f(x_{n}), f(y_{n}))<\varepsilon $, 而又有
+     \[
+          \tilde{f}(x')=\lim_{n\to\infty}f(x_{n}), \tilde{f}(y')=\lim_{n\to\infty}f(y_{n})
+     \]
+     即
+     \[
+          \exists n_{1}\in\N\,\forall n\geqslant n_{1}\,(\delta(\tilde{f}(x_{n}), \tilde{f}(x'))<\varepsilon\wedge \delta(\tilde{f}(y_{n}), \tilde{f}(y'))<\varepsilon)
+     \]
+     则
+     \[
+          \begin{aligned}
+               \delta(\tilde{f}(x'), \tilde{f}(y')) & \leqslant \delta(\tilde{f}(x_{n}), \tilde{f}(x'))+\delta(\tilde{f}(y_{n}), \tilde{f}(x_{n}))+\delta(\tilde{f}(y_{n}), \tilde{f}(y'))\\
+               & <\varepsilon+\varepsilon+\varepsilon=3\varepsilon. 
+          \end{aligned}
+     \]
+     从而 $ \tilde{f} $ 是一致连续的. 
+
+     (Step 3) 证明 $ \tilde{f} $ 的唯一性. 
+     
+     设 $ {f}' $ 是 $ f $ 的另一个扩张, 由 $ E_{0} $ 稠密, 知
+     \[
+          \forall x\in E\,\exists (x_{n})_{n\geqslant1} \subset E_{0}\,(\lim_{n\to\infty}x_{n}=x),
+     \]
+     则有
+     \[
+          f'(x)=\lim_{n\to\infty}f'(x_{n})=\lim_{n\to\infty}f(x_{n})=\tilde{f}(x), 
+     \]
+     从而 $ f'=\tilde{f} $. \qed
+\end{Prf}
