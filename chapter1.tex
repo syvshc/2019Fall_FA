@@ -401,11 +401,11 @@
 
           $ f(x)=x $ 在\R 上一致连续,  $ f(x)=x^{2} $ 在认可\R 的有限区间上一致连续, 而在无限区间上不一致连续.  
      \end{Remark}
-     \begin{Theorem}[一致连续映射的扩展]
+     \begin{Theorem}[一致连续映射的扩展]\label{thm:一致连续映射的扩展}
           设 $ (E, d)\text{\,与\,}(F, \delta) $ 是度量空间,  $ (F, \delta) $ 完备,  $ E_{0}\text{\,是\,}E $ 的稠子集, 若 $ f:E_{0}\to F $ 一致连续, 则 $ f $ 可唯一地扩展成 $ (E, d)\text{\,到\,}(F, \delta) $ 的一致连续映射 $ \tilde{f}:E\to F $.  
      \end{Theorem}
      \begin{Proof}
-          (Step 1) 构造 $ \tilde{f} $. 
+          \textbf{(Step 1)} 构造 $ \tilde{f} $. 
           
           由 $ E_{0}\text{\,在\,}E $ 中稠密可知 
           \[
@@ -424,7 +424,7 @@
                即 $ y=y' $ , 从而 $ \tilde{f} $ 在 $ E $ 上是良定的. 
           \end{enumerate} 
 
-          (Step 2) 证明 $ \tilde{f} $ 是一致连续映射. 
+          \textbf{(Step 2)} 证明 $ \tilde{f} $ 是一致连续映射. 
 
           对任意 $ \varepsilon>0 $ , 因为 $ f $ 一致连续, 则 $ d(x, y)<\eta/3 $ 时, $ \delta(f(x), f(y))<\varepsilon $, 而 
           \[
@@ -458,7 +458,7 @@
           \]
           从而 $ \tilde{f} $ 是一致连续的. 
 
-          (Step 3) 证明 $ \tilde{f} $ 的唯一性. 
+          \textbf{(Step 3)} 证明 $ \tilde{f} $ 的唯一性. 
           
           设 $ {f}' $ 是 $ f $ 的另一个扩张, 由 $ E_{0} $ 稠密, 知
           \[
@@ -556,7 +556,7 @@
            \noindent 并称 $ (\widehat{E}, \hat{d}) $ 是 $ (E, d) $ 的\textbf{完备化空间}.
      \end{Theorem}
      \begin{Proof}
-          (Step 1) 构造空间 $ (\widehat{E}, \hat{d}) $ .
+          \textbf{(Step 1)} 构造空间 $ (\widehat{E}, \hat{d}) $ .
 
           取 $ \widetilde{E} $ 是 $ E $ 中 Cauchy列的全体, 并在 $ \widetilde{E} $ 上取等价关系
           \[
@@ -569,7 +569,7 @@
                \hat{d}(\hat{x}, \hat{y})=\lim_{n\to\infty}d(x_{n},y_{n}).
           \]
           因 $ \hat{d} $ 的非负性, 正定性, 对称性与三角不等式由 $ d $ 的相应性质可证, 故只需证明 $ \lim\limits_{n\to\infty}d(x_{n}, y_{n}) $ 存在且不依赖代表元的选取.
-          \begin{enumerate}[(i)]
+          \begin{enumerate}[(1)]
                \item 由 $ (x_{n})_{n\geqslant1} $ , $ (y_{n})_{n\geqslant1} $ 都是 Cauchy列, 当 $ m, n\to\infty $ 时
                \[
                     \begin{aligned}
@@ -579,7 +579,7 @@
                     \end{aligned}
                \]
                则 $ d(x_{n}, y_{n})_{n\geqslant1} $ 是实的Cauchy列,  故 $ \lim\limits_{n\to\infty}d(x_{n}, y_{n}) $ 存在;
-               \item 再设 $ (x'_{n})_{n\geqslant1} $ , $ (y'_{n})_{n\geqslant1} $ 也是 $ \hat{x} $ , $ \hat{y} $ 的代表元, 则 $ n\to\infty $ 时
+               \item 再设 $ (x'_{n})_{n\geqslant1} $, $ (y'_{n})_{n\geqslant1} $ 也是 $ \hat{x} $ , $ \hat{y} $ 的代表元, 则 $ n\to\infty $ 时
                \[
                     \abs{d(x'_{n}, y'_{n})-d(x_{n}, y_{n})}\leqslant d(x'_{n}, x_{n})+d(y'_{n}, y_{n})\to0.
                \]
@@ -591,15 +591,56 @@
           \]
           从而 $ E $ 在 $ \widehat{E} $ 中稠密. 
 
-          (Step 2) 证明 $ (\widehat{E}, \hat{d}) $ 完备.
+          \textbf{(Step 2)} 证明 $ (\widehat{E}, \hat{d}) $ 完备.
 
           取 $ (\hat{x}_{(n)})_{n\geqslant1} $ 为 $ \widehat{E} $ 中的Cauchy列, 由 $ E $ 在 $ \widehat{E} $ 中稠密可知
           \[
-               \forall n\in \N\,\exists x_{n}\in E\,(\hat{d}(\hat{x}_{(n)}, \baro{x}_{n}))<\frac{1}{n}
+               \forall n\in \N\,\exists x_{n}\in E\,\left(\hat{d}(\hat{x}_{(n)}, \baro{x}_{n})<\frac{1}{n}\right)
           \]
+          于是可得
+          \[
+               \begin{aligned}
+                    d(x_{n}, x_{m}) & =\hat{d}(\baro{x}_{n}, \baro{x}_{m}) \leqslant \hat{d}(\baro{x}_{n}, \hat{x}_{(n)})+\hat{d}(\hat{x}_{(m)}, \hat{x}_{(n)})+\hat{d}(\baro{x}_{m}, \hat{x}_{(m)})\\
+                    & < \frac{1}{n}+\hat{d}(\hat{x}_{(m)}, \hat{x}_{(n)})+\frac{1}{m}\to0\,(m, n\to\infty)
+               \end{aligned}
+          \]
+          即可知 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, 则有 $ (x_{n})_{n\geqslant1}\in\widetilde{E} $ , 设 $ (x_{n})_{n\geqslant1} $ 在 $ \widehat{E} $ 中的代表元为 $ \hat{x} $ , 则有
+          \[
+               \hat{d}(\hat{x}_{(n)}, \hat{x})\leqslant\hat{d}(\hat{x}_{(n)}, \baro{x}_{n})+\hat{d}(\hat{x}, \baro{x}_{n})<\frac{1}{n}+\hat{d}(\hat{x}, \baro{x}_{n})\to 0\,(n\to\infty),
+          \]
+          因此, $ \lim\limits_{n\to\infty}\hat{x}_{(n)}=\hat{x} $ , 所以 $ (\widehat{E}, \hat{d}) $ 是一个完备的度量空间.
+
+          \textbf{(Step 3)} 最后证明这种完备化在等距意义下一唯一的.
+
+          我们可以把 $ (\widehat{E}, \hat{d}) $ 满足的条件归纳为
+          \begin{enumerate}[(1)]
+               \item $ \iota:E\to\widehat{E} $ 是单射, 可记为 $ E\hookrightarrow \widehat{E} $;
+               \item $ \hat{d}|_{\iota(E)}=d $ : 任取 $ a, b\in E $ , 有 $ \hat{d}(\iota(a), \iota(b))=d(a, b) $ ;
+               \item $ \iota(E) $ 在 $ \widehat{E} $ 中稠密 .
+          \end{enumerate}
+          也就是说 $ E $ 与 $ \widehat{E} $ 上的稠密子集 $ \iota(E) $ 等距同构.
+
+          设 $ (E', d') $ 是另一个满足如上条件的度量空间, 并记 $ E $ 到 $ E' $ 的等距映射为 $ \iota' $ , 定义映射
+          \[
+               \begin{aligned}
+                    f: \iota(E)  \to E'\\
+                    \hat{a} \mapsto \iota'(a)
+               \end{aligned}
+          \]
+          由 (1), (2) 可知 $ f $ 是等距的的, 则它是一致连续的. 又由 (3) 知 $ \iota(E) $ 在 $ \widehat{E} $ 中稠密, 以及 $ (E', d') $ 完备, 根据定理\ref{thm:一致连续映射的扩展}可知 $ f $ 可唯一地扩展成 $ \widehat{E} $ 到 $ E' $ 的一致连续映射 $ \tilde{f} $. 对任意 $ \hat{x}, \hat{y}\in \widehat{E} $ , 其代表元分别为 $ (x_{n})_{n\geqslant1} $与 $ (y_{n})_{n\geqslant1} $, 则有
+          \[
+               \begin{aligned}
+                    d'(\tilde{f}(\hat{x}), \tilde{f}(\hat{y})) & = d'(\lim_{n\to\infty}f(x_{n}), \lim_{n\to\infty}f(y_{n}))\\
+                    & = \lim_{n\to\infty} d'(f(x_{n}), f(y_{n}))\\
+                    & = \lim_{n\to\infty} d(x_{n}, y_{n})=\hat{d}(\hat{x}, \hat{y}).
+               \end{aligned}
+          \]
+          故 $ \tilde{f}:\widehat{E}\to E' $ 也是等距映射, 因此也是单射. 由 $ \iota'(E) $ 在 $ E' $ 中稠密可知 $ \tilde{f} $ 是满射, 故 $ \tilde{f} $ 是双射. 所以在等距同构意义下, $ E $ 的完备化度量空间是唯一的. \qed
      \end{Proof}
 
-
+     \begin{Remark}
+          若 $ (E, d) $ 完备, 则 $ \widehat{E}=E $ , 这说明完备化只需做一次, 且完备化空间是包含 $ E $ 的最小完备化空间.
+     \end{Remark}
 
 \section{紧性}
 	To be completed.
