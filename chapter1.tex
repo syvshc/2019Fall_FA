@@ -352,3 +352,107 @@
      (2) 任取 $ (x_{n})_{n\geqslant1} $ 是 $ A $ 中的Cauchy列, 则 $ (x_{n})_{n\geqslant1} $ 也是 $ E $ 中的Cauchy列, 而 $ (E, d) $ 完备, 故 $ (x_{n})_{n\geqslant1} $ 收敛, 记 $ \lim\limits x_{n}=x $, 由 $ A $ 是闭集知 $ x\in A $, 故 $ (A, d) $ 完备. \qed
 \end{Prf}
 \section{连续映射与不动点定理}
+	To be completed.
+\section{度量空间的完备化}
+	To be completed.
+\section{紧性}
+	To be completed.
+\section{乘积拓扑}
+	To be completed.
+\section{赋范线性空间}
+	
+	\subsection{Banach空间}
+	
+	\begin{Def}[赋范空间]\label{def:赋范空间}\index{F!赋范空间}
+	设$ E $是$ \mathbb{K} $上的向量空间, $ \norm{\cdot} : E\to[0,\infty) $是$ E $上的实值函数, 满足$ \forall x,y\in E,\,\forall\lambda\in\mathbb{K} $有
+	
+	\begin{enumerate}[(1)]
+	\item 正定性: $ \norm{x}=0\Longleftrightarrow x=0 $;
+	
+	\item 齐次性: $ \norm{\lambda x}=\abs{\lambda}\cdot\norm{x} $;
+	
+	\item 三角不等式: $ \norm{x+y}\leqslant\norm{x}+\norm{y} $.
+	\end{enumerate} 
+	则称$ \norm{\cdot} $是$ E $上的\textbf{范数}, 并称$ (E,\norm{\cdot}) $是\textbf{赋范(线性)空间}.
+	\end{Def}
+	
+	\begin{Ex}
+	常见空间上的范数:
+	
+	\begin{enumerate}[(1)]
+	\item 在Euclid空间$ \mathbb{K}^n $上, 定义
+		\[
+		\norm{x}_p=\left(\sum_{i=1}^n\abs{x_i}^p\right)^{1/p}\qquad(1\leqslant p<\infty),
+		\]
+		当$ p=\infty $时定义为$ \norm{x}_\infty=\max\limits_{1\leqslant i\leqslant n}\abs{x_i} $, 则有$ \norm{x}_p\,(1\leqslant p\leqslant\infty) $是$ \mathbb{K}^n $上的范数, 并称$ p=2 $的情形称为$ \mathbb{K}^n $上的\textbf{Euclid范数}. 另外, 对$ n $阶正定矩阵$ A $, 若定义
+		\[
+		\norm{x}_A=\norm{Ax}_2,
+		\]
+		则它也是$ \mathbb{K}^n $上的范数.
+	
+	\item 在连续函数空间$ C[a,b] $上定义
+	\[
+	\norm{x}=\sup_{a\leqslant t\leqslant b}\abs{x(t)},
+	\]
+	则$ \norm\cdot $是$ C[a,b] $上的范数.
+	\end{enumerate}
+	
+	\end{Ex}
+	
+	\begin{Rmk}
+	赋范空间一定是度量空间, 因度量可以被范数诱导:
+	\[
+	d(x,y):=\norm{x-y}.
+	\]
+	\end{Rmk}
+	
+	\begin{Def}[Banach空间]\label{def:Banach空间}\index{B!Banach空间}
+	设$ (E,\norm{\cdot}) $是赋范空间, $ d(x,y)=\norm{x-y} $是范数诱导的距离. 若$ (E,d) $完备, 则称$ (E,\norm{\cdot}) $是\textbf{Banach空间}
+	\end{Def}
+	
+	由Banach空间的定义可知任意赋范空间$ E,\norm{\cdot} $的完备化$ (\hat{E},\norm\cdot) $是Banach空间. 同时因为在赋范空间上有自然的线性运算, 可以在赋范空间上定义级数:
+	
+	\begin{Def}[级数]\label{def:级数}\index{J!级数}
+	设$ (E,\norm{\cdot}) $是赋范空间, $ \sum\limits_{n\geqslant 1} $是空间中的\textbf{级数}, 并称$ S_n=\sum\limits_{k=1}^nx_k $是级数的\textbf{部分和}.
+	
+	\begin{enumerate}[(1)]
+	\item 若$ (S_n)_{n\geqslant 1} $在$ (E,\norm\cdot) $中依范数收敛到$ S $, 则称级数$ \sum\limits_{n\geqslant 1}x_n $在$ (E,\norm\cdot) $上\textbf{收敛}, 并称$ S $是$ \sum\limits_{n\geqslant 1}x_n $的\textbf{和}, 记作$ S=\sum\limits_{n\geqslant 1}x_n $.
+	
+	\item 若$ (S_n)_{n\geqslant 1} $是Cauchy列, 则称级数$ \sum\limits_{n\geqslant 1}x_n $是\textbf{Cauchy级数}.
+	
+	\item 若$ \sum\limits_{n\geqslant 1}\norm{x_n} $收敛, 则称级数$ \sum\limits_{n\geqslant 1}x_n $\textbf{绝对收敛}.
+	\end{enumerate}
+	\end{Def}
+	
+	\begin{Rmk}
+	考虑赋范空间$ ((0,1),\abs\cdot) $上的级数$ \sum\limits_{n\geqslant 1}2^{-n} $, 则$ \sum\limits_{n\geqslant 1}2^{-n} $绝对收敛但不收敛.
+	\end{Rmk}
+	
+	\begin{Thm}
+	赋范空间$ (E,\norm\cdot) $是Banach空间当且仅当$ (E,\norm\cdot) $上绝对收敛的级数一定收敛.
+	\end{Thm}
+	\begin{proof}
+	\textsl{必要性.} 设$ \sum\limits_{n\geqslant 1}x_n $绝对收敛, 并记$ S_n $是部分和, 因为$ \forall n,p\in\mathbb{N} $, 有
+	\[
+	\norm{S_{n+p}-S_n}=\norm{\sum_{k=n+1}^{n+p}x_k}\leqslant\sum_{k=n+1}^{n+p}\norm{x_k}.
+	\]
+	由$ \sum\limits_{n\geqslant 1}x_n $收敛可知
+	\[
+	\forall p\in\mathbb{N}\left(\lim_{n\to\infty}\norm{S_{n+p}-S_n}=0\right),
+	\]
+	从而$ (S_n)_{n\geqslant 1} $是Cauchy列. 由$ (E,\norm\cdot) $是Banach空间知其完备, 从而$ (S_n)_{n\geqslant 1} $收敛, 即级数$ \sum\limits_{n\geqslant 1}x_n $收敛.
+	
+	\textsl{充分性.} 设$ (x_n)_{n\geqslant 1} $是Cauchy列, 则
+	\[
+	\exists(x_{n_k})_{k\geqslant 1}\subset(x_n)_{n\geqslant 1}(\norm{x_{n_{k+1}}-x_{n_k}}<2^{-k}),
+	\]
+	从而$ \sum\limits_{k\geqslant 1}\norm{x_{n_{k+1}}-x_{n_k}} $收敛, 即$ \sum\limits_{k\geqslant 1}(x_{n_{k+1}}-x_{n_k}) $绝对收敛, 故它收敛, 其部分和$ S_{n_k}=x_{n_{k+1}} $, 从而序列$ (x_{n_k})_{k\geqslant 1} $收敛. 由$ (x_n)_{n\geqslant 1} $是Cauchy列知它收敛, 于是$ (E,\norm\cdot) $完备, 即$ (E,\norm\cdot) $是Banach空间.
+	\end{proof}
+	
+	
+	
+	
+	
+	
+	
+	
