@@ -32,6 +32,10 @@
     |命题(Propsition)|`prop`|`Proposition`|
     |注{Remark}|`rmk`|`Remark`|
     |解(Solve)|×|`Solution`|
+    |推论(corollary)|`cor`|`Corollary`|
+    |命题(Propsition)|`prop`|`Proposition`|
+    |注{Remark}|`rmk`|`Remark`|
+    |解(Solve)|×|`Solve`|
     |证明{Proof}|×|`Proof`|
     
     - 如果不希望图片表格浮动请不要使用浮动体环境`figure`和`table`, 用`\includegrpics`或`tabular`环境+`captionof`来插入图片和表格;
