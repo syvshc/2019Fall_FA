@@ -25,13 +25,13 @@
     |公式(equation)|`eq`|`equation`|
     |图片(figure)|`fig`|`figure`|
     |表格(table)|`tab`|`table`|
-    |定义(defination)|`def`|`Definition`|
+    |定义(definition)|`def`|`Definition`|
     |定理(theorem)|`thm`|`Theorem`|
     |引理(lemma)|`lemma`|`Lemma`|
     |推论(corollary)|`cor`|`Corollary`|
-    |命题(Propsition)|`prop`|`Proposition`|
+    |命题(Propsotion)|`prop`|`Proposition`|
     |注{Remark}|`rmk`|`Remark`|
-    |解(Solve)|×|`Solution`|
+    |解(Solution)|×|`Solution`|
     |证明{Proof}|×|`Proof`|
     
     - 如果不希望图片表格浮动请不要使用浮动体环境`figure`和`table`, 用`\includegrpics`或`tabular`环境+`captionof`来插入图片和表格;
