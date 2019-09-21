@@ -658,8 +658,8 @@
            \end{enumerate}
      \end{Definition}
 
-     \begin{Proposition}
-           $ E $ 紧的充分必要条件是任意闭集族 $ (F_{i})_{i\in\alpha} $ , 若 $ \forall \beta\in\fin\alpha $ 都有 $ \bigcap_{i\in\beta}F_{i}\neq \varnothing $ , 则有 $ \bigcap_{i\in\alpha}F_{i}\neq\varnothing $. 
+     \begin{Proposition}\label{prop:紧性的另一刻画}
+           $ E $ 紧的充分必要条件是任意闭集族 $ (F_{i})_{i\in\alpha}\subset E $, 若 $ \forall \beta\in\fin\alpha $ 都有 $ \bigcap_{i\in\beta}F_{i}\neq \varnothing $ , 则有 $ \bigcap_{i\in\alpha}F_{i}\neq\varnothing $. 
      \end{Proposition}
 
      \begin{Proof}
@@ -687,27 +687,123 @@
           \]
           则 $ (U_{i})_{i\in\alpha} $ 是空间 $ F $ 上的开覆盖, 反之,  $ F $ 的任意开覆盖都可以表示成以上形式.
 
-          \textsl{必要性}. 若 $ F $ 是紧子空间, 那么存在有限集 $ \beta\in\fin\alpha $ , 使得 $ F=\bigcup_{i\in\beta}U_{i} $ , 所以有 $ F\subset\bigcup_{i\in\beta}O_{i} $ .
-          \textsl{充分性}. 若存在有限集 $ \beta\in\fin\alpha $, 使得 $ F\bigcup_{i\in\beta}O_{i} $ , ze 
+          \textsl{必要性}. 若 $ F $ 是紧子空间, 那么存在有限集 $ \beta\in\fin\alpha $ , 使得 $ F=\bigcup_{i\in\beta}U_{i} $ , 所以有 $ F\subset\bigcup_{i\in\beta}O_{i} $.
+
+          \textsl{充分性}. 若存在有限集 $ \beta\in\fin\alpha $, 使得 $ F\bigcup_{i\in\beta}O_{i} $ , 则
           \[
-               F=F\cap\left( \bigcup_{i\in\beta}O_{i} \right)=\bigcap_{i\in\beta}U_{i},
+               F=F\cap\bigg( \bigcup_{i\in\beta}O_{i} \bigg)=\bigcap_{i\in\beta}U_{i},
           \]
           所以 $ F $ 是紧子空间.\qed
      \end{Proof}
 
-     \begin{Proposition}
+     \begin{Proposition}\label{prop:紧->闭}
           设 $ E $ 是 Hausdorff空间且 $ F\subset E $ 紧, 则 $ F $ 是闭集. 
      \end{Proposition}
 
      \begin{Proof}
-          令 $ x\in F^{c} $ , 由 $ E $ 是 Hausdorff空间, 则对任意 $  y\in F $ , 存在 $ U_{y}\in\CN{x} $, $ V_{y}\in\CN{y} $ , 其中 $ U_{y} $ , $ V_{y} $ 是开集, 使得 $ U_{y}\cap V_{y}\varnothing $ 
+          令 $ x\in F^{c} $ , 由 $ E $ 是 Hausdorff空间, 则对任意 $  y\in F $ , 存在 $ U_{y}\in\CN{x} $, $ V_{y}\in\CN{y} $ , 其中 $ U_{y} $, $ V_{y} $ 是开集, 使得 $ U_{y}\cap V_{y}=\varnothing $ , 则 $\{ V_{y}:y\in F \}$ 是 $ F $ 的开覆盖, 因为 $ F $ 是紧集, 所以存在 $ y_{1}, y_{2}, \dots, y_{n} $, 使得 $ \{ V_{y_{i}}: i=1, 2, \dots, n \} $ 是 $ F $ 的开覆盖, 令 $ U=\bigcap_{i=1}^{n}U_{y_{i}} $ 是开集 (同时也是 $ x $ 的开邻域), 而 $ U\cap V_{y_{i}}=\varnothing\,(i=1, 2, \dots, n) $ , 从而 $ U\cap F=\varnothing $. 因此 $ F^{c} $ 是开集, 即 $ F $ 是闭集.\qed
      \end{Proof}
 
+     \begin{Proposition}
+          设 $ E $ 是紧 Hausdorff空间, 则 $ F\subset E $ 紧的充分必要条件是 $ F $ 是闭集. 
+     \end{Proposition}
+     
+     \begin{Proof}
+          \textsl{必要性}. 由命题\ref{prop:紧->闭}可得.
 
+          \textsl{充分性}. 设 $ E $ 是紧的, $ F\subset E $ 为闭集, 设 $ (F_{i})_{i\geqslant1} $ 是 $ F $ 的一族闭子集, 且具有有限交性质 (即 $ \forall \beta\in\fin\alpha $, $ \bigcap_{i\in\beta}F_{i}\neq\varnothing $), 则由 $ F $ 是闭集,  $ F_{i} $ 也是闭集. 由命题\ref{prop:紧性的另一刻画}知 $ \bigcap_{i\in\alpha}F_{i}\neq\varnothing $ , 从而 $ F $ 是紧的.\qed
+     \end{Proof}
 
+     \begin{Proposition}
+          设 $ E $ 是 Hausdorff空间,  $ (K_{i})_{i\in\alpha} $ 是 $ E $ 中紧集族. 若 $ \bigcap_{i\in\alpha}K_{i}=\varnothing $, 则存在有限集 $ \beta\in\fin\alpha $, 使得 $ \bigcap_{i\in\beta}K_{i}=\varnothing $.   
+     \end{Proposition}
+     
+     \begin{Proof}
+          在集族 $ (K_{i})_{i\in\alpha} $ 中任取一元素, 记为 $ K_{0} $, 因为 $ \bigcap_{i\in\alpha}K_{i}=\varnothing $, 
+          知 $ \bigcup_{i\in\alpha}K_{i}^{c}=E $, 由 $ E $ 是 Hausdorff的, 故 $ K_{i}^{c} $ 是开集, 从而 $ \bigcup_{i\in\alpha}K_{i}^{c} $ 是 $ K_{0} $ 的开覆盖, 由于 $ K_{0} $ 是紧的, 故有有限集 $ \beta\in\fin\alpha $, 使得 $ \bigcup_{i\in\beta}K_{i}^{c}\subset K_{0} $ 则
+          \[
+               K_{0}\cap \bigg( \bigcup_{i\in\beta}K_{i} \bigg)^{c}=\varnothing \Rightarrow K_{0}\cap\bigcap_{i\in\beta}K_{i}=\varnothing.
+          \]
+          即存在有限个子集的交为空集.\qed
+     \end{Proof}
 
+     \begin{Proposition}
+          设 $ E $ 是紧的 Hausdorff空间, 则 $ E $ 中每一点都有紧邻域基.
+     \end{Proposition}
 
+     \begin{Proof}
+          任取 $ x\in E $, 取 $ V $ 是 $ x $ 的开邻域, 则 $ \baro{V} $ 闭, 因为 $ E $ 是紧的 Hausdorff空间, 从而 $ \baro{V} $ 是 $ x $ 的一个紧邻域. 往证 $ \forall U\in\CN{x} $ 是开邻域, $ \exists V\in\CN{x} $ 是开邻域且 $ \baro{V}\subset U $. 
+          
+          注意到 $ U $ 是开集, 则 $ U^{c} $ 为闭集, 同时可知 $ U^{c} $ 为紧集. $ \forall y\in U^{c} $, 存在  $ U_{y}, V_{y} $分别为 $ y, x $ 的开邻域, 使得 $ U_{y}\cap V_{y}=\varnothing $. 因为 $ U^{c} $ 紧, 则存在 $ y_{1}, y_{2}, \dots, y_{n} $, 使得 $ U^{c}\subset \bigcup_{i=1}^{n}U_{y_{i}} $, 再令 $ V=\bigcap_{i=1}^{n}V_{y_{j}} $, 则有
+          \[
+               V\cap\left( \bigcup_{i=1}^{n}U_{y_{i}} \right)=\varnothing\Rightarrow \baro{V}\cap\left( \bigcup_{i=1}^{n}U_{y_{i}} \right)\Rightarrow \baro{V}\subset U.
+          \]
+          从而 $ x $ 有紧邻域基.\qed
+     \end{Proof}
 
+     \begin{Proposition}
+          设 $ E $ 是紧集,  $ F $ 是拓扑空间,  $ f:E\to F $ 连续, 则 $ f(E) $ 是 $ F $ 中的紧集(即连续映射将紧集映成紧集)
+     \end{Proposition}
+
+     \begin{Proof}
+          取 $ (O_{i})_{i\in\alpha} $ 是 $ f(E) $ 的开覆盖, 则 $ (f^{-1}(O_{i}))_{i\in\alpha} $ 是 $ E $ 的开覆盖, 因为 $ E $ 紧, 则存在有限集 $ \beta\in\fin\alpha $, 使得 $ \bigcup_{i\in\beta}f^{-1}(O_{i})=E $, 故 $ \bigcup_{O_{i}}=f(E) $. 即 $ f(E) $ 紧.\qed
+     \end{Proof}
+
+     \begin{Corollary}
+          设 $ E $ 是紧集, $ f:E\to\R $ 是连续映射, 则 $ f $ 在 $ f $ 在 $ E $ 上有界且取得上确界与下确界.
+     \end{Corollary}
+
+     \begin{Proposition}
+          设 $ E $ 是紧集,  $ F $ 是Hausdorff空间,  $ f:E\to F $ 是连续的单射, 则有 $ f:E\to f(E) $ 是同胚映射.
+     \end{Proposition}
+
+     \begin{Proof}
+          只需证明 $ f^{-1}:F\to E $ 是连续映射, 即 $ f $ 把闭集映成闭集. 设 $ A $ 是 $ E $ 中的闭集, 因为 $ E $ 紧, 所以 $ A $ 紧, 因为 $ f $ 是连续映射, 则 $ f(A) $ 紧. 又因为 $ F $ 是 Hausdorff的, 则 $ f(A) $ 是 $ f(E) $ 中闭集, 故 $ f^{-1} $ 是连续映射, 故 $ f:E\to f(E) $ 是同胚映射.\qed
+     \end{Proof}
+
+     \begin{Definition}[局部紧]\label{def:局部紧}\index{J!局部紧}
+           设 $ E $ 是拓扑空间, 若 $ E $ 中每一点都有一个紧邻域, 则称 $ E $ 是\textbf{局部紧}空间.
+     \end{Definition}
+
+     \begin{Example}
+          \R 与 $ (0, 1] $ 是局部紧的.
+     \end{Example}
+
+     \begin{Remark}
+          若 $ E $ 是局部紧的 Hausdorff空间, 则 $ E $ 中每一点都有一个紧邻域基.
+     \end{Remark}
+
+     \begin{Theorem}[Urysohn引理]
+           设 $ E $ 是局部紧的 Hausdorff空间. 设 $ A $ 和 $ B $ 是$ E $ 中两个不相交的非空闭子集, 并设其中的一个是紧集, 那么存在一个连续的函数 $ f:E\to[0,1] $ 使得 $ f|_{A}=0 $, 且 $ f|_{B}=1 $.
+     \end{Theorem}
+
+     \begin{Theorem}
+           设 $ (E, d), (F, \delta) $ 是度量空间, 且 $ E $ 紧. 若 $ f:E\to F $ 连续, 则 $ f $ 一致连续.
+     \end{Theorem}
+
+     \begin{Proof}
+          因为 $ f $ 连续, 则 
+          \[
+               \forall x\in E\,\forall \varepsilon>0\,\exists\eta_{x}>0\,(y\in B(x, \eta_{x})\Rightarrow \delta(f(x), f(y))<\varepsilon).
+          \]
+          设 $\left\{ B(x, \eta_{x}/2) : x\in E \right\}$ 是 $ E $ 的一个开覆盖, 因为 $ E $ 是紧集, 则存在 $ x_{1}, x_{2},\dots,x_{n} $ 使得
+          \[
+               \bigcup_{i=1}^{n} B\left(x_{i}, \frac{\eta_{x_{i}}}{2}\right)=E.
+          \]
+          令 $ \eta=\min\limits_{i=1, 2, \dots, n}\{ x_{i} \} $, 对 $ \forall y\in E $, 当 $ d(x', y)<\eta $ 时, 存在 $ j\in\N, 1\leqslant j\leqslant n $, 使得 $ x'\in B(x_{j}, \eta_{x_{j}}) $, 则
+          \[
+               d(x_{j}, y) \leqslant d(y, x')+d(x', x_{j})\leqslant\eta_{x_{j}}/2+\eta<\eta_{x_{j}}.
+          \]
+          故 $ y\in B(x_{j}, \eta_{x_{j}}) $, 所以有 $ \delta(f(y), f(x_{j}))<\varepsilon $, 则
+          \[
+               \delta(f(x'), f(y))\leqslant \delta(f(x'), f(x_{j}))+\delta(f(x_{j}), f(y))<2\varepsilon.
+          \]
+          因此 $ f $ 一致连续.\qed
+     \end{Proof}
+
+     \subsection{紧度量空间的刻画}
+     To be completed...
+     
 \section{乘积拓扑}
 	
 	\begin{Definition}[乘积拓扑]\label{def:乘积拓扑}\index{C!乘积拓扑}
