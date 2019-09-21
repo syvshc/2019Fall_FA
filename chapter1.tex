@@ -802,7 +802,90 @@
      \end{Proof}
 
      \subsection{紧度量空间的刻画}
-     To be completed...
+    
+     \begin{Example}
+     在实直线$ \mathbb{R} $上, 紧致与有界闭等价, 且有以下的等价表述:
+     \begin{enumerate}[(1)]
+     \item 无限子集必有凝聚点.
+     
+     \item 任一序列必有收敛子列.
+     
+     \item 完备且可被有限多个半径为$ \varepsilon $的开球覆盖.
+     \end{enumerate}
+     \end{Example}
+     
+     类似地, 度量空间的紧性也可以如此刻画:
+     
+     \begin{Example}[紧等价]\label{thm:紧等价}\index{L!列紧}\index{X!序列紧}\index{Y!预紧}
+     下面的命题等价:
+     \begin{enumerate}[(1)]
+     \item $ (E,d) $是紧空间;
+     
+     \item $ (E,d) $是\textbf{列紧}的, 即$ (E,d) $中的无限子集必有凝聚点.
+     
+     \item $ (E,d) $是\textbf{序列紧}的, 即$ (E,d) $中任一序列都有收敛子列.
+     
+     \item $ (E,d) $是完备的且是\textbf{预紧}的, 即$ \forall\varepsilon>0 $, $ E $可被有限多个以$ \varepsilon $为半径的开球覆盖. (若$ F\subset E $, $ (B(x,\varepsilon))_{x\in F} $覆盖$ E $, 则称$ F $是$ E $的一个$ \varepsilon $-\textbf{网})
+     \end{enumerate}
+     \end{Example}
+     \begin{Proof}
+     (1) $ \Rightarrow $ (2) : 用反证法, 设存在无限集$ F $无凝聚点, 即
+     \[
+     \forall x\in E\,\exists\eta_x>0\,(B(x,\eta_x)\cap(F\sm\{x\})=\varnothing),
+     \]
+     则$ (B(x,\eta_x))_{x\in E} $是$ E $的开覆盖. 因为$ E $是紧的, 存在$ x_1,x_2,\cdots,x_n $使得
+     \[
+     \bigcup_{j=1}^nB(x_j,\eta_{x_j})=E,
+     \]
+     而$ B(x_j,\eta_{x_j})\cap(F\sm\{x_j\}=\varnothing $, 从而$ B(x_j,\eta_{x_j}) $至多包含$ F $中的一个点, 则$ E=\bigcup_{j=1}^nB(x_j,\eta_{x_j}) $至多包含$ F $中的有限个点, 这与$ F $是无限集矛盾.
+     
+     (2) $ \Rightarrow $ (3) : 任取$ (x_n)_{n\geqslant 1} $是$ E $中的序列, 若$ (x_n)_{n\geqslant 1} $中只取有限多个不同值, 则$ (x_n)_{n\geqslant 1} $有收敛子列是显然的. 若$ (x_n)_{n\geqslant 1} $中有无限多个不同值, 则$ A=\{ x_n : n\geqslant 1 \} $是无限集, 由$ E $列紧知$ A $有凝聚点$ x $, 则存在$ (x_{n_k})_{k\geqslant 1}\subset(x_n)_{n\geqslant 1} $使得$ \lim\limits_{k\to\infty}x_{n_{k}}=x $.
+     
+     (3) $ \Rightarrow $ (4) : 任取$ E $中的Cauchy列$ (x_n)_{n\geqslant 1} $, 由$ E $序列紧可知$ (x_n)_{n\geqslant 1} $存在收敛子列, 从而$ (x_n)_{n\geqslant 1} $是收敛列, 这说明$ (E,d) $是完备的.
+     
+     用反证法, 反设$ E $不是预紧的, 即存在$ \varepsilon_0>0 $使得$ E $的开覆盖$ (B(x,\varepsilon))_{x\in E} $不存在有限子覆盖. 取$ x_1\in E $, 由$ B(x_1,\varepsilon)\ne E $, 可取$ x_2\in E\sm B(x_1,\varepsilon_0) $. 依此继续下去, 取
+     \[
+     x_n\in E\sm\left( \bigcup_{i=1}^{n-1}B(x_i,\varepsilon_0) \right)
+     \]
+     可得一$ E $中的序列$ (x_n)_{n\geqslant 1} $满足
+     \[
+     \forall j\ne k(d(x_j,x_k)\geqslant\varepsilon_0),
+     \]
+     即$ (x_n)_{n\geqslant 1} $不存在收敛子列, 矛盾.
+     
+     (4) $ \Rightarrow $ (3) : 因为$ E $是完备的, 只需证明任意序列$ (x_n)_{n\geqslant 1}\subset E $存在Cauchy子序列, 令$ \varepsilon_1=1/2 $, 由预紧性可知存在有限子集$ F\subset E $使得$ E=\bigcup_{x\in E}B(x,\varepsilon_1) $, 则$ (x_n)_{n\geqslant 1} $存在无穷子序列使得$ (x_{1,i})_{i\geqslant 1}\subset B(x,\varepsilon_1) $. 此时
+     \[
+     \forall j, k\,(d(x_{1,j},x_{1,k})<1).
+     \]
+     再令$ \varepsilon_2=1/2^2 $, 则$ (x_{1,i})_{i\geqslant 1} $存在无穷子列$ (x_{2,i})_{i\geqslant 1}\subset B(x',\varepsilon_2) $, 由此进行下去得到一串序列
+     \[
+     (x_n)_{n\geqslant 1}\supset(x_{1,i})_{i\geqslant 1}\supset(x_{2,i})_{i\geqslant 1}\supset\cdots\supset(x_{n,i})_{i\geqslant 1}\supset\cdots
+     \]
+     且$ d(x_{n,j},x_{n,k})<1/2^{n-1} $. 从而可取$ (x_{i,i})_{i\geqslant 1} $是一Cauchy列.
+     
+     (3) $ \Rightarrow $ (1) : 由$ E $序列紧可知$ E $预紧, 设$ (O_i)_{i\in\alpha} $是$ E $的开覆盖且不存在有限子覆盖. 由$ E $预紧可知$ \forall n\in\N $, 存在$ \frac{1}{n} $-网$ F_n $使得$ (B(x,1/n))_{x\in F_n} $覆盖$ E $, 则$ \exists y_n\in F_n $使得$ B(y_n,1/n) $不能被有限个$ O_i $覆盖.
+     
+     考虑这样构造出的序列$ (y_n)_{n\geqslant 1} $, 由$ E $序列紧可知$ (y_n)_{n\geqslant 1} $存在收敛到$ y $的子序列$ (y_{n_k})_{k\geqslant 1} $. 不妨设存在某个$ i_0\in\alpha $使得$ y\in O_{i_0} $, 且存在$ \eta>0 $使得$ B(y,\eta)\subset O_{i_0} $, 则取$ n_k $使得$ \frac{1}{n_k}<\frac{\eta}{2} $且$ d(y_{n_k},y)<\frac{\eta}{2} $, 则$ \forall x\in B(y_{n_k},1/n_k) $有
+     \[
+     d(x,y)\leqslant d(x,y_{n_k})+d(y_{n_k},y)<\frac{\eta}{2}+\frac{1}{n_k}<\eta.
+     \]
+     即$ B(y_{n_k},1/n_k)\subset B(y,\eta)\subset O_{i_0} $, 这与$ B(y_{n_k},1/n_k) $不能被有限个$ O_i $覆盖矛盾.\qed
+     \end{Proof}
+     
+     \begin{Definition}[相对紧]\label{def:相对紧}\index{X!相对紧}
+     设$ (E,d) $是一个度量空间, $ A\subset E $. 若$ \bar{A} $是紧集, 则称$ A $\textbf{相对紧}.
+     \end{Definition}
+     
+     \begin{Remark}
+     有关预紧性的刻画, 由定理\ref{thm:紧等价}中的``(3) $ \Leftrightarrow $ (4)"可知
+     \begin{enumerate}[(1)]
+     \item $ E $是预紧的$ \Longleftrightarrow $ $ E $的任一序列存在Cauchy子列.
+     
+     \item $ A $相对紧$ \Longleftrightarrow $ $ A $中无穷序列存在子列收敛到$ E $中的元素.
+     
+     \item 若$ E $是完备的, 则$ A $相对紧$ \Longleftrightarrow $ $ A $预紧.
+     \end{enumerate}
+     \end{Remark}
      
 \section{乘积拓扑}
 	
