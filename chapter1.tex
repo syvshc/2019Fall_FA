@@ -1,370 +1,725 @@
 % !TeX root = main.tex
 \chapter{拓扑空间与度量空间}
-\pagenumbering{arabic}
+     \pagenumbering{arabic}
 \section{基本概念}
 
- \begin{Def}[拓扑空间]\label{def:拓扑空间}
-      设 $ E $ 是一个集合, 称 $ E $ 的子集族 $ \tau $ 是一个\textbf{拓扑}\index{T!拓扑}, 若 $ \tau $ 满足: 
-     \begin{enumerate}[(1)]
-          \item $ E, \varnothing\in \tau $;
-          \item $ \tau $ 中任意多元素的并仍是 $ \tau $ 中元素 (任意并);
-          \item $ \tau $ 中有限多元素的交仍是 $ \tau $ 中的元素(有限交) . 
-     \end{enumerate}
-     并称 $ (E, \tau) $ 为一个\textbf{拓扑空间}\index{T!拓扑空间}, $ \tau $ 中的元素称为\textbf{开集}\index{K!开集}, 在不引起歧义的情况下, 可以简称 $ E $ 是一个拓扑空间. 
- \end{Def}
- \begin{Rmk}\label{rmk:平凡离散}
-      对集合 $ E $ , 称 $ \tau=\{ E, \varnothing \} $ 为\textbf{平凡拓扑}\index{P!平凡拓扑}, 称 $ \tau=2^{E} $ 为\textbf{离散拓扑} \index{L!离散拓扑}. 
- \end{Rmk}
- \begin{Ex}
-      $ E=\R $, 取 $ \tau=\Big\{ \bigcup\limits_{j\in\Z}(x_{j}, x_{j+1}), (x_{j})_{j\in\Z}\subset \R\cup\{ \pm\infty \} \Big\} $是一个拓扑, 这一拓扑称为 $ E $ 的\textbf{自然拓扑}\index{Z!自然拓扑}. 
- \end{Ex}
- \begin{Def}[度量空间]\label{def:度量空间}
-      设 $ E $ 是非空集合, $ d: E\times E\to \R $ 满足 $ \forall x, y\in E $
-      \begin{enumerate}[(1)]
-           \item 非负性: $ d(x, y)\geqslant 0 $;
-           \item 正定性: $ d(x, y)=0\Longleftrightarrow x=y $ ;
-           \item 对称性: $ d(x, y)=d(y, x) $ ;
-           \item 三角不等式: $ d(x, z)\leqslant d(x, y)+d(y, z) $ 
-      \end{enumerate}
-      则称 $ (E, d) $ 是一个\textbf{度量空间}\index{D!度量空间}, 并称 $ d $ 是 $ E $ 上的\textbf{度量}\index{D!度量}
- \end{Def}
- \begin{Rmk}\label{rmk:度量不唯一}
-      度量并不唯一, 例如对 $ (E, d) $ 定义度量
-      \begin{equation*}
-          \begin{aligned}
-               r(x, y) = \min\{ d(x, y), 1 \}, \\
-               d'(x, y) = rd(x, y), r\in\R_{+},
-          \end{aligned}
-      \end{equation*}
-      就是两个不同的度量. 
- \end{Rmk}
- 
- 度量空间也是拓扑空间, 记 $ B(x, r)=\{ y: d(y, x)<r \} $ 可将 $ \tau $ 中的元素定义为: 
- \[
-      U\in E, U\in \tau\Leftrightarrow \forall x\in U\exists r>0(B(x, r)\subset U)
- \] 
- 该拓扑 $ \tau $ 称为由度量 $ d $ \textbf{诱导}的拓扑. 
+     \begin{Definition}[拓扑空间]\label{def:拓扑空间}
+          设 $ E $ 是一个集合, 称 $ E $ 的子集族 $ \tau $ 是一个\textbf{拓扑}\index{T!拓扑}, 若 $ \tau $ 满足: 
+          \begin{enumerate}[($ \mathrm{O}_1 $), itemindent=2.5\parindent]
+            \item $ E, \varnothing\in \tau $;
+            \item\label{item:O2} $ \tau $ 中任意多元素的并仍是 $ \tau $ 中元素 (任意并);
+          	\item\label{item:O3} $ \tau $ 中有限多元素的交仍是 $ \tau $ 中的元素(有限交) . 
+          \end{enumerate}
+          并称 $ (E, \tau) $ 为一个\textbf{拓扑空间}\index{T!拓扑空间}, $ \tau $ 中的元素称为\textbf{开集}\index{K!开集}, 在不引起歧义的情况下, 可以简称 $ E $ 是一个拓扑空间. 
+     \end{Definition}
 
- \begin{Ex} 
-      在实 Euclid 空间 $ \R^{n} $ 上赋以度量
-      \begin{equation}
-           d(x, y)=\bigg( \sum_{i=1}^{n}(x_{i}-y_{i})^{2} \bigg)^{1/2}\tag{Euclid距离}
-      \end{equation}
-     以 $ C[a, b] $ 以在 $ [a, b] $ 上的连续函数全体, 在其上赋以度量
-     \begin{equation}
-          d(x, y) = \max_{t\in [a, b]} |x(t)-y(t)|\tag{一致距离}
-     \end{equation}
- \end{Ex}
- \begin{Def}[闭集]\label{def:闭集}
-      设 $ (E, d) $ 是一个拓扑空间, $ A\subset E $ , 若 $ A^{c} $ 是开集, 则称 $ A $ 是 $ E $ 上(关于 $ \tau $ )的\textbf{闭集}.\index{B!闭集}
- \end{Def}
- \begin{Ex}
-      设 $ (E, d) $ 是一个度量空间, 则闭球 $ \baro{B}(x, r)=\{ y: d(y, x)\leqslant r \} $ 是闭集. 
- \end{Ex} 
- \begin{Prop}\label{prop:闭集的性质}
-      闭集具有以下性质:
-      \begin{enumerate}[(1)]
-           \item 全空间 $ E $ 和空集 $ \varnothing $ 是闭集;
-           \item 任意多个闭集的交仍是闭集(任意交);
-           \item 有限多个闭集的并仍是闭集(有限并).
-      \end{enumerate}
- \end{Prop}
+     \begin{Remark}\label{rmk:平凡离散}
+          对集合 $ E $ , 称 $ \tau=\{ E, \varnothing \} $ 为\textbf{平凡拓扑}\index{P!平凡拓扑}, 称 $ \tau=2^{E} $ 为\textbf{离散拓扑} \index{L!离散拓扑}. 
+     \end{Remark}
 
- \subsection{邻域和邻域基}
+     \begin{Example}
+          $ E=\R $, 取 $ \tau=\Big\{ \bigcup\limits_{j\in\Z}(x_{j}, x_{j+1}), (x_{j})_{j\in\Z}\subset \R\cup\{ \pm\infty \} \Big\} $是一个拓扑, 这一拓扑称为 $ E $ 的\textbf{自然拓扑}\index{Z!自然拓扑}. 
+     \end{Example}
 
- \begin{Def}[邻域基]\label{def:邻域基}
-       设 $ (E, \tau) $ 是一个拓扑空间, $ \alpha\in E $, 
-       \begin{enumerate}[(1)]
-            \item 若子集 $ V\subset E $ 满足
-            \[
-                 \exists U\in \tau(x\in U\wedge U\subset V)
-            \]
-            则称 $ V $ 是 $ x $ 的一个\textbf{邻域}\index{L!邻域}, 并记 $ \CN{x} $ 为全体 $ x $ 的邻域的集合, 称为 $ x $ 的\textbf{邻域系};
-            \item 若 $ \CN{x} $ 的子集族 $ \CB{x} $ 满足
-            \[
-                 \forall V\in \CN{x}\exists U\in \CB{x}(U\subset V)
-            \]  
-            则称 $ \CB{x} $ 是 $ x $的\textbf{邻域基}\index{L!邻域基}. 
-       \end{enumerate}
- \end{Def}
- \begin{Rmk}
-      $ \CN{x} $是 $ x $  的邻域基; 包含 $ x $ 的所有开集的集合是 $ x $ 的邻域基. 
- \end{Rmk}
- \begin{Ex}
-      设 $ (E, d) $ 是一个度量空间, $ x\in E $, 则 
-      \[
-          \CB{x}=\left\{ B(x,\frac{1}{n}): n\geqslant 1 \right\} 
-      \]
-      是 $ x $ 的邻域基. (可用来描述极限)
- \end{Ex}
- \begin{Def}[粘着集]
-     设 $ (E, \tau) $ 是一个拓扑空间, $ A\subset E $ 
-     \begin{enumerate}[(1)]
-          \item 设 $ x\in E $ , 若 $ \forall V\in \CN{x}((V\cap A)\bs \{ x \}\neq\varnothing) $, 则称 $ x $ 是 $ A $ 的\textbf{凝聚点}\index{N!凝聚点};
-          \item 若 $ x\in A $ 或 $ A $  的凝聚点, 则称 $ x $ 是 $ A $ 的\textbf{粘着点}, 记 $ A $ 的粘着点的全体为 $ \baro{A} $ , 称为 $ A $ 的\textbf{粘着集}\index{N!粘着集}, 也即
+     \begin{Definition}[度量空间]\label{def:度量空间}
+          设 $ E $ 是非空集合, $ d: E\times E\to \R $ 满足 $ \forall x, y\in E $
+          \begin{enumerate}[(1)]
+               \item 非负性: $ d(x, y)\geqslant 0 $;
+               \item 正定性: $ d(x, y)=0\Longleftrightarrow x=y $ ;
+               \item 对称性: $ d(x, y)=d(y, x) $ ;
+               \item 三角不等式: $ d(x, z)\leqslant d(x, y)+d(y, z) $ 
+          \end{enumerate}
+          则称 $ (E, d) $ 是一个\textbf{度量空间}\index{D!度量空间}, 并称 $ d $ 是 $ E $ 上的\textbf{度量}\index{D!度量}
+     \end{Definition}
+
+     \begin{Remark}\label{rmk:度量不唯一}
+          度量并不唯一, 例如对 $ (E, d) $ 定义度量
+          \begin{equation*}
+               \begin{aligned}
+                    r(x, y) = \min\{ d(x, y), 1 \}, \\
+                    d'(x, y) = rd(x, y), r\in\R_{+},
+               \end{aligned}
+          \end{equation*}
+          就是两个不同的度量. 
+     \end{Remark}
+     
+     度量空间也是拓扑空间, 记 $ B(x, r)=\{ y: d(y, x)<r \} $ 可将 $ \tau $ 中的元素定义为: 
+     \[
+          U\in E, U\in \tau\Leftrightarrow \forall x\in U\exists r>0(B(x, r)\subset U)
+     \] 
+     该拓扑 $ \tau $ 称为由度量 $ d $ \textbf{诱导}的拓扑. 
+
+     \begin{Example} 
+          在实 Euclid 空间 $ \R^{n} $ 上赋以度量
+          \begin{equation}
+               d(x, y)=\bigg( \sum_{i=1}^{n}(x_{i}-y_{i})^{2} \bigg)^{1/2}\tag{Euclid距离}
+          \end{equation}
+          以 $ C[a, b] $ 以在 $ [a, b] $ 上的连续函数全体, 在其上赋以度量
+          \begin{equation}
+               d(x, y) = \max_{t\in [a, b]} |x(t)-y(t)|\tag{一致距离}
+          \end{equation}
+     \end{Example}
+
+     \begin{Definition}[闭集]\label{def:闭集}
+          设 $ (E, d) $ 是一个拓扑空间, $ A\subset E $ , 若 $ A^{c} $ 是开集, 则称 $ A $ 是 $ E $ 上(关于 $ \tau $ )的\textbf{闭集}.\index{B!闭集}
+     \end{Definition}
+     \begin{Example}
+          设 $ (E, d) $ 是一个度量空间, 则闭球 $ \baro{B}(x, r)=\{ y: d(y, x)\leqslant r \} $ 是闭集. 
+     \end{Example} 
+     \begin{Proposition}\label{prop:闭集的性质}
+          闭集具有以下性质:
+          \begin{enumerate}[(1)]
+               \item 全空间 $ E $ 和空集 $ \varnothing $ 是闭集;
+               \item 任意多个闭集的交仍是闭集(任意交);
+               \item 有限多个闭集的并仍是闭集(有限并).
+          \end{enumerate}
+     \end{Proposition}
+
+     \subsection{邻域和邻域基}
+
+     \begin{Definition}[邻域基]\label{def:邻域基}
+          设 $ (E, \tau) $ 是一个拓扑空间, $ \alpha\in E $, 
+          \begin{enumerate}[(1)]
+               \item 若子集 $ V\subset E $ 满足
+               \[
+                    \exists U\in \tau(x\in U\wedge U\subset V)
+               \]
+               则称 $ V $ 是 $ x $ 的一个\textbf{邻域}\index{L!邻域}, 并记 $ \CN{x} $ 为全体 $ x $ 的邻域的集合, 称为 $ x $ 的\textbf{邻域系};
+               \item 若 $ \CN{x} $ 的子集族 $ \CB{x} $ 满足
+               \[
+                    \forall V\in \CN{x}\exists U\in \CB{x}(U\subset V)
+               \]  
+               则称 $ \CB{x} $ 是 $ x $的\textbf{邻域基}\index{L!邻域基}. 
+          \end{enumerate}
+     \end{Definition}
+     \begin{Remark}
+          $ \CN{x} $是 $ x $  的邻域基; 包含 $ x $ 的所有开集的集合是 $ x $ 的邻域基. 
+     \end{Remark}
+     \begin{Example}
+          设 $ (E, d) $ 是一个度量空间, $ x\in E $, 则 
           \[
-               x\in \baro{A}\Leftrightarrow \forall V\in \CN{x}(V\cap A\neq\varnothing).    
+               \CB{x}=\left\{ B(x,\frac{1}{n}): n\geqslant 1 \right\} 
           \]
-     \end{enumerate}
- \end{Def}
- \begin{Rmk}
-      $ E $ 中包含 $ A $ 的最小闭集称为 $ A $ 的\textbf{闭包}\index{B!闭包}, 可知 $ A $ 的闭包与粘着集是相同的, 它们从不同的角度描述了相同的集合. 
- \end{Rmk}
- \begin{Def}[稠密]\label{def:稠密}
-       设 $ A\subset E $ , 若 $ \baro{A}=E $ , 则称 $ A $ 在 $ E $ 中\textbf{稠密}\index{C!稠密}, 或称 $ A $ 是 $ E $ 的一个\textbf{稠子集}
- \end{Def}
- \begin{Ex}
-      有利数集 $ \Q $ 与无理数集 $ \mathbb{J} $ 都在 \R 中稠密. 
- \end{Ex}
- \begin{Def}[内部]\label{def:内部}
-       设 $ A\subset E $, 若 $ A\in\CN{x} $ , 则称 $ x $ 是 $ A $ 的\textbf{内点},  $ A $ 的内点的全体称为 $ A $ 的\textbf{内部}\index{N!内部}, 记作 $ \mathring{A} $ 或 $ \mathrm{Int}(A) $.  
- \end{Def}
- \begin{Def}[边界]\label{def:边界}
-       设 $ A\subset E $, 称 $ \partial A = \baro{A}\bs\mathring{A} $ 是 $ A $ 的\textbf{边界}\index{B!边界}.
- \end{Def}
- \begin{Ex}
-      设 $ E=\R $ , 取 $ A = (2, 3) $, 则 $ \partial A = \{ 2, 3 \} $ ; 取 $ A = [2, 3) $ 则 $ \partial A = \{ 2, 3 \} $. 
-      
-      设 $ E = \R^{2} $, 取 $ A = (2, 3)\times \{0\} $ , 则 $ \partial A = [2, 3]\times \{0\} $ , 此时 $ A\subset \partial A $  ; 取 $ \mathbb{D}=B(0, 1) $ , 则 $ \partial \mathbb{D}=\mathbb{S}^{1} $ (单位圆周). 
- \end{Ex}
- \begin{Thm}\label{thm:闭包和内部的性质}
-       设 $ E $ 是一个拓扑空间, $ A, B\subset E $ , 则:
-       \begin{enumerate}[(1)]
-            \item $ \baro{\baro{A}}=\baro{A} $, $ \mathring{\mathring{A}}=\mathring{A} $; (幂等性)
-            \item $ E\bs\mathring{A}=\overline{E\bs A} $;
-            \item \label{item:闭包内部}$ \overline {A\cup B}=\baro{A}\cup \baro{B} $; $ \mathring{\widehat{A\cap B}}=\mathring{A}\cap\mathring{B} $.   
-       \end{enumerate}
- \end{Thm}
- \begin{Rmk}
-      考虑定理~\ref{thm:闭包和内部的性质}~的~\ref{item:闭包内部}~,注意 $ \overline {A\cap B}=\baro{A}\cap \baro{B} $ 和 $ \mathring{\widehat{A\cup B}}=\mathring{A}\cup\mathring{B} $ 不一定成立. 比如取 $ A=\Q, B=\mathbb{J} $, 则此时 $ \overline{A\cap B}=\baro{\varnothing}=\varnothing $  , 而 $ \baro{A}\cap \baro{B}=\R\cap\R=\R\neq\overline {A\cup B} $ ; 同时 $ \mathring{\widehat{A\cap B}}=\mathring{\R}=\R $, 但是 $ \mathring{A}\cup\mathring{B}=\varnothing\cup\varnothing=\varnothing\neq \mathring{\widehat{A\cap B}} $  
- \end{Rmk}
- \begin{Def}[拓扑比较]\label{def:拓扑比较}
-       设 $ \tau, \tau' $ 是 $ E $ 的拓扑, 若 $ \tau'\subset\tau $, 则称 $ \tau $ 是 $ \tau' $ 的\textbf{强拓扑}\index{Q!强拓扑}, 也即: $ \tau' $--开集一定是 $ \tau $--开集.   
- \end{Def}
- \begin{Ex}
-      $ E=\R $ 时, 平凡拓扑 $ \subset $ 自然拓扑 $ \subset $ 离散拓扑. 
- \end{Ex}
- \begin{Def}[拓扑子空间]\label{def:拓扑子空间}
-       设 $ (E, \tau) $ 是一个拓扑空间, $ F\subset E $ , 在 $ F $ 上定义
-       \[
-          \tau_{F}=\{ U\cap F: U\in\tau \} , 
-       \]
-       则 $ \tau_{F} $ 是一个拓扑, 称为由 $ \tau $  诱导的拓扑, 并称 $ (F, \tau_{F}) $ 是 $ (E, \tau) $ 的\textbf{拓扑子空间}\index{T!拓扑子空间}. 
- \end{Def}
- \begin{Ex}
-      设 $ E=\R $ , 取 $ F=(2, 3) $ , 则 $ \tau_{F} $ 中元素是 \R 中开集; 
-      
-      取 $ F=[2, 3) $ , 则 $ \forall2<x<3, [2,x) $ 是 $ \tau_{F} $ 中元素, 但不是 \R 中开集. 
- \end{Ex}
- \begin{Ex}
-      设 $ (E,d) $ 是度量空间, $ F\subset E $, 取 $ \delta=d|_{F\times F} $ 则 $ (F, \delta) $ 是度量空间, 且当 $ E,  F $ 分别赋以 $ d, \delta $ 诱导的拓扑时,  $ F $ 是 $ E $ 的拓扑子空间. 
- \end{Ex}
- \begin{Prop}
-      设 $ F\subset E, A\subset F $ 则 $ A $ 是 $ F $ 中的闭集 $ \Longleftrightarrow $ 存在闭集 $ B\subset E $ s.t. $ A=B\cap F $ . 
- \end{Prop}
- \begin{Prf}
-       由闭集性质可以知道
-       \[
-          \begin{aligned}
-               A \text{\,是\,} F \text{\,中闭集\,} & \Longleftrightarrow F\bs A \text{\,是\,} F \text{\,中开集\,} ;\\
-               & \Longleftrightarrow \exists D\in \tau(F\bs A=D\cap F);\\
-               & \Longleftrightarrow A=D^{c}\cap F
-          \end{aligned}     
-       \]
-       其中$ D^{c} $是闭集. 	 \qed
- \end{Prf}
-
-\subsection{分离空间}
-
- \begin{Def}[Hausdorff空间]\label{def:Hausdorff空间}
-       设 $ (E, \tau) $ 是拓扑空间, 若 
-       \[
-          \forall x, y\in E(x\neq y)\exists U\in \CN{x}\exists V\in\CN{x} (U\cap V)=\varnothing
-       \]
-       则称 $ (E, \tau) $ 是\textbf{Hausdorff空间}\index{H!Hausdorff空间}或\textbf{分离空间}. 
- \end{Def}
- \begin{Ex}
-      所有离散拓扑空间都是 Hausdorff空间, 所有度量空间都是 Hausdorff空间, 元素个数多于一个的平凡拓扑空间不是 Hausdorff空间(因为所有元素都只有一个邻域, 即 $ E $ ). 
- \end{Ex}
- \begin{Prop}
-     由 Hausdorff空间的定义可以知道
-      \begin{enumerate}[(1)]
-           \item  $ E $ 是 Hausdorff空间 $ \Longleftrightarrow $ $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$
-           \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $\bigcap \CN{x}=\{x\}$;
-           \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $ \forall F\subset E $, $ F $ 也是Hausdorff空间. 
-      \end{enumerate}
- \end{Prop}
- 
- \section{完备性}
- \subsection{序列的极限}
- \begin{Def}[极限]\label{def:极限}
-       设 $ (E, \tau) $ 是拓扑空间, $ (x_{n})_{n\geqslant 1} $ 是 $ E $ 中的序列,  $ x\in E $, 若
-       \[
-            \forall V\in\CN{x}\exists n_{0}\in\N(n\geqslant n_{0}\Rightarrow x_{n}\in V)
-       \]
-       则称 $ (x_{n})_{n\geqslant1} $ \textbf{收敛}于 $ x $, 并称 $ x $ 是序列 $ (x_{n})_{n\geqslant1} $ 的极限, 记作
-       \[
-            \tau-\lim_{n\to \infty}x_{n}=x. 
-       \] 
-       当不引起歧义的时候, 前面的 $ \tau- $ 可以省略. 
- \end{Def}
-\begin{Rmk}
-     对定义\ref{def:极限}进行几点说明:
-     \begin{enumerate}[(1)]
-          \item 上述定义中的 $ \CN{x} $ 可换成 $ \CB{x} $ ;
-          \item \R 中序列的极限至多只有一个, 例如 $\lim\limits_{n\to\infty}\frac{1}{n}=0 $, $ \lim\limits_{n\to\infty} n=\infty$(无极限), 取 $ (x_{n})_{n\geqslant1}=\left\{ 1, -1, 1,  -1\ldots \right\} $ 也无极限;
-          \item 一般地, Hausdorff空间中的序列至多只有一个极限, 而平凡拓扑空间中的任意序列收敛到任意元素;
-          \item 对度量空间 $ (E, d) $ , 有
+          是 $ x $ 的邻域基. (可用来描述极限)
+     \end{Example}
+     \begin{Definition}[粘着集]
+          设 $ (E, \tau) $ 是一个拓扑空间, $ A\subset E $ 
+          \begin{enumerate}[(1)]
+               \item 设 $ x\in E $ , 若 $ \forall V\in \CN{x}((V\cap A)\sm \{ x \}\neq\varnothing) $, 则称 $ x $ 是 $ A $ 的\textbf{凝聚点}\index{N!凝聚点};
+               \item 若 $ x\in A $ 或 $ A $  的凝聚点, 则称 $ x $ 是 $ A $ 的\textbf{粘着点}, 记 $ A $ 的粘着点的全体为 $ \baro{A} $ , 称为 $ A $ 的\textbf{粘着集}\index{N!粘着集}, 也即
+               \[
+                    x\in \baro{A}\Leftrightarrow \forall V\in \CN{x}(V\cap A\neq\varnothing).    
+               \]
+          \end{enumerate}
+     \end{Definition}
+     \begin{Remark}
+          $ E $ 中包含 $ A $ 的最小闭集称为 $ A $ 的\textbf{闭包}\index{B!闭包}, 可知 $ A $ 的闭包与粘着集是相同的, 它们从不同的角度描述了相同的集合. 
+     \end{Remark}
+     \begin{Definition}[稠密]\label{def:稠密}
+          设 $ A\subset E $ , 若 $ \baro{A}=E $ , 则称 $ A $ 在 $ E $ 中\textbf{稠密}\index{C!稠密}, 或称 $ A $ 是 $ E $ 的一个\textbf{稠子集}
+     \end{Definition}
+     \begin{Example}
+          有利数集 $ \Q $ 与无理数集 $ \mathbb{J} $ 都在 \R 中稠密. 
+     \end{Example}
+     \begin{Definition}[内部]\label{def:内部}
+          设 $ A\subset E $, 若 $ A\in\CN{x} $ , 则称 $ x $ 是 $ A $ 的\textbf{内点},  $ A $ 的内点的全体称为 $ A $ 的\textbf{内部}\index{N!内部}, 记作 $ \mathring{A} $ 或 $ \mathrm{Int}(A) $.  
+     \end{Definition}
+     \begin{Definition}[边界]\label{def:边界}
+          设 $ A\subset E $, 称 $ \partial A = \baro{A}\sm\mathring{A} $ 是 $ A $ 的\textbf{边界}\index{B!边界}.
+     \end{Definition}
+     \begin{Example}
+          设 $ E=\R $ , 取 $ A = (2, 3) $, 则 $ \partial A = \{ 2, 3 \} $ ; 取 $ A = [2, 3) $ 则 $ \partial A = \{ 2, 3 \} $. 
+          
+          设 $ E = \R^{2} $, 取 $ A = (2, 3)\times \{0\} $ , 则 $ \partial A = [2, 3]\times \{0\} $ , 此时 $ A\subset \partial A $  ; 取 $ \mathbb{D}=B(0, 1) $ , 则 $ \partial \mathbb{D}=\mathbb{S}^{1} $ (单位圆周). 
+     \end{Example}
+     \begin{Theorem}\label{thm:闭包和内部的性质}
+          设 $ E $ 是一个拓扑空间, $ A, B\subset E $ , 则:
+          \begin{enumerate}[(1)]
+               \item $ \baro{\baro{A}}=\baro{A} $, $ \mathring{\mathring{A}}=\mathring{A} $; (幂等性)
+               \item $ E\sm\mathring{A}=\overline{E\sm A} $;
+               \item \label{item:闭包内部}$ \overline {A\cup B}=\baro{A}\cup \baro{B} $; $ \mathring{\widehat{A\cap B}}=\mathring{A}\cap\mathring{B} $.   
+          \end{enumerate}
+     \end{Theorem}
+     \begin{Remark}
+          考虑定理~\ref{thm:闭包和内部的性质}~的~\ref{item:闭包内部}~,注意 $ \overline {A\cap B}=\baro{A}\cap \baro{B} $ 和 $ \mathring{\widehat{A\cup B}}=\mathring{A}\cup\mathring{B} $ 不一定成立. 比如取 $ A=\Q, B=\mathbb{J} $, 则此时 $ \overline{A\cap B}=\baro{\varnothing}=\varnothing $  , 而 $ \baro{A}\cap \baro{B}=\R\cap\R=\R\neq\overline {A\cup B} $ ; 同时 $ \mathring{\widehat{A\cap B}}=\mathring{\R}=\R $, 但是 $ \mathring{A}\cup\mathring{B}=\varnothing\cup\varnothing=\varnothing\neq \mathring{\widehat{A\cap B}} $  
+     \end{Remark}
+     \begin{Definition}[拓扑比较]\label{def:拓扑比较}
+          设 $ \tau, \tau' $ 是 $ E $ 的拓扑, 若 $ \tau'\subset\tau $, 则称 $ \tau $ 是 $ \tau' $ 的\textbf{强拓扑}\index{Q!强拓扑}, 也即: $ \tau' $--开集一定是 $ \tau $--开集.   
+     \end{Definition}
+     \begin{Example}
+          $ E=\R $ 时, 平凡拓扑 $ \subset $ 自然拓扑 $ \subset $ 离散拓扑. 
+     \end{Example}
+     \begin{Definition}[拓扑子空间]\label{def:拓扑子空间}
+          设 $ (E, \tau) $ 是一个拓扑空间, $ F\subset E $ , 在 $ F $ 上定义
           \[
-               \lim_{n\to \infty}x_{n}=x \Leftrightarrow \lim_{n\to\infty}d(x_{n}, x)=0, 
+               \tau_{F}=\{ U\cap F: U\in\tau \} , 
           \]
-          取邻域基 $ \CB{x}=\left\{ B(x, \frac{1}{n}): n\geqslant1 \right\} $即可.  
-     \end{enumerate}
-\end{Rmk}
-\begin{Prop}
-     设 $ E $ 是度量空间, 则 $ A\subset E $是闭集的充要条件是对任意 $ A $中序列  $ (x_{n})_{n\geqslant1} $ 当 $ \lim\limits_{n\to\infty}x_{n}=x_{0} $ 时, 都有$ x_{0}\in A $.  
-\end{Prop}
-\begin{Prf}
-     \textit{必要性}. 若 $ x_{0}\notin A $, 则 $ \exists r>0 (B(x, r)\cap A=\varnothing) $, 而由极限的定义知 
-     \[
-          \exists n_{0}\in\N(n\geqslant n_{0}\Rightarrow x_{n}\in B(x, r))\Rightarrow x_{n}\notin A. 
-     \]
-     与 $ (x_{n})_{n\geqslant1}\subset A $ 矛盾. 
+          则 $ \tau_{F} $ 是一个拓扑, 称为由 $ \tau $  诱导的拓扑, 并称 $ (F, \tau_{F}) $ 是 $ (E, \tau) $ 的\textbf{拓扑子空间}\index{T!拓扑子空间}. 
+     \end{Definition}
+     \begin{Example}
+          设 $ E=\R $ , 取 $ F=(2, 3) $ , 则 $ \tau_{F} $ 中元素是 \R 中开集; 
+          
+          取 $ F=[2, 3) $ , 则 $ \forall2<x<3, [2,x) $ 是 $ \tau_{F} $ 中元素, 但不是 \R 中开集. 
+     \end{Example}
+     \begin{Example}
+          设 $ (E,d) $ 是度量空间, $ F\subset E $, 取 $ \delta=d|_{F\times F} $ 则 $ (F, \delta) $ 是度量空间, 且当 $ E,  F $ 分别赋以 $ d, \delta $ 诱导的拓扑时,  $ F $ 是 $ E $ 的拓扑子空间. 
+     \end{Example}
+     \begin{Proposition}
+          设 $ F\subset E, A\subset F $ 则 $ A $ 是 $ F $ 中的闭集 $ \Longleftrightarrow $ 存在闭集 $ B\subset E $ s.t. $ A=B\cap F $ . 
+     \end{Proposition}
+     \begin{Proof}
+          由闭集性质可以知道
+          \[
+               \begin{aligned}
+                    A \text{\,是\,} F \text{\,中闭集\,} & \Longleftrightarrow F\sm A \text{\,是\,} F \text{\,中开集\,} ;\\
+                    & \Longleftrightarrow \exists D\in \tau(F\sm A=D\cap F);\\
+                    & \Longleftrightarrow A=D^{c}\cap F
+               \end{aligned}     
+          \]
+          其中$ D^{c} $是闭集. 	 \qed
+     \end{Proof}
 
-     \textit{充分性}. 只需证 $ A^{c} $ 是开集, 用反证法, 若 $ A^{c} $ 不是开集, 则有
-     \[
-          \exists x\in A^{c}\,\forall r>0(B(x, r)\cap A\neq\varnothing),
-     \]
-     取 $ r=1/n, n=1, 2\ldots $ , 则有 $ x_{n}\in B(x, 1/n)\cap A $ . 由构造可知 $ (x_{n})_{n\geqslant1}\subset A $且 $ x_{n}\to x\,(n\to\infty) $  , 又由已知条件知 $ x\in A $, 矛盾. 故 $ A $ 为闭集. \qed 
-\end{Prf}
-\begin{Def}[序列的粘着值]\label{def:序列的粘着值}
-      设 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中的序列,  $ x\in E $, 若
-      \[
-           \forall V\in\CN{x}\,\forall n_{0}\in\N\,\exists n\geqslant n_{0}(x_{n}\in V),
-      \]
-      则称 $ x $ 是序列 $ (x_{n})_{n\geqslant1} $ 的\textbf{粘着值}\index{N!粘着值}.  
-\end{Def}
-\begin{Ex}
-     \R 中序列 $ (1, -1, 1, -1\ldots) $ 的粘着值为 $ 1, -1 $.  
-\end{Ex}
-\begin{Rmk}
-     序列的粘着值与集合的粘着点没有关系, 如 \R 上的序列 $ (x_{n})_{n\geqslant1}=(1, 1-\sqrt{2}, {1}/{2}, {1}/{2}-\sqrt{2}, {1}/{3}, {1}/{3}-\sqrt{2}, \ldots, {1}/{n}, {1}/{n}-\sqrt{2}, \ldots) $, 该序列的粘着值 $ 0, \sqrt{2} $ 均不在序列中, 而集合 $ A=\{ x_{n} \}_{n\geqslant1} $ 的粘着集为 $ A\cup\{ 0,-\sqrt{2} \} $. 
+     \subsection{分离空间}
 
-     再取 $ (x_{n})_{n\geqslant1}=(1, 1, \ldots) $ 则该序列的粘着值为$1$,  但 $ 1 $ 不是 $ A=\{ 1 \} $ 的凝聚点.  
-\end{Rmk}
-\subsection{Cauchy列与完备性}
-\begin{Def}[Cauchy列]\label{def:Cauchy列}
-      设 $ (E, d) $是度量空间, $ (x_{n})_{n\geqslant1} $ 是 $ E $  中序列, 若
-      \[
-           \forall \varepsilon>0\,\exists n_{0}\in\N\,(n,m\geqslant n_{0}\Rightarrow d(x_{m},x_{n}<\varepsilon),
-      \]
-      则称 $ (x_{n})_{n\geqslant1} $ 是一个\textbf{Cauchy列}\index{C!Cauch列}
-\end{Def}
-\begin{Ex}
-     在 \R 中,  $ (1/n)_{n\geqslant1} $ 是Cauchy列, 收敛到0; $ ((1+{1}/{n})^{n})_{n\geqslant1} $ 是Cauchy列, 收敛到\me;
+     \begin{Definition}[Hausdorff空间]\label{def:Hausdorff空间}
+          设 $ (E, \tau) $ 是拓扑空间, 若 
+          \[
+               \forall x, y\in E(x\neq y)\exists U\in \CN{x}\exists V\in\CN{x} (U\cap V)=\varnothing
+          \]
+          则称 $ (E, \tau) $ 是\textbf{Hausdorff空间}\index{H!Hausdorff空间}或\textbf{分离空间}. 
+     \end{Definition}
+     \begin{Example}
+          所有离散拓扑空间都是 Hausdorff空间, 所有度量空间都是 Hausdorff空间, 元素个数多于一个的平凡拓扑空间不是 Hausdorff空间(因为所有元素都只有一个邻域, 即 $ E $ ). 
+     \end{Example}
+     \begin{Proposition}
+          由 Hausdorff空间的定义可以知道
+          \begin{enumerate}[(1)]
+               \item  $ E $ 是 Hausdorff空间 $ \Longleftrightarrow $ $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$
+               \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $\bigcap \CN{x}=\{x\}$;
+               \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $ \forall F\subset E $, $ F $ 也是Hausdorff空间. 
+          \end{enumerate}
+     \end{Proposition}
+     
+\section{完备性}
+     \subsection{序列的极限}
+     \begin{Definition}[极限]\label{def:极限}
+          设 $ (E, \tau) $ 是拓扑空间, $ (x_{n})_{n\geqslant 1} $ 是 $ E $ 中的序列,  $ x\in E $, 若
+          \[
+               \forall V\in\CN{x}\exists n_{0}\in\N(n\geqslant n_{0}\Rightarrow x_{n}\in V)
+          \]
+          则称 $ (x_{n})_{n\geqslant1} $ \textbf{收敛}于 $ x $, 并称 $ x $ 是序列 $ (x_{n})_{n\geqslant1} $ 的极限, 记作
+          \[
+               \tau-\lim_{n\to \infty}x_{n}=x. 
+          \] 
+          当不引起歧义的时候, 前面的 $ \tau- $ 可以省略. 
+     \end{Definition}
+     \begin{Remark}
+          对定义\ref{def:极限}进行几点说明:
+          \begin{enumerate}[(1)]
+               \item 上述定义中的 $ \CN{x} $ 可换成 $ \CB{x} $ ;
+               \item \R 中序列的极限至多只有一个, 例如 $\lim\limits_{n\to\infty}\frac{1}{n}=0 $, $ \lim\limits_{n\to\infty} n=\infty$(无极限), 取 $ (x_{n})_{n\geqslant1}=\left\{ 1, -1, 1,  -1\ldots \right\} $ 也无极限;
+               \item 一般地, Hausdorff空间中的序列至多只有一个极限, 而平凡拓扑空间中的任意序列收敛到任意元素;
+               \item 对度量空间 $ (E, d) $ , 有
+               \[
+                    \lim_{n\to \infty}x_{n}=x \Leftrightarrow \lim_{n\to\infty}d(x_{n}, x)=0, 
+               \]
+               取邻域基 $ \CB{x}=\left\{ B(x, \frac{1}{n}): n\geqslant1 \right\} $即可.  
+          \end{enumerate}
+     \end{Remark}
+     \begin{Proposition}
+          设 $ E $ 是度量空间, 则 $ A\subset E $是闭集的充要条件是对任意 $ A $中序列  $ (x_{n})_{n\geqslant1} $ 当 $ \lim\limits_{n\to\infty}x_{n}=x_{0} $ 时, 都有$ x_{0}\in A $.  
+     \end{Proposition}
+     \begin{Proof}
+          \textit{必要性}. 若 $ x_{0}\notin A $, 则 $ \exists r>0 (B(x, r)\cap A=\varnothing) $, 而由极限的定义知 
+          \[
+               \exists n_{0}\in\N(n\geqslant n_{0}\Rightarrow x_{n}\in B(x, r))\Rightarrow x_{n}\notin A. 
+          \]
+          与 $ (x_{n})_{n\geqslant1}\subset A $ 矛盾. 
 
-     而在 \Q 中, $ (1/n)_{n\geqslant1} $ 是Cauchy列, 收敛到0; $ ((1+{1}/{n})^{n})_{n\geqslant1} $ 是Cauchy列, 不收敛.
-\end{Ex}
-\begin{Prop}
-     Cauchy列有以下性质:
-     \begin{enumerate}[(1)]
-          \item 若 $ (x_{n})_{n\geqslant1} $ 是收敛列, 则 $ (x_{n})_{n\geqslant1} $ 是Cauchy列;
-          \item 若 $ (x_{n})_{n\geqslant1} $ 是Cauchy列且有收敛子列, 则 $ (x_{n})_{n\geqslant1} $ 是收敛列;
-          \item 若 $ (x_{n})_{n\geqslant1} $ 是Cauchy列, 则 $ (x_{n})_{n\geqslant1} $ 有界. (即 $ \exists x\in E\,\exists r>0\,((x_{n})_{n\geqslant1} \subset B(x, r)) $ )
-     \end{enumerate}
-\end{Prop}
-\begin{Def}[完备]\label{def:完备}
-      设 $ (E, d) $ 是度量空间, 若 $ (E, d) $ 中任一 Cauchy列收敛, 则称 $ E $ 是\textbf{完备度量空间}或 $ E $ 是\textbf{完备}\index{W!完备}的, 此时也说 $ d $ 是完备的. 
-\end{Def}
-\begin{Ex}
-     实 Euclid 空间 $ \R^{n} $, 复 Euclid 空间 $ \C^{n} $ 依 Euclid度量是完备的; \Q, \J 依Euclid度量不完备. 
-\end{Ex}
-\begin{Ex}
-     在空间 $ C[a, b] $ 上赋以度量
-     \[
-          d(x, y)=\max_{0\leqslant t\leqslant1}\abs{x(t)-y(t)}
-     \]
-     时, 度量空间 $ (C[a, b], d) $ 是完备的, 其中 $ C[a, b] $ 是定义在 $ [0, 1] $ 上的连续函数全体
-\end{Ex}
-\begin{Prf}
-     取  $ (x_{n})_{n\geqslant1} $ 是Cauchy列, 即
-     \[
-          \forall\varepsilon>0\,\exists n_{0}\in\N\,(n,m\geqslant n_{0}\Rightarrow d(x_{n},x_{m})<\varepsilon)
-     \]
-     即 $ \forall n, m\geqslant n_{0}\,\forall a\leqslant t\leqslant b\,(\abs{x_{n}(t)-x_{m}(t)}<\varepsilon) $ , 则有 $ (x_{n}(t))_{n\geqslant1} $ 是 $ \mathbb{K} $ 上的 Cauchy列\,(其中$\mathbb{K}=\R \text{\,或\,}\C$), 从而是收敛列, 并记
-     \[
-          x(t)=\lim_{n\to\infty}x_{n}(t), 
-     \]
-     则 $ \max\limits_{a\leqslant x\leqslant b}\abs{x(t)-x_{n}(t)}\to 0\,(n\to\infty) $, 从而 $ (x_{n})_{n\geqslant1} $  一致收敛到 $ x $ , 由  $ x_{n}\in C[a, b] $ 知 $ x\in C[a, b] $ , 即 $ (C[a, b], d) $ 完备. \qed
-\end{Prf}
-\begin{Rmk}
-     对 $ C[0, 1] $ , 若赋以度量 $ d(x, y)=\dint_{0}^{1}\abs{x(t)-y(t)}\diff x $, 则 $ (C[0, 1], d) $ 不完备, 反例如下:
+          \textit{充分性}. 只需证 $ A^{c} $ 是开集, 用反证法, 若 $ A^{c} $ 不是开集, 则有
+          \[
+               \exists x\in A^{c}\,\forall r>0(B(x, r)\cap A\neq\varnothing),
+          \]
+          取 $ r=1/n, n=1, 2\ldots $ , 则有 $ x_{n}\in B(x, 1/n)\cap A $ . 由构造可知 $ (x_{n})_{n\geqslant1}\subset A $且 $ x_{n}\to x\,(n\to\infty) $  , 又由已知条件知 $ x\in A $, 矛盾. 故 $ A $ 为闭集. \qed 
+     \end{Proof}
+     \begin{Definition}[序列的粘着值]\label{def:序列的粘着值}
+          设 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中的序列,  $ x\in E $, 若
+          \[
+               \forall V\in\CN{x}\,\forall n_{0}\in\N\,\exists n\geqslant n_{0}(x_{n}\in V),
+          \]
+          则称 $ x $ 是序列 $ (x_{n})_{n\geqslant1} $ 的\textbf{粘着值}\index{N!粘着值}.  
+     \end{Definition}
+     \begin{Example}
+          \R 中序列 $ (1, -1, 1, -1\ldots) $ 的粘着值为 $ 1, -1 $.  
+     \end{Example}
+     \begin{Remark}
+          序列的粘着值与集合的粘着点没有关系, 如 \R 上的序列 $ (x_{n})_{n\geqslant1}=(1, 1-\sqrt{2}, {1}/{2}, {1}/{2}-\sqrt{2}, {1}/{3}, {1}/{3}-\sqrt{2}, \ldots, {1}/{n}, {1}/{n}-\sqrt{2}, \ldots) $, 该序列的粘着值 $ 0, \sqrt{2} $ 均不在序列中, 而集合 $ A=\{ x_{n} \}_{n\geqslant1} $ 的粘着集为 $ A\cup\{ 0,-\sqrt{2} \} $. 
 
-     取 $ C[0, 1] $ 中的函数列 $ (x_{n}(t))_{n\geqslant1}=(t^{n})_{x\geqslant1} $, 易证  $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, 但若记其极限函数是 $ x(t) $ 则有
-     \[
-          x(t)=\begin{cases}
-               0, & 0<x<1; \\
-               1, & x=1. 
-          \end{cases}
-     \]
-     从而在空间给定的情形下, 完备性依赖与距离, 因此\textbf{完备不是一个拓扑概念}
-\end{Rmk}
-\begin{Thm}
-     度量空间 $ (E, d) $ 完备 $ \Leftrightarrow $ 对任意单调递减的非空子集列 $ (A_{n})_{n\geqslant1} $ 若 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ , 则 $ \bigcap\limits_{n\geqslant1}A_{n} $ 是单点集. 其中 $ \diam(A)=\sup\limits_{x,y\in A}d(x, y) $ 是 $ A $  的\textbf{直径}. 
-\end{Thm}
-\begin{Prf}
-     \textit{必要性}. 因为 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ 则
-     \[
-          \forall \varepsilon>0\,\exists n_{0}\in\N\,(n\geqslant N\Rightarrow \diam(A_{n})<\varepsilon). 
-     \]
-     当 $ m>n>N $ 时, 取 $ x_{n}\in A_{n} $ , $ x_{m}\in A_{m} $ 有
-     \[
-          d(x_{m}, x_{n})<\diam(A_{n})<\varepsilon. 
-     \]
-     可以知道如此构造出的 $ (x_{n})_{n\geqslant1} $ 为Cauchy列, 又由 $ (E, d) $ 的完备性知 $ (x_{n})_{n\geqslant1} $ 收敛, 不妨设 $\lim\limits_{n\to\infty}x_{n}=x$ , 由 $ A_{n} $ 非空可知 $ x\in A_{n} $ , 故 $ x\in\bigcap\limits_{n\geqslant1}A_{n} $ . 
+          再取 $ (x_{n})_{n\geqslant1}=(1, 1, \ldots) $ 则该序列的粘着值为$1$,  但 $ 1 $ 不是 $ A=\{ 1 \} $ 的凝聚点.  
+     \end{Remark}
+     \subsection{Cauchy列与完备性}
+     \begin{Definition}[Cauchy列]\label{def:Cauchy列}
+          设 $ (E, d) $是度量空间, $ (x_{n})_{n\geqslant1} $ 是 $ E $  中序列, 若
+          \[
+               \forall \varepsilon>0\,\exists n_{0}\in\N\,(n,m\geqslant n_{0}\Rightarrow d(x_{m},x_{n}<\varepsilon),
+          \]
+          则称 $ (x_{n})_{n\geqslant1} $ 是一个\textbf{Cauchy列}\index{C!Cauch列}
+     \end{Definition}
+     \begin{Example}
+          在 \R 中,  $ (1/n)_{n\geqslant1} $ 是Cauchy列, 收敛到0; $ ((1+{1}/{n})^{n})_{n\geqslant1} $ 是Cauchy列, 收敛到\me;
 
-     再设 $ y\in\bigcap\limits_{n\geqslant1} A_{n} $ , 因 $ d(x_{n}, y)<\diam(A_{n})<\varepsilon $ 知 $ (x_{n})_{n\geqslant1} $ 收敛于 $ y $ , 由 $ E $ 是度量空间可知 $ E $ 是 Hausdorff空间, 从而$ x=y $, 故 $ \bigcap\limits_{n\geqslant1} A_{n} $ 为单点集. 
+          而在 \Q 中, $ (1/n)_{n\geqslant1} $ 是Cauchy列, 收敛到0; $ ((1+{1}/{n})^{n})_{n\geqslant1} $ 是Cauchy列, 不收敛.
+     \end{Example}
+     \begin{Proposition}
+          Cauchy列有以下性质:
+          \begin{enumerate}[(1)]
+               \item 若 $ (x_{n})_{n\geqslant1} $ 是收敛列, 则 $ (x_{n})_{n\geqslant1} $ 是Cauchy列;
+               \item 若 $ (x_{n})_{n\geqslant1} $ 是Cauchy列且有收敛子列, 则 $ (x_{n})_{n\geqslant1} $ 是收敛列;
+               \item 若 $ (x_{n})_{n\geqslant1} $ 是Cauchy列, 则 $ (x_{n})_{n\geqslant1} $ 有界. (即 $ \exists x\in E\,\exists r>0\,((x_{n})_{n\geqslant1} \subset B(x, r)) $ )
+          \end{enumerate}
+     \end{Proposition}
+     \begin{Definition}[完备]\label{def:完备}
+          设 $ (E, d) $ 是度量空间, 若 $ (E, d) $ 中任一 Cauchy列收敛, 则称 $ E $ 是\textbf{完备度量空间}或 $ E $ 是\textbf{完备}\index{W!完备}的, 此时也说 $ d $ 是完备的. 
+     \end{Definition}
+     \begin{Example}
+          实 Euclid 空间 $ \R^{n} $, 复 Euclid 空间 $ \C^{n} $ 依 Euclid度量是完备的; \Q, \J 依Euclid度量不完备. 
+     \end{Example}
+     \begin{Example}
+          在空间 $ C[a, b] $ 上赋以度量
+          \[
+               d(x, y)=\max_{0\leqslant t\leqslant1}\abs{x(t)-y(t)}
+          \]
+          时, 度量空间 $ (C[a, b], d) $ 是完备的, 其中 $ C[a, b] $ 是定义在 $ [0, 1] $ 上的连续函数全体
+     \end{Example}
+     \begin{Proof}
+          取  $ (x_{n})_{n\geqslant1} $ 是Cauchy列, 即
+          \[
+               \forall\varepsilon>0\,\exists n_{0}\in\N\,(n,m\geqslant n_{0}\Rightarrow d(x_{n},x_{m})<\varepsilon)
+          \]
+          即 $ \forall n, m\geqslant n_{0}\,\forall a\leqslant t\leqslant b\,(\abs{x_{n}(t)-x_{m}(t)}<\varepsilon) $ , 则有 $ (x_{n}(t))_{n\geqslant1} $ 是 $ \K $ 上的 Cauchy列\,(其中$\K=\R \text{\,或\,}\C$), 从而是收敛列, 并记
+          \[
+               x(t)=\lim_{n\to\infty}x_{n}(t), 
+          \]
+          则 $ \max\limits_{a\leqslant x\leqslant b}\abs{x(t)-x_{n}(t)}\to 0\,(n\to\infty) $, 从而 $ (x_{n})_{n\geqslant1} $  一致收敛到 $ x $ , 由  $ x_{n}\in C[a, b] $ 知 $ x\in C[a, b] $ , 即 $ (C[a, b], d) $ 完备. \qed
+     \end{Proof}
+     \begin{Remark}
+          对 $ C[0, 1] $ , 若赋以度量 $ d(x, y)=\dint_{0}^{1}\abs{x(t)-y(t)}\diff x $, 则 $ (C[0, 1], d) $ 不完备, 反例如下:
 
-     \textit{充分性}. 取 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中的 Cauchy列, 取 $ A_{n}=\left\{ x_{m}:m>n \right\} $, 则 $ (A_{n})_{n\geqslant1}) $ 是一个单调递减的非空闭子集列, 下面检验 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ . 
+          取 $ C[0, 1] $ 中的函数列 $ (x_{n}(t))_{n\geqslant1}=(t^{n})_{x\geqslant1} $, 易证  $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, 但若记其极限函数是 $ x(t) $ 则有
+          \[
+               x(t)=\begin{cases}
+                    0, & 0<x<1; \\
+                    1, & x=1. 
+               \end{cases}
+          \]
+          从而在空间给定的情形下, 完备性依赖与距离, 因此\textbf{完备不是一个拓扑概念}
+     \end{Remark}
+     \begin{Theorem}
+          度量空间 $ (E, d) $ 完备 $ \Leftrightarrow $ 对任意单调递减的非空子集列 $ (A_{n})_{n\geqslant1} $ 若 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ , 则 $ \bigcap\limits_{n\geqslant1}A_{n} $ 是单点集. 其中 $ \diam(A)=\sup\limits_{x,y\in A}d(x, y) $ 是 $ A $  的\textbf{直径}. 
+     \end{Theorem}
+     \begin{Proof}
+          \textit{必要性}. 因为 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ 则
+          \[
+               \forall \varepsilon>0\,\exists n_{0}\in\N\,(n\geqslant N\Rightarrow \diam(A_{n})<\varepsilon). 
+          \]
+          当 $ m>n>N $ 时, 取 $ x_{n}\in A_{n} $ , $ x_{m}\in A_{m} $ 有
+          \[
+               d(x_{m}, x_{n})<\diam(A_{n})<\varepsilon. 
+          \]
+          可以知道如此构造出的 $ (x_{n})_{n\geqslant1} $ 为Cauchy列, 又由 $ (E, d) $ 的完备性知 $ (x_{n})_{n\geqslant1} $ 收敛, 不妨设 $\lim\limits_{n\to\infty}x_{n}=x$ , 由 $ A_{n} $ 非空可知 $ x\in A_{n} $ , 故 $ x\in\bigcap\limits_{n\geqslant1}A_{n} $ . 
 
-     由 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列可知
-     \[
-           \forall \varepsilon>0\, \exists n_{0}\in\N\,(m, n>n_{0}\Rightarrow d(x_{m}, x_{n})<\varepsilon),
-     \]
-     则 $ \forall x, y\in A_{n} $ , 取 $ x_{n}, x_{m}\in A_{n} $ 使得 $ d(x, x_{n}), d(x_{m})<\varepsilon $ 则
-     \[
-          d(x, y)\leqslant d(x, x_{n})+d(x_{n}, x_{m})+d(x_{m}, y) < 3\varepsilon         
-     \]
-     从而 $ \diam(A_{n})<3\varepsilon $, 也即 $\lim\limits_{n\to\infty} \diam(A_{n})=0 $. 
+          再设 $ y\in\bigcap\limits_{n\geqslant1} A_{n} $ , 因 $ d(x_{n}, y)<\diam(A_{n})<\varepsilon $ 知 $ (x_{n})_{n\geqslant1} $ 收敛于 $ y $ , 由 $ E $ 是度量空间可知 $ E $ 是 Hausdorff空间, 从而$ x=y $, 故 $ \bigcap\limits_{n\geqslant1} A_{n} $ 为单点集. 
 
-     由条件知 $ \bigcap\limits_{n\geqslant1}A_{n} $ 是单点集, 不妨记作 $ \{ x_{0} \} $ , 则 $ \lim\limits_{n\to\infty}x_{n}=x_{0} $, 从而 $ (E, d) $  是完备的. \qed
-\end{Prf}
-\begin{Thm}
-     设 $ (E, d) $ 是度量空间, $ A\subset E $. 
-     \begin{enumerate}[(1)]
-          \item 若 $ (A, d) $ 完备, 则 $ A $ 是 $ (E, d) $ 中的闭集;
-          \item 若 $ (E, d) $ 完备且 $ A $ 是闭集, 则 $ (A, d) $ 完备. 
-     \end{enumerate} 
-\end{Thm}
-\begin{Prf}
-     (1) 设 $ x $ 是 $ A $ 的凝聚点, 则存在 $ (x_{n})_{n\geqslant1}\subset A $, 使得 $ \lim\limits_{n\to\infty}x_{n}=x $ , 则 $ (x_{n})_{n\geqslant1} $ 是 $ A $ 中的 Cauchy列. 由 $ (A, d) $完备性可知 $ (x_{n})_{n\geqslant1} $ 收敛, 从而有 $ x\in A $ , 此时 $ A=\baro{A} $, 因此 $ A $ 是 $ E $ 中闭集. 
+          \textit{充分性}. 取 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中的 Cauchy列, 取 $ A_{n}=\left\{ x_{m}:m>n \right\} $, 则 $ (A_{n})_{n\geqslant1}) $ 是一个单调递减的非空闭子集列, 下面检验 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ . 
 
-     (2) 任取 $ (x_{n})_{n\geqslant1} $ 是 $ A $ 中的Cauchy列, 则 $ (x_{n})_{n\geqslant1} $ 也是 $ E $ 中的Cauchy列, 而 $ (E, d) $ 完备, 故 $ (x_{n})_{n\geqslant1} $ 收敛, 记 $ \lim\limits x_{n}=x $, 由 $ A $ 是闭集知 $ x\in A $, 故 $ (A, d) $ 完备. \qed
-\end{Prf}
+          由 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列可知
+          \[
+               \forall \varepsilon>0\, \exists n_{0}\in\N\,(m, n>n_{0}\Rightarrow d(x_{m}, x_{n})<\varepsilon),
+          \]
+          则 $ \forall x, y\in A_{n} $ , 取 $ x_{n}, x_{m}\in A_{n} $ 使得 $ d(x, x_{n}), d(x_{m})<\varepsilon $ 则
+          \[
+               d(x, y)\leqslant d(x, x_{n})+d(x_{n}, x_{m})+d(x_{m}, y) < 3\varepsilon         
+          \]
+          从而 $ \diam(A_{n})<3\varepsilon $, 也即 $\lim\limits_{n\to\infty} \diam(A_{n})=0 $. 
+
+          由条件知 $ \bigcap\limits_{n\geqslant1}A_{n} $ 是单点集, 不妨记作 $ \{ x_{0} \} $ , 则 $ \lim\limits_{n\to\infty}x_{n}=x_{0} $, 从而 $ (E, d) $  是完备的. \qed
+     \end{Proof}
+     \begin{Theorem}
+          设 $ (E, d) $ 是度量空间, $ A\subset E $. 
+          \begin{enumerate}[(1)]
+               \item 若 $ (A, d) $ 完备, 则 $ A $ 是 $ (E, d) $ 中的闭集;
+               \item 若 $ (E, d) $ 完备且 $ A $ 是闭集, 则 $ (A, d) $ 完备. 
+          \end{enumerate} 
+     \end{Theorem}
+     \begin{Proof}
+          (1) 设 $ x $ 是 $ A $ 的凝聚点, 则存在 $ (x_{n})_{n\geqslant1}\subset A $, 使得 $ \lim\limits_{n\to\infty}x_{n}=x $ , 则 $ (x_{n})_{n\geqslant1} $ 是 $ A $ 中的 Cauchy列. 由 $ (A, d) $完备性可知 $ (x_{n})_{n\geqslant1} $ 收敛, 从而有 $ x\in A $ , 此时 $ A=\baro{A} $, 因此 $ A $ 是 $ E $ 中闭集. 
+
+          (2) 任取 $ (x_{n})_{n\geqslant1} $ 是 $ A $ 中的Cauchy列, 则 $ (x_{n})_{n\geqslant1} $ 也是 $ E $ 中的Cauchy列, 而 $ (E, d) $ 完备, 故 $ (x_{n})_{n\geqslant1} $ 收敛, 记 $ \lim\limits x_{n}=x $, 由 $ A $ 是闭集知 $ x\in A $, 故 $ (A, d) $ 完备. \qed
+     \end{Proof}
 \section{连续映射与不动点定理}
-	To be completed.
+     \subsection{连续与一致连续}
+     \begin{Definition}[连续]\label{def:连续}
+          设 $ E $, $ F $ 为拓扑空间,  $ f:E\to F, x\in E $, 若
+          \[
+               \forall V\in\CN{f(x)}\,\exists U\in\CN{x}\,(f(U)\subset V),
+          \]
+          则称 $ f $ 在 $ x $ 处\textbf{连续}\index{L!连续}, 或等价地
+          \[
+               \forall V\in\CN{f(x)}\,(f^{-1}(V)\in\CN{x})
+          \]
+          若 $ f $ 在 $ E $ 的每一点都连续, 则称 $ f $ 在 $ E $ 上连续. 
+     \end{Definition}
+     \begin{Remark}
+          若 $ E $ , $ F $ 为度量空间, 若任取序列 $ (x_{n})_{n\geqslant1} $ 收敛到 $ x $ , 都有 $ \lim\limits_{n\to\infty}f(x_{n})=f(x) $, 则称 $ f $ 在 $ x $ 处连续. 
+     \end{Remark}
+     \begin{Proposition}
+          连续映射具有以下性质:
+          \begin{enumerate}[(1)]
+               \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的开集 $ V $ , 有 $ f^{-1}(V) $ 是 $ E $ 中开集;\\
+               \phantom{$ f $ 在 $ E $ 上连续} $ \Longleftrightarrow $ 对 $ F $ 上的闭集 $ B $ , 有 $ f^{-1}(B) $ 是 $ E $ 中闭集;
+               \item 连续映射的符合是连续映射;
+               \item $ \tau $, $ \tau' $ 是 $ E $ 中拓扑,  $ \tau $, 是 $ \tau' $ 的强拓扑 $ \Longleftrightarrow $ $ \mathrm{id}_{E}:(E, \tau)\to(E, \tau') $ 连续. 
+          \end{enumerate}
+     \end{Proposition}
+     \begin{Definition}[开映射, 同胚]\label{def:开映射, 同胚}
+          设 $ E $, $ F $ 是拓扑空间,  $ f:E\to F $ 
+          \begin{enumerate}[(1)]
+               \item 若任取开集 $ U\subset E $ , 有 $ f(U) $ 是 $ F $ 中开集, 则称 $ F $ 是一个\textbf{开映射}\index{K!开映射};
+               \item 若 $ f $ 是双射, 且 $ f\text{\,与\,}f^{-1} $ 连续, 则称 $ f $ 是\textbf{同胚映射}\index{T!同胚}, 若 $ E $, $ F $ 间有同胚映射, 则称 $ E\text{\,与\,}F $ 同胚.  
+          \end{enumerate}
+     \end{Definition}
+     \begin{Definition}[一致连续]\label{def:一致连续}
+          设 $ (E, d) $ 与 $ (F, \delta) $ 是度量空间, 若 $ f:E\to F $ 满足
+          \[
+               \forall\varepsilon>0\,\exists\eta>0\,(d(x, y)<\eta\Rightarrow\delta(f(x), f(y))<\varepsilon),
+          \]
+          则称 $ f $ 是\textbf{一致连续映射}\index{Y!一致连续映射}. 
+     \end{Definition}
+
+     \begin{Remark}
+          一致连续映射一定是连续映射, 它将 Cauchy列映成 Cauchy列.
+
+          $ f(x)=x $ 在\R 上一致连续,  $ f(x)=x^{2} $ 在认可\R 的有限区间上一致连续, 而在无限区间上不一致连续.  
+     \end{Remark}
+     \begin{Theorem}[一致连续映射的扩展]
+          设 $ (E, d)\text{\,与\,}(F, \delta) $ 是度量空间,  $ (F, \delta) $ 完备,  $ E_{0}\text{\,是\,}E $ 的稠子集, 若 $ f:E_{0}\to F $ 一致连续, 则 $ f $ 可唯一地扩展成 $ (E, d)\text{\,到\,}(F, \delta) $ 的一致连续映射 $ \tilde{f}:E\to F $.  
+     \end{Theorem}
+     \begin{Proof}
+          (Step 1) 构造 $ \tilde{f} $. 
+          
+          由 $ E_{0}\text{\,在\,}E $ 中稠密可知 
+          \[
+               \forall x\in E\,\exists (x_{n})_{n\geqslant1}\subset E_{0}(\lim_{n\to\infty}x_{n}=x), 
+          \] 
+          定义 $ \tilde{f}(x)=\lim\limits_{n\to\infty}f(x_{n}) $ , 需证明 $ (f(x_{n}))_{n\geqslant1} $ 也是 Cauchy列, 且 $ \tilde{f}(x) $ 不依赖 $ (x_{n})_{n\geqslant1} $ 的选取. 
+          \begin{enumerate}[1\degree]
+               \item 因为 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, $ f $ 一致连续, 知 $ (f(x_{n}))_{n\geqslant1} $ 也是 Cauchy列. 因为 $ (F, \delta) $ 完备, 故存在 $ \tilde{f}(x) $ 使得 $ \lim\limits_{n\to\infty}f(x_{n})=\tilde{f}(x) $.
+               \item 设 $ (x'_{n})_{n\geqslant1}\subset E_{0} $, 且 $ \lim\limits_{n\to\infty}x'_{n}=x $ , 记 $ y'=\lim\limits_{n\to\infty}f(x'_{n}) $ , 令 $ y=\tilde{f}(x) $ 则
+               \[
+                    \begin{aligned}
+                         \delta(y, y') & \leqslant \delta(y, f(x_{n}))+\delta(f(x_{n}), f(x'_{n}))+\delta(f(x'_{n}), y)\\
+                         & \to 0\,(n\to\infty)
+                    \end{aligned}
+               \]
+               即 $ y=y' $ , 从而 $ \tilde{f} $ 在 $ E $ 上是良定的. 
+          \end{enumerate} 
+
+          (Step 2) 证明 $ \tilde{f} $ 是一致连续映射. 
+
+          对任意 $ \varepsilon>0 $ , 因为 $ f $ 一致连续, 则 $ d(x, y)<\eta/3 $ 时, $ \delta(f(x), f(y))<\varepsilon $, 而 
+          \[
+               \forall x', y'\in E\,\exists  (x_{n})_{n\geqslant1}\subset E_{0} \,\exists  (y_{n})_{n\geqslant1}\subset E_{0} \,(\lim_{n\to\infty}x_{n}=x'\wedge \lim_{n\to\infty}y_{n}=y' ), 
+          \]  
+          也即 
+          \[
+               \exists n_{0}\in\N\,\forall n\geqslant n_{0}\,(d(x_{n}, x')<\frac{\eta}{3}\wedge d(y_{n}, y')<\frac{\eta}{3}), 
+          \] 
+          则当 $ d(x', y')<\eta/3 $ 时, 有
+          \[
+               \begin{aligned}
+                    d(x_{n}, y_{n}) & \leqslant d(x_{n}, x')+d(x', y')+d(y', y_{n})\\
+                    & < \frac{\eta}{3}+\frac{\eta}{3}+\frac{\eta}{3}=\eta.
+               \end{aligned}
+          \]
+          又因为 $ f $ 一致连续, 故 $ \delta(f(x_{n}), f(y_{n}))<\varepsilon $, 而又有
+          \[
+               \tilde{f}(x')=\lim_{n\to\infty}f(x_{n}), \tilde{f}(y')=\lim_{n\to\infty}f(y_{n})
+          \]
+          即
+          \[
+               \exists n_{1}\in\N\,\forall n\geqslant n_{1}\,(\delta(\tilde{f}(x_{n}), \tilde{f}(x'))<\varepsilon\wedge \delta(\tilde{f}(y_{n}), \tilde{f}(y'))<\varepsilon)
+          \]
+          则
+          \[
+               \begin{aligned}
+                    \delta(\tilde{f}(x'), \tilde{f}(y')) & \leqslant \delta(\tilde{f}(x_{n}), \tilde{f}(x'))+\delta(\tilde{f}(y_{n}), \tilde{f}(x_{n}))+\delta(\tilde{f}(y_{n}), \tilde{f}(y'))\\
+                    & <\varepsilon+\varepsilon+\varepsilon=3\varepsilon. 
+               \end{aligned}
+          \]
+          从而 $ \tilde{f} $ 是一致连续的. 
+
+          (Step 3) 证明 $ \tilde{f} $ 的唯一性. 
+          
+          设 $ {f}' $ 是 $ f $ 的另一个扩张, 由 $ E_{0} $ 稠密, 知
+          \[
+               \forall x\in E\,\exists (x_{n})_{n\geqslant1} \subset E_{0}\,(\lim_{n\to\infty}x_{n}=x),
+          \]
+          则有
+          \[
+               f'(x)=\lim_{n\to\infty}f'(x_{n})=\lim_{n\to\infty}f(x_{n})=\tilde{f}(x), 
+          \]
+          从而 $ f'=\tilde{f} $. \qed
+     \end{Proof}
+
+     \subsection{压缩映射原理}
+
+     \begin{Definition}[H\"older映射]\label{def:H\"older映射}
+          设 $ (E, d) $ 与 $ (F, \delta) $ 是度量空间,  $ f:E\to F $, $ 0<\alpha<1 $ , 
+          \begin{enumerate}[(1)]
+               \item 若
+               \[
+                    \exists \lambda>0\,\forall x, y\in E\,(\delta(f(x), f(y))\leqslant\lambda d(x, y)^{\alpha}),
+               \]
+               则称 $ f $ 是阶数为 $ \alpha $ 的\textbf{H\"older映射}\index{H!H\"older映射};
+               \item 若 $ f $ 为阶数为 $ 1 $ 的 H\"older映射, 则称 $ f $ 是\textbf{Lipschitz映射}\index{L!Lipschitz映射}, 并称使得不等式成立的最小常数 $ \lambda $是 $ f $ 的\textbf{Lipschitz常数}.
+               \item 若 $ f $ 的Lipschitz常数 $ \lambda<1 $ , 则称 $ f $ 是\textbf{压缩映射.}
+          \end{enumerate} 
+     \end{Definition}
+
+     \begin{Remark}
+          由定义知压缩映射 $ \subset $ Lipschitz映射 $ \subset $ H\"older映射 $ \subset $ 一致连续映射.
+     \end{Remark}
+
+     \begin{Example}
+          $ f(x)=\sin x $ 是 Lipschitz映射, 且其 Lipschitz常数 $ \lambda=1 $ ;
+
+          $ f(x)=\abs{x} $ 也是 Lipschitz映射, 其 Lipschitz常数 $ \lambda=1 $ ;
+          
+          $ f(x)=\sqrt{x} $ 不是 Lipschitz映射, 但它是阶为 $ 1/2 $ 的 H\"older映射, 因为 $ f'(x)=\frac{1}{2\sqrt{x}}\to\infty\,(x\to 0) $ , 但
+          \[
+               \abs{\sqrt{x}-\sqrt{y}}=\frac{\abs{x-y}}{\abs{\sqrt{x}+\sqrt{y}}}=\frac{\sqrt{x-y}}{\sqrt{x}+\sqrt{y}}\cdot\abs{x-y}^{1/2}\leqslant\abs{x-y}^{1/2}.
+          \]
+     \end{Example}
+
+     \begin{Theorem}[压缩映射原理]\label{thm:压缩映射原理}
+          设 $ (E, d) $ 是完备度量空间,  $ f:E\to E $ 是压缩映射, 则 $ f $ 有唯一不动点, 即 $ \exists!x\,(f(x)=x) $ .
+     \end{Theorem}
+
+     \begin{Proof}
+          任取 $ x_{1}\in E $ , 并归纳地定义 $ x_{n+1}=f(x_{n}) $ , 则 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中序列, 往证 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, 令 $ \lambda $ 是 $ f $ 的Lipschitz常数, 则 $ \lambda<1 $ , 此时
+          \[
+               \begin{aligned}
+                    d(x_{n+1}, x_{n}) & = d(f(x_{n}), f(x_{n-1})) \leqslant \lambda d(x_{n}, x_{n-1}) \\
+                    & =\lambda d(f(x_{n-1}), f(x_{n-2}))\leqslant \lambda^{2} d(x_{n-1}, x_{n-2}) \\
+                    & \leqslant \lambda^{n} d(x_{2}, x_{1}).
+               \end{aligned}
+          \]
+          则 $ \forall p\in \N $ , 有
+          \[
+               d(x_{n+p}, x_{n})\leqslant\sum_{i=n+1}^{n+p}d(x_{i}, x_{i-1})\leqslant\sum_{i=n+1}^{n+p}\lambda^{i-2}d(x_{1}, x_{2})\leqslant\frac{\lambda^{n-1}}{1-\lambda}d(x_{2}, x_{1})\to 0\,(n\to\infty)
+          \]
+          从而 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, 因为 $ E $ 完备, 则存在 $ x\in E $ , 使得 $ \lim\limits_{n\to \infty}x_{n}=x $ , 此时
+          \[
+               f(x)=f(\lim_{n\to\infty}x_{n})=\lim_{n\to\infty}f(x_{n})=\lim_{n\to\infty}x_{n+1}=x,
+          \]
+          即 $ x $ 是 $ f $ 的不动点.
+
+          若 $ y\in E $ 也是 $ f $ 的不动点, 则由
+          \[
+               d(x, y)=d(f(x), f(y))\leqslant\lambda d(x, y)\,(\lambda<1)
+          \]
+          知 $ d(x, y)=0 $ , 即 $ x=y $, 故不动点唯一.\qed 
+     \end{Proof}
+
+
+
 \section{度量空间的完备化}
-	To be completed.
+	\begin{Definition}[等距同构]\label{def:等距同构}
+           设 $ (E, d) $ 与 $ (F, \delta) $ 是度量空间, 设 $ f:(E, d)\to(F, \delta) $, 若
+           \[
+                \forall x, y\in E\,(d(x, y)=\delta(f(x), f(y))),
+           \] 
+           则称 $ f $ 是 $ (E, d) $ 到 $ (F, \delta) $ 的\textbf{等距映射}; 若 $ f $ 是双射, 则称 $ f $ 是 $ (E, d) $ 到 $ (F, \delta) $ 的\textbf{等距同构映射}\index{D!等距同构映射}.
+     \end{Definition}
+
+     \begin{Example}
+          设 $ E:[0,\infty), d(x, y)=\abs{x-y} $, $ F=[0, \infty), \delta(x, y)=\abs{x^{2}-y^{2}} $, 则 $ f:E\to F, x\mapsto \sqrt{x} $ 是等距同构. 
+     \end{Example}
+
+     下面证明本节的主要定理
+
+     \begin{Theorem}[度量空间的完备化]
+           设 $ (E, d) $ 是度量空间, 则存在等距意义下唯一的完备度量空间 $ (\widehat{E}, \hat{d}) $ 满足
+           
+           (i) $ E\subset \widehat{E} $;\hspace{6em}(ii) $ \hat{d}|_{E}=d $;\hspace{6em}  (iii)$ E $ 在 $ \widehat{E} $ 中稠密. 
+
+           \noindent 并称 $ (\widehat{E}, \hat{d}) $ 是 $ (E, d) $ 的\textbf{完备化空间}.
+     \end{Theorem}
+     \begin{Proof}
+          (Step 1) 构造空间 $ (\widehat{E}, \hat{d}) $ .
+
+          取 $ \widetilde{E} $ 是 $ E $ 中 Cauchy列的全体, 并在 $ \widetilde{E} $ 上取等价关系
+          \[
+               (x_{n})_{n\geqslant1}\sim (y_{n})_{n\geqslant1}\Longleftrightarrow \lim_{n\to\infty}d(x_{n},y_{n})=0,
+          \]
+          并取 $ \widehat{E}=\widetilde{E}/\sim $ . 因为 $ \forall a\in E $ , 存在常数列  $ (a)_{n\geqslant1} $, 使得 $ \lim\limits_{n\to\infty}a=a $, 记其等价类为 $ \hat{a} $ , 则存在映射 $ \iota :E\to\widehat{E}, a\mapsto \hat{a} $ 是一个单射, 由此知 $ E\subset\widehat{E} $. 
+
+          定义 $ \widehat{E} $ 上的度量 $ \hat{d} $ , 设 $ (x_{n})_{n\geqslant1} $ 与 $ (y_{n})_{n\geqslant1} $ 分别是 $ \hat{x} $, $ \hat{y} $ 的代表元, 则
+          \[
+               \hat{d}(\hat{x}, \hat{y})=\lim_{n\to\infty}d(x_{n},y_{n}).
+          \]
+          因 $ \hat{d} $ 的非负性, 正定性, 对称性与三角不等式由 $ d $ 的相应性质可证, 故只需证明 $ \lim\limits_{n\to\infty}d(x_{n}, y_{n}) $ 存在且不依赖代表元的选取.
+          \begin{enumerate}[(i)]
+               \item 由 $ (x_{n})_{n\geqslant1} $ , $ (y_{n})_{n\geqslant1} $ 都是 Cauchy列, 当 $ m, n\to\infty $ 时
+               \[
+                    \begin{aligned}
+                         \abs{d(x_{n}, y_{n})-d(x_{m}, y_{m})} & \leqslant \abs{d(x_{n}, y_{n})-d(x_{m}, y_{n})+ d(x_{m}, y_{n})-d(x_{m}, y_{m})}\\
+                         & \leqslant \abs{d(x_{n}, y_{n})-d(x_{m}, y_{n})}+\abs{d(x_{m}, y_{n})-d(x_{m}, y_{m})}\\
+                         & \leqslant d(x_{n}, x_{m})+d(y_{n}, y_{m})\to 0
+                    \end{aligned}
+               \]
+               则 $ d(x_{n}, y_{n})_{n\geqslant1} $ 是实的Cauchy列,  故 $ \lim\limits_{n\to\infty}d(x_{n}, y_{n}) $ 存在;
+               \item 再设 $ (x'_{n})_{n\geqslant1} $ , $ (y'_{n})_{n\geqslant1} $ 也是 $ \hat{x} $ , $ \hat{y} $ 的代表元, 则 $ n\to\infty $ 时
+               \[
+                    \abs{d(x'_{n}, y'_{n})-d(x_{n}, y_{n})}\leqslant d(x'_{n}, x_{n})+d(y'_{n}, y_{n})\to0.
+               \]
+               从而 $ \hat{d} $ 是一个度量, 且 $ \forall a, b\in E $ , 有 $ \hat{d}(a, b)=d(a, b) $ , 从而 $ \hat{d}|_{E}=d $ .
+          \end{enumerate}
+          接下来证明 $ E $ 在 $ \widehat{E} $ 中稠密. 任取 $ \hat{x}\in\widehat{E} $ , 设 $ (x_{n})_{n\geqslant1} $ 是它的一个代表元, 对每一个 $ n\in\N $ , 定义 $ \baro{x}_{n} $ 表示常数列 $ (x_{n})_{m\geqslant1} $(可看成与 $ x_{n}\in E $ 为同一元素) , 那么
+           \[
+               \lim_{n\to\infty}\hat{d}(\hat{x}, \baro{x}_{n})=\lim_{n\to\infty}\lim_{m\to\infty}d (x_{m}, d_{n})\to 0
+          \]
+          从而 $ E $ 在 $ \widehat{E} $ 中稠密. 
+
+          (Step 2) 证明 $ (\widehat{E}, \hat{d}) $ 完备.
+
+          取 $ (\hat{x}_{(n)})_{n\geqslant1} $ 为 $ \widehat{E} $ 中的Cauchy列, 由 $ E $ 在 $ \widehat{E} $ 中稠密可知
+          \[
+               \forall n\in \N\,\exists x_{n}\in E\,(\hat{d}(\hat{x}_{(n)}, \baro{x}_{n}))<\frac{1}{n}
+          \]
+     \end{Proof}
+
+
+
 \section{紧性}
 	To be completed.
 \section{乘积拓扑}
-	To be completed.
+	
+	\begin{Definition}[乘积拓扑]\label{def:乘积拓扑}\index{C!乘积拓扑}
+	设$ (E_i,\tau_i)_{i\in\alpha} $是一族拓扑空间, $ E=\prod\limits_{i\in\alpha}E_i $是$ E_i $的Descartes积, 其任一元素$ x=(x_i)_{i\in\alpha} $, $ x_i\in E_i $.
+	\begin{enumerate}[(1)]
+	\item 若$ \beta\in\fin\alpha $, $ U_i $是$ (E_i,\tau_i) $的开集, 则称
+	\[
+	O=\prod_{i\in\beta}U_i\times\prod_{i\in\alpha\sm\beta}E_i
+	\]
+	是$ E $的\textbf{基础开集}.
+	
+	\item\label{item:乘积拓扑任意并} 称由基础开集的并构成的集合是$ E $的开集, 所有这样的开集构成的集合称为$ E $上的\textbf{乘积拓扑}.
+	\end{enumerate}
+	\end{Definition}
+	
+	\begin{Remark}
+	关于乘积拓扑的一些注记:
+	\begin{enumerate}[(1)]
+	\item 考虑乘积拓扑$ \tau $:
+	
+	\hspace{2em}(O$ _1 $) $ \varnothing\in\tau,\ E\in\tau $是显然的.
+	
+	\hspace{2em}(O$ _2 $) 由\ref{item:乘积拓扑任意并}中的任意并性质是显然的.
+	
+	\hspace{2em}(O$ _3 $) 设$ O=\prod\limits_{i\in\beta}U_i\times\prod\limits_{i\in\alpha\sm\beta}E_i $, $ O'=\prod\limits_{i\in\beta'}U'_i\times\prod\limits_{i\in\alpha\sm\beta'}E_i $, 其中$ \beta,\beta'\in\fin\alpha $, 那么
+	\[
+	O\cap O'=\prod_{i\in\beta\cap\beta'}(U_i\cap U_i')\times\prod_{i\in\beta\sm\beta'}U_i\times\prod_{i\in\beta'\sm\beta}U_i'\times\prod_{i\in\alpha\sm(\beta\cup\beta')}E_i
+	\]
+	是开集(这因$ \beta\cup\beta'\in\fin\alpha $), 由数学归纳法可知对有限个开集的交都成立. 从而$ \tau $ well-defined.
+	
+	\item 若$ \alpha $是无限集, $ O=\prod\limits_{i\in\alpha}U_i $通常不是开集. 若$ \forall i\in\alpha,\ U_i\ne E_i $, 且$ x=(x_i)_{i\in\alpha}\in O $. 假设$ O $是开集, 则存在基础开集$ O' $使得$ x\in O' $且$ O'\subset O $. 但基础开集$ O' $应形如$ \prod\limits_{i\in\beta}U_i\times\prod\limits_{i\in\alpha\sm\beta}E_i\supset O $, 矛盾.
+	
+	\item $ \R^n $上的自然拓扑与$ \R\times\R\times\cdots\times\R $上的乘积拓扑是一致的.
+	
+	\item 若$ \forall i\in\alpha $, 有$ F_i\subset E_i $是闭集, 那么$ \prod\limits_{i\in\alpha}F_i $是闭集, 这因
+	\[
+	\left(\prod_{i\in\alpha}F_i\right)^c=\bigcup_{i\in\alpha}\left(F_i^c\times\prod_{j\ne i}E_j\right).
+	\]
+	
+	\item 设$ \alpha=\alpha_1\cup\alpha_2 $, $ E^{(1)}=\prod\limits_{i\in\alpha_1}E_i $, $ E^{(2)}=\prod\limits_{i\in\alpha_2}E_i $, $ E=\prod\limits_{i\in\alpha}E_i $. 则$ E $上的乘积拓扑与$ E^{(1)}\times E^{(2)} $上的乘积拓扑一致.
+	\end{enumerate}
+	\end{Remark}
+	
+	\begin{Theorem}
+	设$ (E_i)_{i\in\alpha} $是一族拓扑空间, $ E=\prod_{i\in\alpha}E_i $, 令$ \tau $是$ E $上的乘积拓扑, 定义
+	\[
+	p_i : E\to E_i\qquad p_i(x)=x_i,
+	\]
+	其中$ x=(x_i)_{i\in\alpha} $, 则$ \tau $是使得各$ p_i $连续的最弱拓扑, 并且$ p_i $是开映射. 这里$ p_i $称为\textbf{正规投影}.
+	\end{Theorem}
+	\begin{Proof}
+	对$ i\in\alpha $, 任取$ U_i\subset E_i $是开集, 由
+	\[
+	p_i^{-1}(U_i)=U_i\times\prod_{j\ne i}E_j
+	\]
+	是开集可知$ p_i $是连续的.
+	
+	设$ \tau' $是使得$ p_i $连续的拓扑, 则任取$ U_i\subset E_i $是开集, 应有
+	\[
+	p_i^{-1}(U_i)=U_i\times\prod_{j\ne i}E_j\in\tau',
+	\]
+	由\ref{item:O3}可知$ \tau $的基础开集是$ \tau' $中的元素, 从而$ \tau\subset\tau' $, 即$ \tau $是使得$ p_i $连续的拓扑中最弱的一个.
+	
+	最后说明$ p_i $是开映射. 设$ O $是$ E $中的开集, 往证$ p_i(O) $也是开集. 因为
+	\[
+	\forall \tilde{y}_i\in p_i(O)\,\exists y=(y_j)_{j\in\alpha}\in O(y_i=\tilde{y}_i)
+	\]
+	因为$ O $是开的, 存在基础开集$ O'=\prod\limits_{j\in\beta}U_j\times\prod\limits_{i\in\alpha\sm\beta}E_j $使得$ y\in O' $且$ O'\subset O $. 从而
+	\[
+	p_i(O')=\begin{cases}
+	U_i & ,i\in\beta\\ E_i &, i\notin\beta
+	\end{cases}
+	\]
+	是开集, 故$ p_i $是开映射.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ (E_i)_{i\in\alpha} $是一族拓扑空间, $ E=\prod\limits_{i\in\alpha}E_i $是乘积拓扑空间.
+	\begin{enumerate}[(1)]
+	\item 设$ (x^{(n)})_{n\geqslant 1} $是$ E $中的序列, $ x\in E $, 则$ (x^{(n)})_{n\geqslant 1} $收敛到$ x $的充分必要条件是$\forall i\in\alpha,\  (x_i^{(n)})_{n\geqslant 1} $收敛到$ x_i $.
+	
+	\item 设$ F $是拓扑空间, 映射$ f : F\to E $连续的充分必要条件是$ \forall i\in\alpha,\ p_i\circ f $是连续的.
+	\end{enumerate}
+	\end{Corollary}
+	
+	\begin{Proposition}
+	设$ (E_i)_{i\in\alpha} $是一族拓扑空间 $ E=\prod\limits_{i\in\alpha}E_i $是乘积拓扑空间.
+	\begin{enumerate}[(1)]
+	\item 若$ \forall i\in\alpha $, $ E_i $是Hausdorff空间, 则$ E $也是Hausdorff空间.
+	
+	\item 若$ \forall i\in\alpha $, $ E_i $是紧空间, 则$ E $也是紧空间.
+	
+	\item 设$ \alpha=\N^\ast $, 若$ \forall i\in\alpha,\ E_i $是可度量化的, 则$ E $是可度量化的. (可度量化是指存在$ E $上的度量$ d $使得$ d $诱导的拓扑与$ E $上原本定义的拓扑一致)
+	\end{enumerate}
+	\end{Proposition}
+	
+	\begin{Remark}
+	设$ (E,d_E) $和$ (F,d_F) $都是度量空间, 在$ E\times F $上赋以度量
+	\[
+	d_{E\times F}\left((x_1,y_1),(x_2,y_2)\right)=\max\{ d_E(x_1,x_2), d_F(y_1,y_2) \},
+	\]
+	则$ (E,d_E) \times (F,d_F) $的乘积拓扑与$ (E\times F, d_{E\times F}) $上度量$ d_{E\times F} $诱导的拓扑一致.
+	\end{Remark}
+	
+	\begin{Proposition}
+	设$ (E,d) $是度量空间, 则$ d : E\times E\to\R $是连续的.
+	\end{Proposition}
+	\begin{Corollary}
+	设$ (E,d) $是度量空间, $ \forall A\subset E $, 映射$ x\mapsto d(x,A) $是连续的.
+	\end{Corollary}
+	
 \section{赋范线性空间}
 	
 	\subsection{Banach空间}
 	
-	\begin{Def}[赋范空间]\label{def:赋范空间}\index{F!赋范空间}
-	设$ E $是$ \mathbb{K} $上的向量空间, $ \norm{\cdot} : E\to[0,\infty) $是$ E $上的实值函数, 满足$ \forall x,y\in E,\,\forall\lambda\in\mathbb{K} $有
+	\begin{Definition}[赋范空间]\label{def:赋范空间}\index{F!赋范空间}
+	设$ E $是$ \K $上的向量空间, $ \norm{\cdot} : E\to[0,\infty) $是$ E $上的实值函数, 满足$ \forall x,y\in E,\,\forall\lambda\in\K $有
 	
 	\begin{enumerate}[(1)]
 	\item 正定性: $ \norm{x}=0\Longleftrightarrow x=0 $;
@@ -374,21 +729,21 @@
 	\item 三角不等式: $ \norm{x+y}\leqslant\norm{x}+\norm{y} $.
 	\end{enumerate} 
 	则称$ \norm{\cdot} $是$ E $上的\textbf{范数}, 并称$ (E,\norm{\cdot}) $是\textbf{赋范(线性)空间}.
-	\end{Def}
+	\end{Definition}
 	
-	\begin{Ex}
+	\begin{Example}
 	常见空间上的范数:
 	
 	\begin{enumerate}[(1)]
-	\item 在Euclid空间$ \mathbb{K}^n $上, 定义
+	\item 在Euclid空间$ \K^n $上, 定义
 		\[
 		\norm{x}_p=\left(\sum_{i=1}^n\abs{x_i}^p\right)^{1/p}\qquad(1\leqslant p<\infty),
 		\]
-		当$ p=\infty $时定义为$ \norm{x}_\infty=\max\limits_{1\leqslant i\leqslant n}\abs{x_i} $, 则有$ \norm{x}_p\,(1\leqslant p\leqslant\infty) $是$ \mathbb{K}^n $上的范数, 并称$ p=2 $的情形称为$ \mathbb{K}^n $上的\textbf{Euclid范数}. 另外, 对$ n $阶正定矩阵$ A $, 若定义
+		当$ p=\infty $时定义为$ \norm{x}_\infty=\max\limits_{1\leqslant i\leqslant n}\abs{x_i} $, 则有$ \norm{x}_p\,(1\leqslant p\leqslant\infty) $是$ \K^n $上的范数, 并称$ p=2 $的情形称为$ \K^n $上的\textbf{Euclid范数}. 另外, 对$ n $阶正定矩阵$ A $, 若定义
 		\[
 		\norm{x}_A=\norm{Ax}_2,
 		\]
-		则它也是$ \mathbb{K}^n $上的范数.
+		则它也是$ \K^n $上的范数.
 	
 	\item 在连续函数空间$ C[a,b] $上定义
 	\[
@@ -397,22 +752,22 @@
 	则$ \norm\cdot $是$ C[a,b] $上的范数.
 	\end{enumerate}
 	
-	\end{Ex}
+	\end{Example}
 	
-	\begin{Rmk}
+	\begin{Remark}
 	赋范空间一定是度量空间, 因度量可以被范数诱导:
 	\[
 	d(x,y):=\norm{x-y}.
 	\]
-	\end{Rmk}
+	\end{Remark}
 	
-	\begin{Def}[Banach空间]\label{def:Banach空间}\index{B!Banach空间}
+	\begin{Definition}[Banach空间]\label{def:Banach空间}\index{B!Banach空间}
 	设$ (E,\norm{\cdot}) $是赋范空间, $ d(x,y)=\norm{x-y} $是范数诱导的距离. 若$ (E,d) $完备, 则称$ (E,\norm{\cdot}) $是\textbf{Banach空间}
-	\end{Def}
+	\end{Definition}
 	
-	由Banach空间的定义可知任意赋范空间$ E,\norm{\cdot} $的完备化$ (\hat{E},\norm\cdot) $是Banach空间. 同时因为在赋范空间上有自然的线性运算, 可以在赋范空间上定义级数:
+	由Banach空间的定义可知任意赋范空间$ E,\norm{\cdot} $的完备化$ (\widehat{E},\norm\cdot) $是Banach空间. 同时因为在赋范空间上有自然的线性运算, 可以在赋范空间上定义级数:
 	
-	\begin{Def}[级数]\label{def:级数}\index{J!级数}
+	\begin{Definition}[级数]\label{def:级数}\index{J!级数}
 	设$ (E,\norm{\cdot}) $是赋范空间, $ \sum\limits_{n\geqslant 1} $是空间中的\textbf{级数}, 并称$ S_n=\sum\limits_{k=1}^nx_k $是级数的\textbf{部分和}.
 	
 	\begin{enumerate}[(1)]
@@ -422,16 +777,16 @@
 	
 	\item 若$ \sum\limits_{n\geqslant 1}\norm{x_n} $收敛, 则称级数$ \sum\limits_{n\geqslant 1}x_n $\textbf{绝对收敛}.
 	\end{enumerate}
-	\end{Def}
+	\end{Definition}
 	
-	\begin{Rmk}
+	\begin{Remark}
 	考虑赋范空间$ ((0,1),\abs\cdot) $上的级数$ \sum\limits_{n\geqslant 1}2^{-n} $, 则$ \sum\limits_{n\geqslant 1}2^{-n} $绝对收敛但不收敛.
-	\end{Rmk}
+	\end{Remark}
 	
-	\begin{Thm}
+	\begin{Theorem}
 	赋范空间$ (E,\norm\cdot) $是Banach空间当且仅当$ (E,\norm\cdot) $上绝对收敛的级数一定收敛.
-	\end{Thm}
-	\begin{proof}
+	\end{Theorem}
+	\begin{Proof}
 	\textsl{必要性.} 设$ \sum\limits_{n\geqslant 1}x_n $绝对收敛, 并记$ S_n $是部分和, 因为$ \forall n,p\in\mathbb{N} $, 有
 	\[
 	\norm{S_{n+p}-S_n}=\norm{\sum_{k=n+1}^{n+p}x_k}\leqslant\sum_{k=n+1}^{n+p}\norm{x_k}.
@@ -444,10 +799,10 @@
 	
 	\textsl{充分性.} 设$ (x_n)_{n\geqslant 1} $是Cauchy列, 则
 	\[
-	\exists(x_{n_k})_{k\geqslant 1}\subset(x_n)_{n\geqslant 1}(\norm{x_{n_{k+1}}-x_{n_k}}<2^{-k}),
+	\exists(x_{n_k})_{k\geqslant 1}\subset(x_n)_{n\geqslant 1}\left(\norm{x_{n_{k+1}}-x_{n_k}}<2^{-k}\right),
 	\]
-	从而$ \sum\limits_{k\geqslant 1}\norm{x_{n_{k+1}}-x_{n_k}} $收敛, 即$ \sum\limits_{k\geqslant 1}(x_{n_{k+1}}-x_{n_k}) $绝对收敛, 故它收敛, 其部分和$ S_{n_k}=x_{n_{k+1}} $, 从而序列$ (x_{n_k})_{k\geqslant 1} $收敛. 由$ (x_n)_{n\geqslant 1} $是Cauchy列知它收敛, 于是$ (E,\norm\cdot) $完备, 即$ (E,\norm\cdot) $是Banach空间.
-	\end{proof}
+	从而$ \sum\limits_{k\geqslant 1}\norm{x_{n_{k+1}}-x_{n_k}} $收敛, 即$ \sum\limits_{k\geqslant 1}(x_{n_{k+1}}-x_{n_k}) $绝对收敛, 故它收敛, 其部分和$ S_{n_k}=x_{n_{k+1}} $, 从而序列$ (x_{n_k})_{k\geqslant 1} $收敛. 由$ (x_n)_{n\geqslant 1} $是Cauchy列知它收敛, 于是$ (E,\norm\cdot) $完备, 即$ (E,\norm\cdot) $是Banach空间.\qed
+	\end{Proof}
 	
 	
 	
@@ -456,115 +811,3 @@
 	
 	
 	
-=======
-\subsection{连续与一致连续}
-\begin{Def}[连续]\label{def:连续}
-      设 $ E $, $ F $ 为拓扑空间,  $ f:E\to F, x\in E $, 若
-      \[
-           \forall V\in\CN[f(x)]\,\exists U\in\CN{x}\,(f(U)\subset V),
-      \]
-      则称 $ f $ 在 $ x $ 处\textbf{连续}\index{L!连续}, 或等价地
-      \[
-           \forall V\in\CN{x}[f(x)]\,(f^{-1}(V)\in\CN{x})
-      \]
-      若 $ f $ 在 $ E $ 的每一点都连续, 则称 $ f $ 在 $ E $ 上连续. 
-\end{Def}
-\begin{Rmk}
-     若 $ E $ , $ F $ 为度量空间, 若任取序列 $ (x_{n})_{n\geqslant1} $ 收敛到 $ x $ , 都有 $ \lim\limits_{n\to\infty}f(x_{n})=f(x) $, 则称 $ f $ 在 $ x $ 处连续. 
-\end{Rmk}
-\begin{Prop}
-     连续映射具有以下性质:
-     \begin{enumerate}[(1)]
-          \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的开集 $ V $ , 有 $ f^{-1}(V) $ 是 $ E $ 中开集;\\
-          \phantom{$ f $ 在 $ E $ 上连续} $ \Longleftrightarrow $ 对 $ F $ 上的闭集 $ B $ , 有 $ f^{-1}(B) $ 是 $ E $ 中闭集;
-          \item 连续映射的符合是连续映射;
-          \item $ \tau $, $ \tau' $ 是 $ E $ 中拓扑,  $ \tau $, 是 $ \tau' $ 的强拓扑 $ \Longleftrightarrow $ $ \mathrm{id}_{E}:(E, \tau)\to(E, \tau') $ 连续. 
-     \end{enumerate}
-\end{Prop}
-\begin{Def}[开映射, 同胚]\label{def:开映射, 同胚}
-      设 $ E $, $ F $ 是拓扑空间,  $ f:E\to F $ 
-      \begin{enumerate}[(1)]
-           \item 若任取开集 $ U\subset E $ , 有 $ f(U) $ 是 $ F $ 中开集, 则称 $ F $ 是一个\textbf{开映射}\index{K!开映射};
-           \item 若 $ f $ 是双射, 且 $ f\text{\,与\,}f^{-1} $ 连续, 则称 $ f $ 是\textbf{同胚映射}\index{T!同胚}, 若 $ E $, $ F $ 间有同胚映射, 则称 $ E\text{\,与\,}F $ 同胚.  
-      \end{enumerate}
-\end{Def}
-\begin{Def}[一致连续]\label{def:一致连续}
-      设 $ (E, d) $ 与 $ (F, \delta) $ 是度量空间, 若 $ f:E\to F $ 满足
-      \[
-           \forall\varepsilon>0\,\exists\eta>0\,(d(x, y)<\eta\Rightarrow\delta(f(x), f(y))<\varepsilon),
-      \]
-     则称 $ f $ 是\textbf{一致连续映射}\index{Y!一致连续映射}. 
-\end{Def}
-\begin{Rmk}
-     一致连续映射一定是连续映射, 它将 Cauchy列映成 Cauchy列.
-
-     $ f(x)=x $ 在\R 上一致连续,  $ f(x)=x^{2} $ 在认可\R 的有限区间上一致连续, 而在无限区间上不一致连续.  
-\end{Rmk}
-\begin{Thm}[一致连续映射的扩展]
-      设 $ (E, d)\text{\,与\,}(F, \delta) $ 是度量空间,  $ (F, \delta) $ 完备,  $ E_{0}\text{\,是\,}E $ 的稠子集, 若 $ f:E_{0}\to F $ 一致连续, 则 $ f $ 可唯一地扩展成 $ (E, d)\text{\,到\,}(F, \delta) $ 的一致连续映射 $ \tilde{f}:E\to F $.  
-\end{Thm}
-\begin{Prf}
-     (Step 1) 构造 $ \tilde{f} $. 
-     
-     由 $ E_{0}\text{\,在\,}E $ 中稠密可知 
-     \[
-          \forall x\in E\,\exists (x_{n})_{n\geqslant1}\subset E_{0}(\lim_{n\to\infty}x_{n}=x), 
-     \] 
-     定义 $ \tilde{f}(x)=\lim\limits_{n\to\infty}f(x_{n}) $ , 需证明 $ (f(x_{n}))_{n\geqslant1} $ 也是 Cauchy列, 且 $ \tilde{f}(x) $ 不依赖 $ (x_{n})_{n\geqslant1} $ 的选取. 
-     \begin{enumerate}[1\degree]
-          \item 因为 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, $ f $ 一致连续, 知 $ (f(x_{n}))_{n\geqslant1} $ 也是 Cauchy列. 因为 $ (F, \delta) $ 完备, 故存在 $ \tilde{f}(x) $ 使得 $ \lim\limits_{n\to\infty}f(x_{n})=\tilde{f}(x) $.
-          \item 设 $ (x'_{n})_{n\geqslant1}\subset E_{0} $, 且 $ \lim\limits_{n\to\infty}x'_{n}=x $ , 记 $ y'=\lim\limits_{n\to\infty}f(x'_{n}) $ , 令 $ y=\tilde{f}(x) $ 则
-          \[
-               \begin{aligned}
-                    \delta(y, y') & \leqslant \delta(y, f(x_{n}))+\delta(f(x_{n}), f(x'_{n}))+\delta(f(x'_{n}), y)\\
-                    & \to 0\,(n\to\infty)
-               \end{aligned}
-          \]
-          即 $ y=y' $ , 从而 $ \tilde{f} $ 在 $ E $ 上是良定的. 
-     \end{enumerate} 
-     (Step 2) 证明 $ \tilde{f} $ 是一致连续映射. 
-
-     对任意 $ \varepsilon>0 $ , 因为 $ f $ 一致连续, 则 $ d(x, y)<\eta/3 $ 时, $ \delta(f(x), f(y))<\varepsilon $, 而 
-     \[
-          \forall x', y'\in E\,\exists  (x_{n})_{n\geqslant1}\subset E_{0} \,\exists  (y_{n})_{n\geqslant1}\subset E_{0} \,(\lim_{n\to\infty}x_{n}=x'\wedge \lim_{n\to\infty}y_{n}=y' ), 
-     \]  
-     也即 
-     \[
-          \exists n_{0}\in\N\,\forall n\geqslant n_{0}\,(d(x_{n}, x')<\frac{\eta}{3}\wedge d(y_{n}, y')<\frac{\eta}{3}), 
-     \] 
-     则当 $ d(x', y')<\eta/3 $ 时, 有
-     \[
-          \begin{aligned}
-               d(x_{n}, y_{n}) & \leqslant d(x_{n}, x')+d(x', y')+d(y', y_{n})\\
-               & < \frac{\eta}{3}+\frac{\eta}{3}+\frac{\eta}{3}=\eta.
-          \end{aligned}
-     \]
-     又因为 $ f $ 一致连续, 故 $ \delta(f(x_{n}), f(y_{n}))<\varepsilon $, 而又有
-     \[
-          \tilde{f}(x')=\lim_{n\to\infty}f(x_{n}), \tilde{f}(y')=\lim_{n\to\infty}f(y_{n})
-     \]
-     即
-     \[
-          \exists n_{1}\in\N\,\forall n\geqslant n_{1}\,(\delta(\tilde{f}(x_{n}), \tilde{f}(x'))<\varepsilon\wedge \delta(\tilde{f}(y_{n}), \tilde{f}(y'))<\varepsilon)
-     \]
-     则
-     \[
-          \begin{aligned}
-               \delta(\tilde{f}(x'), \tilde{f}(y')) & \leqslant \delta(\tilde{f}(x_{n}), \tilde{f}(x'))+\delta(\tilde{f}(y_{n}), \tilde{f}(x_{n}))+\delta(\tilde{f}(y_{n}), \tilde{f}(y'))\\
-               & <\varepsilon+\varepsilon+\varepsilon=3\varepsilon. 
-          \end{aligned}
-     \]
-     从而 $ \tilde{f} $ 是一致连续的. 
-
-     (Step 3) 证明 $ \tilde{f} $ 的唯一性. 
-     
-     设 $ {f}' $ 是 $ f $ 的另一个扩张, 由 $ E_{0} $ 稠密, 知
-     \[
-          \forall x\in E\,\exists (x_{n})_{n\geqslant1} \subset E_{0}\,(\lim_{n\to\infty}x_{n}=x),
-     \]
-     则有
-     \[
-          f'(x)=\lim_{n\to\infty}f'(x_{n})=\lim_{n\to\infty}f(x_{n})=\tilde{f}(x), 
-     \]
-     从而 $ f'=\tilde{f} $. \qed
-\end{Prf}
