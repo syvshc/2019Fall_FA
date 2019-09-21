@@ -6,9 +6,9 @@
      \begin{Definition}[拓扑空间]\label{def:拓扑空间}
           设 $ E $ 是一个集合, 称 $ E $ 的子集族 $ \tau $ 是一个\textbf{拓扑}\index{T!拓扑}, 若 $ \tau $ 满足: 
           \begin{enumerate}[($ \mathrm{O}_1 $), itemindent=2.5\parindent]
-            \item $ E, \varnothing\in \tau $;
-            \item\label{item:O2} $ \tau $ 中任意多元素的并仍是 $ \tau $ 中元素 (任意并);
-          	\item\label{item:O3} $ \tau $ 中有限多元素的交仍是 $ \tau $ 中的元素(有限交) . 
+                \item $ E, \varnothing\in \tau $;
+               \item\label{item:O2} $ \tau $ 中任意多元素的并仍是 $ \tau $ 中元素 (任意并);
+               \item\label{item:O3} $ \tau $ 中有限多元素的交仍是 $ \tau $ 中的元素(有限交) . 
           \end{enumerate}
           并称 $ (E, \tau) $ 为一个\textbf{拓扑空间}\index{T!拓扑空间}, $ \tau $ 中的元素称为\textbf{开集}\index{K!开集}, 在不引起歧义的情况下, 可以简称 $ E $ 是一个拓扑空间. 
      \end{Definition}
@@ -165,7 +165,7 @@
           设 $ (E,d) $ 是度量空间, $ F\subset E $, 取 $ \delta=d|_{F\times F} $ 则 $ (F, \delta) $ 是度量空间, 且当 $ E,  F $ 分别赋以 $ d, \delta $ 诱导的拓扑时,  $ F $ 是 $ E $ 的拓扑子空间. 
      \end{Example}
      \begin{Proposition}
-          设 $ F\subset E, A\subset F $ 则 $ A $ 是 $ F $ 中的闭集 $ \Longleftrightarrow $ 存在闭集 $ B\subset E $ s.t. $ A=B\cap F $ . 
+          设 $ F\subset E, A\subset F $ 则 $ A $ 是 $ F $ 中的闭集 $ \Longleftrightarrow $ 存在闭集 $ B\subset E $ 使得 $ A=B\cap F $ . 
      \end{Proposition}
      \begin{Proof}
           由闭集性质可以知道
@@ -230,13 +230,13 @@
           设 $ E $ 是度量空间, 则 $ A\subset E $是闭集的充要条件是对任意 $ A $中序列  $ (x_{n})_{n\geqslant1} $ 当 $ \lim\limits_{n\to\infty}x_{n}=x_{0} $ 时, 都有$ x_{0}\in A $.  
      \end{Proposition}
      \begin{Proof}
-          \textit{必要性}. 若 $ x_{0}\notin A $, 则 $ \exists r>0 (B(x, r)\cap A=\varnothing) $, 而由极限的定义知 
+          \textsl{必要性}. 若 $ x_{0}\notin A $, 则 $ \exists r>0 (B(x, r)\cap A=\varnothing) $, 而由极限的定义知 
           \[
                \exists n_{0}\in\N(n\geqslant n_{0}\Rightarrow x_{n}\in B(x, r))\Rightarrow x_{n}\notin A. 
           \]
           与 $ (x_{n})_{n\geqslant1}\subset A $ 矛盾. 
 
-          \textit{充分性}. 只需证 $ A^{c} $ 是开集, 用反证法, 若 $ A^{c} $ 不是开集, 则有
+          \textsl{充分性}. 只需证 $ A^{c} $ 是开集, 用反证法, 若 $ A^{c} $ 不是开集, 则有
           \[
                \exists x\in A^{c}\,\forall r>0(B(x, r)\cap A\neq\varnothing),
           \]
@@ -315,10 +315,10 @@
           从而在空间给定的情形下, 完备性依赖与距离, 因此\textbf{完备不是一个拓扑概念}
      \end{Remark}
      \begin{Theorem}
-          度量空间 $ (E, d) $ 完备 $ \Leftrightarrow $ 对任意单调递减的非空子集列 $ (A_{n})_{n\geqslant1} $ 若 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ , 则 $ \bigcap\limits_{n\geqslant1}A_{n} $ 是单点集. 其中 $ \diam(A)=\sup\limits_{x,y\in A}d(x, y) $ 是 $ A $  的\textbf{直径}. 
+          度量空间 $ (E, d) $ 完备的充分必要条件是对任意单调递减的非空子集列 $ (A_{n})_{n\geqslant1} $ 若 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ , 则 $ \bigcap\limits_{n\geqslant1}A_{n} $ 是单点集. 其中 $ \diam(A)=\sup\limits_{x,y\in A}d(x, y) $ 是 $ A $  的\textbf{直径}. 
      \end{Theorem}
      \begin{Proof}
-          \textit{必要性}. 因为 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ 则
+          \textsl{必要性} . 因为 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ 则
           \[
                \forall \varepsilon>0\,\exists n_{0}\in\N\,(n\geqslant N\Rightarrow \diam(A_{n})<\varepsilon). 
           \]
@@ -330,7 +330,7 @@
 
           再设 $ y\in\bigcap\limits_{n\geqslant1} A_{n} $ , 因 $ d(x_{n}, y)<\diam(A_{n})<\varepsilon $ 知 $ (x_{n})_{n\geqslant1} $ 收敛于 $ y $ , 由 $ E $ 是度量空间可知 $ E $ 是 Hausdorff空间, 从而$ x=y $, 故 $ \bigcap\limits_{n\geqslant1} A_{n} $ 为单点集. 
 
-          \textit{充分性}. 取 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中的 Cauchy列, 取 $ A_{n}=\left\{ x_{m}:m>n \right\} $, 则 $ (A_{n})_{n\geqslant1}) $ 是一个单调递减的非空闭子集列, 下面检验 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ . 
+          \textsl{充分性} . 取 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中的 Cauchy列, 取 $ A_{n}=\left\{ x_{m}:m>n \right\} $, 则 $ (A_{n})_{n\geqslant1}) $ 是一个单调递减的非空闭子集列, 下面检验 $ \lim\limits_{n\to\infty}\diam(A_{n})=0 $ . 
 
           由 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列可知
           \[
@@ -375,8 +375,8 @@
      \begin{Proposition}
           连续映射具有以下性质:
           \begin{enumerate}[(1)]
-               \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的开集 $ V $ , 有 $ f^{-1}(V) $ 是 $ E $ 中开集;\\
-               \phantom{$ f $ 在 $ E $ 上连续} $ \Longleftrightarrow $ 对 $ F $ 上的闭集 $ B $ , 有 $ f^{-1}(B) $ 是 $ E $ 中闭集;
+               \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的开集 $ V $ , 有 $ f^{-1}(V) $ 是 $ E $ 中开集;
+               \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的闭集 $ B $ , 有 $ f^{-1}(B) $ 是 $ E $ 中闭集;
                \item 连续映射的符合是连续映射;
                \item $ \tau $, $ \tau' $ 是 $ E $ 中拓扑,  $ \tau $, 是 $ \tau' $ 的强拓扑 $ \Longleftrightarrow $ $ \mathrm{id}_{E}:(E, \tau)\to(E, \tau') $ 连续. 
           \end{enumerate}
@@ -385,7 +385,7 @@
           设 $ E $, $ F $ 是拓扑空间,  $ f:E\to F $ 
           \begin{enumerate}[(1)]
                \item 若任取开集 $ U\subset E $ , 有 $ f(U) $ 是 $ F $ 中开集, 则称 $ F $ 是一个\textbf{开映射}\index{K!开映射};
-               \item 若 $ f $ 是双射, 且 $ f\text{\,与\,}f^{-1} $ 连续, 则称 $ f $ 是\textbf{同胚映射}\index{T!同胚}, 若 $ E $, $ F $ 间有同胚映射, 则称 $ E\text{\,与\,}F $ 同胚.  
+               \item 若 $ f $ 是双射, 且 $ f\text{\,与\,}f^{-1} $ 连续, 则称 $ f $ 是\textbf{同胚映射}\index{T!同胚}, 若 $ E $, $ F $ 间有同胚映射, 则称 $ E\text{\,与\,}F $ \textbf{同胚}.  
           \end{enumerate}
      \end{Definition}
      \begin{Definition}[一致连续]\label{def:一致连续}
@@ -399,7 +399,7 @@
      \begin{Remark}
           一致连续映射一定是连续映射, 它将 Cauchy列映成 Cauchy列.
 
-          $ f(x)=x $ 在\R 上一致连续,  $ f(x)=x^{2} $ 在认可\R 的有限区间上一致连续, 而在无限区间上不一致连续.  
+          $ f(x)=x $ 在\R 上一致连续,  $ f(x)=x^{2} $ 在任何\R 的有限区间上一致连续, 而在无限区间上不一致连续.  
      \end{Remark}
 
      \begin{Theorem}[一致连续映射的扩展]\label{thm:一致连续映射的扩展}
@@ -518,7 +518,7 @@
           \]
           则 $ \forall p\in \N $ , 有
           \[
-               d(x_{n+p}, x_{n})\leqslant\sum_{i=n+1}^{n+p}d(x_{i}, x_{i-1})\leqslant\sum_{i=n+1}^{n+p}\lambda^{i-2}d(x_{1}, x_{2})\leqslant\frac{\lambda^{n-1}}{1-\lambda}d(x_{2}, x_{1})\to 0\,(n\to\infty)
+               d(x_{n+p}, x_{n})\leqslant\sum_{i=n+1}^{n+p}d(x_{i}, x_{i-1})\leqslant\sum_{i=n+1}^{n+p}\lambda^{i-2}d(x_{2}, x_{1})=\frac{\lambda^{n-1}}{1-\lambda}d(x_{2}, x_{1})\to 0\,(n\to\infty)
           \]
           从而 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, 因为 $ E $ 完备, 则存在 $ x\in E $ , 使得 $ \lim\limits_{n\to \infty}x_{n}=x $ , 此时
           \[
@@ -539,7 +539,7 @@
 	\begin{Definition}[等距同构]\label{def:等距同构}
            设 $ (E, d) $ 与 $ (F, \delta) $ 是度量空间, 设 $ f:(E, d)\to(F, \delta) $, 若
            \[
-                \forall x, y\in E\,(d(x, y)=\delta(f(x), f(y))),
+                \forall x, y\in E\,\big(d(x, y)=\delta(f(x), f(y))\big),
            \] 
            则称 $ f $ 是 $ (E, d) $ 到 $ (F, \delta) $ 的\textbf{等距映射}; 若 $ f $ 是双射, 则称 $ f $ 是 $ (E, d) $ 到 $ (F, \delta) $ 的\textbf{等距同构映射}\index{D!等距同构映射}.
      \end{Definition}
@@ -649,7 +649,254 @@
      \end{Remark}
 
 \section{紧性}
-	To be completed.
+     \subsection{紧性, 紧空间}
+     \begin{Definition}[紧性]\label{def:紧性}
+           设 $ E $ 是拓扑空间,
+           \begin{enumerate}[(1)]
+                \item 若 $ E $ 上的开集族 $ (O_{i})_{i\in \alpha} $ 满足 $ E=\bigcup_{i\in\alpha}O_{i} $ , 则称 $ (O_{i})_{i\in\alpha} $ 是 $ E $ 的一个\textbf{开覆盖}.
+                \item 若对 $ E $ 的任意开覆盖都有有限子覆盖, 则称 $ E $ 是\textbf{紧}的\index{J!紧}.
+           \end{enumerate}
+     \end{Definition}
+
+     \begin{Proposition}\label{prop:紧性的另一刻画}
+           $ E $ 紧的充分必要条件是任意闭集族 $ (F_{i})_{i\in\alpha}\subset E $, 若 $ \forall \beta\in\fin\alpha $ 都有 $ \bigcap_{i\in\beta}F_{i}\neq \varnothing $ , 则有 $ \bigcap_{i\in\alpha}F_{i}\neq\varnothing $. 
+     \end{Proposition}
+
+     \begin{Proof}
+          \textsl{必要性}. 用反证法, 假设 $ \bigcap_{i\in\alpha}F_{i}=\varnothing $ , 即 $ \bigcup_{i\in\alpha}F_{i}^{c}=E $ , 即 $ (F_{i}^{c})_{i\in\alpha} $ 是 $ E $ 的一个开覆盖, 因为 $ E $ 是紧的,  所以存在有限集 $ \beta\in\fin\alpha $ ,  使得 $ \bigcup_{i\in\beta}F_{i}^{c}=E $ , 即 $ \bigcap_{i\in\beta}F_{i}^{c}=\varnothing $ , 矛盾.
+
+          \textsl{充分性}. 任取 $ (O_{i})_{i\in\alpha} $ 是 $ E $ 的开覆盖, 即 $ \bigcup_{i\in\alpha}O_{i}=E $ , 则 $ \bigcap_{i\in\alpha}O_{i}^{c}=\varnothing $ , 则存在有限集 $ \beta\in\fin \alpha $, 使得 $ \bigcap_{i\in\beta}O_{i}^{c}=\varnothing $ , 即 $ \bigcup_{i\in\beta}O_{i}=E $ , 从而 $ E $ 是紧的.\qed
+     \end{Proof}
+
+     \begin{Proposition}
+          设 $ E $ 是紧的拓扑空间, $ (F_{n})_{n\geqslant1} $ 是 $ E $ 中单降的非空闭集族, 则 $ \bigcap_{n\geqslant1}F_{n}\neq\varnothing $. 
+     \end{Proposition}
+
+     \begin{Proof}
+          对任意 $ j_{i}\in\N\,(i=1, 2, 3,\dots k) $ , 都有 $ \bigcap_{i=1}^{k}F_{i}=F_{\max\{ j_{i} \}}\neq\varnothing $ , 故 $ \bigcap_{n\geqslant1}F_{n}\neq\varnothing $ .\qed
+     \end{Proof}
+
+     \begin{Theorem}
+           设 $ E $ 是拓扑空间,  $ F\subset E $ 是子空间, 则 $ F $ 紧的充分必要条件是若 $ E $ 中的开集族 $ (O_{i})_{i\in\alpha} $ 满足 $ F\subset \bigcup_{i\in\alpha}O_{i} $ , 则存在有限集 $ \beta\in\fin\alpha $ , 使得 $ F\subset\bigcup_{i\in\beta}O_{i} $ (也就是说, $ F $ 任一在 $ E $ 中的开覆盖 $ (O_{i})_{i\in\alpha} $ 都存在有限的子覆盖).
+     \end{Theorem}
+     
+     \begin{Proof}
+          设 $ F\subset E $ , $ (O_{i})_{i\in\alpha} $ 是 $ E $ 中的开集族, 且满足 $ F\subset \bigcup_{i\in\alpha}O_{i} $ . 令
+          \[
+               U_{i}=F\cap O_{i}, i\in\alpha,
+          \]
+          则 $ (U_{i})_{i\in\alpha} $ 是空间 $ F $ 上的开覆盖, 反之,  $ F $ 的任意开覆盖都可以表示成以上形式.
+
+          \textsl{必要性}. 若 $ F $ 是紧子空间, 那么存在有限集 $ \beta\in\fin\alpha $ , 使得 $ F=\bigcup_{i\in\beta}U_{i} $ , 所以有 $ F\subset\bigcup_{i\in\beta}O_{i} $.
+
+          \textsl{充分性}. 若存在有限集 $ \beta\in\fin\alpha $, 使得 $ F\bigcup_{i\in\beta}O_{i} $ , 则
+          \[
+               F=F\cap\bigg( \bigcup_{i\in\beta}O_{i} \bigg)=\bigcap_{i\in\beta}U_{i},
+          \]
+          所以 $ F $ 是紧子空间.\qed
+     \end{Proof}
+
+     \begin{Proposition}\label{prop:紧->闭}
+          设 $ E $ 是 Hausdorff空间且 $ F\subset E $ 紧, 则 $ F $ 是闭集. 
+     \end{Proposition}
+
+     \begin{Proof}
+          令 $ x\in F^{c} $ , 由 $ E $ 是 Hausdorff空间, 则对任意 $  y\in F $ , 存在 $ U_{y}\in\CN{x} $, $ V_{y}\in\CN{y} $ , 其中 $ U_{y} $, $ V_{y} $ 是开集, 使得 $ U_{y}\cap V_{y}=\varnothing $ , 则 $\{ V_{y}:y\in F \}$ 是 $ F $ 的开覆盖, 因为 $ F $ 是紧集, 所以存在 $ y_{1}, y_{2}, \dots, y_{n} $, 使得 $ \{ V_{y_{i}}: i=1, 2, \dots, n \} $ 是 $ F $ 的开覆盖, 令 $ U=\bigcap_{i=1}^{n}U_{y_{i}} $ 是开集 (同时也是 $ x $ 的开邻域), 而 $ U\cap V_{y_{i}}=\varnothing\,(i=1, 2, \dots, n) $ , 从而 $ U\cap F=\varnothing $. 因此 $ F^{c} $ 是开集, 即 $ F $ 是闭集.\qed
+     \end{Proof}
+
+     \begin{Proposition}
+          设 $ E $ 是紧 Hausdorff空间, 则 $ F\subset E $ 紧的充分必要条件是 $ F $ 是闭集. 
+     \end{Proposition}
+     
+     \begin{Proof}
+          \textsl{必要性}. 由命题\ref{prop:紧->闭}可得.
+
+          \textsl{充分性}. 设 $ E $ 是紧的, $ F\subset E $ 为闭集, 设 $ (F_{i})_{i\geqslant1} $ 是 $ F $ 的一族闭子集, 且具有有限交性质 (即 $ \forall \beta\in\fin\alpha $, $ \bigcap_{i\in\beta}F_{i}\neq\varnothing $), 则由 $ F $ 是闭集,  $ F_{i} $ 也是闭集. 由命题\ref{prop:紧性的另一刻画}知 $ \bigcap_{i\in\alpha}F_{i}\neq\varnothing $ , 从而 $ F $ 是紧的.\qed
+     \end{Proof}
+
+     \begin{Proposition}
+          设 $ E $ 是 Hausdorff空间,  $ (K_{i})_{i\in\alpha} $ 是 $ E $ 中紧集族. 若 $ \bigcap_{i\in\alpha}K_{i}=\varnothing $, 则存在有限集 $ \beta\in\fin\alpha $, 使得 $ \bigcap_{i\in\beta}K_{i}=\varnothing $.   
+     \end{Proposition}
+     
+     \begin{Proof}
+          在集族 $ (K_{i})_{i\in\alpha} $ 中任取一元素, 记为 $ K_{0} $, 因为 $ \bigcap_{i\in\alpha}K_{i}=\varnothing $, 
+          知 $ \bigcup_{i\in\alpha}K_{i}^{c}=E $, 由 $ E $ 是 Hausdorff的, 故 $ K_{i}^{c} $ 是开集, 从而 $ \bigcup_{i\in\alpha}K_{i}^{c} $ 是 $ K_{0} $ 的开覆盖, 由于 $ K_{0} $ 是紧的, 故有有限集 $ \beta\in\fin\alpha $, 使得 $ \bigcup_{i\in\beta}K_{i}^{c}\subset K_{0} $ 则
+          \[
+               K_{0}\cap \bigg( \bigcup_{i\in\beta}K_{i} \bigg)^{c}=\varnothing \Rightarrow K_{0}\cap\bigcap_{i\in\beta}K_{i}=\varnothing.
+          \]
+          即存在有限个子集的交为空集.\qed
+     \end{Proof}
+
+     \begin{Proposition}
+          设 $ E $ 是紧的 Hausdorff空间, 则 $ E $ 中每一点都有紧邻域基.
+     \end{Proposition}
+
+     \begin{Proof}
+          任取 $ x\in E $, 取 $ V $ 是 $ x $ 的开邻域, 则 $ \baro{V} $ 闭, 因为 $ E $ 是紧的 Hausdorff空间, 从而 $ \baro{V} $ 是 $ x $ 的一个紧邻域. 往证 $ \forall U\in\CN{x} $ 是开邻域, $ \exists V\in\CN{x} $ 是开邻域且 $ \baro{V}\subset U $. 
+          
+          注意到 $ U $ 是开集, 则 $ U^{c} $ 为闭集, 同时可知 $ U^{c} $ 为紧集. $ \forall y\in U^{c} $, 存在  $ U_{y}, V_{y} $分别为 $ y, x $ 的开邻域, 使得 $ U_{y}\cap V_{y}=\varnothing $. 因为 $ U^{c} $ 紧, 则存在 $ y_{1}, y_{2}, \dots, y_{n} $, 使得 $ U^{c}\subset \bigcup_{i=1}^{n}U_{y_{i}} $, 再令 $ V=\bigcap_{i=1}^{n}V_{y_{j}} $, 则有
+          \[
+               V\cap\left( \bigcup_{i=1}^{n}U_{y_{i}} \right)=\varnothing\Rightarrow \baro{V}\cap\left( \bigcup_{i=1}^{n}U_{y_{i}} \right)\Rightarrow \baro{V}\subset U.
+          \]
+          从而 $ x $ 有紧邻域基.\qed
+     \end{Proof}
+
+     \begin{Proposition}
+          设 $ E $ 是紧集,  $ F $ 是拓扑空间,  $ f:E\to F $ 连续, 则 $ f(E) $ 是 $ F $ 中的紧集(即连续映射将紧集映成紧集)
+     \end{Proposition}
+
+     \begin{Proof}
+          取 $ (O_{i})_{i\in\alpha} $ 是 $ f(E) $ 的开覆盖, 则 $ (f^{-1}(O_{i}))_{i\in\alpha} $ 是 $ E $ 的开覆盖, 因为 $ E $ 紧, 则存在有限集 $ \beta\in\fin\alpha $, 使得 $ \bigcup_{i\in\beta}f^{-1}(O_{i})=E $, 故 $ \bigcup_{O_{i}}=f(E) $. 即 $ f(E) $ 紧.\qed
+     \end{Proof}
+
+     \begin{Corollary}
+          设 $ E $ 是紧集, $ f:E\to\R $ 是连续映射, 则 $ f $ 在 $ f $ 在 $ E $ 上有界且取得上确界与下确界.
+     \end{Corollary}
+
+     \begin{Proposition}
+          设 $ E $ 是紧集,  $ F $ 是Hausdorff空间,  $ f:E\to F $ 是连续的单射, 则有 $ f:E\to f(E) $ 是同胚映射.
+     \end{Proposition}
+
+     \begin{Proof}
+          只需证明 $ f^{-1}:F\to E $ 是连续映射, 即 $ f $ 把闭集映成闭集. 设 $ A $ 是 $ E $ 中的闭集, 因为 $ E $ 紧, 所以 $ A $ 紧, 因为 $ f $ 是连续映射, 则 $ f(A) $ 紧. 又因为 $ F $ 是 Hausdorff的, 则 $ f(A) $ 是 $ f(E) $ 中闭集, 故 $ f^{-1} $ 是连续映射, 故 $ f:E\to f(E) $ 是同胚映射.\qed
+     \end{Proof}
+
+     \begin{Definition}[局部紧]\label{def:局部紧}\index{J!局部紧}
+           设 $ E $ 是拓扑空间, 若 $ E $ 中每一点都有一个紧邻域, 则称 $ E $ 是\textbf{局部紧}空间.
+     \end{Definition}
+
+     \begin{Example}
+          \R 与 $ (0, 1] $ 是局部紧的.
+     \end{Example}
+
+     \begin{Remark}
+          若 $ E $ 是局部紧的 Hausdorff空间, 则 $ E $ 中每一点都有一个紧邻域基.
+     \end{Remark}
+
+     \begin{Theorem}[Urysohn引理]
+           设 $ E $ 是局部紧的 Hausdorff空间. 设 $ A $ 和 $ B $ 是$ E $ 中两个不相交的非空闭子集, 并设其中的一个是紧集, 那么存在一个连续的函数 $ f:E\to[0,1] $ 使得 $ f|_{A}=0 $, 且 $ f|_{B}=1 $.
+     \end{Theorem}
+
+     \begin{Theorem}
+           设 $ (E, d), (F, \delta) $ 是度量空间, 且 $ E $ 紧. 若 $ f:E\to F $ 连续, 则 $ f $ 一致连续.
+     \end{Theorem}
+
+     \begin{Proof}
+          因为 $ f $ 连续, 则 
+          \[
+               \forall x\in E\,\forall \varepsilon>0\,\exists\eta_{x}>0\,(y\in B(x, \eta_{x})\Rightarrow \delta(f(x), f(y))<\varepsilon).
+          \]
+          设 $\left\{ B(x, \eta_{x}/2) : x\in E \right\}$ 是 $ E $ 的一个开覆盖, 因为 $ E $ 是紧集, 则存在 $ x_{1}, x_{2},\dots,x_{n} $ 使得
+          \[
+               \bigcup_{i=1}^{n} B\left(x_{i}, \frac{\eta_{x_{i}}}{2}\right)=E.
+          \]
+          令 $ \eta=\min\limits_{i=1, 2, \dots, n}\{ x_{i} \} $, 对 $ \forall y\in E $, 当 $ d(x', y)<\eta $ 时, 存在 $ j\in\N, 1\leqslant j\leqslant n $, 使得 $ x'\in B(x_{j}, \eta_{x_{j}}) $, 则
+          \[
+               d(x_{j}, y) \leqslant d(y, x')+d(x', x_{j})\leqslant\eta_{x_{j}}/2+\eta<\eta_{x_{j}}.
+          \]
+          故 $ y\in B(x_{j}, \eta_{x_{j}}) $, 所以有 $ \delta(f(y), f(x_{j}))<\varepsilon $, 则
+          \[
+               \delta(f(x'), f(y))\leqslant \delta(f(x'), f(x_{j}))+\delta(f(x_{j}), f(y))<2\varepsilon.
+          \]
+          因此 $ f $ 一致连续.\qed
+     \end{Proof}
+
+     \subsection{紧度量空间的刻画}
+     
+     \begin{Example}
+     在实直线$ \mathbb{R} $上, 紧致与有界闭等价, 且有以下的等价表述:
+     \begin{enumerate}[(1)]
+     \item 无限子集必有凝聚点.
+     
+     \item 任一序列必有收敛子列.
+     
+     \item 完备且可被有限多个半径为$ \varepsilon $的开球覆盖.
+     \end{enumerate}
+     \end{Example}
+     
+     类似地, 度量空间的紧性也可以如此刻画:
+     
+     \begin{Example}[紧等价]\label{thm:紧等价}\index{L!列紧}\index{X!序列紧}\index{Y!预紧}
+     下面的命题等价:
+     \begin{enumerate}[(1)]
+     \item $ (E,d) $是紧空间;
+     
+     \item $ (E,d) $是\textbf{列紧}的, 即$ (E,d) $中的无限子集必有凝聚点.
+     
+     \item $ (E,d) $是\textbf{序列紧}的, 即$ (E,d) $中任一序列都有收敛子列.
+     
+     \item $ (E,d) $是完备的且是\textbf{预紧}的, 即$ \forall\varepsilon>0 $, $ E $可被有限多个以$ \varepsilon $为半径的开球覆盖. (若$ F\subset E $, $ (B(x,\varepsilon))_{x\in F} $覆盖$ E $, 则称$ F $是$ E $的一个$ \varepsilon $-\textbf{网})
+     \end{enumerate}
+     \end{Example}
+     \begin{Proof}
+     (1) $ \Rightarrow $ (2) : 用反证法, 设存在无限集$ F $无凝聚点, 即
+     \[
+     \forall x\in E\,\exists\eta_x>0\,(B(x,\eta_x)\cap(F\sm\{x\})=\varnothing),
+     \]
+     则$ (B(x,\eta_x))_{x\in E} $是$ E $的开覆盖. 因为$ E $是紧的, 存在$ x_1,x_2,\cdots,x_n $使得
+     \[
+     \bigcup_{j=1}^nB(x_j,\eta_{x_j})=E,
+     \]
+     而$ B(x_j,\eta_{x_j})\cap(F\sm\{x_j\}=\varnothing $, 从而$ B(x_j,\eta_{x_j}) $至多包含$ F $中的一个点, 则$ E=\bigcup_{j=1}^nB(x_j,\eta_{x_j}) $至多包含$ F $中的有限个点, 这与$ F $是无限集矛盾.
+     
+     (2) $ \Rightarrow $ (3) : 任取$ (x_n)_{n\geqslant 1} $是$ E $中的序列, 若$ (x_n)_{n\geqslant 1} $中只取有限多个不同值, 则$ (x_n)_{n\geqslant 1} $有收敛子列是显然的. 若$ (x_n)_{n\geqslant 1} $中有无限多个不同值, 则$ A=\{ x_n : n\geqslant 1 \} $是无限集, 由$ E $列紧知$ A $有凝聚点$ x $, 则存在$ (x_{n_k})_{k\geqslant 1}\subset(x_n)_{n\geqslant 1} $使得$ \lim\limits_{k\to\infty}x_{n_{k}}=x $.
+     
+     (3) $ \Rightarrow $ (4) : 任取$ E $中的Cauchy列$ (x_n)_{n\geqslant 1} $, 由$ E $序列紧可知$ (x_n)_{n\geqslant 1} $存在收敛子列, 从而$ (x_n)_{n\geqslant 1} $是收敛列, 这说明$ (E,d) $是完备的.
+     
+     用反证法, 反设$ E $不是预紧的, 即存在$ \varepsilon_0>0 $使得$ E $的开覆盖$ (B(x,\varepsilon))_{x\in E} $不存在有限子覆盖. 取$ x_1\in E $, 由$ B(x_1,\varepsilon)\ne E $, 可取$ x_2\in E\sm B(x_1,\varepsilon_0) $. 依此继续下去, 取
+     \[
+     x_n\in E\sm\left( \bigcup_{i=1}^{n-1}B(x_i,\varepsilon_0) \right)
+     \]
+     可得一$ E $中的序列$ (x_n)_{n\geqslant 1} $满足
+     \[
+     \forall j\ne k(d(x_j,x_k)\geqslant\varepsilon_0),
+     \]
+     即$ (x_n)_{n\geqslant 1} $不存在收敛子列, 矛盾.
+     
+     (4) $ \Rightarrow $ (3) : 因为$ E $是完备的, 只需证明任意序列$ (x_n)_{n\geqslant 1}\subset E $存在Cauchy子序列, 令$ \varepsilon_1=1/2 $, 由预紧性可知存在有限子集$ F\subset E $使得$ E=\bigcup_{x\in E}B(x,\varepsilon_1) $, 则$ (x_n)_{n\geqslant 1} $存在无穷子序列使得$ (x_{1,i})_{i\geqslant 1}\subset B(x,\varepsilon_1) $. 此时
+     \[
+     \forall j, k\,(d(x_{1,j},x_{1,k})<1).
+     \]
+     再令$ \varepsilon_2=1/2^2 $, 则$ (x_{1,i})_{i\geqslant 1} $存在无穷子列$ (x_{2,i})_{i\geqslant 1}\subset B(x',\varepsilon_2) $, 由此进行下去得到一串序列
+     \[
+     (x_n)_{n\geqslant 1}\supset(x_{1,i})_{i\geqslant 1}\supset(x_{2,i})_{i\geqslant 1}\supset\cdots\supset(x_{n,i})_{i\geqslant 1}\supset\cdots
+     \]
+     且$ d(x_{n,j},x_{n,k})<1/2^{n-1} $. 从而可取$ (x_{i,i})_{i\geqslant 1} $是一Cauchy列.
+     
+     (3) $ \Rightarrow $ (1) : 由$ E $序列紧可知$ E $预紧, 设$ (O_i)_{i\in\alpha} $是$ E $的开覆盖且不存在有限子覆盖. 由$ E $预紧可知$ \forall n\in\N $, 存在$ \frac{1}{n} $-网$ F_n $使得$ (B(x,1/n))_{x\in F_n} $覆盖$ E $, 则$ \exists y_n\in F_n $使得$ B(y_n,1/n) $不能被有限个$ O_i $覆盖.
+     
+     考虑这样构造出的序列$ (y_n)_{n\geqslant 1} $, 由$ E $序列紧可知$ (y_n)_{n\geqslant 1} $存在收敛到$ y $的子序列$ (y_{n_k})_{k\geqslant 1} $. 不妨设存在某个$ i_0\in\alpha $使得$ y\in O_{i_0} $, 且存在$ \eta>0 $使得$ B(y,\eta)\subset O_{i_0} $, 则取$ n_k $使得$ \frac{1}{n_k}<\frac{\eta}{2} $且$ d(y_{n_k},y)<\frac{\eta}{2} $, 则$ \forall x\in B(y_{n_k},1/n_k) $有
+     \[
+     d(x,y)\leqslant d(x,y_{n_k})+d(y_{n_k},y)<\frac{\eta}{2}+\frac{1}{n_k}<\eta.
+     \]
+     即$ B(y_{n_k},1/n_k)\subset B(y,\eta)\subset O_{i_0} $, 这与$ B(y_{n_k},1/n_k) $不能被有限个$ O_i $覆盖矛盾.\qed
+     \end{Proof}
+     
+     \begin{Definition}[相对紧]\label{def:相对紧}\index{X!相对紧}
+     设$ (E,d) $是一个度量空间, $ A\subset E $. 若$ \bar{A} $是紧集, 则称$ A $\textbf{相对紧}.
+     \end{Definition}
+     
+     \begin{Remark}
+     有关预紧性的刻画, 由定理\ref{thm:紧等价}中的``(3) $ \Leftrightarrow $ (4)"可知
+     \begin{enumerate}[(1)]
+     \item $ E $是预紧的$ \Longleftrightarrow $ $ E $的任一序列存在Cauchy子列.
+     
+     \item $ A $相对紧$ \Longleftrightarrow $ $ A $中无穷序列存在子列收敛到$ E $中的元素.
+     
+     \item 若$ E $是完备的, 则$ A $相对紧$ \Longleftrightarrow $ $ A $预紧.
+     \end{enumerate}
+     \end{Remark}
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
 \section{乘积拓扑}
 	
 	\begin{Definition}[乘积拓扑]\label{def:乘积拓扑}\index{C!乘积拓扑}
