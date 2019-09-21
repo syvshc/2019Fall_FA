@@ -5,10 +5,10 @@
 
      \begin{Definition}[拓扑空间]\label{def:拓扑空间}
           设 $ E $ 是一个集合, 称 $ E $ 的子集族 $ \tau $ 是一个\textbf{拓扑}\index{T!拓扑}, 若 $ \tau $ 满足: 
-          \begin{enumerate}[(1)]
-               \item $ E, \varnothing\in \tau $;
-               \item $ \tau $ 中任意多元素的并仍是 $ \tau $ 中元素 (任意并);
-               \item $ \tau $ 中有限多元素的交仍是 $ \tau $ 中的元素(有限交) . 
+          \begin{enumerate}[($ \mathrm{O}_1 $), itemindent=2.5\parindent]
+            \item $ E, \varnothing\in \tau $;
+            \item\label{item:O2} $ \tau $ 中任意多元素的并仍是 $ \tau $ 中元素 (任意并);
+          	\item\label{item:O3} $ \tau $ 中有限多元素的交仍是 $ \tau $ 中的元素(有限交) . 
           \end{enumerate}
           并称 $ (E, \tau) $ 为一个\textbf{拓扑空间}\index{T!拓扑空间}, $ \tau $ 中的元素称为\textbf{开集}\index{K!开集}, 在不引起歧义的情况下, 可以简称 $ E $ 是一个拓扑空间. 
      \end{Definition}
@@ -401,6 +401,7 @@
 
           $ f(x)=x $ 在\R 上一致连续,  $ f(x)=x^{2} $ 在认可\R 的有限区间上一致连续, 而在无限区间上不一致连续.  
      \end{Remark}
+
      \begin{Theorem}[一致连续映射的扩展]\label{thm:一致连续映射的扩展}
           设 $ (E, d)\text{\,与\,}(F, \delta) $ 是度量空间,  $ (F, \delta) $ 完备,  $ E_{0}\text{\,是\,}E $ 的稠子集, 若 $ f:E_{0}\to F $ 一致连续, 则 $ f $ 可唯一地扩展成 $ (E, d)\text{\,到\,}(F, \delta) $ 的一致连续映射 $ \tilde{f}:E\to F $.  
      \end{Theorem}
@@ -459,6 +460,7 @@
           从而 $ \tilde{f} $ 是一致连续的. 
 
           \textbf{(Step 3)} 证明 $ \tilde{f} $ 的唯一性. 
+
           
           设 $ {f}' $ 是 $ f $ 的另一个扩张, 由 $ E_{0} $ 稠密, 知
           \[
@@ -556,6 +558,7 @@
            \noindent 并称 $ (\widehat{E}, \hat{d}) $ 是 $ (E, d) $ 的\textbf{完备化空间}.
      \end{Theorem}
      \begin{Proof}
+
           \textbf{(Step 1)} 构造空间 $ (\widehat{E}, \hat{d}) $ .
 
           取 $ \widetilde{E} $ 是 $ E $ 中 Cauchy列的全体, 并在 $ \widetilde{E} $ 上取等价关系
@@ -569,7 +572,9 @@
                \hat{d}(\hat{x}, \hat{y})=\lim_{n\to\infty}d(x_{n},y_{n}).
           \]
           因 $ \hat{d} $ 的非负性, 正定性, 对称性与三角不等式由 $ d $ 的相应性质可证, 故只需证明 $ \lim\limits_{n\to\infty}d(x_{n}, y_{n}) $ 存在且不依赖代表元的选取.
+
           \begin{enumerate}[(1)]
+
                \item 由 $ (x_{n})_{n\geqslant1} $ , $ (y_{n})_{n\geqslant1} $ 都是 Cauchy列, 当 $ m, n\to\infty $ 时
                \[
                     \begin{aligned}
@@ -579,7 +584,8 @@
                     \end{aligned}
                \]
                则 $ d(x_{n}, y_{n})_{n\geqslant1} $ 是实的Cauchy列,  故 $ \lim\limits_{n\to\infty}d(x_{n}, y_{n}) $ 存在;
-               \item 再设 $ (x'_{n})_{n\geqslant1} $, $ (y'_{n})_{n\geqslant1} $ 也是 $ \hat{x} $ , $ \hat{y} $ 的代表元, 则 $ n\to\infty $ 时
+
+               \item 再设 $ (x'_{n})_{n\geqslant1} $ , $ (y'_{n})_{n\geqslant1} $ 也是 $ \hat{x} $ , $ \hat{y} $ 的代表元, 则 $ n\to\infty $ 时
                \[
                     \abs{d(x'_{n}, y'_{n})-d(x_{n}, y_{n})}\leqslant d(x'_{n}, x_{n})+d(y'_{n}, y_{n})\to0.
                \]
@@ -645,7 +651,116 @@
 \section{紧性}
 	To be completed.
 \section{乘积拓扑}
-	To be completed.
+	
+	\begin{Definition}[乘积拓扑]\label{def:乘积拓扑}\index{C!乘积拓扑}
+	设$ (E_i,\tau_i)_{i\in\alpha} $是一族拓扑空间, $ E=\prod\limits_{i\in\alpha}E_i $是$ E_i $的Descartes积, 其任一元素$ x=(x_i)_{i\in\alpha} $, $ x_i\in E_i $.
+	\begin{enumerate}[(1)]
+	\item 若$ \beta\in\fin\alpha $, $ U_i $是$ (E_i,\tau_i) $的开集, 则称
+	\[
+	O=\prod_{i\in\beta}U_i\times\prod_{i\in\alpha\sm\beta}E_i
+	\]
+	是$ E $的\textbf{基础开集}.
+	
+	\item\label{item:乘积拓扑任意并} 称由基础开集的并构成的集合是$ E $的开集, 所有这样的开集构成的集合称为$ E $上的\textbf{乘积拓扑}.
+	\end{enumerate}
+	\end{Definition}
+	
+	\begin{Remark}
+	关于乘积拓扑的一些注记:
+	\begin{enumerate}[(1)]
+	\item 考虑乘积拓扑$ \tau $:
+	
+	\hspace{2em}(O$ _1 $) $ \varnothing\in\tau,\ E\in\tau $是显然的.
+	
+	\hspace{2em}(O$ _2 $) 由\ref{item:乘积拓扑任意并}中的任意并性质是显然的.
+	
+	\hspace{2em}(O$ _3 $) 设$ O=\prod\limits_{i\in\beta}U_i\times\prod\limits_{i\in\alpha\sm\beta}E_i $, $ O'=\prod\limits_{i\in\beta'}U'_i\times\prod\limits_{i\in\alpha\sm\beta'}E_i $, 其中$ \beta,\beta'\in\fin\alpha $, 那么
+	\[
+	O\cap O'=\prod_{i\in\beta\cap\beta'}(U_i\cap U_i')\times\prod_{i\in\beta\sm\beta'}U_i\times\prod_{i\in\beta'\sm\beta}U_i'\times\prod_{i\in\alpha\sm(\beta\cup\beta')}E_i
+	\]
+	是开集(这因$ \beta\cup\beta'\in\fin\alpha $), 由数学归纳法可知对有限个开集的交都成立. 从而$ \tau $ well-defined.
+	
+	\item 若$ \alpha $是无限集, $ O=\prod\limits_{i\in\alpha}U_i $通常不是开集. 若$ \forall i\in\alpha,\ U_i\ne E_i $, 且$ x=(x_i)_{i\in\alpha}\in O $. 假设$ O $是开集, 则存在基础开集$ O' $使得$ x\in O' $且$ O'\subset O $. 但基础开集$ O' $应形如$ \prod\limits_{i\in\beta}U_i\times\prod\limits_{i\in\alpha\sm\beta}E_i\supset O $, 矛盾.
+	
+	\item $ \R^n $上的自然拓扑与$ \R\times\R\times\cdots\times\R $上的乘积拓扑是一致的.
+	
+	\item 若$ \forall i\in\alpha $, 有$ F_i\subset E_i $是闭集, 那么$ \prod\limits_{i\in\alpha}F_i $是闭集, 这因
+	\[
+	\left(\prod_{i\in\alpha}F_i\right)^c=\bigcup_{i\in\alpha}\left(F_i^c\times\prod_{j\ne i}E_j\right).
+	\]
+	
+	\item 设$ \alpha=\alpha_1\cup\alpha_2 $, $ E^{(1)}=\prod\limits_{i\in\alpha_1}E_i $, $ E^{(2)}=\prod\limits_{i\in\alpha_2}E_i $, $ E=\prod\limits_{i\in\alpha}E_i $. 则$ E $上的乘积拓扑与$ E^{(1)}\times E^{(2)} $上的乘积拓扑一致.
+	\end{enumerate}
+	\end{Remark}
+	
+	\begin{Theorem}
+	设$ (E_i)_{i\in\alpha} $是一族拓扑空间, $ E=\prod_{i\in\alpha}E_i $, 令$ \tau $是$ E $上的乘积拓扑, 定义
+	\[
+	p_i : E\to E_i\qquad p_i(x)=x_i,
+	\]
+	其中$ x=(x_i)_{i\in\alpha} $, 则$ \tau $是使得各$ p_i $连续的最弱拓扑, 并且$ p_i $是开映射. 这里$ p_i $称为\textbf{正规投影}.
+	\end{Theorem}
+	\begin{Proof}
+	对$ i\in\alpha $, 任取$ U_i\subset E_i $是开集, 由
+	\[
+	p_i^{-1}(U_i)=U_i\times\prod_{j\ne i}E_j
+	\]
+	是开集可知$ p_i $是连续的.
+	
+	设$ \tau' $是使得$ p_i $连续的拓扑, 则任取$ U_i\subset E_i $是开集, 应有
+	\[
+	p_i^{-1}(U_i)=U_i\times\prod_{j\ne i}E_j\in\tau',
+	\]
+	由\ref{item:O3}可知$ \tau $的基础开集是$ \tau' $中的元素, 从而$ \tau\subset\tau' $, 即$ \tau $是使得$ p_i $连续的拓扑中最弱的一个.
+	
+	最后说明$ p_i $是开映射. 设$ O $是$ E $中的开集, 往证$ p_i(O) $也是开集. 因为
+	\[
+	\forall \tilde{y}_i\in p_i(O)\,\exists y=(y_j)_{j\in\alpha}\in O(y_i=\tilde{y}_i)
+	\]
+	因为$ O $是开的, 存在基础开集$ O'=\prod\limits_{j\in\beta}U_j\times\prod\limits_{i\in\alpha\sm\beta}E_j $使得$ y\in O' $且$ O'\subset O $. 从而
+	\[
+	p_i(O')=\begin{cases}
+	U_i & ,i\in\beta\\ E_i &, i\notin\beta
+	\end{cases}
+	\]
+	是开集, 故$ p_i $是开映射.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ (E_i)_{i\in\alpha} $是一族拓扑空间, $ E=\prod\limits_{i\in\alpha}E_i $是乘积拓扑空间.
+	\begin{enumerate}[(1)]
+	\item 设$ (x^{(n)})_{n\geqslant 1} $是$ E $中的序列, $ x\in E $, 则$ (x^{(n)})_{n\geqslant 1} $收敛到$ x $的充分必要条件是$\forall i\in\alpha,\  (x_i^{(n)})_{n\geqslant 1} $收敛到$ x_i $.
+	
+	\item 设$ F $是拓扑空间, 映射$ f : F\to E $连续的充分必要条件是$ \forall i\in\alpha,\ p_i\circ f $是连续的.
+	\end{enumerate}
+	\end{Corollary}
+	
+	\begin{Proposition}
+	设$ (E_i)_{i\in\alpha} $是一族拓扑空间 $ E=\prod\limits_{i\in\alpha}E_i $是乘积拓扑空间.
+	\begin{enumerate}[(1)]
+	\item 若$ \forall i\in\alpha $, $ E_i $是Hausdorff空间, 则$ E $也是Hausdorff空间.
+	
+	\item 若$ \forall i\in\alpha $, $ E_i $是紧空间, 则$ E $也是紧空间.
+	
+	\item 设$ \alpha=\N^\ast $, 若$ \forall i\in\alpha,\ E_i $是可度量化的, 则$ E $是可度量化的. (可度量化是指存在$ E $上的度量$ d $使得$ d $诱导的拓扑与$ E $上原本定义的拓扑一致)
+	\end{enumerate}
+	\end{Proposition}
+	
+	\begin{Remark}
+	设$ (E,d_E) $和$ (F,d_F) $都是度量空间, 在$ E\times F $上赋以度量
+	\[
+	d_{E\times F}\left((x_1,y_1),(x_2,y_2)\right)=\max\{ d_E(x_1,x_2), d_F(y_1,y_2) \},
+	\]
+	则$ (E,d_E) \times (F,d_F) $的乘积拓扑与$ (E\times F, d_{E\times F}) $上度量$ d_{E\times F} $诱导的拓扑一致.
+	\end{Remark}
+	
+	\begin{Proposition}
+	设$ (E,d) $是度量空间, 则$ d : E\times E\to\R $是连续的.
+	\end{Proposition}
+	\begin{Corollary}
+	设$ (E,d) $是度量空间, $ \forall A\subset E $, 映射$ x\mapsto d(x,A) $是连续的.
+	\end{Corollary}
+	
 \section{赋范线性空间}
 	
 	\subsection{Banach空间}
