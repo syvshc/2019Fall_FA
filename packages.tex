@@ -5,12 +5,13 @@
 \DeclareMathOperator{\diam}{diam}
 \newcommand\me{\ensuremath{\mathrm{e}}}
 \newcommand\imag{\mathrm{i}}
-
+\DeclareMathOperator{\fin}{fin}
 \newcommand\R{\ensuremath{\mathbb{R}}}
 \newcommand\J{\ensuremath{\mathbb{J}}}
 \newcommand\Q{\ensuremath{\mathbb{Q}}}
 \newcommand\Z{\ensuremath{\mathbb{Z}}}
 \newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\K{\ensuremath{\mathbb{K}}}
 \newcommand\CN[1]{\mathcal{N}(#1)}
 \newcommand\CB[1]{\mathcal{B}(#1)}
 \renewcommand\Re{\mathrm{Re\,}}
@@ -18,7 +19,7 @@
 \newcommand{\dint}{\displaystyle\int}
 \newcommand{\diff}{\,\mathrm{d}}
 \usepackage{tasks}
-\NewTasks[counter-format=(tsk[1]), item-indent=2em, label-offset=1em]{lpbn}
+\NewTasks[counter-format=(tsk[1]), item-indent=2em, label-offset=1em, label-align=right]{lpbn}
 \NewTasks[counter-format=(tsk[a]), item-indent=2em, label-offset=1em]{alpbn}
 \NewTasks[counter-format=tsk[A].]{xrze}[*]
 
@@ -36,8 +37,8 @@
 \usepackage{array,diagbox,booktabs,tabularx} %数组环境, 表格中可以添加对角线, 可以调整表格中线的宽度, 可以控制表格宽度并使其自动换行
 %\usepackage{enumerate} %列表环境
 \usepackage[shortlabels]{enumitem} % 继承并扩展了enumerate宏包的功能
-\setlist[1]{left=\parindent..2\parindent}
-\setlist{noitemsep}
+\setlist[1]{left=\parindent..0pt}
+\setlist{noitemsep, itemindent=2\parindent}
 
 
 
@@ -78,21 +79,21 @@
 %新定义定理环境
 \theoremstyle{normal}
 %\theoremstyle{Thm}
-\newtheorem{Thm}[FA]{定理}
-\newtheorem{Thmn}{定理}
-\renewcommand{\theThmn}{\theFA$'$}
+\newtheorem{Theorem}[FA]{定理}
+\newtheorem{Theoremn}{定理}
+\renewcommand{\theTheoremn}{\theFA$'$}
 
 \newtheorem{Lemma}[FA]{引理}
 %\newtheorem{Exp}{例}[subsection]
-\newtheorem*{Prf}{证明}
-\newtheorem{Rmk}[FA]{注}
-\newtheorem*{Solve}{解}
-\newtheorem{Def}[FA]{定义}
-\newtheorem{Defn}{定义}
-\renewcommand{\theDefn}{\thefA$'$}
-\newtheorem{Cor}[FA]{推论}
-\newtheorem{Ex}[FA]{例}
-\newtheorem{Prop}[FA]{命题}
+\newtheorem*{Proof}{证明}
+\newtheorem{Remark}[FA]{注}
+\newtheorem*{Solution}{解}
+\newtheorem{Definition}[FA]{定义}
+\newtheorem{Definitionn}{定义}
+\renewcommand{\theDefinitionn}{\thefA$'$}
+\newtheorem{Corollary}[FA]{推论}
+\newtheorem{Example}[FA]{例}
+\newtheorem{Proposition}[FA]{命题}
 
 
 %新定义命令
@@ -100,6 +101,6 @@
 \newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
 \newcommand{\lrangle}[1]{\langle #1 \rangle}
 \newcommand{\degree}{\ensuremath{^{\circ}}}
-\newcommand{\bs}{\backslash}
+\newcommand{\sm}{\ensuremath{\setminus}}
 \newcommand{\baro}{\overline}
 %\renewcommand{\labelenumi}{(\theenumi)}
