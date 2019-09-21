@@ -28,7 +28,7 @@
     |定义(defination)|`def`|`Definition`|
     |定理(theorem)|`thm`|`Theorem`|
     |引理(lemma)|`lemma`|`Lemma`|
-    |推论(corollary)|`cor`|`Corollary`
+    |推论(corollary)|`cor`|`Corollary`|
     |命题(Propsition)|`prop`|`Proposition`|
     |注{Remark}|`rmk`|`Remark`|
     |解(Solve)|×|`Solution`|
