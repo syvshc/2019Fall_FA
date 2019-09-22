@@ -191,7 +191,7 @@
      \begin{Example}
           所有离散拓扑空间都是 Hausdorff空间, 所有度量空间都是 Hausdorff空间, 元素个数多于一个的平凡拓扑空间不是 Hausdorff空间(因为所有元素都只有一个邻域, 即 $ E $ ). 
      \end{Example}
-     \begin{Proposition}
+     \begin{Proposition}\label{prop:Hausdorff空间的相关命题1}
           由 Hausdorff空间的定义可以知道
           \begin{enumerate}[(1)]
                \item  $ E $ 是 Hausdorff空间 $ \Longleftrightarrow $ $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$
@@ -218,7 +218,7 @@
           \begin{enumerate}[(1)]
                \item 上述定义中的 $ \CN{x} $ 可换成 $ \CB{x} $ ;
                \item \R 中序列的极限至多只有一个, 例如 $\lim\limits_{n\to\infty}\frac{1}{n}=0 $, $ \lim\limits_{n\to\infty} n=\infty$(无极限), 取 $ (x_{n})_{n\geqslant1}=\left\{ 1, -1, 1,  -1\ldots \right\} $ 也无极限;
-               \item 一般地, Hausdorff空间中的序列至多只有一个极限, 而平凡拓扑空间中的任意序列收敛到任意元素;
+               \item\label{item:Hausdorff空间上极限唯一性} 一般地, Hausdorff空间中的序列至多只有一个极限, 而平凡拓扑空间中的任意序列收敛到任意元素;
                \item 对度量空间 $ (E, d) $ , 有
                \[
                     \lim_{n\to \infty}x_{n}=x \Leftrightarrow \lim_{n\to\infty}d(x_{n}, x)=0, 
@@ -270,7 +270,7 @@
 
           而在 \Q 中, $ (1/n)_{n\geqslant1} $ 是Cauchy列, 收敛到0; $ ((1+{1}/{n})^{n})_{n\geqslant1} $ 是Cauchy列, 不收敛.
      \end{Example}
-     \begin{Proposition}
+     \begin{Proposition}\label{prop:Cauchy列的性质}
           Cauchy列有以下性质:
           \begin{enumerate}[(1)]
                \item 若 $ (x_{n})_{n\geqslant1} $ 是收敛列, 则 $ (x_{n})_{n\geqslant1} $ 是Cauchy列;
@@ -1085,7 +1085,110 @@
 	\end{Proof}
 	
 	
+\begin{appendix}
 	
+	\chapter{一些因为太显然而没有在课上证明的命题}
+	
+	\section{拓扑空间与度量空间}
+	
+	\textbf{命题\,\,\ref{prop:Hausdorff空间的相关命题1}}\ \ Hausdorff空间的一部分性质:
+	\begin{enumerate}[(1)]
+		\item  $ E $ 是 Hausdorff空间 $ \Longleftrightarrow $ $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$
+	    \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $\bigcap \CN{x}=\{x\}$;
+	    \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $ \forall F\subset E $, $ F $ 也是Hausdorff空间. 
+	\end{enumerate}
+	\begin{Proof}
+	(1) \textsl{必要性}. 用$ \mathcal{E}(x) $记$ x $的所有闭邻域, 则$ x\in\bigcap\mathcal{E}(x) $是显然的. 若$ \exists x'\in\bigcap\mathcal{E}(x) $且$ x'\ne x $, 由Hausdorff空间的定义可知
+	\[
+	\exists U\in\CN{x}\,\exists V\in\CN{x'}\,(U\cap V=\varnothing),
+	\]
+	并且可以要求$ U,\ V $都是开集, 则$ V^c\in\mathcal{E}(x) $但$ x'\notin V^c $, 矛盾.
+	
+	\textsl{充分性}. 显然
+	
+	(2) 其中$ \{x\}\subset\bigcap\CN{x} $是显然的, 由(1)知
+	\[
+	\bigcap\CN(x)\subset\bigcap\mathcal{E}(x)=\{x\},
+	\]
+	从而只能$ \{x\}=\bigcap\CN{x} $.
+	
+	(3) 显然.	\qed
+	\end{Proof}
+	
+	\textbf{注1.2.2的\,\,\ref{item:Hausdorff空间上极限唯一性}}\ \ Hausdorff空间中的序列至多只有一个极限.
+	
+	我们希望证明一个更强的命题, 尽管实分析课程中已经介绍过相关概念, (但是我猜可能考完试就忘记了), 所以在这里也再次重复一遍:
+	\begin{Definition}
+		对一般的准序集$ (P, \lesssim) $, 若$ \forall x_1, x_2\in P, \exists x\in P : (x_1\lesssim x)\land (x_2\lesssim x) $, 则称$ P $是\textbf{上定向}的; 若$ \forall x_1, x_2\in P, \exists x\in P : (x_1\gtrsim x)\land (x_2\gtrsim x) $, 则称$ P $是\textbf{下定向}的. 若$ P $上定向或者下定向, 则称$ P $是一个\textbf{定向集}.
+		
+		当$ \alpha $是一个定向集时, 一个$ \alpha $-组称为一个\textbf{网}. 当$ (x_i)_{i\uparrow\alpha} $是$ (P,\lesssim) $上的一个网时, 形式地定义\textbf{上极限}
+		\[
+		\limsup_{i\uparrow\alpha}x_i=\varlimsup_{i\uparrow\alpha}x_i:=\inf_{j\in\alpha}\sup_{i\gtrsim j}x_i
+		\]
+		和\textbf{下极限}
+		\[
+		\liminf_{i\uparrow\alpha}x_i=\varliminf_{i\uparrow\alpha}x_i:=\sup_{j\in\alpha}\inf_{i\gtrsim j}x_i.
+		\]
+		特别地, 当$ \limsup\limits_{i\uparrow\alpha}x_i=\liminf\limits_{i\uparrow\alpha}x_i $时, 称$ \lim\limits_{i\uparrow\alpha}:=\limsup\limits_{i\uparrow\alpha} $为$ (x_i)_{i\uparrow\alpha} $的\textbf{极限}.
+	\end{Definition}
+	\begin{Proof}
+	下面我们证明\textsl{Hausdorff空间上的网至多只有一个极限}. 设$ \alpha $是一个上定向集, $ (x_i)_{i\uparrow\alpha} $是Hausdorff空间$ E $上的网, 并设$ x\ne y $使得
+	\[
+	\left(\lim_{i\uparrow\alpha}x_i=x\right)\land\left(\lim_{i\uparrow\alpha}x_i=y\right),
+	\]
+	则由Hausdorff空间的定义, 有
+	\[
+	\exists U\in\CN{x}\,\exists V\in\CN{y}\,(U\cap V=\varnothing),
+	\]
+	而
+	\[
+	\exists i_1\in\alpha( \forall j\gtrsim i_1 : x_j\in U )\land\exists i_2\in\alpha( \forall j\gtrsim i_2 : x_j\in V ),
+	\]
+	矛盾.\qed
+	\end{Proof}
+	
+	\textbf{命题\,\,\ref{prop:Cauchy列的性质}}\ \ Cauchy列有以下性质:
+		\begin{enumerate}[(1)]
+	    	\item 若 $ (x_{n})_{n\geqslant1} $ 是收敛列, 则 $ (x_{n})_{n\geqslant1} $ 是Cauchy列;
+	        \item 若 $ (x_{n})_{n\geqslant1} $ 是Cauchy列且有收敛子列, 则 $ (x_{n})_{n\geqslant1} $ 是收敛列;
+	        \item 若 $ (x_{n})_{n\geqslant1} $ 是Cauchy列, 则 $ (x_{n})_{n\geqslant1} $ 有界. (即 $ \exists x\in E\,\exists r>0\,((x_{n})_{n\geqslant1} \subset B(x, r)) $ )
+	   \end{enumerate}
+	\begin{Proof}
+	(1) 设$ \lim\limits_{n\to\infty}x_n=x_0 $, 则
+	\[
+	\forall\varepsilon>0\,\exists n_0\in\N\,\left(n\geqslant n_0\Rightarrow d(x_n,x_0)<\frac{\varepsilon}{2}\right)
+	\]
+	则对上述$ \varepsilon>0 $, 当$ n,m\geqslant n_0 $时有
+	\[
+	d(x_n,x_m)\leqslant d(x_n,x_0)+d(x_0,x_m)<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon,
+	\]
+	即$ (x_n)_{n\geqslant 1} $是Cauchy列.
+	
+	(2) 设$ (x_{n_k})_{k\geqslant 1}\subset(x_n)_{n\geqslant 1} $收敛到$ x_0 $, 即
+	\[
+	\forall\varepsilon>0\,\exists k_0\in\N\,\left(k\geqslant k_0\Rightarrow d(x_{n_k},x_0)<\frac{\varepsilon}{2}\right)
+	\]
+	而由$ (x_n)_{n\geqslant 1} $是Cauchy列可知
+	\[
+	\forall\varepsilon>0\,\exists n_0\in\N\,\left( n\geqslant n_0\Rightarrow\forall p\in\N,\,d(x_{n+p},x_n)<\frac{\varepsilon}{2} \right)
+	\]
+	因此$ n>n_k $时取$ p=n_l-n\in\N $, 则
+	\[
+	d(x_n,x_0)\leqslant d(x_n,x_{n+p})+d(x_{n+p},x_0)<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+	\]
+	即$ \lim\limits_{n\to\infty}x_n=x_0 $.
+	
+	(3) 设$ (x_n)_{n\geqslant 1} $是Cauchy列, 则取$ \varepsilon=1 $, 有
+	\[
+	\exists k\in\N\,(n,m\geqslant k\Rightarrow d(x_n,x_m)<1),
+	\]
+	则$ \forall n\geqslant k $, 有$ d(x_n,x_k)<1 $. 从而取$ r=\left(\max\limits_{1\leqslant i\leqslant k}d(x_i,x_k)\right)\land 1 $即可.\qed
+	\end{Proof}
+	
+	
+	
+	
+\end{appendix}
 	
 	
 	
