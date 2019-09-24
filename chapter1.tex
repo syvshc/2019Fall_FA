@@ -1084,111 +1084,124 @@
 	从而$ \sum\limits_{k\geqslant 1}\norm{x_{n_{k+1}}-x_{n_k}} $收敛, 即$ \sum\limits_{k\geqslant 1}(x_{n_{k+1}}-x_{n_k}) $绝对收敛, 故它收敛, 其部分和$ S_{n_k}=x_{n_{k+1}} $, 从而序列$ (x_{n_k})_{k\geqslant 1} $收敛. 由$ (x_n)_{n\geqslant 1} $是Cauchy列知它收敛, 于是$ (E,\norm\cdot) $完备, 即$ (E,\norm\cdot) $是Banach空间.\qed
 	\end{Proof}
 	
-	
-\begin{appendix}
-	
-	\chapter{一些因为太显然而没有在课上证明的命题}
-	
-	\section{拓扑空间与度量空间}
-	
-	\textbf{命题\,\,\ref{prop:Hausdorff空间的相关命题1}}\ \ Hausdorff空间的一部分性质:
-	\begin{enumerate}[(1)]
-		\item  $ E $ 是 Hausdorff空间 $ \Longleftrightarrow $ $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$
-	    \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $\bigcap \CN{x}=\{x\}$;
-	    \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $ \forall F\subset E $, $ F $ 也是Hausdorff空间. 
-	\end{enumerate}
-	\begin{Proof}
-	(1) \textsl{必要性}. 用$ \mathcal{E}(x) $记$ x $的所有闭邻域, 则$ x\in\bigcap\mathcal{E}(x) $是显然的. 若$ \exists x'\in\bigcap\mathcal{E}(x) $且$ x'\ne x $, 由Hausdorff空间的定义可知
-	\[
-	\exists U\in\CN{x}\,\exists V\in\CN{x'}\,(U\cap V=\varnothing),
-	\]
-	并且可以要求$ U,\ V $都是开集, 则$ V^c\in\mathcal{E}(x) $但$ x'\notin V^c $, 矛盾.
-	
-	\textsl{充分性}. 显然
-	
-	(2) 其中$ \{x\}\subset\bigcap\CN{x} $是显然的, 由(1)知
-	\[
-	\bigcap\CN(x)\subset\bigcap\mathcal{E}(x)=\{x\},
-	\]
-	从而只能$ \{x\}=\bigcap\CN{x} $.
-	
-	(3) 显然.	\qed
-	\end{Proof}
-	
-	\textbf{注1.2.2的\,\,\ref{item:Hausdorff空间上极限唯一性}}\ \ Hausdorff空间中的序列至多只有一个极限.
-	
-	我们希望证明一个更强的命题, 尽管实分析课程中已经介绍过相关概念, (但是我猜可能考完试就忘记了), 所以在这里也再次重复一遍:
-	\begin{Definition}
-		对一般的准序集$ (P, \lesssim) $, 若$ \forall x_1, x_2\in P, \exists x\in P : (x_1\lesssim x)\land (x_2\lesssim x) $, 则称$ P $是\textbf{上定向}的; 若$ \forall x_1, x_2\in P, \exists x\in P : (x_1\gtrsim x)\land (x_2\gtrsim x) $, 则称$ P $是\textbf{下定向}的. 若$ P $上定向或者下定向, 则称$ P $是一个\textbf{定向集}.
-		
-		当$ \alpha $是一个定向集时, 一个$ \alpha $-组称为一个\textbf{网}. 当$ (x_i)_{i\uparrow\alpha} $是$ (P,\lesssim) $上的一个网时, 形式地定义\textbf{上极限}
+	\begin{Definition}[范数等价]\index{D!等价}
+		设$ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $是线性空间$ E $上的两个范数, 若
 		\[
-		\limsup_{i\uparrow\alpha}x_i=\varlimsup_{i\uparrow\alpha}x_i:=\inf_{j\in\alpha}\sup_{i\gtrsim j}x_i
+		\exists c_1,c_2>0\,\forall x\in E\,(c_1\norm{x}_1\leqslant\norm{x}_2\leqslant x_2\norm{x}_1),
 		\]
-		和\textbf{下极限}
-		\[
-		\liminf_{i\uparrow\alpha}x_i=\varliminf_{i\uparrow\alpha}x_i:=\sup_{j\in\alpha}\inf_{i\gtrsim j}x_i.
-		\]
-		特别地, 当$ \limsup\limits_{i\uparrow\alpha}x_i=\liminf\limits_{i\uparrow\alpha}x_i $时, 称$ \lim\limits_{i\uparrow\alpha}:=\limsup\limits_{i\uparrow\alpha} $为$ (x_i)_{i\uparrow\alpha} $的\textbf{极限}.
+		则称$ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $\textbf{等价}.
 	\end{Definition}
+	
+	\begin{Remark}
+	记$ \id_E : (E,\norm{\cdot}_1)\to(E\,\norm{\cdot}_2) $是恒等映射, 则由
+	\[
+	\norm{x-y}_@\leqslant c_2\norm{x-y}_1
+	\]
+	可知$ \id_E $是Lipschitz的. 再考虑$ \id_E^{-1} : (E,\norm{\cdot}_2)\to(E\,\norm{\cdot}_1) $, 由
+	\[
+	\norm{x-y}_1\leqslant\frac{1}{c_1}\norm{x-y}_2
+	\]
+	可知$ \id_E^{-1} $也是Lipschitz的. 从而$ \id_E $与$ \id_E^{-1} $都是一直连续的. 于是$ (E,\norm\cdot_1) $完备当且仅当$ (E,\norm\cdot_2) $完备, $ A\subset E $在$ (E,\norm\cdot_1) $上紧当且仅当$ A $在$ (E,\norm\cdot_2) $上紧.
+	\end{Remark}
+	
+	\begin{Theorem}
+	设$ E $是数域$ \K $上的有限维线性空间, 则$ E $上所有范数都等价.
+	\end{Theorem}
 	\begin{Proof}
-	下面我们证明\textsl{Hausdorff空间上的网至多只有一个极限}. 设$ \alpha $是一个上定向集, $ (x_i)_{i\uparrow\alpha} $是Hausdorff空间$ E $上的网, 并设$ x\ne y $使得
+	设$ \dim E=n $, 取$ E $中的一组基$ e_1,e_2,\cdots,e_n $, 则
 	\[
-	\left(\lim_{i\uparrow\alpha}x_i=x\right)\land\left(\lim_{i\uparrow\alpha}x_i=y\right),
+	\forall x\in E\,\exists[x_1,x_2,\cdots,x_n]^\mathrm{T}\in\K^n\,\left( x=\sum_{i=1}^nx_ie_i \right),
 	\]
-	则由Hausdorff空间的定义, 有
+	那么可以定义
 	\[
-	\exists U\in\CN{x}\,\exists V\in\CN{y}\,(U\cap V=\varnothing),
+	\varPhi : \K^n\to E,\qquad \begin{bmatrix}
+	x_1\\x_2\\\vdots\\x_n
+	\end{bmatrix}\mapsto\sum_{i=1}^nx_ie_i.
 	\]
-	而
+	从而$ \varPhi $是一个线性同构.
+	
+	令$ \K^n $上的范数$ \norm\cdot_\infty $为
 	\[
-	\exists i_1\in\alpha( \forall j\gtrsim i_1 : x_j\in U )\land\exists i_2\in\alpha( \forall j\gtrsim i_2 : x_j\in V ),
+	\norm{\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}}_\infty=\max_{1\leqslant i\leqslant n}\abs{x_i},
 	\]
-	矛盾.\qed
+	由此可以诱导$ E $上的范数$ \norm\cdot_\infty $:
+	\[
+	\norm{x}_\infty=\norm{\varPhi^{-1}(x)}_\infty.
+	\]
+	再任取$ E $上的另一个范数$ \norm{\cdot} $, 则有
+	\[
+	\norm{x}=\norm{\sum_{i=1}^nx_ie_i}\leqslant\sum_{i=1}^n\abs{x_i}\norm{e_i}\leqslant\norm{x}_\infty\sum_{i=1}^n\norm{e_i}.
+	\]
+	令$ c_2=\sum_{i=1}^n\norm{e_i} $, 则有$ \norm{x}\leqslant c_2\norm{x}_\infty $. 再定义映射
+	\[
+	\varphi : \K^n\to\C,\qquad\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}\mapsto\norm{\varPhi\left(\begin{bmatrix}
+	x_1\\x_2\\\vdots\\x_n
+	\end{bmatrix}\right)}=\norm{x}.
+	\]
+	易知$ \varphi $是连续的, 则$ \varphi $在$ \K^n $的单位球面$ \mathbb{S}^{n-1} $上有下确界, 记作$ c_1 $, 则$ c_1\geqslant 0 $. 而对$ \forall x\in E $, 因
+	\[
+	\norm{x}=\varphi\left(\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}\right)=\norm{\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}}_\infty\varphi\left(\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}\cdot\norm{\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}}_\infty^{-1}\right)\geqslant c_1\norm{\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix}}_\infty=c_1\norm{x}_\infty.
+	\]
+	可知$ \norm{x}\geqslant c_1\norm{x}_\infty $. 则有
+	\[
+	c_1\norm{x}_\infty\leqslant\norm{x}\leqslant c_2\norm{x}_\infty,
+	\]
+	从而$ E $上所有范数均等价.\qed
 	\end{Proof}
 	
-	\textbf{命题\,\,\ref{prop:Cauchy列的性质}}\ \ Cauchy列有以下性质:
-		\begin{enumerate}[(1)]
-	    	\item 若 $ (x_{n})_{n\geqslant1} $ 是收敛列, 则 $ (x_{n})_{n\geqslant1} $ 是Cauchy列;
-	        \item 若 $ (x_{n})_{n\geqslant1} $ 是Cauchy列且有收敛子列, 则 $ (x_{n})_{n\geqslant1} $ 是收敛列;
-	        \item 若 $ (x_{n})_{n\geqslant1} $ 是Cauchy列, 则 $ (x_{n})_{n\geqslant1} $ 有界. (即 $ \exists x\in E\,\exists r>0\,((x_{n})_{n\geqslant1} \subset B(x, r)) $ )
-	   \end{enumerate}
+	\begin{Remark}\label{rmk:有限维赋范空间等价K^n}
+	由上述定理可知任何有限维赋范空间在范数等价的意义下均可看作$ \K^n $, 从而有限维赋范空间都是完备的, 并且有限维赋范空间上的有界闭集都是紧集.
+	\end{Remark}
+	
+	\begin{Theorem}[\textbf{Riesz}]\label{thm:Riesz定理}
+	设$ (E,\norm{\cdot}) $是赋范空间, 则$ E $是有限维的当且仅当$ E $的闭单位球是紧的.
+	\end{Theorem}
+	
+	为了证明上面的Riesz定理, 我们先说明下面一个引理. 这一引理的证明技巧性相对较强.
+	
+	\begin{Lemma}\label{lem:Riesz前引理}
+	设$ (E,\norm\cdot) $是赋范空间, $ F $是$ E $的闭线性子空间且$ F\ne E $, 则
+	\[
+	\forall\varepsilon>0\,\exists e\in E\,(\norm{e}=1\land d(e,F)\geqslant 1-\varepsilon).
+	\]
+	\end{Lemma}
 	\begin{Proof}
-	(1) 设$ \lim\limits_{n\to\infty}x_n=x_0 $, 则
+	令$ x\in E\sm F $, 取$ d=d(x,F)=\inf\{ \norm{x-y} : y\in F \} $, 则
 	\[
-	\forall\varepsilon>0\,\exists n_0\in\N\,\left(n\geqslant n_0\Rightarrow d(x_n,x_0)<\frac{\varepsilon}{2}\right)
+	\exists y_0\in F\left(d\leqslant\norm{x-y_0}\leqslant\frac{d}{1-\varepsilon}\right).
 	\]
-	则对上述$ \varepsilon>0 $, 当$ n,m\geqslant n_0 $时有
+	再令$ e=\frac{x-y_0}{\norm{x-y_0}} $, 那么有$ \norm{e}=1 $, 且$ \forall z\in F $都有
 	\[
-	d(x_n,x_m)\leqslant d(x_n,x_0)+d(x_0,x_m)<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon,
+	\norm{e-z}=\norm{\frac{x-y_0}{\norm{x-y_0}}-z}=\frac{1}{\norm{x-y_0}}\norm{x-y_0-\norm{x-y_0}z}\geqslant\frac{1}{d/(1-\varepsilon)}d=1-\varepsilon.
 	\]
-	即$ (x_n)_{n\geqslant 1} $是Cauchy列.
-	
-	(2) 设$ (x_{n_k})_{k\geqslant 1}\subset(x_n)_{n\geqslant 1} $收敛到$ x_0 $, 即
-	\[
-	\forall\varepsilon>0\,\exists k_0\in\N\,\left(k\geqslant k_0\Rightarrow d(x_{n_k},x_0)<\frac{\varepsilon}{2}\right)
-	\]
-	而由$ (x_n)_{n\geqslant 1} $是Cauchy列可知
-	\[
-	\forall\varepsilon>0\,\exists n_0\in\N\,\left( n\geqslant n_0\Rightarrow\forall p\in\N,\,d(x_{n+p},x_n)<\frac{\varepsilon}{2} \right)
-	\]
-	因此$ n>n_k $时取$ p=n_l-n\in\N $, 则
-	\[
-	d(x_n,x_0)\leqslant d(x_n,x_{n+p})+d(x_{n+p},x_0)<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
-	\]
-	即$ \lim\limits_{n\to\infty}x_n=x_0 $.
-	
-	(3) 设$ (x_n)_{n\geqslant 1} $是Cauchy列, 则取$ \varepsilon=1 $, 有
-	\[
-	\exists k\in\N\,(n,m\geqslant k\Rightarrow d(x_n,x_m)<1),
-	\]
-	则$ \forall n\geqslant k $, 有$ d(x_n,x_k)<1 $. 从而取$ r=\left(\max\limits_{1\leqslant i\leqslant k}d(x_i,x_k)\right)\land 1 $即可.\qed
+	其中由于$ y_0+\norm{x-y_0}z\in F $, 故$ \norm{x-y_0-\norm{x-y_0}z}\geqslant d $. 于是$ d(e,F)\geqslant 1-\varepsilon $.\qed
 	\end{Proof}
 	
+	下面我们可以证明Riesz定理:
+	
+	\textbf{定理\,\,\ref{thm:Riesz定理}\,\,的证明}\ \ \textsl{必要性}. 由注\ref{rmk:有限维赋范空间等价K^n}可知.
+	
+	\textsl{充分性}. 用反证法, 假设$ E $是无限维的, 则可以取一单位向量$ x_1 $, 并且记$ F_1=\mathrm{span}\{x_1\}=\{ \lambda_1x_1 : \lambda_1\in\K \} $. 由$ \dim F_1=1<\infty $可知$ F_1 $完备, 从而$ F_1 $是$ E $的闭线性子空间. 故有引理\ref{lem:Riesz前引理}可知
+	\[
+	\exists x_2\in E\,\left(\norm{x_2}=1\land d(x_2,F_1)\geqslant\frac{1}{2}\right).
+	\]
+	再取$ F_2=\mathrm{span}\{x_1,x_2\} $, 同理$ F_2 $是$ E $的闭线性子空间, 从而
+	\[
+	\exists x_3\in E\,\left(\norm{x_3}=1\land d(x_3,F_2)\geqslant\frac{1}{2}\right).
+	\]
+	依此进行下去可得一序列$ (x_n)_{n\geqslant 1}\subset\{ x : \norm{x}=1 \} $使得
+	\[
+	\forall n\ne m\,\left(\norm{x_n-x_m}\geqslant\frac{1}{2}\right),
+	\]
+	即$ (x_n)_{n\geqslant 1} $没有收敛子列. 但由$ \{ x : \norm{x}=1 \} $紧可知它是序列紧的, 即$ (x_n)_{n\geqslant 1} $存在收敛子列, 矛盾.\qed
+	
+	\subsection{连续线性映射}
 	
 	
 	
-\end{appendix}
+	
+	
+	
 	
 	
 	
