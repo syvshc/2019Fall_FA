@@ -18,7 +18,7 @@
      \end{Remark}
 
      \begin{Example}
-          $ E=\R $, 取 $ \tau=\Big\{ \bigcup\limits_{j\in\Z}(x_{j}, x_{j+1}), (x_{j})_{j\in\Z}\subset \R\cup\{ \pm\infty \} \Big\} $是一个拓扑, 这一拓扑称为 $ E $ 的\textbf{自然拓扑}\index{Z!自然拓扑}. 
+          $ E=\R $, 取 $ \tau=\Big\{ \bigcup\limits_{j\in\Z}(x_{j}: x_{j+1}), (x_{j})_{j\in\Z}\subset \R\cup\{ \pm\infty \} \Big\} $是一个拓扑, 这一拓扑称为 $ E $ 的\textbf{自然拓扑}\index{Z!自然拓扑}. 
      \end{Example}
 
      \begin{Definition}[度量空间]\label{def:度量空间}
@@ -263,7 +263,7 @@
           \[
                \forall \varepsilon>0\,\exists n_{0}\in\N\,(n,m\geqslant n_{0}\Rightarrow d(x_{m},x_{n}<\varepsilon),
           \]
-          则称 $ (x_{n})_{n\geqslant1} $ 是一个\textbf{Cauchy列}\index{C!Cauch列}
+          则称 $ (x_{n})_{n\geqslant1} $ 是一个\textbf{Cauchy列}\index{C!Cauchy列}
      \end{Definition}
      \begin{Example}
           在 \R 中,  $ (1/n)_{n\geqslant1} $ 是Cauchy列, 收敛到0; $ ((1+{1}/{n})^{n})_{n\geqslant1} $ 是Cauchy列, 收敛到\me;
@@ -377,8 +377,8 @@
           \begin{enumerate}[(1)]
                \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的开集 $ V $ , 有 $ f^{-1}(V) $ 是 $ E $ 中开集;
                \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的闭集 $ B $ , 有 $ f^{-1}(B) $ 是 $ E $ 中闭集;
-               \item 连续映射的符合是连续映射;
-               \item $ \tau $, $ \tau' $ 是 $ E $ 中拓扑,  $ \tau $, 是 $ \tau' $ 的强拓扑 $ \Longleftrightarrow $ $ \mathrm{id}_{E}:(E, \tau)\to(E, \tau') $ 连续. 
+               \item 连续映射的复合是连续映射;
+               \item $ \tau $, $ \tau' $ 是 $ E $ 中拓扑,  $ \tau $ 是 $ \tau' $ 的强拓扑 $ \Longleftrightarrow $ $ \mathrm{id}_{E}:(E, \tau)\to(E, \tau') $ 连续. 
           \end{enumerate}
      \end{Proposition}
      \begin{Definition}[开映射, 同胚]\label{def:开映射, 同胚}
