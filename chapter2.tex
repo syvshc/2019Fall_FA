@@ -1,0 +1,138 @@
+% !TeX root = main.tex
+
+\chapter{线性算子与线性泛函}
+
+\section{连续线性映射}
+
+	\begin{Definition}\index{X!线性算子}
+	设$ E, F $是$ \K $上的线性空间, 若映射$ u : E\to F $满足
+	\[
+	\forall \lambda\in\K\,\forall x,y\in E\,(u(\lambda x+y)=\lambda u(x)+u(y)),
+	\]
+	则称$ u : E\to F $是一个\textbf{线性映射}或\textbf{线性算子}, 并记$ \mathcal L(E,F) $是$ E $到$ F $线性算子的全体.
+	\end{Definition}
+	
+	特别地, 当$ E=F $时, 用$ \mathcal L(E) $记$ \mathcal{L}(E,E) $.
+	
+	\begin{Example}~
+	\begin{enumerate}[(1)]
+	\item $ \forall \lambda\in\K $, 定义
+	\[
+	M_\lambda : E\to E,\qquad x\mapsto\lambda x,
+	\]
+	则$ M_\lambda\in\mathcal L(E) $. 而对$ y\in E $, 定义
+	\[
+	T_y : E\to E,\qquad x\mapsto x+y,
+	\]
+	则$ T_y\notin\mathcal L(E) $.
+	
+	\item 设$ E=C[0,1] $, 对$ f\in C[0,1] $, 定义$ M_fg=fg $, 则$ M_f $是线性算子. 再取$ x\in[0,1] $, 定义$ \delta_x(f)=f(x) $, 则$ \delta_x $是线性算子, 再定义
+	\[
+	I(f)(x)=\int_0^xf(t)\diff t,
+	\]
+	则$ I $也是线性算子.
+	\end{enumerate}
+	\end{Example}
+	
+	\begin{Remark}
+	关于$ \mathcal L(E,F) $的一些注记:
+	\begin{enumerate}[(1)]
+	\item $ \mathcal L(E,F) $本身也是一个线性空间, 其上的线性运算可以定义为
+	\[
+	\lambda u : E\to F,\qquad x\mapsto\lambda u(x),\\
+	u+v : E\to F,\qquad x\mapsto u(x)+v(x),
+	\]
+	其中$ \lambda\in\K $, $ u, v\in\mathcal L(E,F) $.
+	
+	\item 对$ u\in\mathcal L(E,F) $, 定义其\textbf{核空间}\index{H!核空间}为
+	\[
+	\ker u=\{ x\in E : u(x)=0 \}.
+	\]
+	则$ \ker u $是$ E $的线性子空间, 且$ u $是单射当且仅当$ \ker u=\{0\} $.
+	\end{enumerate}
+	\end{Remark}
+	
+	\begin{Theorem}[连续性]\label{thm:线性算子连续性}
+	设$ E, F $是$ \K $上的两个赋范空间, 且$ u\in\mathcal L(E,F) $, 则下列命题等价:
+	\begin{enumerate}[(1)]
+	\item $ u $在$ E $上连续;
+	\item $ u $在$ E $上的某一点连续;
+	\item $ u $在原点连续;
+	\item $ \exists C\geqslant 0\,\forall x\in E\,(\norm{u(x)}\leqslant C\norm{x}) $.
+	\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+	(1) $ \Rightarrow $ (2) : 显然.
+	
+	(2) $ \Rightarrow $ (3) : 设$ u $在$ x_0\in E $连续, 那么
+	\[
+	\forall\varepsilon>0\,\exists r>0\,(x\in B(x_0,r)\Rightarrow\norm{u(x)-u(x_0)}<\varepsilon),
+	\]
+	则对$ \forall y\in B(0,r) $, 有
+	\[
+	\norm{u(y)-u(0)}=\norm{u(y)}=\norm{u(x_0+y)-u(x_0)}<\varepsilon,
+	\]
+	即$ u $在原点连续.
+	
+	(3) $ \Rightarrow $ (4) : 由$ u $在原点连续可知
+	\[
+	\exists r_0>0\,(y\in\overline{B(0,r)}\Rightarrow\norm{u(y)}<1).
+	\]
+	则$ \forall x\in E $, 由
+	\[
+	\norm{u(x)}=\norm{u\left(\dfrac{xr}{\norm{x}}\right)}\frac{\norm{x}}{r}<\frac{\norm{x}}{r},
+	\]
+	取$ C=\frac{1}{r} $即可.
+	
+	(4) $ \Rightarrow $ (1) : 由$ u\in\mathcal{L}(E,F) $, 有
+	\[
+	\forall x,y\in E\,(\norm{u(x)-u(y)}\leqslant C\norm{x-y}),
+	\]
+	即$ u $是Lipschitz的, 从而$ u $在$ E $连续.\qed
+	\end{Proof}
+	
+	\begin{Remark}
+	上述定理表明在赋范空间上, 连续线性映射都是Lipschitz的, 从而连续线性映射一定一致连续.
+	\end{Remark}
+	
+	\begin{Definition}[算子范数]\index{Y!有界线性算子}
+	设$ E,F $都是赋范空间, $ u\in\mathcal{L}(E,F) $. 若
+	\[
+	\forall C\geqslant 0\,\forall x\in E\,(\norm{u(x)}\leqslant C\norm{x}),
+	\]
+	则称$ u $是\textbf{有界}的. 再令
+	\[
+	\norm{u}=\sup_{\norm{x}\ne 0}\frac{\norm{u(x)}}{\norm{x}}
+	\]
+	称$ \norm{u} $是算子$ u $的\textbf{范数}. 并记$ \mathcal B(E,F) $是$ E $到$ F $的有界线性算子的全体, 且类似地记$ \mathcal{B}(E)=\mathcal{B}(E,E) $.
+	\end{Definition}
+	
+	\begin{Example}
+	设$ E=\C^n $, 则$ \mathcal{L}(E)=\mathbb{M}_n(\C)=\mathcal{B}(E) $, 其中$ \mathbb{M}_n(\C) $是$ n $阶复矩阵的全体. 对$ A\in\mathbb{M}_n(\C) $, 定义
+	\[
+	\norm{A}=\sup_{\norm{x}\ne 0}\frac{\norm{Ax}}{\norm{x}}
+	\]
+	为$ A $的范数. 则由
+	\[
+	\norm{A}^2=\sup_{\norm{x}\ne 0}\frac{\norm{Ax}^2}{\norm{x}^2}=\sup_{\norm{x}\ne 0}\frac{\lrangle{Ax,Ax}}{\norm{x}^2}=\sup_{\norm{x}\ne 0}\frac{\lrangle{A^\ast Ax,x}}{\norm{x}^2}=\sup\{\abs{\lambda}\},
+	\]
+	可知$ A $是有界线性算子. 其中$ \lambda $是$ A^\ast A $的特征值.
+	\end{Example}
+	
+	\begin{Remark}~
+	\begin{enumerate}[(1)]
+	\item $ \mathcal B(E,F) $是$ \mathcal L(E,F) $的线性子空间, 这由
+	\[
+	\norm{\lambda u}=\abs{\lambda}\norm{u},\qquad \norm{u+v}\leqslant\norm{u}+\norm{v}
+	\]
+	可知. 且$ (\mathcal{B}(E,F),\norm{\cdot}) $还是一个赋范空间. 由定理\ref{thm:线性算子连续性}可知$ u $连续等价于$ u $有界.
+	
+	\item $ u $的有界性实际上指$ \norm{u(x)} $在$ E $的有界集上有界. 实际上除非$ u\equiv 0 $, 否则$ \norm{u(x)} $不可能在全空间上有界.
+	
+	\item 范数$ \norm{u} $也可以等价地定义为
+	\[
+	\norm{u}:=\sup_{\norm{x}\ne 0}\frac{\norm{u(x)}}{\norm{x}}=\sup_{\norm{x}\leqslant 1}\norm{u(x)}=\sup_{\norm{x}=1}\norm{u(x)},
+	\]
+	且$ \norm{u} $就是定义中满足条件的$ C $中最小的.
+	\end{enumerate}
+	\end{Remark}
