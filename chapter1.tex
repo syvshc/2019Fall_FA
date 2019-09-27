@@ -82,33 +82,33 @@
           \begin{enumerate}[(1)]
                \item 若子集 $ V\subset E $ 满足
                \[
-                    \exists U\in \tau(x\in U\wedge U\subset V)
+                    \exists U\in \tau(x\in U\land U\subset V)
                \]
-               则称 $ V $ 是 $ x $ 的一个\textbf{邻域}\index{L!邻域}, 并记 $ \CN{x} $ 为全体 $ x $ 的邻域的集合, 称为 $ x $ 的\textbf{邻域系};
-               \item 若 $ \CN{x} $ 的子集族 $ \CB{x} $ 满足
+               则称 $ V $ 是 $ x $ 的一个\textbf{邻域}\index{L!邻域}, 并记 $ \CN(x) $ 为全体 $ x $ 的邻域的集合, 称为 $ x $ 的\textbf{邻域系};
+               \item 若 $ \CN(x) $ 的子集族 $ \CB(x) $ 满足
                \[
-                    \forall V\in \CN{x}\exists U\in \CB{x}(U\subset V)
+                    \forall V\in \CN(x)\exists U\in \CB(x)(U\subset V)
                \]  
-               则称 $ \CB{x} $ 是 $ x $的\textbf{邻域基}\index{L!邻域基}. 
+               则称 $ \CB(x) $ 是 $ x $的\textbf{邻域基}\index{L!邻域基}. 
           \end{enumerate}
      \end{Definition}
      \begin{Remark}
-          $ \CN{x} $是 $ x $  的邻域基; 包含 $ x $ 的所有开集的集合是 $ x $ 的邻域基. 
+          $ \CN(x) $是 $ x $  的邻域基; 包含 $ x $ 的所有开集的集合是 $ x $ 的邻域基. 
      \end{Remark}
      \begin{Example}
           设 $ (E, d) $ 是一个度量空间, $ x\in E $, 则 
           \[
-               \CB{x}=\left\{ B(x,\frac{1}{n}): n\geqslant 1 \right\} 
+               \CB(x)=\left\{ B(x,\frac{1}{n}): n\geqslant 1 \right\} 
           \]
           是 $ x $ 的邻域基. (可用来描述极限)
      \end{Example}
      \begin{Definition}[粘着集]
           设 $ (E, \tau) $ 是一个拓扑空间, $ A\subset E $ 
           \begin{enumerate}[(1)]
-               \item 设 $ x\in E $ , 若 $ \forall V\in \CN{x}((V\cap A)\sm \{ x \}\neq\varnothing) $, 则称 $ x $ 是 $ A $ 的\textbf{凝聚点}\index{N!凝聚点};
+               \item 设 $ x\in E $ , 若 $ \forall V\in \CN(x)((V\cap A)\sm \{ x \}\neq\varnothing) $, 则称 $ x $ 是 $ A $ 的\textbf{凝聚点}\index{N!凝聚点};
                \item 若 $ x\in A $ 或 $ A $  的凝聚点, 则称 $ x $ 是 $ A $ 的\textbf{粘着点}, 记 $ A $ 的粘着点的全体为 $ \baro{A} $ , 称为 $ A $ 的\textbf{粘着集}\index{N!粘着集}, 也即
                \[
-                    x\in \baro{A}\Leftrightarrow \forall V\in \CN{x}(V\cap A\neq\varnothing).    
+                    x\in \baro{A}\Leftrightarrow \forall V\in \CN(x)(V\cap A\neq\varnothing).    
                \]
           \end{enumerate}
      \end{Definition}
@@ -122,7 +122,7 @@
           有利数集 $ \Q $ 与无理数集 $ \mathbb{J} $ 都在 \R 中稠密. 
      \end{Example}
      \begin{Definition}[内部]\label{def:内部}
-          设 $ A\subset E $, 若 $ A\in\CN{x} $ , 则称 $ x $ 是 $ A $ 的\textbf{内点},  $ A $ 的内点的全体称为 $ A $ 的\textbf{内部}\index{N!内部}, 记作 $ \mathring{A} $ 或 $ \mathrm{Int}(A) $.  
+          设 $ A\subset E $, 若 $ A\in\CN(x) $ , 则称 $ x $ 是 $ A $ 的\textbf{内点},  $ A $ 的内点的全体称为 $ A $ 的\textbf{内部}\index{N!内部}, 记作 $ \mathring{A} $ 或 $ \mathrm{Int}(A) $.  
      \end{Definition}
      \begin{Definition}[边界]\label{def:边界}
           设 $ A\subset E $, 称 $ \partial A = \baro{A}\sm\mathring{A} $ 是 $ A $ 的\textbf{边界}\index{B!边界}.
@@ -184,7 +184,7 @@
      \begin{Definition}[Hausdorff空间]\label{def:Hausdorff空间}
           设 $ (E, \tau) $ 是拓扑空间, 若 
           \[
-               \forall x, y\in E(x\neq y)\exists U\in \CN{x}\exists V\in\CN{x} (U\cap V)=\varnothing
+               \forall x, y\in E(x\neq y)\exists U\in \CN(x)\exists V\in\CN(x) (U\cap V)=\varnothing
           \]
           则称 $ (E, \tau) $ 是\textbf{Hausdorff空间}\index{H!Hausdorff空间}或\textbf{分离空间}. 
      \end{Definition}
@@ -195,7 +195,7 @@
           由 Hausdorff空间的定义可以知道
           \begin{enumerate}[(1)]
                \item  $ E $ 是 Hausdorff空间 $ \Longleftrightarrow $ $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$
-               \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $\bigcap \CN{x}=\{x\}$;
+               \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $\bigcap \CN(x)=\{x\}$;
                \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $ \forall F\subset E $, $ F $ 也是Hausdorff空间. 
           \end{enumerate}
      \end{Proposition}
@@ -205,7 +205,7 @@
      \begin{Definition}[极限]\label{def:极限}
           设 $ (E, \tau) $ 是拓扑空间, $ (x_{n})_{n\geqslant 1} $ 是 $ E $ 中的序列,  $ x\in E $, 若
           \[
-               \forall V\in\CN{x}\exists n_{0}\in\N(n\geqslant n_{0}\Rightarrow x_{n}\in V)
+               \forall V\in\CN(x)\exists n_{0}\in\N(n\geqslant n_{0}\Rightarrow x_{n}\in V)
           \]
           则称 $ (x_{n})_{n\geqslant1} $ \textbf{收敛}于 $ x $, 并称 $ x $ 是序列 $ (x_{n})_{n\geqslant1} $ 的极限, 记作
           \[
@@ -216,14 +216,14 @@
      \begin{Remark}
           对定义\ref{def:极限}进行几点说明:
           \begin{enumerate}[(1)]
-               \item 上述定义中的 $ \CN{x} $ 可换成 $ \CB{x} $ ;
+               \item 上述定义中的 $ \CN(x) $ 可换成 $ \CB{x} $ ;
                \item \R 中序列的极限至多只有一个, 例如 $\lim\limits_{n\to\infty}\frac{1}{n}=0 $, $ \lim\limits_{n\to\infty} n=\infty$(无极限), 取 $ (x_{n})_{n\geqslant1}=\left\{ 1, -1, 1,  -1\ldots \right\} $ 也无极限;
                \item\label{item:Hausdorff空间上极限唯一性} 一般地, Hausdorff空间中的序列至多只有一个极限, 而平凡拓扑空间中的任意序列收敛到任意元素;
                \item 对度量空间 $ (E, d) $ , 有
                \[
                     \lim_{n\to \infty}x_{n}=x \Leftrightarrow \lim_{n\to\infty}d(x_{n}, x)=0, 
                \]
-               取邻域基 $ \CB{x}=\left\{ B(x, \frac{1}{n}): n\geqslant1 \right\} $即可.  
+               取邻域基 $ \CB(x)=\left\{ B(x, \frac{1}{n}): n\geqslant1 \right\} $即可.  
           \end{enumerate}
      \end{Remark}
      \begin{Proposition}
@@ -245,7 +245,7 @@
      \begin{Definition}[序列的粘着值]\label{def:序列的粘着值}
           设 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中的序列,  $ x\in E $, 若
           \[
-               \forall V\in\CN{x}\,\forall n_{0}\in\N\,\exists n\geqslant n_{0}(x_{n}\in V),
+               \forall V\in\CN(x)\,\forall n_{0}\in\N\,\exists n\geqslant n_{0}(x_{n}\in V),
           \]
           则称 $ x $ 是序列 $ (x_{n})_{n\geqslant1} $ 的\textbf{粘着值}\index{N!粘着值}.  
      \end{Definition}
@@ -361,11 +361,11 @@
      \begin{Definition}[连续]\label{def:连续}
           设 $ E $, $ F $ 为拓扑空间,  $ f:E\to F, x\in E $, 若
           \[
-               \forall V\in\CN{f(x)}\,\exists U\in\CN{x}\,(f(U)\subset V),
+               \forall V\in\CN(f(x))\,\exists U\in\CN(x)\,(f(U)\subset V),
           \]
           则称 $ f $ 在 $ x $ 处\textbf{连续}\index{L!连续}, 或等价地
           \[
-               \forall V\in\CN{f(x)}\,(f^{-1}(V)\in\CN{x})
+               \forall V\in\CN(f(x))\,(f^{-1}(V)\in\CN(x))
           \]
           若 $ f $ 在 $ E $ 的每一点都连续, 则称 $ f $ 在 $ E $ 上连续. 
      \end{Definition}
@@ -429,11 +429,11 @@
 
           对任意 $ \varepsilon>0 $ , 因为 $ f $ 一致连续, 则 $ d(x, y)<\eta/3 $ 时, $ \delta(f(x), f(y))<\varepsilon $, 而 
           \[
-               \forall x', y'\in E\,\exists  (x_{n})_{n\geqslant1}\subset E_{0} \,\exists  (y_{n})_{n\geqslant1}\subset E_{0} \,(\lim_{n\to\infty}x_{n}=x'\wedge \lim_{n\to\infty}y_{n}=y' ), 
+               \forall x', y'\in E\,\exists  (x_{n})_{n\geqslant1}\subset E_{0} \,\exists  (y_{n})_{n\geqslant1}\subset E_{0} \,(\lim_{n\to\infty}x_{n}=x'\land \lim_{n\to\infty}y_{n}=y' ), 
           \]  
           也即 
           \[
-               \exists n_{0}\in\N\,\forall n\geqslant n_{0}\,(d(x_{n}, x')<\frac{\eta}{3}\wedge d(y_{n}, y')<\frac{\eta}{3}), 
+               \exists n_{0}\in\N\,\forall n\geqslant n_{0}\,(d(x_{n}, x')<\frac{\eta}{3}\land d(y_{n}, y')<\frac{\eta}{3}), 
           \] 
           则当 $ d(x', y')<\eta/3 $ 时, 有
           \[
@@ -448,7 +448,7 @@
           \]
           即
           \[
-               \exists n_{1}\in\N\,\forall n\geqslant n_{1}\,(\delta(\tilde{f}(x_{n}), \tilde{f}(x'))<\varepsilon\wedge \delta(\tilde{f}(y_{n}), \tilde{f}(y'))<\varepsilon)
+               \exists n_{1}\in\N\,\forall n\geqslant n_{1}\,(\delta(\tilde{f}(x_{n}), \tilde{f}(x'))<\varepsilon\land \delta(\tilde{f}(y_{n}), \tilde{f}(y'))<\varepsilon)
           \]
           则
           \[
@@ -701,7 +701,7 @@
      \end{Proposition}
 
      \begin{Proof}
-          令 $ x\in F^{c} $ , 由 $ E $ 是 Hausdorff空间, 则对任意 $  y\in F $ , 存在 $ U_{y}\in\CN{x} $, $ V_{y}\in\CN{y} $ , 其中 $ U_{y} $, $ V_{y} $ 是开集, 使得 $ U_{y}\cap V_{y}=\varnothing $ , 则 $\{ V_{y}:y\in F \}$ 是 $ F $ 的开覆盖, 因为 $ F $ 是紧集, 所以存在 $ y_{1}, y_{2}, \dots, y_{n} $, 使得 $ \{ V_{y_{i}}: i=1, 2, \dots, n \} $ 是 $ F $ 的开覆盖, 令 $ U=\bigcap_{i=1}^{n}U_{y_{i}} $ 是开集 (同时也是 $ x $ 的开邻域), 而 $ U\cap V_{y_{i}}=\varnothing\,(i=1, 2, \dots, n) $ , 从而 $ U\cap F=\varnothing $. 因此 $ F^{c} $ 是开集, 即 $ F $ 是闭集.\qed
+          令 $ x\in F^{c} $ , 由 $ E $ 是 Hausdorff空间, 则对任意 $  y\in F $ , 存在 $ U_{y}\in\CN(x) $, $ V_{y}\in\CN(y) $ , 其中 $ U_{y} $, $ V_{y} $ 是开集, 使得 $ U_{y}\cap V_{y}=\varnothing $ , 则 $\{ V_{y}:y\in F \}$ 是 $ F $ 的开覆盖, 因为 $ F $ 是紧集, 所以存在 $ y_{1}, y_{2}, \dots, y_{n} $, 使得 $ \{ V_{y_{i}}: i=1, 2, \dots, n \} $ 是 $ F $ 的开覆盖, 令 $ U=\bigcap_{i=1}^{n}U_{y_{i}} $ 是开集 (同时也是 $ x $ 的开邻域), 而 $ U\cap V_{y_{i}}=\varnothing\,(i=1, 2, \dots, n) $ , 从而 $ U\cap F=\varnothing $. 因此 $ F^{c} $ 是开集, 即 $ F $ 是闭集.\qed
      \end{Proof}
 
      \begin{Proposition}
@@ -732,7 +732,7 @@
      \end{Proposition}
 
      \begin{Proof}
-          任取 $ x\in E $, 取 $ V $ 是 $ x $ 的开邻域, 则 $ \baro{V} $ 闭, 因为 $ E $ 是紧的 Hausdorff空间, 从而 $ \baro{V} $ 是 $ x $ 的一个紧邻域. 往证 $ \forall U\in\CN{x} $ 是开邻域, $ \exists V\in\CN{x} $ 是开邻域且 $ \baro{V}\subset U $. 
+          任取 $ x\in E $, 取 $ V $ 是 $ x $ 的开邻域, 则 $ \baro{V} $ 闭, 因为 $ E $ 是紧的 Hausdorff空间, 从而 $ \baro{V} $ 是 $ x $ 的一个紧邻域. 往证 $ \forall U\in\CN(x) $ 是开邻域, $ \exists V\in\CN(x) $ 是开邻域且 $ \baro{V}\subset U $. 
           
           注意到 $ U $ 是开集, 则 $ U^{c} $ 为闭集, 同时可知 $ U^{c} $ 为紧集. $ \forall y\in U^{c} $, 存在  $ U_{y}, V_{y} $分别为 $ y, x $ 的开邻域, 使得 $ U_{y}\cap V_{y}=\varnothing $. 因为 $ U^{c} $ 紧, 则存在 $ y_{1}, y_{2}, \dots, y_{n} $, 使得 $ U^{c}\subset \bigcup_{i=1}^{n}U_{y_{i}} $, 再令 $ V=\bigcap_{i=1}^{n}V_{y_{j}} $, 则有
           \[
@@ -992,7 +992,26 @@
 	\end{Proposition}
 	\begin{Corollary}
 	设$ (E,d) $是度量空间, $ \forall A\subset E $, 映射$ x\mapsto d(x,A) $是连续的.
-	\end{Corollary}
+     \end{Corollary}
+     
+     \begin{Theorem}
+          设 $ E_{1} $ 和 $ E_{2} $是两个紧的拓扑空间, 则乘积拓扑空间 $ E=E_{1}\times E_{2} $ 也是紧的.
+     \end{Theorem}
+     \begin{Proof}
+          设 $ (O_{i})_{i\in\alpha} $ 是 $ E $ 上的开覆盖, 则
+          \[
+               \forall x=(x_{1}, x_{2})\in E\,\exists i_{x}\in\alpha\,(x\in O_{i_{x}}).
+          \]
+          由乘积拓扑的定义可以知道存在 $ V_{x} $, $ W_{x} $ 分别是 $ x_{1} $和 $ x_{2} $ 关于对应拓扑上的开邻域, 使得 $ V_{x}\times W_{x}\subset O_{i_{x}} $. 固定 $ x_{2}\in E_{2} $, 设 $ F=E_{1}\times \{ x_{2} \} $, 则 $ (V_{x})_{x\in F} $ 是 $ E_{1} $ 上的一个开覆盖. 由于 $ E_{1} $ 紧, 则存在有限集 $ J_{x_{2}}\in \fin F $, 使得 $ \bigcup_{x\in J_{x_{2}}}V_{x}=E_{1} $. 接下来我们令
+          \[
+               A_{x_{2}}=\bigcap_{x\in J_{x_{2}}}W_{x},
+          \]
+          则 $ A_{x_{2}} $ 是含有 $ x_{2} $ 的开集. 当 $ x_{2} $ 在 $ E_{2} $ 中变动时, 可以发现 $ (A_{x_{2}})_{x_{2}\in E_{2}} $ 也是 $ E_{2} $ 的开覆盖, 同样由于 $ E_{2} $ 紧, 则存在一个有限集 $ K\in\fin E_{2} $, 使得 $ \bigcup_{x_{2}\in K}A_{x_{2}}=E_{2} $. 由此可得
+          \[
+               E=\bigcup_{x\in J} V_{x}\times W_{x},\qquad J=\bigcup_{x_{2}\in K}J_{x_{2}}.
+          \]
+          事实上由以上讨论可以知道, 当我们任取一个 $ a=(a_{1}, a_{2})\in E $, 必存在某个 $ x_{2}\in K $, 使得 $ a_{2}\in A_{x_{2}} $, 那么存在 $ x\in J_{x_{2}} $, 使得 $ a_{1}\in V_{x} $; 这里确定的 $ x\in J $, 且 $ a\in V_{x}\times W_{x} $, 由此可见,  $ E $ 被 $ (O_{i_{x}})_{i_{x}\in J} $ 覆盖, 因为 $ J $ 是有限集, 则 $ E $ 是紧的.\qed
+     \end{Proof}
 	
 \section{赋范线性空间}
 	
@@ -1195,6 +1214,19 @@
 	\]
 	即$ (x_n)_{n\geqslant 1} $没有收敛子列. 但由$ \{ x : \norm{x}=1 \} $紧可知它是序列紧的, 即$ (x_n)_{n\geqslant 1} $存在收敛子列, 矛盾.\qed
 	
-	\subsection{一个Banach空间的例子—— $ L^p $空间}
+     \subsection{一个Banach空间的例子—— $ L^p $空间}
+     
+     \begin{Definition}[$ \ell^{p} $空间]\label{def:lp空间}~
+
+          当 $ 0<p<\infty $ 时, 定义
+          \[
+               \ell^{p}=\bigg\{ x=(x_{n})_{n\geqslant1}: \norm{x}_{p}=\bigg( \sum\limits_{n\geqslant1}\abs{x_{n}}^{p} \bigg)^{1/p}<\infty, x_{n}\in\K \bigg\}
+          \]
+           当 $ p=\infty $ 时, 定义
+           \[
+                \ell^{\infty}=\{ x=(x_{n})_{n\geqslant1}:\norm{x}_{\infty}=\sup_{n\geqslant1}\abs{x_{n}}<\infty, x_{n}\in\K \}
+           \]
+           称其为\textbf{$ \ell^{p} $空间}\index{L!$ \ell^{p} $空间}, 再取 $ c_{0} $ 表示所有极限为 $ 0 $ 的数列构成的集合, 显然有 $ c_{0}\subset\ell^{\infty} $. 
+     \end{Definition}
 	
 	
