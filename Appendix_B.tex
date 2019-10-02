@@ -1,0 +1,165 @@
+% !TeX root = main.tex
+% This is the Appendix B.
+
+\chapter{一些习题课上讲过的题目}
+
+\section{第3周习题课(2019年9月16日)}
+
+	\textbf{习题2.2}\ [习题课]\ \ 证明度量空间$ (E,d) $是完备的充分必要条件是: 对$ E $中任一序列$ (x_n)_{n\geqslant 1} $, 若对$ \forall n\geqslant 1 $, 有$ d(x_n,x_{n+1})<2^{-n} $, 则序列$ (x_n)_{n\geqslant 1} $收敛.
+	\begin{Proof}
+	\textsl{必要性}. 由题设可知对$ \forall n,p\geqslant 1 $, 有
+	\[
+	d(x_n,x_{n+p})\leqslant\sum_{k=n}^{n+p-1}d(x_k,x_{k+1})<\sum_{k=n}^{n+p-1}2^{-k}<\sum_{k=n}^\infty 2^{-k}=2^{1-n}
+	\]
+	可知$ n, p\to\infty $时上式趋于0, 从而$ (x_n)_{n\geqslant 1} $是Cauchy列. 由度量空间完备可知$ (x_n)_{n\geqslant 1} $收敛.
+	
+	\textsl{充分性}. 设$ (y_n)_{n\geqslant 1} $是$ (E,d) $上的Cauchy列, 则可取子列$ (y_{n_k})_{k\geqslant 1} $使得$ \forall k\geqslant 1 $有$ d(y_{n_k},y_{n_{k+1}})<2^{-k} $. 由题设可知$ (y_{n_k})_{k\geqslant 1} $收敛, 那么$ (y_n)_{n\geqslant 1} $也收敛.\qed
+	\end{Proof}
+	
+	\textbf{习题2.3}\ [作业]\ \ 设$ (E,d) $是度量空间, $ (x_n)_{n\geqslant 1} $是$ E $中的Cauchy列, 并有$ A\subset E $. 假设$ A $的闭包$ \bar{A} $在$ E $中完备且有$ \lim\limits_{n\to\infty}d(x_n,A)=0 $. 证明: $ (x_n)_{n\geqslant 1} $在$ E $中收敛.
+	\begin{Proof}
+	由$ d(x,A) $的定义与$ \lim\limits_{n\to\infty}d(x_n,A)=0 $可知
+	\[
+	\forall n\geqslant 1\,\exists y_n\in A\,\left(d(x_n,y_n)<d(x_n,A)+\frac{1}{n}\right).
+	\]
+	则$ \forall n,m\geqslant 1 $, 有
+	\begin{align*}
+	d(y_n,y_m)&\leqslant d(y_m,x_n)+d(x_n,x_m)+d(x_m,y_m)\\
+	&d(x_n,A)+\frac{1}{n}+d(x_n,x_m)+d(x_m,A)+\frac{1}{m}\to 0\qquad (n,m\to\infty)
+	\end{align*}
+	于是$ (y_n)_{n\geqslant 1}\subset A\subset\bar{A} $是Cauchy列. 由$ \bar{A} $完备可知$ (y_n)_{n\geqslant 1} $收敛于某个$ y_0\in\bar{A} $. 从而
+	\[
+	d(x_n,y_0)\leqslant d(x_n,y_n)+d(y_n,y_0)\leqslant\frac{1}{n}+d(x_n,A)+d(y_n,y_0)\to 0\qquad(n\to\infty)
+	\]
+	于是$ (x_n)_{n\geqslant 1} $在$ E $中收敛.\qed
+	\end{Proof}
+	
+	\textbf{习题2.4}\ [作业]\ \ 设$ (E,d) $是度量空间, $ \alpha>0 $. 设$ A\subset E $满足$ \forall x,y\in A $且$ x\ne y $必有$ d(x,y)\geqslant\alpha $. 证明: $ A $是完备的.
+	\begin{Proof}
+	设$ (x_n)_{n\geqslant 1}\subset A $是Cauchy列, 则
+	\[
+	\forall 0<\varepsilon<\alpha\,\exists n_0\in\N\,(n,m\geqslant n_0\Rightarrow d(x_n,x_m)<\varepsilon<\alpha),
+	\]
+	从而由题设可知只能$ x_n=x_m $. 即$ \forall n\geqslant n_0\,(x_n=x_{n_0}) $. 从而$ (x_n)_{n\geqslant 1} $收敛且极限为$ x_{n_0} $, 故$ A $完备.\qed
+	\end{Proof}
+	
+	\textbf{习题2.6}\ [习题课]\ \ 设$ (E,d) $是度量空间, $ (x_n)_{n\geqslant 1} $是$ E $中发散的Cauchy列. 证明:
+	
+	(1) 任取$ x\in E $, 序列$ (d(x,x_n))_{n\geqslant 1} $收敛到一个正数, 记作$ g(x) $;
+	
+	(2) 函数$ x\mapsto1/g(x) $是一个从$ E $到$ \R $的连续函数;
+	
+	(3) 上面定义的函数无界.
+	\begin{Proof}
+	(1) $ \forall n,m\geqslant 1 $, 有
+	\[
+	\abs{d(x,x_n)-d(x,x_m)}\leqslant d(x_n,x_m)\to 0\qquad (n,m\to\infty)
+	\]
+	从而$ (d(x,x_n))_{n\geqslant 1} $是$ \R $上的Cauchy列. 于是它收敛, 并设其极限是$ \lambda $, 则有$ \lambda\geqslant 0 $. 若$ \lambda=0 $, 则有$ x_n\to x $, 这与$ (x_n)_{n\geqslant 1} $发散矛盾, 从而只能$ \lambda>0 $.
+	
+	(2) 注意到函数$ t\mapsto 1/t $是连续的, 只需证明$ g $是连续函数. 对$ \forall x,y\in E $, 由
+	\[
+	\abs{g(x)-g(y)}=\abs{\lim\limits_{n\to\infty}d(x,x_n)-\lim\limits_{n\to\infty}d(y,x_n)}=\lim\limits_{n\to\infty}\abs{d(x,x_n)-d(y,x_n)}\leqslant d(x,y)
+	\]
+	可知$ g $是一致连续的, 从而$ g $连续.
+	
+	(3) 因为$ (x_n)_{n\geqslant 1} $是Cauchy列, 则
+	\[
+	\forall\varepsilon>0\,\exists n_0\in\N\,(n\geqslant n_0\Rightarrow d(x_m,x_{n_0})<\varepsilon)
+	\]
+	则$ \lim\limits_{n\to\infty}d(x_n,x_{n_0})\leqslant\varepsilon $. 从而$ g(x_{n_0})\leqslant\varepsilon $, 于是$ 1/g(x_{n_0})\geqslant 1/\varepsilon $. 由$ \varepsilon $的任意性可知$ x\mapsto 1/g(x) $无界.\qed
+	\end{Proof}
+	
+	\textbf{习题2.10'}\ [习题课]\ \ 设$ (E,d) $是紧的度量空间, 在压缩映照定理中若将映射$ f $满足的条件减弱到
+	\[
+	\forall x,y\in E\,,x\ne y\,(d(f(x),f(y))<d(x,y))
+	\]
+	则$ f $仍然存在唯一不动点.
+	\begin{Proof}
+	记$ g(x)=d(x,f(x)) $, 由$ f $连续且$ d $连续可知$ g $也是连续的. 因为$ E $是紧的, 故$ g(E) $也是紧的, 从而$ g(E) $能取到最小值$ \lambda $. 反设$ \lambda>0 $, 则$ \exists x_0\in E\,(d(x_0,f(x_0)))=\lambda $, 那么
+	\[
+	d(f(x_0),f^2(x_0))<d(x_0,f(x_0))=\lambda.
+	\]
+	这与$ \lambda $是$ g $的最小值矛盾. 从而只能$ \lambda=0 $, 此时$ x_0 $即为$ f $的不动点.
+	
+	再说明唯一性. 若$ x_0\ne y_0 $都是$ f $的不动点, 由
+	\[
+	d(f(x_0),f(y_0))=d(x_0,y_0)
+	\]
+	矛盾.\qed
+	\end{Proof}
+	
+	\textbf{习题2.11}\ [习题课]\ \ 设$ (E,d) $是一个完备的度量空间, $ f $是其上的映射, 且满足$ f^n $是压缩映射(这里$ f^n $表示$ f $的$ n $次复合). 证明: $ f $有唯一的不动点, 并给出例子说明$ f $可以不连续.
+	\begin{Proof}
+	因$ f^n $是压缩映射, 由压缩映照原理可知$ f^n $有唯一的不动点$ x_0 $, 也即$ f^n(x_0)=x_0 $, 那么
+	\[
+	f^n(f(x_0))=f^{n+1}(x_0)=f(f^n(x_0))=f(x_0),
+	\]
+	从而$ f(x_0) $也是$ f^n $的不动点. 由$ f^n $不动点的唯一性可知只能$ x_0=f(x_0) $, 即$ x_0 $是$ f $的不动点.
+	
+	再说明唯一性. 若$ x_0\ne y_0 $都是$ f $的不动点, 则$ f^n(y_0)=y_0 $, 即$ y_0 $也是$ f^n $的不动点, 从而$ x_0=y_0 $.
+	
+	取$ f=1_\Q $, 那么注意到$ f^2\equiv 1 $是压缩映射, 但$ f $并不连续.\qed
+	\end{Proof}
+	
+	\textbf{习题2.12}\ [习题课]\ \ 记区间$ I=(0,\infty) $上的自然拓扑为$ \tau $.
+	
+	(1) 证明$ \tau $可以被以下完备的距离$ d $诱导:
+	\[
+	d(x,y)=\abs{\log x-\log y};
+	\]
+	
+	(2) 设函数$ f : I\to I $一次连续可微, 且满足对某个$ \lambda<1 $, 任取$ x\in I $都有$ x\abs{f'(x)}\leqslant\lambda $. 证明$ f $在$ I $上存在唯一的不动点.
+	\begin{Proof}
+	(1) $ d $是距离是显然的, 下证它完备: 任取$ (I,d) $中的Cauchy列$ (x_n)_{n\geqslant 1} $, 那么
+	\[
+	\forall\varepsilon>0\,\exists n_0\in\N\,(n,m\geqslant n_0\Rightarrow d(x_n,x_m)=\abs{\log{x_n}-\log{x_m}<\varepsilon})
+	\]
+	则$ (\log x_n)_{n\geqslant 1} $是$ \R $中的Cauchy列, 从而存在$ z\in\R $使得
+	\[
+	\lim_{n\to\infty}\abs{\log x_n-z}=0,
+	\]
+	也即$ \lim\limits_{n\to\infty}\abs{x_n-\exp z}=0 $, 从而$ (x_n)_{n\geqslant 1} $收敛到$ \exp z $, 于是$ (I,d) $完备.
+	
+	再说明$ \tau $可以被$ d $诱导. 记$ d $诱导的拓扑为$ \tau_d $, 则$ \forall r>0,x\in I $, 考虑$ (I,d) $中的球$ B_0(x,r)=\{ y : d(y,x)<r \} $. 而
+	\[
+	d(y,x)<r\Longleftrightarrow\abs{\log y-\log x}<r\Longleftrightarrow y\in(x\exp (-r),x\exp r),
+	\]
+	于是$ \tau_d\subset \tau $. 而对$ I $中任意开区间$ (a,b) $, 设$ x=\sqrt{ab} $且$ r=\frac{1}{2}\log\frac{b}{a} $, 那么$ (a,b)=(x\exp(-r),x\exp r) $. 于是$ \tau\subset\tau_d $. 这说明$ \tau=\tau_d $.
+	
+	(2) 由Cauchy中值定理可知$ \forall x,y\in I $, 不妨$ x<y $, 存在$ \xi\in(x,y) $使得
+	\[
+	\abs{\frac{\log f(x)-\log f(y)}{x-y}}=\abs{\frac{f'(\xi)/f(\xi)}{1/\xi}}\leqslant\lambda.
+	\]
+	故$ f $是压缩映射, 故存在唯一不动点.\qed
+	\end{Proof}
+	\begin{Remark}
+	(2) 有另证: 由题设可知
+	\[
+	\pm\frac{f'(t)}{f(t)}\leqslant\frac{\lambda}{t},\qquad t\in I,
+	\]
+	两侧同时在$ [x,y] $上积分得
+	\[
+	\pm(\log f(y)-\log f(x))\leqslant\lambda(\log y-\log x),
+	\]
+	从而$ \abs{\log f(y)-\log f(x)}\leqslant\lambda\abs{\log y-\log x} $. 因此$ f : I\to I $是完备度量空间$ (I,d) $上的压缩映射. 因此由压缩映照原理可知$ f $在$ I $上存在唯一不动点.
+	
+	并且注意到$ I $上的Euclid距离是不完备的, 尽管$ d $与Euclid距离诱导出的拓扑是相同的, 但$ d $却是完备的. 这说明完备性并不是一个拓扑概念, 它跟空间上赋予的度量有关.
+	\end{Remark}
+	
+	\textbf{习题2.15}\ [习题课]\ \ 设$ (E,d) $是完备度量空间, $ f $和$ g $是$ E $上两个可交换的压缩映射(即$ fg=gf $). 证明$ f $和$ g $由唯一的共同不动点. 并举出反例说明当可交换条件不满足时结论不成立.
+	\begin{Proof}
+	设$ f $的不动点是$ x_0 $, 即$ x_0=f(x_0) $. 那么
+	\[
+	g(x_0)=g(f(x_0))=f(g(x_0)),
+	\]
+	即$ g(x_0) $也是$ f $的不动点, 从而$ g(x_0)=x_0 $, $ x_0 $是$ g $的不动点. 由对称性可证另一侧.
+	
+	若去掉可交换的条件, 取$ f\equiv\frac{1}{4} $而$ g\equiv\frac{3}{4} $即可. 此时注意到
+	\[
+	f(g(x))=\frac{1}{4},\qquad g(f(x))=\frac{3}{4},
+	\]
+	也即$ f $与$ g $的不动点分别是$ \frac{1}{4} $与$ \frac{3}{4} $.\qed
+	\end{Proof}
+	
+\section{第4周习题课(2019年9月23日)}
