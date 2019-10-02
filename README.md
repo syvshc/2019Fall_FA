@@ -10,14 +10,14 @@
 3. 使用`\newcommand\me{\mathrm{e}}`来输入自然底数e;
 4. 使用`\newcommand\imag{\mathrm{i}}`来输入虚数i;
 5. 使用`\C`, `\R`, `\J`, `\Q`, `\Z`, `\N`, `\K`来输入复数域, 实数域, 无理数集, 有理数域, 整数集, 自然数集, "实数域或复数域";
-6. 使用`\CN`, `\CB`来输入`\mathcal{N}`和`\mathcal{B}`,该命令为带一个必选参数的命令;
+6. 使用`\CN`, `\CB`, `\CL`来输入`\mathcal{N}`, `\mathcal{B}`, `\mathcal{L}` ;
 7. 逻辑表达式的语句之间用 `\,` 分隔, 如: `\forall x>0\,\exists n\in\N\,(……)`;
 8. 在行内使用`\tfrac`或`\`来输入分数, 在行间使用`\dfrac`或`\frac`来输入分数;
 9. 行内行间统一使用`\newcommand{\dint}{\displaystyle\int}`来输入积分式;
 10. 使用`\diff`来输入微分算子d;
 11. 对于定理定义中的关键词用`\textbf{文本}`的形式强调, 用`\index{大写首字母!名称}`来建立索引;
 12. 使用`\ldots`进行罗列, 如果两测为二元运算符, 则使用`\cdots`;
-13. 使用 `\CN` 和 `\CB` 表示 `\mathcal{N}`和 `\mathcal{B}`;
+13. 使用 `\CN` ,  `\CB`, `\CL` 表示 `\mathcal{N}`, `\mathcal{B}`, `\mathcal{L}`;
 14. `\label`以及定理环境的使用:
 
     |种类|标签|定理环境名称|
