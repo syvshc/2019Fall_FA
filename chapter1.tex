@@ -372,7 +372,7 @@
      \begin{Remark}
           若 $ E $ , $ F $ 为度量空间, 若任取序列 $ (x_{n})_{n\geqslant1} $ 收敛到 $ x $ , 都有 $ \lim\limits_{n\to\infty}f(x_{n})=f(x) $, 则称 $ f $ 在 $ x $ 处连续. 
      \end{Remark}
-     \begin{Proposition}
+     \begin{Proposition}\label{prop:连续映射的性质}
           连续映射具有以下性质:
           \begin{enumerate}[(1)]
                \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的开集 $ V $ , 有 $ f^{-1}(V) $ 是 $ E $ 中开集;
@@ -968,7 +968,7 @@
 	\end{enumerate}
 	\end{Corollary}
 	
-	\begin{Proposition}
+	\begin{Proposition}\label{prop:乘积拓扑空间的继承性质}
 	设$ (E_i)_{i\in\alpha} $是一族拓扑空间 $ E=\prod\limits_{i\in\alpha}E_i $是乘积拓扑空间.
 	\begin{enumerate}[(1)]
 	\item 若$ \forall i\in\alpha $, $ E_i $是Hausdorff空间, 则$ E $也是Hausdorff空间.
@@ -992,26 +992,7 @@
 	\end{Proposition}
 	\begin{Corollary}
 	设$ (E,d) $是度量空间, $ \forall A\subset E $, 映射$ x\mapsto d(x,A) $是连续的.
-     \end{Corollary}
-     
-     \begin{Theorem}
-          设 $ E_{1} $ 和 $ E_{2} $是两个紧的拓扑空间, 则乘积拓扑空间 $ E=E_{1}\times E_{2} $ 也是紧的.
-     \end{Theorem}
-     \begin{Proof}
-          设 $ (O_{i})_{i\in\alpha} $ 是 $ E $ 上的开覆盖, 则
-          \[
-               \forall x=(x_{1}, x_{2})\in E\,\exists i_{x}\in\alpha\,(x\in O_{i_{x}}).
-          \]
-          由乘积拓扑的定义可以知道存在 $ V_{x} $, $ W_{x} $ 分别是 $ x_{1} $和 $ x_{2} $ 关于对应拓扑上的开邻域, 使得 $ V_{x}\times W_{x}\subset O_{i_{x}} $. 固定 $ x_{2}\in E_{2} $, 设 $ F=E_{1}\times \{ x_{2} \} $, 则 $ (V_{x})_{x\in F} $ 是 $ E_{1} $ 上的一个开覆盖. 由于 $ E_{1} $ 紧, 则存在有限集 $ J_{x_{2}}\in \fin F $, 使得 $ \bigcup_{x\in J_{x_{2}}}V_{x}=E_{1} $. 接下来我们令
-          \[
-               A_{x_{2}}=\bigcap_{x\in J_{x_{2}}}W_{x},
-          \]
-          则 $ A_{x_{2}} $ 是含有 $ x_{2} $ 的开集. 当 $ x_{2} $ 在 $ E_{2} $ 中变动时, 可以发现 $ (A_{x_{2}})_{x_{2}\in E_{2}} $ 也是 $ E_{2} $ 的开覆盖, 同样由于 $ E_{2} $ 紧, 则存在一个有限集 $ K\in\fin E_{2} $, 使得 $ \bigcup_{x_{2}\in K}A_{x_{2}}=E_{2} $. 由此可得
-          \[
-               E=\bigcup_{x\in J} V_{x}\times W_{x},\qquad J=\bigcup_{x_{2}\in K}J_{x_{2}}.
-          \]
-          事实上由以上讨论可以知道, 当我们任取一个 $ a=(a_{1}, a_{2})\in E $, 必存在某个 $ x_{2}\in K $, 使得 $ a_{2}\in A_{x_{2}} $, 那么存在 $ x\in J_{x_{2}} $, 使得 $ a_{1}\in V_{x} $; 这里确定的 $ x\in J $, 且 $ a\in V_{x}\times W_{x} $, 由此可见,  $ E $ 被 $ (O_{i_{x}})_{i_{x}\in J} $ 覆盖, 因为 $ J $ 是有限集, 则 $ E $ 是紧的.\qed
-     \end{Proof}
+    \end{Corollary}
 	
 \section{赋范线性空间}
 	
