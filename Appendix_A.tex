@@ -101,6 +101,80 @@
 	则$ \forall n\geqslant k $, 有$ d(x_n,x_k)<1 $. 从而取$ r=\left(\max\limits_{1\leqslant i\leqslant k}d(x_i,x_k)\right)\land 1 $即可.\qed
 	\end{Proof}
 	
+	\textbf{命题\,\,\ref{prop:连续映射的性质}}\ \ 连续映射具有以下性质:
+		\begin{enumerate}[(1)]
+	    \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的开集 $ V $ , 有 $ f^{-1}(V) $ 是 $ E $ 中开集;
+	    \item $ f $ 在 $ E $ 上连续 $ \Longleftrightarrow $ 对 $ F $ 上的闭集 $ B $ , 有 $ f^{-1}(B) $ 是 $ E $ 中闭集;
+	    \item 连续映射的复合是连续映射;
+	    \item $ \tau $, $ \tau' $ 是 $ E $ 中拓扑,  $ \tau $ 是 $ \tau' $ 的强拓扑 $ \Longleftrightarrow $ $ \mathrm{id}_{E}:(E, \tau)\to(E, \tau') $ 连续. 
+		\end{enumerate}
+	\begin{Proof}
+	(1) \textsl{必要性.}\ \ 由$ f $在$ E $上连续可知
+	\[
+	\forall x\in E\,\forall V\in\CN(f(x))\,(f^{-1}(V)\in\CN(x)),
+	\]
+	从而任取$ V $是$ F $中开集, $ \forall x\in f^{-1}(V) $, 都存在$ x $的开邻域$ U $使得$ U\subset f^{-1}(V) $, 从而$ f^{-1}(V) $也是开集.
+	
+	\textsl{充分性.} 若$ f^{-1}(V) $也是开集, 注意到$ \forall x\in E $使得$ V\in\CN(f(x)) $有$ x\in f^{-1}(V) $. 从而$ f $在$ E $连续.
+	
+	(2) 由$ f^{-1}(B^c)=(f^{-1}(B))^c $可知成立.
+	
+	(3) 由(1)的结论可知.
+	
+	(4) 因为$ \tau $是$ \tau' $的强拓扑, 故$ \tau' $-开集一定是$ \tau $-开集. 故任取$ \tau' $-开集$ V $, 总有$ \id_E^{-1}(V)=V $是$ \tau $-开集, 故$ \id_E $连续.\qed
+	\end{Proof}
+	
+	\textbf{命题\,\,\ref{prop:乘积拓扑空间的继承性质}}\ \ 设$ (E_i)_{i\in\alpha} $是一族拓扑空间 $ E=\prod\limits_{i\in\alpha}E_i $是乘积拓扑空间.
+		\begin{enumerate}[(1)]
+		\item 若$ \forall i\in\alpha $, $ E_i $是Hausdorff空间, 则$ E $也是Hausdorff空间.
+		
+		\item 若$ \forall i\in\alpha $, $ E_i $是紧空间, 则$ E $也是紧空间.
+		
+		\item 设$ \alpha=\N^\ast $, 若$ \forall i\in\alpha,\ E_i $是可度量化的, 则$ E $是可度量化的. (可度量化是指存在$ E $上的度量$ d $使得$ d $诱导的拓扑与$ E $上原本定义的拓扑一致)
+		\end{enumerate}
+	\begin{Proof}
+	(1) 设$ x=(x_i)_{i\in\alpha} $与$ y=(y_i)_{i\in\alpha} $是$ E $中两个不同的元素, 那么存在$ i_0\in\alpha $使得$ x_{i_0}\ne y_{i_0} $. 由$ E_{i_0} $是Hausdorff空间可知
+	\[
+	\exists U_{i_0}\in\CN(x_{i_0})\,\exists V_{i_0}\in\CN(y_{i_0})\,(U_{i_0}\cap V_{i_0}=\varnothing).
+	\]
+	于是可以取$ E $中两个开集:
+	\[
+	U=U_{i_0}\times\prod_{i\in\alpha\sm\{i_0\}}E_i,\qquad V=V_{i_0}\times\prod_{i\in\alpha\sm\{i_0\}}E_i
+	\]
+	使得$ U\in\CN(x) $, $ V\in\CN(y) $但是$ U\cap V=\varnothing $. 从而$ E $也是Hausdorff空间.
+	
+	(2) 这一结论称为Tychonoff定理, 它的证明不仅超出了本课程的要求范围, 也超出了一般的\textsl{Topology I}课程的要求范围. 因此在此不再证明这一定理, 而只证明$ \alpha $是有限集的情形. 事实上即使是有限情形的证明也不是trivial的, 它本应放在正文中, 但是为了这一命题的3个结论都在这里, 将其调整到这里来证明. 由归纳法只需要证明$ \alpha=\{1,2\} $的情形是成立的即可.
+	
+	设 $ (O_{i})_{i\in\alpha} $ 是 $ E $ 上的开覆盖, 则
+	\[
+		\forall x=(x_{1}, x_{2})\in E\,\exists i_{x}\in\alpha\,(x\in O_{i_{x}}).
+	\]
+	由乘积拓扑的定义可以知道存在 $ V_{x} $, $ W_{x} $ 分别是 $ x_{1} $和 $ x_{2} $ 关于对应拓扑上的开邻域, 使得 $ V_{x}\times W_{x}\subset O_{i_{x}} $. 固定 $ x_{2}\in E_{2} $, 设 $ F=E_{1}\times \{ x_{2} \} $, 则 $ (V_{x})_{x\in F} $ 是 $ E_{1} $ 上的一个开覆盖. 由于 $ E_{1} $ 紧, 则存在有限集 $ J_{x_{2}}\in \fin F $, 使得 $ \bigcup_{x\in J_{x_{2}}}V_{x}=E_{1} $. 接下来我们令
+	\[
+		A_{x_{2}}=\bigcap_{x\in J_{x_{2}}}W_{x},
+	\]
+	则 $ A_{x_{2}} $ 是含有 $ x_{2} $ 的开集. 当 $ x_{2} $ 在 $ E_{2} $ 中变动时, 可以发现 $ (A_{x_{2}})_{x_{2}\in E_{2}} $ 也是 $ E_{2} $ 的开覆盖, 同样由于 $ E_{2} $ 紧, 则存在一个有限集 $ K\in\fin E_{2} $, 使得 $ \bigcup_{x_{2}\in K}A_{x_{2}}=E_{2} $. 由此可得
+	\[
+		E=\bigcup_{x\in J} V_{x}\times W_{x},\qquad J=\bigcup_{x_{2}\in K}J_{x_{2}}.
+	\]
+	事实上由以上讨论可以知道, 当我们任取一个 $ a=(a_{1}, a_{2})\in E $, 必存在某个 $ x_{2}\in K $, 使得 $ a_{2}\in A_{x_{2}} $, 那么存在 $ x\in J_{x_{2}} $, 使得 $ a_{1}\in V_{x} $; 这里确定的 $ x\in J $, 且 $ a\in V_{x}\times W_{x} $, 由此可见,  $ E $ 被 $ (O_{i_{x}})_{i_{x}\in J} $ 覆盖, 因为 $ J $ 是有限集, 则 $ E $ 是紧的.
+	
+	(3) 因为$ d $与$ \min\{d,1\} $诱导相同的拓扑, 不妨假设每个$ E_n $上的度量$ d_n\leqslant 1 $. 那么对$ E $中的两个元素$ x=(x_n)_{n\geqslant 1} $, $ y=(y_n)_{n\geqslant 1} $, 可取
+	\[
+	d(x,y)=\sup_{n\geqslant 1}\frac{d_n(x_n,y_n)}{n}.
+	\]
+	容易证明$ d $的确是$ E $上的度量. 用$ B $记以度量$ d $的开球而用$ B_n $记以度量$ d_n $的开球, 那么由$ d $的定义可知
+	\[
+	B\left(x,\frac{1}{k}\right)=\prod_{n=1}^kB_n\left(x_n,\frac{n}{k}\right)\times\prod_{n>k}E_n
+	\]
+	是基础开集, 因此$ (B(x,1/k))_{k\geqslant 1} $是$ x $的邻域基, 因此$ E $上的乘积拓扑可由$ d $诱导, 也即$ E $可度量化.\qed
+	     
+	\end{Proof}
+	
+	
+	
+	
+	
 	
 	
 	
