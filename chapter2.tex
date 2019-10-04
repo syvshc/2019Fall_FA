@@ -1,5 +1,4 @@
 % !TeX root = main.tex
-
 \chapter{线性算子与线性泛函}
 
 \section{连续线性映射}
@@ -121,7 +120,7 @@
 		可知$ A $是有界线性算子. 其中$ \lambda $是$ A^\ast A $的特征值.
 	\end{Example}
 	
-	\begin{Remark}~
+	\begin{Remark}\label{rmk:范数性质}~
 	\begin{enumerate}[(1)]
 		\item $ \CB(E,F) $是$ \CL(E,F) $的线性子空间, 这由
 		\[
@@ -131,7 +130,7 @@
 		
 		\item $ u $的有界性实际上指$ \norm{u(x)} $在$ E $的有界集上有界. 实际上除非$ u\equiv 0 $, 否则$ \norm{u(x)} $不可能在全空间上有界.
 		
-		\item 范数$ \norm{u} $也可以等价地定义为
+		\item\label{rmk:范数性质最小C} 范数$ \norm{u} $也可以等价地定义为
 		\[
 			\norm{u}:=\sup_{\norm{x}\ne 0}\frac{\norm{u(x)}}{\norm{x}}=\sup_{\norm{x}\leqslant 1}\norm{u(x)}=\sup_{\norm{x}=1}\norm{u(x)},
 		\]
@@ -307,7 +306,6 @@
 		\]
 		是商空间 $ E/F $ 上的一个范数. 在这一范数下 $ u : x\mapsto x+F $是连续的. 且 $ \norm{u}<1 $. 若 $ E $ 是Banach空间, 则 $ E/F $ 是Banach空间.
 	\end{Theorem}
-
 	\begin{Proof}
 		先说明 $ \norm{\cdot}_{0} $ well-defined. 取 $ x' $ 是 $ x+F $ 的另一代表元, 往证 $ \norm{x'+F}_{0}=\norm{x+F}_{0} $. 因为
 		\[
