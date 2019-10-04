@@ -70,7 +70,7 @@
 	则$ \lim\limits_{n\to\infty}d(x_n,x_{n_0})\leqslant\varepsilon $. 从而$ g(x_{n_0})\leqslant\varepsilon $, 于是$ 1/g(x_{n_0})\geqslant 1/\varepsilon $. 由$ \varepsilon $的任意性可知$ x\mapsto 1/g(x) $无界.\qed
 	\end{Proof}
 	
-	\textbf{习题2.10'}\ [习题课]\ \ 设$ (E,d) $是紧的度量空间, 在压缩映照定理中若将映射$ f $满足的条件减弱到
+	\textbf{习题2.10'}\ [习题课]\ \ 设$ (E,d) $是紧的度量空间, 在压缩映照原理中若将映射$ f $满足的条件减弱到
 	\[
 	\forall x,y\in E\,,x\ne y\,(d(f(x),f(y))<d(x,y))
 	\]
@@ -163,3 +163,177 @@
 	\end{Proof}
 	
 \section{第4周习题课(2019年9月23日)}
+
+	\textbf{习题2.8}\ [作业]\ \ 设 $ f: \R^{n}\to\R $ 是一致连续函数, 证明存在两个非负常数 $ a $ 和 $ b $, 使得
+	\[
+		\abs{f(x)}\leqslant a\norm{x}+b.
+	\]
+	这里 $ \norm{x} $ 是 $ x $ 的 Euclid 范数.
+
+	\begin{Proof}
+		由于 $ f $ 是一致连续的, 取 $ \varepsilon=1 $, 则
+		\[
+			\exists \delta>0\,(\norm{x-y}<\delta\Rightarrow\abs{f(x)-f(y)}<1),
+		\]
+		由实数的 Archimedes 性知 $ \exists n\in\N\,(n\delta\leqslant\norm{x}<(n+1)\delta) $, 则此时取 $ 0 $ 到 $ x $ 连线上划分
+		\[
+			x_{0}=0,\quad x_{1}=\delta\cdot\frac{x}{\norm{x}},\quad x_{2}=2\delta\cdot\frac{x}{\norm{x}}\dots x_{n}=n\delta\cdot\frac{x}{\norm{x}},\quad x_{n+1}=x.
+		\]
+		则 
+		\[
+			\begin{aligned}
+				\abs{f(x)-f(0)} & \leqslant\sum_{k=0}^{n}\abs{f(x_{k+1})-f(x_{k})}\\
+				& \leqslant n+1\\
+				& = n\cdot\frac{1}{\delta}\cdot\delta+1\\
+				& \leqslant\frac{1}{\delta}\cdot\norm{x}+1.
+			\end{aligned}
+		\]
+		故 $ \abs{f(x)}\leqslant\abs{f(0)}+\norm{x}/\delta+1 $. 取 $ a=1/\delta, b=\abs{f(0)}+1 $ 即可.\qed
+	\end{Proof}
+	
+	\begin{Remark}
+		本题结论在1维情形下, 即是一致连续函数在无穷远处是线性增长的, 这是一个较强的结论, 它说明一个一直连续函数在充分远处可以使用线性函数控制.
+	\end{Remark}
+
+	\textbf{习题2.10}\ [作业]\ \ 构造一个反例说明, 在压缩映照原理\ref{thm:压缩映照原理}中, 如果我们把映射 $ f $ 满足的条件减弱为
+	\[
+		d(f(x), f(y))<d(x, y)\qquad \forall x, y\in E\wedge x\neq y,
+	\]
+	则结论不成立.
+
+	\begin{Solution}
+		取 $ E=\R $, $ f(x)=\sqrt{x^{2}+1} $, 则
+		\[
+			\begin{aligned}
+				d(f(x), f(y)) & =\abs{\sqrt{x^{2}+1}-\sqrt{y^{2}+1}}\\
+				& \leqslant\abs{\frac{\xi}{\sqrt{\xi^{2}+1}}}\cdot\abs{x-y}<\abs{x-y}.
+			\end{aligned}
+		\]
+		但 $ f(x)=x $ 显然无解.
+	\end{Solution}
+	\begin{Remark}
+		本题也可以举出另外的反例. 考虑无解的方程 $ \arctan x=\pi/2 $, 那么可以构造映射
+		\[
+			f : \R\to\R,\qquad x\mapsto x+\frac\pi 2-\arctan x,
+		\]
+		注意到
+		\[
+			f'=1-\frac{1}{\xi^2+1}=\frac{\xi^2}{\xi^2+1}<1,
+		\]
+		可知如此构造的 $ f $ 满足题设条件, 但方程 $ f(x)=x $ 等价于 $ \arctan x=\pi/2 $ 无解, 从而不存在不动点.
+	\end{Remark}
+
+	\textbf{习题3.2}\ [习题课]\ \ 设 $ E $ 是 $ \R $ 上所有的实系数多项式构成的线性空间, 对任一 $ p\in E $, 定义
+	\[
+		\norm{p}_{\infty}=\max_{x\in[0, 1]}\abs{p(x)}.
+	\]
+	\begin{enumerate}[(1)]
+		\item 证明 $ \norm{\cdot}_{\infty} $ 是 $ E $ 上的范数.
+		\item 任取一个 $ a\in\R $, 定义线性映射 $ L_{a}:E\to \R $ 满足 $ L_{a}(p)=p(a) $. 证明 $ L_{a} $ 连续的充分必要条件是 $ a\in[0, 1] $, 并且给出该连续线性映射的范数.
+		\item 设 $ a<b $ 并定义 $ L_{a, b}:E\to \R $ 满足
+		\[
+			L_{a, b}(p)=\int_{a}^{b}p(x)\diff x,
+		\]
+		给出 $ a, b $ 的取值范围, 使其成为 $ L_{a, b} $ 连续的充分必要条件, 然后确定 $ L_{a, b} $ 的范数.
+	\end{enumerate}
+
+	\begin{Proof}
+		(1) 验证范数的4条性质:
+		\begin{itemize}
+			\item $ \norm{p}_{\infty}\geqslant 0 $ 显然成立;
+			\item $ \norm{p}_{\infty}\Rightarrow \forall x\in [0, 1]\,(\abs{p(x)}=0) $, 由代数基本定理可知 $ \forall x\in\R\,(p(x)=0) $, 即 $ p=0 $;
+			\item $ \norm{\lambda p}_{\infty}=\abs{\lambda}\norm{p}_{\infty} $ 显然成立;
+			\item $ \norm{p+q}_{\infty}\leqslant\norm{p}_{\infty}+\norm{q}_{\infty} $ 显然成立.
+		\end{itemize}
+
+		(2) \textsl{必要性}. 若 $ L_{a} $ 是连续的, 则
+		\[
+			\abs{L_{a}(p)}=\abs{p(a)}\leqslant \norm{L_{a}}\norm{p}_{\infty}\qquad\norm{L_{a}}<\infty.
+		\]
+		取 $ p_{n}=x^{n} $, 则 $ (p_{n})_{n\geqslant 1} $ 是 $ E $ 的 Hamel 基, 则上式说明
+		\[
+			\norm{L_{a}(p_{n})}=\abs{a^{n}}\leqslant\abs{a}^{n}\leqslant \norm{L_{a}}\norm{x^{n}}_{\infty},
+		\]
+		而由 $ \norm{p_{n}}_{\infty}=1 $, 知
+		\[
+			\abs{a}^{n}\leqslant\norm{L_{a}},
+		\]
+		令 $ n\to\infty $, 则有 $ \abs{a}\leqslant1 $. 
+
+		同理取 $ p_{n}=(1-x)^{n} $ 也是 $ E $ 的 Hamel 基, 类似可得 $ \abs{1-a}\leqslant1 $, 从而 $ a\in[0, 1] $.
+
+		\textsl{充分性}. 由 $ a\in[0, 1] $ 可知
+		\[
+			\forall p\in E\,\big(\abs{L_{a}(p)}=\abs{p(a)}\leqslant\norm{p}_{\infty}\big).
+		\]
+		则 $ L_{a} $ 连续.
+
+		下面计算 $ \norm{L_{a}} $. 由充分性证明的过程与注\ref{rmk:范数性质}的\ref{rmk:范数性质最小C}可知 $ \norm{L_{a}}\leqslant1 $, 取 $ p(x)\equiv 1 $, 则 $ \norm{p}_{\infty}=1 $, 且 $ \abs{L_{a}(p)}=1 $, 故 $ \norm{L_{a}}=1 $.
+
+		(3) $ a, b\in[0, 1] $, 且 $ \norm{L_{a, b}}=b-a $. 下面给出证明.
+
+		\textsl{必要性}. 若 $ L_{a, b} $ 连续, 则
+		\[
+			\forall p\in E\,\bigg(\abs{L_{a, b}(p)}=\abs{\dint_{a}^{b}p(x)\diff x}\leqslant \norm{L_{a, b}}\norm{p}_{\infty}\bigg)\qquad \norm{L_{a, b}}<\infty.
+		\]
+		取 $ p_{n}=x^{n} $, $ \norm{p_{n}}_{\infty}=1 $, 则
+		\[
+			\abs{\dint_{a}^{b}x^{n}\diff x}=\abs{\frac{b^{n+1}-a^{n+1}}{n+1}}\leqslant\norm{L_{a, b}}<\infty.
+		\]
+		若 $ \abs{a}<\abs{b} $, 则
+		\[
+			\frac{\abs{b}^{n+1}}{n+1}\left( 1-\abs{\frac{a}{b}}^{n+1} \right) \leqslant \norm{L_{a, b}}<\infty,
+		\]
+		令 $ n\to\infty $ 知 $ \abs{b}\leqslant1 $, 因此 $ \abs{a}\leqslant1, \abs{b}\leqslant1 $. 同理 $ \abs{b}<\abs{a} $ 时, 亦有 $ \abs{a}\leqslant1, \abs{b}\leqslant1 $; 当 $ \abs{a}=\abs{b} $ 时, 因为 $ a<b $, 所以 $ a=-b $, 也可以得出 $ \abs{a}\leqslant1, \abs{b}\leqslant1 $
+
+		与 (2) 一样, 再取 $ p_{n}=(1-x)^{n} $, 可以得到 $ \abs{a-1}\leqslant1, \abs{b-1}\leqslant1 $.
+
+		\textsl{充分性}. 若 $ a, b\in[0, 1] $, 则有
+		\[
+			\abs{L_{a, b}(p)}=\abs{\int_{a}^{b}p(x)\diff x}\leqslant \abs{b-a}\cdot \norm{p}_{\infty},
+		\]
+		则 $ L_{a, b} $ 连续. 
+
+		因为 $ \norm{L_{a, b}}<b-a $, 而当 $ p(x)\equiv 1 $ 时 $ \abs{L_{a, b}(p)}=b-a $, 故 $ \norm{L_{a, b}}=b-a $.\qed
+	\end{Proof}
+
+	\textbf{习题3.5}\ [习题课]\ \ 设 $ \varphi:[0, 1]\to [0, 1] $ 连续函数并且不恒等于 1. 设 $ \alpha\in\R $, 定义 $ C([0, 1],\R) $ \footnote{这里 $ C([0, 1],\R) $ 表示从 $ [0, 1] $ 到 \R 上的连续函数的全体 }上的映射 $ T $ 为
+	\[
+		T(f)(x)=\alpha+\dint_{0}^{x}f(\varphi(t))\diff t.
+	\]
+	证明 $ T $ 是压缩映射. 再根据以上结论证明下面的方程存在唯一解:
+	\begin{equation}\label{eq:3.5题公式}
+		f(0)=\alpha, f'(x)=f(\varphi(x))\qquad x\in[0, 1].
+	\end{equation}
+
+	\begin{Proof}
+		对$\forall f, g\in C[0, 1]$, $ \forall x\in[0, 1] $ 都有
+		\[
+			\begin{aligned}
+				\norm{Tf-Tg} & =\max_{x}\dint_{0}^{x}(f(\varphi(t))-g(\varphi(t)))\diff t \\
+				& \leqslant x\cdot \max_{x\in[0, 1]}\abs{f(x)-g(x)} \\
+				& =x\cdot \norm{f-g}.
+			\end{aligned}
+		\]
+		进一步 
+		\[
+			\begin{aligned}
+				\abs{T^{2}f-T^{2}g} & =\abs{\dint_{0}^{x}(Tf)(\varphi(t))-(Tg)(\varphi(t))\diff t} \\
+				& \leqslant\dint_{0}^{x}\varphi (t)\norm{f-g}\diff t \\
+				& =\norm{f-g}\dint_{0}^{x}\varphi(t)\diff t \\
+				& =\norm{f-g}\dint_{0}^{1}\varphi(t)\diff t \\
+				& \leqslant \sup \abs{f-g}
+			\end{aligned}
+		\]
+		因为 $ \norm{Tf-Tg}\leqslant\lambda\norm{f-g} $, 从而
+		\[
+			\sup\abs{\dint_{0}^{x}f(\varphi(t))-g(\varphi(t))\diff t}\leqslant\lambda\sup\abs{f-g}.
+		\]
+		则
+		\[
+			\norm{T^{2}f-T^{2}g}\leqslant\dint_{0}^{1}\varphi (t)\diff t\cdot \norm{f-g},
+		\]
+		取 $ \lambda=\dint_{0}^{1}\varphi(t)\diff t<1 $, 即 $ T^{2} $ 是压缩映射, 则 $ T^{2} $ 有唯一不动点.
+
+		而方程 \eqref{eq:3.5题公式} 成立 $ \Longleftrightarrow $ $ f(x)=\alpha +\dint_{0}^{x} f(\varphi(t))\diff t $. 即 $ Tf=f $, 故方程 \eqref{eq:3.5题公式} 有唯一解. 
+	\end{Proof}
