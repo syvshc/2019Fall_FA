@@ -216,7 +216,7 @@
      \begin{Remark}
           对定义\ref{def:极限}进行几点说明:
           \begin{enumerate}[(1)]
-               \item 上述定义中的 $ \CN(x) $ 可换成 $ \CB{x} $ ;
+               \item 上述定义中的 $ \CN(x) $ 可换成 $ \CB(x) $ ;
                \item \R 中序列的极限至多只有一个, 例如 $\lim\limits_{n\to\infty}\frac{1}{n}=0 $, $ \lim\limits_{n\to\infty} n=\infty$(无极限), 取 $ (x_{n})_{n\geqslant1}=\left\{ 1, -1, 1,  -1\ldots \right\} $ 也无极限;
                \item\label{item:Hausdorff空间上极限唯一性} 一般地, Hausdorff空间中的序列至多只有一个极限, 而平凡拓扑空间中的任意序列收敛到任意元素;
                \item 对度量空间 $ (E, d) $ , 有
@@ -1364,4 +1364,51 @@
 	\[
 	\tilde{f}+\tilde{g}=\widetilde{f+g};\qquad \lambda\tilde{f}=\widetilde{\lambda f}
 	\]
-	后$ L_0(X) $成为线性空间. 类似地记$ L_p(X)=\CL_p(X)/\sim $后有$ L_p(X) $也是线性空间, 定义$ \lVert\tilde f\rVert_p=\norm{f}_p $后在$ p\geqslant 1 $时$ L_p(X) $成为赋范空间. 之后我们经常将$ \CL_p(X) $等同于$ L_p(X) $, 且将$ \tilde{f} $就看作$ f $并且记作$ f $. 当$ 0<p<1 $时$ L_p(X) $不成为赋范空间, 但定义$ d(f,g)=\norm{f-g}_p^p $后成为一个度量空间. 那么现在问题\,\ref{item:1.7节主要问题2}\,也解决完毕了.
+	后$ L_0(X) $成为线性空间. 类似地记$ L_p(X)=\CL_p(X)/\sim $后有$ L_p(X) $也是线性空间, 定义$ \lVert\tilde f\rVert_p=\norm{f}_p $后在$ p\geqslant 1 $时$ L_p(X) $成为赋范空间. 之后我们经常将$ \CL_p(X) $等同于$ L_p(X) $, 且将$ \tilde{f} $就看作$ f $并且记作$ f $. 当$ 0<p<1 $时$ L_p(X) $不成为赋范空间, 但定义$ d(f,g)=\norm{f-g}_p^p $后成为一个度量空间. 那么现在问题\,\ref{item:1.7节主要问题2}\,也解决完毕了, 下面主要来解决问题\,\ref{item:1.7节主要问题3}\,, 即空间的完备性.
+	
+	\begin{Theorem}
+	对$ 0<p\leqslant\infty $, 空间$ L_p(X) $是完备的.
+	\end{Theorem}
+	\begin{Proof}
+	设$ (f_n)_{n\geqslant 1} $是$ L_p(X) $中的Cauchy列, 可以取子列$ (f_{n_k})_{k\geqslant 1} $满足
+	\[
+	\norm{f_{n_{k+1}}-f_{n_k}}<2^{-k},
+	\]
+	令$ k\geqslant 2 $时$ g_k=f_{n_k}-f_{n_{k-1}} $且$ g_1=f_{n_1} $, 则$ \norm{g_k}_p^p<2^{-pk} $. 只需证明$ (f_{n_k})_{k\geqslant 1} $收敛即可.
+	
+	当$ 0<p<1 $时, 任取$ k_0\in\N $, 那么
+	\[
+	\int_X\abs{\sum_{k=1}^{k_0}g_k}^p\diff\mu\leqslant\sum_{k=1}^{k_0}\int_X\abs{g_k}^p\diff\mu<\sum_{k\geqslant 1}2^{-pk}<\infty,
+	\]
+	从而
+	\[
+	\int_X\bigg(\sum_{k\geqslant 1}\abs{g_k}\bigg)^p\diff\mu<\infty\Longrightarrow\sum_{k\geqslant 1}\abs{g_k}<\infty\ \text{a.e.}
+	\]
+	这说明$ \sum\limits_{k\geqslant 1}g_k $几乎处处绝对收敛, 去掉一个零测集后认为$ \sum\limits_{k\geqslant 1} $收敛, 并定义
+	\[
+	f(x):=\sum_{k\geqslant 1}g_k(x)=\lim_{k\to\infty}f_{n_k}(x),
+	\]
+	则$ f $是可测函数, 且
+	\[
+	\int_X\abs{f}^p\diff\mu\leqslant\int_X\bigg(\sum_{k\geqslant 1}\abs{g_k}^p\bigg)<\infty,
+	\]
+	即$ f\in L_p(X) $. 且$ \forall x\in X $都有$ \abs{f(x)-f_{n_k}(x)}=\bigg|\sum\limits_{i\geqslant k+1}g_i(x)\bigg| $, 令$ k\to\infty $有
+	\[
+	\norm{f-f_{n_k}}_p^p=\int_X\abs{f-f_{n_k}}^p\diff\mu\leqslant\int_X\bigg|\sum_{i\geqslant k+1}g_i\bigg|^p\diff\mu\leqslant\sum_{i\geqslant k+1}2^{-pi}\to 0,
+	\]
+	即$ \lim\limits_{k\to\infty}=f $.
+	
+	当$ 1\leqslant p>\infty $时, 由Minkowski不等式, 有
+	\[
+	\left( \int_X\left( \sum_{k=1}^{k_0}\abs{g_k} \right)^p\diff\mu \right)^{1/p}\leqslant\left( \sum_{k=1}^{k_0}\int_X\abs{g_k}^p\diff\mu \right)^{1/p}\leqslant\sum_{k\geqslant 1}2^{-k}<\infty,
+	\]
+	后续步骤同$ 0<p<1 $的情形.
+	
+	当$ p=\infty $时, 由于$ \forall m,n\in\N $, 去掉一个零测集之后可以认为$ \forall m,n\in\N $都有
+	\[
+	\abs{f_n(x)-f_m(x)}\leqslant\norm{f_n-f_m}_\infty,
+	\]
+	且$ (f_n)_{n\geqslant 1} $是Cauchy列, 那么$ (f_n(x))_{n\geqslant 1} $是$ \K $上的Cauchy列, 从而它收敛, 记其极限为$ f(x) $, 于是也有$ \lim\limits_{k\to\infty}f_{n_k}=f $.\qed
+	\end{Proof}
+	
+	从而$ p\geqslant 1 $时, $ L_p(X) $成为一个Banach空间, 即使$ 0<p<1 $, 在赋以度量$ d(f,g)=\norm{f-g}_p^p $后, $ L_p(X) $也是一个完备的度量空间.
