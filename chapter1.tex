@@ -473,7 +473,7 @@
           从而 $ f'=\tilde{f} $. \qed
      \end{Proof}
 
-     \subsection{压缩映照原理}
+     \subsection{压缩映射原理}
 
      \begin{Definition}[H\"older映射]\label{def:H\"older映射}
           设 $ (E, d) $ 与 $ (F, \delta) $ 是度量空间,  $ f:E\to F $, $ 0<\alpha<1 $ , 
@@ -503,7 +503,7 @@
           \]
      \end{Example}
 
-     \begin{Theorem}[压缩映照原理]\label{thm:压缩映照原理}
+     \begin{Theorem}[压缩映射原理]\label{thm:压缩映射原理}
           设 $ (E, d) $ 是完备度量空间,  $ f:E\to E $ 是压缩映射, 则 $ f $ 有唯一不动点, 即 $ \exists!x\,(f(x)=x) $ .
      \end{Theorem}
 
@@ -1087,7 +1087,7 @@
 	\begin{Definition}[范数等价]\index{D!等价}
 		设$ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $是线性空间$ E $上的两个范数, 若
 		\[
-		\exists c_1,c_2>0\,\forall x\in E\,(c_1\norm{x}_1\leqslant\norm{x}_2\leqslant c_2\norm{x}_1),
+		\exists c_1,c_2>0\,\forall x\in E\,(c_1\norm{x}_1\leqslant\norm{x}_2\leqslant x_2\norm{x}_1),
 		\]
 		则称$ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $\textbf{等价}.
 	\end{Definition}
@@ -1195,19 +1195,173 @@
 	\]
 	即$ (x_n)_{n\geqslant 1} $没有收敛子列. 但由$ \{ x : \norm{x}=1 \} $紧可知它是序列紧的, 即$ (x_n)_{n\geqslant 1} $存在收敛子列, 矛盾.\qed
 	
-     \subsection{一个Banach空间的例子—— $ L^p $空间}
+     \subsection{一个Banach空间的例子—— $ L_p $空间}
      
-     \begin{Definition}[$ \ell^{p} $空间]\label{def:lp空间}~
-
+     \begin{Definition}[$ \ell_{p} $空间]\label{def:lp空间}
+		设$ 0<p\leqslant\infty $, 考虑具有以下性质的序列空间:
           当 $ 0<p<\infty $ 时, 定义
           \[
-               \ell^{p}=\bigg\{ x=(x_{n})_{n\geqslant1}: \norm{x}_{p}=\bigg( \sum\limits_{n\geqslant1}\abs{x_{n}}^{p} \bigg)^{1/p}<\infty, x_{n}\in\K \bigg\}
+               \ell_{p}=\bigg\{ x=(x_{n})_{n\geqslant1}: \norm{x}_{p}=\bigg( \sum\limits_{n\geqslant1}\abs{x_{n}}^{p} \bigg)^{1/p}<\infty, x_{n}\in\K \bigg\}
           \]
            当 $ p=\infty $ 时, 定义
            \[
-                \ell^{\infty}=\{ x=(x_{n})_{n\geqslant1}:\norm{x}_{\infty}=\sup_{n\geqslant1}\abs{x_{n}}<\infty, x_{n}\in\K \}
+                \ell_{\infty}=\{ x=(x_{n})_{n\geqslant1}:\norm{x}_{\infty}=\sup_{n\geqslant1}\abs{x_{n}}<\infty, x_{n}\in\K \}
            \]
-           称其为\textbf{$ \ell^{p} $空间}\index{L!$ \ell^{p} $空间}, 再取 $ c_{0} $ 表示所有极限为 $ 0 $ 的数列构成的集合, 显然有 $ c_{0}\subset\ell^{\infty} $. 
+           称其为\textbf{$ \ell_{p} $空间}\index{L!$ \ell_{p} $空间}, 再取 $ c_{0} $ 表示所有极限为 $ 0 $ 的数列构成的集合, 显然有 $ c_{0}\subset\ell_{\infty} $. 
      \end{Definition}
 	
+	下面的内容大致与实分析课程笔记中3.4节相同, 关于一部分定理的进一步讨论可以参见实分析的课程笔记. 将上述序列空间连续化, 就得到所谓的$ \CL_p $空间:
 	
+	\begin{Definition}[$ \CL_p $空间]\label{def:Lp空间}
+		设$ 0<p\leqslant\infty $, $ f : X\to\K $是$ (X,\mu) $上的可测函数. 当$ p<\infty $时, 若
+		\[
+		\int_X\abs{f}^p\diff\mu<\infty,
+		\]
+		则称$ f $是$ p $-\textbf{方可积函数}\index{P!$ p- $方可积函数}, 并记$ \CL_p(X,\mu) $是$ p $-方可积函数的全体. 在$ \CL_p(X,\mu) $上可以定义函数
+		\[
+		\norm\cdot_p : \CL_p(X,\mu)\to\R,\qquad f\mapsto\left(\int_X\abs{f}^p\diff\mu\right)^{1/p},
+		\]
+		当$ p=\infty $时, 若$ \exists M\geqslant 0 $使得$ \abs{f}\leqslant M $ a.e., 也即$ \mu\{ x : \abs{f(x)}>M \} $=0, 则称$ f $是\textbf{本性有界函数}\index{B!本性有界函数}, 并记$ \CL_\infty(X,\mu) $是本性有界函数的全体. 在$ \CL_\infty $上可以定义函数
+		\[
+		\norm\cdot_\infty : \CL_\infty(X,\mu)\to\R,\qquad f\mapsto\esssup f=\inf\{ M : \abs{f}\leqslant M \text{\,a.e.} \},
+		\]
+		且称$ \norm{f}_\infty=\esssup f $是$ f $的\textbf{本性上确界}\index{B!本性上确界}(\underline{ess}ential \underline{sup}remum)
+	\end{Definition}
+	
+	本节主要研究有关$ \CL_p $的这样几个问题:
+	\begin{enumerate}[(1)]
+	\item $ \CL_p(X,\mu) $ (或者在不致混淆的情形下记作$ \CL_p(X) $)是否是线性空间?\label{item:1.7节主要问题1}
+	\item $ \norm\cdot_p $是否是$ \CL_p(X) $上的范数?\label{item:1.7节主要问题2}
+	\item 若$ \norm\cdot_p $是范数, 赋范空间$ (\CL_p(X),\norm\cdot_p) $是否是Banach空间? 若不是, 能否在其上定义度量使得它成为完备的度量空间?\label{item:1.7节主要问题3}
+	\end{enumerate}
+	为了说明这些问题, 需要先证明几个不等式.
+	
+	\begin{Lemma}[Young]
+	对任意的$ x, y\in[0,\infty) $且$ 0<\alpha,\beta<1 $, $ \alpha+\beta=1 $, 有
+	\[
+	xy\leqslant \alpha x^{1/\alpha}+\beta y^{1\beta}.
+	\]
+	\end{Lemma}
+	\begin{Proof}
+	令$ x=\exp(\alpha t) $, $ y=\exp(\beta s) $, 则所求证的不等式化为
+	\[
+	\exp(\alpha t+\beta s)\leqslant\alpha\exp t+\beta\exp s.
+	\]
+	这由$ \exp x $的凸性显然.\qed
+	\end{Proof}
+	
+	\begin{Remark}
+	Young不等式具有以下推广, 设$ a_i\in[0,\infty),\ 0<t_i<1 $且$ \sum\limits_{i=1}^nt_i=1 $时, 有
+	\[
+	\prod_{i=1}^na_i^{t_i}\leqslant\sum_{i=1}^nt_ia_i.
+	\]
+	我们将在下一定理的证明中使用这一结论.
+	\end{Remark}
+	
+	\begin{Proposition}[H\"older]
+			设$ \frac{1}{p}=\sum\limits_{i=1}^n\frac{1}{p_i} $, $ f=\prod\limits_{i=1}^nf_i $时, 有
+			\[
+			\lVert f\rVert_p\leqslant\prod_{i=1}^n\lVert f_i\rVert_{p_i}.
+			\]
+	\end{Proposition}
+	\begin{Proof}
+			记$ b_i=\lVert f_i\rVert_{p_i} $, 若某个$ b_i=0 $, 那么某个$ f_i=0 $ a.e., 即$ f=0 $ a.e., 此时命题显然成立. 若某个$ b_i=\infty $, 右侧为$ \infty $, 命题也显然成立. 因此不妨设所有的$ b_i $都有限且为正数.
+			
+			若某个$ p_i $, 不妨$ p_n=\infty $, 则有
+			\[
+			\lvert f\rvert\leqslant\lvert f_1\rvert\cdot\lvert f_2\rvert\cdot\cdots\cdot\lvert f_{n-1}\rvert\cdot\lvert f_n\rvert\leqslant \lvert f_1\rvert\cdot\lvert f_2\rvert\cdot\cdots\cdot\lvert f_{n-1}\rvert\cdot\lVert f_n\rVert_\infty,
+			\]
+			此时$ \frac{1}{p_n}=0 $, 则$ \frac{1}{p}=\frac{1}{p_1}+\frac{1}{p_2}+\cdots+\frac{1}{p_{n-1}} $, 从而
+			\[
+			\lVert f\rVert_p\leqslant\lVert f_1f_2\cdots f_{n-1}\rVert_p\cdot\lVert f_n\rVert_\infty.
+			\]
+			因此可设所有的$ p_i $都有限.
+			
+			现在$ 0<p_i<\infty,\ 0<b_i<\infty,\ \forall i=1,2,\cdots,n $, 那么由
+			\[
+			\dfrac{f}{b_1b_2\cdots b_n}=\dfrac{f_1}{b_1}\cdot\dfrac{f_2}{b_2}\cdot\cdots\cdot\dfrac{f_n}{b_n}
+			\]
+			可知
+			\begin{align*}
+			\left| \dfrac{f}{b_1b_2\cdots b_n} \right|^p&=\left| \dfrac{f_1}{b_1} \right|^p\cdot\left| \dfrac{f_2}{b_2} \right|^p\cdot\cdots\cdot\left| \dfrac{f_n}{b_n} \right|^p\\
+			&=\left(\left| \dfrac{f_1}{b_1} \right|^{p_1}\right)^{p/p_1}\cdot\left(\left| \dfrac{f_2}{b_2} \right|^{p_2}\right)^{p/p_2}\cdot\cdots\cdot\left(\left| \dfrac{f_n}{b_n} \right|^{p_n}\right)^{p/p_n}\leqslant\sum_{i=1}^n\dfrac{p}{p_i}\left| \dfrac{f_i}{b_i} \right|^{p_i}.
+			\end{align*}
+		两侧积分得
+			\[
+			\left(\dfrac{1}{b_1b_2\cdots b_n}\right)^p\int_X\lvert f\rvert^p\diff\mu\leqslant\sum_{i=1}^n\dfrac{p}{p_i}\cdot\dfrac{1}{b_i^{p_i}}\int_X\lvert f_i\rvert^{p_i}\diff\mu=1.
+			\]\qed
+	\end{Proof}
+		
+	\begin{Corollary}[H\"older]
+			当$ p,q\geqslant 1 $且$ \frac{1}{p}+\frac{1}{q}=1 $时, 有
+			\[
+			\lVert gh\rVert_1\leqslant\lVert g\rVert_p\lVert h\rVert_q,
+			\]
+			并称这样的$ (p,q) $为一对\textbf{共轭指数}, 并约定$ (1,\infty) $也是一对共轭指数.
+	\end{Corollary}
+	
+	\begin{Theorem}
+	设$ 0<p\leqslant\infty $, 则$ \CL_p(X) $是线性空间, 且任取$ f, g\in\CL_p(X) $, 有
+	\begin{enumerate}[(1)]
+	\item Minkowski不等式: $ p\in[1,\infty] $时, 有$ \norm{f+g}_p\leqslant\norm f_p+\norm g_p $.
+	\item $ 0<p<1 $时, $ \norm{f+g}_p^p\leqslant \norm f_p^p+\norm g_p^p $.
+	\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+	首先说明$ \CL_p(X) $是线性空间, 当$ p<\infty $时, 对任意$ f, g\in\CL_p(X) $, 有
+	\[
+	\abs{f(x)+g(x)^p}\leqslant\begin{cases}
+	\abs{f(x)}^p+\abs{g(x)}^p & ,0<p\leqslant 1\\
+	2^{p-1}(\abs{f(x)}^p+\abs{g(x)}^p) & ,p>1
+	\end{cases}
+	\]
+	其中第一种情形由$ t^p $的上凸性质直接得到, 第二种情形由$ t^p $的下凸性可知
+	\[
+	\left(\frac{\abs{f+g}}{2}\right)^p\leqslant\left(\frac{\abs f+\abs g}{2}\right)^p\leqslant\frac{\abs{f}^p}{2}+\frac{\abs{g}^p}{2}
+	\]
+	即为式中结论. 于是$ f+g\in\CL_p(X) $. 又由
+	\[
+	\forall\lambda\in\K\,\norm{\lambda f}_p=\abs{\lambda}\cdot\norm{f}_p
+	\]
+	可知$ \lambda f\in\CL_p(X) $. 于是$ \CL_p(X) $是线性空间.
+	
+	当$ 0<p<1 $时, 由
+	\[
+		\abs{f(x)+g(x)^p}\leqslant\abs{f(x)}^p+\abs{g(x)}^p
+	\]
+	可知$ \norm{f+g}_p^p\leqslant \norm f_p^p+\norm g_p^p $成立. 当$ p\geqslant 1 $时, 取$ q $是$ p $的共轭指数, 那么
+	\begin{align*}
+		\int_X\lvert f+g\rvert^p\diff\mu&=\int_X\lvert f+g\rvert^{p-1}\lvert f+g\rvert\diff\mu\\
+		&\leqslant\int_X\lvert f+g\rvert^{p-1}(\lvert f\rvert+\lvert g\rvert)\diff\mu\\
+		&=\int_X\lvert f+g\rvert^{p-1}\lvert f\rvert\diff\mu+\int_X\lvert f+f_2\rvert^{p-1}\lvert f_2\rvert\diff\mu\\
+		&\leqslant\left( \int_X(\lvert f+g\rvert^{p-1})^q\diff\mu \right)^{1/q}\left(\int_X\lvert f\rvert^p\diff\mu\right)^{1/p}+\left( \int_X(\lvert f+g\rvert^{p-1})^q\diff\mu \right)^{1/q}\left(\int_X\lvert g\rvert^p\diff\mu\right)^{1/p}\\
+		&=\left( \int_X\lvert f+g\rvert^p\diff\mu \right)^{1/q}\left( \left( \int_X\lvert f\rvert^p\diff\mu \right)^{1/p}+\left( \int_X\lvert g\rvert^p\diff\mu \right)^{1/p} \right).
+	\end{align*}
+	化简即得
+	\[
+		\left( \int_X\lvert f+g\rvert^p\diff\mu \right)^{1-1/q}\leqslant\left( \int_X\lvert f\rvert^p\diff\mu \right)^{1/p}+\left( \int_X\lvert g\rvert^p\diff\mu \right)^{1/p},
+	\]
+	即$ \lVert f+g\rVert_p\leqslant\lVert f\rVert_p+\lVert g\rVert_p $.
+	
+	而$ p=\infty $时, 注意到
+	\[
+		\forall x\in X\,(\abs{f(x)+g(x)}\leqslant\esssup f+\esssup g),
+	\]
+	从而有$ \norm{f+g}_\infty\leqslant\norm f_\infty+\norm g_\infty $, 即Minkowski不等式成立, 且由$ \forall\lambda\in\K,\ \norm{\lambda f}_\infty=\abs{\lambda}\cdot\norm{f}_\infty $可知$ \CL_\infty(X) $也是线性空间.\qed
+	\end{Proof}
+	
+	至此, 问题\,\ref{item:1.7节主要问题1}\,已经解决. 但是这样定义的$ \norm{\cdot}_p $并不是$ \CL_p(X) $上的范数, 因为它不满足正定性: 即
+	\[
+	\norm{f}_p=0\Longleftrightarrow f=0\ \text{a.e.}
+	\]
+	而非$ f=0 $. 为此, 需要重构$ \CL_p(X) $空间, 使得$ \norm{\cdot}_p $能够成为其上的范数.
+	
+	记$ \CL_0(X) $是$ (X,\mu) $上全体可测函数构成的线性空间, 并定义$ \CL_0(X) $上的等价关系
+	\[
+	f\sim g\Longleftrightarrow f=g\ \text{a.e.},
+	\]
+	再记$ L_0(X)=\CL_0(X)/\sim $. 设$ f\in\CL_0(X) $是$ \tilde{f}\in L_0(X) $的一个代表元, 那么对任意$ \tilde{f},\ \tilde{g}\in L_0(X) $, $ \forall \lambda\in\K $, 定义
+	\[
+	\tilde{f}+\tilde{g}=\widetilde{f+g};\qquad \lambda\tilde{f}=\widetilde{\lambda f}
+	\]
+	后$ L_0(X) $成为线性空间. 类似地记$ L_p(X)=\CL_p(X)/\sim $后有$ L_p(X) $也是线性空间, 定义$ \lVert\tilde f\rVert_p=\norm{f}_p $后在$ p\geqslant 1 $时$ L_p(X) $成为赋范空间. 之后我们经常将$ \CL_p(X) $等同于$ L_p(X) $, 且将$ \tilde{f} $就看作$ f $并且记作$ f $. 当$ 0<p<1 $时$ L_p(X) $不成为赋范空间, 但定义$ d(f,g)=\norm{f-g}_p^p $后成为一个度量空间. 那么现在问题\,\ref{item:1.7节主要问题2}\,也解决完毕了.
