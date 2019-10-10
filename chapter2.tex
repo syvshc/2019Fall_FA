@@ -1,4 +1,5 @@
 % !TeX root = main.tex
+
 \chapter{线性算子与线性泛函}
 
 \section{连续线性映射}
@@ -115,12 +116,12 @@
 		\]
 		为$ A $的范数. 则由
 		\[
-			\norm{A}^2=\sup_{\norm{x}\ne 0}\frac{\norm{Ax}^2}{\norm{x}^2}=\sup_{\norm{x}\ne 0}\frac{\lrangle{Ax,Ax}}{\norm{x}^2}=\sup_{\norm{x}\ne 0}\frac{\lrangle{A^\ast Ax,x}}{\norm{x}^2}=\sup\{\abs{\lambda}^{1/2}\},
+			\norm{A}^2=\sup_{\norm{x}\ne 0}\frac{\norm{Ax}^2}{\norm{x}^2}=\sup_{\norm{x}\ne 0}\frac{\lrangle{Ax,Ax}}{\norm{x}^2}=\sup_{\norm{x}\ne 0}\frac{\lrangle{A^\mathrm T Ax,x}}{\norm{x}^2}=\sup\{\abs{\lambda}\},
 		\]
-		可知$ A $是有界线性算子. 其中$ \lambda $是$ A^\ast A $的特征值.
+		可知$ A $是有界线性算子. 其中$ \lambda $是$ A^\mathrm T A $的特征值.
 	\end{Example}
 	
-	\begin{Remark}\label{rmk:范数性质}~
+	\begin{Remark}~
 	\begin{enumerate}[(1)]
 		\item $ \CB(E,F) $是$ \CL(E,F) $的线性子空间, 这由
 		\[
@@ -130,7 +131,7 @@
 		
 		\item $ u $的有界性实际上指$ \norm{u(x)} $在$ E $的有界集上有界. 实际上除非$ u\equiv 0 $, 否则$ \norm{u(x)} $不可能在全空间上有界.
 		
-		\item\label{rmk:范数性质最小C} 范数$ \norm{u} $也可以等价地定义为
+		\item 范数$ \norm{u} $也可以等价地定义为
 		\[
 			\norm{u}:=\sup_{\norm{x}\ne 0}\frac{\norm{u(x)}}{\norm{x}}=\sup_{\norm{x}\leqslant 1}\norm{u(x)}=\sup_{\norm{x}=1}\norm{u(x)},
 		\]
@@ -203,7 +204,7 @@
 			\[
 				\abs{\omega_{x, y}(A)}=\abs{\lrangle{Ax, y}}\leqslant\norm{Ax}\norm{y}\leqslant\norm{A}\norm{x}\norm{y}
 			\]
-			知 $ \norm{_{x, y}}\leqslant\norm{x}\norm{y}<\infty $, 从而 $ \omega_{x, y} $ 也是连续线性泛函.
+			知 $ \norm{\omega_{x, y}}\leqslant\norm{x}\norm{y}<\infty $, 从而 $ \omega_{x, y} $ 也是连续线性泛函.
 			\item 对 $ x\in\C^{n} $ 和 $ A\in\mathbb{M}_{n}(\C) $, 定义 $ x\mapsto \norm{Ax} $, 则它不是连续线性泛函, 甚至不满足线性性.
 		\end{enumerate}
 	\end{Example}
@@ -325,8 +326,8 @@
 		知正定性成立. 再由
 		\[
 			\begin{aligned}
-				\norm{\lambda x+F}_{0} & =\inf\{ \norm{\lambda x+y}: y\in F \}=\abs{\lambda}\inf\{ \norm{x+\frac{y}{\lambda}}: y\in F \}\\
-				& \abs{\lambda}\inf\{ \norm{x+y}: y\in F \}=\abs{\lambda}\norm{x+F}_{0}
+				\norm{\lambda x+F}_{0} & =\inf\{ \norm{\lambda x+y}: y\in F \}=\abs{\lambda}\inf\left\{ \norm{x+\frac{y}{\lambda}}: y\in F \right\}\\
+				& =\abs{\lambda}\inf\{ \norm{x+y}: y\in F \}=\abs{\lambda}\norm{x+F}_{0}
 			\end{aligned}
 		\]
 		知齐次性成立, 这里 $ \lambda\neq0 $. 下面证明三角不等式 $ \forall\varepsilon>0 $, 对 $ x_{1}, x_{2} $, 有
