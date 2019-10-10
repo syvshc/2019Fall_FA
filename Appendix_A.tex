@@ -16,17 +16,17 @@
 	\begin{Proof}
 	(1) \textsl{必要性}. 用$ \mathcal{E}(x) $记$ x $的所有闭邻域, 则$ x\in\bigcap\mathcal{E}(x) $是显然的. 若$ \exists x'\in\bigcap\mathcal{E}(x) $且$ x'\ne x $, 由Hausdorff空间的定义可知
 	\[
-	\exists U\in\CN{x}\,\exists V\in\CN{x'}\,(U\cap V=\varnothing),
+	\exists U\in\CN({x})\,\exists V\in\CN({x'})\,(U\cap V=\varnothing),
 	\]
 	并且可以要求$ U,\ V $都是开集, 则$ V^c\in\mathcal{E}(x) $但$ x'\notin V^c $, 矛盾.
 	
 	\textsl{充分性}. 显然
 	
-	(2) 其中$ \{x\}\subset\bigcap\CN{x} $是显然的, 由(1)知
+	(2) 其中$ \{x\}\subset\bigcap\CN({x}) $是显然的, 由(1)知
 	\[
 	\bigcap\CN(x)\subset\bigcap\mathcal{E}(x)=\{x\},
 	\]
-	从而只能$ \{x\}=\bigcap\CN{x} $.
+	从而只能$ \{x\}=\bigcap\CN({x}) $.
 	
 	(3) 显然.	\qed
 	\end{Proof}
@@ -54,7 +54,7 @@
 	\]
 	则由Hausdorff空间的定义, 有
 	\[
-	\exists U\in\CN{x}\,\exists V\in\CN{y}\,(U\cap V=\varnothing),
+	\exists U\in\CN(x)\,\exists V\in\CN({y})\,(U\cap V=\varnothing),
 	\]
 	而
 	\[
@@ -170,5 +170,12 @@
 	是基础开集, 因此$ (B(x,1/k))_{k\geqslant 1} $是$ x $的邻域基, 因此$ E $上的乘积拓扑可由$ d $诱导, 也即$ E $可度量化.\qed
 	     
 	\end{Proof}
+	
+	
+	
+	
+	
+	
+	
 	
 \end{appendix}
