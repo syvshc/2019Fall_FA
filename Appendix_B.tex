@@ -252,7 +252,7 @@
 	也即$ f $与$ g $的不动点分别是$ \frac{1}{4} $与$ \frac{3}{4} $.\qed
 	\end{Proof}
 	
-\section{第4周习题课(2019年9月23日)}
+\section{第3章习题(不完全)}
 
 	\textbf{习题3.2}\ [习题课]\ \ 设 $ E $ 是 $ \R $ 上所有的实系数多项式构成的线性空间, 对任一 $ p\in E $, 定义
 	\[
@@ -327,49 +327,6 @@
 
 		因为 $ \norm{L_{a, b}}<b-a $, 而当 $ p(x)\equiv 1 $ 时 $ \abs{L_{a, b}(p)}=b-a $, 故 $ \norm{L_{a, b}}=b-a $.\qed
 	\end{Proof}
-
-	\textbf{习题3.5}\ [习题课]\ \ 设 $ \varphi:[0, 1]\to [0, 1] $ 连续函数并且不恒等于 1. 设 $ \alpha\in\R $, 定义 $ C([0, 1],\R) $ \footnote{这里 $ C([0, 1],\R) $ 表示从 $ [0, 1] $ 到 \R 上的连续函数的全体 }上的映射 $ T $ 为
-	\[
-		T(f)(x)=\alpha+\dint_{0}^{x}f(\varphi(t))\diff t.
-	\]
-	证明 $ T $ 是压缩映射. 再根据以上结论证明下面的方程存在唯一解:
-	\begin{equation}\label{eq:3.5题公式}
-		f(0)=\alpha, f'(x)=f(\varphi(x))\qquad x\in[0, 1].
-	\end{equation}
-
-	\begin{Proof}
-		对$\forall f, g\in C[0, 1]$, $ \forall x\in[0, 1] $ 都有
-		\[
-			\begin{aligned}
-				\norm{Tf-Tg} & =\max_{x}\dint_{0}^{x}(f(\varphi(t))-g(\varphi(t)))\diff t \\
-				& \leqslant x\cdot \max_{x\in[0, 1]}\abs{f(x)-g(x)} \\
-				& =x\cdot \norm{f-g}.
-			\end{aligned}
-		\]
-		进一步 
-		\[
-			\begin{aligned}
-				\abs{T^{2}f-T^{2}g} & =\abs{\dint_{0}^{x}(Tf)(\varphi(t))-(Tg)(\varphi(t))\diff t} \\
-				& \leqslant\dint_{0}^{x}\varphi (t)\norm{f-g}\diff t \\
-				& =\norm{f-g}\dint_{0}^{x}\varphi(t)\diff t \\
-				& =\norm{f-g}\dint_{0}^{1}\varphi(t)\diff t \\
-				& \leqslant \sup \abs{f-g}
-			\end{aligned}
-		\]
-		因为 $ \norm{Tf-Tg}\leqslant\lambda\norm{f-g} $, 从而
-		\[
-			\sup\abs{\dint_{0}^{x}f(\varphi(t))-g(\varphi(t))\diff t}\leqslant\lambda\sup\abs{f-g}.
-		\]
-		则
-		\[
-			\norm{T^{2}f-T^{2}g}\leqslant\dint_{0}^{1}\varphi (t)\diff t\cdot \norm{f-g},
-		\]
-		取 $ \lambda=\dint_{0}^{1}\varphi(t)\diff t<1 $, 即 $ T^{2} $ 是压缩映射, 则 $ T^{2} $ 有唯一不动点.
-
-		而方程 \eqref{eq:3.5题公式} 成立 $ \Longleftrightarrow $ $ f(x)=\alpha +\dint_{0}^{x} f(\varphi(t))\diff t $. 即 $ Tf=f $, 故方程 \eqref{eq:3.5题公式} 有唯一解. \qed
-	\end{Proof}
-	
-\section{第6周习题课(2019年10月7日)}
 	
 	\textbf{习题3.4}\ [习题课]\ \ 设$ E $是由$ [0,1] $上所有连续函数构成的向量空间, 定义$ E $的两个范数分别为$ \norm{f}_1=\dint_0^1\abs{f(x)}\diff x $和$ N(f)=\dint_0^1x\abs{f(x)}\diff x $.
 	\begin{enumerate}[(1)]
@@ -420,6 +377,47 @@
 	\]
 	也即$ \norm{\cdot}_1\leqslant\frac{1}{a}N $, 从而$ \norm{\cdot}_1 $与$ N $在$ B $上是等价的.\qed
 	\end{Proof}
+
+	\textbf{习题3.5}\ [习题课]\ \ 设 $ \varphi:[0, 1]\to [0, 1] $ 连续函数并且不恒等于 1. 设 $ \alpha\in\R $, 定义 $ C([0, 1],\R) $ \footnote{这里 $ C([0, 1],\R) $ 表示从 $ [0, 1] $ 到 \R 上的连续函数的全体 }上的映射 $ T $ 为
+	\[
+		T(f)(x)=\alpha+\dint_{0}^{x}f(\varphi(t))\diff t.
+	\]
+	证明 $ T $ 是压缩映射. 再根据以上结论证明下面的方程存在唯一解:
+	\begin{equation}\label{eq:3.5题公式}
+		f(0)=\alpha, f'(x)=f(\varphi(x))\qquad x\in[0, 1].
+	\end{equation}
+
+	\begin{Proof}
+		对$\forall f, g\in C[0, 1]$, $ \forall x\in[0, 1] $ 都有
+		\[
+			\begin{aligned}
+				\norm{Tf-Tg} & =\max_{x}\dint_{0}^{x}(f(\varphi(t))-g(\varphi(t)))\diff t \\
+				& \leqslant x\cdot \max_{x\in[0, 1]}\abs{f(x)-g(x)} \\
+				& =x\cdot \norm{f-g}.
+			\end{aligned}
+		\]
+		进一步 
+		\[
+			\begin{aligned}
+				\abs{T^{2}f-T^{2}g} & =\abs{\dint_{0}^{x}(Tf)(\varphi(t))-(Tg)(\varphi(t))\diff t} \\
+				& \leqslant\dint_{0}^{x}\varphi (t)\norm{f-g}\diff t \\
+				& =\norm{f-g}\dint_{0}^{x}\varphi(t)\diff t \\
+				& =\norm{f-g}\dint_{0}^{1}\varphi(t)\diff t \\
+				& \leqslant \sup \abs{f-g}
+			\end{aligned}
+		\]
+		因为 $ \norm{Tf-Tg}\leqslant\lambda\norm{f-g} $, 从而
+		\[
+			\sup\abs{\dint_{0}^{x}f(\varphi(t))-g(\varphi(t))\diff t}\leqslant\lambda\sup\abs{f-g}.
+		\]
+		则
+		\[
+			\norm{T^{2}f-T^{2}g}\leqslant\dint_{0}^{1}\varphi (t)\diff t\cdot \norm{f-g},
+		\]
+		取 $ \lambda=\dint_{0}^{1}\varphi(t)\diff t<1 $, 即 $ T^{2} $ 是压缩映射, 则 $ T^{2} $ 有唯一不动点.
+
+		而方程 \eqref{eq:3.5题公式} 成立 $ \Longleftrightarrow $ $ f(x)=\alpha +\dint_{0}^{x} f(\varphi(t))\diff t $. 即 $ Tf=f $, 故方程 \eqref{eq:3.5题公式} 有唯一解. 
+	\end{Proof}
 	
 	\textbf{习题3.9}\ [作业]\ \ 设$ E $是Banach空间.
 	\begin{enumerate}[(1)]
@@ -465,7 +463,7 @@
 	可知映射$ u\mapsto u^{-1} $是连续的. 同理可证其逆连续, 从而它是同胚.\qed
 	\end{Proof}
 	
-	\textbf{补充题3.$ ^* $1(张恭庆1.4.2)}\ [习题课]\ \ 设$ C(0,1] $表示$ (0,1] $上连续有界的函数全体, 在$ C(0,1] $上定义$ \norm{x}=\sup\limits_{0<t\leqslant 1}\abs{x(t)} $, 证明:
+	\textbf{补充题3.1$ ^* $(张恭庆1.4.2)}\ [习题课]\ \ 设$ C(0,1] $表示$ (0,1] $上连续有界的函数全体, 在$ C(0,1] $上定义$ \norm{x}=\sup\limits_{0<t\leqslant 1}\abs{x(t)} $, 证明:
 	\begin{enumerate}[(1)]
 	\item $ \norm{\cdot} $是$ C(0,1] $上的范数;
 	\item $ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.
@@ -495,4 +493,102 @@
 	f=0\equiv \forall n\geqslant 1, x_n=f\left(\frac{1}{n}\right)=0
 	\]
 	即$ \ker T=\{ (0)_{n\geqslant 1} \} $从而$ T $是单射, 且$ \norm{f}=\sup\limits_{n\geqslant 1}\abs{x_n} $, 于是$ T $是一个等距同构映射. 从而$ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.\qed
+	\end{Proof}
+	
+	\section{第7周习题课(2019年10月14日)}
+	
+	\textbf{习题3.3}\ [作业]\ \ 设$ (E,\norm{\cdot}_\infty) $是习题3.2中定义的赋范空间, 设$ E_0 $是$ E $中常数项为0的多项式构成的线性子空间(即$ p\in E_0\Longleftrightarrow p(0)=0 $).
+	\begin{enumerate}[(1)]
+	\item 证明$ N(p)=\norm{p'}_\infty $定义了$ E_0 $上的一个范数, 并且对任意$ p\in E_0 $, 有$ \norm{p}_\infty\leqslant N(p) $;
+	\item 证明$ L(p)=\int_0^1\frac{p(x)}{x}\diff x $定义了$ E_0 $上关于$ N $的连续线性泛函, 并求出它的范数;
+	\item 上面定义的$ L $是否关于$ \norm{\cdot}_\infty $连续?
+	\item 范数$ \norm{\cdot}_\infty $和$ N $在$ E_0 $上是否等价?
+	\end{enumerate}
+	\begin{Proof}
+	(1) 先证明$ N(p) $是$ E_0 $上的范数, 注意到
+	\[
+	N(p)=0\Longleftrightarrow p'=0\Longleftrightarrow p=c,
+	\]
+	其中$ c $是一个常数, 由$ p(0)=0 $可知$ c=0 $, 从而$ p=0 $, 正定性成立. 再由
+	\[
+	N(\lambda p)=\norm{\lambda p'}_\infty=\abs{\lambda}\cdot\norm{p'}_\infty=\abs{\lambda}N(p)
+	\]
+	与
+	\[
+	N(p+q)=\norm{p'+q'}_\infty\leqslant\norm{p'}_\infty+\norm{q'}_\infty\leqslant N(p)+N(q)
+	\]
+	可知齐次性与三角不等式也成立, 从而$ N(p) $是$ E_0 $上的范数.
+	
+	再设$ p\in E_0 $, 任取$ x\in[0,1] $, 由Lagrange中值定理可知
+	\[
+	\abs{\frac{p(x)-p(0)}{x-0}}=\abs{p'(\xi)}\leqslant\norm{p'}_\infty=N(p),
+	\]
+	也即$ \abs{p(x)}\leqslant \norm{p'}_\infty\abs{x}\leqslant \norm{p'}_\infty $这说明$ \norm{p}_\infty\leqslant\norm{p'}_\infty=N(p) $.
+	
+	(2) 由积分算子的线性性可知$ L(p) $是线性泛函, 且由Lagrange中值定理可知
+	\[
+	\abs{\int_0^1\frac{p(x)}{x}\diff x}\leqslant\sup_{0\leqslant x\leqslant 1}\abs{\frac{p(x)}{x}}\leqslant\sup_{0\leqslant x\leqslant 1}\abs{p'(x)}=N(p),
+	\]
+	从而$ L(p)\leqslant N(p) $, 这说明$ L $关于范数$ N $是连续的, 且有$ \norm{L}\leqslant 1 $. 再取$ p(x)=x\in E_0 $, 此时$ L(p)=1=N(p) $, 从而$ \norm{L}=1 $.
+	
+	(3) $ L $关于$ \norm{\cdot}_\infty $不连续. 用反证法证明, 假设$ L $关于$ \norm{\cdot}_\infty $连续, 设
+	\[
+	 F_0=\{ f\in C[0,1] : f(0)=0 \},
+	\]
+	容易验证$ F_0 $是一个Banach空间. 由Weierstrass逼近定理可知$ \forall f\in C[0,1] $, 可以使用多项式一致逼近, 从而$ E_0 $在$ F_0 $中稠密, 于是$ E_0 $上的连续线性泛函可以唯一地扩张成$ F_0 $上的连续线性泛函, 将扩张后的连续线性泛函记作$ \tilde{L} $, 那么取$ F_0 $中的元素$ f(x)=x^{1/n} $后注意到$ \norm{f}_\infty=1 $且$ \tilde{L}(f)=n $可知$ \tilde{L} $关于$ \norm{\cdot}_\infty $不连续, 矛盾.
+	
+	(4) 若两范数等价, 那么它们诱导出的拓扑应当是相同的, 而(3)已经说明了它们诱导的拓扑不相同, 于是两范数不等价.\qed
+	\end{Proof}
+	
+	\textbf{习题3.8}\ [作业]\ \ 设$ E $是数域$ \K $上的有限维向量空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵.
+	\begin{enumerate}[(1)]
+	\item 证明映射$ u\mapsto[u] $建立了$ \CL(E) $到$ \mathbb{M}_n(\K) $之间的同构映射.
+	\item 假设$ E=\K^n $且$ \{ e_1,e_2,\cdots,e_n \} $是经典基(即$ e_i=[\delta_{i,1}],\delta_{i,2},\cdots,\delta{i,n}] $, 这里$ \delta $是Kronecker符号), 并约定$ E=\K^n $上赋予Euclid范数. 证明: 若$ [u] $可被正交相似对角化, 则$ \norm{u}=\max\{ \abs{\lambda_1},\abs{\lambda_2},\cdots,\abs{\lambda_n} \} $, 这里$ \lambda_1,\lambda_2,\cdots,\lambda_n $是$ u $的特征值.
+	\item 取$ \{ e_1,e_2,\cdots,e_n \} $如上, 试由$ [u] $中的元素分别确定$ p=1 $与$ p=\infty $时$ u : (\K^n,\norm{\cdot}_p)\to(\K^n,\norm{\cdot}_p) $的范数.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由高等代数知识可知$ u\mapsto[u] $是一个线性的双射, 而任取$ \mathbb{M}_n(\K) $上的一个范数$ \norm{\cdot} $, 取
+	\[
+	\norm{u}=\norm{[u]}
+	\]
+	即使$ \CL(E) $上的一个范数, 这说明这一映射连续, 于是$ \CL(E) $与$ \mathbb{M}_n(\K) $同构.
+	
+	(2) 由$ u $可被正交相似对角化可知存在酉矩阵$ p $与对角阵$ \lambda=\mathrm{diag}\,\{ \lambda_1,\lambda_2,\cdots,\lambda_n \} $使得
+	\[
+	u=p^{-1}\lambda p.
+	\]
+	那么对任意单位向量$ x $, 记$ y=p^\dagger x $, 那么$ \norm{y}=\sqrt{x^\dagger pp^\dagger x}=\sqrt{x^\dagger x}=1 $. 从而
+	\begin{align*}
+	\norm{ux}=\sqrt{x^\dagger uu^\dagger x}=\sqrt{x^\dagger p\lambda^\dagger\lambda p^\dagger x}&=\sqrt{\sum_{k=1}^n\abs{\lambda_k}^2\abs{y_k}^2}\\
+	&\leqslant\max_{k}\abs{\lambda_k}\sqrt{\abs{y_k}^2}=\max_{k}\abs{\lambda_k}.
+	\end{align*}
+	于是$ \norm{u}\leqslant\max\limits_{k}\abs{\lambda_k} $. 而取$ k_0 $是使得特征值模最大的下标, 并设$ \lambda_{k_0} $对应的特征向量是$ x_{k_0} $, 那么由
+	\[
+	\norm{ux_{k_0}}=\abs{\lambda_{k_0}}\norm{x_{k_0}}=\max_{k}\abs{\lambda_k}\norm{x_{k_0}},
+	\]
+	从而$ \norm{u}=\max\limits_{k}\abs{\lambda_k} $.
+	
+	(3) 当$ p=1 $时, 对$ \forall x\in\K^n $, 有$ x=\sum\limits_{k=1}^n x_ke_k $成立, 那么由定义有
+	\begin{align*}
+	\norm{ux}_1=\norm{\begin{bmatrix}
+	\Sigma u_{1,k}x_k\\\vdots\\\Sigma u_{n,k}x_k
+	\end{bmatrix}}=\sum_{i=1}^n\abs{\sum_{k=1}^nu_{i,k}x_k}&\leqslant\sum_{i=1}^n\sum_{k=1}^n\abs{u_{i,k}}\abs{x_k}\\
+	&\leqslant\max_{k}\left(\sum_{i=1}^n\abs{u_{i,k}}\right)\sum_{k=1}^n\abs{x_k}=\max_{k}\left(\sum_{i=1}^n\abs{u_{i,k}}\right)\norm{x}_1,
+	\end{align*}
+	从而$ \norm{u}_1\leqslant\max\limits_{k}\left(\sum\limits_{i=1}^n\abs{u_{i,k}}\right) $. 再取$ k_0 $是使得右侧取最大的列指标, 那么
+	\[
+	\norm{ue_{k_0}}_1=\max_{k}\left(\sum_{i=1}^n\abs{u_{i,k}}\right)\norm{e_{k_0}}_1,
+	\]
+	从而有$ \norm{u}_1=\max\limits_{k}\left(\sum\limits_{i=1}^n\abs{u_{i,k}}\right) $.
+	
+	而当$ p=\infty $时, 有
+	\begin{align*}
+	\norm{ux}_\infty=\max_i\abs{\sum_{k=1}^nu_{i,k}x_k}&\leqslant\max_i\sum_{k=1}^n\abs{u_{i,k}}\abs{x_k}\\
+	&\leqslant\max_i\max_k\abs{x_k}\sum_{k=1}^n\abs{u_{i,k}}=\max_i\sum_{k=1}^n\abs{u_{i,k}}\norm{x}_\infty.
+	\end{align*}
+	从而$ \norm{u}_\infty\leqslant\max\limits_i\sum\limits_{k=1}^n\abs{u_{i,k}} $. 再取$ i_0 $是使得右侧最大的行指标, 那么
+	\[
+	\norm{u(\mathrm{sgn}\,u_{i_0,k}e_{i_0})}_\infty=\max_i\sum_{k=1}^n\abs{u_{i,k}}\norm{\mathrm{sgn}\,u_{i_0,k}e_{i_0}}_\infty,
+	\]
+	故$ \norm{u}_\infty=\max\limits_i\sum\limits_{k=1}^n\abs{u_{i,k}} $.\qed
 	\end{Proof}
