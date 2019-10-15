@@ -1412,4 +1412,190 @@
 	且$ (f_n)_{n\geqslant 1} $是Cauchy列, 那么$ (f_n(x))_{n\geqslant 1} $是$ \K $上的Cauchy列, 从而它收敛, 记其极限为$ f(x) $, 于是也有$ \lim\limits_{k\to\infty}f_{n_k}=f $.\qed
 	\end{Proof}
 	
-	从而$ p\geqslant 1 $时, $ L_p(X) $成为一个Banach空间, 即使$ 0<p<1 $, 在赋以度量$ d(f,g)=\norm{f-g}_p^p $后, $ L_p(X) $也是一个完备的度量空间.
+     从而$ p\geqslant 1 $时, $ L_p(X) $成为一个Banach空间, 即使$ 0<p<1 $, 在赋以度量$ d(f,g)=\norm{f-g}_p^p $后, $ L_p(X) $也是一个完备的度量空间.
+     
+     对一般的测度空间$ (X,\mu) $, 考虑最简单的两种特殊情形: 一类是离散情形, 即
+	\[
+	X=\{ x_1,x_2,\cdots,x_n,\cdots \},
+	\]
+	并赋予$ \mu\{x_i\}=1 $, 那么此时$ L_p(X) $同构于$ \ell_p $. 另一类是连续情形, 即$ X=(0,1) $, 那么$ L_p(X) $同构于$ L_p(0,1) $. 且对于任意的$ (a,b)\subset\R $, 存在等距同构$ T : L_p(0,1)\to L_p(a,b) $.
+	
+	\begin{Definition}[可分性]\index{K!可分性}
+	若赋范空间(或度量空间)$ E $有可数稠密子集, 则称$ E $是\textbf{可分的}.
+	\end{Definition}
+	
+	\begin{Proposition}
+	$ \ell_p $在$ 0<p<\infty $时可分, 在$ p=\infty $时不可分.
+	\end{Proposition}
+	\begin{Proof}
+	对$ \ell_p $, 当$ 0<p<\infty $时, 可取
+	\[
+	A_1=\{ (x_1,x_2,\cdots,x_n,0,\cdots,0,\cdots) : x_i\in\Q, n\geqslant 1 \}
+	\]
+	是$ \ell_p $的稠密子集, 且$ A_1 $是可数的(因它是可数个可数集的并). 但对$ \ell_\infty $, 取它的子集
+	\[
+	A_2=\{ (\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n,\cdots) : \varepsilon_i=\pm 1 \}\subset\ell_\infty,
+	\]
+	注意到$ \abs{A_2}=2^{\aleph_0}=\aleph $, 且$ \forall x,y\in A_2,\ x\ne y $, 都有$ \norm{x-y}=2 $, 故$ A_2 $不可能有可数的稠密子集, 从而$ \ell_\infty $不可分.\qed
+	\end{Proof}
+	
+	下面是对于实分析中提到的一部分结论的复习.
+	
+	\begin{Definition}[简单函数]\index{J!简单函数}\index{J!阶梯函数}
+	设$ (X,\mathcal S) $是可测空间, 若$ X_1,X_2,\cdots,X_n\in\mathcal S $是可测集, $ a_1,a_2,\cdots,a_n\in\K $, 则称$ f=\sum\limits_{i=1}^na_i1_{X_i} $是$ (X,\mathcal S) $上的\textbf{简单函数}. 特别地, 若$ X=\R $且$ X_i $均为区间, 则称其为\textbf{阶梯函数}.
+	\end{Definition}
+	
+	\begin{Proposition}
+	设$ (X,\mathcal S) $是可测空间.
+	\begin{enumerate}[(1)]
+	\item $ X $上的可测函数可以通过简单函数逐点逼近;
+	\item $ X $上几乎处处有限的函数可以被连续函数逐点逼近.
+	\end{enumerate}
+	\end{Proposition}
+	
+	\begin{Theorem}[Lebesgue控制收敛定理]
+	设$ (X,\mu) $是测度空间, $ (f_n)_{n\geqslant 1} $是可测函数列, 若$ (f_n)_{n\geqslant 1} $几乎处处收敛到$ f $, 且存在$ g\in L_1(X) $使得$ \abs{f_n(x)}\leqslant\abs{g(x)} $ a.e., 则有$ f\in L_1(X) $且
+	\[
+	\lim_{n\to\infty}\int_Xf_n\diff\mu=\int_Xf\diff\mu.
+	\]
+	\end{Theorem}
+	
+	有关于实分析的结论复习到此结束. 下面主要讨论$ L_p $空间中的几类重要的稠密子集.
+	
+	\begin{Theorem}\label{thm:简单函数族在Lp中稠密性}
+	对$ 0<p<\infty $, 可积简单函数族在$ L_p(X) $中稠密.
+	\end{Theorem}
+	\begin{Proof}
+	设$ f\geqslant 0 $, 由简单逼近可知存在单调递增的简单函数列$ (f_n)_{n\geqslant 1} $使得
+	\[
+	\lim_{n\to\infty}f_n=f\ \text{a.e.},
+	\]
+	由$ f_n\leqslant f $可知$ \dint_X\abs{f_n}^p\diff\mu\leqslant\dint_X\abs{f}^p\diff\mu<\infty $, 即$ f_n $是可积的. 由Lebesgue控制收敛定理可知
+	\[
+	\lim_{n\to\infty}\norm{f-f_n}_p^p=\lim_{n\to\infty}\int_X\abs{f-f_n}^p\diff\mu=\int_X\lim_{n\to\infty}\abs{f-f_n}^p\diff\mu=0,
+	\]
+	从而在$ L_p(X) $上有$ \lim\limits_{n\to\infty}f_n=f $.
+	
+	对$ f $带号的情形由$ f=f^+-f^- $即可, 对$ f $复值的情形由$ f=\Re f+\imag\Im f $即可.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ X=(a,b) $, $ 0<p<\infty $, 则
+	\begin{enumerate}[(1)]
+	\item $ (a,b) $上可积的阶梯函数族在$ L_p(a,b) $中稠密;
+	\item $ (a,b) $上有紧支撑的连续函数族在$ L_p(a,b) $中稠密.
+	\end{enumerate}
+	\end{Corollary}
+	\begin{Proof}
+	(1) 由定理\,\ref{thm:简单函数族在Lp中稠密性}\,, 只需证明命题对$ \mu(A)<\infty $的$ f=1_A $成立即可. 由集合的简单逼近可知$ \forall\varepsilon>0 $, 存在开集$ U $使得$ m(A\triangle U)<\varepsilon $, 此时
+	\[
+	\norm{1_A-1_U}_p^p=\int_a^b\abs{1_A-1_U}^p\diff\mu=\mu(A\triangle U)<\varepsilon,
+	\]
+	令$ \varepsilon\to 0^+ $即可.
+	
+	(2) 由(1)可知只需证明对$ m(E)<\infty $的$ 1_E $可被有紧支撑的函数逼近即可. 由Lebesgue测度的内正则性与外正则性可知$ \forall\varepsilon>0 $, 存在紧集$ A $和开集$ B $使得
+	\[
+	(A\subset E\subset B)\land(m(B\sm A)<\varepsilon)
+	\]
+	由Urysohn引理可知存在连续函数$ g $使得
+	\[
+	g(x)=\begin{cases}
+	1 & ,x\in A\\0 & ,x\notin B
+	\end{cases}
+	\]
+	从而有
+	\[
+	\abs{g(x)-1_E(x)}\begin{cases}
+	=0 & ,x\in A\cup B^c\\\leqslant 1 & ,x\in B\sm A
+	\end{cases}
+	\]
+	于是
+	\[
+	\norm{g-1_E}_p=\left(\int_X\abs{g-1_E}^p\diff\mu\right)^{1/p}<\varepsilon^{1/p},
+	\]
+	令$ \varepsilon\to 0^+ $即可.\qed
+	\end{Proof}
+	
+	\begin{Proposition}
+	$ L_p(0,1) $在$ 0<p<\infty $时可分, 在$ p=\infty $时不可分.
+	\end{Proposition}
+	\begin{Proof}
+	当$ p<\infty $时, 注意到由Weierstrass定理可知$ P(0,1) $在$ C(0,1) $上稠密, 由可测函数的连续逼近定理可知$ C(0,1) $在$ B(0,1) $上稠密(此处$ B(0,1) $表示几乎处处有限的Lebesgue可测函数), 再由Lusin定理可知$ B(0,1) $在$ L_p(0,1) $上稠密. 注意到稠密性是有传递性的, 从而$ P(0,1) $在$ L_p(0,1) $上稠密, 于是$ L_p(0,1) $可分.
+	
+	当$ p=\infty $时, 取它的一个子集
+	\[
+	A=\{ 1_{[x,y]} : -\infty<x<y<\infty \},
+	\]
+	注意到$ \abs{A}=\aleph $且任取两个不同的函数$ 1_{[x_1,y_1]} $与$ 1_{[x_2,y_2]} $, 有$ \norm{1_{[x_1,y_1]}-1_{[x_2,y_2]}}_\infty=1 $, 从而$ A $不可能有可数的稠密子集, 从而$ L_\infty(0,1) $不可分.
+	\end{Proof}
+	
+\section{连续函数空间}
+	
+	设$ (K,d_K) $是紧度量空间, $ (E,d_E) $是度量空间. 记$ C(K,E) $是从$ K $到$ E $的连续映射的全体, 那么可以定义$ C(K,E) $上的函数如下
+	\[
+	\Delta(f,g)=\sup_{x\in K}d_E(f(x),g(x)),
+	\]
+	则:
+	\begin{enumerate}[(1)]
+	\item $ \Delta $是$ C(K,E) $上的度量;
+	\item 若$ E $完备, 则$ C(K,E) $完备;
+	\item 若$ E $是赋范空间, 则$ C(K,E) $也是赋范空间, 其上范数$ \norm{f}_\infty=\sup\limits_{x\in K}\norm{f(x)} $.
+	\end{enumerate}
+	下面考虑$ C(K,E) $的紧性: 赋范时只需$ K $和$ E $均是有限维的即可, 而一般的情况需要引入下面的概念:
+	
+	\begin{Definition}[等度连续]\index{D!等度连续}\index{Y!一致等度连续}
+	设$ (K,d_K) $与$ (E,d_E) $都是度量空间, 且$ \mathcal{H}\subset C(K,E) $是连续函数族.
+	\begin{enumerate}[(1)]
+	\item 设$ x_0\in K $, 若
+	\[
+	\forall\varepsilon>0\,\exists\eta>0\,\forall f\in\mathcal H\,(x\in B(x_0,\eta)\Rightarrow d_E(f(x),f(x_0))<\varepsilon),
+	\]
+	则称$ \mathcal H $在$ x_0 $处\textbf{等度连续}, 若$ \mathcal H $在$ K $中每一点都等度连续, 则称$ \mathcal H $在$ K $上等度连续.
+	\item 若$ \mathcal H $满足
+	\[
+	\forall\varepsilon>0\,\exists\eta>0\,\forall f\in\mathcal H\,(d_K(x,y)<\eta\Rightarrow d_E(f(x),f(y))<\varepsilon)
+	\]
+	则称$ \mathcal H $在$ K $上\textbf{一致等度连续}.
+	\end{enumerate}
+	\end{Definition}
+	
+	\begin{Remark}
+	有关等度连续的一些注记:
+	\begin{enumerate}[(1)]
+	\item 若$ \mathcal H=\{f\} $, 则$ \mathcal H $等度连续$ \Longleftrightarrow f $连续.
+	\item 设$ \mathcal H=\{ f_1,f_2,\cdots,f_n \} $, 则$ \mathcal H $等度连续$ \Longleftrightarrow f_i' $连续.
+	\item 给定常数$ c>0 $, 则所有从$ K $到$ E $的常数为$ c $的Lipschitz映射构成的子集一直等度连续; 进一步对$ \alpha>0 $, 所有从$ K $到$ E $的常数为$ c $, 阶数为$ \alpha $的H\"older映射构成的子集一致等度连续.
+	\item 设$ (f_n)_{n\geqslant 1} $一致收敛到$ f $, 即
+	\[
+	\lim_{n\to\infty}\sup_{x\in K}d_E(f_n(x),f(x))=0,
+	\]
+	则$ (f_n)_{n\geqslant 1} $等度连续.
+	\end{enumerate}
+	\end{Remark}
+	
+	下面的定理说明了当$ K $是紧空间时, 等度连续具有一致性:
+	
+	\begin{Theorem}
+	设$ (K,d_K) $是紧度量空间, $ (E,d_E) $是度量空间, 则$ \mathcal H $在$ K $上一致等度连续当且仅当$ \mathcal{H} $在$ K $上等度连续.
+	\end{Theorem}
+	\begin{Proof}
+	\textsl{必要性.}\ \ 显然.
+	
+	\textsl{充分性.}\ \ $ \forall\varepsilon>0 $, 由$ \mathcal H $在$ K $上等度连续可知
+	\[
+	\forall x\in K\,\exists\eta_x>0\,\forall f\in\mathcal H\,(d_K(x,y)<\eta_x\Rightarrow d_E(f(x),f(y))<\varepsilon)
+	\]
+	因为$ K $是紧的, 故存在$ x_1,x_2,\cdots,x_n $使得
+	\[
+	K=\bigcup_{i=1}^nB\left(x_i,\frac{\eta_{x_i}}{2}\right),
+	\]
+	再取$ \eta=\min\{ \eta_{x_1}/2,\eta_{x_2}/2,\cdots,\eta_{x_n}/2 \} $, 设$ d_K(x,y)<\eta $, 那么$ \forall f\in\mathcal H $, 存在$ k $使得$ x\in B(x_k,\eta_{x_k}/2) $, 且此时
+	\[
+	d_K(x_k,y)\leqslant d_K(x_k,x)+d_K(x,y)<\eta+\frac{\eta_{x_k}}{2}<\eta_{x_k},
+	\]
+	从而
+	\[
+	d_E(f(x),f(y))\leqslant d_E(f(x),f(x_k))+d_E(f(x_k),f(y))<\varepsilon+\varepsilon=2\varepsilon,
+	\]
+	即$ \mathcal H $在$ K $上一致等度连续.\qed
+	\end{Proof}
