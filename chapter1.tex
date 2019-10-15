@@ -1195,7 +1195,7 @@
 	\]
 	即$ (x_n)_{n\geqslant 1} $没有收敛子列. 但由$ \{ x : \norm{x}=1 \} $紧可知它是序列紧的, 即$ (x_n)_{n\geqslant 1} $存在收敛子列, 矛盾.\qed
 	
-     \subsection{一个Banach空间的例子—— $ L_p $空间}
+    \subsection{一个Banach空间的例子—— $ L_p $空间}
      
      \begin{Definition}[$ \ell_{p} $空间]\label{def:lp空间}
 		设$ 0<p\leqslant\infty $, 考虑具有以下性质的序列空间:
@@ -1424,7 +1424,7 @@
 	\end{Definition}
 	
 	\begin{Proposition}
-	$ \ell_p $在$ 0<p<\infty $时可分, 在$ p=\infty $时不可分; $ L_p(0,1) $在$ 0<p<\infty $时可分, 在$ p=\infty $时不可分.
+	$ \ell_p $在$ 0<p<\infty $时可分, 在$ p=\infty $时不可分.
 	\end{Proposition}
 	\begin{Proof}
 	对$ \ell_p $, 当$ 0<p<\infty $时, 可取
@@ -1480,7 +1480,7 @@
 	
 	\begin{Corollary}
 	设$ X=(a,b) $, $ 0<p<\infty $, 则
-	\begin{enumerate}[(!)]
+	\begin{enumerate}[(1)]
 	\item $ (a,b) $上可积的阶梯函数族在$ L_p(a,b) $中稠密;
 	\item $ (a,b) $上有紧支撑的连续函数族在$ L_p(a,b) $中稠密.
 	\end{enumerate}
@@ -1515,7 +1515,20 @@
 	令$ \varepsilon\to 0^+ $即可.\qed
 	\end{Proof}
 	
-	\section{连续函数空间}
+	\begin{Proposition}
+	$ L_p(0,1) $在$ 0<p<\infty $时可分, 在$ p=\infty $时不可分.
+	\end{Proposition}
+	\begin{Proof}
+	当$ p<\infty $时, 注意到由Weierstrass定理可知$ P(0,1) $在$ C(0,1) $上稠密, 由可测函数的连续逼近定理可知$ C(0,1) $在$ B(0,1) $上稠密(此处$ B(0,1) $表示几乎处处有限的Lebesgue可测函数), 再由Lusin定理可知$ B(0,1) $在$ L_p(0,1) $上稠密. 注意到稠密性是有传递性的, 从而$ P(0,1) $在$ L_p(0,1) $上稠密, 于是$ L_p(0,1) $可分.
+	
+	当$ p=\infty $时, 取它的一个子集
+	\[
+	A=\{ 1_{[x,y]} : -\infty<x<y<\infty \},
+	\]
+	注意到$ \abs{A}=\aleph $且任取两个不同的函数$ 1_{[x_1,y_1]} $与$ 1_{[x_2,y_2]} $, 有$ \norm{1_{[x_1,y_1]}-1_{[x_2,y_2]}}_\infty=1 $, 从而$ A $不可能有可数的稠密子集, 从而$ L_\infty(0,1) $不可分.
+	\end{Proof}
+	
+\section{连续函数空间}
 	
 	设$ (K,d_K) $是紧度量空间, $ (E,d_E) $是度量空间. 记$ C(K,E) $是从$ K $到$ E $的连续映射的全体, 那么可以定义$ C(K,E) $上的函数如下
 	\[
