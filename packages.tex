@@ -20,6 +20,7 @@
 \newcommand\CN{\mathcal{N}}
 \newcommand\CB{\mathcal{B}}
 \newcommand\CL{\mathcal{L}}
+\newcommand\CH{\mathcal{H}}
 
 \renewcommand\Re{\mathrm{Re\,}}
 \renewcommand\Im{\mathrm{Im\,}}
@@ -40,6 +41,7 @@
 \fancyhead[OL]{\fangsong \rightmark}
 \fancyhead[ER]{\fangsong \leftmark}
 \fancyhead[OR,EL]{\thepage}
+\usepackage[nottoc]{tocbibind}
 
 %辅助
 \usepackage{array,diagbox,booktabs,tabularx} %数组环境, 表格中可以添加对角线, 可以调整表格中线的宽度, 可以控制表格宽度并使其自动换行
@@ -111,4 +113,5 @@
 \newcommand{\degree}{\ensuremath{^{\circ}}}
 \newcommand{\sm}{\ensuremath{\setminus}}
 \newcommand{\baro}{\overline}
+\newcommand\remark{\setcounter{secnumdepth}{-2}}
 %\renewcommand{\labelenumi}{(\theenumi)}
