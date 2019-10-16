@@ -592,3 +592,32 @@
 	\]
 	故$ \norm{u}_\infty=\max\limits_i\sum\limits_{k=1}^n\abs{u_{i,k}} $.\qed
 	\end{Proof}
+	
+	\textbf{补充题3.2$ ^* $(Ps1010-6)}\ [习题课]\ \ 设$ F_1,F_2\subset E $是赋范空间的线性子空间, 且$ F_1 $闭, $ F_2 $有限维. 那么$ F_1+F_2 $是闭的.
+	\begin{Proof}
+	取商映射
+	\[
+	\pi : E\to E/F_1,\qquad x\mapsto [x]=x+F_1,
+	\]
+	则$ \pi(F_1+F_2)=\pi(F_2) $. 注意到$ \dim\pi(F_2)<\infty $, 从而$ \pi(F_2) $是$ E/F_1 $的闭子集. 由于
+	\[
+	F_1+F_2=\pi^{-1}(\pi(F_2)),
+	\]
+	于是$ F_1+F_2 $是闭集.\qed
+	\end{Proof}
+	
+	\textbf{补充题3.3$ ^* $(Ps1010-7)}\ [习题课]\ \ 设
+	\[
+	A=\begin{bmatrix}1 & t\\0 & 0\\\end{bmatrix} 
+	\]
+	计算$ \norm{A} $.
+	\begin{Solution}
+	由于$ \norm{A}=\norm{AA^\dagger}^{1/2} $, 从而由
+	\[
+	AA^\dagger=\begin{bmatrix}1&t\\0&0\\\end{bmatrix}
+	\begin{bmatrix}1&0\\\bar{t}&0\\\end{bmatrix}=\begin{bmatrix}
+	1+\abs{t}^2&0\\0&0\\
+	\end{bmatrix}
+	\]
+	可知$ \norm{A}=\sqrt{1+\abs{t}^2} $.
+	\end{Solution}
