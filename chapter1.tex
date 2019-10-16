@@ -628,10 +628,7 @@
 
           设 $ (E', d') $ 是另一个满足如上条件的度量空间, 并记 $ E $ 到 $ E' $ 的等距映射为 $ \iota' $ , 定义映射
           \[
-               \begin{aligned}
-                    f: \iota(E)  \to E'\\
-                    \hat{a} \mapsto \iota'(a)
-               \end{aligned}
+                f: \iota(E)  \to E', \hat{a} \mapsto \iota'(a)
           \]
           由 (1), (2) 可知 $ f $ 是等距的, 则它是一致连续的. 又由 (3) 知 $ \iota(E) $ 在 $ \widehat{E} $ 中稠密, 以及 $ (E', d') $ 完备, 根据定理\ref{thm:一致连续映射的扩展}可知 $ f $ 可唯一地扩展成 $ \widehat{E} $ 到 $ E' $ 的一致连续映射 $ \tilde{f} $. 对任意 $ \hat{x}, \hat{y}\in \widehat{E} $ , 其代表元分别为 $ (x_{n})_{n\geqslant1} $与 $ (y_{n})_{n\geqslant1} $, 则有
           \[
@@ -750,7 +747,7 @@
      \end{Proof}
 
      \begin{Corollary}
-          设 $ E $ 是紧集, $ f:E\to\R $ 是连续映射, 则 $ f $ 在 $ f $ 在 $ E $ 上有界且取得上确界与下确界.
+          设 $ E $ 是紧集, $ f:E\to\R $ 是连续映射, 则 $ f $ 在 $ E $ 上有界且取得上确界与下确界.
      \end{Corollary}
 
      \begin{Proposition}
@@ -1533,18 +1530,18 @@
 	
 	设$ (K,d_K) $是紧度量空间, $ (E,d_E) $是度量空间. 记$ C(K,E) $是从$ K $到$ E $的连续映射的全体, 那么可以定义$ C(K,E) $上的函数如下
 	\[
-	\Delta(f,g)=\sup_{x\in K}d_E(f(x),g(x)),
+	\varDelta(f,g)=\sup_{x\in K}d_E(f(x),g(x)),
 	\]
 	则:
 	\begin{enumerate}[(1)]
-	\item $ \Delta $是$ C(K,E) $上的度量;
+	\item $ \varDelta $是$ C(K,E) $上的度量;
 	\item 若$ E $完备, 则$ C(K,E) $完备;
 	\item 若$ E $是赋范空间, 则$ C(K,E) $也是赋范空间, 其上范数$ \norm{f}_\infty=\sup\limits_{x\in K}\norm{f(x)} $.
 	\end{enumerate}
 	下面考虑$ C(K,E) $的紧性: 赋范时只需$ K $和$ E $均是有限维的即可, 而一般的情况需要引入下面的概念:
 	
 	\begin{Definition}[等度连续]\index{D!等度连续}\index{Y!一致等度连续}
-	设$ (K,d_K) $与$ (E,d_E) $都是度量空间, 且$ \mathcal{H}\subset C(K,E) $是连续函数族.
+	设$ (K,d_K) $与$ (E,d_E) $都是度量空间, 且$ \CH\subset C(K,E) $是连续函数族.
 	\begin{enumerate}[(1)]
 	\item 设$ x_0\in K $, 若
 	\[
@@ -1576,7 +1573,7 @@
 	下面的定理说明了当$ K $是紧空间时, 等度连续具有一致性:
 	
 	\begin{Theorem}
-	设$ (K,d_K) $是紧度量空间, $ (E,d_E) $是度量空间, 则$ \mathcal H $在$ K $上一致等度连续当且仅当$ \mathcal{H} $在$ K $上等度连续.
+	设$ (K,d_K) $是紧度量空间, $ (E,d_E) $是度量空间, 则$ \mathcal H $在$ K $上一致等度连续当且仅当$ \CH $在$ K $上等度连续.
 	\end{Theorem}
 	\begin{Proof}
 	\textsl{必要性.}\ \ 显然.
@@ -1598,4 +1595,158 @@
 	d_E(f(x),f(y))\leqslant d_E(f(x),f(x_k))+d_E(f(x_k),f(y))<\varepsilon+\varepsilon=2\varepsilon,
 	\]
 	即$ \mathcal H $在$ K $上一致等度连续.\qed
-	\end{Proof}
+     \end{Proof}
+     
+     \begin{Theorem}
+          设 $ (K, d_{K}) $ 是紧度量空间, $ (E, d_{E}) $ 是度量空间,  $ (f_{n})_{n\geqslant1} $ 是 $ C(K, E) $ 是中等度连续的序列, 若 $ (f_{n})_{n\geqslant1} $ 逐点收敛于 $ f $, 则 $ f\in C(K, E) $ 且 $ (f_{n})_{n\geqslant1} $ 一致收敛到 $ f $.
+     \end{Theorem}
+     \begin{Proof}
+          先证 $ f $ 连续, 由 $ (f_{n})_{n\geqslant1} $ 等度连续, $ K $紧, 则 $ (f_{n})_{n\geqslant1} $ 一致等度连续, 则有
+          \[
+               \forall \varepsilon>0\,\exists\eta>0\,\forall n\geqslant1\,(y\in B(x, \eta)\Rightarrow d_{E}(f_{n}(x), f_{n}(y))<\varepsilon),
+          \]
+          故
+          \[
+               \begin{aligned}
+               d_{E}(f(x), f(y)) & \leqslant d_{E}(f(x), f_{n}(x))+d_{E}(f_{n}(x), f_{n}(y))+d_{E}(f_{n}(y), f(y))\\
+               & < d_{E}(f(x), f_{n}(x))+\varepsilon+d_{E}(f_{n}(y), f(y)),
+               \end{aligned}
+          \]
+          令 $ n\to\infty $, $ d_{E}(f(x), f(y))\leqslant\varepsilon $, 即 $ f $ 在 $ x $ 处连续, 由 $ x $ 的任意性得 $ f\in C(K, E) $.
+
+          再证 $ (f_{n})_{n\geqslant1}\rightrightarrows f $, 因为 $ K $ 是紧集, 故 $ \forall \varepsilon>0 $, $ \exists x_{1}, x_{2}, \dots, x_{n}\in E $, $ \eta_{x_{1}}, \eta_{x_{2}}, \dots , \eta_{x_{n}}>0 $ 使得 
+          \[
+               \forall n\geqslant1\,(x\in B(x_{k}, \eta_{x_{k}})\Rightarrow d_{E}(f_{n}(x), f_{n}(x_{k}))<\varepsilon), 
+          \]
+          且 $ K=\bigcup_{k=1}^{n}B(x_{k}, \eta_{x_{k}}) $, 则
+          \[
+               \forall x\in K\,\exists k\,(x\in B(x_{k}, \eta_{x_{k}})).
+          \]
+          从而
+          \[
+               \begin{aligned}
+                   d_{E}(f_{m}(x), f(x)) & \leqslant d_{E}(f_{m}(x), f_{m}(x_{k}))+d_{E}(f_{m}(x_{k}), f(x_{k}))+d_{E}(f(x_{k}), f(x))\\
+                   & <\varepsilon+\varepsilon+\varepsilon.
+               \end{aligned}
+          \]
+          其中第一个 $ \varepsilon $ 因为 $ (f_{n})_{n\geqslant1} $ 等度连续, 第二个 $ \varepsilon $ 因为 $ f_{n} $ 逐点收敛于 $ f $, 第三个 $ \varepsilon $ 因为 $ f $ 的连续性. 故有 $ (f_{n})_{n\geqslant1}\rightrightarrows f $.\qed
+     \end{Proof}
+
+     下面证明本节的中心定理.
+
+     \begin{Theorem}[Ascoli]
+          设 $ (K, d_{K}) $ 是紧度量空间, $ (E, d_{E}) $ 是度量空间, $ \CH\subset C(K, E) $, 则 $ \CH $ 在 $ C(K, E) $ 中相对紧的充分必要条件为
+          \begin{enumerate}[(1)]
+               \item $ \CH $ 等度连续;
+               \item  $ \forall x\in K $,  $ \CH $ 的轨迹 $ \CH(x)=\{ f(x):f\in\CH \} $ 在 $ E $ 中相对紧.
+          \end{enumerate}
+     \end{Theorem}
+
+     \begin{Proof}
+          \textsl{必要性}. 因为 $ \CH $ 相对紧 $ \Rightarrow $ $ \baro{\CH} $ 紧 $ \Rightarrow $ $ \baro{\CH} $ 预紧$ \Rightarrow $ $ \CH $ 预紧. 则 $ \forall \varepsilon>0, \exists f_{1}, f_{2}, \dots f_{n}\in\CH $, 使得 $ \forall f\in\CH\,\exists f_{k}\,(\varDelta(f, f_{k})<\varepsilon) $, i.e.
+          \[
+               \sup_{x\in K}d_{E}(f(x), f_{k}(x))<\varepsilon.   
+          \]
+          由 $ f_{1}, f_{2}, \dots, f_{n} $ 连续知它们一致连续(Cantor 定理), 从而 
+          \[
+               \forall \varepsilon>0\,\forall x\in K\,\exists\eta>0\forall k\,(y\in B(x, \eta)\Rightarrow d_{E}(f_{k}(x), f_{k}(y))<\varepsilon),
+          \]
+          则对 $ \forall f\in\baro{\CH} $, 有
+          \[
+               \begin{aligned}
+                    d_{E}(f(x), f(y)) & \leqslant d_{E}(f(x), f_{k}(x))+d_{E}(f_{k}(x)+f_{k}(y))+d_{E}(f_{k}(y), f(y))\\
+                    & <\varepsilon+\varepsilon+\varepsilon
+               \end{aligned}   
+          \]
+          其中第一个和第三个 $ \varepsilon $ 因为 $ \CH $ 的预紧性, 第二个 $ \varepsilon $ 因为 $ f_{k} $ 一致连续. 从而可知 $ \baro{\CH} $ 一致等度连续, 故 $ \CH $ 等度连续.
+          
+          定义映射:
+          \[
+               \rho_{x}: C(K, E)\to E, f \mapsto f(x)
+          \]
+          则 $ \rho_{x} $ 连续, 而由 $ \baro{\CH} $ 的紧性及连续函数映紧集为紧集可知
+          \[
+               \rho_{x}(\baro{\CH})=\baro{\CH}(x)=\baro{\CH(x)}    
+          \]
+          紧, 从而 $ \CH(x) $ 相对紧.
+
+          \textsl{充分性}. 要说明 $ \baro{\CH} $ 紧, 只需说明 $ \baro{\CH} $ 完备且预紧.
+
+          先说明 $ \baro{\CH} $ 完备. 任取 $ \baro{\CH} $ 中的 Cauchy列 $ (f_{n})_{n\geqslant1} $, 则有 $ E $ 中的 Cauchy列 $ (f_{n}(x))_{n\geqslant1} $, 由 $ \baro{\CH}(x) $ 紧且完备可知 $ (f_{n}(x))_{n\geqslant1} $ 有收敛点 $ f(x) $. 即 $ (f_{n})_{n\geqslant1} $ 逐点收敛于 $ f $. 又由 $ \CH $ 等度连续可知 $ \baro{\CH} $ 也是等度连续的, 从而 $ (f_{n})_{n\geqslant1} $ 等度连续, 于是 $ f $ 连续, 且 $ (f_{n})_{n\geqslant1}\rightrightarrows f $. 从而有 $ f\in\baro{\CH} $, 即 $ \baro{\CH} $ 完备.
+
+          再说明 $ \baro{\CH} $ 预紧, 由 $ \baro{\CH} $ 等度连续, 有
+          \begin{equation}\label{eq:H等度连续}
+               \forall \varepsilon>0\,\exists\eta>0\,\forall f\in\baro{\CH}\,\left(d_{K}(x, y)<\eta\Rightarrow d_{E}(f(x), f(y))<\frac{\varepsilon}{3}\right).
+          \end{equation}
+          由 $ K $ 紧知其预紧, 故存在 $ K $ 的有限 $ \eta $-网 $ \{ x_{1}, x_{2}, \dots, x_{n} \} $ 使
+          \[
+               \forall f\in\CH\,\left(x\in B(x_{k}, \eta)\Rightarrow d_{E}(f(x), f_{k}(x))<\frac{\varepsilon}{3}\right),
+          \]
+          且 $ K=\bigcup_{k=1}^{n}B(x_{k}, \eta) $, 定义映射
+          \[
+               \varPhi: C(K, E)\to E^{n}, f\mapsto (f(x_{1}), f(x_{2}), \dots, f(x_{n}))     
+          \]
+          并在 $ E^{n} $ 上定义度量 $ \delta((x_{k})_{k=1}^{n}, (y_{k})_{k=1}^{n})=\sup\limits_{k} d_{E}(x_{k}, y_{k}) $, 因为 $ \baro{\CH}(x_{k}), k=1, 2, \dots, n $ 预紧, 则有 $ \varPhi(\baro{\CH})\subset\prod\limits_{k=1}^{n}\baro{\CH}(x_{k}) $ 是预紧的. 故存在 $ \varPhi(\baro{\CH}) $ 的有限 $ \varepsilon/3 $-网 $ \{ \varPhi(f_{1}),\varPhi(f_{2}),\dots \varPhi(f_{m}) \} $, 即
+          \[
+               \forall f\in\baro{\CH}\,\exists f_{k}\,\left(\delta(\varPhi(f), \varPhi(f_{k}))<\frac{\varepsilon}{3}\right)
+          \] 
+          由此只需验证 $ f_{1}, f_{2},\dots,f_{m}  $ 是 $ \baro{\CH} $ 的 $ \varepsilon $-网. 则对任意 $ x $ , 存在 $ x_{r} $, 使得 $ d_{K}(x, x_{r})<\eta $, 所以有
+          \[
+               \begin{aligned}
+                    d_{E}(f(x), f_{k}(x)) & \leqslant d_{E}(f(x), f(x_{r}))+ d_{E}(f(x_{r}), f_{k}(x_{r}))+d_{E}(f_{k}(x_{r}), f_{k}(x))\\
+                    & \leqslant \varepsilon/3+\varepsilon/3+\varepsilon/3=\varepsilon
+               \end{aligned}
+          \]
+          其中第一个和第三个 $ \varepsilon/3 $ 因为式\,\eqref{eq:H等度连续}, 第二个 $ \varepsilon $ 因为 $ \varPhi(\baro{\CH}) $ 预紧. 所以 $ \varDelta(f, f_{k})<\varepsilon $, 从而 $ \{f_{1}, f_{2}, \dots , f_{m}\} $ 是 $ \baro{\CH} $ 的 $ \varepsilon $-网.\qed
+     \end{Proof}
+
+     \begin{Corollary}
+          设 $ (K, d_{K}) $ 是紧度量空间, $ \CH\subset C(K, \K^{n}) $, 则 $ \CH $ 相对紧当且仅当 $ \CH $ 等度连续, 且 $ \forall x\in K $ 都有 $ \CH(x) $ 有界.
+     \end{Corollary}
+
+     \begin{Corollary}
+          设开集 $ \varOmega\subset\K^{n} $,  $ (f_{k})_{k\geqslant1}\subset C(\varOmega, \K^{n}) $, 若
+          \begin{enumerate}[(1)]
+               \item $ (f_{k})_{k\geqslant1} $ 在 $ \varOmega $ 的任一紧子集 $ K $ 上等度连续;
+               \item $ \forall x\in\varOmega, \{ f_{k}(x):k\geqslant1 \} $ 有界.
+          \end{enumerate} 
+          则 $ (f_{k})_{k\geqslant1} $ 有一子列在 $ \varOmega $ 上的任一紧子集 $ K $ 上一致连续.
+     \end{Corollary}
+     
+     \begin{Proof}
+          对 $ \forall p\in\N^{*} $, 取
+          \[
+               K_{p}=\left\{ x\in\varOmega: d(x, \varOmega^{c})\geqslant\frac{1}{p} \right\}\cap \baro{B(0, p)}\subset\varOmega  
+          \]
+          是一个有界闭集, 因为 $ K_{p}\subset\K^{n} $ 知 $ K_{p} $ 紧. 且由定义知 $ \bigcup_{p\geqslant1}K_{p}=\varOmega $. 由 Ascoli定理知 $ (f_{k})_{k\geqslant1} $ 在 $ K_{1} $ 上有一致收敛子列 $ (f_{1, k})_{k\geqslant1} $; 而 $ (f_{1, k})_{k\geqslant1} $ 在 $ K_{2} $ 上又有一致收敛子列 $ (f_{2, k})_{k\geqslant1}\dots $
+
+          由对角线法则, 取 $ (f_{k, k})_{k\geqslant1} $, 则它在 $ K_{p} $ 上一致收敛 ($ \forall p\geqslant1 $), 因为任意紧子集$ K $必含于某个集 $ K_{p} $, 故 $ (f_{k, k})_{k\geqslant1} $ 在任一紧子集上一致收敛.\qed
+     \end{Proof}
+
+     下面是 Ascoli定理的一个重要推论, 它在复分析中已经介绍过, 即 Montel 正规定则.
+
+     \begin{Theorem}[Montel]
+          设 $ \varOmega $是 \C 中的开集, $ (f_{n})_{n\geqslant1} $ 是一族在 $ \varOmega $ 上定义的全纯函数, 若对 $ \varOmega $ 的紧子集 $ K $, 有 $ (f_{n})_{n\geqslant1} $ 在 $ K $ 上一致有界, 则 $ (f_{n})_{n\geqslant1} $ 有一个子列在 $ \varOmega $ 上任一紧子集上收敛到 $ \varOmega $ 上的全纯函数 $ f $.
+     \end{Theorem}
+
+     \begin{Proof}
+          由 Cauchy 积分公式, 有
+          \[
+               f_{n}=\frac{1}{2\pi \imag}\int_{\partial D(z_{0}, r)} \frac{f_{n}(\xi)}{\xi-z}\diff \xi,\qquad \forall z\in D(z_{0}, r),
+          \]
+          两侧对 $ z $ 求导有
+          \[
+               f'_{n}=\frac{1}{2\pi \imag}\int_{\partial D(z_{0}, r)} \frac{f_{n}(\xi)}{(\xi-z)^{2}}\diff \xi,\qquad \forall z\in D(z_{0}, r),
+          \]
+          对 $ z\in D(z_{0}, r/2) $, 有
+          \[
+               \begin{aligned}
+                    \abs{f'_{n}(x)} & \leqslant \frac{1}{2\pi}\sup_{x\in D(z_{0}, r/2)}\abs{f_{n}(z)}\cdot\int_{\partial D(z_{0}, r)}\frac{\abs{\diff \xi}}{\abs{\xi-z}^{2}}\\
+                    & \leqslant \frac{M}{2\pi}\cdot 2\pi r\cdot \frac{4}{r^{2}}=\frac{4M}{r},
+               \end{aligned}
+          \]
+          其中 $ M $是 $ (f_{n})_{n\geqslant1} $ 在 $ K $ 上的界, 则 $ (f_{n}|_{\baro{D}(z_{0}, r/2)})_{n\geqslant1} $ 是以 $ 4M/r $ 为常数的  Lipschitz函数列, 从而等度连续, 有因为对任意紧子集 $ K\subset\varOmega $, 
+          $ K $ 可被有限个 $ D(z_{k}, r/2) $ 覆盖, 故 $ (f_{n}|_{K})_{n\geqslant1} $ 等度连续, 从而它有子列在 $ K $ 上一致收敛到 $ f $, 且由 $ f_{n_{k}} $ 全纯知 $ f $ 全纯. \qed
+     \end{Proof}
+     \remark
+     \section{本章注记}
