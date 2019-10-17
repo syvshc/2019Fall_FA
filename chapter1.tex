@@ -1528,6 +1528,8 @@
 	
 \section{连续函数空间}
 	
+	\subsection{等度连续性与Ascoli定理}
+	
 	设$ (K,d_K) $是紧度量空间, $ (E,d_E) $是度量空间. 记$ C(K,E) $是从$ K $到$ E $的连续映射的全体, 那么可以定义$ C(K,E) $上的函数如下
 	\[
 	\varDelta(f,g)=\sup_{x\in K}d_E(f(x),g(x)),
@@ -1634,7 +1636,7 @@
 
      下面证明本节的中心定理.
 
-     \begin{Theorem}[Ascoli]
+     \begin{Theorem}[Arzel\`a-Ascoli]
           设 $ (K, d_{K}) $ 是紧度量空间, $ (E, d_{E}) $ 是度量空间, $ \CH\subset C(K, E) $, 则 $ \CH $ 在 $ C(K, E) $ 中相对紧的充分必要条件为
           \begin{enumerate}[(1)]
                \item $ \CH $ 等度连续;
@@ -1748,3 +1750,45 @@
           其中 $ M $是 $ (f_{n})_{n\geqslant1} $ 在 $ K $ 上的界, 则 $ (f_{n}|_{\baro{D}(z_{0}, r/2)})_{n\geqslant1} $ 是以 $ 4M/r $ 为常数的  Lipschitz函数列, 从而等度连续, 有因为对任意紧子集 $ K\subset\varOmega $, 
           $ K $ 可被有限个 $ D(z_{k}, r/2) $ 覆盖, 故 $ (f_{n}|_{K})_{n\geqslant1} $ 等度连续, 从而它有子列在 $ K $ 上一致收敛到 $ f $, 且由 $ f_{n_{k}} $ 全纯知 $ f $ 全纯. \qed
      \end{Proof}
+     
+	\subsection{Stone-Weierstrass定理}
+	
+	\begin{Definition}[子代数, 可分点的]\index{Z!子代数}\index{K!可分点的}
+	设 $ \CA\subset C(K,\K) $, 其中$ K $是紧度量空间.
+	\begin{enumerate}[(1)]
+	\item 若$ \CA $是$ C(K,\K) $的线性子空间且关于乘法封闭, 则称$ \CA $是$ C(K,\K) $的\textbf{子代数};
+	\item 若$ \CA $满足
+	\[
+	\forall x,y\in K\,,x\ne y\,\exists f\in\CA\,(f(x)\ne f(y))
+	\]
+	则成$ \CA $在$ K $上是\textbf{可分点的}.
+	\end{enumerate}
+	\end{Definition}
+	
+	\begin{Theorem}[Stone-Weierstrass]
+	设$ K $是紧度量空间, $ \CA $是$ C(K,\K) $的子代数, 若
+	\begin{enumerate}[(1)]
+	\item $ \CA $在$ K $上是可分点的;
+	\item $ \forall x\in K\,\exists f\in\CA\,(f(x)\ne 0) $;
+	\item $ f\in\CA\Longrightarrow \bar{f}\in\CA $.(也称$ \CA $是\textbf{自伴}的),
+	\end{enumerate}
+	则$ \CA $在$ C(K,\K) $中稠密.
+	\end{Theorem}
+	
+	这一定理的证明非常复杂, 此处略去.
+	
+	\begin{Example}
+	下面是利用Stone-Weierstrass定理得到的一些结论:
+	\begin{enumerate}[(1)]
+	\item $ [0,1] $上偶多项式全体在$ C([0,1],\K) $上稠密, 但$ [-1,1] $上的偶多项式全体不在$ C([-1,1],\K) $上稠密.
+	\item $ [0,\pi] $上全体三角多项式构成的线性空间在$ C[0,\pi] $上稠密, 即
+	\[
+	T=\mathrm{span} \{ \cos nx,\ \sin nx : n\in\N \}=\left\{ \sum_{k=1}^na_k\cos kx+b_k\sin kx : n\in\N \right\}
+	\]
+	在$ C[0,\pi] $上稠密. 由
+	\[
+	\cos^2x=\frac{1+\cos 2x}{2},\qquad \sin^2x=\frac{1-\cos 2x}{2},\qquad \cos x\sin x=\frac{\sin 2x}{2}
+	\]
+	可知$ T $是一个代数.
+	\end{enumerate}
+	\end{Example}
