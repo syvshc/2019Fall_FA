@@ -365,3 +365,110 @@
 		\]
 		即 $ E/F $ 是Banach空间.\qed
 	\end{Proof}
+	
+\section{内积空间}
+	
+	\begin{Definition}[内积空间]\index{N!内积}\index{N!内积空间}
+	设$ H $是$ \K $上的线性空间, 若映射$ \lrangle{\cdot,\cdot} : H\times H\to\K $满足
+	\begin{enumerate}[(1)]
+	\item 线性性: $ \forall \lambda_1,\lambda_2\in\K,\,\forall x_1,x_2,y\in H,\ \lrangle{\lambda_1x_1+\lambda_2x_2,y}=\lambda_1\lrangle{x_1,y}+\lambda_2\lrangle{x_2,y} $;
+	\item 共轭对称性: $ \lrangle{x,y}=\baro{\lrangle{y,x}} $;
+	\item 非负性: $ \forall x\in H $, $ \lrangle{x,x}\geqslant 0 $且$ \lrangle{x,x}=0 $当且仅当$ x=0 $,
+	\end{enumerate}
+	则称$ \lrangle{\cdot,\cdot} $是一个\textbf{内积}, 并称赋予了内积的空间$ H $是\textbf{内积空间}.
+	\end{Definition}
+	
+	\begin{Example}
+	一些常见的内积空间, 在不特殊说明的情况下, 以后提到下面的空间时均默认其上定义的内积是本例中定义的内积:
+	\begin{enumerate}[(1)]
+	\item 在Euclid空间$ \K^n $上赋以内积$ \lrangle{x,y}=\sum\limits_{i=1}^nx_i\bar{y}_i $. 注意到Euclid范数$ \norm{x}=\sqrt{\lrangle{x,x}} $可被该内积诱导.
+	\item 在$ L_2(X) $上赋以内积$ \lrangle{f,g}=\int_Xf\bar{g}\diff\mu $, 且由H\"older不等式可知
+	\[
+	\abs{\lrangle{f,g}}\leqslant\norm{f}_2\norm{g}_2<\infty,
+	\]
+	但当$ p\ne 2 $时, $ L_p(X) $不是内积空间.
+	\item 在连续函数空间$ C([a,b],\K) $上可以定义内积$ \lrangle{f,g}=\int_a^bf\bar{g}\diff x $.
+	\item 在$ n $阶方阵空间$ \mathbb{M}_n(\K) $上可以定义内积$ \lrangle{A,B}=\mathrm{tr(B^\dagger A)} $.
+	\end{enumerate}
+	\end{Example}
+	
+	\begin{Theorem}[Cauchy-Schwarz]
+	设$ H $是一个内积空间, 则$ \forall x,y\in H $, 有
+	\[
+	\abs{\lrangle{x,y}}^2\leqslant\lrangle{x,x}\lrangle{y,y}.
+	\]
+	其中上式等号成立当且仅当$ x $与$ y $线性相关.
+	\end{Theorem}
+	\begin{Proof}
+	$ y=0 $的情形是平凡的, 不妨设$ y\ne 0 $. 那么$ \forall x,y\in H,\ \forall\lambda\in\K $, 有
+	\[
+	0\leqslant\lrangle{x+\lambda y,x+\lambda y}=\lrangle{x,x}+\bar{\lambda}\lrangle{x,y}+\lambda\baro{\lrangle{x,y}}+\lambda\bar{\lambda}\lrangle{y,y}.
+	\]
+	取$ \lambda=-\frac{\lrangle{x,y}}{\lrangle{y,y}} $代入, 得
+	\[
+	\lrangle{x,x}-\frac{\abs{\lrangle{x,y}}^2}{\lrangle{y,y}}-\frac{\abs{\lrangle{x,y}}^2}{\lrangle{y,y}}+\frac{\abs{\lrangle{x,y}}^2}{\abs{\lrangle{y,y}}^2}\lrangle{y,y}\geqslant 0,
+	\]
+	整理可得$ \abs{\lrangle{x,y}}^2\leqslant\lrangle{x,x}\lrangle{y,y} $.
+	
+	由证明过程可知等号成立当且仅当$ \lrangle{x+\lambda y,x+\lambda y}=0 $, 也即$ x=-\lambda y $, 此时$ x,y $是线性相关的.\qed
+	\end{Proof}
+	
+	\begin{Corollary}\label{col:内积诱导范数}
+	设$ H $是内积空间, 则$ \norm{x}=\sqrt{\lrangle{x,x}} $是范数.
+	\end{Corollary}
+	\begin{Proof}
+	由内积的定义可知正定性与齐次性都成立, 只需验证三角不等式成立即可. 由
+	\[
+		\begin{aligned}
+		\norm{x+y}^2=\lrangle{x+y,x+y}&=\lrangle{x,x}+\lrangle{x,y}+\baro{\lrangle{x,y}}+\lrangle{y,y}\\
+		&\leqslant\norm{x}^2+2\Re\lrangle{x,y}+\norm{y}^2\leqslant\norm{x}^2+2\norm{x}\norm y+\norm y^2=(\norm x+\norm y)^2.
+		\end{aligned}
+	\]
+	从而$ \norm{x+y}\leqslant\norm x+\norm y $.\qed
+	\end{Proof}
+	
+	\begin{Definition}[Hilbert空间]\index{H!Hilbert空间}
+	设$ H $是一个内积空间, 称推论\,\ref{col:内积诱导范数}\,中的范数$ \norm{\cdot} $是由内积$ \lrangle{\cdot,\cdot} $诱导出的范数, 从而$ (H,\norm{\cdot}) $是赋范空间. 若它是一个Banach空间, 则称$ H $是\textbf{Hilbert空间}.
+	\end{Definition}
+	
+	由Cauchy-Schwarz不等式可以导出内积相对于自身诱导的范数是连续的. 同时, 类似于赋范空间的结论, 内积空间$ H $的完备化$ \tilde{H} $是Hilbert空间.
+	
+	\begin{Example}
+	$ L_2(X) $是Hilbert空间, $ \mathbb{M}_n(\K) $也是Hilbert空间. 但$ C[0,1] $是内积空间而不是Hilbert空间, 其完备化是$ L_2[0,1] $.
+	\end{Example}
+	
+	\begin{Proposition}[极化恒等式]
+	设$ H $是$ \K $上的内积空间, 则对$ \forall x,y\in H $, 有
+	\[
+	\lrangle{x,y}=\frac{1}{4}\sum_{k=0}^3\imag^k\norm{x+\imag^ky}^2.
+	\]
+	特别地, 在实的情形时上式退化为
+	\[
+	\lrangle{x,y}=\frac{1}{2}(\norm{x+y}^2-\norm{x}^2-\norm{y}^2).
+	\]
+	\end{Proposition}
+	
+	\begin{Proposition}[平行四边形公式]
+	设$ H $是$ \K $上的内积空间, 则对$ \forall x,y\in H $, 有
+	\[
+	\norm{x+y}^2+\norm{x-y}^2=2(\norm{x}^2+\norm{y}^2).
+	\]
+	\end{Proposition}
+	
+	上面的两个命题, 即极化恒等式和平行四边形公式, 都可以将范数展开成内积之后直接证明.
+	
+	\begin{Corollary}
+	对$ \forall f,g\in L_2(X) $, 有
+	\[
+	\norm{f+g}_2^2+\norm{f-g}_2^2=2(\norm{f}_2^2+\norm g_2^2).
+	\]
+	进一步, 对$ 2\leqslant p<\infty $, 有
+	\[
+	\norm{f+g}_p^p+\norm{f-g}_p^p\leqslant 2^{p-1}(\norm{f}_p^p+\norm{g}_p^p),
+	\]
+	上式称为\textbf{Clarkson不等式}, 其证明在正文中不再叙述.
+	\end{Corollary}
+	
+	\begin{Theorem}
+	设$ H $是赋范空间, 若范数$ \norm{\cdot} $满足平行四边形公式, 则它可被$ H $上的一个内积诱导出来.
+	\end{Theorem}
