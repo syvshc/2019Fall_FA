@@ -237,7 +237,7 @@
 	并且注意到$ I $上的Euclid距离是不完备的, 尽管$ d $与Euclid距离诱导出的拓扑是相同的, 但$ d $却是完备的. 这说明完备性并不是一个拓扑概念, 它跟空间上赋予的度量有关.
 	\end{Remark}
 	
-	\textbf{习题2.15}\ [习题课]\ \ 设$ (E,d) $是完备度量空间, $ f $和$ g $是$ E $上两个可交换的压缩映射(即$ fg=gf $). 证明$ f $和$ g $由唯一的共同不动点. 并举出反例说明当可交换条件不满足时结论不成立.
+	\textbf{习题2.15}\ [习题课]\ \ 设$ (E,d) $是完备度量空间, $ f $和$ g $是$ E $上两个可交换的压缩映射(即$ fg=gf $). 证明$ f $和$ g $有唯一的共同不动点. 并举出反例说明当可交换条件不满足时结论不成立.
 	\begin{Proof}
 	设$ f $的不动点是$ x_0 $, 即$ x_0=f(x_0) $. 那么
 	\[
@@ -281,7 +281,7 @@
 		\[
 			\abs{L_{a}(p)}=\abs{p(a)}\leqslant \norm{L_{a}}\norm{p}_{\infty}\qquad\norm{L_{a}}<\infty.
 		\]
-		取 $ p_{n}=x^{n} $, 则 $ (p_{n})_{n\geqslant 1} $ 是 $ E $ 的 Hamel 基, 则上式说明
+		取 $ p_{n}=x^{n} $, 则有
 		\[
 			\norm{L_{a}(p_{n})}=\abs{a^{n}}\leqslant\abs{a}^{n}\leqslant \norm{L_{a}}\norm{x^{n}}_{\infty},
 		\]
@@ -291,7 +291,7 @@
 		\]
 		令 $ n\to\infty $, 则有 $ \abs{a}\leqslant1 $. 
 
-		同理取 $ p_{n}=(1-x)^{n} $ 也是 $ E $ 的 Hamel 基, 类似可得 $ \abs{1-a}\leqslant1 $, 从而 $ a\in[0, 1] $.
+		同理取 $ p_{n}=(1-x)^{n} $ , 类似可得 $ \abs{1-a}\leqslant1 $, 从而 $ a\in[0, 1] $.
 
 		\textsl{充分性}. 由 $ a\in[0, 1] $ 可知
 		\[
