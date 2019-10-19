@@ -124,6 +124,28 @@
 	(4) 因为$ \tau $是$ \tau' $的强拓扑, 故$ \tau' $-开集一定是$ \tau $-开集. 故任取$ \tau' $-开集$ V $, 总有$ \id_E^{-1}(V)=V $是$ \tau $-开集, 故$ \id_E $连续.\qed
 	\end{Proof}
 	
+	\textbf{注\,\,\ref{rmk:预紧性的刻画}}\ \ 有关预紧性的刻画, 由定理\ref{thm:紧等价}中的``(3) $ \Leftrightarrow $ (4)"可知
+	\begin{enumerate}[(1)]
+	\item $ E $是预紧的$ \Longleftrightarrow $ $ E $的任一序列存在Cauchy子列;
+	\item $ A $相对紧$ \Longleftrightarrow $ $ A $中无穷序列存在子列收敛到$ E $中的元素;
+	\item 若$ E $是完备的, 则$ A $相对紧$ \Longleftrightarrow $ $ A $预紧.
+	\end{enumerate}
+	\begin{Proof}
+	(2) \textsl{必要性.} 由$ A $相对紧至$ \bar{A} $紧, 从而$ \bar{A} $序列紧, 即
+	\[
+	\forall (x_n)_{n\geqslant 1}\subset\bar{A}\,\exists x\in\bar{A}\subset E\,(\lim_{k\to\infty}x_{n_k}=x),
+	\]
+	取$ (\tilde{x}_{n_k})_{k\geqslant 1} $是$ (x_{n_k})_{k\geqslant 1} $中去掉所有$ \partial A $中元素构成的序列即可.
+	
+	\textsl{充分性.} 若$ \forall (x_n)_{n\geqslant 1}\subset A $, 都有$ (x_{n_k})_{n\geqslant 1}\subset(x_n)_{n\geqslant 1} $使得存在$ x\in E $满足$ \lim\limits_{k\to\infty}x_{n_k}=x $, 从而$ x\in\bar{A} $. 从而$ \bar{A} $是序列紧的, 故$ \bar{A} $紧, 也即$ A $相对紧.
+	
+	(3) 由$ E $完备可知
+	\[
+	A\,\text{相对紧}\,\Longleftrightarrow\bar{A}\,\text{紧}\,\Longleftrightarrow\bar{A}\,\text{预紧}\,\Longleftrightarrow A\,\text{预紧}.
+	\]
+	\qed
+	\end{Proof}
+	
 	\textbf{命题\,\,\ref{prop:乘积拓扑空间的继承性质}}\ \ 设$ (E_i)_{i\in\alpha} $是一族拓扑空间 $ E=\prod\limits_{i\in\alpha}E_i $是乘积拓扑空间.
 		\begin{enumerate}[(1)]
 		\item 若$ \forall i\in\alpha $, $ E_i $是Hausdorff空间, 则$ E $也是Hausdorff空间.
@@ -143,7 +165,7 @@
 	\]
 	使得$ U\in\CN(x) $, $ V\in\CN(y) $但是$ U\cap V=\varnothing $. 从而$ E $也是Hausdorff空间.
 	
-	(2) 这一结论称为Tychonoff定理, 它的证明不仅超出了本课程的要求范围, 也超出了一般的\textsl{Topology I}课程的要求范围. 因此在此不再证明这一定理, 而只证明$ \alpha $是有限集的情形. 事实上即使是有限情形的证明也不是trivial的, 它本应放在正文中, 但是为了这一命题的3个结论都在这里, 将其调整到这里来证明. 由归纳法只需要证明$ \alpha=\{1,2\} $的情形是成立的即可.
+	(2) 这一结论称为Tychonoff定理, 它的证明不仅超出了本课程的要求范围, 也超出了一般的\textsl{Topology I}课程的要求范围. 在$ \alpha $是无限集的情形需要借助选择公理进行证明, 因此在此不再证明这一定理, 而只证明$ \alpha $是有限集的情形. 事实上即使是有限情形的证明也不是trivial的, 它本应放在正文中, 但是为了这一命题的3个结论都在这里, 将其调整到这里来证明. 由归纳法只需要证明$ \alpha=\{1,2\} $的情形是成立的即可.
 	
 	设 $ (O_{i})_{i\in\alpha} $ 是 $ E $ 上的开覆盖, 则
 	\[
@@ -171,8 +193,26 @@
 	     
 	\end{Proof}
 	
-	
-	
+	\textbf{推论\,\,\ref{col:距离函数连续}}\ \ 设$ (E,d) $是度量空间, $ \forall A\subset E $, 映射$ x\mapsto d(x,A) $是连续的.
+	\begin{Proof}
+	由$ d(x,A) $的定义可知对$ x,y\in E $, 有
+	\[
+	\forall y\in E\,\exists z\in A\,(d(y,z)<d(y,A)+\varepsilon),
+	\]
+	从而
+	\[
+	d(x,A)\leqslant d(x,z)\leqslant d(x,y)+d(y,z)<d(x,y)+d(y,A)+\varepsilon,
+	\]
+	即
+	\[
+	d(x,A)-d(y,A)<d(x,y)+\varepsilon.
+	\]
+	令$ \varepsilon\to 0^+ $就有$ d(x,A)-d(y,A)\leqslant d(x,y) $. 由对称性可证$ d(y,A)-d(x,A)\leqslant d(x,y) $, 从而
+	\[
+	\abs{d(x,A)-d(y,A)}\leqslant d(x,y),
+	\]
+	也即$ x\mapsto d(x,A) $是Lipschitz的, 从而它连续.\qed
+	\end{Proof}
 	
 	
 	
