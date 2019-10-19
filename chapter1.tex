@@ -856,9 +856,9 @@
      \]
      且$ d(x_{n,j},x_{n,k})<1/2^{n-1} $. 从而可取$ (x_{i,i})_{i\geqslant 1} $是一Cauchy列.
      
-     (3) $ \Rightarrow $ (1) : 由$ E $序列紧可知$ E $预紧, 设$ (O_i)_{i\in\alpha} $是$ E $的开覆盖且不存在有限子覆盖. 由$ E $预紧可知$ \forall n\in\N $, 存在$ \frac{1}{n} $-网$ F_n $使得$ (B(x,1/n))_{x\in F_n} $覆盖$ E $, 则$ \exists y_n\in F_n $使得$ B(y_n,1/n) $不能被有限个$ O_i $覆盖.
+     (3) $ \Rightarrow $ (1) : 由$ E $序列紧可知$ E $预紧, 设$ (O_i)_{i\in\alpha} $是$ E $的开覆盖且不存在有限子覆盖. 由$ E $预紧可知$ \forall n\in\N $, 存在有限$ 1/n $-网$ F_n $使得$ (B(x,1/n))_{x\in F_n} $覆盖$ E $, 则$ \exists y_n\in F_n $使得$ B(y_n,1/n) $不能被有限个$ O_i $覆盖.
      
-     考虑这样构造出的序列$ (y_n)_{n\geqslant 1} $, 由$ E $序列紧可知$ (y_n)_{n\geqslant 1} $存在收敛到$ y $的子序列$ (y_{n_k})_{k\geqslant 1} $. 不妨设存在某个$ i_0\in\alpha $使得$ y\in O_{i_0} $, 且存在$ \eta>0 $使得$ B(y,\eta)\subset O_{i_0} $, 则取$ n_k $使得$ \frac{1}{n_k}<\frac{\eta}{2} $且$ d(y_{n_k},y)<\frac{\eta}{2} $, 则$ \forall x\in B(y_{n_k},1/n_k) $有
+     考虑这样构造出的序列$ (y_n)_{n\geqslant 1} $, 由$ E $序列紧可知$ (y_n)_{n\geqslant 1} $存在收敛到$ y $的子序列$ (y_{n_k})_{k\geqslant 1} $. 存在某个$ i_0\in\alpha $使得$ y\in O_{i_0} $, 且存在$ \eta>0 $使得$ B(y,\eta)\subset O_{i_0} $, 则取$ n_k $使得$ \frac{1}{n_k}<\frac{\eta}{2} $且$ d(y_{n_k},y)<\frac{\eta}{2} $, 则$ \forall x\in B(y_{n_k},1/n_k) $有
      \[
      d(x,y)\leqslant d(x,y_{n_k})+d(y_{n_k},y)<\frac{\eta}{2}+\frac{1}{n_k}<\eta.
      \]
@@ -869,7 +869,7 @@
      设$ (E,d) $是一个度量空间, $ A\subset E $. 若$ \bar{A} $是紧集, 则称$ A $\textbf{相对紧}.
      \end{Definition}
      
-     \begin{Remark}
+     \begin{Remark}\label{rmk:预紧性的刻画}
      有关预紧性的刻画, 由定理\ref{thm:紧等价}中的``(3) $ \Leftrightarrow $ (4)"可知
      \begin{enumerate}[(1)]
      \item $ E $是预紧的$ \Longleftrightarrow $ $ E $的任一序列存在Cauchy子列;
@@ -987,7 +987,7 @@
 	\begin{Proposition}
 	设$ (E,d) $是度量空间, 则$ d : E\times E\to\R $是连续的.
 	\end{Proposition}
-	\begin{Corollary}
+	\begin{Corollary}\label{col:距离函数连续}
 	设$ (E,d) $是度量空间, $ \forall A\subset E $, 映射$ x\mapsto d(x,A) $是连续的.
     \end{Corollary}
 	
@@ -1792,3 +1792,13 @@
 	可知$ T $是一个代数.
 	\end{enumerate}
 	\end{Example}
+	
+	\section*{本章注记}
+	
+	\begin{enumerate}
+	\item 本章中以下命题/结论/注记未在正文中进行证明, 其证明参见附录A的相关内容:
+		
+		\hspace{4em}命题\,\ref{prop:Hausdorff空间的相关命题1}\,, 注1.2.2, 命题\,\ref{prop:Cauchy列的性质}\,, 命题\,\ref{prop:连续映射的性质}\,, 注\,\ref{rmk:预紧性的刻画}\,, 命题\,\ref{prop:乘积拓扑空间的继承性质}\,, 推论\,\ref{col:距离函数连续}.
+	\item 有关定向集, 网和网的极限的进一步讨论参见附录A.
+	\item 有关压缩映照原理的进一步讨论参见附录B中习题2.10, 习题2.10$ ' $和习题2.11.
+	\end{enumerate}
