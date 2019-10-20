@@ -970,7 +970,7 @@
 	\begin{enumerate}[(1)]
 	\item 若$ \forall i\in\alpha $, $ E_i $是Hausdorff空间, 则$ E $也是Hausdorff空间.
 	
-	\item 若$ \forall i\in\alpha $, $ E_i $是紧空间, 则$ E $也是紧空间.
+	\item (Tychonoff) 若$ \forall i\in\alpha $, $ E_i $是紧空间, 则$ E $也是紧空间.
 	
 	\item 设$ \alpha=\N^\ast $, 若$ \forall i\in\alpha,\ E_i $是可度量化的, 则$ E $是可度量化的. (可度量化是指存在$ E $上的度量$ d $使得$ d $诱导的拓扑与$ E $上原本定义的拓扑一致)
 	\end{enumerate}
@@ -1045,7 +1045,7 @@
 	由Banach空间的定义可知任意赋范空间$ (E,\norm{\cdot}) $的完备化$ (\widehat{E},\norm\cdot) $是Banach空间. 同时因为在赋范空间上有自然的线性运算, 可以在赋范空间上定义级数:
 	
 	\begin{Definition}[级数]\label{def:级数}\index{J!级数}
-	设$ (E,\norm{\cdot}) $是赋范空间, $ \sum\limits_{n\geqslant 1} $是空间中的\textbf{级数}, 并称$ S_n=\sum\limits_{k=1}^nx_k $是级数的\textbf{部分和}.
+	设$ (E,\norm{\cdot}) $是赋范空间, $ \sum\limits_{n\geqslant 1}x_n $是空间中的\textbf{级数}, 并称$ S_n=\sum\limits_{k=1}^nx_k $是级数的\textbf{部分和}.
 	
 	\begin{enumerate}[(1)]
 	\item 若$ (S_n)_{n\geqslant 1} $在$ (E,\norm\cdot) $中依范数收敛到$ S $, 则称级数$ \sum\limits_{n\geqslant 1}x_n $在$ (E,\norm\cdot) $上\textbf{收敛}, 并称$ S $是$ \sum\limits_{n\geqslant 1}x_n $的\textbf{和}, 记作$ S=\sum\limits_{n\geqslant 1}x_n $.
@@ -1098,7 +1098,7 @@
 	\[
 	\norm{x-y}_1\leqslant\frac{1}{c_1}\norm{x-y}_2
 	\]
-	可知$ \id_E^{-1} $也是Lipschitz的. 从而$ \id_E $与$ \id_E^{-1} $都是一直连续的. 于是$ (E,\norm\cdot_1) $完备当且仅当$ (E,\norm\cdot_2) $完备, $ A\subset E $在$ (E,\norm\cdot_1) $上紧当且仅当$ A $在$ (E,\norm\cdot_2) $上紧.
+	可知$ \id_E^{-1} $也是Lipschitz的. 从而$ \id_E $与$ \id_E^{-1} $都是一致连续的. 于是$ (E,\norm\cdot_1) $完备当且仅当$ (E,\norm\cdot_2) $完备, $ A\subset E $在$ (E,\norm\cdot_1) $上紧当且仅当$ A $在$ (E,\norm\cdot_2) $上紧.
 	\end{Remark}
 	
 	\begin{Theorem}
