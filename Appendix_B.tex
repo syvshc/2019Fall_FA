@@ -592,7 +592,7 @@
 	\[
 	\norm{(\id_E-u)^{-1}}=\norm{\sum_{n\geqslant 0}u^n}\leqslant\sum_{n\geqslant 0}\norm{u}^n\leqslant(1-\norm{u})^{-1}.
 	\]
-	于是对使得$ \norm{u-v} $足够小的$ v\in Gl(E) $, 由
+	于是对使得$ \norm{u-v} $足够小的$ v\in GL(E) $, 由
 	\begin{align*}
 	\norm{v^{-1}-u^{-1}}&=\norm{v^{-1}(u-v)u^{-1}}\\
 	&\leqslant\norm{v^{-1}}\norm{u-v}\norm{u^{-1}}\\
@@ -666,5 +666,169 @@
 	\end{Solution}
 	
 	\section{第8周习题课(2019年10月21日)}
-
-
+	
+	\textbf{习题3.7}\ [习题课]\ \ 设$ E $是域$ \K $上的无限维线性空间, 设$ (e_i)_{i\in\alpha} $是$ E $中的一组向量. 若$ E $中任意向量可以用$ (e_i)_{i\in\alpha} $中的有限个向量唯一线性表示, 即对任意$ x\in E $, 存在唯一一组$ (x_i)_{i\in\alpha}\subset\K $使得仅有有限多个$ x_i\ne 0 $且$ x=\sum\limits_{i\in\alpha}x_ie_i $成立, 则称$ (e_i)_{i\in\alpha} $是$ E $中的Hamel基.
+	\begin{enumerate}[(1)]
+	\item 由Zorn引理证明$ E $有一组Hamel基.
+	\item 假设$ E $还是一个赋范空间, 证明$ E $上必存在不连续的线性泛函.
+	\item 证明: 在任意无限维赋范空间上, 一定存在一个比原来的范数严格强的范数(即新范数诱导的拓扑一定比原来的范数诱导的拓扑强且不相同), 由此说明若线性空间$ E $上任意两个范数都诱导相同的拓扑, 则$ E $有限维.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 记$ \mathcal G $是$ E $中线性无关集全体(线性无关集即其中元素线性无关, 在有限情形下与高等代数的定义相同, 在无限情形下要求任意有限子集均线性无关), 则$ (\mathcal G,\subseteq) $是一个偏序集. 任取$ \mathcal G $中的一个全序子集$ \mathcal E $, 并取$ D=\bigcup\mathcal E $, 再取$ F\in\fin D $. 那么对任意的$ x\in F $, 存在$ A(x)\in\mathcal E $使得$ x\in A(x) $, 注意到$ \{ A(x) : x\in F \} $是全序集, 取其最大元$ A(z) $, 则有$ F\subset A(z) $, 从而$ F $是线性无关集, 这说明$ D $也是线性无关集.
+	
+	因$ D $是线性无关集可知$ D\in\mathcal G $, 且$ D $是$ \mathcal E $的一个上界, 从而有Zorn引理可知$ \mathcal G $存在极大元$ T $, 那么$ T $是$ E $的Hamel基.
+	
+	(2) 设$ (e_i)_{i\in\alpha} $是$ E $的一组Hamel基, 任取$ e_1\in(e_i)_{i\in\alpha} $, 由$ \dim E\geqslant\aleph_0 $可知存在$ e_2\in(e_i)_{i\in\alpha} $使得$ \{ e_1,e_2 \} $线性无关, 且依此进行下去可以获得一线性无关的点列$ (e_n)_{n\geqslant 1} $, 并且可以用$ \frac{1}{n}\cdot\frac{e_n}{\norm{e_n}}=\mathrm{sgn}\,e_n/n $代替$ e_n $, 再记除上述$ (e_n)_{n\geqslant 1} $外其他的$ e_j $为$ (e_j)_{j\in\beta} $, 也即
+	\[
+	(e_i)_{i\in\alpha}=(e_n)_{n\geqslant 1}\cup(e_j)_{j\in\beta}.
+	\]
+	那么任取$ x\in E $, 有$ x=\sum\limits_{i\in\alpha}x_ie_i $, 其中除有限项外$ x_i=0 $, 再取映射
+	\[
+	f : E\mapsto \K,\qquad x\to\sum_{i\in\alpha}x_i,
+	\]
+	则$ f $是$ E $上的线性泛函, 且$ f(e_n)=1 $, 但$ \lim\limits_{n\to\infty}e_n=0 $, 从而$ f $不连续.
+	
+	(3) 记$ E $上原范数$ \norm{\cdot} $, 将(2)中找到的线性泛函记作$ f $, 并且取
+	\[
+	\norm{x}_1=\norm{x}+\abs{f(x)},\qquad \forall x\in E,
+	\]
+	容易证明$ \norm{\cdot}_1 $是$ E $上的范数, 且$ \norm{x}\leqslant\norm{x}_1 $, 从而$ \norm{\cdot}_1 $诱导的拓扑更强.(这因$ \id_E : (E,\norm{\cdot}_1)\to(E,\norm{\cdot}) $连续.)\qed
+	\end{Proof}
+	
+	\textbf{习题3.12}\ [作业]\ \ 设$ 0<p<q\leqslant\infty $, $ 0\leqslant\theta\leqslant 1 $, 并令
+	\[
+	\frac{1}{s}=\frac{\theta}{p}+\frac{1-\theta}{q},
+	\]
+	证明$ f\in L_p(X)\cap L_q(X) $, 则$ f\in L_s(X) $且
+	\[
+	\norm{f}_s\leqslant\norm{f}_p^{\theta}\norm{f}_q^{1-\theta}.
+	\]
+	\begin{Proof}
+	取$ p'=p/\theta, q'=q/(1-\theta) $, 从而由$ 1/s=1/p'+1/q' $可知$ (p',q') $是一对共轭指数, 由H\"older不等式可知
+	\[
+	\norm{f}_s=\norm{f^\theta f^{1-\theta}}_s\leqslant\norm{f^\theta}_{p'}\norm{f^{1-\theta}}_{q'}=\norm{f}_p^\theta\norm{f}_q^{1-\theta}.
+	\]
+	且由$ f\in L_p(X)\cap L_q(X) $知$ \norm{f}_s<\infty $, 也即$ f\in L_s(X) $.\qed
+	\end{Proof}
+	
+	\textbf{习题3.16}\ [作业]\ \ 在实数集$ \R $上取Lebesgue $ \sigma $-代数与Lebesgue测度, 并设$ f, g\in L_1(\R) $.
+	\begin{enumerate}[(1)]
+	\item 证明:
+	\[
+	\int_{\R\times\R}f(u)g(v)\diff u\diff v=\left(\int_\R f(u)\diff u\right)\left(\int_\R g(v)\diff v\right)=\int_\R\left(\int_\R f(x-y)g(y)\diff y \right)\diff x,
+	\]
+	并由此导出函数$ x\mapsto\int_\R f(x-y)g(y)\diff y $在$ \R $上几乎处处有定义.
+	\item 定义$ f $与$ g $的\textbf{卷积}$ f\ast g $为
+	\[
+	f\ast g(x)=\begin{cases}
+	\int_\R f(x-y)g(y)\diff y & ,\text{当积分存在时}\\
+	0 & ,\text{其他情形}
+	\end{cases}
+	\]
+	证明$ f\ast g\in L_1(\R) $且$ \norm{f\ast g}_1\leqslant\norm{f}_1\norm{g}_1 $.
+	\item 取$ f=1_{[0,1]} $, 求$ f\ast f $.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由Fubini定理可知
+	\[
+	\begin{aligned}
+	\int_{\R\times\R} f(u)g(v)\diff u\diff v&=\int_\R\left(\int_\R f(u)g(v)\diff v\right)\diff u\\&=\int_\R g(v)\left(\int_\R f(u)\diff u\right)\diff v=\left(\int_\R f(u)\diff u\right)\left(\int_\R g(v)\diff v\right),
+	\end{aligned}
+	\]
+	且
+	\[
+	\begin{aligned}
+	\int_\R\left(\int_\R f(x-y)g(y)\diff y \right)\diff x&=\int_\R g(y)\left(\int_\R f(x-y)\diff x\right)\diff y\\&=\int_\R g(y)\left(\int_\R f(x-y)\diff (x-y)\right)\diff y=\left(\int_\R f(u)\diff u\right)\left(\int_\R g(v)\diff v\right).
+	\end{aligned}
+	\]
+	于是所求证等式成立. 其中右半侧使用了Lebesgue测度的平移不变性. 另外由于
+	\[
+	\begin{aligned}
+	\abs{\int_\R\left(\int_\R f(x-y)g(y)\diff y \right)\diff x}&\leqslant\abs{\left(\int_\R f(u)\diff u\right)\left(\int_\R g(v)\diff v\right)}\\&=\abs{\int_\R f(u)\diff u}\abs{\int_\R g(v)\diff v}<\infty,
+	\end{aligned}
+	\]
+	于是函数$ x\mapsto\int_\R f(x-y)g(y)\diff y $在$ \R $上几乎处处有定义.
+	
+	(2) 由于
+	\[
+	\abs{f\ast g(x)}=\abs{\int_\R f(x-y)g(y)\diff y}\leqslant\int_\R\abs{f(x-y)}\abs{g(y)}\diff y,
+	\]
+	两侧同时在$ \R $上对$ x $积分可知
+	\[
+	\int_\R\abs{f\ast g(x)}\diff x\leqslant\int_\R\int_\R\abs{f(x-y)}\abs{g(y)}\diff y\diff x=\int_\R\abs{f(u)}\diff u\int_\R\abs{g(v)}\diff v,
+	\]
+	此即$ \norm{f\ast g}_1\leqslant\norm{f}_1\norm{g}_1 $, 且由$ \norm{f\ast g}<\infty $可知$ f\ast g\in L_1(\R) $.
+	
+	(3) 注意到$ 1_{[0,1]}(x-t)=1_{[x-1,x]}(t) $, 从而由卷积的定义, 有
+	\[
+	\begin{aligned}
+	f\ast f(x)=\int_\R f(x-y)f(y)\diff y&=\int_\R 1_{[0,1]}(x-y)1_{[0,1]}(y)\diff y\\&=\int_\R 1_{[x-1,x]}(y)1_{[0,1]}(y)\diff y=m([x-1,x]\cap[0,1]),
+	\end{aligned}
+	\]
+	于是
+	\[
+	f\ast f(x)=\begin{cases}
+	0 &,x<0\\x &,0\leqslant x\leqslant 1\\2-x&,1\leqslant x\leqslant 2\\0 &,x>2.
+	\end{cases}
+	\]
+	\qed
+	\end{Proof}
+	
+	\textbf{习题5.1}\ [习题课]\ \ 对任意$ x\in[0,1] $, 设$ f_n(x)=x^n $. 在$ [0,1] $的哪些点处, $ (f_n)_{n\geqslant 1} $等度连续?
+	\begin{Proof}
+	对任意的$ x\in[0,1) $, 有
+	\[
+	\abs{x^n-a^n}=\abs{(x-a)(x^{n-1}+x^{n-2}a+\cdots+a^{n-1})}\leqslant(1+a+\cdots+a^{n-1})\abs{x-a}<\frac{\abs{x-a}}{1-a},
+	\]
+	故$ (f_n)_{n\geqslant 1} $在$ x\in[0,1) $上等度连续. 但$ x=1 $时, 因为对任意的$ x\in(1-\delta,1) $, 有
+	\[
+	\lim_{n\to\infty}\abs{f_n(x)-f_n(1)}=1,
+	\]
+	从而存在$ n_0 $使得$ n\geqslant n_0 $时有
+	\[
+	\abs{f_{n_0}(x)-f_{n_0}(1)}>\frac{1}{2},
+	\]
+	于是$ (f_n)_{n\geqslant 1} $在$ x=1 $处不等度连续.\qed
+	\end{Proof}
+	
+	\textbf{习题5.5}\ [习题课]\ \ 考虑函数序列$ (f_n)_{n\geqslant 1} $, 这里$ f_n(t)=\sin\sqrt{t+4(n\pi)^2} $, 其中$ t\in[0,\infty) $.
+	\begin{enumerate}[(1)]
+	\item 证明$ (f_n)_{n\geqslant 1} $等度连续并且逐点收敛到0.
+	\item 用$ C_b([0,\infty),\R) $表示$ [0,\infty) $上所有有界连续实函数构成的空间, 并赋予范数
+	\[
+	\norm{f}_\infty=\sup_{t\geqslant 0}\abs{f(t)},
+	\]
+	那么$ (f_n)_{n\geqslant 1} $在$ C_b([0,\infty),\R) $中是否相对紧?
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由Lagrange中值定理, 对任意的$ s, t>0 $, 有
+	\[
+	\abs{\frac{f(s)-f(t)}{s-t}}=\abs{f'(\xi)}=\abs{\frac{\cos\sqrt{\xi+4(n\pi)^2}}{2\sqrt{\xi+4(n\pi)^2}}}\leqslant\frac{1}{4\pi},
+	\]
+	即$ \abs{f_n(s)-f_n(t)}\leqslant\abs{s-t}/4\pi $, 从而$ (f_n)_{n\geqslant 1} $等度连续, 且
+	\[
+	\lim_{n\to\infty}f_n(x)=\lim_{n\to\infty}\sin\sqrt{t+4(n\pi)^2}=\lim_{n\to\infty}\sin(\sqrt{t+4(n\pi)^2}-2n\pi)=\lim_{n\to\infty}\sin\frac{t}{\sqrt{t+4(n\pi)^2}+2n\pi}=0,
+	\]
+	从而$ (f_n)_{n\geqslant 1} $逐点收敛到0.
+	
+	(2) 假设$ (f_n)_{n\geqslant 1} $相对紧, 则存在子列$ (f_{n_k})_{k\geqslant 1} $一致收敛到某$ f\in C_b([0,\infty),\R) $, 即$ \lim\limits_{k\to\infty}\norm{f_{n_k}-f}_\infty=0 $, 那么$ \forall t $都有$ \lim\limits_{k\to\infty}f_{n_k}(t)=f(t) $. 由(1)可知$ f=0 $, 又因为
+	\[
+	f_{n_k}(t)=\sin\frac{t}{\sqrt{t+4(n\pi)^2}+2n\pi}
+	\]
+	且
+	\[
+	\abs{\frac{t}{\sqrt{t+4(n\pi)^2}+2n\pi}}\leqslant 1,
+	\]
+	从而对$ \forall\varepsilon>0 $, 有$ \abs{f_{n_k}(t)}<\varepsilon $当且仅当$ t/(\sqrt{t+4(n\pi)^2}+2n\pi)<\arcsin\varepsilon $. 取$ \varepsilon=1/2 $, 则若记$ \theta=\pi/6 $
+	\[
+	\begin{aligned}
+	\abs{f_{n_k}(t)}<\frac{1}{2} & \Longleftrightarrow \frac{t}{\sqrt{t+4(n\pi)^2}+2n_k\pi}<\theta \\
+	& \Longleftrightarrow t-2n_k\pi\theta\leqslant\theta\sqrt{t+4(n_k\pi)^2} \\
+	& \Longleftrightarrow (t-2n_k\pi\leqslant 0)\lor\left( \left( t-2n_k\pi\theta\geqslant 0 \right)\land\left( \left(t-2n_k\pi\theta\right)^2\leqslant\theta^2(t+4(n_k\pi)^2) \right) \right),
+	\end{aligned}
+	\]
+	而后者等价于$ 2n_k\pi\theta\leqslant t\leqslant 4n_k\pi\theta+\theta^2 $, 故上式等价于$ t\leqslant 4n_k\pi\theta+\theta^2 $, 这意味着$ (f_{n_k})_{k\geqslant 1} $不可能一致收敛到0, 因此$ (f_n)_{n\geqslant 1} $在$ C_b([0,\infty),\R) $上不是相对紧的.\qed
+	\end{Proof}
+	\begin{Remark}
+	本题说明了在定理5.1.4和5.1.6中去掉$ K $的紧性后, 结论不再成立.
+	\end{Remark}
