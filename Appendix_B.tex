@@ -360,7 +360,16 @@
 	\[
 	\abs{\int_0^1\frac{p(x)}{x}\diff x}\leqslant\sup_{0\leqslant x\leqslant 1}\abs{\frac{p(x)}{x}}\leqslant\sup_{0\leqslant x\leqslant 1}\abs{p'(x)}=N(p),
 	\]
-	从而$ L(p)\leqslant N(p) $, 这说明$ L $关于范数$ N $是连续的, 且有$ \norm{L}\leqslant 1 $. 再取$ p(x)=x\in E_0 $, 此时$ L(p)=1=N(p) $, 从而$ \norm{L}=1 $.
+	从而$ L(p)\leqslant N(p) $, 这说明$ L $关于范数$ N $是连续的, 且有$ \norm{L}\leqslant 1 $. 再取$ p(x)=x\in E_0 $, 此时$ L(p)=1=N(p) $, 从而$ \norm{L}=1 $
+	
+	(3) $ L $关于$ \norm{\cdot}_\infty $不连续. 用反证法证明, 假设$ L $关于$ \norm{\cdot}_\infty $连续, 设
+	\[
+	 F_0=\{ f\in C[0,1] : f(0)=0 \},
+	\]
+	容易验证$ F_0 $是一个Banach空间. 由Weierstrass逼近定理可知$ \forall f\in C[0,1] $, 可以使用多项式一致逼近, 从而$ E_0 $在$ F_0 $中稠密, 于是$ E_0 $上的连续线性泛函可以唯一地扩张成$ F_0 $上的连续线性泛函, 将扩张后的连续线性泛函记作$ \tilde{L} $, 那么取$ F_0 $中的元素$ f(x)=x^{1/n} $后注意到$ \norm{f}_\infty=1 $且$ \tilde{L}(f)=n $可知$ \tilde{L} $关于$ \norm{\cdot}_\infty $不连续, 矛盾.
+	
+	(4) 若两范数等价, 那么它们诱导出的拓扑应当是相同的, 而(3)已经说明了它们诱导的拓扑不相同, 于是两范数不等价.\qed
+	\end{Proof}
 	
 	(3) $ L $关于$ \norm{\cdot}_\infty $不连续. 用反证法证明, 假设$ L $关于$ \norm{\cdot}_\infty $连续, 设
 	\[
@@ -507,7 +516,8 @@
 	(3) 方程\,\eqref{eq:3.6题公式}\,成立当且仅当$ Tf=f $, 由压缩映照原理可知$ T $有唯一不动点, 即方程\,\eqref{eq:3.6题公式}\,有唯一解.\qed
 	\end{Proof}
 	
-	\textbf{习题3.8}\ [作业]\ \ 设$ E $是数域$ \K $上的有限维线性空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵.
+
+	\textbf{习题3.8}\ [作业]\ \ 设$ E $是数域$ \K $上的有限维线性空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵
 	\begin{enumerate}[(1)]
 	\item 证明映射$ u\mapsto[u] $建立了$ \CL(E) $到$ \mathbb{M}_n(\K) $之间的同构映射.
 	\item 假设$ E=\K^n $且$ \{ e_1,e_2,\cdots,e_n \} $是经典基(即$ e_i=[\delta_{i,1}],\delta_{i,2},\cdots,\delta{i,n}] $, 这里$ \delta $是Kronecker符号), 并约定$ E=\K^n $上赋予Euclid范数. 证明: 若$ [u] $可被正交相似对角化, 则$ \norm{u}=\max\{ \abs{\lambda_1},\abs{\lambda_2},\cdots,\abs{\lambda_n} \} $, 这里$ \lambda_1,\lambda_2,\cdots,\lambda_n $是$ u $的特征值.
@@ -648,7 +658,7 @@
 	\]
 	于是$ F_1+F_2 $是闭集.\qed
 	\end{Proof}
-	
+
 	\textbf{补充题3.3$ ^* $(Ps1010-7)}\ [习题课]\ \ 设
 	\[
 	A=\begin{bmatrix}1 & t\\0 & 0\\\end{bmatrix} 
@@ -666,7 +676,7 @@
 	\end{Solution}
 	
 	\section{第8周习题课(2019年10月21日)}
-	
+
 	\textbf{习题3.7}\ [习题课]\ \ 设$ E $是域$ \K $上的无限维线性空间, 设$ (e_i)_{i\in\alpha} $是$ E $中的一组向量. 若$ E $中任意向量可以用$ (e_i)_{i\in\alpha} $中的有限个向量唯一线性表示, 即对任意$ x\in E $, 存在唯一一组$ (x_i)_{i\in\alpha}\subset\K $使得仅有有限多个$ x_i\ne 0 $且$ x=\sum\limits_{i\in\alpha}x_ie_i $成立, 则称$ (e_i)_{i\in\alpha} $是$ E $中的Hamel基.
 	\begin{enumerate}[(1)]
 	\item 由Zorn引理证明$ E $有一组Hamel基.
