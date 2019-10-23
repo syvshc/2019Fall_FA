@@ -5,10 +5,13 @@
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\fin}{fin}
 \DeclareMathOperator{\esssup}{ess\,sup}
+\DeclareMathOperator{\conv}{Conv}
+\DeclareMathOperator{\Span}{span} %% 因为\span已经在宏中定义, 这里使用大写的\Span来表示线性张成
 
 \newcommand\me{\ensuremath{\mathrm{e}}}
 \newcommand\imag{\mathrm{i}}
 
+%% \C已被定义, 重定义在交叉引用部分
 \newcommand\R{\ensuremath{\mathbb{R}}}
 \newcommand\J{\ensuremath{\mathbb{J}}}
 \newcommand\Q{\ensuremath{\mathbb{Q}}}
@@ -26,7 +29,6 @@
 \renewcommand\Re{\mathrm{Re\,}}
 \renewcommand\Im{\mathrm{Im\,}}
 
-\newcommand{\dint}{\displaystyle\int}
 \newcommand{\diff}{\,\mathrm{d}}
 \usepackage{tasks}
 \NewTasks[counter-format=(tsk[1]), item-indent=2em, label-offset=1em, label-align=right]{lpbn}
@@ -35,7 +37,7 @@
 
 %版式
 \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry} %边距
-%%\renewcommand{\baselinestretch}{1.5}
+%\usepackage[a4paper,left=1.8cm,right=3.2cm,top=2.5cm,bottom=2cm]{geometry} %当打印时使用此选项
 \setlength{\headheight}{13pt}
 \usepackage{fancyhdr} % 页眉页脚
 \pagestyle{fancy}
@@ -43,10 +45,12 @@
 \fancyhead[OL]{\fangsong \rightmark}
 \fancyhead[ER]{\fangsong \leftmark}
 \fancyhead[OR,EL]{\thepage}
+\fancyfoot[C]{}
 \usepackage[nottoc]{tocbibind}
 
 %辅助
-\usepackage{array,diagbox,booktabs,tabularx} %数组环境, 表格中可以添加对角线, 可以调整表格中线的宽度, 可以控制表格宽度并使其自动换行
+\usepackage{array,diagbox,booktabs,tabularx} 
+%数组环境, 表格中可以添加对角线, 可以调整表格中线的宽度, 可以控制表格宽度并使其自动换行
 %\usepackage{enumerate} %列表环境
 \usepackage[shortlabels]{enumitem} % 继承并扩展了enumerate宏包的功能
 \setlist[1]{left=\parindent..0pt}
@@ -59,7 +63,7 @@
 \usepackage{prettyref}
 \usepackage[colorlinks, linkcolor=Sumire]{hyperref}
 \usepackage{graphicx}
-\renewcommand\C{\ensuremath{\mathbb{C}}}
+\renewcommand\C{\ensuremath{\mathbb{C}}} 
 %浮动体
 \usepackage{caption} %使用浮动体标题
 \usepackage{subfig} %子浮动体
@@ -111,7 +115,7 @@
 %新定义命令
 \newcommand{\abs}[1]{\ensuremath{\left| #1 \right| }}
 \newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
-\newcommand{\lrangle}[1]{\langle #1 \rangle}
+\newcommand{\lrangle}[1]{\left\langle #1 \right\rangle}
 \newcommand{\degree}{\ensuremath{^{\circ}}}
 \newcommand{\sm}{\ensuremath{\setminus}}
 \newcommand{\baro}{\overline}
