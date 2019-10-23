@@ -190,7 +190,7 @@
 	\begin{Example}
 		给出几个线性泛函相关的例子:
 		\begin{enumerate}[(1)]
-			\item  对 $ f\in C[0, 1] $, $ x\in [0, 1] $, 定义 $ \delta_{x}(f)=f(x) $, 则 $ \delta_{x} $ 是连续线性泛函; 再对 $ g\in C[0, 1] $ 定义 $ \rho_{g}(f)=\dint_{0}^{1}fg\diff x $, 则 $ \rho_{g} $ 是连续线性泛函.
+			\item  对 $ f\in C[0, 1] $, $ x\in [0, 1] $, 定义 $ \delta_{x}(f)=f(x) $, 则 $ \delta_{x} $ 是连续线性泛函; 再对 $ g\in C[0, 1] $ 定义 $ \rho_{g}(f)=\int_{0}^{1}fg\diff x $, 则 $ \rho_{g} $ 是连续线性泛函.
 			\item 在 $ \C^{n} $ 上给定 $ y\in\C^{n} $ 定义 
 			 \[
 				\rho_{y}(x)=\lrangle{x, y}=\sum_{i=1}^{n}x_{i}\baro{y}_{i}.
@@ -472,3 +472,209 @@
 	\begin{Theorem}
 	设$ H $是赋范空间, 若范数$ \norm{\cdot} $满足平行四边形公式, 则它可被$ H $上的一个内积诱导出来.
 	\end{Theorem}
+
+	\begin{Proof}
+		构造二元映射:
+		\[
+			\lrangle{\cdot, \cdot}: H\times H\to \C, \qquad(x, y)\mapsto\frac{1}{4}\sum_{k=0}^3\imag^k\norm{x+\imag^ky}^2,
+		\]
+		注意到
+		\[
+			\lrangle{x, x}=\frac{1}{4}(4\norm{x}^{2}+2\imag\norm{x}^{2}-2\imag\norm{x}^{2})=\norm{x}^{2}\geqslant0,
+		\]
+		且上式取等当且仅当 $ \norm{x}^{2}=0 $, 即 $ x=0 $, 从而正定性与非负性成立, 再由
+		\[
+			\begin{aligned}
+				\lrangle{y, x} & =\frac{1}{4}(\norm{x+y}^{2}-\norm{x-y}^{2}+\imag\norm{x-\imag y}^{2}-\imag\norm{x+\imag y}^{2})\\
+				& = \frac{1}{4}\baro{(\norm{x+y}^{2}-\norm{x-y}^{2}-\imag\norm{x-\imag y}^{2}+\imag\norm{x+\imag y}^{2})} =\baro{\lrangle{x, y}}
+			\end{aligned}
+		\]
+		可知共轭对称性成立, 只需证明线性性.
+
+		为此, 我们先证明 $ \lrangle{2x, y}=2\lrangle{x, y} $, 由平行四边形公式, 有
+		\begin{equation}\tag{1}
+			\norm{2x+y}^{2}+\norm{y}^{2}=2(\norm{x}^{2}+\norm{x+y}^{2}),\qquad x, y\in H\label{eq:1}
+		\end{equation}
+		因为上式对 $ \forall x, y\in H $ 成立, 将 $ y $ 替换成 $ \imag y, \imag^{2} y, \imag^{3} y $ 得
+		\begin{align}
+			\norm{2x+\imag y}^{2}+\norm{y}^{2}& =2(\norm{x}^{2}+\norm{x+\imag y}^{2})\tag{2}\label{eq:i}\\
+			\norm{2x-y}^{2}+\norm{y}^{2} & =2(\norm{x}^{2}+\norm{x-y}^{2})\tag{3}\label{eq:i2}\\
+			\norm{2x-\imag y}^{2}+\norm{y}^{2} & =2(\norm{x}^{2}+\norm{x-\imag y}^{2})\label{eq:i3}\tag{4}
+		\end{align}
+		则 $ \eqref{eq:1}+\imag\cdot\eqref{eq:i}+\imag^{2}\cdot\eqref{eq:i2}+\imag^{3}\cdot\eqref{eq:i3} $ 即可得 $ \lrangle{2x, y}=2\lrangle{x, y} $, 再由
+		\[
+			\lrangle{2x, y}=2\lrangle{x, y}=2\baro{\lrangle{y, x}}=\baro{\lrangle{2y, x}}=\lrangle{x, 2y}
+		\]
+		可知 $ \lrangle{x, 2y}=2\lrangle{x, y} $. 再说明 $ \lrangle{x_{1}+x_{2}, y}=\lrangle{x_{1}, y}+\lrangle{x_{2}, y} $ 成立. 由平行四边形公式, 有
+		\begin{equation}\tag{1'}
+			\norm{x_{1}+x_{2}, y}^{2}+\norm{x_{1}-x_{2}}^{2}=2\left( \norm{x_{1}+\frac{y}{2}}^{2}+\norm{x_{1}+\frac{y}{2}}^{2} \right)
+		\end{equation}
+		类似地, 将 $ y $ 替换为 $ \imag y $, $ \imag^{2}y $, $ \imag^{3}y $ 可得 $ (2'), (3'), (4') $, 即有
+		\[
+			\lrangle{x_{1}+x_{2}, y}=2\lrangle{x_{1}, \frac{y}{2}}+2\lrangle{x_{2}, \frac{y}{2}}=\lrangle{x_{1}, y}+\lrangle{x_{2}, y}.
+		\]
+
+		下证对 $ \forall\lambda\in\C $
+		\begin{equation}\label{eq:内积数乘}
+			\lrangle{\lambda x, y}=\lambda\lrangle{x, y}
+		\end{equation}
+		成立. 由 $ \lambda=2 $ 的情形可知\,\eqref{eq:内积数乘}\,对任意 $ n\in\N $ 成立, 再由
+		\[
+			\lrangle{x-x, y}=\lrangle{x, y}+\lrangle{-x, y}=0
+		\]
+		可知 $ \lrangle{-x, y}=-\lrangle{x, y} $, 即\,\eqref{eq:内积数乘}\,对任意 $ \lambda\in\Z $ 成立. 再由
+		\[
+			\lrangle{x, y}=n\lrangle{\frac{1}{n}x, y}
+		\]
+		可知 $ \frac{1}{n}\lrangle{x, y}=\lrangle{\frac{1}{n}x, y} $, 即\,\eqref{eq:内积数乘}\,对任意 $ \lambda\in\Q $ 成立. 由范数的连续性可知对任意 $ \lambda\in\R $ 成立. 再由
+		\[
+			\lrangle{\imag x, y}=\frac{1}{4}\sum_{k=0}^{3}\imag^{k}\norm{\imag x+\imag^{k}y}^{2}=\frac{\imag}{4}\sum_{k=0}^{3}\imag^{k}\norm{\imag x+\imag^{k}y}^{2}=\imag\lrangle{x, y}
+		\]
+		知\,\eqref{eq:内积数乘}\,对任意 $ \lambda\in\C $ 成立.\qed
+	\end{Proof}
+
+	\section{投影算子}
+	\subsection{闭凸集上的投影}
+	
+	\begin{Definition}[凸集]\label{def:凸集}
+		设 $ H $ 是线性空间, $ C\subset H $. 若对 $ \forall x, y\in C $, $ 0\leqslant\lambda\leqslant1 $, 都有
+		\[
+			\lambda x+(1-\lambda)y\in C,
+		\]
+		则称 $ C $ 是一个\textbf{凸集}\index{T!凸集}.
+	\end{Definition}
+	例如 $ \K^{n} $ 中的三角形 $ T $, 圆盘 $ D $ 和线性空间 $ E $ 的线性子空间都是凸集.
+	
+	\begin{Proposition}
+		设 $ (C_{i})_{i\in\alpha} $ 是 $ H $ 上的一族凸集, 则 $ \bigcap_{i\in\alpha}C_{i} $ 也是凸集.
+	\end{Proposition}
+
+	\begin{Definition}[凸包]\label{def:凸包}\index{T!凸包}
+		 设 $ H $ 是一个线性空间, $ A\subset H $. 称包含 $ A $ 的最小凸集是 $ A $ 的\textbf{凸包}, 记作 $ \conv(A) $. 或等价地, 记包含 $ A $ 的凸集全体为 $ \mathcal{C} $, 则 $ \conv(A)=\bigcap \mathcal{C} $. 
+	\end{Definition}
+
+	\begin{Proposition}
+		$ \conv(A)=\left\{ \sum\limits_{i=1}^{n}\lambda_{i}x_{i}:\sum\limits_{i=1}^{n}\lambda_{i}=1, \lambda_{i}>0, x_{i}\in A, n\in \N \right\} $. 
+	\end{Proposition}
+	
+	\begin{Proof}
+		记右侧集合为 $ B $, 因为 $ A\subset B $ 且 $ B $ 是凸集, 由凸包定义有 $ \conv(A)\subset B $. 再说明反向不等式成立. 因为 $ \sum\limits_{i=1}^{n}\lambda_{i}x_{i}\in C $, 其中 $ C\supset A $ 且 $ C $ 是凸集, 故有 $ \sum\limits_{i=1}^{n}\lambda_{i}x_{i}\in\conv(A) $. 从而有 $ B\subset\conv(A) $. 即 $ \conv(A)=B $.\qed
+	\end{Proof}
+
+	\begin{Theorem}[闭凸集投影定理]
+		设 $ H $ 是 Hilbert空间, $ C\subset H $ 是非空的闭凸子集, 则有:
+		\begin{enumerate}[(1)]
+			\item $ \forall x\in H\,\exists!y\in C\,(\norm{x-y}=d(x, C)) $, 并称 $ y $ 是 $ x $ 在$ C $ 上的\textbf{投影}, 记作 $ P_{C}(x) $;
+			\item 对$ \forall y\in H $, $ y=P_{C}(x) $ 的充分必要条件是 $ \Re\lrangle{x-y, z-y}\leqslant0 $;
+			\item 映射 $ x\mapsto P_{C}(x) $ 是常数为 $ 1 $ 的 Lipschitz映射, 即 $ \forall x, x'\in H $, 有
+			\[
+				\norm{P_{C}(x)-P_{C}(x')}\leqslant \norm{x-x'};
+			\]
+			\item 投影算子是幂等的, 即 $ P^{2}_{C}=P_{C} $, 且 $ P_{C}(H)=C $. 
+		\end{enumerate}
+	\end{Theorem}
+	
+	\begin{Proof}
+		(1) 令 $ d=d(x, C)=\inf\limits_{z\in C}\norm{x-z} $, 由定义知
+		\[
+			\forall n\in\N\,\exists y_{n}\in C\,\left(d\leqslant\norm{x-y_{n}}\leqslant d+\frac{1}{n}\right),
+		\]
+		从而得到一列序列 $ (y_{n})_{n\geqslant1} $, 那么由
+		\[
+			\begin{aligned}
+				\norm{y_{n}-y_{m}}^{2} & =2(\norm{x-y_{n}}^{2}+\norm{x-y_{m}}^{2})-\norm{2x-(y_{m}+y_{n})}^{2}\\
+				& \leqslant 2\left( \left( d+\frac{1}{n} \right)^{2}+\left( d+\frac{1}{m} \right)^{2} \right)-4d^{2}\\
+				& =\frac{2d}{n}+\frac{2d}{m}+\frac{1}{n^{2}}+\frac{1}{m^{2}}\to 0,\qquad n,m\to \infty
+			\end{aligned}
+		\]
+		其中第一个不等号是因为
+		\[
+		\begin{aligned}
+			\norm{2x-(y_{m}+y_{n})}^{2} & =4\norm{x-\frac{y_{m}+y_{n}}{2}}^{2}\\
+			& \leqslant4d^{2}
+		\end{aligned}
+		\]
+		从而 $ (y_{n})_{n\geqslant1} $ 是 Cauchy列, 则 $ \exists y\in H $ 使得 $ \lim\limits_{n\to\infty}y_{n}=y $, 因为 $ C $ 是闭集, 则 $ y\in C $ 且 $ \norm{x-y}=d $.
+
+		再证唯一性. 设 $ y'\in C $ 使得 $ \norm{x-y'}=d $, 则
+		\[
+			\begin{aligned}
+				0\leqslant\norm{y-y'}^{2} & =2(\norm{x+y}^{2}+\norm{x-y}^{2})-\norm{2x-(y+y')}^{2}\\
+				 & \leqslant 2(d^{2}+d^{2})-4d^{2}=0.
+			\end{aligned}
+		\]
+		即 $ \norm{y-y'}=0 $, 也即 $ y=y' $.
+
+		(2) \textsl{必要性}. 设 $ y=P_{C}(x) $. 则 $ \forall z\in C $, 有
+		\[
+			\begin{aligned}
+				\norm{x-y}^{2}\leqslant\norm{x-z}^{2} & = \norm{(x-y)-(z-y)}^{2}
+				 & =\norm{x-y}^{2}-2\Re\lrangle{x-y, z-u}+\norm{z-y}^{2},
+			\end{aligned}
+		\]
+		即 $ 2\Re\lrangle{x-y, z-y}\leqslant\norm{z-y}^{2} $. 令 $ z'=\lambda y+(1-\lambda)z\in C $, 将上式中的 $ z $ 替换为 $ z' $, 有
+		\[
+			2\Re\lrangle{x-y, (1-\lambda)(z-y)}\leqslant\norm{(1-\lambda)(z-y)}^{2},
+		\]
+		即 $ 2(1-\lambda)\Re\lrangle{x-y, z-y}\leqslant(1-\lambda)\norm{z-y}^{2} $, 令 $ \lambda\to 1 $ 可得 $ \Re\lrangle{x-y, z-y}\leqslant0 $.
+		
+		\textsl{充分性}. 由 $ \forall z\in C\,(\Re\lrangle{x-y, z-y}\leqslant0) $, 有
+		\[
+			\begin{aligned}
+				\norm{x-z}^{2} & = \norm{(x-y)-(z-y)}^{2}\\
+				& =\norm{x-y}^{2}-2\Re\lrangle{x-y, z-y}+\norm{z-y}^{2}\geqslant\norm{x-y}^{2}.
+			\end{aligned}
+		\]
+		从而 $ \norm{x-y}\leqslant\norm{z-y}, \forall z\in C $, 即 $ y=P_{C}(x) $.
+
+		(3) $ \forall x, x'\in H $, 取 $ y=P_{C}(x), y'=P_{C}(x') $, 则
+		\[
+			\norm{y-y'}^{2}=\lrangle{y-y', y-y'}=\lrangle{y-x, y-y'}+\lrangle{x-x', y-y'}+\lrangle{x'-y', y-y'},
+		\]
+		注意到左侧为实数, 两侧取实部有
+		\[
+			\begin{aligned}
+				\norm{y-y'}^{2} & =\Re\lrangle{y-x, y-y'}+\Re\lrangle{x-x', y-y'}+\Re\lrangle{x'-y', y-y'}\\
+				& \leqslant \Re\lrangle{x-x', y-y'}\leqslant \norm{x-x'}\norm{y-y'},
+			\end{aligned}
+		\]
+		其中第一个不等号因为\,(2)\,的必要性, 即有 $ \norm{y-y'}\leqslant\norm{x-x'} $, 即 $ \norm{P_{C}(x)-P_{C}(x')}\leqslant \norm{x-x'} $.
+		
+		(4) $ \forall x\in H, P_{C}(x)\in C $, 故 $ P_{C}(P_{C}(x))=P_{C}(x) $, 从而 $ P_{C}^{2}=P_{C} $. 且由上可知 $ P_{C}(C)=C $, 所以 $ P_{C}(H)=C $.\qed
+	\end{Proof}
+
+	\begin{Remark}
+		这里对上述定理进行一些说明
+		\begin{enumerate}[(1)]
+			\item $ P_{C} $ 不是线性算子(因为像空间 $ C $ 未必是线性空间), 但若 $ C $ 是 $ H $ 的闭线性子空间时, $ P_{C} $ 是线性算子;
+			\item 证明中实际只使用了 $ C $ 的完备性. 因为若 $ H $ 是任意的内积空间, 只需 $ C $ 是 $ H $ 中的完备凸集即可.
+		\end{enumerate}
+	\end{Remark}
+
+	\subsection{正交性, 投影线性算子}
+
+	\begin{Definition}[正交, 正交补]\label{def:正交, 正交补}\index{Z!正交}
+		 设 $ H $ 是内积空间,  若 $ x, y\in H $ 使 $ \lrangle{x, y}=0 $, 则称 $ x $ 与 $ y $ \textbf{正交}, 记作 $ x\bot y $. 对任意的 $ A\subset H $, 称:
+		 \[
+			A^{\bot}=\{ x\in H: x\bot y, \forall y\in A \} 
+		 \]
+		 为 $ A $ 在 $ H $ 中的\textbf{正交补}.
+	\end{Definition}
+
+	\begin{Remark}~
+		\begin{enumerate}[(1)]
+			\item 对 $ x\ne0, y\ne 0 $, 可定义向量的夹角
+			\[
+				\cos\theta=\frac{\Re\lrangle{x, y}}{\norm{x}\norm{y}},\qquad \theta\in[0, \pi]
+			\]
+			则有\textbf{余弦定理}
+			\[
+				\norm{x+y}^{2}=\norm{x}^{2}+\norm{y}^{2}+2\norm{x}\norm{y}\cos\theta,
+			\]
+			特别地, 若 $ x\bot y $, 上式退化为\textbf{勾股定理}: $ \norm{x+y}^{2}=\norm{x}^{2}+\norm{y}^{2} $. 但反之不成立, 由 $ \norm{x+y}^{2}=\norm{x}^{2}+\norm{y}^{2} $ 只能推出 $ \Re\lrangle{x, y}= 0 $.
+			\item 由内积的连续性, 知 $ A^{\bot} $ 是 $ H $ 的闭线性子空间, 且
+			\[
+				A^{\bot}=\baro{A}^{\bot}=(\Span A)^{\bot}=\baro{\Span A}^{\bot}.
+			\]
+		\end{enumerate}
+	\end{Remark}
