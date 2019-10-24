@@ -305,11 +305,11 @@
 
 		\textsl{必要性}. 若 $ L_{a, b} $ 连续, 则
 		\[
-			\forall p\in E\,\bigg(\abs{L_{a, b}(p)}=\abs{\dint_{a}^{b}p(x)\diff x}\leqslant \norm{L_{a, b}}\norm{p}_{\infty}\bigg)\qquad \norm{L_{a, b}}<\infty.
+			\forall p\in E\,\bigg(\abs{L_{a, b}(p)}=\abs{\int_{a}^{b}p(x)\diff x}\leqslant \norm{L_{a, b}}\norm{p}_{\infty}\bigg)\qquad \norm{L_{a, b}}<\infty.
 		\]
 		取 $ p_{n}=x^{n} $, $ \norm{p_{n}}_{\infty}=1 $, 则
 		\[
-			\abs{\dint_{a}^{b}x^{n}\diff x}=\abs{\frac{b^{n+1}-a^{n+1}}{n+1}}\leqslant\norm{L_{a, b}}<\infty.
+			\abs{\int_{a}^{b}x^{n}\diff x}=\abs{\frac{b^{n+1}-a^{n+1}}{n+1}}\leqslant\norm{L_{a, b}}<\infty.
 		\]
 		若 $ \abs{a}<\abs{b} $, 则
 		\[
@@ -360,7 +360,7 @@
 	\[
 	\abs{\int_0^1\frac{p(x)}{x}\diff x}\leqslant\sup_{0\leqslant x\leqslant 1}\abs{\frac{p(x)}{x}}\leqslant\sup_{0\leqslant x\leqslant 1}\abs{p'(x)}=N(p),
 	\]
-	从而$ L(p)\leqslant N(p) $, 这说明$ L $关于范数$ N $是连续的, 且有$ \norm{L}\leqslant 1 $. 再取$ p(x)=x\in E_0 $, 此时$ L(p)=1=N(p) $, 从而$ \norm{L}=1 $.
+	从而$ L(p)\leqslant N(p) $, 这说明$ L $关于范数$ N $是连续的, 且有$ \norm{L}\leqslant 1 $. 再取$ p(x)=x\in E_0 $, 此时$ L(p)=1=N(p) $, 从而$ \norm{L}=1 $
 	
 	(3) $ L $关于$ \norm{\cdot}_\infty $不连续. 用反证法证明, 假设$ L $关于$ \norm{\cdot}_\infty $连续, 设
 	\[
@@ -371,7 +371,7 @@
 	(4) 若两范数等价, 那么它们诱导出的拓扑应当是相同的, 而(3)已经说明了它们诱导的拓扑不相同, 于是两范数不等价.\qed
 	\end{Proof}
 	
-	\textbf{习题3.4}\ [习题课]\ \ 设$ E $是由$ [0,1] $上所有连续函数构成的向量空间, 定义$ E $的两个范数分别为$ \norm{f}_1=\dint_0^1\abs{f(x)}\diff x $和$ N(f)=\dint_0^1x\abs{f(x)}\diff x $.
+	\textbf{习题3.4}\ [习题课]\ \ 设$ E $是由$ [0,1] $上所有连续函数构成的线性空间, 定义$ E $的两个范数分别为$ \norm{f}_1=\int_0^1\abs{f(x)}\diff x $和$ N(f)=\int_0^1x\abs{f(x)}\diff x $.
 	\begin{enumerate}[(1)]
 	\item 验证$ N $的确是$ E $上的范数, 且$ N\leqslant\norm{\cdot}_1 $.
 	\item 设函数
@@ -423,7 +423,7 @@
 
 	\textbf{习题3.5}\ [习题课]\ \ 设 $ \varphi:[0, 1]\to [0, 1] $ 连续函数并且不恒等于 1. 设 $ \alpha\in\R $, 定义 $ C([0, 1],\R) $ \footnote{这里 $ C([0, 1],\R) $ 表示从 $ [0, 1] $ 到 \R 上的连续函数的全体 }上的映射 $ T $ 为
 	\[
-		T(f)(x)=\alpha+\dint_{0}^{x}f(\varphi(t))\diff t.
+		T(f)(x)=\alpha+\int_{0}^{x}f(\varphi(t))\diff t.
 	\]
 	证明 $ T^2 $ 是压缩映射. 再根据以上结论证明下面的方程存在唯一解:
 	\begin{equation}\label{eq:3.5题公式}
@@ -434,19 +434,19 @@
 		对$\forall f, g\in C[0, 1]$, $ \forall x\in[0, 1] $ 都有
 		\[
 			\begin{aligned}
-				\norm{Tf-Tg} & =\sup_{0\leqslant x\leqslant 1}\dint_{0}^{x}(f(\varphi(t))-g(\varphi(t)))\diff t \leqslant x\cdot \sup_{0\leqslant x\leqslant 1}\abs{f(x)-g(x)} = x\cdot \norm{f-g}.
+				\norm{Tf-Tg} & =\sup_{0\leqslant x\leqslant 1}\int_{0}^{x}(f(\varphi(t))-g(\varphi(t)))\diff t \leqslant x\cdot \sup_{0\leqslant x\leqslant 1}\abs{f(x)-g(x)} = x\cdot \norm{f-g}.
 			\end{aligned}
 		\]
 		进一步 
 		\[
 			\begin{aligned}
-				\norm{T^{2}f-T^{2}g} & =\sup_{0\leqslant x\leqslant 1}\abs{\dint_{0}^{x}(Tf)(\varphi(t))-(Tg)(\varphi(t))\diff t} \\
-				& \leqslant\sup_{0\leqslant x\leqslant 1}\dint_{0}^{x}\varphi (t)\norm{f-g}\diff t  =\norm{f-g}\dint_{0}^{x}\varphi(t)\diff t  \leqslant\norm{f-g}\dint_{0}^{1}\varphi(t)\diff t \leqslant\lambda\cdot\norm{f-g},
+				\norm{T^{2}f-T^{2}g} & =\sup_{0\leqslant x\leqslant 1}\abs{\int_{0}^{x}(Tf)(\varphi(t))-(Tg)(\varphi(t))\diff t} \\
+				& \leqslant\sup_{0\leqslant x\leqslant 1}\int_{0}^{x}\varphi (t)\norm{f-g}\diff t  =\norm{f-g}\int_{0}^{x}\varphi(t)\diff t  \leqslant\norm{f-g}\int_{0}^{1}\varphi(t)\diff t \leqslant\lambda\cdot\norm{f-g},
 			\end{aligned}
 		\]
-		其中 $ \lambda=\dint_{0}^{1}\varphi(t)\diff t<1 $, 即 $ T^{2} $ 是压缩映射, 则 $ T $ 有唯一不动点.
+		其中 $ \lambda=\int_{0}^{1}\varphi(t)\diff t<1 $, 即 $ T^{2} $ 是压缩映射, 则 $ T $ 有唯一不动点.
 
-		而方程\,\eqref{eq:3.5题公式}\,成立 $ \Longleftrightarrow $ $ f(x)=\alpha +\dint_{0}^{x} f(\varphi(t))\diff t $. 即 $ Tf=f $, 故方程\,\eqref{eq:3.5题公式}\,有唯一解. 
+		而方程\,\eqref{eq:3.5题公式}\,成立 $ \Longleftrightarrow $ $ f(x)=\alpha +\int_{0}^{x} f(\varphi(t))\diff t $. 即 $ Tf=f $, 故方程\,\eqref{eq:3.5题公式}\,有唯一解. 
 	\end{Proof}
 	
 	\textbf{习题3.6}\ [习题课]\ \ 设$ \alpha\in\R,\ a>0,\ b>1 $, 考察如下微分方程
@@ -507,7 +507,8 @@
 	(3) 方程\,\eqref{eq:3.6题公式}\,成立当且仅当$ Tf=f $, 由压缩映照原理可知$ T $有唯一不动点, 即方程\,\eqref{eq:3.6题公式}\,有唯一解.\qed
 	\end{Proof}
 	
-	\textbf{习题3.8}\ [作业]\ \ 设$ E $是数域$ \K $上的有限维向量空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵.
+
+	\textbf{习题3.8}\ [作业]\ \ 设$ E $是数域$ \K $上的有限维线性空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵
 	\begin{enumerate}[(1)]
 	\item 证明映射$ u\mapsto[u] $建立了$ \CL(E) $到$ \mathbb{M}_n(\K) $之间的同构映射.
 	\item 假设$ E=\K^n $且$ \{ e_1,e_2,\cdots,e_n \} $是经典基(即$ e_i=[\delta_{i,1}],\delta_{i,2},\cdots,\delta{i,n}] $, 这里$ \delta $是Kronecker符号), 并约定$ E=\K^n $上赋予Euclid范数. 证明: 若$ [u] $可被正交相似对角化, 则$ \norm{u}=\max\{ \abs{\lambda_1},\abs{\lambda_2},\cdots,\abs{\lambda_n} \} $, 这里$ \lambda_1,\lambda_2,\cdots,\lambda_n $是$ u $的特征值.
@@ -648,7 +649,7 @@
 	\]
 	于是$ F_1+F_2 $是闭集.\qed
 	\end{Proof}
-	
+
 	\textbf{补充题3.3$ ^* $(Ps1010-7)}\ [习题课]\ \ 设
 	\[
 	A=\begin{bmatrix}1 & t\\0 & 0\\\end{bmatrix} 
@@ -666,7 +667,7 @@
 	\end{Solution}
 	
 	\section{第8周习题课(2019年10月21日)}
-	
+
 	\textbf{习题3.7}\ [习题课]\ \ 设$ E $是域$ \K $上的无限维线性空间, 设$ (e_i)_{i\in\alpha} $是$ E $中的一组向量. 若$ E $中任意向量可以用$ (e_i)_{i\in\alpha} $中的有限个向量唯一线性表示, 即对任意$ x\in E $, 存在唯一一组$ (x_i)_{i\in\alpha}\subset\K $使得仅有有限多个$ x_i\ne 0 $且$ x=\sum\limits_{i\in\alpha}x_ie_i $成立, 则称$ (e_i)_{i\in\alpha} $是$ E $中的Hamel基.
 	\begin{enumerate}[(1)]
 	\item 由Zorn引理证明$ E $有一组Hamel基.
@@ -738,7 +739,9 @@
 	且
 	\[
 	\begin{aligned}
-	\int_\R\left(\int_\R f(x-y)g(y)\diff y \right)\diff x&=\int_\R g(y)\left(\int_\R f(x-y)\diff x\right)\diff y\\&=\int_\R g(y)\left(\int_\R f(x-y)\diff (x-y)\right)\diff y=\left(\int_\R f(u)\diff u\right)\left(\int_\R g(v)\diff v\right).
+	\int_\R\left(\int_\R f(x-y)g(y)\diff y \right)\diff x&=\int_\R g(y)\left(\int_\R f(x-y)\diff x\right)\diff y\\
+	&=\int_\R g(y)\left(\int_\R f(x-y)\diff (x-y)\right)\diff y\\
+	&=\left(\int_\R f(u)\diff u\right)\left(\int_\R g(v)\diff v\right).
 	\end{aligned}
 	\]
 	于是所求证等式成立. 其中右半侧使用了Lebesgue测度的平移不变性. 另外由于
@@ -830,5 +833,5 @@
 	而后者等价于$ 2n_k\pi\theta\leqslant t\leqslant 4n_k\pi\theta+\theta^2 $, 故上式等价于$ t\leqslant 4n_k\pi\theta+\theta^2 $, 这意味着$ (f_{n_k})_{k\geqslant 1} $不可能一致收敛到0, 因此$ (f_n)_{n\geqslant 1} $在$ C_b([0,\infty),\R) $上不是相对紧的.\qed
 	\end{Proof}
 	\begin{Remark}
-	本题说明了在定理5.1.4和5.1.6中去掉$ K $的紧性后, 结论不再成立.
+	本题说明了在定理\,\ref{thm:逐点->一致}\,和\,\ref{thm:Ascoli}\,中去掉$ K $的紧性后, 结论不再成立.
 	\end{Remark}

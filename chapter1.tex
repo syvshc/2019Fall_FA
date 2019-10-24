@@ -303,7 +303,7 @@
           则 $ \max\limits_{a\leqslant x\leqslant b}\abs{x(t)-x_{n}(t)}\to 0\,(n\to\infty) $, 从而 $ (x_{n})_{n\geqslant1} $  一致收敛到 $ x $ , 由  $ x_{n}\in C[a, b] $ 知 $ x\in C[a, b] $ , 即 $ (C[a, b], d) $ 完备. \qed
      \end{Proof}
      \begin{Remark}
-          对 $ C[0, 1] $ , 若赋以度量 $ d(x, y)=\dint_{0}^{1}\abs{x(t)-y(t)}\diff x $, 则 $ (C[0, 1], d) $ 不完备, 反例如下:
+          对 $ C[0, 1] $ , 若赋以度量 $ d(x, y)=\int_{0}^{1}\abs{x(t)-y(t)}\diff x $, 则 $ (C[0, 1], d) $ 不完备, 反例如下:
 
           取 $ C[0, 1] $ 中的函数列 $ (x_{n}(t))_{n\geqslant1}=(t^{n})_{x\geqslant1} $, 易证  $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, 但若记其极限函数是 $ x(t) $ 则有
           \[
@@ -686,15 +686,15 @@
 
           \textsl{必要性}. 若 $ F $ 是紧子空间, 那么存在有限集 $ \beta\in\fin\alpha $ , 使得 $ F=\bigcup_{i\in\beta}U_{i} $ , 所以有 $ F\subset\bigcup_{i\in\beta}O_{i} $.
 
-          \textsl{充分性}. 若存在有限集 $ \beta\in\fin\alpha $, 使得 $ F\bigcup_{i\in\beta}O_{i} $ , 则
+          \textsl{充分性}. 若存在有限集 $ \beta\in\fin\alpha $, 使得 $ F=\bigcup_{i\in\beta}O_{i} $ , 则
           \[
-               F=F\cap\bigg( \bigcup_{i\in\beta}O_{i} \bigg)=\bigcap_{i\in\beta}U_{i},
+               F=F\cap\bigg( \bigcup_{i\in\beta}O_{i} \bigg)=\bigcup_{i\in\beta}U_{i},
           \]
           所以 $ F $ 是紧子空间.\qed
      \end{Proof}
 
      \begin{Proposition}\label{prop:紧->闭}
-          设 $ E $ 是 Hausdorff空间且紧集 $ F\subset E $ , 则 $ F $ 是闭集. 
+          设 $ E $ 是 Hausdorff空间, $ F\subset E $ 是子空间 , 若 $ F $是紧集 , 则 $ F $ 是闭集. 
      \end{Proposition}
 
      \begin{Proof}
@@ -702,7 +702,7 @@
      \end{Proof}
 
      \begin{Proposition}
-          设 $ E $ 是紧 Hausdorff空间, 则紧集 $ F\subset E $ 的充分必要条件是 $ F $ 是闭集. 
+          设 $ E $ 是紧 Hausdorff空间, $ F\subset E $ 是子空间, 则 $ F $ 是紧集的充分必要条件是 $ F $ 是闭集. 
      \end{Proposition}
      
      \begin{Proof}
@@ -996,7 +996,7 @@
 	\subsection{Banach空间}
 	
 	\begin{Definition}[赋范空间]\label{def:赋范空间}\index{F!赋范空间}
-	设$ E $是$ \K $上的向量空间, $ \norm{\cdot} : E\to[0,\infty) $是$ E $上的实值函数, 满足$ \forall x,y\in E,\,\forall\lambda\in\K $有
+	设$ E $是$ \K $上的线性空间, $ \norm{\cdot} : E\to[0,\infty) $是$ E $上的实值函数, 满足$ \forall x,y\in E,\,\forall\lambda\in\K $有
 	
 	\begin{enumerate}[(1)]
 	\item 正定性: $ \norm{x}=0\Longleftrightarrow x=0 $;
@@ -1084,7 +1084,7 @@
 	\begin{Definition}[范数等价]\index{D!等价}
 		设$ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $是线性空间$ E $上的两个范数, 若
 		\[
-		\exists c_1,c_2>0\,\forall x\in E\,(c_1\norm{x}_1\leqslant\norm{x}_2\leqslant x_2\norm{x}_1),
+		\exists c_1,c_2>0\,\forall x\in E\,(c_1\norm{x}_1\leqslant\norm{x}_2\leqslant c_2\norm{x}_1),
 		\]
 		则称$ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $\textbf{等价}.
 	\end{Definition}
@@ -1467,7 +1467,7 @@
 	\[
 	\lim_{n\to\infty}f_n=f\ \text{a.e.},
 	\]
-	由$ f_n\leqslant f $可知$ \dint_X\abs{f_n}^p\diff\mu\leqslant\dint_X\abs{f}^p\diff\mu<\infty $, 即$ f_n $是可积的. 由Lebesgue控制收敛定理可知
+	由$ f_n\leqslant f $可知$ \int_X\abs{f_n}^p\diff\mu\leqslant\int_X\abs{f}^p\diff\mu<\infty $, 即$ f_n $是可积的. 由Lebesgue控制收敛定理可知
 	\[
 	\lim_{n\to\infty}\norm{f-f_n}_p^p=\lim_{n\to\infty}\int_X\abs{f-f_n}^p\diff\mu=\int_X\lim_{n\to\infty}\abs{f-f_n}^p\diff\mu=0,
 	\]
@@ -1517,13 +1517,17 @@
 	$ L_p(0,1) $在$ 0<p<\infty $时可分, 在$ p=\infty $时不可分.
 	\end{Proposition}
 	\begin{Proof}
-	当$ p<\infty $时, 注意到由Weierstrass定理可知$ P(0,1) $在$ C(0,1) $上稠密, 由可测函数的连续逼近定理可知$ C(0,1) $在$ B(0,1) $上稠密(此处$ B(0,1) $表示几乎处处有限的Lebesgue可测函数), 再由Lusin定理可知$ B(0,1) $在$ L_p(0,1) $上稠密. 注意到稠密性是有传递性的, 从而$ P(0,1) $在$ L_p(0,1) $上稠密, 于是$ L_p(0,1) $可分.
+     当$ p<\infty $时, 注意到由Weierstrass定理可知$ P(0,1) $在$ C(0,1) $上稠密, 由 Lusin定理知 $ C(0, 1) $ 在 $ B(0, 1) $ 上稠密, 则对 $ \forall f\in L_{p}(0, 1) $, 构造序列 $ (f_{n})_{n\geqslant1} $:
+     \[
+          f_{n}=f|_{(1/n, 1-1/n)},
+     \]
+     则知 $ (f_{n})_{n\geqslant1}\subset B(0, 1) $, 即 $ B(0, 1) $ 在 $ L_{p}(0, 1) $ 上稠密. 注意到稠密性是有传递性的, 从而$ P(0,1) $在$ L_p(0,1) $上稠密, 于是$ L_p(0,1) $可分.
 	
 	当$ p=\infty $时, 取它的一个子集
 	\[
 	A=\{ 1_{[x,y]} : -\infty<x<y<\infty \},
 	\]
-	注意到$ \abs{A}=\aleph $且任取两个不同的函数$ 1_{[x_1,y_1]} $与$ 1_{[x_2,y_2]} $, 有$ \norm{1_{[x_1,y_1]}-1_{[x_2,y_2]}}_\infty=1 $, 从而$ A $不可能有可数的稠密子集, 从而$ L_\infty(0,1) $不可分.
+	注意到$ \abs{A}=\aleph $且任取两个不同的函数$ 1_{[x_1,y_1]} $与$ 1_{[x_2,y_2]} $, 有$ \norm{1_{[x_1,y_1]}-1_{[x_2,y_2]}}_\infty=1 $, 从而$ A $不可能有可数的稠密子集, 从而$ L_\infty(0,1) $不可分.\qed
 	\end{Proof}
 	
 \section{连续函数空间}
@@ -1599,7 +1603,7 @@
 	即$ \mathcal H $在$ K $上一致等度连续.\qed
      \end{Proof}
      
-     \begin{Theorem}
+z     \begin{Theorem} \label{thm:逐点->一致}
           设 $ (K, d_{K}) $ 是紧度量空间, $ (E, d_{E}) $ 是度量空间,  $ (f_{n})_{n\geqslant1} $ 是 $ C(K, E) $ 是中等度连续的序列, 若 $ (f_{n})_{n\geqslant1} $ 逐点收敛于 $ f $, 则 $ f\in C(K, E) $ 且 $ (f_{n})_{n\geqslant1} $ 一致收敛到 $ f $.
      \end{Theorem}
      \begin{Proof}
@@ -1636,7 +1640,7 @@
 
      下面证明本节的中心定理.
 
-     \begin{Theorem}[Arzel\`a-Ascoli]
+     \begin{Theorem}[Arzel\`a-Ascoli]\label{thm:Ascoli}
           设 $ (K, d_{K}) $ 是紧度量空间, $ (E, d_{E}) $ 是度量空间, $ \CH\subset C(K, E) $, 则 $ \CH $ 在 $ C(K, E) $ 中相对紧的充分必要条件为
           \begin{enumerate}[(1)]
                \item $ \CH $ 等度连续;
@@ -1794,7 +1798,7 @@
 	\end{Example}
 	
 	\section*{本章注记}
-	
+	\addcontentsline{toc}{section}{本章注记}
 	\begin{enumerate}
 	\item 本章中以下命题/结论/注记未在正文中进行证明, 其证明参见附录A的相关内容:
 		
