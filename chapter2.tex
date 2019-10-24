@@ -589,10 +589,7 @@
 		\]
 		其中第一个不等号是因为
 		\[
-		\begin{aligned}
-			\norm{2x-(y_{m}+y_{n})}^{2} & =4\norm{x-\frac{y_{m}+y_{n}}{2}}^{2}\\
-			& \leqslant4d^{2}
-		\end{aligned}
+			\norm{2x-(y_{m}+y_{n})}^{2}=4\norm{x-\frac{y_{m}+y_{n}}{2}}^{2}\leqslant4d^{2}
 		\]
 		从而 $ (y_{n})_{n\geqslant1} $ 是 Cauchy列, 则 $ \exists y\in H $ 使得 $ \lim\limits_{n\to\infty}y_{n}=y $, 因为 $ C $ 是闭集, 则 $ y\in C $ 且 $ \norm{x-y}=d $.
 
@@ -616,7 +613,7 @@
 		\[
 			2\Re\lrangle{x-y, (1-\lambda)(z-y)}\leqslant\norm{(1-\lambda)(z-y)}^{2},
 		\]
-		即 $ 2(1-\lambda)\Re\lrangle{x-y, z-y}\leqslant(1-\lambda)\norm{z-y}^{2} $, 令 $ \lambda\to 1 $ 可得 $ \Re\lrangle{x-y, z-y}\leqslant0 $.
+		即 $ 2(1-\lambda)\Re\lrangle{x-y, z-y}\leqslant(1-\lambda)^2\norm{z-y}^{2} $, 令 $ \lambda\to 1 $ 可得 $ \Re\lrangle{x-y, z-y}\leqslant0 $.
 		
 		\textsl{充分性}. 由 $ \forall z\in C\,(\Re\lrangle{x-y, z-y}\leqslant0) $, 有
 		\[
@@ -651,7 +648,7 @@
 		\end{enumerate}
 	\end{Remark}
 
-	\subsection{正交性, 投影线性算子}
+	\subsection{正交性\ \ 投影线性算子}
 
 	\begin{Definition}[正交, 正交补]\label{def:正交, 正交补}\index{Z!正交}
 		 设 $ H $ 是内积空间,  若 $ x, y\in H $ 使 $ \lrangle{x, y}=0 $, 则称 $ x $ 与 $ y $ \textbf{正交}, 记作 $ x\bot y $. 对任意的 $ A\subset H $, 称:
@@ -661,7 +658,8 @@
 		 为 $ A $ 在 $ H $ 中的\textbf{正交补}.
 	\end{Definition}
 
-	\begin{Remark}~
+	\begin{Remark}
+		有关正交性与正交补的注记:
 		\begin{enumerate}[(1)]
 			\item 对 $ x\ne0, y\ne 0 $, 可定义向量的夹角
 			\[
