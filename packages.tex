@@ -1,6 +1,7 @@
 %数学式
 \usepackage{mathtools,extarrows,amsfonts,amssymb,bm,mathrsfs} %数学式宏包, 更多箭头, 黑板体等数学字体,leqslant等符号
 \usepackage{amsthm} %定理环境
+
 \DeclareMathOperator{\rad}{rad}
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\fin}{fin}
@@ -8,26 +9,28 @@
 \DeclareMathOperator{\conv}{Conv}
 \DeclareMathOperator{\Span}{span} %% 因为\span已经在宏中定义, 这里使用大写的\Span来表示线性张成
 
-\newcommand\me{\ensuremath{\mathrm{e}}}
-\newcommand\imag{\mathrm{i}}
+
+\newcommand{\me}{\ensuremath{\mathrm{e}}}
+\newcommand{\imag}{\mathrm{i}}
+\newcommand{\Star}[1]{#1^{*}}
 
 %% \C已被定义, 重定义在交叉引用部分
-\newcommand\R{\ensuremath{\mathbb{R}}}
-\newcommand\J{\ensuremath{\mathbb{J}}}
-\newcommand\Q{\ensuremath{\mathbb{Q}}}
-\newcommand\Z{\ensuremath{\mathbb{Z}}}
-\newcommand\N{\ensuremath{\mathbb{N}}}
-\newcommand\K{\ensuremath{\mathbb{K}}}
-\newcommand\id{\mathrm{id}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\J}{\ensuremath{\mathbb{J}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\K}{\ensuremath{\mathbb{K}}}
+\newcommand{\id}{\mathrm{id}}
 
-\newcommand\CA{\mathcal{A}}
-\newcommand\CB{\mathcal{B}}
-\newcommand\CH{\mathcal{H}}
-\newcommand\CL{\mathcal{L}}
-\newcommand\CN{\mathcal{N}}
+\newcommand{\CA}{\mathcal{A}}
+\newcommand{\CB}{\mathcal{B}}
+\newcommand{\CH}{\mathcal{H}}
+\newcommand{\CL}{\mathcal{L}}
+\newcommand{\CN}{\mathcal{N}}
 
-\renewcommand\Re{\mathrm{Re\,}}
-\renewcommand\Im{\mathrm{Im\,}}
+\renewcommand{\Re}{\mathrm{Re\,}}
+\renewcommand{\Im}{\mathrm{Im\,}}
 
 \newcommand{\diff}{\,\mathrm{d}}
 \usepackage{tasks}
@@ -63,7 +66,7 @@
 \usepackage{prettyref}
 \usepackage[colorlinks, linkcolor=Sumire]{hyperref}
 \usepackage{graphicx}
-\renewcommand\C{\ensuremath{\mathbb{C}}} 
+\renewcommand{\C}{\ensuremath{\mathbb{C}}} 
 %浮动体
 \usepackage{caption} %使用浮动体标题
 \usepackage{subfig} %子浮动体

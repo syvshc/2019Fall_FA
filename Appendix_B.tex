@@ -7,7 +7,7 @@
 
 	\textbf{习题1.11}\ [作业]\ \ 设$ E=\{ x=(x_n)_{n\geqslant 1} : \forall n\geqslant 1, (x_n=0)\lor(x_n=1) \}=\{ 0,1 \}^\N $. 在$ E $上定义函数
 	\[
-	\varphi(x)=\sum_{n\geqslant 1}\frac{2x_n}{3}
+	\varphi(x)=\sum_{n\geqslant 1}\frac{2x_n}{3^{n  }}
 	\]
 	并在$ \{ 0,1 \} $上赋予离散拓扑(即$ d(0,1)=1 $的度量诱导的拓扑), 则在$ E $上有相应的乘积拓扑. 证明: $ \varphi $是$ E $到$ \R $的紧子集$ \varphi(E) $上的同胚.
 	\begin{Proof}
@@ -15,7 +15,7 @@
 	\[
 	\rho(x,y)=\sup_{n\geqslant 1}\frac{d(x_n,y_n)}{n}
 	\]
-	那么$ \rho $是$ E $的度量且$ \rho $诱导的拓扑与乘积拓扑一致(这一结论的证明见定理\,\ref{prop:Hausdorff空间的相关命题1}\,中(3)的证明过程). 对$ 0<\delta<1 $, $ \rho(x,y)<\delta $意味着$ \forall n\geqslant 1\,(d(x_n,y_n)/n<\delta) $, 也即
+	那么$ \rho $是$ E $的度量且$ \rho $诱导的拓扑与乘积拓扑一致(这一结论的证明见命题\,\ref{prop:乘积拓扑空间的继承性质}\,中(3)的证明过程). 对$ 0<\delta<1 $, $ \rho(x,y)<\delta $意味着$ \forall n\geqslant 1\,(d(x_n,y_n)/n<\delta) $, 也即
 	\[
 	\forall n\geqslant 1\,(d(x_n,y_n)<n\delta).
 	\]
@@ -25,7 +25,7 @@
 	\]
 	那么$ \forall\varepsilon>0 $, 存在$ n_0\in\N $使得$ \sum\limits_{n\geqslant n_0+1}\frac{2}{3^n}<\varepsilon $, 而注意到
 	\[
-	\diam(\varphi(B_\rho(x,\delta)))\leqslant\diam(\varphi\{ t : x_n=y_n, 1\leqslant n\leqslant N \})<\sum_{n\geqslant N+1}\frac{2}{3^n},
+	\diam(\varphi(B_\rho(x,\delta)))\leqslant\diam(\varphi\{ y : x_n=y_n, 1\leqslant n\leqslant N \})<\sum_{n\geqslant N+1}\frac{2}{3^n},
 	\]
 	取足够小的$ \delta $使得$ N\geqslant n_0 $, 那么此时上式右侧$ <\varepsilon $, 于是$ \varphi $连续.
 	
@@ -55,8 +55,8 @@
 	\]
 	则$ \forall n,m\geqslant 1 $, 有
 	\begin{align*}
-	d(y_n,y_m)&\leqslant d(y_m,x_n)+d(x_n,x_m)+d(x_m,y_m)\\
-	&d(x_n,A)+\frac{1}{n}+d(x_n,x_m)+d(x_m,A)+\frac{1}{m}\to 0\qquad (n,m\to\infty)
+	d(y_n,y_m)&\leqslant d(y_n,x_n)+d(x_n,x_m)+d(x_m,y_m)\\
+	&\leqslant d(x_n,A)+\frac{1}{n}+d(x_n,x_m)+d(x_m,A)+\frac{1}{m}\to 0\qquad (n,m\to\infty)
 	\end{align*}
 	于是$ (y_n)_{n\geqslant 1}\subset A\subset\bar{A} $是Cauchy列. 由$ \bar{A} $完备可知$ (y_n)_{n\geqslant 1} $收敛于某个$ y_0\in\bar{A} $. 从而
 	\[
@@ -114,7 +114,7 @@
 		\]
 		由实数的 Archimedes 性知 $ \exists n\in\N\,(n\delta\leqslant\norm{x}<(n+1)\delta) $, 则此时取 $ 0 $ 到 $ x $ 连线上划分
 		\[
-			x_{0}=0,\quad x_{1}=\delta\cdot\frac{x}{\norm{x}},\quad x_{2}=2\delta\cdot\frac{x}{\norm{x}}\dots x_{n}=n\delta\cdot\frac{x}{\norm{x}},\quad x_{n+1}=x.
+			x_{0}=0,\quad x_{1}=\delta\cdot\frac{x}{\norm{x}},\quad x_{2}=2\delta\cdot\frac{x}{\norm{x}}, \dots, x_{n}=n\delta\cdot\frac{x}{\norm{x}},\quad x_{n+1}=x.
 		\]
 		则 
 		\[
@@ -129,7 +129,7 @@
 	\end{Proof}
 	
 	\begin{Remark}
-		本题结论在1维情形下, 即是一致连续函数在无穷远处是线性增长的, 这是一个较强的结论, 它说明一个一直连续函数在充分远处可以使用线性函数控制.
+		本题结论在1维情形下, 即是一致连续函数在无穷远处是线性增长的, 这是一个较强的结论, 它说明一个一致连续函数在充分远处可以使用线性函数控制.
 	\end{Remark}
 	
 	\textbf{习题2.10}\ [作业]\ \ 构造一个反例说明, 在压缩映照原理\,\ref{thm:压缩映照原理}\,中, 如果我们把映射 $ f $ 满足的条件减弱为
@@ -160,13 +160,13 @@
 		可知如此构造的 $ f $ 满足题设条件, 但方程 $ f(x)=x $ 等价于 $ \arctan x=\pi/2 $ 无解, 从而不存在不动点.
 	\end{Remark}
 	
-	\textbf{习题2.10'}\ [习题课]\ \ 设$ (E,d) $是紧的度量空间, 在压缩映照原理中若将映射$ f $满足的条件减弱到
+	\textbf{习题2.10$\bm{'}$}\ [习题课]\ \ 设$ (E,d) $是紧的度量空间, 在压缩映照原理中若将映射$ f $满足的条件减弱到
 	\[
 	\forall x,y\in E\,,x\ne y\,(d(f(x),f(y))<d(x,y))
 	\]
 	则$ f $仍然存在唯一不动点.
 	\begin{Proof}
-	记$ g(x)=d(x,f(x)) $, 由$ f $连续且$ d $连续可知$ g $也是连续的. 因为$ E $是紧的, 故$ g(E) $也是紧的, 从而$ g(E) $能取到最小值$ \lambda $. 反设$ \lambda>0 $, 则$ \exists x_0\in E\,(d(x_0,f(x_0)))=\lambda $, 那么
+	记$ g(x)=d(x,f(x)) $, 由$ f $连续且$ d $连续可知$ g $也是连续的. 因为$ E $是紧的, 故$ g(E) $也是紧的, 从而$ g(E) $能取到最小值$ \lambda $. 反设$ \lambda>0 $, 则$ \exists x_0\in E\,(d(x_0,f(x_0))=\lambda) $, 那么
 	\[
 	d(f(x_0),f^2(x_0))<d(x_0,f(x_0))=\lambda.
 	\]
@@ -199,11 +199,11 @@
 	d(x,y)=\abs{\log x-\log y};
 	\]
 	
-	(2) 设函数$ f : I\to I $一次连续可微, 且满足对某个$ \lambda<1 $, 任取$ x\in I $都有$ x\abs{f'(x)}\leqslant\lambda $. 证明$ f $在$ I $上存在唯一的不动点.
+	(2) 设函数$ f : I\to I $一次连续可微, 且满足对某个$ \lambda<1 $, 任取$ x\in I $都有$ x\abs{f'(x)}\leqslant\lambda f(x) $. 证明$ f $在$ I $上存在唯一的不动点.
 	\begin{Proof}
 	(1) $ d $是距离是显然的, 下证它完备: 任取$ (I,d) $中的Cauchy列$ (x_n)_{n\geqslant 1} $, 那么
 	\[
-	\forall\varepsilon>0\,\exists n_0\in\N\,(n,m\geqslant n_0\Rightarrow d(x_n,x_m)=\abs{\log{x_n}-\log{x_m}<\varepsilon})
+	\forall\varepsilon>0\,\exists n_0\in\N\,(n,m\geqslant n_0\Rightarrow d(x_n,x_m)=\abs{\log{x_n}-\log{x_m}}<\varepsilon)
 	\]
 	则$ (\log x_n)_{n\geqslant 1} $是$ \R $中的Cauchy列, 从而存在$ z\in\R $使得
 	\[
@@ -219,7 +219,7 @@
 	
 	(2) 由Cauchy中值定理可知$ \forall x,y\in I $, 不妨$ x<y $, 存在$ \xi\in(x,y) $使得
 	\[
-	\abs{\frac{\log f(x)-\log f(y)}{x-y}}=\abs{\frac{f'(\xi)/f(\xi)}{1/\xi}}\leqslant\lambda.
+	\abs{\frac{\log f(x)-\log f(y)}{\log x-\log y}}=\abs{\frac{f'(\xi)/f(\xi)}{1/\xi}}\leqslant\lambda.
 	\]
 	故$ f $是压缩映射, 故存在唯一不动点.\qed
 	\end{Proof}
@@ -272,7 +272,7 @@
 		(1) 验证范数的4条性质:
 		\begin{itemize}
 			\item $ \norm{p}_{\infty}\geqslant 0 $ 显然成立;
-			\item $ \norm{p}_{\infty}\Rightarrow \forall x\in [0, 1]\,(\abs{p(x)}=0) $, 由代数基本定理可知 $ \forall x\in\R\,(p(x)=0) $, 即 $ p=0 $;
+			\item $ \norm{p}_{\infty}=0 \Rightarrow \forall x\in [0, 1]\,(\abs{p(x)}=0) $, 由代数基本定理可知 $ \forall x\in\R\,(p(x)=0) $, 即 $ p=0 $;
 			\item $ \norm{\lambda p}_{\infty}=\abs{\lambda}\norm{p}_{\infty} $ 显然成立;
 			\item $ \norm{p+q}_{\infty}\leqslant\norm{p}_{\infty}+\norm{q}_{\infty} $ 显然成立.
 		\end{itemize}
@@ -392,7 +392,7 @@
 	\]
 	可知, 而齐次性与三角不等式是显然的, 从而$ N $是$ E $上的一个范数. 所求证不等式由
 	\[
-	N(f)=\int_0^1x\abs{f(x)}\diff x\leqslant\int_0^1\abs{f(x)}\diff x=\abs{f}_1
+	N(f)=\int_0^1x\abs{f(x)}\diff x\leqslant\int_0^1\abs{f(x)}\diff x=\norm{f}_1
 	\]
 	对任意$ f\in C[0,1] $成立可知.
 	
@@ -400,7 +400,7 @@
 	\[
 	N(f_n)=\int_0^{1/n}x(n-n^2x)\diff x=\int_0^{1/n}nx(1-nx)\diff x=\frac{1}{n}\int_0^1t(1-t)\diff t=\frac{1}{6n},
 	\]
-	从而由$ \lim\limits_{n\to\infty}N(f_n)=0 $可知$ (f_n)_{n\geqslant 1} $依范数$ N $收敛到0. 不妨设$ (f_n)_{n\geqslant 1} $依范数$ \norm{\cdot}_1 $收敛到$ f\in E $, 那么
+	从而由$ \lim\limits_{n\to\infty}N(f_n)=0 $可知$ (f_n)_{n\geqslant 1} $依范数$ N $收敛到0. 若 $ f_{n} $ 收敛, 不妨设$ (f_n)_{n\geqslant 1} $依范数$ \norm{\cdot}_1 $收敛到$ f\in E $, 那么
 	\[
 	\norm{f-f_n}_1=\int_0^{1/n}\abs{n(1-nx)-f(x)}\diff x+\int_{1/n}^1\abs{f(x)}\diff x\geqslant\int_{1/n}^1\abs{f(x)}\diff x,
 	\]
@@ -410,13 +410,13 @@
 	\]
 	也即$ f=0 $, 但此时
 	\[
-	\norm{f_n-f}_1=\norm{f_n}=\int_0^{1/n}\abs{n(1-nx)}\diff x=\frac{1}{2},
+	\norm{f_n-f}_1=\norm{f_n}_{1}=\int_0^{1/n}\abs{n(1-nx)}\diff x=\frac{1}{2},
 	\]
 	这与它依范数$ \norm{\cdot}_1 $收敛到$ f $矛盾. 从而$ (f_n)_{n\geqslant 1} $不依范数$ \norm{\cdot}_1 $收敛. 这也说明了这两个范数在$ E $上诱导的拓扑不同.
 	
 	(3) 由于等价的范数诱导相同的拓扑, 只需证明$ N $与$ \norm{\cdot}_1 $在空间$ B $上等价即可. 由(1)已知$ N\leqslant\norm\cdot_1 $成立, 而
 	\[
-	N(f)=\int_0^1x\abs{f(x)}\diff x=\int_a^1x\abs{f(x)}\diff x\geqslant a\int_a^1\abs{f(x)}\diff x=a\int_0^1\abs{f(x)}\diff x=a\norm{f}_1.
+	N(f)=\int_0^1x\abs{f(x)}\diff x=\int_a^1x\abs{f(x)}\diff x\geqslant a\int_a^1\abs{f(x)}\diff x\geqslant a\int_0^1\abs{f(x)}\diff x=a\norm{f}_1.
 	\]
 	也即$ \norm{\cdot}_1\leqslant\frac{1}{a}N $, 从而$ \norm{\cdot}_1 $与$ N $在$ B $上是等价的.\qed
 	\end{Proof}
@@ -511,7 +511,7 @@
 	\textbf{习题3.8}\ [作业]\ \ 设$ E $是数域$ \K $上的有限维线性空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵
 	\begin{enumerate}[(1)]
 	\item 证明映射$ u\mapsto[u] $建立了$ \CL(E) $到$ \mathbb{M}_n(\K) $之间的同构映射.
-	\item 假设$ E=\K^n $且$ \{ e_1,e_2,\cdots,e_n \} $是经典基(即$ e_i=[\delta_{i,1}],\delta_{i,2},\cdots,\delta{i,n}] $, 这里$ \delta $是Kronecker符号), 并约定$ E=\K^n $上赋予Euclid范数. 证明: 若$ [u] $可被正交相似对角化, 则$ \norm{u}=\max\{ \abs{\lambda_1},\abs{\lambda_2},\cdots,\abs{\lambda_n} \} $, 这里$ \lambda_1,\lambda_2,\cdots,\lambda_n $是$ u $的特征值.
+	\item 假设$ E=\K^n $且$ \{ e_1,e_2,\cdots,e_n \} $是经典基(即$ e_i=[\delta_{i,1},\delta_{i,2},\cdots,\delta{i,n}] $, 这里$ \delta $是Kronecker符号), 并约定$ E=\K^n $上赋予Euclid范数. 证明: 若$ [u] $可被正交相似对角化, 则$ \norm{u}=\max\{ \abs{\lambda_1},\abs{\lambda_2},\cdots,\abs{\lambda_n} \} $, 这里$ \lambda_1,\lambda_2,\cdots,\lambda_n $是$ u $的特征值.
 	\item 取$ \{ e_1,e_2,\cdots,e_n \} $如上, 试由$ [u] $中的元素分别确定$ p=1 $与$ p=\infty $时$ u : (\K^n,\norm{\cdot}_p)\to(\K^n,\norm{\cdot}_p) $的范数.
 	\end{enumerate}
 	\begin{Proof}
@@ -519,7 +519,7 @@
 	\[
 	\norm{u}=\norm{[u]}
 	\]
-	即使$ \CL(E) $上的一个范数, 这说明这一映射连续, 于是$ \CL(E) $与$ \mathbb{M}_n(\K) $同构.
+	即是$ \CL(E) $上的一个范数, 这说明这一映射连续, 于是$ \CL(E) $与$ \mathbb{M}_n(\K) $同构.
 	
 	(2) 由$ u $可被正交相似对角化可知存在酉矩阵$ p $与对角阵$ \lambda=\mathrm{diag}\,\{ \lambda_1,\lambda_2,\cdots,\lambda_n \} $使得
 	\[
@@ -528,7 +528,7 @@
 	那么对任意单位向量$ x $, 记$ y=p^\dagger x $, 那么$ \norm{y}=\sqrt{x^\dagger pp^\dagger x}=\sqrt{x^\dagger x}=1 $. 从而
 	\begin{align*}
 	\norm{ux}=\sqrt{x^\dagger uu^\dagger x}=\sqrt{x^\dagger p\lambda^\dagger\lambda p^\dagger x}&=\sqrt{\sum_{k=1}^n\abs{\lambda_k}^2\abs{y_k}^2}\\
-	&\leqslant\max_{k}\abs{\lambda_k}\sqrt{\abs{y_k}^2}=\max_{k}\abs{\lambda_k}.
+	&\leqslant\max_{k}\abs{\lambda_k}\sqrt{\sum_{k=1}^{n}\abs{y_k}^2}=\max_{k}\abs{\lambda_k}.
 	\end{align*}
 	于是$ \norm{u}\leqslant\max\limits_{k}\abs{\lambda_k} $. 而取$ k_0 $是使得特征值模最大的下标, 并设$ \lambda_{k_0} $对应的特征向量是$ x_{k_0} $, 那么由
 	\[
@@ -599,7 +599,7 @@
 	&\leqslant\norm{v^{-1}}\norm{u-v}\norm{u^{-1}}\\
 	&=\norm{(\id_E-u^{-1}(u-v))^{-1}u^{-1}}\norm{u-v}\norm{u^{-1}}\\
 	&\leqslant(1-\norm{u^{-1}(u-v)})^{-1}\norm{u-v}\norm{u^{-1}}^2\\
-	&\leqslant(1-\norm{u^{-1}\norm{u-v}})^{-1}\norm{u-v}\norm{u^{-1}}^2\\
+	&\leqslant(1-\norm{u^{-1}}\norm{u-v})^{-1}\norm{u-v}\norm{u^{-1}}^2\\
 	&\leqslant 2\norm{u-v}\norm{u^{-1}}^2
 	\end{align*}
 	可知映射$ u\mapsto u^{-1} $是连续的. 同理可证其逆连续, 从而它是同胚.\qed
@@ -628,11 +628,11 @@
 	
 	(2) 考虑映射
 	\[
-	T : \ell_\infty\to C(0,1],\qquad (x_n)_{n\geqslant 1}\mapsto\sum_{n\geqslant 1}\left(\frac{x_{n+1}-x_n}{\frac{1}{n+1}-\frac{1}{n}}\left(t-\frac{1}{n}\right)+x_n\right)1_{\left( \frac{1}{n+1},\frac{1}{n} \right]},
+	T : \ell_\infty\to C(0,1],\qquad (x_n)_{n\geqslant 1}\mapsto f=\sum_{n\geqslant 1}\left(\frac{x_{n+1}-x_n}{\frac{1}{n+1}-\frac{1}{n}}\left(t-\frac{1}{n}\right)+x_n\right)1_{\left( \frac{1}{n+1},\frac{1}{n} \right]},
 	\]
-	其中右侧的函数是以$ (1/n,x_n)_{n\geqslant 1} $为节点的分段线性函数. 容易证明$ T $是一个线性映射, 又因为
+	其中 $ f $ 是以$ (1/n,x_n)_{n\geqslant 1} $为节点的分段线性函数. 容易证明$ T $是一个线性映射, 又因为
 	\[
-	f=0\equiv \forall n\geqslant 1, x_n=f\left(\frac{1}{n}\right)=0
+	f=0\Longrightarrow \forall n\geqslant 1, x_n=f\left(\frac{1}{n}\right)=0
 	\]
 	即$ \ker T=\{ (0)_{n\geqslant 1} \} $从而$ T $是单射, 且$ \norm{f}=\sup\limits_{n\geqslant 1}\abs{x_n} $, 于是$ T $是一个等距同构映射. 从而$ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.\qed
 	\end{Proof}
@@ -794,7 +794,7 @@
 	于是$ (f_n)_{n\geqslant 1} $在$ x=1 $处不等度连续.\qed
 	\end{Proof}
 	
-	\textbf{习题5.5}\ [习题课]\ \ 考虑函数序列$ (f_n)_{n\geqslant 1} $, 这里$ f_n(t)=\sin\sqrt{t+4(n\pi)^2} $, 其中$ t\in[0,\infty) $.
+	\textbf{习题5.5}\ [习题课]\ \ 考虑函数序列$ (f_n)_{n\geqslant 1} $, 这里$ f_n(t)=\sin\sqrt{t+4( n\pi )^2} $, 其中$ t\in[0,\infty) $.
 	\begin{enumerate}[(1)]
 	\item 证明$ (f_n)_{n\geqslant 1} $等度连续并且逐点收敛到0.
 	\item 用$ C_b([0,\infty),\R) $表示$ [0,\infty) $上所有有界连续实函数构成的空间, 并赋予范数
@@ -816,16 +816,16 @@
 	
 	(2) 假设$ (f_n)_{n\geqslant 1} $相对紧, 则存在子列$ (f_{n_k})_{k\geqslant 1} $一致收敛到某$ f\in C_b([0,\infty),\R) $, 即$ \lim\limits_{k\to\infty}\norm{f_{n_k}-f}_\infty=0 $, 那么$ \forall t $都有$ \lim\limits_{k\to\infty}f_{n_k}(t)=f(t) $. 由(1)可知$ f=0 $, 又因为
 	\[
-	f_{n_k}(t)=\sin\frac{t}{\sqrt{t+4(n\pi)^2}+2n\pi}
+	f_{n_k}(t)=\sin\frac{t}{\sqrt{t+4(n_{k}\pi)^2}+2n_{k}\pi}
 	\]
 	且
 	\[
-	\abs{\frac{t}{\sqrt{t+4(n\pi)^2}+2n\pi}}\leqslant 1,
+	\abs{\frac{t}{\sqrt{t+4(n_{k}\pi)^2}+2n_{k}\pi}}\leqslant 1,
 	\]
-	从而对$ \forall\varepsilon>0 $, 有$ \abs{f_{n_k}(t)}<\varepsilon $当且仅当$ t/(\sqrt{t+4(n\pi)^2}+2n\pi)<\arcsin\varepsilon $. 取$ \varepsilon=1/2 $, 则若记$ \theta=\pi/6 $
+	从而对$ \forall\varepsilon>0 $, 有$ \abs{f_{n_k}(t)}<\varepsilon $当且仅当$ t/(\sqrt{t+4(n_{k}\pi)^2}+2n_{k}\pi)<\arcsin\varepsilon $. 取$ \varepsilon=1/2 $, 则若记$ \theta=\pi/6 $
 	\[
 	\begin{aligned}
-	\abs{f_{n_k}(t)}<\frac{1}{2} & \Longleftrightarrow \frac{t}{\sqrt{t+4(n\pi)^2}+2n_k\pi}<\theta \\
+	\abs{f_{n_k}(t)}<\frac{1}{2} & \Longleftrightarrow \frac{t}{\sqrt{t+4(n_{k}\pi)^2}+2n_k\pi}<\theta \\
 	& \Longleftrightarrow t-2n_k\pi\theta\leqslant\theta\sqrt{t+4(n_k\pi)^2} \\
 	& \Longleftrightarrow (t-2n_k\pi\leqslant 0)\lor\left( \left( t-2n_k\pi\theta\geqslant 0 \right)\land\left( \left(t-2n_k\pi\theta\right)^2\leqslant\theta^2(t+4(n_k\pi)^2) \right) \right),
 	\end{aligned}
