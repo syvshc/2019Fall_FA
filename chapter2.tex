@@ -100,7 +100,7 @@
 	\begin{Definition}[算子范数]\index{Y!有界线性算子}
 		设$ E,F $都是赋范空间, $ u\in\mathcal{L}(E,F) $. 若
 		\[
-			\forall C\geqslant 0\,\forall x\in E\,(\norm{u(x)}\leqslant C\norm{x}),
+			\exists C\geqslant 0\,\forall x\in E\,(\norm{u(x)}\leqslant C\norm{x}),
 		\]
 		则称$ u $是\textbf{有界}的. 再令
 		\[
@@ -243,7 +243,7 @@
 	\end{Remark}
 
 	\begin{Theorem}
-		设 $ E $, $ F $ 是Banach空间,  $ G $ 是 $ F $ 的稠子空间, 则有界线性映射 $ u: G\to F $ 可以唯一地扩张成有界线性映射 $ \tilde{u}:E\to F $, 且 $ \norm{\tilde{u}}=\norm{u} $.
+		设 $ E $, $ F $ 是Banach空间,  $ G $ 是 $ E $ 的稠子空间, 则有界线性映射 $ u: G\to F $ 可以唯一地扩张成有界线性映射 $ \tilde{u}:E\to F $, 且 $ \norm{\tilde{u}}=\norm{u} $.
    \end{Theorem}
    \begin{Proof}
 		因为 $ G $ 在 $ E $ 中稠密, 则
@@ -675,4 +675,233 @@
 				A^{\bot}=\baro{A}^{\bot}=(\Span A)^{\bot}=\baro{\Span A}^{\bot}.
 			\]
 		\end{enumerate}
+		\begin{Theorem}[投影线性算子]
+			 设 $ H $ 是 Hilbert 空间, $ E\subset H $ 是闭线性子空间,  对任意 $ x\in H $, $ P_{E}(x) $ 是满足 $ x\bot y\in E $ 的唯一元素 $ y $, 且 $ P_{E} $ 是从 $ H $ 到 $ E $ 的线性算子, 其范数 $ \norm{P_{E}}\leqslant1 $.
+		\end{Theorem}
+			
+		\begin{Proof}
+			先说明 $ P_{E}(x) $ 唯一. 因为
+			\[
+				\begin{aligned}
+					y=P_{E}(x) & \Longleftrightarrow \forall z\in E\,(\Re\lrangle{x-y, z-y}\leqslant0)\\
+					& \Longleftrightarrow \forall z\in E\,(\Re\lrangle{x-y, z}\leqslant0)\\
+					& \Longleftrightarrow \forall z\in E\,(\Re\lrangle{x-y, \lambda z}\leqslant0, \forall \lambda\in \K)\\
+					& \Longleftrightarrow \forall z\in E\,(\lrangle{x-y, z}=0)\Longleftrightarrow x-y\bot E
+				\end{aligned}
+			\]
+
+			再说明 $ P_{E} $ 是线性的. 因为
+			\[
+				(x+x')-(P_{E}(x)+P_{E}(x'))=(x-P_{E}(x))+(x'-P_{E}(x'))\bot E
+			\]
+			由唯一性可知 $ P_{E}(x+x')=P_{E}(x)+P_{E}(x') $. 且
+			\[
+				\lambda x-\lambda P_{E}(x)=\lambda(x-P_{E}(x))\bot E
+			\]
+			由唯一性可知 $ P_{E}(\lambda x)=\lambda P_{E}(x) $, 从而 $ P_{E} $ 是线性算子. 而且
+			\[
+				\norm{P_{E}}=\sup_{\norm{x}=1}\norm{P_{E}(x)}=\sup_{\norm{x}=1}\norm{P_{E}(x)-P_{E}(0)}\leqslant\sup_{\norm{x}=1}\norm{x}=1,
+			\]
+			且若 $ E\ne \{ 0 \} $, 即 $ \exists x\ne 0, x\in E $ 使 $ P_{E}(x)=\norm{x} $, 则 $ E\ne 0 $ 时有 $ \norm{P_{E}}=1 $.\qed
+		\end{Proof}
+		 
+		\begin{Example}
+			在 $ \mathbb{M}_{n}(\C) $ 上构造投影算子, 由幂等性可知其特征值非$0$即$1$, 从而可得一平凡构造
+			\[
+				P=\begin{bmatrix}
+					\mathds{1}_{k} & 0 \\
+					0 & 0
+				\end{bmatrix}
+			\]
+			其中 $ \mathds{1}_{k} $ 表示阶数为 $ k $ 的单位矩阵, 取 $ e_{1}, e_{2},\dots,e_{n} $ 为 $ \C^{n} $ 的一组规范正交基, $ e_{1}, e_{2},\dots,e_{k} $ 为 $ E\subset\C^{n} $ 的一组规范正交基, 则
+			\[
+				P_{E}(x)=\sum_{i=1}^{k}\lambda_{i}e_{i}=\sum_{i=1}^{k}\lrangle{x, e_{i}}e_{i}
+			\]
+		\end{Example}
 	\end{Remark}
+
+	\begin{Corollary}[正交分解]
+		设 $ H $ 是Hilbert空间, $ E $ 是 $ H $ 的线性子空间, 则
+		\[
+			H=\baro{E}\oplus E^{\bot}
+		\]
+		即 $ \forall x\in H $, 存在唯一分解 $ x=y+z $, $ y\in\baro{E}, z\in E^{\bot} $, 且 $ \norm{x}^{2}=\norm{y}^{2}+\norm{z}^{2} $.
+	\end{Corollary}
+
+	\begin{Proof}
+		$ \forall x\in H $, 取 $ y=P_{E}(x)\in \baro{E} $, 则 $ z=x-y $, $ z\bot E $. 也即 $ z\in E^{\bot} $. 从而
+		\[
+			x=y+z, \qquad y\in \baro{E}, z\in E^{\bot}
+		\]
+		此时 $ \lrangle{y, z}=0 $, 故
+		\[
+			\norm{x}^{2}=\norm{y+z}^{2}=\norm{y}^{2}+\norm{z}^{2}.		
+		\]
+		再说明这样的分解是唯一的. 若还有 $ x=y'+z' $, $ y'\in\baro{E} $, $ z'\in E^{\bot} $. 则
+		\[
+			y+y'=z+z' \Longrightarrow y'-y=z-z'\in \baro{E}\cap E^{\bot}.
+		\]
+		从而只能有 $ y-y'=z'-z=0 $, 即 $ y=y', z=z' $.\qed
+	\end{Proof}
+
+	\begin{Corollary}
+		设 $ H $ 是Hilbert空间, $ E $是 $ H $ 的线性子空间, 则 $ (E^{\bot})^{\bot}=E $.
+	\end{Corollary}
+
+	\begin{Proof}
+		由定义得 $ E\subset (E^{\bot})^{\bot} $, 又因为正交补空间是闭线性子空间, 故 $ \baro{E}\subset (E^{\bot})^{\bot} $. 再证反向不等式. 因为 $ \forall x\in(E^{\bot})^{\bot}  $, 都有 $ P_{E^{\bot}}(x)=0 $, 则
+		\[
+			x=P_{\baro{E}}(x)+P_{E^{\bot}}(x)=P_{\baro{E}}(x)
+		\]
+		说明 $ x\in\baro{E} $, 即 $ (E^{\bot})^{\bot}\subset \baro{E} $. 故 $ (E^{\bot})^{\bot}=E $.\qed
+	\end{Proof}
+
+	\begin{Remark}
+		设 $ H $ 是Hilbert空间, $ A\subset H $, 则有 $ (A^{\bot})^{\bot}=\baro{\Span A} $(因为 $ A^{\bot}=\baro{\Span A}^{\bot} $). 特别地, 若 $ A=\{ x \} $, 则 $ (A^{\bot})^{\bot}=\K x $.
+	\end{Remark}
+
+\section{对偶与共轭}
+
+	考虑 $ L_{p}(X), 1\leqslant p\leqslant\infty $. 由H\"older不等式, 可以在 $ L_{p}(X) $ 上构造出一个线性泛函, 即 $ \forall g\in L_{q}(X) $, $ (p, q) $ 是一对共轭指数, 可定义:
+	\[
+		\rho_{g}(f)=\int_{X}fg\diff\mu.
+	\]
+	则由 $ \abs{\rho_{g}(f)}\leqslant\norm{f}_{p}\norm{g}_{q} $ 知 $ \norm{\rho_{g}}\leqslant\norm{g}_{q}<\infty $, 从而 $ \rho_{g} $ 是有界线性泛函. 
+
+	特别地, 对 $ p=q=2 $, 因为 $ L_{2}(X) $ 是Hilbert空间, 其上有内积 $ \lrangle{f, g}=\int_{X}f\baro{g}\diff\mu $, 则 $ \forall y\in H $, 可定义映射 $ \varphi_{y}:x\mapsto \lrangle{x, y} $, 有 $ \norm{\varphi_{y}}\leqslant\norm{y} $, 从而 $ H $ 到 $ H^{*} $ 上存在单射.
+
+	\begin{Theorem}[Riesz表示定理]
+		 设 $ H $ 是 \K 上的Hilbert空间, 则 $ \varphi: H\to \K $ 是一个连续线性泛函的充分必要条件是 $ \exists y\in H\,\forall x\in H\,(\varphi(x)=\lrangle{x, y}) $, 且由此所得 $ y $ 唯一, 有 $ \norm{\varphi}=\norm{y} $.
+	\end{Theorem}
+
+	\begin{Proof}
+		\textsl{必要性}. 设 $ \varphi\in H^{*} $, 取 $ E=\ker\varphi $. 因为 $ \varphi $ 是一个连续线性泛函, 故 $ E=\ker\varphi $ 是一个闭线性子空间. 若 $ E=H $, 则 $ \varphi=0 $. 此时 $ y=0 $. 否则 $ E^{\bot}\ne\{0\} $, 则存在 $ e\ne0 $, $ e\in E^{\bot} $ 使得 $ \varphi(e)\ne0 $. 不妨令 $ \varphi(e)=1 $, 则 $ x $ 有正交分解
+		\[
+			x=(x-\varphi(x)e)+\varphi(x)e,
+		\]
+		记 $ x-\varphi(x)e=x' $. 因为 $ \varphi(x')=\varphi(x)-\varphi(x)\varphi(e)=0 $, 则 $ x'\in E $, 而因为 $ e\in E^{\bot} $, 那么对任意 $ z\in E $, 有 $ \lrangle{z, \varphi(x)e}=\varphi(x)\lrangle{z, e}=0 $, 则 $ \varphi(x)e\in E^{\bot} $. 那么
+		\[
+			\begin{aligned}
+				\lrangle{x', e}=0\Longrightarrow \lrangle{x, e} & =\lrangle{x'+\varphi(e), e}\\
+				& =\varphi(x)\lrangle{e, e},
+			\end{aligned}
+		\]
+		则
+		\[
+			\varphi(x)=\frac{1}{\norm{e}^{2}}\lrangle{x, e}=\lrangle{x, \frac{e}{\norm{e}^{2}}}
+		\]
+		即 $ y=e/\norm{e}^{2} $. 若存在 $ y' $, 使得 $ \varphi(x)=\lrangle{x, y'}=\lrangle{x, y} $, 则 $ \lrangle{x, y-y'}=0 $, 即 $ y=y' $. 故唯一性得证. 且
+		\[
+			\norm{\varphi}=\sup_{\norm{x}=1}=\sup_{\norm{x}=1}\lrangle{x, y}\leqslant\norm{y},
+		\]
+		取 $ x=y/\norm{y} $ 后, 由 $ \varphi(x)=\norm{y} $ 知 $ \norm{\varphi}=\norm{y} $.
+
+		\textsl{充分性}. 由 Cauchy-Schwarz不等式, 有
+		\[
+			\abs{\varphi}=\abs{\lrangle{x, y}}\leqslant\norm{x}\norm{y} \Longrightarrow \norm{\varphi}\leqslant\norm{y}<\infty.
+		\]
+		从而 $  \varphi\in H^{*} $. \qed
+	\end{Proof}
+
+	\begin{Remark}~
+		\begin{enumerate}[(1)]
+			\item 由证明过程可知
+			\[
+				\norm{y}=\norm{\varphi_{y}}=\sup_{\norm{x}=1}\abs{\lrangle{x, y}}
+			\]
+			实际上对 $ \forall y\in H $ 成立. 从而 $ \forall u\in \CB(H, K) $, 其中 $ H, K $ 都是 Hilbert空间, 有
+			\[
+				\norm{u}=\sup_{\norm{x}=1}\norm{u(x)}=\sup_{\norm{x}=1}\sup_{\norm{y}=1}\abs{\lrangle{u(x), y}}.
+			\]
+			\item 考虑映射 $ \varPhi: H\to H^{*}, y\mapsto \varphi_{y} $, 则它是共轭线性的等距双射, 即 $ H $ 与 $ H^{*} $ 在等距意义下可看作同一空间.
+		\end{enumerate}
+	\end{Remark}
+
+	\begin{Theorem}[伴随算子]
+		设 $ H, K $ 是 Hilbert空间, $ u\in \CB(H, K) $, 则存在唯一的 $ \Star{u}\in \CB(K, H) $ 使得
+		\[
+			\forall x\in K\,\forall y\in H\,\big(\lrangle{\Star{u}(x), y}=\lrangle{x, u(y)}\big),
+		\] 
+		且 $ \norm{\Star{u}}=\norm{u} $. 称 $ \Star{u} $ 为 $ u $ 的伴随. 
+	\end{Theorem}
+
+	\begin{Proof}
+		考虑映射 $ y\mapsto\lrangle{u(y), x} $, 由
+		\[
+			\abs{\lrangle{u(y), x}}\leqslant\norm{u}\norm{y}\norm{x}
+		\]
+		知它是连续线性泛函, 由 Riesz表示定理
+		\[
+			\exists!z_{x}\in H\,\forall y\in H\,(\lrangle{y, z_{x}}=\lrangle{u(y), x}),
+		\]
+		由此定义映射 $ \Star{u}: K\to H, x\mapsto z_{x} $, 则有
+		\[
+			\lrangle{y, \Star{u}(x)}=\lrangle{y, z_{x}}=\lrangle{u(y), x},
+		\]
+		而由
+		\[
+			\begin{aligned}
+				\lrangle{y, \Star{u}(x+x')} & =\lrangle{u(y), x+x'}=\lrangle{u(y), x}+\lrangle{u(y), x'}\\
+				& =\lrangle{y, \Star{u}(x)}+\lrangle{y, \Star{u}(x')}=\lrangle{y, \Star{u}x+\Star{u}x'}, \qquad \forall y\in H,
+			\end{aligned}
+		\]
+		可知 $ \Star{u}(x+x')=\Star{u}x+\Star{u}(x') $. 类似可证 $ \Star{u}(\lambda x)=\lambda\Star{u}(x) $, 从而 $ \Star{u}  $ 是线性算子, 且
+		\[
+			\norm{\Star{u}}=\sup_{\norm{x}=1}\sup_{\norm{y}=1}\abs{\lrangle{\Star{u}(x), y}}=\sup_{\norm{x}=1}\sup_{\norm{y}=1}\abs{\lrangle{x, u(y)}}=\norm{u}. 
+		\]
+		由 $ u\in \CB(H, K) $ 知 $ \Star{u}\in\CB(K, H) $.\qed
+	\end{Proof}
+	
+	\begin{Remark}~
+		\begin{enumerate}[(1)]
+			\item 特别地, $ A\in\mathbb{M}_{n}(\C) $ 时, $ \Star{A}=A^{H} $;
+			\item $ u\in\CB(H, K) $, 有 $ \Star{(\Star{u})}=u $;
+			\item 映射 $ u\mapsto \Star{u} $ 是共轭线性的等距双射;
+			\item 设 $ H, K, J $ 都是Hilbert空间, $ u\in\CB(H, K), v\in\CB(K, J) $, 则有 $ \Star{(vu)}=\Star{u}\Star{v} $, 而若 $ u\in\CB(H) $, $ u $ 可逆, 有
+			\[
+				\Star{(uu^{-1})}=\id_{H}=\Star{(u^{-1})}\Star{u},
+			\]
+			即 $ \Star{(u^{-1})}=(\Star{u})^{-1} $;
+			\item 若 $ u\in\CB(H) $, $ \Star{u}=u $, 则称 $ u $ 是\textbf{自伴}的, 例如 $ M_{g}: f\mapsto gf $ 是自伴的, 对 $ A\in\mathbb{M}_{n}(\R) $, $ A $ 自伴当且仅当 $ A $ 对称.
+		\end{enumerate}
+	\end{Remark}
+	\begin{Definition}[酉算子]\index{Y!酉算子}\label{def:酉算子}
+			 设 $ u\in \CB(H) $, 若 $ u\Star{u}=\Star{u}u=\id_{H} $, 则称 $ u $ 是\textbf{酉算子}.
+	\end{Definition}
+	\begin{Remark}
+		下面对酉算子进行一些说明
+		\begin{enumerate}[(1)]
+			\item 若 $ u $ 是酉算子, 则 $ \Star{u}=u^{-1} $, 此时有
+			\[
+				\lrangle{u(x), u(y)}=\lrangle{x, y}=\lrangle{\Star{u}(x), \Star{u}(y)};
+			\]
+			\item 设 $ u, v $ 是酉算子, 则 $ u^{-1} $ 是酉算子, $ \id $ 是酉算子, $ uv $ 也是酉算子, $ \CB(H) $ 中所有的酉算子关于乘法构成一个群.
+		\end{enumerate}
+	\end{Remark}
+
+	\begin{Example}~
+		\begin{enumerate}[(1)]
+			\item $ u=\mathrm{diag}\{ \exp(\imag \theta_{1}), \exp(\imag\theta_{2}), \dots, \exp(\imag\theta_{n}) \} $ 是一个酉算子;
+			\item 若
+		$ \left[\begin{smallmatrix}
+		x_{1} & x_{2}\\
+		x_{3} & x_{4}	
+		\end{smallmatrix}\right] $ 是酉算子, $ x_{i}\in\R $, 则 $ \exists\theta $ 使 
+		$ \left[\begin{smallmatrix}
+			x_{1} & x_{2}\\
+			x_{3} & x_{4}
+		\end{smallmatrix}\right]=\left[\begin{smallmatrix}
+			\cos\theta & \sin\theta \\
+			-\sin\theta & \cos\theta
+		\end{smallmatrix}\right] $;
+		\item $ M_{g} $ 是酉算子 $ \Longleftrightarrow\abs{g}=1\quad \mathrm{a.e.} $.
+		\end{enumerate}
+	\end{Example}
+
+\section{正交基}
+	\subsection{正交与正交基}
+	设 $ H $ 是Hilbert空间, $ E $ 是 $ H $ 的闭线性子空间, 由正交分解可知 $ H=E\oplus E^{\bot} $. 令 $ E=\K x_{1}, \norm{x_{1}}=1 $, 则 $ H=\K x_{1}\oplus (\K x_{1})^{\bot} $, 再取 $ x_{2}\in (\K x_{1})^{\bot}, \norm{x_{2}}=1 $, 则 $ H=\K x_{1}\oplus \K x_{2}\oplus (\K\{ x_{1}, x_{2} \})^{\bot} $, 如此操作下去, 可得
+	\[
+		H=\K x_{1}\oplus \K x_{2}\oplus\cdots\oplus\K x_{n}\oplus(\K \{ x_{1}, x_{2}, \dots, x_{n} \})^{\bot}
+	\]
+	且 $ \norm{x_{i}}=1 $. 由 Zorn引理, $ H=\baro{\K\{ x_{i} \}_{i\in\alpha}} $, 其中 $ \norm{x_{i}}=1 $ 且 $ (x_{i})_{i\in\alpha} $ 两两正交, 有 $ \Span(x_{i})_{i\in\alpha}=H $. 
