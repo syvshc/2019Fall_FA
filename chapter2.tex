@@ -533,7 +533,7 @@
 		知\,\eqref{eq:内积数乘}\,对任意 $ \lambda\in\C $ 成立.\qed
 	\end{Proof}
 
-	\section{投影算子}
+\section{投影算子}
 	\subsection{闭凸集上的投影}
 	
 	\begin{Definition}[凸集]\label{def:凸集}
@@ -904,4 +904,232 @@
 	\[
 		H=\K x_{1}\oplus \K x_{2}\oplus\cdots\oplus\K x_{n}\oplus(\K \{ x_{1}, x_{2}, \dots, x_{n} \})^{\bot}
 	\]
-	且 $ \norm{x_{i}}=1 $. 由 Zorn引理, $ H=\baro{\K\{ x_{i} \}_{i\in\alpha}} $, 其中 $ \norm{x_{i}}=1 $ 且 $ (x_{i})_{i\in\alpha} $ 两两正交, 有 $ \Span(x_{i})_{i\in\alpha}=H $. 
+	且 $ \norm{x_{i}}=1 $. 由 Zorn引理, $ H=\baro{\K\{ x_{i} \}_{i\in\alpha}} $, 其中 $ \norm{x_{i}}=1 $ 且 $ (x_{i})_{i\in\alpha} $ 两两正交, 有 $ \Span(x_{i})_{i\in\alpha}=H $.
+	
+	\begin{Definition}[规范正交基]\index{Z!正交}\index{W!完全}\index{G!规范正交}\index{G!规范正交基}
+	设$ \alpha $是指标集, $ H $是Hilbert空间, $ (e_i)_{i\in\alpha} $是$ H $中的一族向量.
+	\begin{enumerate}[(1)]
+	\item 若$ \forall i\ne j\,(e_i\bot e_j) $, 则称$ (e_i)_{i\in\alpha} $是\textbf{正交}的.
+	\item 若$ (e_i)_{i\in\alpha} $正交且$ \forall i\in\alpha\,(\norm{e_i}=1) $, 则称$ (e_i)_{i\in\alpha} $是\textbf{规范正交}的.
+	\item 若$ (e_i)_{i\in\alpha} $的线性扩张在$ H $中稠密, 即$ \baro{\Span (e_i)_{i\in\alpha}}=H $, 则称$ (e_i)_{i\in\alpha} $是\textbf{完全}的.
+	\item 若$ (e_i)_{i\in\alpha} $是规范正交的且是完全的, 则称$ (e_i)_{i\in\alpha} $是$ H $的一组\textbf{规范正交基}.
+	\end{enumerate}
+	\end{Definition}
+	
+	\begin{Example}
+	常见空间上的规范正交基:
+	\begin{enumerate}[(1)]
+	\item 在$ \K^n $上, 取$ \{ e_1,\cdots,e_n \} $, 其中$ e_i=[\delta_{1,i},\delta_{2,i},\cdots,\delta_{n,i}]^\mathrm T $, 它是$ \K^n $的经典基(或称标准基/自然基).
+	\item 在$ \ell_2 $上, 取$ (e_n)_{n\geqslant 1} $, 其中$ e_n=(\delta_{1,n},\delta_{2,n},\cdots) $, 则$ (e_n)_{n\geqslant 1} $是$ \ell_2 $的一组规范正交基.
+	\item 在$ L_2[0,2\pi] $上(或同构地, $ L_2(\mathbb{T}) $上, 其中$ \mathbb{T} $是单位圆周$ \{ \exp(\imag t) : 0\leqslant t<2\pi \} $), 取$ (e_n)_{n\geqslant 1} $, 其中$ e_n=\exp(\imag nt) $. 由Fourier级数理论可知$ (e_n)_{n\geqslant 1} $是$ L_2[0,2\pi] $的一个规范正交基.
+	\item 在$ L_2(\R) $上, 取Hermite多项式
+	\[
+	H_n(x)=(-1)^n\exp(x^2)\left(\frac{\diff}{\diff x}\right)^n\exp(-x^2),\qquad n\geqslant 0
+	\]
+	(例如$ H_1(x)=1,\ H_2(x)=2x,\ H_3(x)=4x^2-2 $), 注意到
+	\[
+	\int_{-\infty}^{\infty}H_n(x)H_m(x)\exp(-x^2)\diff x=\begin{cases}
+	2^n\cdot n!\cdot\sqrt{\pi} & ,n=m\\ 0 & ,n\ne m
+	\end{cases}
+	\]
+	故取$ (e_n)_{n\geqslant 1} $, 其中
+	\[
+	e_n=\frac{1}{\sqrt{2^n\cdot n!\cdot\sqrt{\pi}}}H_n(x)\exp\left(-\frac{x^2}{2}\right)
+	\]
+	即可.
+	\end{enumerate}
+	\end{Example}
+	
+	\begin{Proposition}\label{prop:投影算子代数表达}
+	下面给出投影算子的代数表达: 设$ H $是Hilbert空间, $ \{ e_1,\cdots,e_n \} $是$ H $的规范正交集, 令$ E=\Span\{ e_1,e_2,\cdots,e_n \} $, 则$ \forall x\in H $, 有
+	\[
+	P_E(x)=\sum_{i=1}^n\lrangle{x,e_i}e_i,\qquad\text{且}\qquad \norm{x}^2=\norm{x-P_E(x)}^2+\sum_{i=1}^n\abs{\lrangle{x,e_i}}^2.
+	\]
+	\end{Proposition}
+	\begin{Proof}
+	令$ y=\sum\limits_{i=1}^n\lrangle{x,e_i}e_i $, 注意到$ P_E(x) $是满足$ x-P_E(x)\bot E $的唯一向量, 故只需验证$ \lrangle{x-P_E(x),e_i}=0 $即可. 而对$ i=1,2,\cdots,n $, 有
+	\[
+	\lrangle{x-y,e_i}=\lrangle{x,e_i}-\lrangle{y,e_i}=\lrangle{x,e_i}-\lrangle{x,e_i}=0.
+	\]
+	则$ y=P_E(x) $, 再因
+	\[
+	\begin{aligned}
+	\norm{x}^2=\lrangle{x,x}&=\lrangle{x-P_E(x)+P_E(x),x-P_E(x)+P_E(x)}\\
+	& =\norm{x-P_E(x)}^2+\norm{P_E(x)}^2=\norm{x-P_E(x)}^2+\sum_{i=1}^n\abs{\lrangle{x,e_i}}^2
+	\end{aligned}
+	\]
+	得证.\qed
+	\end{Proof}
+	
+	利用投影算子的这一代数表达, 可以进一步刻画Hilbert空间上的正交基:
+	\begin{Theorem}
+	设$ H $是Hilbert空间, $ (e_n)_{n\geqslant 1} $是规范蒸饺序列, 则下列叙述等价:
+	\begin{enumerate}[(1)]
+	\item $ (e_n)_{n\geqslant 1} $是完全的.
+	\item $ \forall x\in H\,\exists!(x_n)_{n\geqslant 1} $使得$ \sum\limits_{n\geqslant 1}x_ne_n $收敛到$ x $.
+	\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+	(2) $ \Rightarrow $ (1) : 因为$ \forall x\in H $, 有$ \lim\limits_{n\to\infty}\norm{\sum\limits_{k=1}^nx_ke_k-x}=0 $且$ \sum\limits_{k=1}^nx_ke_k\in\Span(e_n)_{n\geqslant 1} $对$ \forall n\in\N $成立, 从而$ x\in\baro{\Span(e_n)_{n\geqslant 1}} $, 即$ H=\baro{\Span(e_n)_{n\geqslant 1}} $, 这说明$ (e_n)_{n\geqslant 1} $是完全的.
+	
+	(1) $ \Rightarrow $ (2) : $ \forall x\in H $, 取$ y_n=\sum\limits_{k=1}^n\lrangle{x,e_k}e_k $, 则需验证$ \lim\limits_{n\to\infty}\norm{y_n-x}=0 $. 因为
+	\[
+	\norm{y_{n+p}-y_n}=\sum_{k=n+1}^{n+p}\abs{\lrangle{x,e_k}}^2,
+	\]
+	由命题\,\ref{prop:投影算子代数表达}\,可知$ \forall n\in\N $, 都有$ \sum_{k=1}^n\abs{\lrangle{x,e_k}}^2\leqslant\norm{x}^2 $, 令$ n\to\infty $后有$ \sum\limits_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2 $收敛, 从而$ \norm{y_{n+p}-y_n}\to 0 $. 这说明$ (y_n)_{n\geqslant 1} $是Cauchy列, 令$ y=\lim\limits_{n\to\infty}y_n $, 则$ \forall i\in\N $, 都有
+	\[
+	\lrangle{y-x,e_i}=\lrangle{y,e_i}-\lrangle{x,e_i}=\lim_{n\to\infty}\lrangle{y_n,e_i}-\lrangle{x,e_i}=0,
+	\]
+	从而$ y=x $, 即$ \lim\limits_{n\to\infty}\sum\limits_{k=1}^n\lrangle{x,e_k}e_k=x $.
+	
+	令$ x_n=\lrangle{x,e_n} $, 设$ (x_n')_{n\geqslant 1} $也满足$ \lim\limits_{n\to\infty}x_k'e_k=x $, 则
+	\[
+	x_i=\lrangle{x,e_i}=\lrangle{\lim_{n\to\infty}\sum_{k=1}^nx'_ke_k,e_i}=\lim_{n\to\infty}\lrangle{\sum_{k=1}^nx_k'e_k,e_i}=x_i',
+	\]
+	从而$ x_i=x_i' $, 即$ \sum\limits_{n\geqslant 1}\lrangle{x,e_n}e_n $是$ x $的唯一级数表示.\qed
+	\end{Proof}
+	
+	\begin{Corollary}[Bessel]
+	设$ H $是Hilbert空间, $ (e_n)_{n\geqslant 1} $是规范正交序列, 则$ \forall x\in H $, 都有
+	\[
+	\sum_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2\leqslant\norm{x}^2.
+	\]
+	\end{Corollary}
+	\begin{Proof}
+	因$ \forall n_0\in\N $, 都有$ \sum\limits_{n=1}^{n_0}\abs{\lrangle{x,e_n}}^2\leqslant\norm{x}^2 $, 令$ n_0\to\infty $即可.\qed
+	\end{Proof}
+	
+	\begin{Theorem}[Parseval]
+	设$ H $是Hilbert空间, $ (e_n)_{n\geqslant 1} $是$ H $的规范正交基, 则$ \forall x\in H $, 有
+	\[
+	\norm{x}^2=\sum_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2,
+	\]
+	更一般地, $ \forall x,y\in H $, 有
+	\[
+	\lrangle{x,y}=\sum_{n\geqslant 1}\lrangle{x,e_n}\lrangle{e_n,y}.
+	\]
+	\end{Theorem}
+	\begin{Proof}
+	因为$ x=\sum_{n\geqslant 1}\lrangle{x,e_n}e_n $, 故有$ \norm{x}^2=\sum_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2 $, 而$ \forall x,y\in H $, 有
+	\[
+	\lrangle{x,y}=\lrangle{\sum_{n\geqslant 1}\lrangle{x,e_n}e_n,y}=\sum_{n\geqslant 1}\lrangle{\lrangle{x,e_n}e_n,y}=\sum_{n\geqslant 1}\lrangle{x,e_n}\lrangle{e_n,y}.
+	\]
+	\qed
+	\end{Proof}
+	
+	\subsection{规范正交基的构造}
+	
+	类似于线性代数课程中所使用的方法, 对于Hilbert空间, 也可以用类似的方法从一个线性无关集得到规范正交集.
+	
+	\begin{Theorem}[Gram-Schmidt]
+	设$ H $是Hilbert空间, $ (f_k)_{k\geqslant 1} $线性无关, 则存在规范正交序列$ (e_k)_{k\geqslant 1} $使得$ \forall n\in\N $, 都有
+	\[
+	\baro{\Span(e_k)_{1\leqslant k\leqslant n}}=\baro{\Span(f_k)_{1\leqslant k\leqslant n}}.
+	\]
+	\end{Theorem}
+	\begin{Proof}
+	\textbf{(Step 1)} 正交化.
+	
+	取$ g_1=f_1 $, 再取
+	\[
+	g_2=f_2-\frac{\lrangle{f_2,g_1}}{\lrangle{g_1,g_1}}g_1,
+	\]
+	则$ g_1\bot g_2 $, 且因$ \{ f_1,f_2 \} $线性无关可知$ g_2\ne 0 $. 再取
+	\[
+	g_3=f_3-\frac{\lrangle{f_3,g_1}}{\lrangle{g_1,g_1}}g_1-\frac{\lrangle{f_3,g_2}}{\lrangle{g_2,g_2}}g_2,
+	\]
+	则$ g_1\bot g_3 $, $ g_2\bot g_3 $, 且$ g_3\ne 0 $. 以此下去可得一正交的序列$ (g_k)_{k\geqslant 1} $.
+	
+	\textbf{(Step 2)} 规范化.
+	
+	令$ e_n=\sgn g_n $, 则$ (e_k)_{k\geqslant 1} $是一规范正交序列, 由(Step 1)可知
+	\[
+	\begin{bmatrix}
+	g_1\\g_2\\\vdots\\g_n
+	\end{bmatrix}=\begin{bmatrix}
+	1 & 0 & \cdots & 0\\ \ast & 1 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots\\ \ast & \ast & \cdots & 1
+	\end{bmatrix}\begin{bmatrix}
+	f_1\\ f_2\\\vdots\\f_n
+	\end{bmatrix},
+	\]
+	而又有
+	\[
+	\begin{bmatrix}
+	e_1\\e_2\\\vdots\\e_n
+	\end{bmatrix}=\begin{bmatrix}
+	1/\norm{g_1} & \phantom{1/\norm{g_1}} & \phantom{1/\norm{g_1}} & \phantom{1/\norm{g_1}}\\
+	\phantom{1/\norm{g_1}} & 1/\norm{g_2} & \phantom{1/\norm{g_1}} & \phantom{1/\norm{g_1}}\\
+	\phantom{1/\norm{g_1}} & \phantom{1/\norm{g_1}} & \ddots & \phantom{1/\norm{g_1}}\\
+	\phantom{1/\norm{g_1}} & \phantom{1/\norm{g_1}} & \phantom{1/\norm{g_1}} & 1/\norm{g_n}
+	\end{bmatrix}\begin{bmatrix}
+	g_1\\g_2\\\vdots\\g_n
+	\end{bmatrix},
+	\]
+	从而有
+	\[
+	\begin{bmatrix}
+	e_1\\e_2\\\vdots\\e_n
+	\end{bmatrix}=\begin{bmatrix}
+	1/\norm{g_1} & 0 & \cdots & 0\\
+	\ast & 1/\norm{g_2} & \cdots & 0\\
+	\vdots & \vdots & \ddots & \vdots\\
+	\ast & \ast & \cdots & 1/\norm{g_n}
+	\end{bmatrix}\begin{bmatrix}
+	f_1\\f_2\\\vdots\\f_n
+	\end{bmatrix}=A\begin{bmatrix}
+	f_1\\f_2\\\vdots\\f_n
+	\end{bmatrix}
+	\]
+	其中
+	\[
+	\det A=\prod_{k=1}^n\frac{1}{\norm{g_k}}\ne 0,
+	\]
+	从而$ A $可逆, 于是$ [f_1,f_2,\cdots,f_n]^\mathrm T=A^{-1}[e_1,e_2,\cdots,e_n]^\mathrm T $, 也即
+	\[
+	\baro{\Span(e_k)_{1\leqslant k\leqslant n}}=\baro{\Span(f_k)_{1\leqslant k\leqslant n}}
+	\]
+	\qed
+	\end{Proof}
+	
+	下面的两个定理说明了Hilbert空间都具有规范正交基, 我们从可分的Hilbert空间出发, 因它可以使用Gram-Schmidt方法得到.
+	
+	\begin{Proposition}
+	设$ H $是可分的Hilbert空间, 则$ H $有规范正交基.
+	\end{Proposition}
+	\begin{Proof}
+	设$ (a_n)_{n\geqslant 1} $是$ H $中可数的稠密子集, 且$ a_n\ne 0 $, 依次去掉序列中可以被前部元素的线性组合表示的元素后得到序列$ (v_n)_{n\geqslant 1} $, 则$ (v_n)_{n\geqslant 1} $线性无关, 且$ \baro{\Span(v_n)_{n\geqslant 1}}=H $. 由Gram-Schmidt正交化可得一族规范正交序列$ (e_n)_{n\geqslant 1} $使得
+	\[
+	\baro{\Span(e_n)_{n\geqslant 1}}=\baro{\Span(v_n)_{n\geqslant 1}}=H,
+	\]
+	即$ (e_n)_{n\geqslant 1} $是$ H $的规范正交基.\qed
+	\end{Proof}
+	在上一命题中, 可分性保证了$ \dim E\leqslant\aleph_0 $, 从而Gram-Schmidt正交化可以进行下去. 在去掉该条件之后, 即Hilbert空间可能是不可数维时, 仍然不可避免地要使用Zorn引理.
+	
+	\begin{Theorem}
+	任一Hilbert空间都有规范正交基.
+	\end{Theorem}
+	\begin{Proof}
+	设$ \mathcal F $是$ H $中所有非空规范正交集全体, 以包含关系为偏序后有$ (\mathcal F,\leqslant) $是一个偏序集. 任取$ \mathcal F $中的全序子集$ \mathcal G $, 那么$ \bigcup\mathcal G $是$ \mathcal G $的一个上界, 由Zorn引理可知$ \mathcal F $有极大元$ M $.
+	
+	若$ M $不是规范正交基, 则存在$ x $使得$ \norm{x=1} $且$ x\bot M $, 这时$ \{ x \}\cup M $是规范正交集, 与$ M $的极大性矛盾. 因此$ M $是$ H $的规范正交基.\qed
+	\end{Proof}
+	
+	不过在此之后, 我们大多数情况下都在研究可分的Hilbert空间, 因此Gram-Schmidt正交化在大多数情况下还可以继续使用. 下面是一个Parseval恒等式的推论, 它说明了可分的Hilbert空间都可以等距同构成我们熟悉的空间.
+	
+	\begin{Corollary}
+	设$ H $是可分的Hilbert空间, 则当$ \dim H=n<\aleph_0 $时, $ H\cong\K^n $. 当$ \dim H=\aleph_0 $时, $ H\cong \ell_2 $. 其中$ \cong $表示左右两空间存在线性等距双射.
+	\end{Corollary}
+	\begin{Proof}
+	$ \forall x\in H $, $ x=\sum\limits_{n\geqslant 1}\lrangle{x,e_n}e_n $, 由Parseval不等式可知
+	\[
+	\norm{x}=\left( \sum_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2 \right)^{1/2},
+	\]
+	定义$ \varPhi : H\to \ell 2 $, $ x\mapsto(\lrangle{x,e_1},\lrangle{x,e_2},\cdots) $, 则$ \norm{\varPhi(x)}=\norm{x} $, 因此$ \varPhi $是一个线性等距单射, 下面证明$ \varPhi $是满的. $ \forall(x_n)_{n\geqslant 1}\in\ell_2 $, 令$ x=\sum_{n\geqslant 1}x_ne_n $, 则
+	\[
+	\norm{x}=\left( \sum_{n\geqslant 1}\abs{x_n}^2 \right)^{1/2}<\infty,
+	\]
+	即存在$ x\in H $使得$ \varPhi(x)=(x_n)_{n\geqslant 1} $, 从而$ \varPhi $是满的.\qed
+	\end{Proof}
+	\begin{Remark}
+	Hilbert正交基与Hamel基不同, 在有限维情形下, Hilbert正交基一定是Hamel基, 而Hamel基也可以由Gram-Schmidt正交化得到Hilbert正交基. 但在无限维情形下, Hilbert基未必是Hamel基, 例如在$ \ell_2 $上取$ (e_n)_{n\geqslant 1} $, 其中$ e_n=(\delta_{1,n},\delta_{2,n},\cdots) $, 考虑$ \sum_{n\geqslant 1}e_n/n\in\ell_2 $, 它不能被有限个$ e_n $生成, 从而$ (e_n)_{n\geqslant 1} $不是Hamel基. 反之, Hamel基也未必能生成Hilbert正交基.
+	\end{Remark}
