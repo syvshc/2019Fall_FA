@@ -1,7 +1,9 @@
 # 2019Fall_FA
 2019秋季学期泛函分析笔记, 授课教师吴劲松, 使用教材许全华编写的《泛函分析讲义》
 
-相关笔记的`pdf`文档可以在 [`release`](https://github.com/syvshc/2019Fall_FA/releases) 中找到
+相关笔记的`pdf`文档可以在 [`release`](https://github.com/syvshc/2019Fall_FA/releases) 中找到, 无特殊情况每周日晚更新一次.
+
+编译方式为 `xelatex+zhmakeindex+xelatex+xelatex` , 其中 `zhmakeindex` 为中文索引生成引擎, 可在刘海洋老师的[`Github`](https://github.com/leo-liu/zhmakeindex/releases) 中下载并使用.
 
 关于书写的要求
 
