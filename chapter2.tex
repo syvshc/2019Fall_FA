@@ -904,7 +904,7 @@
 	\[
 		H=\K x_{1}\oplus \K x_{2}\oplus\cdots\oplus\K x_{n}\oplus(\K \{ x_{1}, x_{2}, \dots, x_{n} \})^{\bot}
 	\]
-	且 $ \norm{x_{i}}=1 $. 由 Zorn引理, $ H=\baro{\K\{ x_{i} \}_{i\in\alpha}} $, 其中 $ \norm{x_{i}}=1 $ 且 $ (x_{i})_{i\in\alpha} $ 两两正交, 有 $ \Span(x_{i})_{i\in\alpha}=H $.
+	且 $ \norm{x_{i}}=1 $. 由 Zorn引理, $ H=\baro{\K\{ x_{i} \}_{i\in\alpha}} $, 其中 $ \norm{x_{i}}=1 $ 且 $ (x_{i})_{i\in\alpha} $ 两两正交, 有 $ \Span(x_{i})_{i\in\alpha}=H $. 
 	
 	\begin{Definition}[规范正交基]\index{Z!正交}\index{W!完全}\index{G!规范正交}\index{G!规范正交基}
 	设$ \alpha $是指标集, $ H $是Hilbert空间, $ (e_i)_{i\in\alpha} $是$ H $中的一族向量.
@@ -919,8 +919,8 @@
 	\begin{Example}
 	常见空间上的规范正交基:
 	\begin{enumerate}[(1)]
-	\item 在$ \K^n $上, 取$ \{ e_1,\cdots,e_n \} $, 其中$ e_i=[\delta_{1,i},\delta_{2,i},\cdots,\delta_{n,i}]^\mathrm T $, 它是$ \K^n $的经典基(或称标准基/自然基).
-	\item 在$ \ell_2 $上, 取$ (e_n)_{n\geqslant 1} $, 其中$ e_n=(\delta_{1,n},\delta_{2,n},\cdots) $, 则$ (e_n)_{n\geqslant 1} $是$ \ell_2 $的一组规范正交基.
+	\item 在$ \K^n $上, 取$ \{ e_1, \dots,e_n \} $, 其中$ e_i=[\delta_{1,i},\delta_{2,i}, \dots,\delta_{n,i}]^\mathrm T $, 它是$ \K^n $的经典基(或称标准基/自然基).
+	\item 在$ \ell_2 $上, 取$ (e_n)_{n\geqslant 1} $, 其中$ e_n=(\delta_{1,n},\delta_{2,n}, \dots) $, 则$ (e_n)_{n\geqslant 1} $是$ \ell_2 $的一组规范正交基.
 	\item 在$ L_2[0,2\pi] $上(或同构地, $ L_2(\mathbb{T}) $上, 其中$ \mathbb{T} $是单位圆周$ \{ \exp(\imag t) : 0\leqslant t<2\pi \} $), 取$ (e_n)_{n\geqslant 1} $, 其中$ e_n=\exp(\imag nt) $. 由Fourier级数理论可知$ (e_n)_{n\geqslant 1} $是$ L_2[0,2\pi] $的一个规范正交基.
 	\item 在$ L_2(\R) $上, 取Hermite多项式
 	\[
@@ -941,13 +941,13 @@
 	\end{Example}
 	
 	\begin{Proposition}\label{prop:投影算子代数表达}
-	下面给出投影算子的代数表达: 设$ H $是Hilbert空间, $ \{ e_1,\cdots,e_n \} $是$ H $的规范正交集, 令$ E=\Span\{ e_1,e_2,\cdots,e_n \} $, 则$ \forall x\in H $, 有
+	下面给出投影算子的代数表达: 设$ H $是Hilbert空间, $ \{ e_1, \dots,e_n \} $是$ H $的规范正交集, 令$ E=\Span\{ e_1,e_2, \dots,e_n \} $, 则$ \forall x\in H $, 有
 	\[
 	P_E(x)=\sum_{i=1}^n\lrangle{x,e_i}e_i,\qquad\text{且}\qquad \norm{x}^2=\norm{x-P_E(x)}^2+\sum_{i=1}^n\abs{\lrangle{x,e_i}}^2.
 	\]
 	\end{Proposition}
 	\begin{Proof}
-	令$ y=\sum\limits_{i=1}^n\lrangle{x,e_i}e_i $, 注意到$ P_E(x) $是满足$ x-P_E(x)\bot E $的唯一向量, 故只需验证$ \lrangle{x-P_E(x),e_i}=0 $即可. 而对$ i=1,2,\cdots,n $, 有
+	令$ y=\sum\limits_{i=1}^n\lrangle{x,e_i}e_i $, 注意到$ P_E(x) $是满足$ x-P_E(x)\bot E $的唯一向量, 故只需验证$ \lrangle{x-y,e_i}=0 $即可. 而对$ i=1,2, \dots,n $, 有
 	\[
 	\lrangle{x-y,e_i}=\lrangle{x,e_i}-\lrangle{y,e_i}=\lrangle{x,e_i}-\lrangle{x,e_i}=0.
 	\]
@@ -963,10 +963,10 @@
 	
 	利用投影算子的这一代数表达, 可以进一步刻画Hilbert空间上的正交基:
 	\begin{Theorem}
-	设$ H $是Hilbert空间, $ (e_n)_{n\geqslant 1} $是规范蒸饺序列, 则下列叙述等价:
+	设$ H $是Hilbert空间, $ (e_n)_{n\geqslant 1} $是规范正交序列, 则下列叙述等价:
 	\begin{enumerate}[(1)]
 	\item $ (e_n)_{n\geqslant 1} $是完全的.
-	\item $ \forall x\in H\,\exists!(x_n)_{n\geqslant 1} $使得$ \sum\limits_{n\geqslant 1}x_ne_n $收敛到$ x $.
+	\item 对任意的 $ x\in H $, 存在唯一\K 中序列 $ (x_n)_{n\geqslant 1} $使得$ \sum\limits_{n\geqslant 1}x_ne_n $收敛到$ x $.
 	\end{enumerate}
 	\end{Theorem}
 	\begin{Proof}
@@ -976,7 +976,7 @@
 	\[
 	\norm{y_{n+p}-y_n}=\sum_{k=n+1}^{n+p}\abs{\lrangle{x,e_k}}^2,
 	\]
-	由命题\,\ref{prop:投影算子代数表达}\,可知$ \forall n\in\N $, 都有$ \sum_{k=1}^n\abs{\lrangle{x,e_k}}^2\leqslant\norm{x}^2 $, 令$ n\to\infty $后有$ \sum\limits_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2 $收敛, 从而$ \norm{y_{n+p}-y_n}\to 0 $. 这说明$ (y_n)_{n\geqslant 1} $是Cauchy列, 令$ y=\lim\limits_{n\to\infty}y_n $, 则$ \forall i\in\N $, 都有
+	由命题\,\ref{prop:投影算子代数表达}\,可知$ \forall n\in\N $, 都有$ \sum\limits_{k=1}^n\abs{\lrangle{x,e_k}}^2\leqslant\norm{x}^2 $, 令$ n\to\infty $后有$ \sum\limits_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2 $收敛, 从而$ \norm{y_{n+p}-y_n}\to 0 $. 这说明$ (y_n)_{n\geqslant 1} $是Cauchy列, 令$ y=\lim\limits_{n\to\infty}y_n $, 则$ \forall i\in\N $, 都有
 	\[
 	\lrangle{y-x,e_i}=\lrangle{y,e_i}-\lrangle{x,e_i}=\lim_{n\to\infty}\lrangle{y_n,e_i}-\lrangle{x,e_i}=0,
 	\]
@@ -1010,7 +1010,7 @@
 	\]
 	\end{Theorem}
 	\begin{Proof}
-	因为$ x=\sum_{n\geqslant 1}\lrangle{x,e_n}e_n $, 故有$ \norm{x}^2=\sum_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2 $, 而$ \forall x,y\in H $, 有
+	因为$ x=\sum\limits_{n\geqslant 1}\lrangle{x,e_n}e_n $, 故有$ \norm{x}^2=\sum\limits_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2 $, 而$ \forall x,y\in H $, 有
 	\[
 	\lrangle{x,y}=\lrangle{\sum_{n\geqslant 1}\lrangle{x,e_n}e_n,y}=\sum_{n\geqslant 1}\lrangle{\lrangle{x,e_n}e_n,y}=\sum_{n\geqslant 1}\lrangle{x,e_n}\lrangle{e_n,y}.
 	\]
@@ -1084,7 +1084,7 @@
 	\[
 	\det A=\prod_{k=1}^n\frac{1}{\norm{g_k}}\ne 0,
 	\]
-	从而$ A $可逆, 于是$ [f_1,f_2,\cdots,f_n]^\mathrm T=A^{-1}[e_1,e_2,\cdots,e_n]^\mathrm T $, 也即
+	从而$ A $可逆, 于是$ [f_1,f_2, \dots,f_n]^\mathrm T=A^{-1}[e_1,e_2, \dots,e_n]^\mathrm T $, 也即
 	\[
 	\baro{\Span(e_k)_{1\leqslant k\leqslant n}}=\baro{\Span(f_k)_{1\leqslant k\leqslant n}}
 	\]
@@ -1109,9 +1109,9 @@
 	任一Hilbert空间都有规范正交基.
 	\end{Theorem}
 	\begin{Proof}
-	设$ \mathcal F $是$ H $中所有非空规范正交集全体, 以包含关系为偏序后有$ (\mathcal F,\leqslant) $是一个偏序集. 任取$ \mathcal F $中的全序子集$ \mathcal G $, 那么$ \bigcup\mathcal G $是$ \mathcal G $的一个上界, 由Zorn引理可知$ \mathcal F $有极大元$ M $.
+	设$ \mathcal F $是$ H $中非空规范正交集全体, 以包含关系为偏序后有$ (\mathcal F,\leqslant) $是一个偏序集. 任取$ \mathcal F $中的全序子集$ \mathcal G $, 那么$ \bigcup\mathcal G $是$ \mathcal G $的一个上界, 由Zorn引理可知$ \mathcal F $有极大元$ M $.
 	
-	若$ M $不是规范正交基, 则存在$ x $使得$ \norm{x=1} $且$ x\bot M $, 这时$ \{ x \}\cup M $是规范正交集, 与$ M $的极大性矛盾. 因此$ M $是$ H $的规范正交基.\qed
+	若$ M $不是规范正交基, 则存在$ x $使得$ \norm{x}=1 $且$ x\bot M $, 这时$ \{ x \}\cup M $是规范正交集, 与$ M $的极大性矛盾. 因此$ M $是$ H $的规范正交基.\qed
 	\end{Proof}
 	
 	不过在此之后, 我们大多数情况下都在研究可分的Hilbert空间, 因此Gram-Schmidt正交化在大多数情况下还可以继续使用. 下面是一个Parseval恒等式的推论, 它说明了可分的Hilbert空间都可以等距同构成我们熟悉的空间.
@@ -1120,16 +1120,16 @@
 	设$ H $是可分的Hilbert空间, 则当$ \dim H=n<\aleph_0 $时, $ H\cong\K^n $. 当$ \dim H=\aleph_0 $时, $ H\cong \ell_2 $. 其中$ \cong $表示左右两空间存在线性等距双射.
 	\end{Corollary}
 	\begin{Proof}
-	$ \forall x\in H $, $ x=\sum\limits_{n\geqslant 1}\lrangle{x,e_n}e_n $, 由Parseval不等式可知
+	$ \forall x\in H $, $ x=\sum\limits_{n\geqslant 1}\lrangle{x,e_n}e_n $, 由Parseval恒等式可知
 	\[
-	\norm{x}=\left( \sum_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2 \right)^{1/2},
+	\norm{x}=\bigg( \sum_{n\geqslant 1}\abs{\lrangle{x,e_n}}^2 \bigg)^{1/2},
 	\]
-	定义$ \varPhi : H\to \ell 2 $, $ x\mapsto(\lrangle{x,e_1},\lrangle{x,e_2},\cdots) $, 则$ \norm{\varPhi(x)}=\norm{x} $, 因此$ \varPhi $是一个线性等距单射, 下面证明$ \varPhi $是满的. $ \forall(x_n)_{n\geqslant 1}\in\ell_2 $, 令$ x=\sum_{n\geqslant 1}x_ne_n $, 则
+	定义$ \varPhi : H\to \ell_2 $, $ x\mapsto(\lrangle{x,e_1},\lrangle{x,e_2}, \dots) $, 则$ \norm{\varPhi(x)}=\norm{x} $, 因此$ \varPhi $是一个线性等距单射, 下面证明$ \varPhi $是满的. $ \forall(x_n)_{n\geqslant 1}\in\ell_2 $, 令$ x=\sum\limits_{n\geqslant 1}x_ne_n $, 则
 	\[
-	\norm{x}=\left( \sum_{n\geqslant 1}\abs{x_n}^2 \right)^{1/2}<\infty,
+	\norm{x}=\bigg( \sum_{n\geqslant 1}\abs{x_n}^2 \bigg)^{1/2}<\infty,
 	\]
 	即存在$ x\in H $使得$ \varPhi(x)=(x_n)_{n\geqslant 1} $, 从而$ \varPhi $是满的.\qed
 	\end{Proof}
 	\begin{Remark}
-	Hilbert正交基与Hamel基不同, 在有限维情形下, Hilbert正交基一定是Hamel基, 而Hamel基也可以由Gram-Schmidt正交化得到Hilbert正交基. 但在无限维情形下, Hilbert基未必是Hamel基, 例如在$ \ell_2 $上取$ (e_n)_{n\geqslant 1} $, 其中$ e_n=(\delta_{1,n},\delta_{2,n},\cdots) $, 考虑$ \sum_{n\geqslant 1}e_n/n\in\ell_2 $, 它不能被有限个$ e_n $生成, 从而$ (e_n)_{n\geqslant 1} $不是Hamel基. 反之, Hamel基也未必能生成Hilbert正交基.
+	Hilbert正交基与Hamel基不同, 在有限维情形下, Hilbert正交基一定是Hamel基, 而Hamel基也可以由Gram-Schmidt正交化得到Hilbert正交基. 但在无限维情形下, Hilbert基未必是Hamel基, 例如在$ \ell_2 $上取$ (e_n)_{n\geqslant 1} $, 其中$ e_n=(\delta_{1,n},\delta_{2,n}, \dots) $, 考虑$ \sum\limits_{n\geqslant 1}(e_n/n)\in\ell_2 $, 它不能被有限个$ e_n $生成, 从而$ (e_n)_{n\geqslant 1} $不是Hamel基. 反之, Hamel基也未必能生成Hilbert正交基.
 	\end{Remark}
