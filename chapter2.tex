@@ -285,7 +285,7 @@
 	\end{Remark}
 
 	\begin{Theorem}
-		 设 $ E $ 是Banach空间,  $ u\in\CB(E) $ 且 $ \norm{u}<1 $ 则存在 $ v\in\CB(E) $ 使
+		 设 $ E $ 是Banach空间,  $ u\in\CB(E) $ 且 $ \norm{u}<1 $, 则存在 $ v\in\CB(E) $ 使
 		 \[
 			 (\id_{E}-u)v=v(\id_{E}-u)=\id_{E},
 		 \]
@@ -303,9 +303,9 @@
 	\begin{Theorem}
 		设 $ E $是赋范空间, $ F\subset E $ 是闭线性子空间. 则
 		\[
-			\norm{x+F}_0:=\inf\{ \norm{x+y} : y\in F \},
+			\norm{x+F}_0:=\inf\{ \norm{x+y} : y\in F \}
 		\]
-		是商空间 $ E/F $ 上的一个范数. 在这一范数下 $ u : x\mapsto x+F $是连续的. 且 $ \norm{u}<1 $. 若 $ E $ 是Banach空间, 则 $ E/F $ 是Banach空间.
+		是商空间 $ E/F $ 上的一个范数. 在这一范数下 $ u : x\mapsto x+F $是连续的, 且 $ \norm{u}<1 $. 若 $ E $ 是Banach空间, 则 $ E/F $ 是Banach空间.
 	\end{Theorem}
 	\begin{Proof}
 		先说明 $ \norm{\cdot}_{0} $ well-defined. 取 $ x' $ 是 $ x+F $ 的另一代表元, 往证 $ \norm{x'+F}_{0}=\norm{x+F}_{0} $. 因为
@@ -1133,3 +1133,157 @@
 	\begin{Remark}
 	Hilbert正交基与Hamel基不同, 在有限维情形下, Hilbert正交基一定是Hamel基, 而Hamel基也可以由Gram-Schmidt正交化得到Hilbert正交基. 但在无限维情形下, Hilbert基未必是Hamel基, 例如在$ \ell_2 $上取$ (e_n)_{n\geqslant 1} $, 其中$ e_n=(\delta_{1,n},\delta_{2,n}, \dots) $, 考虑$ \sum\limits_{n\geqslant 1}(e_n/n)\in\ell_2 $, 它不能被有限个$ e_n $生成, 从而$ (e_n)_{n\geqslant 1} $不是Hamel基. 反之, Hamel基也未必能生成Hilbert正交基.
 	\end{Remark}
+	
+	\subsection{对投影算子的进一步讨论}
+	
+	若无特殊说明, 以下$ H $均为Hilbert空间.
+	
+	\begin{Proposition}
+	设$ P_E $是$ H $上到闭线性子空间$ E $的投影算子, 则有$ P_E^*=P_E=P_E^2 $.
+	\end{Proposition}
+	\begin{Proof}
+	只需证明$ P_E^*=P_E $, 即$ \lrangle{P_E(x),y}=\lrangle{x,P_E(y)} $对$ \forall x,y\in H $成立. 由
+	\[
+	\lrangle{P_E(x),y}=\sum_{i\in\alpha}\lrangle{\lrangle{x,e_i}e_i,y}=\sum_{i\in\alpha}\lrangle{x,e_i}\lrangle{e_i,y}=\sum_{i\in\alpha}\lrangle{x,\lrangle{y,e_i}e_i}=\lrangle{x,P_E(y)},
+	\]
+	其中$ (e_i)_{i\in\alpha} $是$ E $的规范正交基, 则$ P_E^*=P_E $.\qed
+	\end{Proof}
+	
+	\begin{Proposition}
+	设$ P\in\CB(H) $且$ P^*=P=P^2 $, 则存在闭线性子空间$ E\subset H $使得$ P=P_E $.
+	\end{Proposition}
+	\begin{Proof}
+	记$ E=P(H) $, 先证明$ E $是闭的. 设$ (x_n)_{n\geqslant 1}\subset E $使得$ Px_n\to y $, 那么$ P^2x_n\to Py $. 而由$ P=P^2 $可知$ P^2x_n=Px_n $, 从而由极限的唯一性由$ Py=y $, 这说明$ y\in E $, 从而$ E $是闭的.
+	
+	再说明$ P=P_E $. 取$ (e_i)_{i\in\alpha} $是$ E $的规范正交基, 则
+	\[
+	Px=\sum_{i\in\alpha}\lambda_ie_i,
+	\]
+	只需证明$ \lambda_i=\lrangle{x,e_i} $. 而由
+	\[
+	\lambda_i=\lrangle{Px,e_i}=\lrangle{x,Pe_i}=\lrangle{x,e_i},
+	\]
+	有$ Px=\sum\limits_{i\in\alpha}\lambda_ie_i=\sum\limits_{i\in\alpha}\lrangle{x,e_i}e_i=P_E(x) $对任意$ x\in H $成立, 于是$ P=P_E $.\qed
+	\end{Proof}
+	\begin{Remark}
+	考虑$ \ker P_E $, 由此可知
+	\[
+	\begin{aligned}
+	\ker P_E=\{ x : P_E(x)=0 \}&=\{ x : \forall y\in H\,(\lrangle{P_E(x),y}=0) \}\\&=\{ x : \forall y\in H\,(\lrangle{x,P_E(y)}=0) \}=E^\bot.
+	\end{aligned}
+	\]
+	\end{Remark}
+	
+	\begin{Proposition}
+	设$ E, F $是$ H $中两个闭线性子空间, 对应的投影算子分别是$ P_E, P_F $, 那么以下条件等价:
+	\begin{enumerate}[(1)]
+	\item $ E\subset F $;
+	\item $ P_FP_E=P_E $;
+	\item $ P_EP_F=P_E $;
+	\item $ \forall x\in H\,(\norm{P_E(x)}\leqslant\norm{P_F(x)}) $.
+	\end{enumerate}
+	\end{Proposition}
+	\begin{Proof}
+	(1) $ \Rightarrow $ (2) : $ \forall x\in H : P_FP_E(x)=P_F(P_E(x))=P_E(x)\Longrightarrow P_FP_E=P_E $.
+	
+	(2) $ \Rightarrow $ (3) : $ P_FP_E=P_E\Longrightarrow(P_FP_E)^*=P_E^*\Longrightarrow P_EP_F=P_E $.
+	
+	(3) $ \Rightarrow $ (4) : $ \forall x\in H : \norm{P_E(x)}=\norm{P_EP_F(x)}\leqslant\norm{P_F(x)} $.
+	
+	(4) $ \Rightarrow $ (1) : $ \forall x\in E : \norm{x}=\norm{P_E(x)}\leqslant\norm{P_F(x)}\leqslant\norm{x}\Longrightarrow\norm{P_F(x)}=\norm{x}\Longrightarrow x\in F $, 从而$ E\subset F $.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ E $是$ H $中的闭线性子空间, 那么
+	\[
+	E=\{ x : \norm{P_E(x)}=\norm{x} \}.
+	\]
+	\end{Corollary}
+	\begin{Proof}
+	由$ \norm{x-P_E(x)}^2+\norm{P_E(x)}^2=\norm{x}^2 $可知
+	\[
+	\norm{P_E(x)}=\norm{x}\Longleftrightarrow\norm{x-P_E(x)}=0\Longleftrightarrow x\in E.
+	\]
+	\qed
+	\end{Proof}
+	
+	对$ H $的两个闭线性子空间, 定义
+	\[
+	E\lor F=\baro{\{x+y : x\in E, y\in F\}}=\baro{E+F},
+	\]
+	并定义投影算子的运算$ P_E\lor P_F=P_{E\lor F} $和$ P_E\land P_F=P_{E\cap F} $, 容易验证
+	\begin{enumerate}[(1)]
+	\item $ (P_E\lor P_F)^\bot=P_{(E\lor F)^\bot}=P_{E^\bot\cap F^\bot}=P_{E^\bot}\land P_{F^\bot} $;
+	\item $ (P_E\land P_F)^\bot=P_{(E\cap F)^\bot}=P_{E^\bot\lor F^\bot}=P_{E^\bot}\lor P_{F^\bot} $.
+	\end{enumerate}
+	
+	\begin{Proposition}
+	设$ P_E,\ P_F $是$ H $上两个投影算子, 且它们可交换, 即$ P_EP_F=P_FP_E $, 那么
+	\begin{enumerate}[(1)]
+	\item $ P_E\land P_F=P_EP_F=P_FP_E $;
+	\item $ P_E\lor P_F=P_E+P_F-P_EP_F $;
+	\item $ E\lor F=E+F $.
+	\end{enumerate}
+	\end{Proposition}
+	\begin{Proof}
+	(1) 由
+	\[
+	(P_EP_F)^2=P_EP_FP_EP_F=P_E^2P_F^2=P_EP_F=(P_FP_E)^*=(P_EP_F)^*
+	\]
+	可知$ P_EP_F $是投影算子. 记$ K $是$ P_EP_F $的投影空间, 往证$ K=E\cap F $. 因为
+	\[
+	K=\{ x : \norm{P_EP_F(x)}=\norm{x} \},
+	\]
+	于是$ E\cap F\subset K $. 又因为$ \forall x\in K $, 都有
+	\[
+	\norm{x}=\norm{P_EP_F(x)}\leqslant\norm{P_F(x)}\leqslant\norm{x},
+	\]
+	从而$ \norm{P_F(x)}=\norm{x} $. 这说明$ x\in F $, 同理有$ x\in E $, 从而$ K\subset E\cap F $. 于是$ K=E\cap F $.
+	
+	(2) 注意到$ P_{E^\bot}P_{F^\bot}=(\id-P_E)(\id-P_F)=P_{F^\bot}P_{E^\bot} $, 从而由(1)可知$ P_{E^\bot}\land P_{F^\bot}=P_{E^\bot}P_{F^\bot} $, 于是
+	\[
+	P_E\lor P_F=(P_{E^\bot}\land P_{F^\bot})^\bot=\id-(\id-P_E)(\id-P_F)=P_E+P_F-P_EP_F.
+	\]
+	
+	(3) $ \forall x\in E\lor F $, 由(2)有
+	\[
+	x=P_{E\lor F}(x)=(P_E+P_F-P_EP_F)(x)=P_E(x)+P_F(\id-P_E)(x)\in E+F,
+	\]
+	这是因为$ P_E(x)\in E $而$ P_F(\id-P_E)(x)\in F $, 故$ E\lor F\subset E+F $, 而反向不等式由定义显然, 从而$ E\lor F=E+F $.\qed
+	\end{Proof}
+	
+	上述定理说明了在$ P_E $与$ P_F $可交换时, $ E\lor F $实际上就是$ E $与$ F $的Minkowski和. 在非交换的情形下, $ P_E\land P_F $也不能简单地表示, 而是与$ \lim\limits_{n\to\infty}(P_EP_F)^n $相等.
+	
+	设$ (e_n)_{n\geqslant 1} $是$ H $的规范正交基, $ P_N $是闭线性子空间$ \Span\{ e_1,\dots,e_N \} $的投影算子, 注意到$ \lim\limits_{n\to\infty}\norm{\id-P_N}=1 $, 它不能用来诱导拓扑. 于是我们称$ \lim\limits_{N\to\infty}\norm{P_N(x)-x}=0 $, 即$ P_N(x)\to x $刻画的拓扑为强算子拓扑, 而以$ \lrangle{x,e_n}\to 0\,(n\to\infty) $刻画的拓扑为弱拓扑.
+	
+\section{最小二乘法}
+	
+	考虑下面的三个问题:
+	\begin{enumerate}[(1)]
+	\item 实际观测问题: 设几个量满足
+	\[
+	y=\lambda_1x_1+\lambda_2x_2+\cdots+\lambda_nx_n,
+	\]
+	观测数据$ m $次(要求$ m>n $)得到$ y^{(j)}, x_1^{(j)},\dots, x_n^{(j)} $, 这里$ j=1,2,\dots,m $. 在此意义下求$ \lambda_1,\dots,\lambda_n $使得
+	\[
+	\min_{a_1,\dots,a_n}\sum_{j=1}^m\abs{y^{(j)}-\sum_{i=1}^ma_ix_i^{(j)}}^2=\sum_{j=1}^m\abs{y^{(j)}-\sum_{i=1}^m\lambda_ix_i^{(j)}}^2,
+	\]
+	若将$ [y^{(1)},\dots,y^{(m)}]^\mathrm T $看作$ \R^m $中的向量$ \bm{y} $, 并且类似地有$ \bm{x}_1,\dots,\bm{x}_n $, 即求
+	\[
+	\min_{a_1,\dots,a_n}\norm{\bm y-\sum_{i=1}^ma_i\bm x_i}=\norm{\bm y-\sum_{i=1}^m\lambda_i\bm x_i}.
+	\]
+	\item 平方平均逼近: 在函数逼近中, 对任意的$ f\in L_2[0,1] $, 要使用已知的$ \varphi_1,\dots,\varphi_n\in L_2[0,1] $的线性组合按平方平均意义下取到最佳逼近, 即求$ \lambda_1,\dots,\lambda_n $使得
+	\[
+	\min_{a_1,\dots,a_n}\int_a^b\abs{f(x)-\sum_{i=1}^na_i\varphi_i(x)}^2\diff x=\int_a^b\abs{f(x)-\sum_{i=1}^n\lambda_i\varphi_i(x)}^2\diff x.
+	\]
+	\item 最佳估计问题: 设$ (\varOmega,\mathcal A,\mu) $是概率空间, 其上可测函数称为随机变量, 记作$ X $. 在随机过程中常对随机变量$ X $用一组随机变量$ X_1,\dots,X_n $线性组合估计
+	\[
+	\min_{a_1,\dots,a_n}\int_\varOmega\abs{X(\omega)-\sum_{i=1}^na_iX_i(\omega)}^2\diff\mu(\omega)=\int_\varOmega\abs{X(\omega)-\sum_{i=1}^n\lambda_iX_i(\omega)}^2\diff\mu(\omega).
+	\]
+	\end{enumerate}
+	
+	以上的三个问题在本质上都是Hilbert空间$ H $上给定$ x $与$ x_1,\dots,x_n $, 求$ \lambda_1,\dots,\lambda_n $满足条件
+	\[
+	\min_{a_1,\dots,a_n}\norm{x-\sum_{i=1}^na_ix_i}=\norm{x-\sum_{i=1}^n\lambda_ix_i},
+	\]
+	这样的问题称为\textbf{最小二乘问题}.\index{Z!最小二乘问题}
