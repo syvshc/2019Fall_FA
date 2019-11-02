@@ -675,6 +675,8 @@
 				A^{\bot}=\baro{A}^{\bot}=(\Span A)^{\bot}=\baro{\Span A}^{\bot}.
 			\]
 		\end{enumerate}
+	\end{Remark}	
+	
 		\begin{Theorem}[投影线性算子]
 			 设 $ H $ 是 Hilbert 空间, $ E\subset H $ 是闭线性子空间,  对任意 $ x\in H $, $ P_{E}(x) $ 是满足 $ x\bot y\in E $ 的唯一元素 $ y $, 且 $ P_{E} $ 是从 $ H $ 到 $ E $ 的线性算子, 其范数 $ \norm{P_{E}}\leqslant1 $.
 		\end{Theorem}
@@ -718,7 +720,6 @@
 				P_{E}(x)=\sum_{i=1}^{k}\lambda_{i}e_{i}=\sum_{i=1}^{k}\lrangle{x, e_{i}}e_{i}
 			\]
 		\end{Example}
-	\end{Remark}
 
 	\begin{Corollary}[正交分解]
 		设 $ H $ 是Hilbert空间, $ E $ 是 $ H $ 的线性子空间, 则
@@ -1132,7 +1133,6 @@
 	\end{Proof}
 	\begin{Remark}
 	Hilbert正交基与Hamel基不同, 在有限维情形下, Hilbert正交基一定是Hamel基, 而Hamel基也可以由Gram-Schmidt正交化得到Hilbert正交基. 但在无限维情形下, Hilbert基未必是Hamel基, 例如在$ \ell_2 $上取$ (e_n)_{n\geqslant 1} $, 其中$ e_n=(\delta_{1,n},\delta_{2,n}, \dots) $, 考虑$ \sum\limits_{n\geqslant 1}(e_n/n)\in\ell_2 $, 它不能被有限个$ e_n $生成, 从而$ (e_n)_{n\geqslant 1} $不是Hamel基. 反之, Hamel基也未必能生成Hilbert正交基.
-<<<<<<< HEAD
 	\end{Remark}
 	
 	\subsection{对投影算子的进一步讨论}
@@ -1292,9 +1292,3 @@
 	\min_{a_1,\dots,a_n}\norm{x-\sum_{i=1}^na_ix_i}=\norm{x-\sum_{i=1}^n\lambda_ix_i},
 	\]
 	这样的问题称为\textbf{最小二乘问题}.\index{Z!最小二乘问题}
-<<<<<<< Updated upstream
-=======
-	\end{Remark}
->>>>>>> 979be72b896899a773b0c5b9af24c3a2285b7ae3
-=======
->>>>>>> Stashed changes
