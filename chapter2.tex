@@ -1153,7 +1153,11 @@
 	设$ P\in\CB(H) $且$ P^*=P=P^2 $, 则存在闭线性子空间$ E\subset H $使得$ P=P_E $.
 	\end{Proposition}
 	\begin{Proof}
-	记$ E=P(H) $, 先证明$ E $是闭的. 设$ (x_n)_{n\geqslant 1}\subset E $使得$ Px_n\to y $, 那么$ P^2x_n\to Py $. 而由$ P=P^2 $可知$ P^2x_n=Px_n $, 从而由极限的唯一性由$ Py=y $, 这说明$ y\in E $, 从而$ E $是闭的.
+	记$ E=P(H) $, 先证明$ E $是闭的. 对 $ E $ 中任意一列收敛列 $ (s_{n})_{n\geqslant1} $, 设其极限为 $ y $. 由于
+	\[
+		P^{2}(H)=P(E)=P(H)=E,
+	\]
+	所以有 $ P(E)=E $, 即可以找到一列 $ (x_{n})_{n\geqslant1}\subset E $ 使得 $ Px_{n}=s_{n} $, 即$ Px_n\to y $, 那么$ P^2x_n\to Py $. 而由$ P=P^2 $可知$ P^2x_n=Px_n $, 从而由极限的唯一性有$ Py=y $, 这说明$ y\in E $, 从而$ E $是闭的.
 	
 	再说明$ P=P_E $. 取$ (e_i)_{i\in\alpha} $是$ E $的规范正交基, 则
 	\[
