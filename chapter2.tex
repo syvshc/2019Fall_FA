@@ -427,7 +427,7 @@
 	从而$ \norm{x+y}\leqslant\norm x+\norm y $.\qed
 	\end{Proof}
 	
-	\begin{Definition}[Hilbert空间]\index{H!Hilbert空间}
+	\begin{Definition}[Hilbert空间]\index{H!Hilbert空间}\label{def:Hilbert空间}
 	设$ H $是一个内积空间, 称推论\,\ref{col:内积诱导范数}\,中的范数$ \norm{\cdot} $是由内积$ \lrangle{\cdot,\cdot} $诱导出的范数, 从而$ (H,\norm{\cdot}) $是赋范空间. 若它是一个Banach空间, 则称$ H $是\textbf{Hilbert空间}.
 	\end{Definition}
 	
@@ -658,7 +658,7 @@
 		 为 $ A $ 在 $ H $ 中的\textbf{正交补}.
 	\end{Definition}
 
-	\begin{Remark}
+	\begin{Remark}\label{rmk:正交性与正交补}
 		有关正交性与正交补的注记:
 		\begin{enumerate}[(1)]
 			\item 对 $ x\ne0, y\ne 0 $, 可定义向量的夹角
@@ -675,6 +675,8 @@
 				A^{\bot}=\baro{A}^{\bot}=(\Span A)^{\bot}=\baro{\Span A}^{\bot}.
 			\]
 		\end{enumerate}
+	\end{Remark}	
+	
 		\begin{Theorem}[投影线性算子]
 			 设 $ H $ 是 Hilbert 空间, $ E\subset H $ 是闭线性子空间,  对任意 $ x\in H $, $ P_{E}(x) $ 是满足 $ x\bot y\in E $ 的唯一元素 $ y $, 且 $ P_{E} $ 是从 $ H $ 到 $ E $ 的线性算子, 其范数 $ \norm{P_{E}}\leqslant1 $.
 		\end{Theorem}
@@ -718,7 +720,6 @@
 				P_{E}(x)=\sum_{i=1}^{k}\lambda_{i}e_{i}=\sum_{i=1}^{k}\lrangle{x, e_{i}}e_{i}
 			\]
 		\end{Example}
-	\end{Remark}
 
 	\begin{Corollary}[正交分解]
 		设 $ H $ 是Hilbert空间, $ E $ 是 $ H $ 的线性子空间, 则
@@ -1153,7 +1154,11 @@
 	设$ P\in\CB(H) $且$ P^*=P=P^2 $, 则存在闭线性子空间$ E\subset H $使得$ P=P_E $.
 	\end{Proposition}
 	\begin{Proof}
-	记$ E=P(H) $, 先证明$ E $是闭的. 设$ (x_n)_{n\geqslant 1}\subset E $使得$ Px_n\to y $, 那么$ P^2x_n\to Py $. 而由$ P=P^2 $可知$ P^2x_n=Px_n $, 从而由极限的唯一性由$ Py=y $, 这说明$ y\in E $, 从而$ E $是闭的.
+	记$ E=P(H) $, 先证明$ E $是闭的. 对 $ E $ 中任意一列收敛列 $ (s_{n})_{n\geqslant1} $, 设其极限为 $ y $. 由于
+	\[
+		P^{2}(H)=P(E)=P(H)=E,
+	\]
+	所以有 $ P(E)=E $, 即可以找到一列 $ (x_{n})_{n\geqslant1}\subset E $ 使得 $ Px_{n}=s_{n} $, 即$ Px_n\to y $, 那么$ P^2x_n\to Py $. 而由$ P=P^2 $可知$ P^2x_n=Px_n $, 从而由极限的唯一性有$ Py=y $, 这说明$ y\in E $, 从而$ E $是闭的.
 	
 	再说明$ P=P_E $. 取$ (e_i)_{i\in\alpha} $是$ E $的规范正交基, 则
 	\[
@@ -1287,3 +1292,24 @@
 	\min_{a_1,\dots,a_n}\norm{x-\sum_{i=1}^na_ix_i}=\norm{x-\sum_{i=1}^n\lambda_ix_i},
 	\]
 	这样的问题称为\textbf{最小二乘问题}.\index{Z!最小二乘问题}
+	
+\section*{本章习题}
+	\addcontentsline{toc}{section}{本章习题}
+	
+	习题后面括号中的序号表示对应书中习题的编号.
+	
+	\begin{enumerate}[\textbf{\arabic*.}]
+	\item 设$ E $是数域$ \K $上的有限维线性空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵
+		\begin{enumerate}[(1)]
+		\item 证明映射$ u\mapsto[u] $建立了$ \CL(E) $到$ \mathbb{M}_n(\K) $之间的同构映射.
+		\item 假设$ E=\K^n $且$ \{ e_1,e_2,\cdots,e_n \} $是经典基(即$ e_i=[\delta_{i,1},\delta_{i,2},\cdots,\delta{i,n}] $, 这里$ \delta $是Kronecker符号), 并约定$ E=\K^n $上赋予Euclid范数. 证明: 若$ [u] $可被正交相似对角化, 则$ \norm{u}=\max\{ \abs{\lambda_1},\abs{\lambda_2},\cdots,\abs{\lambda_n} \} $, 这里$ \lambda_1,\lambda_2,\cdots,\lambda_n $是$ u $的特征值.
+		\item 取$ \{ e_1,e_2,\cdots,e_n \} $如上, 试由$ [u] $中的元素分别确定$ p=1 $与$ p=\infty $时$ u : (\K^n,\norm{\cdot}_p)\to(\K^n,\norm{\cdot}_p) $的范数. (3.8)
+		\end{enumerate}
+	\item 设$ E $是Banach空间.
+		\begin{enumerate}[(1)]
+		\item 设$ u\in\CB(E) $且$ \norm{u}<1 $, 证明$ \id_E-u $在$ \CB(E) $中可逆;
+		\item 设$ GL(E) $是$ \CB(E) $中可逆元构成的集合, 证明: $ GL(E) $关于复合运算构成一个群, 且它是$ \CB(E) $中的开集;
+		\item 证明$ u\mapsto u^{-1} $是$ GL(E) $上的同胚. (3.9)
+		\end{enumerate}
+	\end{enumerate}
+	
