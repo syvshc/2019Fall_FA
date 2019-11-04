@@ -10,7 +10,7 @@
 	\textbf{命题\,\,\ref{prop:Hausdorff空间的相关命题1}}\ \ Hausdorff空间的一部分性质:
 	\begin{enumerate}[(1)]
 		\item  $ E $ 是 Hausdorff空间 $ \Longleftrightarrow $ $ \forall x\in E $, 其所有闭邻域的交为 $\{ x \}$
-	    \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $\bigcap \CN{x}=\{x\}$;
+	    \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $\bigcap \CN(x)=\{x\}$;
 	    \item $ E $ 是 Hausdorff空间 $ \Longrightarrow $ $ \forall F\subset E $, $ F $ 也是Hausdorff空间. 
 	\end{enumerate}
 	\begin{Proof}
@@ -214,8 +214,38 @@
 	也即$ x\mapsto d(x,A) $是Lipschitz的, 从而它连续.\qed
 	\end{Proof}
 	
+	\textbf{定理\,\ref{thm:Ascoli}\,证明补充}\ \ 在本定理必要性证明中使用了这样一个结论: 若$ \CH\subset C(K,E) $相对紧, 那么$ \baro{\CH}(x)=\baro{\CH(x)} $.
+	\begin{Proof}
+	由$ \CH\subset C(K,E) $相对紧可知$ \baro{\CH} $紧, 由映射
+	\[
+	\rho_x : C(K,E)\to E,\qquad f\mapsto f(x)
+	\]
+	连续可知$ \baro{\CH}(x) $紧. 又因为$ E $是Hausdorff的, 从而$ \baro{\CH}(x) $闭. 从而由$ \CH(x)\subset\baro{\CH}(x) $可知$ \baro{\CH(x)}\subset\baro\CH(x) $. 而$ \forall f\in\baro\CH $, 存在$ (f_n)_{n\geqslant}\subset\CH $使得$ f_n\to f $, 由$ \rho_x $的连续性可知$ f(x)\in\baro{\CH(x)} $, 于是$ \baro\CH(x)\subset\baro{\CH(x)} $, 故$ \baro{\CH}(x)=\baro{\CH(x)} $.\qed
+	\end{Proof}
 	
+	\section{线性算子与线性泛函}
 	
+	\textbf{定义\,\ref{def:Hilbert空间}\,下的注记}\ \ 内积空间的完备化是Hilbert空间.
+	\begin{Proof}
+	设内积空间$ H $上的内积$ \lrangle{\cdot,\cdot} $诱导范数$ \norm{\cdot} $, 范数$ \norm{\cdot} $诱导度量$ d(\cdot,\cdot) $, 对度量空间$ (H,d) $作完备化$ (\hat{H},d) $, 那么任取$ H $中一Cauchy列$ (x_n)_{n\geqslant 1} $, 存在$ \hat{x}\in\hat{H} $使得$ d(x_n,\hat{x})to 0 $成立.
 	
+	定义$ \hat{H} $上的范数$ \norm{x-y}:=d(x,y) $, 这一定义在$ H $上的限制即为$ H $中的范数, 由度量的连续性可知$ \norm{x_n}\to\norm{x} $. 再由范数可以定义一个内积
+	\[
+	\lrangle{x,y}:=\begin{cases}
+	\frac{1}{4}\sum_{k=0}^3\imag^k\norm{x+\imag^ky}^2 & ,\K=\C\\
+	\frac{1}{2}(\norm{x+y}^2-\norm{x}^2-\norm{y}^2) & ,\K=\R
+	\end{cases}
+	\]
+	这一定义在$ H $上的限制即为$ H $中的内积, 那么由范数的连续性可知$ \lrangle{x_n,y}\to\lrangle{x,y} $, 即$ \hat{H} $上是一个完备的内积空间, 即是一个Hilbert空间.\qed
+	\end{Proof}
+	
+	\textbf{注\,\ref{rmk:正交性与正交补}\,的(2)}\ \ $ A^\bot=\bar{A}^\bot=(\Span A)^\bot=(\baro{\Span A})^\bot $.
+	\begin{Proof}
+	由定义可知
+	\[
+	A^\bot=\{ y : \lrangle{x,y}=0,\ \forall x\in A \},
+	\]
+	从而由内积的连续性可知$ A^\bot=\bar{A}^\bot $, 由内积的线性性可知$ A^\bot=(\Span A)^\bot $. 而$ \bar{A}^\bot=(\Span \bar{A})^\bot=(\baro{\Span A})^\bot $, 结论得证.\qed
+	\end{Proof}
 	
 \end{appendix}
