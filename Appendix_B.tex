@@ -507,6 +507,33 @@
 	(3) 方程\,\eqref{eq:3.6题公式}\,成立当且仅当$ Tf=f $, 由压缩映照原理可知$ T $有唯一不动点, 即方程\,\eqref{eq:3.6题公式}\,有唯一解.\qed
 	\end{Proof}
 	
+	\textbf{习题3.7}\ [习题课]\ \ 设$ E $是域$ \K $上的无限维线性空间, 设$ (e_i)_{i\in\alpha} $是$ E $中的一组向量. 若$ E $中任意向量可以用$ (e_i)_{i\in\alpha} $中的有限个向量唯一线性表示, 即对任意$ x\in E $, 存在唯一一组$ (x_i)_{i\in\alpha}\subset\K $使得仅有有限多个$ x_i\ne 0 $且$ x=\sum\limits_{i\in\alpha}x_ie_i $成立, 则称$ (e_i)_{i\in\alpha} $是$ E $中的Hamel基.
+	\begin{enumerate}[(1)]
+	\item 由Zorn引理证明$ E $有一组Hamel基.
+	\item 假设$ E $还是一个赋范空间, 证明$ E $上必存在不连续的线性泛函.
+	\item 证明: 在任意无限维赋范空间上, 一定存在一个比原来的范数严格强的范数(即新范数诱导的拓扑一定比原来的范数诱导的拓扑强且不相同), 由此说明若线性空间$ E $上任意两个范数都诱导相同的拓扑, 则$ E $有限维.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 记$ \mathcal G $是$ E $中线性无关集全体(线性无关集即其中元素线性无关, 在有限情形下与高等代数的定义相同, 在无限情形下要求任意有限子集均线性无关), 则$ (\mathcal G,\subseteq) $是一个偏序集. 任取$ \mathcal G $中的一个全序子集$ \mathcal E $, 并取$ D=\bigcup\mathcal E $, 再取$ F\in\fin D $. 那么对任意的$ x\in F $, 存在$ A(x)\in\mathcal E $使得$ x\in A(x) $, 注意到$ \{ A(x) : x\in F \} $是全序集, 取其最大元$ A(z) $, 则有$ F\subset A(z) $, 从而$ F $是线性无关集, 这说明$ D $也是线性无关集.
+	
+	因$ D $是线性无关集可知$ D\in\mathcal G $, 且$ D $是$ \mathcal E $的一个上界, 从而有Zorn引理可知$ \mathcal G $存在极大元$ T $, 那么$ T $是$ E $的Hamel基.
+	
+	(2) 设$ (e_i)_{i\in\alpha} $是$ E $的一组Hamel基, 任取$ e_1\in(e_i)_{i\in\alpha} $, 由$ \dim E\geqslant\aleph_0 $可知存在$ e_2\in(e_i)_{i\in\alpha} $使得$ \{ e_1,e_2 \} $线性无关, 且依此进行下去可以获得一线性无关的点列$ (e_n)_{n\geqslant 1} $, 并且可以用$ \frac{1}{n}\cdot\frac{e_n}{\norm{e_n}}=\mathrm{sgn}\,e_n/n $代替$ e_n $, 再记除上述$ (e_n)_{n\geqslant 1} $外其他的$ e_j $为$ (e_j)_{j\in\beta} $, 也即
+	\[
+	(e_i)_{i\in\alpha}=(e_n)_{n\geqslant 1}\cup(e_j)_{j\in\beta}.
+	\]
+	那么任取$ x\in E $, 有$ x=\sum\limits_{i\in\alpha}x_ie_i $, 其中除有限项外$ x_i=0 $, 再取映射
+	\[
+	f : E\mapsto \K,\qquad x\to\sum_{i\in\alpha}x_i,
+	\]
+	则$ f $是$ E $上的线性泛函, 且$ f(e_n)=1 $, 但$ \lim\limits_{n\to\infty}e_n=0 $, 从而$ f $不连续.
+	
+	(3) 记$ E $上原范数$ \norm{\cdot} $, 将(2)中找到的线性泛函记作$ f $, 并且取
+	\[
+	\norm{x}_1=\norm{x}+\abs{f(x)},\qquad \forall x\in E,
+	\]
+	容易证明$ \norm{\cdot}_1 $是$ E $上的范数, 且$ \norm{x}\leqslant\norm{x}_1 $, 从而$ \norm{\cdot}_1 $诱导的拓扑更强.(这因$ \id_E : (E,\norm{\cdot}_1)\to(E,\norm{\cdot}) $连续.)\qed
+	\end{Proof}
 
 	\textbf{习题3.8}\ [作业]\ \ 设$ E $是数域$ \K $上的有限维线性空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵
 	\begin{enumerate}[(1)]
@@ -604,98 +631,7 @@
 	\end{align*}
 	可知映射$ u\mapsto u^{-1} $是连续的. 同理可证其逆连续, 从而它是同胚.\qed
 	\end{Proof}
-	
-	\textbf{补充题3.1$ ^* $(张恭庆1.4.2)}\ [习题课]\ \ 设$ C(0,1] $表示$ (0,1] $上连续有界的函数全体, 在$ C(0,1] $上定义$ \norm{x}=\sup\limits_{0<t\leqslant 1}\abs{x(t)} $, 证明:
-	\begin{enumerate}[(1)]
-	\item $ \norm{\cdot} $是$ C(0,1] $上的范数;
-	\item $ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.
-	\end{enumerate}
-	
-	\begin{Proof}
-	(1) 由
-	\[
-	\norm{x}=0\Longleftrightarrow\sup_{0<t\leqslant 1}\abs{x(t)}=0\Longleftrightarrow x=0
-	\]
-	可知正定性成立, 由
-	\[
-	\norm{\lambda x}=\sup_{0<t\leqslant 1}\abs{\lambda x(t)}=\abs{\lambda}\sup_{0<t\leqslant 1}\abs{x(t)}=\abs{\lambda}\norm{x}
-	\]
-	可知齐次性成立, 再由
-	\[
-	\norm{x+y}=\sup_{0<t\leqslant 1}\abs{x(t)+y(t)}\leqslant\sup_{0<t\leqslant 1}\abs{x(t)}+\sup_{0<t\leqslant 1}\abs{y(t)}=\norm{x}+\norm{y}
-	\]
-	可知三角不等式成立. 于是$ \norm{\cdot} $的确是$ C(0,1] $上的范数.
-	
-	(2) 考虑映射
-	\[
-	T : \ell_\infty\to C(0,1],\qquad (x_n)_{n\geqslant 1}\mapsto f=\sum_{n\geqslant 1}\left(\frac{x_{n+1}-x_n}{\frac{1}{n+1}-\frac{1}{n}}\left(t-\frac{1}{n}\right)+x_n\right)1_{\left( \frac{1}{n+1},\frac{1}{n} \right]},
-	\]
-	其中 $ f $ 是以$ (1/n,x_n)_{n\geqslant 1} $为节点的分段线性函数. 容易证明$ T $是一个线性映射, 又因为
-	\[
-	f=0\Longrightarrow \forall n\geqslant 1, x_n=f\left(\frac{1}{n}\right)=0
-	\]
-	即$ \ker T=\{ (0)_{n\geqslant 1} \} $从而$ T $是单射, 且$ \norm{f}=\sup\limits_{n\geqslant 1}\abs{x_n} $, 于是$ T $是一个等距同构映射. 从而$ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.\qed
-	\end{Proof}
 
-	\textbf{补充题3.2$ ^* $(Ps1010-6)}\ [习题课]\ \ 设$ F_1,F_2\subset E $是赋范空间的线性子空间, 且$ F_1 $闭, $ F_2 $有限维. 那么$ F_1+F_2 $是闭的.
-	\begin{Proof}
-	取商映射
-	\[
-	\pi : E\to E/F_1,\qquad x\mapsto [x]=x+F_1,
-	\]
-	则$ \pi(F_1+F_2)=\pi(F_2) $. 注意到$ \dim\pi(F_2)<\infty $, 从而$ \pi(F_2) $是$ E/F_1 $的闭子集. 由于
-	\[
-	F_1+F_2=\pi^{-1}(\pi(F_2)),
-	\]
-	于是$ F_1+F_2 $是闭集.\qed
-	\end{Proof}
-
-	\textbf{补充题3.3$ ^* $(Ps1010-7)}\ [习题课]\ \ 设
-	\[
-	A=\begin{bmatrix}1 & t\\0 & 0\\\end{bmatrix} 
-	\]
-	计算$ \norm{A} $.
-	\begin{Solution}
-	由于$ \norm{A}=\norm{AA^\dagger}^{1/2} $, 从而由
-	\[
-	AA^\dagger=\begin{bmatrix}1&t\\0&0\\\end{bmatrix}
-	\begin{bmatrix}1&0\\\bar{t}&0\\\end{bmatrix}=\begin{bmatrix}
-	1+\abs{t}^2&0\\0&0\\
-	\end{bmatrix}
-	\]
-	可知$ \norm{A}=\sqrt{1+\abs{t}^2} $.
-	\end{Solution}
-	
-	\section{第8周习题课(2019年10月21日)}
-
-	\textbf{习题3.7}\ [习题课]\ \ 设$ E $是域$ \K $上的无限维线性空间, 设$ (e_i)_{i\in\alpha} $是$ E $中的一组向量. 若$ E $中任意向量可以用$ (e_i)_{i\in\alpha} $中的有限个向量唯一线性表示, 即对任意$ x\in E $, 存在唯一一组$ (x_i)_{i\in\alpha}\subset\K $使得仅有有限多个$ x_i\ne 0 $且$ x=\sum\limits_{i\in\alpha}x_ie_i $成立, 则称$ (e_i)_{i\in\alpha} $是$ E $中的Hamel基.
-	\begin{enumerate}[(1)]
-	\item 由Zorn引理证明$ E $有一组Hamel基.
-	\item 假设$ E $还是一个赋范空间, 证明$ E $上必存在不连续的线性泛函.
-	\item 证明: 在任意无限维赋范空间上, 一定存在一个比原来的范数严格强的范数(即新范数诱导的拓扑一定比原来的范数诱导的拓扑强且不相同), 由此说明若线性空间$ E $上任意两个范数都诱导相同的拓扑, 则$ E $有限维.
-	\end{enumerate}
-	\begin{Proof}
-	(1) 记$ \mathcal G $是$ E $中线性无关集全体(线性无关集即其中元素线性无关, 在有限情形下与高等代数的定义相同, 在无限情形下要求任意有限子集均线性无关), 则$ (\mathcal G,\subseteq) $是一个偏序集. 任取$ \mathcal G $中的一个全序子集$ \mathcal E $, 并取$ D=\bigcup\mathcal E $, 再取$ F\in\fin D $. 那么对任意的$ x\in F $, 存在$ A(x)\in\mathcal E $使得$ x\in A(x) $, 注意到$ \{ A(x) : x\in F \} $是全序集, 取其最大元$ A(z) $, 则有$ F\subset A(z) $, 从而$ F $是线性无关集, 这说明$ D $也是线性无关集.
-	
-	因$ D $是线性无关集可知$ D\in\mathcal G $, 且$ D $是$ \mathcal E $的一个上界, 从而有Zorn引理可知$ \mathcal G $存在极大元$ T $, 那么$ T $是$ E $的Hamel基.
-	
-	(2) 设$ (e_i)_{i\in\alpha} $是$ E $的一组Hamel基, 任取$ e_1\in(e_i)_{i\in\alpha} $, 由$ \dim E\geqslant\aleph_0 $可知存在$ e_2\in(e_i)_{i\in\alpha} $使得$ \{ e_1,e_2 \} $线性无关, 且依此进行下去可以获得一线性无关的点列$ (e_n)_{n\geqslant 1} $, 并且可以用$ \frac{1}{n}\cdot\frac{e_n}{\norm{e_n}}=\mathrm{sgn}\,e_n/n $代替$ e_n $, 再记除上述$ (e_n)_{n\geqslant 1} $外其他的$ e_j $为$ (e_j)_{j\in\beta} $, 也即
-	\[
-	(e_i)_{i\in\alpha}=(e_n)_{n\geqslant 1}\cup(e_j)_{j\in\beta}.
-	\]
-	那么任取$ x\in E $, 有$ x=\sum\limits_{i\in\alpha}x_ie_i $, 其中除有限项外$ x_i=0 $, 再取映射
-	\[
-	f : E\mapsto \K,\qquad x\to\sum_{i\in\alpha}x_i,
-	\]
-	则$ f $是$ E $上的线性泛函, 且$ f(e_n)=1 $, 但$ \lim\limits_{n\to\infty}e_n=0 $, 从而$ f $不连续.
-	
-	(3) 记$ E $上原范数$ \norm{\cdot} $, 将(2)中找到的线性泛函记作$ f $, 并且取
-	\[
-	\norm{x}_1=\norm{x}+\abs{f(x)},\qquad \forall x\in E,
-	\]
-	容易证明$ \norm{\cdot}_1 $是$ E $上的范数, 且$ \norm{x}\leqslant\norm{x}_1 $, 从而$ \norm{\cdot}_1 $诱导的拓扑更强.(这因$ \id_E : (E,\norm{\cdot}_1)\to(E,\norm{\cdot}) $连续.)\qed
-	\end{Proof}
-	
 	\textbf{习题3.12}\ [作业]\ \ 设$ 0<p<q\leqslant\infty $, $ 0\leqslant\theta\leqslant 1 $, 并令
 	\[
 	\frac{1}{s}=\frac{\theta}{p}+\frac{1-\theta}{q},
@@ -711,7 +647,7 @@
 	\]
 	且由$ f\in L_p(X)\cap L_q(X) $知$ \norm{f}_s<\infty $, 也即$ f\in L_s(X) $.\qed
 	\end{Proof}
-	
+
 	\textbf{习题3.16}\ [作业]\ \ 在实数集$ \R $上取Lebesgue $ \sigma $-代数与Lebesgue测度, 并设$ f, g\in L_1(\R) $.
 	\begin{enumerate}[(1)]
 	\item 证明:
@@ -776,7 +712,10 @@
 	\]
 	\qed
 	\end{Proof}
+
 	
+	\section{第5章习题(不完全)}
+
 	\textbf{习题5.1}\ [习题课]\ \ 对任意$ x\in[0,1] $, 设$ f_n(x)=x^n $. 在$ [0,1] $的哪些点处, $ (f_n)_{n\geqslant 1} $等度连续?
 	\begin{Proof}
 	对任意的$ x\in[0,1) $, 有
@@ -835,3 +774,222 @@
 	\begin{Remark}
 	本题说明了在定理\,\ref{thm:逐点->一致}\,和\,\ref{thm:Ascoli}\,中去掉$ K $的紧性后, 结论不再成立.
 	\end{Remark}
+
+	\section{Problem Set系列}
+
+	\textbf{补充题1\,(张恭庆1.4.2)}\ [习题课]\ \ 设$ C(0,1] $表示$ (0,1] $上连续有界的函数全体, 在$ C(0,1] $上定义$ \norm{x}=\sup\limits_{0<t\leqslant 1}\abs{x(t)} $, 证明:
+	\begin{enumerate}[(1)]
+	\item $ \norm{\cdot} $是$ C(0,1] $上的范数;
+	\item $ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由
+	\[
+	\norm{x}=0\Longleftrightarrow\sup_{0<t\leqslant 1}\abs{x(t)}=0\Longleftrightarrow x=0
+	\]
+	可知正定性成立, 由
+	\[
+	\norm{\lambda x}=\sup_{0<t\leqslant 1}\abs{\lambda x(t)}=\abs{\lambda}\sup_{0<t\leqslant 1}\abs{x(t)}=\abs{\lambda}\norm{x}
+	\]
+	可知齐次性成立, 再由
+	\[
+	\norm{x+y}=\sup_{0<t\leqslant 1}\abs{x(t)+y(t)}\leqslant\sup_{0<t\leqslant 1}\abs{x(t)}+\sup_{0<t\leqslant 1}\abs{y(t)}=\norm{x}+\norm{y}
+	\]
+	可知三角不等式成立. 于是$ \norm{\cdot} $的确是$ C(0,1] $上的范数.
+	
+	(2) 考虑映射
+	\[
+	T : \ell_\infty\to C(0,1],\qquad (x_n)_{n\geqslant 1}\mapsto f=\sum_{n\geqslant 1}\left(\frac{x_{n+1}-x_n}{\frac{1}{n+1}-\frac{1}{n}}\left(t-\frac{1}{n}\right)+x_n\right)1_{\left( \frac{1}{n+1},\frac{1}{n} \right]},
+	\]
+	其中 $ f $ 是以$ (1/n,x_n)_{n\geqslant 1} $为节点的分段线性函数. 容易证明$ T $是一个线性映射, 又因为
+	\[
+	f=0\Longrightarrow \forall n\geqslant 1, x_n=f\left(\frac{1}{n}\right)=0
+	\]
+	即$ \ker T=\{ (0)_{n\geqslant 1} \} $从而$ T $是单射, 且$ \norm{f}=\sup\limits_{n\geqslant 1}\abs{x_n} $, 于是$ T $是一个等距同构映射. 从而$ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.\qed
+	\end{Proof}
+
+	\textbf{补充题2\,(Ps1010-6)}\ [习题课]\ \ 设$ F_1,F_2\subset E $是赋范空间的线性子空间, 且$ F_1 $闭, $ F_2 $有限维. 那么$ F_1+F_2 $是闭的.
+	\begin{Proof}
+	取商映射
+	\[
+	\pi : E\to E/F_1,\qquad x\mapsto [x]=x+F_1,
+	\]
+	则$ \pi(F_1+F_2)=\pi(F_2) $. 注意到$ \dim\pi(F_2)<\infty $, 从而$ \pi(F_2) $是$ E/F_1 $的闭子集. 由于
+	\[
+	F_1+F_2=\pi^{-1}(\pi(F_2)),
+	\]
+	于是$ F_1+F_2 $是闭集.\qed
+	\end{Proof}
+
+	\textbf{补充题3\,(Ps1010-7)}\ [习题课]\ \ 设
+	\[
+	A=\begin{bmatrix}1 & t\\0 & 0\\\end{bmatrix} 
+	\]
+	计算$ \norm{A} $.
+	\begin{Solution}
+	由于$ \norm{A}=\norm{AA^\dagger}^{1/2} $, 从而由
+	\[
+	AA^\dagger=\begin{bmatrix}1&t\\0&0\\\end{bmatrix}
+	\begin{bmatrix}1&0\\\bar{t}&0\\\end{bmatrix}=\begin{bmatrix}
+	1+\abs{t}^2&0\\0&0\\
+	\end{bmatrix}
+	\]
+	可知$ \norm{A}=\sqrt{1+\abs{t}^2} $.
+	\end{Solution}	
+
+	\textbf{补充题4\,(Ps1022-4)}\ \ 设$ E $是线性空间, $ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $是$ E $上任意两个范数, 若$ (x_n)_{n\geqslant 1} $分别在$ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $下收敛到$ a $和$ b $, 判断$ a $与$ b $是否相等.
+	\begin{Solution}
+	不一定相等. 反例如下: 取$ P $是一切实系数多项式按照通常线性运算构成的线性空间, 对$ x(t)=a_0+a_1t+\cdots+a_nt^n\in P $, 定义其范数
+	\[
+	\norm{x}_N=\abs{\sum_{j=0}^na_j}+\sum_{j\ne N}\frac{\abs{a_j}}{j+1},
+	\]
+	其中$ N $是某个给定的正整数. $ \norm{\cdot}_N $是$ P $上的范数, 因
+	\[
+	\norm{x+y}_N\leqslant\norm{x}_N+\norm{y}_N,\qquad\norm{\lambda x}=\abs{\lambda}\norm{x}_N
+	\]
+	成立, 而$ \norm{x}_N\geqslant 0 $显然, 且
+	\[
+	\norm{x}_N=0\Longleftrightarrow\begin{cases}
+	\abs{\sum_{j=0}^na_j}=0\\\sum_{j\ne N}\frac{\abs{a_j}}{j+1}=0
+	\end{cases}\Longleftrightarrow x=0.
+	\]
+	令$ x_n(t)=t^n $, 那么由
+	\[
+	\norm{t^n-t^N}_N=\frac{1}{n+1}\to 0
+	\]
+	可知$ (x_n)_{n\geqslant 1} $在$ (P,\norm{\cdot}_N) $上收敛到$ t^N $. 取$ N_1\ne N_2 $, 那么$ t^{N_1}\ne t^{N_2} $, 但$ \norm{t^n-t^{N_1}}_{N_1}\to 0 $与$ \norm{t^n-t^{N_2}}_{N_2}\to 0 $同时成立.
+	\end{Solution}
+	
+	\textbf{补充题5\,(Ps1022-5)} 试说明商映射$ \pi : E\to E/F $何时取到$ \norm{\pi}=1 $.
+	\begin{Solution}
+	因为$ \norm{\pi}=\sup\limits_{\norm{x}\ne 0}\norm{\pi x}/\norm{x} $, 由
+	\[
+	\norm{x+F}=\inf_{y\in F}\norm{x+y}\leqslant \norm{x}
+	\]
+	可知$ \norm{\pi}=1 $当且仅当存在$ x\in E $使得$ \norm{\pi x}=\norm{x} $. 而$ \forall x\in E $, 都有
+	\[
+	x=y+z,\qquad y\in F,\ z\in E/F,
+	\]
+	即只需存在$ x\in E $使得$ y=0 $即可, 也即$ F^c\ne\{ 0 \} $即可. 从而只需$ F\ne E $.
+	\end{Solution}
+
+	\section{第10周习题课(2019年11月4日)}
+	
+	\textbf{习题3.10}\ [习题课]\ \ 设$ f\in L_2(\R) $, $ g(x)=\frac{1}{x}1_{[1,\infty)}(x) $, 证明: $ fg\in L_1(\R) $. 并举出反例说明$ f_1,f_2\in L_1(\R) $时$ f_1f_2\notin L_1(\R) $.
+	\begin{Proof}
+	由H\"older不等式可知
+	\[
+	\int_\R\abs{f(x)g(x)}\diff x\leqslant\left(\int_\R\abs{f(x)}^2\diff x\right)^{1/2}\left(\int_R\abs{g(x)}^2\diff x\right)^{1/2}=\norm{f}_2<\infty,
+	\]
+	从而$ fg\in L_1(\R) $.
+	
+	反例可取$ f_1=f_2=\frac{1}{\sqrt{x}}1_{(0,1]}(x) $, 则$ f_1,f_2\in L_1(\R) $, 但$ f_1f_2=\frac{1}{x}1_{(0,1]}(x)\notin L_1(R) $.\qed
+	\end{Proof}
+	
+	\textbf{习题3.11}\ [习题课]\ \ 设$ (X,\CA, \mu) $是有限测度空间.
+	\begin{enumerate}[(1)]
+	\item 证明: 若$ 0<p<q\leqslant\infty $, 那么$ L_q(X)\subset L_p(\varOmega) $, 并举反例说明结论在$ \mu(X)=\infty $的测度空间上不成立.
+	\item 证明: 若$ f\in L_\infty(X) $, 则$ f\in\bigcap_{p<\infty}L_p(X) $且$ \lim\limits_{p\to\infty}\norm{f}_p=\norm{f}_\infty $.
+	\item 设$ f\in\bigcap_{p<\infty}L_p(X) $且满足$ \limsup\limits_{p\to\infty}\norm{f}_p<\infty $, 证明$ f\in L_\infty(X) $.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 若$ q=\infty $, 结论显然成立, 下设$ p<\infty $. 取$ p'=q/p $而$ q'=q/(q-p) $, 那么$ 1/p+1/q=1 $. 由H\"older不等式可知
+	\[
+	\begin{aligned}
+	\norm{f}_p^p=\int_X\abs{f}^p\diff\mu&=\int_X\abs{f}^p\cdot 1\diff\mu\\
+	&\leqslant\norm{\abs{f}^p}_{p'}\norm{1}_{q'}=\int_X(\abs{f}^p)^{q/p}\diff\mu\cdot\mu(X)^{q'}=\norm{f}_q^p\cdot\mu(X)^{q'}.
+	\end{aligned}
+	\]
+	即$ \norm{f}_p\leqslant\norm{f}_q\cdot\mu(X)^{1/p-1/q} $, 从而$ \norm{f}_q<\infty\Longrightarrow\norm{f}_p<\infty $, 即$ L_q(X)\subset L_p(X) $.
+	
+	若允许$ \mu(X)=\infty $, 取$ X=\R $, $ \mu $是Lebesgue测度, $ f=\frac{1}{x}1_{[1,\infty)} $即可. 此时$ f\in L_2(\R) $但$ f\notin L_1(R) $.
+	
+	(2) 任取$ f\in L_\infty(X) $, $ \forall p<\infty $都有
+	\[
+	\norm{f}_p=\left(\int_X\abs{f}^p\diff\mu\right)^{1/p}\leqslant\left(\int_X\norm{f}_\infty^p\diff\mu\right)^{1/p}=\norm{f}_\infty\cdot\mu(X)^{1/p}<\infty.
+	\]
+	即$ f\in L_p(X) $, 从而$ f\in\bigcap_{p<\infty}L_p(X) $. 再令$ p\to\infty $, 此时由$ \mu(X)^{1/p}\to 1 $可知
+	\[
+	\limsup_{p\to\infty}\norm{f}_p\leqslant\norm{f}_\infty.
+	\]
+	而$ \forall\varepsilon>0 $, 有$ \mu\{ \abs{f}>\norm{f}_\infty-\varepsilon \}>0 $, 记该集合为$ A $, 那么
+	\[
+	\norm{f}_p\geqslant\left(\int_A(\norm{f}_\infty-\varepsilon)^p\diff\mu\right)^{1/p}=(\norm{f}_\infty-\varepsilon)\mu(A)^{1/p}.
+	\]
+	令$ p\to\infty $有
+	\[
+	\liminf_{p\to\infty}\norm{f}_p\geqslant\norm{f}_\infty-\varepsilon,
+	\]
+	再令$ \varepsilon\to 0^+ $, 则$ \liminf\limits_{p\to\infty}\norm{f}_p\geqslant\norm{f}_\infty $, 则
+	\[
+	\norm{f}_\infty\leqslant\liminf_{p\to\infty}\norm{f}_p\leqslant\limsup_{p\to\infty}\norm{f}_p\leqslant\norm{f}_\infty.
+	\]
+	也即$ \lim\limits_{p\to\infty}\norm{f}_p=\norm{f}_\infty $.
+	
+	(3) 用反证法, 若$ f\notin L_\infty(X) $, 则$ \forall n\in\N $, 都有$ \mu\{ \abs{f}\geqslant n \}>0 $, 设$ B=\{ \abs{f}\geqslant 0 \} $, 则有
+	\[
+	\norm{f}_p\geqslant\left(\int_B\abs{f}^p\diff\mu\right)^{1/p}=n\cdot\mu(B)^{1/p}.
+	\]
+	取上极限
+	\[
+	\limsup_{p\to\infty}\norm{f}_p\geqslant\limsup_{p\to\infty}n\cdot\mu(B)^{1/p}\geqslant n,
+	\]
+	即$ \limsup\limits_{p\to\infty}\norm{f}_p=\infty $, 矛盾. 从而$ f\in L_\infty(X) $.\qed
+	\end{Proof}
+
+	\textbf{习题5.2}\ [作业]\ \ 设$ K $是度量空间而$ E $是赋范空间, $ (f_n)_{n\geqslant 1}\subset C(K,E) $.
+	\begin{enumerate}[(1)]
+	\item 证明: 若$ (f_n)_{n\geqslant 1} $在某一点$ x $等度连续, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x)-f_n(x_n))_{n\geqslant 1} $收敛到0.
+	\item 证明: 若$ (f_n(x))_{n\geqslant 1} $在$ E $中收敛到$ y $, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x_n))_{n\geqslant 1} $也收敛到$ y $.
+	\item 取$ f_n=\sin nx $, 证明$ (f_n)_{n\geqslant 1} $在$ \R $上无处等度连续.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由$ (f_n)_{n\geqslant 1} $在$ x $处等度连续, 有
+	\[
+	\forall\varepsilon>0\,\exists\delta>0\,(d_K(y,x)<\delta\Rightarrow \norm{f_n(y)-f_n(x)}<\varepsilon),
+	\]
+	设$ (x_n)_{n\geqslant 1} $收敛于$ x $, 那么对上述$ \delta>0 $,
+	\[
+	\exists n_0\in\N\,(n\geqslant n_0\Rightarrow d_K(x_n,x)<\delta)
+	\]
+	即$ \norm{f_n(x_n)-f_n(x)}\leqslant\varepsilon $.
+	
+	(2) 进一步, 设$ (f_n(x))_{n\geqslant 1}\to y $, 那么
+	\[
+	\norm{f_n(x)-y}\leqslant\norm{f_n(x_n)-f_n(x)}+\norm{f_n(x)-y},
+	\]
+	由(1)知右侧收敛到0, 从而结论成立.
+	
+	(3) 设$ f_n(x)=\sin nx $, 那么$ x\ne k\pi, k\in\Z $时取$ x_n=x+\pi/n $, 则
+	\[
+	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+\pi)}=2\abs{\sin nx}\not\to 0,
+	\]
+	用反证法, 若$ \sin nx\to 0 $, 那么
+	\[
+	\lim_{n\to\infty}2\sin x\cos nx=\lim_{n\to\infty}\sin(n+1)x-\sin(n-1)x=0,
+	\]
+	又因为$ \sin x\ne 0 $, 从而$ \cos nx\to 0 $. 再由$ \sin^2 nx+\cos^2 nx=1 $, 从而$ \sin nx\to 1 $, 矛盾. 从而$ (\sin nx)_{n\geqslant 1} $在$ x\ne k\pi $时不可能收敛到0.
+	
+	而当$ x=k\pi, k\in\Z $时, 可取$ x_n=x+\pi/2n $, 那么此时
+	\[
+	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+2\pi)}=2\not\to 0,
+	\]
+	从而$ (\sin nx)_{n\geqslant 1} $在$ \R $上无处连续.\qed
+	\end{Proof}
+	\begin{Remark}
+	实际上, 当$ x\ne k\pi, k\in Z $时, $ (\sin nx)_{n\geqslant 1} $不收敛到任何数.
+	\end{Remark}
+	
+	\textbf{习题5.10}\ [作业]\ \ 设$ (K,d) $是紧度量空间, 证明所有从$ K $到$ \R $的Lipschitz函数构成的集合在$ C(K,\R) $中稠密.
+	\begin{Proof}
+	设$ \CA $是$ K $到$ \R $的Lipschitz函数全体, 易证$ \CA $是一个线性空间, 且对任意$ f, g\in\CA $, 其中$ f $的常数为$ c_1 $, $ g $的常数为$ c_2 $, 由
+	\[
+	\begin{aligned}
+	\abs{(f\cdot g)(x)-(f\cdot g)(y)}&\leqslant\abs{f(x)}\abs{g(x)-g(y)}+\abs{g(y)}\abs{f(x)-f(y)}\\
+	&\leqslant(c_2\norm{f}_\infty+c_1\norm{g}_\infty)d_K(x,y),
+	\end{aligned}
+	\]
+	且因$ K $是紧的而$ f, g $是连续的, 应有$ \norm{f}_\infty,\norm{g}_\infty $都是有限的, 从而$ f\cdot g\in\CA $, 也即$ \CA $是一个代数.
+	
+	取$ d_x(y)=d(x,y) $, 由三角不等式可知$ d_x $是常数为1的Lipschitz函数, 且$ x\ne y $时$ d_x(x)\ne d_x(y) $, 故$ \CA $是可分点的. 又有$ 1\in\CA $是显然的, 则由Stone-Weierstrass定理可知命题成立.\qed
+	\end{Proof}
