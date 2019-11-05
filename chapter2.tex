@@ -1216,7 +1216,7 @@
 	\[
 	E\lor F=\baro{\{x+y : x\in E, y\in F\}}=\baro{E+F},
 	\]
-	并定义投影算子的运算$ P_E\lor P_F=P_{E\lor F} $和$ P_E\land P_F=P_{E\cap F} $, 容易验证
+	并定义投影算子的运算$ P_E\lor P_F=P_{E\lor F} $, $ P_E\land P_F=P_{E\cap F} $和$ P_E^\bot=\id-P_E=P_{E^\bot} $, 容易验证
 	\begin{enumerate}[(1)]
 	\item $ (P_E\lor P_F)^\bot=P_{(E\lor F)^\bot}=P_{E^\bot\cap F^\bot}=P_{E^\bot}\land P_{F^\bot} $;
 	\item $ (P_E\land P_F)^\bot=P_{(E\cap F)^\bot}=P_{E^\bot\lor F^\bot}=P_{E^\bot}\lor P_{F^\bot} $.
@@ -1261,7 +1261,7 @@
 	
 	设$ (e_n)_{n\geqslant 1} $是$ H $的规范正交基, $ P_N $是闭线性子空间$ \Span\{ e_1,\dots,e_N \} $的投影算子, 注意到$ \lim\limits_{n\to\infty}\norm{\id-P_N}=1 $, 它不能用来诱导拓扑. 于是我们称$ \lim\limits_{N\to\infty}\norm{P_N(x)-x}=0 $, 即$ P_N(x)\to x $刻画的拓扑为强算子拓扑, 而以$ \lrangle{x,e_n}\to 0\,(n\to\infty) $刻画的拓扑为弱拓扑.
 	
-\section{最小二乘法}
+	\subsection{最小二乘法}
 	
 	考虑下面的三个问题:
 	\begin{enumerate}[(1)]
