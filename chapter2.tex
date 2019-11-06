@@ -381,13 +381,13 @@
 	\begin{Example}
 	一些常见的内积空间, 在不特殊说明的情况下, 以后提到下面的空间时均默认其上定义的内积是本例中定义的内积:
 	\begin{enumerate}[(1)]
-	\item 在Euclid空间$ \K^n $上赋以内积$ \lrangle{x,y}=\sum\limits_{i=1}^nx_i\bar{y}_i $. 注意到Euclid范数$ \norm{x}=\sqrt{\lrangle{x,x}} $可被该内积诱导.
-	\item 在$ L_2(X) $上赋以内积$ \lrangle{f,g}=\int_Xf\bar{g}\diff\mu $, 且由H\"older不等式可知
+	\item 在Euclid空间$ \K^n $上赋以内积$ \lrangle{x,y}=\sum\limits_{i=1}^nx_i\baro{y}_i $. 注意到Euclid范数$ \norm{x}=\sqrt{\lrangle{x,x}} $可被该内积诱导.
+	\item 在$ L_2(X) $上赋以内积$ \lrangle{f,g}=\int_Xf\baro{g}\diff\mu $, 且由H\"older不等式可知
 	\[
 	\abs{\lrangle{f,g}}\leqslant\norm{f}_2\norm{g}_2<\infty,
 	\]
 	但当$ p\ne 2 $时, $ L_p(X) $不是内积空间.
-	\item 在连续函数空间$ C([a,b],\K) $上可以定义内积$ \lrangle{f,g}=\int_a^bf\bar{g}\diff x $.
+	\item 在连续函数空间$ C([a,b],\K) $上可以定义内积$ \lrangle{f,g}=\int_a^bf\baro{g}\diff x $.
 	\item 在$ n $阶方阵空间$ \mathbb{M}_n(\K) $上可以定义内积$ \lrangle{A,B}=\mathrm{tr(B^\dagger A)} $.
 	\end{enumerate}
 	\end{Example}
@@ -402,7 +402,7 @@
 	\begin{Proof}
 	$ y=0 $的情形是平凡的, 不妨设$ y\ne 0 $. 那么$ \forall x,y\in H,\ \forall\lambda\in\K $, 有
 	\[
-	0\leqslant\lrangle{x+\lambda y,x+\lambda y}=\lrangle{x,x}+\bar{\lambda}\lrangle{x,y}+\lambda\baro{\lrangle{x,y}}+\lambda\bar{\lambda}\lrangle{y,y}.
+	0\leqslant\lrangle{x+\lambda y,x+\lambda y}=\lrangle{x,x}+\baro{\lambda}\lrangle{x,y}+\lambda\baro{\lrangle{x,y}}+\lambda\baro{\lambda}\lrangle{y,y}.
 	\]
 	取$ \lambda=-\frac{\lrangle{x,y}}{\lrangle{y,y}} $代入, 得
 	\[
@@ -1292,13 +1292,193 @@
 	\min_{a_1,\dots,a_n}\norm{x-\sum_{i=1}^na_ix_i}=\norm{x-\sum_{i=1}^n\lambda_ix_i},
 	\]
 	这样的问题称为\textbf{最小二乘问题}.\index{Z!最小二乘问题}
+
+	设 $ E=\Span\{ x_{1}, \dots, x_{n} \} $, 则 $ d(x, E)=\min\limits_{a_{1}, \dots, a_{n} }\norm{x-\sum\limits_{n=1}^{n}a_{i}x_{i}} $, 又 $ d(x, E)=\norm{x-P_{E}(x)} $, 又唯一性可知 $ \sum\limits_{i=1}^{n}\lambda_{i}x_{i}=P_{E}(x) $, 则
+	\[
+		\sum_{i=1}^{n}\lambda_{i}\lrangle{x_{i}, x_{j}}=\lrangle{P_{E}(x), x_{j}}=\lrangle{x, x_{j}}, \quad j = 1, 2, \dots, n.
+	\]
+	若 $ \det[\lrangle{x_{i}, x_{j}}]_{i, j=1}^{n}\ne 0 $, 则上述方程有解, 记
+	\[
+		G(x_{1}, x_{2}, \dots, x_{n})=\det[\lrangle{x_{i}, x_{j}}]_{i, j=1}^{n}
+	\]
+	由 Cramer法则, 有
+	\[
+		\lambda_{i}=\frac{G(x_{1}, x_{2}, \dots, x, \dots, x_{n})}{G(x_{1}, x_{2}, \dots, x_{i}, \dots, x_{n})},
+	\]
+	此时
+	\[
+		\begin{aligned}
+			d(x, E)^{2}=\norm{x-P_{E}(x)}^{2} & =\lrangle{x, x}-\lrangle{P_{E}(x), x}\\
+			& \lrangle{x, x}-]-\sum_{i=1}^{n}\lambda_{i}\lrangle{x_{i}, x},
+		\end{aligned}
+	\]
+	注意到
+	\[
+		G(x, \seq{x})=\lrangle{x, x}G(\seq{x})+\sum_{k=1}^{n}(-1)^{k}G(x, x_{1}, \dots, \hat{x}_{k}, \dots, x_{n}) 
+	\]
+	与
+	\[
+		G(x, x_{1}, \dots, \hat{x}_{k}, \dots, x_{n}=(-1)^{k+1}G(\seq{x})
+	\] 
+	故有
+	\[
+		\begin{aligned}
+			G(x, \seq{n}) & =\lrangle{x, x}G(\seq{n})-\sum_{k=1}^{n}G(\seq{n}) \\
+			& = \bigg( \lrangle{x, x}-\sum_{k=1}^{n}\lambda_{k}\lrangle{x_{k}, x} \bigg)G(\seq{x})\\
+			& d(x, E)^{2}G(\seq{x}),
+		\end{aligned}
+	\]
+	从而
+	\[
+		d(x, E)=\sqrt{\frac{G(x, \seq{x})}{G(\seq{x})}}
+	\]
+	若 $ \det[\lrangle{x_{i}, x_{j}}]_{i, j=1}^{n}=0 $, 则方程有非零解, 即 $ \exists[\seq{\alpha}]\ne0 $, 使得 $ [\lrangle{x_{i}, x_{j}}]_{i, j=1}^{n}[\seq{\alpha}]^{\textrm{T}}=0 $, 而
+	\[
+		[\seq{\baro{\alpha}}][\lrangle{x_{i}, x_{j}}]_{i, j=1}^{n}\begin{bmatrix}
+			\alpha_{1}\\\alpha_{2}\\\vdots\\\alpha_{n}
+		\end{bmatrix}=0\Longleftrightarrow \lrangle{\sum_{i=1}^{n}\alpha_{i}x_{i}, \sum_{i=1}^{n}\alpha_{i}x_{i}}=0,
+	\]
+	故由上式右端当且仅当 $ \sum\limits_{i=1}{n}\alpha_{i}x_{i} $ 知 \seq{x} 线性相关.
 	
+\section{Fourier分析}
+		为方便以下讨论, 先定义以下几个常用空间: 考虑在\R 上以 $ 2\pi $ 为周期的函数 $ f $, 它可以限制在 $ [0, 2\pi] $ 上, 取规范化测度 (即测度空间为概率空间的测度) $ \frac{\diff\theta}{2\pi} $, 记
+		\[
+			L_{2\pi}^{p}=L_{p}\left([0, 2\pi], \frac{\diff\theta}{2\pi}\right), \quad 0<p\leqslant\infty,
+		\]
+		并定义其上的范数, 当 $ p<\infty $ 时定义为
+		\[
+			\norm{f}_{L_{2\pi}^{p}}=\left( \int_{0}^{2\pi}\abs{f(\theta)}^{p}\frac{\diff\theta}{2\pi} \right)^{1/p}
+		\]
+		再记 $ \mathcal{P} $ 为所有三角多项式构成的线性空间, 则$ \forall f\in\mathcal{P} $ 有
+		\[
+			f(\theta)=\sum_{k=m}^{n}\alpha{k}\exp(\imag k\theta), \quad \alpha_{k}\in\C, m\leqslant n\in\Z,
+		\]
+		因为 $ C_{2\pi}=\left\{ f\in C[0, 2\pi]: f(0)=f(2\pi) \right\}\subset C[0, 2\pi] $, 且由 $ C_{2\pi}=\ker(\rho_{0}-\rho{2\pi}) $ 知 $ \mathrm{codim}\ C_{2\pi}=1 $, (若 $ W $ 是 $ V $ 的线性子空间, 称 $ W $ 在 $ V $ 的\textbf{余维数} $ \mathrm{codim}\ W=\dim (V/W) $), 而
+		\[
+			\mathcal{P}\subset C_{2\pi}\subset C[0, 2\pi]\subset L_{2\pi}^{p}
+		\]
+		并已知 $ C[0, 2\pi] $ 在 $ L_{2\pi}^{p} $ 中稠密. 
+
+		\begin{Lemma}
+			$ \mathcal P $ 在 $ C_{2\pi} $ 中稠密.
+		\end{Lemma}
+		\begin{Proof}
+			注意到 $ C_{2\pi}\ne C[0,2\pi] $, 建立 $ [0,2\pi) $ 与 $ \mathbb T $的关系: 取
+			\[
+				J : C(\mathbb T) \to C_{2\pi},\qquad f(\theta)\mapsto f(\exp(\imag\theta)).
+			\]
+			下面说明 $ J $ 是等距同构. 由
+			\[
+				\norm{J(f)}_\infty=\sup_{0\leqslant\theta\leqslant 2\pi}\abs{f(\exp(\imag\theta))}=\sup_{z\in\mathbb T}\abs{f(z)}=\norm{f}_{C(\mathbb T)}
+			\]
+			可知 $ J $ 是等距单射. 又对任意 $ g\in C_{2\pi} $, 定义 $ f(z)=g(\theta) $, 其中 $ z=\exp(\imag\theta) $, 则 $ f $ 是连续函数, i.e. $ J(f)=g $, 从而 $ J $是满射. 且
+			\[
+				J(f\cdot g)(\theta)=(f\cdot g)(\exp(\imag\theta))=f(\exp(\imag\theta))g(\exp(\imag\theta))=Jf(\theta)\cdot Jg(\theta)=(Jf\cdot Jg)(\theta)
+			\]
+			与 $ J^{-1}(\exp(\imag n\theta))=z^n $, 从而 $ J^{-1}(\mathcal P) $是关于 $ z,\baro{z} $的多项式全体. 由此可知 $ J^{-1}(\mathcal P) $是子代数. 取 $ f(z)=z\in J^{-1}(\mathcal P) $知其可分点, 而 $ 1\in J^{-1}(\mathcal P) $显然. $ f\in J^{-1}(\mathcal P)\Longrightarrow \baro{f}\in J^{-1}(\mathcal P) $, 从而由Stone-Weierstrass定理有 $ J^{-1}(\mathcal P) $在 $ C(\mathbb T) $中稠密, 故 $ \mathcal P $在 $ C_{2\pi} $中稠密.\qed
+		\end{Proof}
+
+		\begin{Definition}[Fourier系数, Fourier变换]\label{def:Fourier系数, Fourier变换}\index{F!Fourier系数, Fourier变换}
+			设 $ f\in L_{2\pi}^{1} $, 称
+			\[
+				\hat{f}(n)=\frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\exp(-\imag n\theta)\diff\theta,\quad n\in\Z
+			\]
+			为函数  $ f $ 的 $ n $ 阶\textbf{Fourier系数}, 并记 $ f $ 的所有Fourier系数构成的序列为 $ \mathcal{F}(f)=(\hat{f}(n))_{n\in\Z} $, 称其为 $ f $ 的\textbf{Fourier变换}, 有时也以 $ \hat{f} $ 记 $ \mathcal{F}(f) $. 
+		\end{Definition}
+		\begin{Theorem}
+			~
+			\begin{enumerate}[(1)]
+				\item 设 $ 0<p<\infty $, 则 $ \mathcal{P} $ 在 $ C_{2\pi} $ 与 $ L_{2\pi}^{p} $ 中都稠密.
+				\item $ \mathcal{F} : L_{2\pi}^{1}\to c_{0}(\Z) $ 是范数为 $ 1 $ 的单射, 其中
+				\[
+					c_{0}(\Z)=\big\{ \alpha = (\alpha_{n})_{n\in\Z}: \lim\limits_{n\to\infty}\alpha_{n}=\lim\limits_{n\to-\infty}\alpha_{n}=0 \big\},
+				\]
+				其上范数定义为 $ \norm{\alpha}_{\infty}=\sup\limits_{n\in\Z}\abs{\alpha_{n}} $.
+				\item 记 $ e_{n}=\exp(\imag n\theta), n\in\Z $, 则 $ (e_{n})_{n\in\Z} $ 是 Hilbert空间 $ L_{2\pi}^{2} $ 中规范正交基.
+			\end{enumerate}
+		\end{Theorem}
+
+		\begin{Proof}
+			(1) 先证明 $ C_{2\pi} $ 在 $ L_{2\pi}^{p} $ 中稠密. 注意到
+			\[
+				C_{2\pi}\subset C[0, 2\pi] \subset L_{2\pi}^{p}
+			\]
+			且 $ C[0, 2\pi] $ 在 $ L_{2\pi}^{p} $ 中稠密, 则
+			\[
+				\forall f\in L_{2\pi}^{p}\,\forall\varepsilon>0\,\exists g\in C[0, 2\pi]\,(\norm{f-g}_{L_{2\pi}^{p}}<\varepsilon),
+			\]
+			取函数
+			\[
+				\tilde{g}_{\eta}(\theta)=\begin{cases}
+					g(\theta) & , \theta\in[0, 2\pi-\eta);\\
+					\text{线性函数} & , \theta\in[2\pi-\eta, 2\pi], 
+				\end{cases}
+			\]
+			且线性部分连接 $ \tilde{g}_{\eta}(2\pi-\eta)=g(2\pi-\eta) $ 与 $ \tilde{g}_{\eta}(2\pi)=g(0) $, 则 $ \tilde{g}_{\eta}\in C_{2\pi} $ 且
+			\[
+				\norm{\tilde{g}_{\eta}-g}_{L_{2\pi}^{p}}^{p}=\int_{2\pi-\eta}^{2\pi}\abs{\tilde{g}_{\eta}(\theta)-g(\theta)}\frac{\diff\theta}{2\pi}\leqslant\frac{\eta}{2\pi}(2\norm{g}_{\infty})^{p},
+			\]
+			取 $ \eta<\frac{\varepsilon^{p}(2\pi)}{2^{p}\norm{g}^{p}_{\infty}} $ 后, 有 $ \norm{\tilde{g}_{\eta}-g}_{L_{2\pi}^{p}}<\varepsilon $. 于是
+			\[
+				\norm{f-\tilde{g}_{\eta}}_{L_{2\pi}^{p}}<2\varepsilon.
+			\]
+			即 $ C_{2\pi} $ 在 $ L_{2\pi}^{p} $ 中依范数 $ \norm{\cdot}_{p} $稠密, 而 $ \mathcal{P} $ 在 $ C_{2\pi} $ 中依范数 $ \norm{\cdot}_{\infty} $ 稠密, 由 $ \norm{\cdot}_{p}<\norm{\cdot}_{\infty} $ 可知 $ \mathcal{P} $ 在 $ L_{2\pi}^{p} $ 中稠密.
+			
+			(2) 对 $ \forall f\in\mathcal{P} $, 存在 $ m\leqslant n\in\Z $ 以及 $ \alpha_{k}\in\C $, 使得 $ f(\theta)=\sum\limits_{k=m}^{n}\alpha_{k}\exp(\imag k\theta) $, 并且
+			\[
+				\hat{f}(k)=\begin{cases}
+					\alpha_{k} & , m\leqslant k<n;\\
+					0 & , \text{others}.
+				\end{cases}
+			\]
+			从而  $ \hat{f}\in c_{0}(\Z) $, 再由
+			\[
+				\norm{\mathcal{F}(f)}_{\infty}=\sup_{n\in\Z}\abs{\hat{f}(n)}=\sup_{n\in\Z}\abs{\int_{0}^{2\pi}f(\theta)\exp(-\imag n\theta)\frac{\diff\theta}{2\pi}}\leqslant\norm{f}_{L_{2\pi}^{p}}
+			\]
+			知 $ \norm{\mathcal{F}}\leqslant1 $, 取 $ e_{n}=\exp(-\imag n\theta) $ 后由 $ \norm{\mathcal{F}(e_{n})}=1 $ 知 $ \norm{\mathcal{F}}=1 $. 
+
+			下面说明 $ \forall f\in L_{2\pi}^{1} $, $ \hat{f}\in c_{0}(\Z) $, 由 $ \mathcal{P} $ 在 $ L_{2\pi}^{1} $ 中稠密可知
+			\[
+				\forall f\in L_{2\pi}^{1}\,\forall\varepsilon>0\,\exists g\in\mathcal{P}\,(\norm{f-g}_{L_{2\pi}^{1}}<\varepsilon).
+			\]
+			则存在 $ n_{0}\in\N $ 使得 $ \abs{n}\geqslant n_{0} $ 时, $ \hat{g}(n)=0 $, 则对 $ \abs{m}\geqslant n_{0} $, 有
+			\[
+				\abs{\hat{f}(m)}=\abs{\hat{f}(m)-\hat{g}(m)}\leqslant\norm{\mathcal{F}(f)-\mathcal{F}(g)}_{\infty}\leqslant\norm{f-g}_{L_{2\pi}^{1}}<\varepsilon,
+			\]
+			故 $ (\hat{f}(n))_{n\in\Z}\in c_{0}(\Z) $.
+			
+			最后说明 $ \mathcal{F} $ 是单射, 因而 $ \ker \mathcal{F}=\{ 0 \} $, 而:
+			\[
+				\begin{aligned}
+					\mathcal{F}(f)=0 & \Longleftrightarrow \int_{0}^{2\pi}f(\theta)\exp(-\imag n\theta)\diff\theta=0, \quad\forall n\in\Z\\
+					& \Longleftrightarrow\int_{0}^{2\pi}f(\theta)g(\theta)\diff\theta, \quad \forall g\in\mathcal{P}.
+				\end{aligned}
+			\]
+			因为 $ \mathcal{P} $ 在 $ C_{2\pi} $ 中稠密, 故 $ \forall g\in C_{2\pi} $ 上式也成立, 类似于\,(1)\,取映射 $ g\mapsto\tilde{g}\in C[0, 2\pi] $
+			\[
+				\int_{0}^{2\pi}f(\theta)g(\theta)\diff\theta=0, \quad \forall g\in C[0, 2\pi],
+			\]
+			而由实分析中连续逼近定理 (参见实分析Lecture Notes中的定理3.4.14), $ \forall g\in L_{2\pi}^{p} $, $ \forall\varepsilon>0 $, 存在 $ h\in C[0, 2\pi] $ 使 $ \norm{g-h}_{L_{2\pi}^{p}}<\varepsilon $, 从而
+			\[
+				\int_{0}^{2\pi}f(\theta)g(\theta)\diff\theta\leqslant 2\pi\varepsilon, \quad \forall g\in L_{2\pi}^{p}
+			\]
+			令 $ \varepsilon\to 0^{+} $ 即得.
+
+			(3) 由 $ L_{2\pi}^{2} $ 中内积的定义直接可得. \qed
+		\end{Proof}
+
+		\begin{Remark}
+			定理中\,(2)\,的一部分结论: $ \mathcal{F}(f)\in c_{0}(\Z) $ 即为所谓 Riemann-Lebesgue引理, 且由\,(3)\,中结论与 Parsevaal 等式, $\forall f\in L_{2\pi}^{2}$, 有
+			\[
+				\int_{0}^{2\pi}\abs{f(\theta)}^{2}\diff\theta=2\pi\sum_{n=-\infty}^{+\infty}\abs{\hat{f}(n)}^{2}.
+			\]
+		\end{Remark}
 \section*{本章习题}
 	\addcontentsline{toc}{section}{本章习题}
 	
 	习题后面括号中的序号表示对应书中习题的编号.
 	
-	\begin{enumerate}[\textbf{\arabic*.}]
+	\begin{enumerate}[label=\textbf{\arabic*.}, ref=\arabic*]
 	\item 设$ E $是数域$ \K $上的有限维线性空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵
 		\begin{enumerate}[(1)]
 		\item 证明映射$ u\mapsto[u] $建立了$ \CL(E) $到$ \mathbb{M}_n(\K) $之间的同构映射.
