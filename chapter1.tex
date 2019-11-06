@@ -866,7 +866,7 @@
      \end{Proof}
      
      \begin{Definition}[相对紧]\label{def:相对紧}\index{X!相对紧}
-     设$ (E,d) $是一个度量空间, $ A\subset E $. 若$ \bar{A} $是紧集, 则称$ A $\textbf{相对紧}.
+     设$ (E,d) $是一个度量空间, $ A\subset E $. 若$ \baro{A} $是紧集, 则称$ A $\textbf{相对紧}.
      \end{Definition}
      
      \begin{Remark}\label{rmk:预紧性的刻画}
@@ -1774,7 +1774,7 @@ z     \begin{Theorem} \label{thm:逐点->一致}
 	\begin{enumerate}[(1)]
 	\item $ \CA $在$ K $上是可分点的;
 	\item $ \forall x\in K\,\exists f\in\CA\,(f(x)\ne 0) $;
-	\item $ f\in\CA\Longrightarrow \bar{f}\in\CA $.(也称$ \CA $是\textbf{自伴}的),
+	\item $ f\in\CA\Longrightarrow \baro{f}\in\CA $.(也称$ \CA $是\textbf{自伴}的),
 	\end{enumerate}
 	则$ \CA $在$ C(K,\K) $中稠密.
 	\end{Theorem}
@@ -1802,9 +1802,9 @@ z     \begin{Theorem} \label{thm:逐点->一致}
 	
 	习题后面括号中的序号表示对应书中习题的编号.
 	
-	\begin{enumerate}[\textbf{\arabic*.}]
+	\begin{enumerate}[label=\textbf{\arabic*.}, ref=\arabic*]
 	\item 证明度量空间$ (E,d) $是完备的充分必要条件是: 对$ E $中任一序列$ (x_n)_{n\geqslant 1} $, 若对$ \forall n\geqslant 1 $, 有$ d(x_n,x_{n+1})<2^{-n} $, 则序列$ (x_n)_{n\geqslant 1} $收敛. (2.2)
-	\item 设$ (E,d) $是度量空间, $ (x_n)_{n\geqslant 1} $是$ E $中的Cauchy列, 并有$ A\subset E $. 假设$ A $的闭包$ \bar{A} $在$ E $中完备且有$ \lim\limits_{n\to\infty}d(x_n,A)=0 $. 证明: $ (x_n)_{n\geqslant 1} $在$ E $中收敛. (2.3)
+	\item 设$ (E,d) $是度量空间, $ (x_n)_{n\geqslant 1} $是$ E $中的Cauchy列, 并有$ A\subset E $. 假设$ A $的闭包$ \baro{A} $在$ E $中完备且有$ \lim\limits_{n\to\infty}d(x_n,A)=0 $. 证明: $ (x_n)_{n\geqslant 1} $在$ E $中收敛. (2.3)
 	\item 设$ (E,d) $是度量空间, $ \alpha>0 $. 设$ A\subset E $满足$ \forall x,y\in A $且$ x\ne y $必有$ d(x,y)\geqslant\alpha $. 证明: $ A $是完备的. (2.4)
 	\item 设$ (E,d) $是度量空间, $ (x_n)_{n\geqslant 1} $是$ E $中发散的Cauchy列. 证明: 
 		\begin{enumerate}[(1)]
