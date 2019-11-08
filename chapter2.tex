@@ -1486,7 +1486,7 @@
 		\[
 			\baro{B(x_{n}, r_{n})}\supset \baro{B(x_{n+1}, r_{n+1})}
 		\]
-		且 $ \lim\limits_{n\to\infty}r_{n}=0 $, 由闭集套定理知存在 $ x\in E $ 使 $ x\in\bigcap_{n\geqslant1}\baro{B(x_{n}, r_{n})}\subset\bigcap_{n\geqslant1}O_{n}=0 $, 且 $ x\in\varOmega\cap O_{1} $, 故 $ x\in\varOmega\cap O\ne\varnothing $.\qed
+		且 $ \lim\limits_{n\to\infty}r_{n}=0 $, 由闭集套定理知存在 $ x\in E $ 使 $ x\in\bigcap_{n\geqslant1}\baro{B(x_{n}, r_{n})}\subset\bigcap_{n\geqslant1}O_{n}=O $, 且 $ x\in\varOmega\cap O_{1} $, 故 $ x\in\varOmega\cap O\ne\varnothing $.\qed
 	\end{Proof}
 
 	\begin{Definition}[Baire空间]\index{B!Baire空间}\label{def:Baire空间}
@@ -1505,7 +1505,7 @@
 	\begin{Proof}
 		(1) 任取开集 $ \varOmega\subset E $, 并取 $ (O_{n})_{n\geqslant1} $ 是 $ \varOmega $ 中可数的稠密开集列, 则 $ O_{n} $ 也是 $ E $ 中开集, 取 $ E $ 中开集 $ O'_{n}=O_{n}\cup\bar{\varOmega}^{c} $, 则 $ (O'_{n})_{n\geqslant1} $ 是 $ E $ 中可数的稠密开集, 由 Baire定理, $ O'=\bigcap_{n\geqslant1}(O'_{n}) $ 在 $ E $ 中稠密, 而
 		\[
-			O'=\bigcap_{n\geqslant1}O_{n}'=\bigcup(O_{n}\cup\bar{\varOmega}^{c})=\bigcap_{n\geqslant1}O_{n}\cup \bar{\varOmega}^{c}
+			O'=\bigcap_{n\geqslant1}O_{n}'=\bigcup_{n\geqslant1}(O_{n}\cup\bar{\varOmega}^{c})=\bigcap_{n\geqslant1}O_{n}\cup \bar{\varOmega}^{c}
 		\]
 		故只能 $ \bigcap_{n\geqslant1}O_{n} $ 在 $ \varOmega $ 上稠密, 即 $ \varOmega $ 是 Baire空间.
 
@@ -1518,7 +1518,7 @@
 		这与它在 $ \varOmega $ 中稠密矛盾.\qed
 	\end{Proof}
 	\begin{Example}
-		由 Baire定理, 完备度量空间是 Baire空间, 则 Banach空间, Hilbert空间也是Baire空间. 进一步, 局部紧的 Hausdorff空间也是 Baire空间, 而 \Q 不是 Baire空间, 因为 $ \Q=\bigcup_{n\geqslant F_{n}} $, 其中 $ F_{n} $ 均有限, 则 $ F_{n} $ 闭,  $ \mathring{F}_{n}=\varnothing $, 有 $ \bigcup_{n\geqslant1}\mathring{F}_{n}=\varnothing $, 由上一定理的~(2)~可知. 
+		由 Baire定理, 完备度量空间是 Baire空间, 则 Banach空间, Hilbert空间也是Baire空间. 进一步, 局部紧的 Hausdorff空间也是 Baire空间, 而 \Q 不是 Baire空间, 因为 $ \Q=\bigcup_{n\geqslant1}F_{n} $, 其中 $ F_{n} $ 均有限, 则 $ F_{n} $ 闭,  $ \mathring{F}_{n}=\varnothing $, 有 $ \bigcup_{n\geqslant1}\mathring{F}_{n}=\varnothing $, 由上一定理的~(2)~可知. 
 	\end{Example}
 	\begin{Definition}[纲集]\index{G!纲集}\index{P!贫集}\index{S!剩余集}\label{def:纲集}
 		设 $ E $ 是拓扑空间,
@@ -1551,7 +1551,7 @@
 		\]
 		则若 $ x\in \cont(f) $, 令 $ z=x $ 即得
 		\[
-			\forall\varepsilon >0\,\exists V\in\CN(x)\,(y\in V\Rightarrow d(f(x), f(y))<\frac{\varepsilon}{2}),
+			\forall\varepsilon >0\,\exists V\in\CN(x)\,\Big(y\in V\Rightarrow d(f(x), f(y))<\frac{\varepsilon}{2}\Big),
 		\]
 		则 $ d(f(y), f(z))<\varepsilon/2+\varepsilon/2=\varepsilon $, 有 $ \omega_{f}(x)=0 $, 反之显然成立, 即 $ x\in\cont(f) $ 当且仅当 $ \omega_{f}(x)=0 $, 也即
 		\[
@@ -1571,7 +1571,7 @@
 	\end{Proof}
 		
 	\begin{Theorem}
-		设 $ E $ 是 Banach空间, $ (F, d) $  是度量空间, 并设映射序列 $ (f_{n})_{n\geqslant1}\subset C(E, F) $ 逐点收敛到 $ f $, 则 $ f $ 的连续点构成的集合 $ \cont(f) $ 是一个在 $ E $ 中稠密的 $ \CG_{\delta} $ 集. 
+		设 $ E $ 是 Baire空间, $ (F, d) $  是度量空间, 并设映射序列 $ (f_{n})_{n\geqslant1}\subset C(E, F) $ 逐点收敛到 $ f $, 则 $ f $ 的连续点构成的集合 $ \cont(f) $ 是一个在 $ E $ 中稠密的 $ \CG_{\delta} $ 集. 
 	\end{Theorem}
 	\begin{Proof}
 		因为每一个 $ f_{n} $ 连续, 定义
