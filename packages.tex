@@ -1,18 +1,5 @@
-%设定字体
-
-%% \setCJKmainfont[ItalicFont=STKaiti]{Source Han Serif CN}
-%% \textbf为思源宋体
-
- \setCJKmainfont[BoldFont=黑体, ItalicFont=STKaiti]{Source Han Serif CN}
-%% \textbf为思源黑体
-
-%% \setCJKsansfont{Source Han Sans CN}
-%% \setCJKmonofont{Source Han Sans CN}
-%% \setCJKfamilyfont{boldsong}{Source Han Serif CN Heavy}
-
 %数学式
 \usepackage{mathtools,extarrows,amsfonts,amssymb,bm,mathrsfs} %数学式宏包, 更多箭头, 黑板体等数学字体,leqslant等符号
-%% mathtools提供\intertext命令
 \usepackage{amsthm} %定理环境
 
 \DeclareMathOperator{\rad}{rad}
@@ -40,17 +27,21 @@
 
 \newcommand{\CA}{\mathcal{A}}
 \newcommand{\CB}{\mathcal{B}}
+\newcommand{\CF}{\mathcal{F}}
+\newcommand{\CG}{\mathcal{G}}
 \newcommand{\CH}{\mathcal{H}}
 \newcommand{\CL}{\mathcal{L}}
 \newcommand{\CN}{\mathcal{N}}
-\newcommand{\CG}{\mathcal{G}}
-\newcommand{\CF}{\mathcal{F}}
 
 \renewcommand{\Re}{\mathrm{Re\,}}
 \renewcommand{\Im}{\mathrm{Im\,}}
 \newcommand{\sgn}{\mathrm{sgn}\,}
-
 \newcommand{\diff}{\,\mathrm{d}}
+
+\newcommand{\Fs}{\CF_{\sigma}}
+\newcommand{\Gd}{\CG_{\delta}}
+
+
 \usepackage{tasks}
 \NewTasks[counter-format=(tsk[1]), item-indent=2em, label-offset=1em, label-align=right]{lpbn}
 \NewTasks[counter-format=(tsk[a]), item-indent=2em, label-offset=1em]{alpbn}
