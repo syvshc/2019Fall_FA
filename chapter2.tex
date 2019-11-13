@@ -1309,7 +1309,7 @@
 	\[
 		\begin{aligned}
 			d(x, E)^{2}=\norm{x-P_{E}(x)}^{2} & =\lrangle{x, x}-\lrangle{P_{E}(x), x}\\
-			& \lrangle{x, x}-]-\sum_{i=1}^{n}\lambda_{i}\lrangle{x_{i}, x},
+			&= \lrangle{x, x}-\sum_{i=1}^{n}\lambda_{i}\lrangle{x_{i}, x},
 		\end{aligned}
 	\]
 	注意到
@@ -1340,6 +1340,268 @@
 	\]
 	故由上式右端当且仅当 $ \sum\limits_{i=1}{n}\alpha_{i}x_{i} $ 知 \seq{x} 线性相关.
 	
+
+
+\section{Baire空间}
+	\begin{Theorem}[Baire]
+		设 $ (E, d) $ 是完备度量空间,  $ (O_{n})_{n\geqslant1} $ 是 $ E $ 中一列稠密开子集, 则 $ O=\bigcap_{n\geqslant1}O_{n} $ 在 $ E $ 中稠密.  
+	\end{Theorem}
+	\begin{Proof}
+		任取 $ \varOmega $ 是 $ E $ 的开子集, 只需证 $ \varOmega\cap O\ne\varnothing $.
+
+		因为 $ O_{1} $ 是　$ E $ 中稠密子集, 则存在 $ \baro{B(x_{1}, r_{1})}\subset \varOmega\cap O_{1} $, 不妨设 $ r_{1}<1 $, 再由 $ O_{2} $ 是稠密子集, 则存在 $ \baro{B(x_{2}, r_{2})}\subset B(x_{1}, r_{1})\cap O_{2} $, 不妨设 $ r_{2}<1/2 $, 依此进行下去, 得一闭球套 $ (\baro{B(x_{n}, r_{n})})_{n\geqslant1} $ 满足:
+		\[
+			\baro{B(x_{n}, r_{n})}\supset \baro{B(x_{n+1}, r_{n+1})}
+		\]
+		且 $ \lim\limits_{n\to\infty}r_{n}=0 $, 由闭集套定理知存在 $ x\in E $ 使 $ x\in\bigcap_{n\geqslant1}\baro{B(x_{n}, r_{n})}\subset\bigcap_{n\geqslant1}O_{n}=0 $, 且 $ x\in\varOmega\cap O_{1} $, 故 $ x\in\varOmega\cap O\ne\varnothing $.\qed
+	\end{Proof}
+
+	\begin{Definition}[Baire空间]\index{B!Baire空间}\label{def:Baire空间}
+		设 $ E $ 是拓扑空间, 若 $ E $ 中任意可数多个稠密开集的交仍在 $ E $ 中稠密, 则称 $ E $ 是\textbf{Baire空间}, 或等价地, 若 $ E $ 中任意可数多个无内点的闭集的并仍无内点, 则称 $ E $ 是Baire空间. 
+	\end{Definition}
+
+	下面给出的定理~(2)~的结论可用于否定一空间是 Baire空间. 
+	\begin{Theorem}[Baire推论]
+		设 $ E $ 是 Baire空间, 则
+		\begin{enumerate}[(1)]
+			\item $ E $ 中任意开集仍是 Baire空间;
+			\item 设 $ (F_{n})_{n\geqslant1} $ 是 $ E $ 中的一列闭子集, 且 $ E = \bigcup_{n\geqslant1}F_{n} $, 则 $ \bigcup_{n\geqslant1}\mathring{F}_{n} $ 在 $ E $ 中稠密.
+		\end{enumerate}
+	\end{Theorem}
+
+	\begin{Proof}
+		(1) 任取开集 $ \varOmega\subset E $, 并取 $ (O_{n})_{n\geqslant1} $ 是 $ \varOmega $ 中可数的稠密开集列, 则 $ O_{n} $ 也是 $ E $ 中开集, 取 $ E $ 中开集 $ O'_{n}=O_{n}\cup\bar{\varOmega}^{c} $, 则 $ (O'_{n})_{n\geqslant1} $ 是 $ E $ 中可数的稠密开集, 由 Baire定理, $ O'=\bigcap_{n\geqslant1}(O'_{n}) $ 在 $ E $ 中稠密, 而
+		\[
+			O'=\bigcap_{n\geqslant1}O_{n}'=\bigcup(O_{n}\cup\bar{\varOmega}^{c})=\bigcap_{n\geqslant1}O_{n}\cup \bar{\varOmega}^{c}
+		\]
+		故只能 $ \bigcap_{n\geqslant1}O_{n} $ 在 $ \varOmega $ 上稠密, 即 $ \varOmega $ 是 Baire空间.
+
+		(2) 取 $ \varOmega $ 是 $ E $ 中开集, 往证 $ \varOmega\cap\bigcup_{n\geqslant1}\mathring F_{n}=\varnothing $ 成立, 即证 $ \bigcup_{n\geqslant1}(\varOmega\cap F_{n})\degree=\varnothing $, 即证存在  $ n $ 使得 $ \varOmega\cap\mathring{F}_{n}\ne0 $.
+
+		用反证法. 若对任意 $ n $ 都有 $ \varOmega\cap\mathring{F}_{n}=\varnothing $ 成立, 即 $ \varOmega $ 不含 $ F_{n} $ 的任何内点, 即 $ (\varOmega\cap F_{n})\degree=\varnothing $, 则 $ (\varOmega\cap F_{n})^{c}\cap\varOmega $ 在 $ \varOmega $ 中稠密, 也即 $ \varOmega\cap F_{n}^{c} $ 在 $ \varOmega $ 中稠密, 由~(1)~可知 $ \bigcap_{n\geqslant1}(\varOmega\cap F_{n}^{c}) $ 在 $ \varOmega $ 中稠密, 而
+		\[
+			\bigcap_{n\geqslant1}(\varOmega\cap F_{n}^{c})=\varOmega\cap \Big(\bigcap_{n\geqslant1}F_{n}^{c}\Big)=\varOmega\cap\Big(\bigcup_{n\geqslant1}F_{n}\Big)^{c}=\varOmega\cap E^{c}=\varnothing
+		\]
+		这与它在 $ \varOmega $ 中稠密矛盾.\qed
+	\end{Proof}
+	\begin{Example}
+		由 Baire定理, 完备度量空间是 Baire空间, 则 Banach空间, Hilbert空间也是Baire空间. 进一步, 局部紧的 Hausdorff空间也是 Baire空间, 而 \Q 不是 Baire空间, 因为 $ \Q=\bigcup_{n\geqslant F_{n}} $, 其中 $ F_{n} $ 均有限, 则 $ F_{n} $ 闭,  $ \mathring{F}_{n}=\varnothing $, 有 $ \bigcup_{n\geqslant1}\mathring{F}_{n}=\varnothing $, 由上一定理的~(2)~可知. 
+	\end{Example}
+	\begin{Definition}[纲集]\index{G!纲集}\index{P!贫集}\index{S!剩余集}\label{def:纲集}
+		设 $ E $ 是拓扑空间,
+		\begin{enumerate}[(1)]
+			\item 称 $ E $ 中可数个开集的交为 $ \CG_{\delta} $ 集, 可数个闭集的并为 $ \CF_{\sigma} $ 集.
+			\item 对 $ A\subset E $ 若 $ A $ 为某无内点的 $ \CF_{\sigma} $ 集的子集, 则称 $ A $ 为\textbf{贫集}或\textbf{第一纲集}; 若 $ A $ 包含一个稠密的 $ \CG_{\delta} $ 集, 则称 $ A $ 为\textbf{剩余集}.
+			 \end{enumerate}
+	\end{Definition}
+	\begin{Remark}
+		下面对贫集和剩余集进行一些说明
+		\begin{enumerate}[(1)]
+			\item $ A $ 是 $ \CF_{\sigma} $ 集当且仅当 $ A^{c} $ 是 $ \CG_{\delta} $ 集;
+			\item $ A $ 是贫集当且仅当 $ A^{c} $ 是剩余集. (因为 $ A $ 是贫集 $ \Longleftrightarrow\mathring{A}=\varnothing\Longleftrightarrow\baro{A^{c}}=E $);
+			\item 若 $ E $ 是 Baire空间, 则可数个剩余集的交仍是剩余集, 可数个贫集的并仍是贫集;
+			\item 贫集与剩余集的概念和类比于测度论中零测集与零测集补集的概念, 它们有类似的性质.
+		\end{enumerate}
+	\end{Remark}
+
+	\begin{Example}
+		取 $ E=\R $, 则 $ \varnothing $ 与\R 既是 $ \CF_{\sigma} $ 集又是 $ \CG_{\delta} $ 集; $ (0, 1] $ 既是 $ \CF_{\sigma} $ 集又是 $ \CG_{\delta} $ 集, 因为 $ (0, 1]=\bigcap_{n\geqslant1}(0, 1+1/n) $, 且 $ (0, 1]=\bigcup_{n\geqslant1}[1/n, 1] $. 
+	\end{Example}
+
+	\begin{Lemma}
+		设 $ E $ 是 Hausdorff空间,  $ (F, d) $ 是度量空间, 则 $ f : E\to F $ 的连续点集 $ \cont(f) $ 是一个 $ \CG_{\delta} $ 集.
+		\end{Lemma}
+	\begin{Proof}
+		定义 $ f $ 在 $ x $ 处的振幅为
+		\[
+			\omega_{f}(x)=\inf_{V\in\CN(x)}\sup_{y, z\in V}d(f(y), f(z)),
+		\]
+		则若 $ x\in \cont(f) $, 令 $ z=x $ 即得
+		\[
+			\forall\varepsilon >0\,\exists V\in\CN(x)\,(y\in V\Rightarrow d(f(x), f(y))<\frac{\varepsilon}{2}),
+		\]
+		则 $ d(f(y), f(z))<\varepsilon/2+\varepsilon/2=\varepsilon $, 有 $ \omega_{f}(x)=0 $, 反之显然成立, 即 $ x\in\cont(f) $ 当且仅当 $ \omega_{f}(x)=0 $, 也即
+		\[
+			\cont(f)=\bigcap_{n\geqslant1}\left\{ x\in E : \omega_{f}(x)<\frac{1}{n} \right\}.
+		\]
+		下证 $ \forall \varepsilon>0 $ 都有 $ \left\{ x\in E: \omega_{f}(x)<\varepsilon \right\} $ 是开集.
+
+		由 $ \omega_{f}(x)<\varepsilon $, 有
+		\[
+			\inf_{v\in\CN(x)}\sup_{y, z\in V}d(f(y), f(z))<\varepsilon,
+		\]
+		即 $ \exists V\in\CN(x) $ 使得 $ \sup\limits_{y, z\in V}d(f(y), f(z))<\varepsilon $, 取 $ x'\in U\subset V, U\in \CN(x) $ 则
+		\[
+			\sup_{y, z\in U}d(f(y), f(z))<\varepsilon \Longrightarrow \omega_{f}(x')<\varepsilon,
+		\]
+		即 $ x'\in\{ x\in E : \omega_{f}(x)<\varepsilon \} $, 从而由 $ x' $ 的任意性, $ U\subset\{ x\in E : \omega_{f}(x)<\varepsilon \}  $, 再由 $ x $ 的任意性, 可知$\{ x\in E : \omega_{f}(x)<\varepsilon \}$是开集. 由此可得 $ \cont(f) $ 是 $ \CG_{\delta} $ 集. \qed
+	\end{Proof}
+		
+	\begin{Theorem}
+		设 $ E $ 是 Banach空间, $ (F, d) $  是度量空间, 并设映射序列 $ (f_{n})_{n\geqslant1}\subset C(E, F) $ 逐点收敛到 $ f $, 则 $ f $ 的连续点构成的集合 $ \cont(f) $ 是一个在 $ E $ 中稠密的 $ \CG_{\delta} $ 集. 
+	\end{Theorem}
+	\begin{Proof}
+		因为每一个 $ f_{n} $ 连续, 定义
+		\[
+			\begin{aligned}
+				F_{N, k} & :=\left\{ x\in E: d(f_{n}(x), f_{m}(x))<\frac{1}{k}, \forall m, n\geqslant N \right\} \\
+				& = \bigcap_{m,n\geqslant N}\left\{ x\in E: d(f_{n}(x), f_{m}(x))<\frac{1}{k} \right\}
+			\end{aligned}
+		\]
+		故 $ F_{N, k} $ 是闭集, 再由 $ (f_{n})_{n\geqslant1} $ 逐点收敛可知
+		\[
+			\forall k\geqslant1\,\Big(E=\bigcup_{N\geqslant1}F_{N, k}\Big),
+		\]
+		令 $ O_{k}=\bigcup_{N\geqslant1}\mathring{F}_{N, k} $ 是开集, 又Baire推论, 它在 $ E $ 稠密, 又由 $ E $ 是 Baire空间, 故 $ O=\bigcap_{k\geqslant1}O_{k} $ 在 $ E $ 中稠密, 即 $ \forall x\in O, \forall k\geqslant1 $, 都有 $ x\in O_{k} $, 由 $ O_{k} $ 的定义, 即有
+		\[
+			\forall x\in O\,\forall k\geqslant1\,\exists N\geqslant1\,(x\in\mathring{F}_{N, k}),
+		\]
+		则
+		\[
+			\forall m, n\geqslant N\,\forall y\in\mathring{F}_{N, k}\,\Big(d(f_{n}(y), f_{m}(y))\leqslant\frac{1}{k}\Big),
+		\]
+		令 $ n\to\infty $, 有 $ d(f(y), f_{m}(y))\leqslant1/k $, 因为 $ f_{N} $ 连续, 有
+		\[
+			\exists V\in\CN(x)\,\forall y\in V\,\Big( d(f_{N}(x), f_{N}(y))\leqslant\frac{1}{k} \Big)
+		\]
+		取 $ U = V\cap\mathring{F}_{N, k} $, 则 $ U\in\CN(x) $ 且 $ y\in U $ 时, 有
+		\[
+			\begin{aligned}
+				d(f(y), f(x)) & \leqslant d(f(y), f_{N}(y))+d(f_{N}(y), f_{N}(x))+d(f_{N}(x), f(x))\\
+				& \leqslant \frac{1}{k}+\frac{1}{k}+\frac{1}{k}=\frac{3}{k},
+			\end{aligned}
+		\]
+		则 $ f $ 在 $ x $ 点连续, 即 $ O\subset\cont(f) $, 而由上一引理 知 $ \cont(f) $ 是 $ \CG_{\delta} $ 集, 从而命题得证.\qed
+	\end{Proof}
+	上面的定理可以说明尽管连续函数列的极限函数不一定连续, 但它的连续点非常多. 而下面的定理告诉我们, 尽管Weierstrass构造出的处处连续但处处不可微的函数非常反直觉, 但实际上这样的函数才是连续函数中的``绝大部分".
+	
+	\begin{Proposition}
+	$ C[0,1] $上处处不可微的函数集合$ E $是剩余集.
+	\end{Proposition}
+	\begin{Proof}
+	设$ A_n $表示$ C[0,1] $中如此元素$ f $的集合:
+	\[
+	\exists s\in[0,1]\,\left(0\leqslant s+h\leqslant 1\land\abs{h}\leqslant \frac{1}{n}\Rightarrow \abs{\frac{f(s+h)-f(s)}{h}}\leqslant n \right),
+	\]
+	若$ f $在某点$ s $可微, 则存在$ n $使得$ f\in A_n $. 于是$ C[0,1]\sm E=\bigcup_{n\geqslant 1}A_n $.
+	
+	往证$ \bigcup_{n\geqslant 1}A_n $是贫集, 即证$ A_n^c $是稠密开集. 注意到
+	\[
+	\forall f\in A_n^c\,\forall s\in[0,1]\,\exists h_s:\left( \left( \abs{h_s}\leqslant\frac{1}{n} \right)\land(\abs{f(s+h_s)-f(s)}>n\abs{h_s}), \right)
+	\]
+	由$ f $的连续性, 有
+	\[
+	\exists \varepsilon_s>0\,\exists J_s\in\CN(s)\,(t\in J_s\Rightarrow\abs{f(t+h_s)-f(t)}>n\abs{h_s}+2\varepsilon_s).
+	\]
+	因$ [0,1] $紧, 存在$ J_{s_1},J_{s_2},\dots,J_{s_m} $覆盖$ [0,1] $. 取$ \varepsilon=\min\{ \varepsilon_{s_1},\varepsilon_{s_2},\dots,\varepsilon_{s_m} \} $, 则对任意的满足$ \norm{g-f}_\infty<\varepsilon $的$ g\in C[0,1] $, $ \forall t\in J_{s_k} $, 都有
+	\[
+	\abs{g(t+h_{s_k})-g(t)}\geqslant\abs{f(t+h_{s_k})-f(t)}-2\varepsilon_{s_k}>n\abs{h_{s_k}},
+	\]
+	即$ g\in A_n^c $. 从而$ A_n^c $是开集.
+	
+	再证$ A_n $无内点, 由Weierstrass定理
+	\[
+	\forall f\in A_n\,\forall\varepsilon>0\,\exists p\in[0,1]\left(\norm{f-p}_\infty<\frac{\varepsilon}{2}\right)
+	\]
+	由Lagrange中值定理
+	\[
+	\exists M>0\,(\abs{p(s+h)-p(s)}\leqslant M\abs{h})
+	\]
+	设g是一个满足$ \norm{g}_\infty<\varepsilon/2 $, 且各段斜率绝对值均大于$ M+n $的分段线性函数, 那么$ p+g\in B(f,\varepsilon) $. 但$ p+g\notin A_n $, 从而$ A_n $无内点. 于是$ \bigcup_{n\geqslant 1}A_n $是贫集.\qed
+	\end{Proof}
+	
+\section{共鸣定理、开映射定理与闭图像定理}
+	\subsection{共鸣定理}
+	\begin{Theorem}[Banach-Steinhaus/一致有界原理/共鸣定理]
+	设$ E $是Banach空间而$ F $是赋范空间, $ (u_i)_{i\in\alpha}\subset\CB(E,F) $. 若$ \forall x\in E\,(\sup\limits_{i\in\alpha}\norm{u_i(x)}<\infty) $, 那么
+	\[
+	\sup_{i\in\alpha}\norm{u_i}\leqslant\infty,
+	\]
+	即$ (u_i)_{i\in\alpha} $一致有界.
+	\end{Theorem}
+	\begin{Proof}
+	记$ M(x)=\sup\limits_{i\in\alpha}\norm{u_i(x)} $, 且
+	\[
+	F_n=\{ x\in E : M(x)\leqslant n \}=\bigcap_{i\in\alpha}\{ x\in E : \norm{u_i(x)}\leqslant n \},
+	\]
+	故$ F_n $是闭集. 又$ E=\bigcup_{n\geqslant 1}F_n $, 由Baire推论可知$ \bigcup_{n\geqslant 1}\mathring{F}_n $在$ E $中稠密, 则存在$ n $使得$ \mathring{F}_n\ne\varnothing $. 从而存在$ B(x_0,r)\subset\mathring{F}_n $, 即
+	\[
+	\forall x\in B(x_0,r)\,\forall i\in\alpha\,(\norm{u_i(x)}\leqslant n)
+	\]
+	设$ x=x_0+y $, 则$ y\in B(0,r) $, 那么上式也就是
+	\[
+	\forall y\in B(0,r)\,\forall i\in\alpha\,(\norm{u_i(x_0+y)}\leqslant n)
+	\]
+	由$ u_i $的线性性, 对任意的$ i\in\alpha $都有
+	\[
+	\norm{u_i(y)}=\norm{u_i(y+x_0)-u_i(x_0)}\leqslant n+M(x_0),
+	\]
+	成立. 从而
+	\[
+	\norm{u_i}=\sup_{y\ne 0}\frac{\norm{u_i(y)}}{\norm{y}}=\sup_{\norm{y}=r}\frac{\norm{u_i(y)}}{r}\leqslant\frac{n+M(x_0)}{r},
+	\]
+	并且注意到右侧与$ i $无关, 故$ \sup\limits_{i\in\alpha}\norm{u_i}<\infty $.\qed
+	\end{Proof}
+	\begin{Remark}
+	(1) 记$ c=\sup\limits_{i\in\alpha}\norm{u_i} $, 则
+	\[
+	\forall i\in\alpha\,(\norm{u_i(x)-u_i(y)}\leqslant c\norm{x-y})
+	\]
+	即$ (u_i)_{i\in\alpha} $一致等度连续.
+	
+	(2) 一致有界原理的逆否命题是: 若$ (u_i)_{i\in\alpha} $无界, 则存在$ x\in E $使得$ \sup\limits_{i\in\alpha}\norm{u_i(x)}=\infty $.
+	\end{Remark}
+	
+	\begin{Theorem}
+	设$ E $是Banach空间, $ F $是赋范空间, $ (u_i)_{i\in\alpha}\subset\CB(E,F) $满足$ \sup\limits_{i\in\alpha}\norm{u_i}=\infty $, 则$ G=\{ x\in E: M(x)=\infty \} $是$ E $中稠密的$ \Gd $集.
+	\end{Theorem}
+	\begin{Proof}
+	由$ G $的定义可知
+	\[
+	G=\bigcap_{n\geqslant 1}\{ x\in E : M(x)>n \}=\bigcap_{n\geqslant 1}\varOmega_n,
+	\]
+	则$ \varOmega_n=F_n^c $是开集, 故$ G $是$ \Gd $集.
+	
+	若$ \varOmega_n $不稠密, 则$ \mathring{F}_n\ne\varnothing $, 即$ (u_i)_{i\in\alpha} $一致有界, 由共鸣定理可知矛盾. 从而$ \varOmega_n $稠密, 由Baire定理可知$ G $也稠密.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ E $是Banach空间而$ F $是赋范空间, $ (u_n)_{n\geqslant 1}\subset\CB(E,F) $. 若$ (u_n)_{n\geqslant 1} $逐点收敛到$ u $, 则$ u\in\CB(E,F) $且
+	\[
+	\norm{u}\leqslant\liminf_{n\to\infty}\norm{u_n}.
+	\]
+	\end{Corollary}
+	\begin{Proof}
+	因为$ \forall x\in E $有$ u_n(x)\to u(x) $, 则
+	\[
+	\sup_{n\geqslant 1}\norm{u_n(x)}<\infty\Longrightarrow\sup_{n\geqslant 1}\norm{u_n}<\infty.
+	\]
+	故
+	\[
+	\norm{u(x)}=\lim_{n\to\infty}\norm{u_n(x)}\leqslant\lim_{n\to\infty}\norm{u_n}\norm{x}\leqslant\Big( \sup_{n\geqslant 1}\norm{u_n} \Big)\norm{x},
+	\]
+	即$ \norm{u}<\infty $. 于是$ \norm{u}\leqslant\liminf\limits_{n\to\infty}\norm{u_n} $.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ E, F $是Banach空间, $ G $是赋范空间, $ B : E\times F\to G $是双线性映射. 若$ B $对两个变量均连续, 则$ B $在$ E\times F $中连续.
+	\end{Corollary}
+	\begin{Proof}
+	任取$ (x_0,y_0)\in E\times F $, 设$ ((x_n,y_n))_{n\geqslant 1} $收敛到$ (x_0,y_0) $, 则
+	\[
+	\begin{aligned}
+	\norm{B(x_n,y_n)-B(x_0,y_0)}&\leqslant\norm{B(x_n,y_n)-B(x_n,y_0)}+\norm{B(x_n,y_0)-B(x_0,y_0)}\\
+	&=\norm{B(x_n,y_n-y_0)}+\norm{B(x_n-x_0,y_0)}
+	\end{aligned}
+	\]
+	令$ B_n(y)=B(x_n,y) $, 那么$ B_n(y)\to B(x_0,y_0) $, 从而对任意的$ y $, $ (B_n(y))_{n\geqslant 1} $有界. 由共鸣定理可知$ (B_n)_{n\geqslant 1} $一致有界, 令$ n\to\infty $有
+	\[
+	\norm{B(x_n,y_n-y_0)}\leqslant\Big( \sup_{i\in\alpha}\norm{B_n} \Big)\norm{y_n-y_0}\to 0.
+	\]
+	同理可证$ \norm{B(x_n-x_0,y_n)}\to 0 $.\qed
+	\end{Proof}
+	
+
 \section{Fourier分析}
 	为方便以下讨论, 先定义以下几个常用空间: 考虑在\R 上以 $ 2\pi $ 为周期的函数 $ f $, 它可以限制在 $ [0, 2\pi] $ 上, 取规范化测度 (即测度空间为概率空间的测度) $ \frac{\diff\theta}{2\pi} $, 记
 	\[
@@ -1351,7 +1613,7 @@
 	\]
 	再记 $ \mathcal{P} $ 为所有三角多项式构成的线性空间, 则$ \forall f\in\mathcal{P} $ 有
 	\[
-		f(\theta)=\sum_{k=m}^{n}\alpha{k}\exp(\imag k\theta), \quad \alpha_{k}\in\C, m\leqslant n\in\Z,
+		f(\theta)=\sum_{k=m}^{n}\alpha_{k}\exp(\imag k\theta), \quad \alpha_{k}\in\C, m\leqslant n\in\Z,
 	\]
 	因为 $ C_{2\pi}=\left\{ f\in C[0, 2\pi]: f(0)=f(2\pi) \right\}\subset C[0, 2\pi] $, 且由 $ C_{2\pi}=\ker\rho_{0}-\rho{2\pi}) $ 知 $ \mathrm{codim}\ C_{2\pi}=1 $, (若 $ W $ 是 $ V $ 的线性子空间, 称 $ W $ 在 $ V $ 的\textbf{余维数} $ \mathrm{codim}\ W=\dim (V/W) $), 而
 	\[
@@ -1386,7 +1648,7 @@
 		为函数  $ f $ 的 $ n $ 阶\textbf{Fourier系数}, 并记 $ f $ 的所有Fourier系数构成的序列为 $ \CF(f)=(\hat{f}(n))_{n\in\Z} $, 称其为 $ f $ 的\textbf{Fourier变换}, 有时也以 $ \hat{f} $ 记 $ \CF(f) $. 
 	\end{Definition}
 	\begin{Theorem}
-		~
+		Fourier变换具有下列的性质:
 		\begin{enumerate}[(1)]
 			\item 设 $ 0<p<\infty $, 则 $ \mathcal{P} $ 在 $ C_{2\pi} $ 与 $ L_{2\pi}^{p} $ 中都稠密.
 			\item $ \CF : L_{2\pi}^{1}\to c_{0}(\Z) $ 是范数为 $ 1 $ 的单射, 其中
@@ -1468,145 +1730,82 @@
 	\end{Proof}
 
 	\begin{Remark}
-		定理中\,(2)\,的一部分结论: $ \CF(f)\in c_{0}(\Z) $ 即为所谓 Riemann-Lebesgue引理, 且由\,(3)\,中结论与 Parsevaal 等式, $\forall f\in L_{2\pi}^{2}$, 有
+		定理中\,(2)\,的一部分结论: $ \CF(f)\in c_{0}(\Z) $ 即为所谓 Riemann-Lebesgue引理, 且由\,(3)\,中结论与 Parseval 等式, $\forall f\in L_{2\pi}^{2}$, 有
 		\[
 			\int_{0}^{2\pi}\abs{f(\theta)}^{2}\diff\theta=2\pi\sum_{n=-\infty}^{+\infty}\abs{\hat{f}(n)}^{2}.
 		\]
 	\end{Remark}
-
-
-\section{Baire空间}
-	\begin{Theorem}[Baire]
-		设 $ (E, d) $ 是完备度量空间,  $ (O_{n})_{n\geqslant1} $ 是 $ E $ 中一列稠密开子集, 则 $ O=\bigcap_{n\geqslant1}O_{n} $ 在 $ E $ 中稠密.  
-	\end{Theorem}
-	\begin{Proof}
-		任取 $ \varOmega $ 是 $ E $ 的开子集, 只需证 $ \varOmega\cap O\ne\varnothing $.
-
-		因为 $ O_{1} $ 是　$ E $ 中稠密子集, 则存在 $ \baro{B(x_{1}, r_{1})}\subset \varOmega\cap O_{1} $, 不妨设 $ r_{1}<1 $, 再由 $ O_{2} $ 是稠密子集, 则存在 $ \baro{B(x_{2}, r_{2})}\subset B(x_{1}, r_{1})\cap O_{2} $, 不妨设 $ r_{2}<1/2 $, 依此进行下去, 得一闭球套 $ (\baro{B(x_{n}, r_{n})})_{n\geqslant1} $ 满足:
-		\[
-			\baro{B(x_{n}, r_{n})}\supset \baro{B(x_{n+1}, r_{n+1})}
-		\]
-		且 $ \lim\limits_{n\to\infty}r_{n}=0 $, 由闭集套定理知存在 $ x\in E $ 使 $ x\in\bigcap_{n\geqslant1}\baro{B(x_{n}, r_{n})}\subset\bigcap_{n\geqslant1}O_{n}=O $, 且 $ x\in\varOmega\cap O_{1} $, 故 $ x\in\varOmega\cap O\ne\varnothing $.\qed
-	\end{Proof}
-
-	\begin{Definition}[Baire空间]\index{B!Baire空间}\label{def:Baire空间}
-		设 $ E $ 是拓扑空间, 若 $ E $ 中任意可数多个稠密开集的交仍在 $ E $ 中稠密, 则称 $ E $ 是\textbf{Baire空间}, 或等价地, 若 $ E $ 中任意可数多个无内点的闭集的并仍无内点, 则称 $ E $ 是Baire空间. 
+	
+	\begin{Definition}[Fourier级数]\index{F!Fourier级数}
+	设$ f\in C_{2\pi} $, 称
+	\[
+	f\sim\sum_{n=-\infty}^{\infty}\hat{f}(n)\exp(\imag nt)
+	\]
+	为$ f $的\textbf{Fourier级数}, 并称$ \sum\limits_{k=-n}^n\hat{f}(k)\exp(\imag kt) $为Fourier级数的$ n $次部分和.
 	\end{Definition}
-
-	下面给出的定理~(2)~的结论可用于否定一空间是 Baire空间. 
-	\begin{Theorem}[Baire推论]
-		设 $ E $ 是 Baire空间, 则
-		\begin{enumerate}[(1)]
-			\item $ E $ 中任意开集仍是 Baire空间;
-			\item 设 $ (F_{n})_{n\geqslant1} $ 是 $ E $ 中的一列闭子集, 且 $ E = \bigcup_{n\geqslant1}F_{n} $, 则 $ \bigcup_{n\geqslant1}\mathring{F}_{n} $ 在 $ E $ 中稠密.
-		\end{enumerate}
-	\end{Theorem}
-
-	\begin{Proof}
-		(1) 任取开集 $ \varOmega\subset E $, 并取 $ (O_{n})_{n\geqslant1} $ 是 $ \varOmega $ 中可数的稠密开集列, 则 $ O_{n} $ 也是 $ E $ 中开集, 取 $ E $ 中开集 $ O'_{n}=O_{n}\cup\bar{\varOmega}^{c} $, 则 $ (O'_{n})_{n\geqslant1} $ 是 $ E $ 中可数的稠密开集, 由 Baire定理, $ O'=\bigcap_{n\geqslant1}(O'_{n}) $ 在 $ E $ 中稠密, 而
-		\[
-			O'=\bigcap_{n\geqslant1}O_{n}'=\bigcup_{n\geqslant1}(O_{n}\cup\bar{\varOmega}^{c})=\bigcap_{n\geqslant1}O_{n}\cup \bar{\varOmega}^{c}
-		\]
-		故只能 $ \bigcap_{n\geqslant1}O_{n} $ 在 $ \varOmega $ 上稠密, 即 $ \varOmega $ 是 Baire空间.
-
-		(2) 取 $ \varOmega $ 是 $ E $ 中开集, 往证 $ \varOmega\cap\bigcup_{n\geqslant1}\mathring F_{n}=\varnothing $ 成立, 即证 $ \bigcup_{n\geqslant1}(\varOmega\cap F_{n})\degree=\varnothing $, 即证存在  $ n $ 使得 $ \varOmega\cap\mathring{F}_{n}\ne0 $.
-
-		用反证法. 若对任意 $ n $ 都有 $ \varOmega\cap\mathring{F}_{n}=\varnothing $ 成立, 即 $ \varOmega $ 不含 $ F_{n} $ 的任何内点, 即 $ (\varOmega\cap F_{n})\degree=\varnothing $, 则 $ (\varOmega\cap F_{n})^{c}\cap\varOmega $ 在 $ \varOmega $ 中稠密, 也即 $ \varOmega\cap F_{n}^{c} $ 在 $ \varOmega $ 中稠密, 由~(1)~可知 $ \bigcap_{n\geqslant1}(\varOmega\cap F_{n}^{c}) $ 在 $ \varOmega $ 中稠密, 而
-		\[
-			\bigcap_{n\geqslant1}(\varOmega\cap F_{n}^{c})=\varOmega\cap \Big(\bigcap_{n\geqslant1}F_{n}^{c}\Big)=\varOmega\cap\Big(\bigcup_{n\geqslant1}F_{n}\Big)^{c}=\varOmega\cap E^{c}=\varnothing
-		\]
-		这与它在 $ \varOmega $ 中稠密矛盾.\qed
-	\end{Proof}
-	\begin{Example}
-		由 Baire定理, 完备度量空间是 Baire空间, 则 Banach空间, Hilbert空间也是Baire空间. 进一步, 局部紧的 Hausdorff空间也是 Baire空间, 而 \Q 不是 Baire空间, 因为 $ \Q=\bigcup_{n\geqslant1}F_{n} $, 其中 $ F_{n} $ 均有限, 则 $ F_{n} $ 闭,  $ \mathring{F}_{n}=\varnothing $, 有 $ \bigcup_{n\geqslant1}\mathring{F}_{n}=\varnothing $, 由上一定理的~(2)~可知. 
-	\end{Example}
-	\begin{Definition}[纲集]\index{G!纲集}\index{P!贫集}\index{S!剩余集}\label{def:纲集}
-		设 $ E $ 是拓扑空间,
-		\begin{enumerate}[(1)]
-			\item 称 $ E $ 中可数个开集的交为 $ \CG_{\delta} $ 集, 可数个闭集的并为 $ \CF_{\sigma} $ 集.
-			\item 对 $ A\subset E $ 若 $ A $ 为某无内点的 $ \CF_{\sigma} $ 集的子集, 则称 $ A $ 为\textbf{贫集}或\textbf{第一纲集}; 若 $ A $ 包含一个稠密的 $ \CG_{\delta} $ 集, 则称 $ A $ 为\textbf{剩余集}.
-			 \end{enumerate}
-	\end{Definition}
-	\begin{Remark}
-		下面对贫集和剩余集进行一些说明
-		\begin{enumerate}[(1)]
-			\item $ A $ 是 $ \CF_{\sigma} $ 集当且仅当 $ A^{c} $ 是 $ \CG_{\delta} $ 集;
-			\item $ A $ 是贫集当且仅当 $ A^{c} $ 是剩余集. (因为 $ A $ 是贫集 $ \Longleftrightarrow\mathring{A}=\varnothing\Longleftrightarrow\baro{A^{c}}=E $);
-			\item 若 $ E $ 是 Baire空间, 则可数个剩余集的交仍是剩余集, 可数个贫集的并仍是贫集;
-			\item 贫集与剩余集的概念和类比于测度论中零测集与零测集补集的概念, 它们有类似的性质.
-		\end{enumerate}
-	\end{Remark}
-
-	\begin{Example}
-		取 $ E=\R $, 则 $ \varnothing $ 与\R 既是 $ \CF_{\sigma} $ 集又是 $ \CG_{\delta} $ 集; $ (0, 1] $ 既是 $ \CF_{\sigma} $ 集又是 $ \CG_{\delta} $ 集, 因为 $ (0, 1]=\bigcap_{n\geqslant1}(0, 1+1/n) $, 且 $ (0, 1]=\bigcup_{n\geqslant1}[1/n, 1] $. 
-	\end{Example}
-
-	\begin{Lemma}
-		设 $ E $ 是 Hausdorff空间,  $ (F, d) $ 是度量空间, 则 $ f : E\to F $ 的连续点集 $ \cont(f) $ 是一个 $ \CG_{\delta} $ 集.
-		\end{Lemma}
-	\begin{Proof}
-		定义 $ f $ 在 $ x $ 处的振幅为
-		\[
-			\omega_{f}(x)=\inf_{V\in\CN(x)}\sup_{y, z\in V}d(f(y), f(z)),
-		\]
-		则若 $ x\in \cont(f) $, 令 $ z=x $ 即得
-		\[
-			\forall\varepsilon >0\,\exists V\in\CN(x)\,\Big(y\in V\Rightarrow d(f(x), f(y))<\frac{\varepsilon}{2}\Big),
-		\]
-		则 $ d(f(y), f(z))<\varepsilon/2+\varepsilon/2=\varepsilon $, 有 $ \omega_{f}(x)=0 $, 反之显然成立, 即 $ x\in\cont(f) $ 当且仅当 $ \omega_{f}(x)=0 $, 也即
-		\[
-			\cont(f)=\bigcap_{n\geqslant1}\left\{ x\in E : \omega_{f}(x)<\frac{1}{n} \right\}.
-		\]
-		下证 $ \forall \varepsilon>0 $ 都有 $ \left\{ x\in E: \omega_{f}(x)<\varepsilon \right\} $ 是开集.
-
-		由 $ \omega_{f}(x)<\varepsilon $, 有
-		\[
-			\inf_{v\in\CN(x)}\sup_{y, z\in V}d(f(y), f(z))<\varepsilon,
-		\]
-		即 $ \exists V\in\CN(x) $ 使得 $ \sup\limits_{y, z\in V}d(f(y), f(z))<\varepsilon $, 取 $ x'\in U\subset V, U\in \CN(x) $ 则
-		\[
-			\sup_{y, z\in U}d(f(y), f(z))<\varepsilon \Longrightarrow \omega_{f}(x')<\varepsilon,
-		\]
-		即 $ x'\in\{ x\in E : \omega_{f}(x)<\varepsilon \} $, 从而由 $ x' $ 的任意性, $ U\subset\{ x\in E : \omega_{f}(x)<\varepsilon \}  $, 再由 $ x $ 的任意性, 可知$\{ x\in E : \omega_{f}(x)<\varepsilon \}$是开集. 由此可得 $ \cont(f) $ 是 $ \CG_{\delta} $ 集. \qed
-	\end{Proof}
-		
+	
+	注意到
+	\[
+	S_n(f)(t)=\sum_{k=-n}^n\hat{f}(k)\exp(\imag kt)=\sum_{k=-n}^n\int_{-\pi}^\pi f(x)\exp(\imag k(t-x))\frac{\diff x}{2\pi}.
+	\]
+	若记
+	\[
+	D_n(x)=\sum_{k=-n}^n\exp(\imag kx)=\frac{\sin((n+1/2)x)}{\sin (x/2)},\qquad n\in\N
+	\]
+	则此时
+	\[
+	S_n(f)(t)=\int_{-\pi}^\pi f(x)D_n(t-x)\frac{\diff x}{2\pi},
+	\]
+	并称$ D_n $是\textbf{Dirichlet核}.\index{D!Dirichlet核}
+	
 	\begin{Theorem}
-		设 $ E $ 是 Baire空间, $ (F, d) $  是度量空间, 并设映射序列 $ (f_{n})_{n\geqslant1}\subset C(E, F) $ 逐点收敛到 $ f $, 则 $ f $ 的连续点构成的集合 $ \cont(f) $ 是一个在 $ E $ 中稠密的 $ \CG_{\delta} $ 集. 
+	设
+	\[
+	G=\left\{ f\in C_{2\pi} : \sup_{n\geqslant 1}\abs{S_n(f)(0)}=\infty \right\},
+	\]
+	则$ G $是$ C_{2\pi} $中稠密的$ \Gd $集.
 	\end{Theorem}
 	\begin{Proof}
-		因为每一个 $ f_{n} $ 连续, 定义
-		\[
-			\begin{aligned}
-				F_{N, k} & :=\left\{ x\in E: d(f_{n}(x), f_{m}(x))<\frac{1}{k}, \forall m, n\geqslant N \right\} \\
-				& = \bigcap_{m,n\geqslant N}\left\{ x\in E: d(f_{n}(x), f_{m}(x))<\frac{1}{k} \right\}
-			\end{aligned}
-		\]
-		故 $ F_{N, k} $ 是闭集, 再由 $ (f_{n})_{n\geqslant1} $ 逐点收敛可知
-		\[
-			\forall k\geqslant1\,\Big(E=\bigcup_{N\geqslant1}F_{N, k}\Big),
-		\]
-		令 $ O_{k}=\bigcup_{N\geqslant1}\mathring{F}_{N, k} $ 是开集, 又Baire推论, 它在 $ E $ 稠密, 又由 $ E $ 是 Baire空间, 故 $ O=\bigcap_{k\geqslant1}O_{k} $ 在 $ E $ 中稠密, 即 $ \forall x\in O, \forall k\geqslant1 $, 都有 $ x\in O_{k} $, 由 $ O_{k} $ 的定义, 即有
-		\[
-			\forall x\in O\,\forall k\geqslant1\,\exists N\geqslant1\,(x\in\mathring{F}_{N, k}),
-		\]
-		则
-		\[
-			\forall m, n\geqslant N\,\forall y\in\mathring{F}_{N, k}\,\Big(d(f_{n}(y), f_{m}(y))\leqslant\frac{1}{k}\Big),
-		\]
-		令 $ n\to\infty $, 有 $ d(f(y), f_{m}(y))\leqslant1/k $, 因为 $ f_{N} $ 连续, 有
-		\[
-			\exists V\in\CN(x)\,\forall y\in V\,\Big( d(f_{N}(x), f_{N}(y))\leqslant\frac{1}{k} \Big)
-		\]
-		取 $ U = V\cap\mathring{F}_{N, k} $, 则 $ U\in\CN(x) $ 且 $ y\in U $ 时, 有
-		\[
-			\begin{aligned}
-				d(f(y), f(x)) & \leqslant d(f(y), f_{N}(y))+d(f_{N}(y), f_{N}(x))+d(f_{N}(x), f(x))\\
-				& \leqslant \frac{1}{k}+\frac{1}{k}+\frac{1}{k}=\frac{3}{k},
-			\end{aligned}
-		\]
-		则 $ f $ 在 $ x $ 点连续, 即 $ O\subset\cont(f) $, 而由上一引理 知 $ \cont(f) $ 是 $ \CG_{\delta} $ 集, 从而命题得证.\qed
+	定义
+	\[
+	u_n : C_{2\pi}\to\C,\qquad f\mapsto S_n(f)(0),
+	\]
+	易证$ u_n $在$ C_{2\pi} $上的线性泛函, 且
+	\[
+	\abs{u_n(f)}\leqslant\norm{f}_\infty\int_{-\pi}^\pi \abs{D_n(x)}\frac{\diff x}{2\pi},
+	\]
+	则$ \norm{u_n}\leqslant\int_{-\pi}^\pi\abs{D_n(x)}\frac{\diff x}{2\pi} $. 从而$ \norm{u_n}\leqslant\norm{D}_{L_{2\pi}^1} $. 构造连续线性分段函数$ g $使得
+	\[
+	g(x)=\begin{cases}
+	1 & ,D_n(x)>0\\-1 & ,D_n(x)<0\\0 & ,\text{零点处小区间}
+	\end{cases}
+	\]
+	注意到$ D_n $的零点至多可数, 记$ I $为包含零点的小区间的无交并, 并可以设$ \abs{I}<\varepsilon/(2n+1) $, 则
+	\[
+	\begin{aligned}
+	\abs{u_n(g)}=\frac{1}{2\pi}\abs{\int_{-\pi}^\pi D_n(x)g(x)\diff x}&\geqslant\frac{1}{2\pi}\int_{[-\pi,\pi]\sm I}\abs{D_n(x)}\diff x-\frac{1}{2\pi}\int_I\abs{D_n(x)}\diff x\\
+	&\geqslant\norm{D_n}_{L_{2\pi}^1}-\frac{2}{2\pi}\int_I\abs{D_n(x)}\diff x\\
+	&\geqslant\norm{D_n}_{L_{2\pi}^1}-\frac{1}{\pi}\cdot\frac{\varepsilon}{2n+1}(2n+1)\\
+	&=\norm{D_n}_{L_{2\pi}^1}-\frac{\varepsilon}{\pi}.
+	\end{aligned}
+	\]
+	由$ \norm{g}_\infty=1 $可知$ \norm{u_n}\geqslant \norm{D_n}_{L_{2\pi}^1} $, 因此$ \norm{u_n}=\norm{D_n}_{L_{2\pi}^1} $. 又因为
+	\[
+	\begin{aligned}
+	\norm{D_n}_{L_{2\pi}^1}=\frac{1}{\pi}\int_0^\pi\abs{\frac{\sin((n+1/2)x)}{\sin(x/2)}}\diff x&\geqslant\frac{2}{\pi}\int_0^{(2n+1)\pi/2}\abs{\frac{\sin t}{t}}\diff t\\
+	&\geqslant\frac{2}{\pi}\int_0^{n\pi}\abs{\frac{\sin t}{t}}\diff t\\
+	&=\frac{2}{\pi}\sum_{k=0}^{n-1}\int_0^1\frac{\sin(\pi t)}{t+k}\diff t\geqslant\frac{2}{\pi}\sum_{k=1}^n\frac{1}{k}\int_0^1\abs{\sin nt}\diff t\to \infty,
+	\end{aligned}
+	\]
+	从而由共鸣定理, $ G $是稠密的$ \Gd $集.\qed
 	\end{Proof}
-	上面的定理可以说明尽管连续函数列的极限函数不一定连续, 但它的连续点非常多. 
+	
+	
+	
+	
+	
+	
+	
 \section*{本章习题}
 	\addcontentsline{toc}{section}{本章习题}
 	

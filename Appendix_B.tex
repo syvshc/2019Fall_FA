@@ -252,7 +252,7 @@
 	也即$ f $与$ g $的不动点分别是$ \frac{1}{4} $与$ \frac{3}{4} $.\qed
 	\end{Proof}
 	
-\section{第3章习题(不完全)}
+\section{第3章习题}
 
 	\textbf{习题3.2}\ [习题课]\ \ 设 $ E $ 是 $ \R $ 上所有的实系数多项式构成的线性空间, 对任一 $ p\in E $, 定义
 	\[
@@ -648,6 +648,68 @@
 	且由$ f\in L_p(X)\cap L_q(X) $知$ \norm{f}_s<\infty $, 也即$ f\in L_s(X) $.\qed
 	\end{Proof}
 
+	\textbf{习题3.10}\ [习题课]\ \ 设$ f\in L_2(\R) $, $ g(x)=\frac{1}{x}1_{[1,\infty)}(x) $, 证明: $ fg\in L_1(\R) $. 并举出反例说明$ f_1,f_2\in L_1(\R) $时$ f_1f_2\notin L_1(\R) $.
+	\begin{Proof}
+	由H\"older不等式可知
+	\[
+	\int_\R\abs{f(x)g(x)}\diff x\leqslant\left(\int_\R\abs{f(x)}^2\diff x\right)^{1/2}\left(\int_R\abs{g(x)}^2\diff x\right)^{1/2}=\norm{f}_2<\infty,
+	\]
+	从而$ fg\in L_1(\R) $.
+	
+	反例可取$ f_1=f_2=\frac{1}{\sqrt{x}}1_{(0,1]}(x) $, 则$ f_1,f_2\in L_1(\R) $, 但$ f_1f_2=\frac{1}{x}1_{(0,1]}(x)\notin L_1(R) $.\qed
+	\end{Proof}
+	
+	\textbf{习题3.11}\ [习题课]\ \ 设$ (X,\CA, \mu) $是有限测度空间.
+	\begin{enumerate}[(1)]
+	\item 证明: 若$ 0<p<q\leqslant\infty $, 那么$ L_q(X)\subset L_p(\varOmega) $, 并举反例说明结论在$ \mu(X)=\infty $的测度空间上不成立.
+	\item 证明: 若$ f\in L_\infty(X) $, 则$ f\in\bigcap_{p<\infty}L_p(X) $且$ \lim\limits_{p\to\infty}\norm{f}_p=\norm{f}_\infty $.
+	\item 设$ f\in\bigcap_{p<\infty}L_p(X) $且满足$ \limsup\limits_{p\to\infty}\norm{f}_p<\infty $, 证明$ f\in L_\infty(X) $.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 若$ q=\infty $, 结论显然成立, 下设$ p<\infty $. 取$ p'=q/p $而$ q'=q/(q-p) $, 那么$ 1/p+1/q=1 $. 由H\"older不等式可知
+	\[
+	\begin{aligned}
+	\norm{f}_p^p=\int_X\abs{f}^p\diff\mu&=\int_X\abs{f}^p\cdot 1\diff\mu\\
+	&\leqslant\norm{\abs{f}^p}_{p'}\norm{1}_{q'}=\int_X(\abs{f}^p)^{q/p}\diff\mu\cdot\mu(X)^{q'}=\norm{f}_q^p\cdot\mu(X)^{q'}.
+	\end{aligned}
+	\]
+	即$ \norm{f}_p\leqslant\norm{f}_q\cdot\mu(X)^{1/p-1/q} $, 从而$ \norm{f}_q<\infty\Longrightarrow\norm{f}_p<\infty $, 即$ L_q(X)\subset L_p(X) $.
+	
+	若允许$ \mu(X)=\infty $, 取$ X=\R $, $ \mu $是Lebesgue测度, $ f=\frac{1}{x}1_{[1,\infty)} $即可. 此时$ f\in L_2(\R) $但$ f\notin L_1(R) $.
+	
+	(2) 任取$ f\in L_\infty(X) $, $ \forall p<\infty $都有
+	\[
+	\norm{f}_p=\left(\int_X\abs{f}^p\diff\mu\right)^{1/p}\leqslant\left(\int_X\norm{f}_\infty^p\diff\mu\right)^{1/p}=\norm{f}_\infty\cdot\mu(X)^{1/p}<\infty.
+	\]
+	即$ f\in L_p(X) $, 从而$ f\in\bigcap_{p<\infty}L_p(X) $. 再令$ p\to\infty $, 此时由$ \mu(X)^{1/p}\to 1 $可知
+	\[
+	\limsup_{p\to\infty}\norm{f}_p\leqslant\norm{f}_\infty.
+	\]
+	而$ \forall\varepsilon>0 $, 有$ \mu\{ \abs{f}>\norm{f}_\infty-\varepsilon \}>0 $, 记该集合为$ A $, 那么
+	\[
+	\norm{f}_p\geqslant\left(\int_A(\norm{f}_\infty-\varepsilon)^p\diff\mu\right)^{1/p}=(\norm{f}_\infty-\varepsilon)\mu(A)^{1/p}.
+	\]
+	令$ p\to\infty $有
+	\[
+	\liminf_{p\to\infty}\norm{f}_p\geqslant\norm{f}_\infty-\varepsilon,
+	\]
+	再令$ \varepsilon\to 0^+ $, 则$ \liminf\limits_{p\to\infty}\norm{f}_p\geqslant\norm{f}_\infty $, 则
+	\[
+	\norm{f}_\infty\leqslant\liminf_{p\to\infty}\norm{f}_p\leqslant\limsup_{p\to\infty}\norm{f}_p\leqslant\norm{f}_\infty.
+	\]
+	也即$ \lim\limits_{p\to\infty}\norm{f}_p=\norm{f}_\infty $.
+	
+	(3) 用反证法, 若$ f\notin L_\infty(X) $, 则$ \forall n\in\N $, 都有$ \mu\{ \abs{f}\geqslant n \}>0 $, 设$ B=\{ \abs{f}\geqslant 0 \} $, 则有
+	\[
+	\norm{f}_p\geqslant\left(\int_B\abs{f}^p\diff\mu\right)^{1/p}=n\cdot\mu(B)^{1/p}.
+	\]
+	取上极限
+	\[
+	\limsup_{p\to\infty}\norm{f}_p\geqslant\limsup_{p\to\infty}n\cdot\mu(B)^{1/p}\geqslant n,
+	\]
+	即$ \limsup\limits_{p\to\infty}\norm{f}_p=\infty $, 矛盾. 从而$ f\in L_\infty(X) $.\qed
+	\end{Proof}
+
 	\textbf{习题3.16}\ [作业]\ \ 在实数集$ \R $上取Lebesgue $ \sigma $-代数与Lebesgue测度, 并设$ f, g\in L_1(\R) $.
 	\begin{enumerate}[(1)]
 	\item 证明:
@@ -713,8 +775,7 @@
 	\qed
 	\end{Proof}
 
-	
-	\section{第5章习题(不完全)}
+	\section{第5章习题}
 
 	\textbf{习题5.1}\ [习题课]\ \ 对任意$ x\in[0,1] $, 设$ f_n(x)=x^n $. 在$ [0,1] $的哪些点处, $ (f_n)_{n\geqslant 1} $等度连续?
 	\begin{Proof}
@@ -732,6 +793,80 @@
 	\]
 	于是$ (f_n)_{n\geqslant 1} $在$ x=1 $处不等度连续.\qed
 	\end{Proof}
+
+	\textbf{习题5.2}\ [作业]\ \ 设$ K $是度量空间而$ E $是赋范空间, $ (f_n)_{n\geqslant 1}\subset C(K,E) $.
+	\begin{enumerate}[(1)]
+	\item 证明: 若$ (f_n)_{n\geqslant 1} $在某一点$ x $等度连续, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x)-f_n(x_n))_{n\geqslant 1} $收敛到0.
+	\item 证明: 若$ (f_n(x))_{n\geqslant 1} $在$ E $中收敛到$ y $, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x_n))_{n\geqslant 1} $也收敛到$ y $.
+	\item 取$ f_n=\sin nx $, 证明$ (f_n)_{n\geqslant 1} $在$ \R $上无处等度连续.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由$ (f_n)_{n\geqslant 1} $在$ x $处等度连续, 有
+	\[
+	\forall\varepsilon>0\,\exists\delta>0\,(d_K(y,x)<\delta\Rightarrow \norm{f_n(y)-f_n(x)}<\varepsilon),
+	\]
+	设$ (x_n)_{n\geqslant 1} $收敛于$ x $, 那么对上述$ \delta>0 $,
+	\[
+	\exists n_0\in\N\,(n\geqslant n_0\Rightarrow d_K(x_n,x)<\delta)
+	\]
+	即$ \norm{f_n(x_n)-f_n(x)}\leqslant\varepsilon $.
+	
+	(2) 进一步, 设$ (f_n(x))_{n\geqslant 1}\to y $, 那么
+	\[
+	\norm{f_n(x)-y}\leqslant\norm{f_n(x_n)-f_n(x)}+\norm{f_n(x)-y},
+	\]
+	由(1)知右侧收敛到0, 从而结论成立.
+	
+	(3) 设$ f_n(x)=\sin nx $, 那么$ x\ne k\pi, k\in\Z $时取$ x_n=x+\pi/n $, 则
+	\[
+	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+\pi)}=2\abs{\sin nx}\not\to 0,
+	\]
+	用反证法, 若$ \sin nx\to 0 $, 那么
+	\[
+	\lim_{n\to\infty}2\sin x\cos nx=\lim_{n\to\infty}\sin(n+1)x-\sin(n-1)x=0,
+	\]
+	又因为$ \sin x\ne 0 $, 从而$ \cos nx\to 0 $. 再由$ \sin^2 nx+\cos^2 nx=1 $, 从而$ \sin nx\to 1 $, 矛盾. 从而$ (\sin nx)_{n\geqslant 1} $在$ x\ne k\pi $时不可能收敛到0.
+	
+	而当$ x=k\pi, k\in\Z $时, 可取$ x_n=x+\pi/2n $, 那么此时
+	\[
+	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+2\pi)}=2\not\to 0,
+	\]
+	从而$ (\sin nx)_{n\geqslant 1} $在$ \R $上无处连续.\qed
+	\end{Proof}
+	\begin{Remark}
+	实际上, 当$ x\ne k\pi, k\in Z $时, $ (\sin nx)_{n\geqslant 1} $不收敛到任何数. 用反证法, 设$ (\sin nx)_{n\geqslant 1} $收敛, 那么$ (\sin(n+1)x)_{n\geqslant 1} $也收敛. 由
+	\[
+	\sin(n+1)x=\sin nx\cos x+\cos nx\sin x
+	\]
+	可知$ (\cos nx)_{n\geqslant 1} $也收敛. 不妨设$ (\sin nx)_{n\geqslant 1} $与$ (\cos nx)_{n\geqslant 1} $分别收敛于$ a $和$ b $, 那么由$ \sin^2 nx+\cos^2 nx=1 $可知$ a, b $不能同时为零. 在
+	\[
+	\begin{cases}
+	\sin(n+1)x=\sin nx\cos x+\cos nx\sin x\\
+	\cos(n+1)x=\cos nx\cos x-\sin nx\sin x
+	\end{cases}
+	\]
+	中令$ n\to \infty $可知
+	\[
+	\begin{cases}
+	a=a\cos x+b\sin x\\
+	b=b\cos x+a\sin x
+	\end{cases}
+	\]
+	也即
+	\[
+	\begin{cases}
+	(\cos x-1)a+\sin x\cdot b=0\\
+	-\sin x\cdot a+(\cos x-1)b=0
+	\end{cases}
+	\]
+	上面的方程组有非零解的充分必要条件是其系数行列式
+	\[
+	\det\begin{bmatrix}
+	\cos x-1 & \sin x\\-\sin x & \cos x-1
+	\end{bmatrix}=0,
+	\]
+	从而$ \cos x=1 $, 即$ x=2k\pi, k\in\Z $, 这与$ x\ne k\pi $矛盾, 因此$ (\sin nx)_{n\geqslant 1} $不收敛.
+	\end{Remark}
 	
 	\textbf{习题5.5}\ [习题课]\ \ 考虑函数序列$ (f_n)_{n\geqslant 1} $, 这里$ f_n(t)=\sin\sqrt{t+4( n\pi )^2} $, 其中$ t\in[0,\infty) $.
 	\begin{enumerate}[(1)]
@@ -774,6 +909,20 @@
 	\begin{Remark}
 	本题说明了在定理\,\ref{thm:逐点->一致}\,和\,\ref{thm:Ascoli}\,中去掉$ K $的紧性后, 结论不再成立.
 	\end{Remark}
+	
+	\textbf{习题5.10}\ [作业]\ \ 设$ (K,d) $是紧度量空间, 证明所有从$ K $到$ \R $的Lipschitz函数构成的集合在$ C(K,\R) $中稠密.
+	\begin{Proof}
+	设$ \CA $是$ K $到$ \R $的Lipschitz函数全体, 易证$ \CA $是一个线性空间, 且对任意$ f, g\in\CA $, 其中$ f $的常数为$ c_1 $, $ g $的常数为$ c_2 $, 由
+	\[
+	\begin{aligned}
+	\abs{(f\cdot g)(x)-(f\cdot g)(y)}&\leqslant\abs{f(x)}\abs{g(x)-g(y)}+\abs{g(y)}\abs{f(x)-f(y)}\\
+	&\leqslant(c_2\norm{f}_\infty+c_1\norm{g}_\infty)d_K(x,y),
+	\end{aligned}
+	\]
+	且因$ K $是紧的而$ f, g $是连续的, 应有$ \norm{f}_\infty,\norm{g}_\infty $都是有限的, 从而$ f\cdot g\in\CA $, 也即$ \CA $是一个代数.
+	
+	取$ d_x(y)=d(x,y) $, 由三角不等式可知$ d_x $是常数为1的Lipschitz函数, 且$ x\ne y $时$ d_x(x)\ne d_x(y) $, 故$ \CA $是可分点的. 又有$ 1\in\CA $是显然的, 则由Stone-Weierstrass定理可知命题成立.\qed
+	\end{Proof}
 
 	\section{Problem Set系列}
 
@@ -873,154 +1022,6 @@
 	即只需存在$ x\in E $使得$ y=0 $即可, 也即$ F^c\ne\{ 0 \} $即可. 从而只需$ F\ne E $.
 	\end{Solution}
 
-	\section{第10周习题课(2019年11月4日)}
+\section{第11周习题课(2019年11月11日)}
 	
-	\textbf{习题3.10}\ [习题课]\ \ 设$ f\in L_2(\R) $, $ g(x)=\frac{1}{x}1_{[1,\infty)}(x) $, 证明: $ fg\in L_1(\R) $. 并举出反例说明$ f_1,f_2\in L_1(\R) $时$ f_1f_2\notin L_1(\R) $.
-	\begin{Proof}
-	由H\"older不等式可知
-	\[
-	\int_\R\abs{f(x)g(x)}\diff x\leqslant\left(\int_\R\abs{f(x)}^2\diff x\right)^{1/2}\left(\int_R\abs{g(x)}^2\diff x\right)^{1/2}=\norm{f}_2<\infty,
-	\]
-	从而$ fg\in L_1(\R) $.
 	
-	反例可取$ f_1=f_2=\frac{1}{\sqrt{x}}1_{(0,1]}(x) $, 则$ f_1,f_2\in L_1(\R) $, 但$ f_1f_2=\frac{1}{x}1_{(0,1]}(x)\notin L_1(R) $.\qed
-	\end{Proof}
-	
-	\textbf{习题3.11}\ [习题课]\ \ 设$ (X,\CA, \mu) $是有限测度空间.
-	\begin{enumerate}[(1)]
-	\item 证明: 若$ 0<p<q\leqslant\infty $, 那么$ L_q(X)\subset L_p(\varOmega) $, 并举反例说明结论在$ \mu(X)=\infty $的测度空间上不成立.
-	\item 证明: 若$ f\in L_\infty(X) $, 则$ f\in\bigcap_{p<\infty}L_p(X) $且$ \lim\limits_{p\to\infty}\norm{f}_p=\norm{f}_\infty $.
-	\item 设$ f\in\bigcap_{p<\infty}L_p(X) $且满足$ \limsup\limits_{p\to\infty}\norm{f}_p<\infty $, 证明$ f\in L_\infty(X) $.
-	\end{enumerate}
-	\begin{Proof}
-	(1) 若$ q=\infty $, 结论显然成立, 下设$ p<\infty $. 取$ p'=q/p $而$ q'=q/(q-p) $, 那么$ 1/p+1/q=1 $. 由H\"older不等式可知
-	\[
-	\begin{aligned}
-	\norm{f}_p^p=\int_X\abs{f}^p\diff\mu&=\int_X\abs{f}^p\cdot 1\diff\mu\\
-	&\leqslant\norm{\abs{f}^p}_{p'}\norm{1}_{q'}=\int_X(\abs{f}^p)^{q/p}\diff\mu\cdot\mu(X)^{q'}=\norm{f}_q^p\cdot\mu(X)^{q'}.
-	\end{aligned}
-	\]
-	即$ \norm{f}_p\leqslant\norm{f}_q\cdot\mu(X)^{1/p-1/q} $, 从而$ \norm{f}_q<\infty\Longrightarrow\norm{f}_p<\infty $, 即$ L_q(X)\subset L_p(X) $.
-	
-	若允许$ \mu(X)=\infty $, 取$ X=\R $, $ \mu $是Lebesgue测度, $ f=\frac{1}{x}1_{[1,\infty)} $即可. 此时$ f\in L_2(\R) $但$ f\notin L_1(R) $.
-	
-	(2) 任取$ f\in L_\infty(X) $, $ \forall p<\infty $都有
-	\[
-	\norm{f}_p=\left(\int_X\abs{f}^p\diff\mu\right)^{1/p}\leqslant\left(\int_X\norm{f}_\infty^p\diff\mu\right)^{1/p}=\norm{f}_\infty\cdot\mu(X)^{1/p}<\infty.
-	\]
-	即$ f\in L_p(X) $, 从而$ f\in\bigcap_{p<\infty}L_p(X) $. 再令$ p\to\infty $, 此时由$ \mu(X)^{1/p}\to 1 $可知
-	\[
-	\limsup_{p\to\infty}\norm{f}_p\leqslant\norm{f}_\infty.
-	\]
-	而$ \forall\varepsilon>0 $, 有$ \mu\{ \abs{f}>\norm{f}_\infty-\varepsilon \}>0 $, 记该集合为$ A $, 那么
-	\[
-	\norm{f}_p\geqslant\left(\int_A(\norm{f}_\infty-\varepsilon)^p\diff\mu\right)^{1/p}=(\norm{f}_\infty-\varepsilon)\mu(A)^{1/p}.
-	\]
-	令$ p\to\infty $有
-	\[
-	\liminf_{p\to\infty}\norm{f}_p\geqslant\norm{f}_\infty-\varepsilon,
-	\]
-	再令$ \varepsilon\to 0^+ $, 则$ \liminf\limits_{p\to\infty}\norm{f}_p\geqslant\norm{f}_\infty $, 则
-	\[
-	\norm{f}_\infty\leqslant\liminf_{p\to\infty}\norm{f}_p\leqslant\limsup_{p\to\infty}\norm{f}_p\leqslant\norm{f}_\infty.
-	\]
-	也即$ \lim\limits_{p\to\infty}\norm{f}_p=\norm{f}_\infty $.
-	
-	(3) 用反证法, 若$ f\notin L_\infty(X) $, 则$ \forall n\in\N $, 都有$ \mu\{ \abs{f}\geqslant n \}>0 $, 设$ B=\{ \abs{f}\geqslant 0 \} $, 则有
-	\[
-	\norm{f}_p\geqslant\left(\int_B\abs{f}^p\diff\mu\right)^{1/p}=n\cdot\mu(B)^{1/p}.
-	\]
-	取上极限
-	\[
-	\limsup_{p\to\infty}\norm{f}_p\geqslant\limsup_{p\to\infty}n\cdot\mu(B)^{1/p}\geqslant n,
-	\]
-	即$ \limsup\limits_{p\to\infty}\norm{f}_p=\infty $, 矛盾. 从而$ f\in L_\infty(X) $.\qed
-	\end{Proof}
-
-	\textbf{习题5.2}\ [作业]\ \ 设$ K $是度量空间而$ E $是赋范空间, $ (f_n)_{n\geqslant 1}\subset C(K,E) $.
-	\begin{enumerate}[(1)]
-	\item 证明: 若$ (f_n)_{n\geqslant 1} $在某一点$ x $等度连续, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x)-f_n(x_n))_{n\geqslant 1} $收敛到0.
-	\item 证明: 若$ (f_n(x))_{n\geqslant 1} $在$ E $中收敛到$ y $, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x_n))_{n\geqslant 1} $也收敛到$ y $.
-	\item 取$ f_n=\sin nx $, 证明$ (f_n)_{n\geqslant 1} $在$ \R $上无处等度连续.
-	\end{enumerate}
-	\begin{Proof}
-	(1) 由$ (f_n)_{n\geqslant 1} $在$ x $处等度连续, 有
-	\[
-	\forall\varepsilon>0\,\exists\delta>0\,(d_K(y,x)<\delta\Rightarrow \norm{f_n(y)-f_n(x)}<\varepsilon),
-	\]
-	设$ (x_n)_{n\geqslant 1} $收敛于$ x $, 那么对上述$ \delta>0 $,
-	\[
-	\exists n_0\in\N\,(n\geqslant n_0\Rightarrow d_K(x_n,x)<\delta)
-	\]
-	即$ \norm{f_n(x_n)-f_n(x)}\leqslant\varepsilon $.
-	
-	(2) 进一步, 设$ (f_n(x))_{n\geqslant 1}\to y $, 那么
-	\[
-	\norm{f_n(x)-y}\leqslant\norm{f_n(x_n)-f_n(x)}+\norm{f_n(x)-y},
-	\]
-	由(1)知右侧收敛到0, 从而结论成立.
-	
-	(3) 设$ f_n(x)=\sin nx $, 那么$ x\ne k\pi, k\in\Z $时取$ x_n=x+\pi/n $, 则
-	\[
-	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+\pi)}=2\abs{\sin nx}\not\to 0,
-	\]
-	用反证法, 若$ \sin nx\to 0 $, 那么
-	\[
-	\lim_{n\to\infty}2\sin x\cos nx=\lim_{n\to\infty}\sin(n+1)x-\sin(n-1)x=0,
-	\]
-	又因为$ \sin x\ne 0 $, 从而$ \cos nx\to 0 $. 再由$ \sin^2 nx+\cos^2 nx=1 $, 从而$ \sin nx\to 1 $, 矛盾. 从而$ (\sin nx)_{n\geqslant 1} $在$ x\ne k\pi $时不可能收敛到0.
-	
-	而当$ x=k\pi, k\in\Z $时, 可取$ x_n=x+\pi/2n $, 那么此时
-	\[
-	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+2\pi)}=2\not\to 0,
-	\]
-	从而$ (\sin nx)_{n\geqslant 1} $在$ \R $上无处连续.\qed
-	\end{Proof}
-	\begin{Remark}
-	实际上, 当$ x\ne k\pi, k\in Z $时, $ (\sin nx)_{n\geqslant 1} $不收敛到任何数. 用反证法, 设$ (\sin nx)_{n\geqslant 1} $收敛, 那么$ (\sin(n+1)x)_{n\geqslant 1} $也收敛. 由
-	\[
-	\sin(n+1)x=\sin nx\cos x+\cos nx\sin x
-	\]
-	可知$ (\cos nx)_{n\geqslant 1} $也收敛. 不妨设$ (\sin nx)_{n\geqslant 1} $与$ (\cos nx)_{n\geqslant 1} $分别收敛于$ a $和$ b $, 那么由$ \sin^2 nx+\cos^2 nx=1 $可知$ a, b $不能同时为零. 在
-	\[
-	\begin{cases}
-	\sin(n+1)x=\sin nx\cos x+\cos nx\sin x\\
-	\cos(n+1)x=\cos nx\cos x-\sin nx\sin x
-	\end{cases}
-	\]
-	中令$ n\to \infty $可知
-	\[
-	\begin{cases}
-	a=a\cos x+b\sin x\\
-	b=b\cos x+a\sin x
-	\end{cases}
-	\]
-	也即
-	\[
-	\begin{cases}
-	(\cos x-1)a+\sin x\cdot b=0\\
-	-\sin x\cdot a+(\cos x-1)b=0
-	\end{cases}
-	\]
-	上面的方程组有非零解的充分必要条件是其系数行列式
-	\[
-	\det\begin{bmatrix}
-	\cos x-1 & \sin x\\-\sin x & \cos x-1
-	\end{bmatrix}=0,
-	\]
-	从而$ \cos x=1 $, 即$ x=2k\pi, k\in\Z $, 这与$ x\ne k\pi $矛盾, 因此$ (\sin nx)_{n\geqslant 1} $不收敛.
-	\end{Remark}
-	
-	\textbf{习题5.10}\ [作业]\ \ 设$ (K,d) $是紧度量空间, 证明所有从$ K $到$ \R $的Lipschitz函数构成的集合在$ C(K,\R) $中稠密.
-	\begin{Proof}
-	设$ \CA $是$ K $到$ \R $的Lipschitz函数全体, 易证$ \CA $是一个线性空间, 且对任意$ f, g\in\CA $, 其中$ f $的常数为$ c_1 $, $ g $的常数为$ c_2 $, 由
-	\[
-	\begin{aligned}
-	\abs{(f\cdot g)(x)-(f\cdot g)(y)}&\leqslant\abs{f(x)}\abs{g(x)-g(y)}+\abs{g(y)}\abs{f(x)-f(y)}\\
-	&\leqslant(c_2\norm{f}_\infty+c_1\norm{g}_\infty)d_K(x,y),
-	\end{aligned}
-	\]
-	且因$ K $是紧的而$ f, g $是连续的, 应有$ \norm{f}_\infty,\norm{g}_\infty $都是有限的, 从而$ f\cdot g\in\CA $, 也即$ \CA $是一个代数.
-	
-	取$ d_x(y)=d(x,y) $, 由三角不等式可知$ d_x $是常数为1的Lipschitz函数, 且$ x\ne y $时$ d_x(x)\ne d_x(y) $, 故$ \CA $是可分点的. 又有$ 1\in\CA $是显然的, 则由Stone-Weierstrass定理可知命题成立.\qed
-	\end{Proof}
