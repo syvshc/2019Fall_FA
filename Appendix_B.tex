@@ -1022,6 +1022,275 @@
 	即只需存在$ x\in E $使得$ y=0 $即可, 也即$ F^c\ne\{ 0 \} $即可. 从而只需$ F\ne E $.
 	\end{Solution}
 
+	\textbf{补充题6}\ \ 计算 $ \mathbb{M}_{2}(\C) $ 中投影算子的一般形式. 
+
+	\begin{Solution}
+		设 $ P $ 是投影算子, 则 $ P=P^{\dagger}, P=P^{2} $, 由 $ P $ 自伴, 可设
+		\[
+			P=\begin{bmatrix}
+				a & c \\
+				\bar{c} & b
+			\end{bmatrix}
+		\]
+		其中 $ a, b\in\R $, $ c\in\C $, 再由 $ P $ 幂等
+		\[
+			\begin{bmatrix}a & c \\\bar{c} & b \end{bmatrix}\begin{bmatrix}a & c \\\bar{c} & b \end{bmatrix} = \begin{bmatrix}a^{2}+\abs{c}^{2} & c(a+b) \\ \bar{c}(a+b) & b^{2}+\abs{c}^{2}\end{bmatrix}= \begin{bmatrix}a & c \\ \bar{c} & b\end{bmatrix},
+		\]
+		从而
+		\[
+			\begin{cases}
+				a^{2}+\abs{c}^{2} = a\\
+				b^{2}+\abs{c}^{2} = b\\
+				c(a+b) = c
+			\end{cases}
+		\]
+		当 $ c=0 $ 时, $ a^{2}=a $, $ b^{2}=b $, 故 $ a=0\text{\,或\,}1 $, $ b=0\text{\,或\,}1 $. 此时
+		\[
+			P = 0\text{\,或\,}P=\diag\{0, 1\}\text{\,或\,}P=\diag\{0, 1\}\text{\,或\,}P=\1_{2}.
+		\]
+		当 $ c\ne0 $ 时, 由 $ c(a+b)=c $ 知 $ a+b=1 $, 从而
+		\[
+			P=\begin{bmatrix}
+				a & \sqrt{a(1-a)}\exp(\imag\theta) \\
+				\sqrt{a(1-a)}\exp(-\imag\theta) & a
+			\end{bmatrix}, \quad a\in\R, \theta\in[0, 2\pi].
+		\]
+		进一步, 对一般的 Hilbert空间 $ H $, 有一类特殊的投影算子:
+		\[
+			P = \begin{bmatrix}
+				A & \sqrt{A(\1-A)}\cdot u\\
+				\Star{u}\cdot\sqrt{A(\1-A)} & \1-A
+			\end{bmatrix}
+		\]
+		其中 $ 0\leqslant A\leqslant\1\footnote{若矩阵 $ A-B $ 为半正定的, 则记 $ A\leqslant B $ } $, $ u $ 是酉算子.
+	\end{Solution}
+
 \section{第11周习题课(2019年11月11日)}
 	
-	
+	\textbf{习题4.2}\ [作业]\ \ 设 $ A $ 是 $ \ell_{2} $ 的子集, 其元素 $ x = (x_{n})_{n\geqslant1} $ 满足 $ \abs{x_{n}}\leqslant1/n, n\geqslant1 $. 证明 $ A $ 是紧集. 
+	\begin{Proof}
+		$ \ell_{2} $ 是 Hilbert空间且易证 $ A $ 是闭集, 故 $ A $ 完备. 为证 $ A $ 是紧集, 只需证 $ A $ 是预紧的. 
+
+		因为对任意的 $ \varepsilon>0 $, 存在 $ n_{0}\in\N $ 使得
+		\[
+			\begin{aligned}
+				\sum_{k\geqslant n_{0}+1}\abs{x_{k}}^{2} & \leqslant \frac{1}{(n_{0}+1)^{2}}+\frac{1}{(n_{0}+2)^{2}}+\cdots\\
+				& \leqslant \frac{1}{n_{0}(n_{0}+1)}+\frac{1}{(n_{0}+1)(n_{0}+2)}+\cdots\\
+				& = \frac{1}{n_{0}}<\frac{\varepsilon^{2}}{2}. 
+			\end{aligned}
+		\]
+		对上述的 $ n_{0} $, 令 $ F=\{ (\seq[n_{0}]{x}, 0, \dots, 0, \dots) : x_{i}\in\C, 1\leqslant i\leqslant n_{0} \}\subset\ell_{2} $. 则 $ F $ 有限维, 再令
+		\[
+			B = \left\{ x= (\seq[n_{0}]{x}, 0,\dots, 0\dots) : \abs{x_{i}}<\frac{1}{i} \right\}\subset A, 
+		\]
+		取 $ B $ 中元素的前 $ n_{0} $ 项构成 $ \tilde{B} $, 即
+		\[
+			\tilde{B}=\left\{ x= (\seq[n_{0}]{x}) : \abs{x_{i}}<\frac{1}{i} \right\}
+		\]
+		显然 $ B $ 与 $ \tilde{B} $ 同构. 且 $ B $ 在 $ F $ 中闭, 又 $ \abs{x_{1}}^{2}+\cdots+\abs{x_{n_{0}}}^{2}\leqslant1+1=2 $, 故 $ B $ 在 $ F $ 中有界闭, 从而紧, 所以有 $ \tilde{B} $ 在 $ \C^{n_{0}} $ 中紧, 于是 $ \tilde{B} $ 预紧, 即存在 $ \C^{n_{0}} $ 中有限个点 $ y^{(1)}, y^{(2)}, \dots, y^{(k)} $, 其中
+		\[
+			y^{(i)}=(y^{(i)}_{1}, \dots, y^{(i)}_{n_{0}} ), \quad i = 1, 2, \dots, k
+		\]
+		使得 $ \tilde{B}\subset\bigcup_{j = 1}^{k}B(y^{(j)}, \varepsilon/\sqrt{2}) $, 则 $ A\subset \bigcup_{j = 1}^{k}B(\tilde{y}^{(j)}, \varepsilon) $, 其中 $ \tilde{y}^{(i)}=(\seq[n_{0}]{y^{(i)}}, 0, \dots) $, 故 $ A $ 预紧, 则 $ A $ 紧. \qed
+	\end{Proof}
+
+	\textbf{习题4.6}\ [作业]\ \ 设 $ H $ 是内积空间,  $ x_{n}, x\in H $, 并假设
+	\[
+		\lim_{n\to\infty}\norm{x_{n}}=\norm{x}\ \ \text{且}\ \  \lim_{n\to\infty}\lrangle{y, x_{n}}=\lrangle{y, x},\quad y\in H
+	\]
+	证明 $ \lim\limits_{n\to\infty}\norm{x_{n}-x}=0 $.
+	\begin{Proof}
+		因为
+		\[
+			\norm{x_{n}-x}^{2}=\norm{x_{n}}^{2}+\norm{x}^{2}-2\Re\lrangle{x_{n}, x}
+		\]
+		令 $ n\to\infty $, 有
+		\[
+			\lim_{n\to\infty}\norm{x_{n}-x}^{2}=\norm{x}^{2}+\norm{x}^{2}-2\Re\lrangle{x, x} = 0, 
+		\]
+		命题得证. \qed
+	\end{Proof}
+
+	\textbf{习题4.10}\ [作业]\ \ \begin{enumerate}[(1)]
+		\item 设 $ H $ 是 Hilbert空间, $ D_{n}=\{ -1, 1 \}^{n} $. 证明
+		\[
+			\frac{1}{2^{n}}\sum_{(\varepsilon_{k})\in D_{n}}\norm{\varepsilon_{1}x_{1}+\cdots+\varepsilon_{n}x_{n}}^{2}=\norm{x_{1}}^{2}+\cdots+\norm{x_{2}}^{2}, \quad \forall x_{1}, x_{2}, \dots, x_{n}\in H
+		\]
+  		\item 设 $ (X, \norm{\cdot}) $ 是Banach空间, 并假设有一个 $ X $ 上的内积范数 $ \abs{\cdot} $ 等价于 $ \norm{\cdot} $. 证明存在正常数 $ a $ 和 $ b $, 使得
+  		\[
+			a\sum_{k=1}^{n}\norm{x_{k}}^{2}\leqslant\frac{1}{2^{n}}\sum_{(\varepsilon_{k})\in D_{n}}\norm{\sum_{k=1}^{n}\varepsilon_{k}x_{k}}^{2}\leqslant b\sum_{k=1}^{n}\norm{x_{k}}^{2}, \quad \forall x_{1}, x_{2}, \dots, x_{n} \in X.
+		\]
+		\item 设 $ 1\leqslant p\ne2\leqslant\infty $ 证明空间 $ c_{0}, \ell_{p}, L_{p} $ 中没有等价的内积范数.
+	\end{enumerate}
+	\begin{Proof}
+		(1) 因为
+		\[
+			\frac{1}{2^{n}}\sum_{(\varepsilon_{k})\in D_{n}}\norm{\varepsilon_{1}x_{1}+\cdots+\varepsilon_{n}x_{n}}^{2}=\frac{2^{n}}{2^{n}}(\norm{x_{1}}^{2}+\cdots+\norm{x_{n}}^{2})+\frac{1}{2^{n}}\sum_{(\varepsilon_{k})\in D_{k}}\sum_{i\ne j}\varepsilon_{i}\varepsilon_{j}\lrangle{x_{i}, x_{j}},
+		\]
+		由对称性可知 
+		\[
+			\frac{1}{2^{n}}\sum_{(\varepsilon_{k})\in D_{k}}\sum_{i\ne j}\varepsilon_{i}\varepsilon_{j}\lrangle{x_{i}, x_{j}}=0
+		\]
+		命题得证. 
+
+		(2) 设内积范数 $ \abs{\cdot} $ 等价于 $ \norm{\cdot} $, 则存在常数 $ m, M>0 $ 使得
+		\[
+			m\abs{x}\leqslant\norm{x}\leqslant M\abs{x}, \quad x\in H,
+		\]
+		故 
+		\[
+			\begin{aligned}
+				\frac{1}{2^{n}}\sum_{(\varepsilon_{k})\in D_{n}}\norm{\sum_{k=1}^{n}\varepsilon_{k}x_{k}}^{2} & \leqslant \frac{M^{2}}{2^{n}}\sum_{(\varepsilon_{k})\in D_{k}}\abs{\sum_{i=1}^{n}\varepsilon_{i}x_{i}}  \\
+				& = M^{2}\left(\sum_{k=1}^{n}\abs{x_{k}}^{2}\right)\leqslant \frac{M^{2}}{m^{2}}\left(\sum_{k=1}^{n}\norm{x_{k}}^{2}\right)
+			\end{aligned}
+		\]
+		同理有
+		\[
+			\begin{aligned}
+				\frac{1}{2^{n}}\sum_{\left(\varepsilon_{k}\right)\in D_{n}}\norm{\sum_{k=1}^{n}\varepsilon_{k}x_{k}}^{2} & \geqslant \frac{m^{2}}{2^{n}}\sum_{\left(\varepsilon_{k}\right)\in D_{k}}\abs{\sum_{i=1}^{n}\varepsilon_{i}x_{i}}  \\
+				 & = m^{2}\left(\sum_{k=1}^{n}\abs{x_{k}}^{2}\right)\geqslant \frac{m^{2}}{M^{2}}\left(\sum_{k=1}^{n}\norm{x_{k}}^{2}\right)
+			\end{aligned}
+		\]
+		取 $ a=m^{2}/M^{2}, b=M^{2}/m^{2} $ 即可. 
+
+		(3) 对 $ c_{0} $. $ \forall n\geqslant1 $, 考虑 $ \seq{e} $, 则 $ \norm{e_{k}}_{\infty}=1 $, 且 $ \norm{\sum\limits_{k=1}^{n}\varepsilon_{k}x_{k}}_{\infty}^{2}=1 $, 故若 $ \norm{\cdot}_{\infty} $ 有等价的内积范数 $ \abs{\cdot} $, 则有
+		\[
+			an\leqslant1\leqslant bn, \quad n\in\N
+		\]
+		矛盾. $ \ell_{\infty} $ 与 $ c_{0} $ 同理. 
+
+		对 $ \ell_{p}\,(1\leqslant p\leqslant\infty) $. 考虑 $ \seq{e} $, 则 $ \norm{e_{k}}_{p}=1 $, 且 $ \norm{\sum\limits_{k=1}^{n}\varepsilon_{k}x_{k}}^{2}_{p}=n^{2/p} $, 若 $ \norm{\cdot}_{p} $ 有等价的内积范数 $ \abs{\cdot} $, 有
+		\[
+			an\leqslant n^{2/p} \leqslant bn\Longrightarrow a\leqslant n^{2/p-1}\leqslant b, \quad n\in\N,
+		\]
+		因为 $ p\ne 2 $, 所以矛盾. 
+
+		而对 $ L_{p}[0, 1], (1\leqslant p\leqslant\infty) $, 取
+		\[
+			x_{k}=n\cdot1_{[{k}/{n^p}, ({k+1})/{n^p})}, \quad k = 0, 1, \dots, n-1,
+		\]
+		则 $ \norm{x_{k}}_{p}=1 $ 且 $ \norm{\sum\limits_{k=1}^{n}\varepsilon_{k}e_{k}}_{p}^{2}=n^{2/p} $, 与 $ \ell_{p} $ 同理可证. \qed
+	\end{Proof}
+
+	\textbf{习题4.11}\ [作业]\ \ 设 $ (C_{n})_{n\geqslant1} $ 是 Hilbert空间 $ H $ 中的一个递增非空闭凸子集列,  $ C $ 是所有 $ C_{n} $ 并集的闭包, 证明
+	\[
+		P_{C}(x) = \lim_{n\to \infty}P_{C_{n}}(x), \quad \forall x\in H.
+	\]
+	\begin{Proof}
+		先证 $ P_{C_{n}}(x) $ 收敛. 因为 $ C_{n} $ 递增, 故 $ (\norm{x-P_{C_{n}}(x)})_{n\geqslant1} $ 单调递减有下界, 从而它有极限, 对 $ n<m $, 有
+		\[
+			\begin{aligned}
+				\norm{P_{C_{n}}(x)-P_{C_{m}}(x)}^{2} & =\norm{P_{C_{n}}(x)-x+x-P_{C_{m}}(x)}^{2} \\
+				& = 2(\norm{x-P_{C_{n}}(x)}^{2}+\norm{x-P_{C_{m}}(x)}^{2})-\norm{P_{C_{m}}(x)+P_{C_{n}}(x)-2x}^{2} \\
+				& = 2(\norm{x-P_{C_{n}}(x)}^{2}+\norm{x-P_{C_{m}}(x)}^{2})-4\norm{x-\frac{P_{C_{n}}(x)+P_{C_{m}}(x)}{2}}^{2} \\
+				& \leqslant 2(\norm{x-P_{C_{n}}(x)}^{2}+\norm{x-P_{C_{m}}(x)}^{2}) - 4\norm{x-P_{C_{m}}(x)}^{2}\\
+				& = 2(\norm{P_{C_{n}}(x)-x}^{2}-\norm{P_{C_{m}}(x)-x}^{2})\to 0,\quad (n,m\to \infty)
+			\end{aligned}	
+		\]
+		其中的不等号可以由闭凸集投影定理~\ref{thm:闭凸集投影定理}~得出. 所以有 $ (P_{C_{n}}(x))_{n\geqslant1} $ 是 $ H $ 中的 Cauchy列, 故它收敛, 记其极限为 $ y $, 则由
+		\[
+			\forall n\geqslant1\,\forall z\in C_{n}\subset C\,(\Re\lrangle{x-P_{C_{n}}(x), z-P_{C_{n}}(x)}\leqslant0)
+		\]
+		与内积的连续性知
+		\[
+			\forall z\in C\,(\Re\lrangle{x-y, z-y}\leqslant0),\quad n\to\infty
+		\]
+		即 $ y = P_{C}(x) $, 从而  $ P_{C}(x)=\lim\limits_{n\to\infty}P_{C_{n}}(x) $.\qed
+	\end{Proof}
+
+	\textbf{习题4.19}\ [习题课]\ \ 令 $ H=L_{2}(0, 1) $; 并设 $ (e_{n})_{n\geqslant1} $ 是 $ H $ 中的规范正交集, 证明 $ (e_{n})_{n\geqslant1} $ 是 $ H $ 上的规范正交基的充分必要条件是
+	\[
+		\sum_{n\geqslant1}\abs{\int_{0}^{x}e_{n}(t)\diff t}^{2} = x, \quad \forall x\in[0, 1].
+	\]
+	\begin{Proof}
+		\textsl{必要性}. 设 $ (e_{n})_{n\geqslant1} $ 是 $ H $ 是规范正交基, 则 $ \forall x\in[0, 1] $, 都有 $ 1_{[0, x]}\in L_{2}[0, 1] $, 由 Parseval 恒等式有
+		\[
+			\begin{aligned}
+				x = \norm{1_{[0, x]}}^{2} & =\sum_{n\geqslant1}\abs{\lrangle{1_{[0, x]}, e_{n}}}^{2}\\
+				& =\sum_{n\geqslant1}\abs{\int_{0}^{1}e_{n}(t)\baro{1_{[0, x]}(t)}\diff t}^{2}=\sum_{n\geqslant1}\abs{\int_{0}^{x}e_{n}(t)\diff t}^{2}.
+			\end{aligned}
+		\]
+
+		\textsl{充分性}. $ \forall x\in[0, 1] $, 由
+		\[
+			\begin{aligned}
+				\norm{1_{[0, x]}-\sum_{k=1}^{n}\abs{\int_{0}^{1}e_{k}(t)\diff t}^{2}}^{2} & = x+\sum_{k=1}^{n}\abs{\lrangle{1_{[0, x]}, e_{k}}}^{2}-2\sum_{k=1}^{n}\abs{\lrangle{1_{[0, x]}, e_{k}}}^{2} \\
+			& = x-\sum_{k=1}^{n}\abs{\lrangle{1_{[0, x]}, e_{k}}}^{2}\to 0,\quad k\to\infty,
+			\end{aligned}
+		\]
+		知 $ 1_{[0, x]} $ 可由 $ \Span\{ (e_{n})_{n\geqslant1} \} $ 中元素逼近. 则 $ \forall a<b $, $ a, b\in[0, 1] $, 由
+		\[
+			1_{[a, b]} = 1_{[0, b]}-1_{[0, a]}
+		\]
+		可知阶梯函数可以由 $ \Span\{ (e_{n})_{n\geqslant1} \} $ 中元素逼近, 从而 $ L_{2}[0, 1] $ 中元素可由阶梯函数逼近, 故
+		\[
+			\baro{\Span\{ (e_{n})_{n\geqslant1} \}}=L_{2}[0, 1]
+		\]
+		从而 $ (e_{n})_{n\geqslant1} $ 是 $ L_{2}[0, 1] $ 的规范正交基. \qed
+	\end{Proof}
+
+	\textbf{习题5.15}\ [习题课]\ \ 设 $ f\in L_{2\pi}^{1} $, 其 \textbf{Fourier 级数}定义为
+	\[
+		f\sim \sum_{n=-\infty}^{\infty}\hat{f}(n)\exp(\imag nt).
+	\]
+	并定义相应定 $ n $\textbf{次部分和}为
+	\[
+		S_{n}(f)(t)=\sum_{k = -n}^{n}\hat{f}(k)\exp(\imag kt).
+	\]
+	在本习题中, 假设 $ f $ 属于分段的 $ C^{1} $ 函数类, 也就是说, $ f\in C_{2\pi} $ 且存在 $ [0, 2\pi] $ 上的划分 $ 0=a_{0}<a_{1}<\cdots a_{k}=2\pi $, 使得 $ f $ 在每一个子区间 $ (a_{j}, a_{j+1}) $ 内属于 $ C^{1} $ 函数类, 并且 $ f' $ 在点 $ a_{j} $ 的右极限和点 $ a_{j+1} $ 的左极限都存在, 证明 $ f $ 的Fourier级数依无穷范数收敛到 $ f $, 而且
+	\[
+		\norm{f-S_{N}(f)}_{\infty}\leqslant\sqrt{\frac{2}{N}}\norm{f'}_{2}, \quad N\geqslant1.
+	\]
+	注意这里的导数 $ f' $ 在 $ f $ 的不可导点取左右导数. 
+	\begin{Proof}
+		设 $ f $ 属于分段的 $ C^{1} $ 函数类, 可证 Newton-Leibniz公式到 $ f $ 仍然成立. 设 $ a<b\in[0, 2\pi] $, 设相应的 $ f $ 的划分 $ a=x_{0}<x_{x}<\cdots<x_{m}=b $, 则
+		\[
+			\int_{a}^{b}f'(t)\diff t=\sum_{i=1}^{k}\int_{x_{i-1}}^{x_{i}}f'(t)\diff t=\sum_{i=1}^{k}f(x_{i})-f(x_{i-1})=f(b)-f(a).
+		\]
+		类似地, 可证分部积分公式也成立, 由此, 对分段 $ C^{1} $ 的 $ u, v $, 因为 $ (uv)'=u'v+vu' $, 同取积分有
+		\[
+			\int_{a}^{b}u'v\diff t=\int_{a}^{b}(uv)'\diff t-\int_{a}^{b}uv'\diff t=uv\Big|_{a}^{b}-\int_{a}^{b}uv'\diff t
+		\]
+		求 $ f $ 的 Fourier 系数, 当 $ k\ne0 $ 时
+		\[
+			\begin{aligned}
+				\widehat{f'}(k) & =\int_{0}^{2\pi}f'(\theta)\exp(-\imag k\theta)\frac{\diff \theta}{2\pi} \\
+				& = \frac{f(\theta)\exp(-\imag k\theta)}{2\pi}\bigg|_{0}^{2\pi}+\imag k\int_{0}^{2\pi}f(\theta)\exp(-\imag k\theta)\frac{\diff \theta}{2\pi} = \imag k\hat{f}(\theta)
+			\end{aligned}
+		\]
+		即 $ \widehat{f'}(k)=-\imag \hat{f}(k)/k $.
+
+		再由题设: $ f'\in L_{2\pi}^{1} $, 由 Parseval 恒等式
+		\[
+			\int_{0}^{2\pi}\abs{f'(\theta)}^{2}\frac{\diff\theta}{2\pi}=\sum_{k\ne0}\abs{\widehat{f'}(k)}^{2}
+		\]
+		又
+		\[
+			\sum_{k\ne0}\abs{\hat{f}(k)}=\sum_{k\ne0}\abs{\frac{\widehat{f'}(k)}{k}}\leqslant\Big( \sum_{k\ne0}\frac{1}{k^{2}} \Big)^{1/2}\Big( \sum_{k\ne0}\abs{\widehat{f'}(k)}^{2} \Big)^{1/2}<\infty
+		\]
+		故 $ \sum\limits_{k=-\infty}^{\infty}\hat{f}(k)\exp(\imag kt) $ 一致收敛, 设极限为 $ g $, 往证 $ f=g $. 由 Parseval 恒等式
+		\[
+			\norm{S_{N}(f)-f}^{2}\to 0
+		\]
+		再由 Fatou引理
+		\[
+			0\leqslant\norm{g-f}_{2}\leqslant\lim_{N\to\infty}\norm{S_{N}(f)-f}_{2}=0
+		\]
+		故 $ \norm{g-f}_{2}=0 $, 即 $ g=f $. 至此得到
+		\[
+			\sum_{k=-\infty}^{\infty}\hat{f}(k)\exp(\imag kt)=f(t), \quad \forall t\in[0, 2\pi].
+		\]
+		设 $ J=\Z\setminus\{ -N, \dots, 0, \dots, N \} $, 则
+		\[
+			\begin{aligned}
+				\abs{f(t)-S_{N}(f)(t)} & =\abs{\sum_{k\in J}(-\imag)\cdot\frac{\widehat{f'}(k)}{k}}\leqslant\sum_{k\in J}\abs{\frac{\widehat{f'}(k)}{k}} \\
+				& \leqslant\Big( \sum_{k\in J}\frac{1}{k^{2}} \Big)^{1/2}\Big( \sum_{k\in J}\abs{\widehat{f'}(k)}^{2} \Big)^{1/2}\\
+				& \leqslant \norm{f'}_{2}\Big( \sum_{k\geqslant N+1}\frac{2}{k^{2}} \Big)^{1/2}\leqslant\sqrt{\frac{2}{N}}\norm{f'}_{2}.
+			\end{aligned}
+		\]
+		故
+		\[
+			\norm{f(t)-S_{N}(f)(t)}_{\infty}=\sup_{0\leqslant t\leqslant2\pi}\abs{f(t)-S_{N}(f)(t)}\leqslant\sqrt{\frac{2}{N}}\norm{f'}_{2}.
+		\]
+		命题得证.\qed
+	\end{Proof}
