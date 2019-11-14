@@ -1,9 +1,9 @@
 %设定字体
 
-%% \setCJKmainfont[ItalicFont=STKaiti]{Source Han Serif CN}
+\setCJKmainfont[ItalicFont=STKaiti]{Source Han Serif CN}
 %% \textbf为思源宋体
 
- \setCJKmainfont[BoldFont=黑体, ItalicFont=STKaiti]{Source Han Serif CN}
+%% \setCJKmainfont[BoldFont=黑体, ItalicFont=STKaiti]{Source Han Serif CN}
 %% \textbf为思源黑体
 
 %% \setCJKsansfont{Source Han Sans CN}
@@ -21,12 +21,13 @@
 \DeclareMathOperator{\conv}{Conv}
 \DeclareMathOperator{\Span}{span} %% 因为\span已经在宏中定义, 这里使用大写的\Span来表示线性张成
 \DeclareMathOperator{\cont}{Cont} %% 表示函数的连续点
+\DeclareMathOperator{\diag}{diag}
 
 
 \newcommand{\me}{\ensuremath{\mathrm{e}}}
 \newcommand{\imag}{\mathrm{i}}
 \newcommand{\Star}[1]{#1^{*}}
-
+\newcommand{\1}{\mathds{1}}
 
 %% \C已被定义, 重定义在交叉引用部分
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
@@ -63,6 +64,7 @@
 \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry} %边距
 %\usepackage[a4paper,left=1.8cm,right=3.2cm,top=2.5cm,bottom=2cm]{geometry} %当打印时使用此选项
 \setlength{\headheight}{13pt}
+\usepackage{pifont} % 带圈数字
 \usepackage{fancyhdr} % 页眉页脚
 \pagestyle{fancy}
 \fancyhf{}
@@ -143,4 +145,5 @@
 \newcommand{\sm}{\ensuremath{\setminus}}
 \newcommand{\baro}{\overline}
 \newcommand{\seq}[2][n]{\ensuremath{#2_{1}, #2_{2}, \dots, #2_{#1}}}
+\renewcommand{\thefootnote}{$\sharp$\arabic{footnote}}
 %\renewcommand{\labelenumi}{(\theenumi)}
