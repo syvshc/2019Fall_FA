@@ -561,7 +561,7 @@
 		记右侧集合为 $ B $, 因为 $ A\subset B $ 且 $ B $ 是凸集, 由凸包定义有 $ \conv(A)\subset B $. 再说明反向不等式成立. 因为 $ \sum\limits_{i=1}^{n}\lambda_{i}x_{i}\in C $, 其中 $ C\supset A $ 且 $ C $ 是凸集, 故有 $ \sum\limits_{i=1}^{n}\lambda_{i}x_{i}\in\conv(A) $. 从而有 $ B\subset\conv(A) $. 即 $ \conv(A)=B $.\qed
 	\end{Proof}
 
-	\begin{Theorem}[闭凸集投影定理]
+	\begin{Theorem}[闭凸集投影定理]\label{thm:闭凸集投影定理}
 		设 $ H $ 是 Hilbert空间, $ C\subset H $ 是非空的闭凸子集, 则有:
 		\begin{enumerate}[(1)]
 			\item $ \forall x\in H\,\exists!y\in C\,(\norm{x-y}=d(x, C)) $, 并称 $ y $ 是 $ x $ 在$ C $ 上的\textbf{投影}, 记作 $ P_{C}(x) $;
@@ -711,11 +711,11 @@
 			在 $ \mathbb{M}_{n}(\C) $ 上构造投影算子, 由幂等性可知其特征值非$0$即$1$, 从而可得一平凡构造
 			\[
 				P=\begin{bmatrix}
-					\mathds{1}_{k} & 0 \\
+					\1_{k} & 0 \\
 					0 & 0
 				\end{bmatrix}
 			\]
-			其中 $ \mathds{1}_{k} $ 表示阶数为 $ k $ 的单位矩阵, 取 $ e_{1}, e_{2},\dots,e_{n} $ 为 $ \C^{n} $ 的一组规范正交基, $ e_{1}, e_{2},\dots,e_{k} $ 为 $ E\subset\C^{n} $ 的一组规范正交基, 则
+			其中 $ \1_{k} $ 表示阶数为 $ k $ 的单位矩阵, 取 $ e_{1}, e_{2},\dots,e_{n} $ 为 $ \C^{n} $ 的一组规范正交基, $ e_{1}, e_{2},\dots,e_{k} $ 为 $ E\subset\C^{n} $ 的一组规范正交基, 则
 			\[
 				P_{E}(x)=\sum_{i=1}^{k}\lambda_{i}e_{i}=\sum_{i=1}^{k}\lrangle{x, e_{i}}e_{i}
 			\]
@@ -1640,7 +1640,7 @@
 		与 $ J^{-1}(\exp(\imag n\theta))=z^n $, 从而 $ J^{-1}(\mathcal P) $是关于 $ z,\baro{z} $的多项式全体. 由此可知 $ J^{-1}(\mathcal P) $是子代数. 取 $ f(z)=z\in J^{-1}(\mathcal P) $知其可分点, 而 $ 1\in J^{-1}(\mathcal P) $显然. $ f\in J^{-1}(\mathcal P)\Longrightarrow \baro{f}\in J^{-1}(\mathcal P) $, 从而由Stone-Weierstrass定理有 $ J^{-1}(\mathcal P) $在 $ C(\mathbb T) $中稠密, 故 $ \mathcal P $在 $ C_{2\pi} $中稠密.\qed
 	\end{Proof}
 
-	\begin{Definition}[Fourier系数, Fourier变换]\label{def:Fourier系数, Fourier变换}\index{F!Fourier系数, Fourier变换}
+	\begin{Definition}[Fourier系数, Fourier变换]\label{def:Fourier系数, Fourier变换}\index{F!Fourier系数}\index{F!Fourier变换}
 		设 $ f\in L_{2\pi}^{1} $, 称
 		\[
 			\hat{f}(n)=\frac{1}{2\pi}\int_{0}^{2\pi}f(\theta)\exp(-\imag n\theta)\diff\theta,\quad n\in\Z
