@@ -632,22 +632,6 @@
 	可知映射$ u\mapsto u^{-1} $是连续的. 同理可证其逆连续, 从而它是同胚.\qed
 	\end{Proof}
 
-	\textbf{习题3.12}\ [作业]\ \ 设$ 0<p<q\leqslant\infty $, $ 0\leqslant\theta\leqslant 1 $, 并令
-	\[
-	\frac{1}{s}=\frac{\theta}{p}+\frac{1-\theta}{q},
-	\]
-	证明$ f\in L_p(X)\cap L_q(X) $, 则$ f\in L_s(X) $且
-	\[
-	\norm{f}_s\leqslant\norm{f}_p^{\theta}\norm{f}_q^{1-\theta}.
-	\]
-	\begin{Proof}
-	取$ p'=p/\theta, q'=q/(1-\theta) $, 从而由$ 1/s=1/p'+1/q' $可知$ (p',q') $是一对共轭指数, 由H\"older不等式可知
-	\[
-	\norm{f}_s=\norm{f^\theta f^{1-\theta}}_s\leqslant\norm{f^\theta}_{p'}\norm{f^{1-\theta}}_{q'}=\norm{f}_p^\theta\norm{f}_q^{1-\theta}.
-	\]
-	且由$ f\in L_p(X)\cap L_q(X) $知$ \norm{f}_s<\infty $, 也即$ f\in L_s(X) $.\qed
-	\end{Proof}
-
 	\textbf{习题3.10}\ [习题课]\ \ 设$ f\in L_2(\R) $, $ g(x)=\frac{1}{x}1_{[1,\infty)}(x) $, 证明: $ fg\in L_1(\R) $. 并举出反例说明$ f_1,f_2\in L_1(\R) $时$ f_1f_2\notin L_1(\R) $.
 	\begin{Proof}
 	由H\"older不等式可知
@@ -708,6 +692,22 @@
 	\limsup_{p\to\infty}\norm{f}_p\geqslant\limsup_{p\to\infty}n\cdot\mu(B)^{1/p}\geqslant n,
 	\]
 	即$ \limsup\limits_{p\to\infty}\norm{f}_p=\infty $, 矛盾. 从而$ f\in L_\infty(X) $.\qed
+	\end{Proof}
+
+	\textbf{习题3.12}\ [作业]\ \ 设$ 0<p<q\leqslant\infty $, $ 0\leqslant\theta\leqslant 1 $, 并令
+	\[
+	\frac{1}{s}=\frac{\theta}{p}+\frac{1-\theta}{q},
+	\]
+	证明$ f\in L_p(X)\cap L_q(X) $, 则$ f\in L_s(X) $且
+	\[
+	\norm{f}_s\leqslant\norm{f}_p^{\theta}\norm{f}_q^{1-\theta}.
+	\]
+	\begin{Proof}
+	取$ p'=p/\theta, q'=q/(1-\theta) $, 从而由$ 1/s=1/p'+1/q' $可知$ (p',q') $是一对共轭指数, 由H\"older不等式可知
+	\[
+	\norm{f}_s=\norm{f^\theta f^{1-\theta}}_s\leqslant\norm{f^\theta}_{p'}\norm{f^{1-\theta}}_{q'}=\norm{f}_p^\theta\norm{f}_q^{1-\theta}.
+	\]
+	且由$ f\in L_p(X)\cap L_q(X) $知$ \norm{f}_s<\infty $, 也即$ f\in L_s(X) $.\qed
 	\end{Proof}
 
 	\textbf{习题3.16}\ [作业]\ \ 在实数集$ \R $上取Lebesgue $ \sigma $-代数与Lebesgue测度, 并设$ f, g\in L_1(\R) $.
