@@ -1,6 +1,6 @@
 %设定字体
 
-%% \setCJKmainfont[ItalicFont=STKaiti]{Source Han Serif CN}
+\setCJKmainfont[ItalicFont=STKaiti]{Source Han Serif CN}
 %% \textbf为思源宋体
 
 %% \setCJKmainfont[BoldFont=黑体, ItalicFont=STKaiti]{Source Han Serif CN}
@@ -20,12 +20,14 @@
 \DeclareMathOperator{\esssup}{ess\,sup}
 \DeclareMathOperator{\conv}{Conv}
 \DeclareMathOperator{\Span}{span} %% 因为\span已经在宏中定义, 这里使用大写的\Span来表示线性张成
+\DeclareMathOperator{\cont}{Cont} %% 表示函数的连续点
+\DeclareMathOperator{\diag}{diag}
 
 
 \newcommand{\me}{\ensuremath{\mathrm{e}}}
 \newcommand{\imag}{\mathrm{i}}
 \newcommand{\Star}[1]{#1^{*}}
-
+\newcommand{\1}{\mathds{1}}
 
 %% \C已被定义, 重定义在交叉引用部分
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
@@ -38,6 +40,8 @@
 
 \newcommand{\CA}{\mathcal{A}}
 \newcommand{\CB}{\mathcal{B}}
+\newcommand{\CF}{\mathcal{F}}
+\newcommand{\CG}{\mathcal{G}}
 \newcommand{\CH}{\mathcal{H}}
 \newcommand{\CL}{\mathcal{L}}
 \newcommand{\CN}{\mathcal{N}}
@@ -45,8 +49,12 @@
 \renewcommand{\Re}{\mathrm{Re\,}}
 \renewcommand{\Im}{\mathrm{Im\,}}
 \newcommand{\sgn}{\mathrm{sgn}\,}
-
 \newcommand{\diff}{\,\mathrm{d}}
+
+\newcommand{\Fs}{\CF_{\sigma}}
+\newcommand{\Gd}{\CG_{\delta}}
+
+
 \usepackage{tasks}
 \NewTasks[counter-format=(tsk[1]), item-indent=2em, label-offset=1em, label-align=right]{lpbn}
 \NewTasks[counter-format=(tsk[a]), item-indent=2em, label-offset=1em]{alpbn}
@@ -56,11 +64,12 @@
 \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry} %边距
 %\usepackage[a4paper,left=1.8cm,right=3.2cm,top=2.5cm,bottom=2cm]{geometry} %当打印时使用此选项
 \setlength{\headheight}{13pt}
+\usepackage{pifont} % 带圈数字
 \usepackage{fancyhdr} % 页眉页脚
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[OL]{\fangsong \rightmark}
-\fancyhead[ER]{\fangsong \leftmark}
+\fancyhead[OL]{\fangsong \nouppercase\rightmark}
+\fancyhead[ER]{\fangsong \nouppercase\leftmark}
 \fancyhead[OR,EL]{\thepage}
 \fancyfoot[C]{}
 \usepackage[nottoc]{tocbibind}
@@ -135,4 +144,6 @@
 \newcommand{\degree}{\ensuremath{^{\circ}}}
 \newcommand{\sm}{\ensuremath{\setminus}}
 \newcommand{\baro}{\overline}
+\newcommand{\seq}[2][n]{\ensuremath{#2_{1}, #2_{2}, \dots, #2_{#1}}}
+\renewcommand{\thefootnote}{$\sharp$\arabic{footnote}}
 %\renewcommand{\labelenumi}{(\theenumi)}
