@@ -1515,7 +1515,7 @@
 	\begin{Theorem}[Banach-Steinhaus/一致有界原理/共鸣定理]
 	设$ E $是Banach空间而$ F $是赋范空间, $ (u_i)_{i\in\alpha}\subset\CB(E,F) $. 若$ \forall x\in E\,(\sup\limits_{i\in\alpha}\norm{u_i(x)}<\infty) $, 那么
 	\[
-	\sup_{i\in\alpha}\norm{u_i}\leqslant\infty,
+	\sup_{i\in\alpha}\norm{u_i}<\infty,
 	\]
 	即$ (u_i)_{i\in\alpha} $一致有界.
 	\end{Theorem}
@@ -1601,6 +1601,205 @@
 	同理可证$ \norm{B(x_n-x_0,y_n)}\to 0 $.\qed
 	\end{Proof}
 	
+	\subsection{开映射定理}
+	
+	\begin{Definition}[开映射]\index{K!开映射}
+	若$ u : E\to F $将$ E $中的开集映成$ F $中开集, 则称$ u $是\textbf{开映射}.
+	\end{Definition}
+	
+	\begin{Theorem}[开映射定理]\label{thm:开映射定理形式1}
+	设$ E, F $是Banach空间, $ u\in\CB(E,F) $, 若$ u(E) $不是$ F $中的贫集, 则
+	\begin{enumerate}[(1)]
+	\item $ \exists r>0\,(rB_F\subset u(B_E)) $, 其中$ B_E, B_F $分别是$ E $和$ F $上的单位开球.
+	\item $ u $是开映射.
+	\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+	(1) 因$ B_E $是$ E $中的单位开球, 则$ E=\bigcup_{n\geqslant 1}nB_E $, 从而
+	\[
+	u(E)=\bigcup_{n\geqslant 1}u(nB_E)\subset\bigcup_{n\geqslant 1}\baro{u(nB_E)},
+	\]
+	右侧是一个$ \Fs $集, 因$ u(E) $不是贫集, 故$ \left(\bigcup_{n\geqslant 1}\baro{u(nB_E)}\right)^\circ\ne\varnothing $. 由Baire定理, 存在$ n\geqslant 1 $使得$ (\baro{u(nB_E)})^\circ\ne\varnothing $, 即
+	\[
+	\exists n\geqslant 1\,\exists y_0\in F\,\exists\eta>0\,(y_0+\eta B_F\subset \baro{u(nB_E)}),
+	\]
+	注意到$ y_0\in\baro{u(nB_E)} $, 由三角不等式可知
+	\[
+	\eta B_F\subset \baro{u(nB_E)}-y_0\subset\baro{u(nB_E)}-\baro{u(nB_E)}\subset\baro{u(2nB_E)}.
+	\]
+	由$ u $的线性性可知$ B_F\subset \baro{u\left( \frac{2n}{\eta}B_E \right)} $.
+	
+	往证$ B_F\subset u\left(\frac{4n}{\eta}B_E\right) $. 由$ B_F\subset\baro{u\left( \frac{2n}{\eta}B_E \right)} $可知
+	\[
+	\forall y\in B_F\,\exists x_0\in\frac{2n}{\eta}B_E\,\left(\norm{y-u(x_0)}<\frac{1}{2}\right)
+	\]
+	取$ y_1=2(y-u(x_0)) $后可知$ y_1\in B_F $, 则
+	\[
+	\exists x_1\in\frac{2n}{\eta}B_E\,\left(\norm{y_1-u(x_1)}<\frac{1}{2}\right)
+	\]
+	依此进行下去, 可得一列$ (y_n)_{n\geqslant 1}\subset B_F $和$ (x_n)_{n\geqslant 1}\subset\frac{2n}{\eta}B_E $使得
+	\[
+	\forall n\geqslant 1\,\left(\norm{y_n-u(x_n)}<\frac{1}{2}\right)
+	\]
+	于是
+	\[
+	\begin{aligned}
+	y=u(x_0)+\frac{1}{2}y_1&=u(x_0)+\frac{1}{2}+\frac{1}{2^2}y_2\\
+	&=\cdots\\
+	&=u(x_0)+\frac{1}{2}u(x_1)+\frac{1}{2^2}u(x_2)+\cdots+\frac{1}{2^n}u(x_n)+\frac{1}{2^{n+1}}y_{n+1}
+	\end{aligned}
+	\]
+	因$ \sum\limits_{k\geqslant 0}2^{-k}x_k $绝对收敛且$ E $完备, 于是$ y=u\Big(\sum\limits_{k\geqslant 0}2^{-k}x_k\Big) $, 则由
+	\[
+	\norm{\sum_{k\geqslant 0}\frac{x_k}{2^k}}\leqslant\sum_{k\geqslant 0}\frac{\norm{x_k}}{2^k}<\frac{2n}{\eta}\sum_{k\geqslant 0}\frac{1}{2^k}=\frac{4n}{\eta}
+	\]
+	可知$ y\in u\left(\frac{4n}{\eta}B_E\right) $, 从而由$ y $的任意性可知$ B_F\subset u\left(\frac{4n}{\eta}B_E\right) $, 也即$ \frac{\eta}{4n}B_F\subset u(B_E) $.
+	
+	(2) 设$ O $是开集, 往证$ u(O) $也是开集. 任意$ y_0\in u(O) $, 都存在$ x_0\in O $使得$ y_0=u(x_0) $. 由于$ O $是开集, 有
+	\[
+	\exists \varepsilon>0\,(x_0+\varepsilon B_E\subset O)\Longrightarrow u(x_0)+u(\varepsilon B_E)\subset u(O),
+	\]
+	由(1)可知$ \exists r>0\,(rB_F\subset u(B_E)) $, 从而$ y_0+r\varepsilon B_F\subset y_0+u(\varepsilon B_E)\subset u(O) $. 由$ y_0 $的任意性可知$ u(O) $是开集.\qed
+	\end{Proof}
+	
+	\begin{Corollary}[开映射定理]\label{col:开映射定理形式2}
+	设$ E, F $是Banach空间, $ u\in\CB(E,F) $是满射, 则$ u $是开映射, 且$ \exists r>0\,(rB_F\subset u(B_E)) $.
+	\end{Corollary}
+	
+	\begin{Corollary}\label{col:开映射定理推论}
+	设$ E, F $是Banach空间, $ u: E\to F $是连续线性映射, 则$ u^{-1} $连续. 即$ u $是一个同构映射.
+	\end{Corollary}
+	
+	为叙述方便, 在之后使用定理\,\ref{thm:开映射定理形式1}\,,推论\,\ref{col:开映射定理形式2}\,,推论\,\ref{col:开映射定理推论}\,时, 都统一称作使用了开映射定理.
+	
+	\begin{Corollary}[范数等价定理]
+	设$ E $是线性空间, 其上有范数$ \norm{\cdot}_1,\ \norm{\cdot}_2 $. 若$ E $关于两范数为Banach空间, 且$ \norm{\cdot}_2 $比$ \norm{\cdot}_1 $强, 即$ \exists c>0 $使得$ \norm{\cdot}_1\leqslant c\cdot\norm{\cdot}_2 $, 则两范数等价.
+	\end{Corollary}
+	\begin{Proof}
+	因$ \norm{\cdot}_2 $比$ \norm{\cdot}_1 $强, 故
+	\[
+	\id_E : (E,\norm{\cdot}_2)\to(E,\norm{\cdot}_1)
+	\]
+	是连续的. 由推论\,\ref{col:开映射定理推论}\,可知$ \id_E^{-1} $连续, 从而$ \id_E $是同构映射, 即
+	\[
+	\norm{x}_2\leqslant\norm{\id_E^{-1}}\norm{x}_1.
+	\]
+	(需要注意的是, 此处$ \norm{\id_E} $未必为1)\qed
+	\end{Proof}
+	
+	\begin{Example}
+	用开映射定理证明共鸣定理.
+	\end{Example}
+	\begin{Proof}
+	对任意的$ x\in E $, 定义
+	\[
+	\norm x_s=\norm x+\sup_{i\in\alpha}\norm{u_i(x)},
+	\]
+	易证这是一个范数, 且$ \norm{\cdot}\leqslant\norm{\cdot}_s $. 秩序说明$ (E,\norm{\cdot}_s) $是一个Banach空间即可.
+	
+	任取$ (E,\norm{\cdot}_s) $中的Cauchy列$ (x_n)_{n\geqslant 1} $, 那么
+	\[
+	\norm{x_n-x_m}+\sup_{i\in\alpha}\norm{u_i(x_n-x_m)}=\norm{x_n-x_m}+\sup_{i\in\alpha}\norm{u_i(x_n)-u_i(x_m)}\to 0,\quad (n,m\to\infty)
+	\]
+	于是$ \norm{x_n-x_m}\to 0 $且$ \sup\limits_{i\in\alpha}\norm{u_i(x_n)-u_i(x_m)}\to 0 $, 从而
+	\[
+	\exists x\in E(\norm{x_m-x}\to 0\land\forall i\in\alpha\,(\norm{u_i(x_m)-u_i(x)}\to 0)),\qquad (m\to\infty),
+	\]
+	于是$ n\to \infty $时有
+	\[
+	\sup_{i\in\alpha}\norm{u_i(x_m)-u_i(x)}\to 0,\qquad (m\to\infty)
+	\]
+	从而$ \lim\limits_{m\to\infty}\norm{x_m-x}=0 $, 这说明$ (E,\norm{\cdot}_s) $是一个Banach空间. 由范数等价定理, 存在正数$ M $使得$ \norm{\cdot}_s\leqslant M\norm{\cdot} $, 故
+	\[
+	\sup_{i\in\alpha}\norm{u_i(x)}\leqslant (M-1)\norm{x},
+	\]
+	也即$ \sup\limits_{i\in\alpha}\norm{u_i}\leqslant M-1 $, 这即是$ (u_i)_{i\in\alpha} $一致有界.\qed
+	\end{Proof}
+	
+	\subsection{闭图像定理}
+	
+	\begin{Definition}[图像]\index{T!图像}
+	设$ E, F $都是拓扑空间, $ u : E\to F $, 称
+	\[
+	G(u):=\{ (x,u(x)) : x\in E \}
+	\]
+	为映射$ u $的\textbf{图像}.
+	\end{Definition}
+	
+	\begin{Theorem}[闭图像定理]
+	设$ E, F $都是Banach空间, $ u : E\to F $是线性映射. 则$ u $连续当且仅当$ G(u) $是闭集.
+	\end{Theorem}
+	\begin{Proof}
+	\textsl{必要性.} 设$ ((x_n,y_n))_{n\geqslant 1}\subset G(u) $有极限点$ (x,y)\in E\times F $, 其中$ u(x_n)=y_n $, 那么$ \norm{x_n-x}\to 0 $且$ \norm{y_n-y}\to 0 $, 故$ y=u(x) $, 即$ (x,y)\in G(u) $. 这说明$ G(u) $是闭集.
+	
+	\textsl{充分性.} 由$ G(u) $是闭集可知$ G(u) $是Banach空间, 定义
+	\[
+	\varPhi : G(u)\to E,\qquad (x,u(x))\mapsto x,
+	\]
+	则$ \varPhi $连续线性映射且$ \norm{\varPhi}\leqslant 1 $. (这因$ \norm{x}\leqslant\norm{(x,u(x))} $), 注意到
+	\[
+	\varPhi(x,u(x))=0\Longrightarrow x=0\Longrightarrow (x,u(x))=0
+	\]
+	从而$ \varPhi $是单射, 且由$ \varPhi $的定义至$ \varPhi $是满射. 故$ \varPhi $是连续线性双射. 由开映射定理可知$ \varPhi^{-1} $连续, 则$ \forall x\in E $都有
+	\[
+	\norm{u(x)}\leqslant\norm{\varPhi^{-1}(x)}\leqslant\norm{\varPhi^{-1}}\norm{x},
+	\]
+	故$ u $连续.\qed
+	\end{Proof}
+	
+	\subsection{补空间问题}
+	
+	\begin{Definition}[代数互补]\index{D!代数互补}
+	设$ E $是数域$ \K $上的线性空间, $ X, Y $是$ E $的两个线性子空间. 若$ X+Y=E $且$ X\cap Y=\{0\} $, 则称$ X, Y $在$ E $中\textbf{代数互补}.
+	\end{Definition}
+	
+	\begin{Remark}
+	有关代数互补的注记:
+	\begin{enumerate}[(1)]
+	\item 若$ X, Y $代数互补, 则
+	\[
+	\forall e\in E\,\exists!(x,y)\in X\times Y\,(e=x+y)
+	\]
+	否则, 设$ e=x'+y' $, 那么由
+	\[
+	0=x-x'+y-y'\in X\cap Y
+	\]
+	可知$ x-x'=y-y'=0 $.
+	\item 定义映射$ P_X : E\to X,\ e\mapsto x $和$ P_Y : E\to Y,\ e\mapsto y $, 则$ P_X $和$ P_Y $均线性且幂等. 并且$ P_X+P_Y=\id_E $.
+	\end{enumerate}
+	\end{Remark}
+	
+	\begin{Definition}[拓扑互补]\index{T!拓扑互补}
+	设$ E $是赋范空间而$ X, Y $代数互补. 若$ P_X $连续, 则称$ X $与$ Y $\textbf{拓扑互补}.
+	\end{Definition}
+	
+	\begin{Proposition}
+	设$ E $是赋范空间, $ X, Y $代数互补, 则以下命题等价:
+	\begin{enumerate}[(1)]
+	\item $ X, Y $拓扑互补;
+	\item $ \varPhi : X\times Y\to E,\ (x,y)\mapsto x+y $是同构.
+	\end{enumerate}
+	\end{Proposition}
+	\begin{Proof}
+	(1) $ \Rightarrow $ (2): 易证$ \varPhi $是线性映射. 因为$ X, Y $代数互补, 则$ \varPhi $是单射(这因$ x+y=0\Longrightarrow x=0 $或$ y=0 $), 由定义知$ \varPhi $是满的, 又由
+	\[
+	\norm{\varPhi(x,y)}=\norm{x+y}\leqslant\norm{x}+\norm{y}\leqslant 2\max\{ \norm{x},\norm{y} \}
+	\]
+	可知$ \varPhi $是一个连续线性双射. 注意到
+	\[
+	\begin{aligned}
+	\norm{\varPhi^{-1}(e)}=\norm{(x,y)}&=\max\{ \norm{x},\norm{y} \}\\
+	&\leqslant\max\{ \norm{P_X}\norm{x}, \norm{P_Y}\norm{x} \}\leqslant\max\{ \norm{P_X},\norm{P_Y} \}\norm{x},
+	\end{aligned}
+	\]
+	故$ \norm{\varPhi}\leqslant 2 $且$ \norm{\varPhi^{-1}}\leqslant\max\{ \norm{P_X},\norm{P_Y} \} $, 从而$ \varPhi $是同构.
+	
+	(2) $ \Rightarrow $ (1): 由
+	\[
+	\norm{P_X(e)}=\norm{x}\leqslant\norm{(x,y)}=\norm{\varPhi^{-1}(e)}\leqslant\norm{\varPhi^{-1}}\norm{e}
+	\]
+	可知$ \norm{P_X}\leqslant\norm{\varPhi^{-1}}<\infty $.\qed
+	\end{Proof}
 
 \section{Fourier分析}
 	为方便以下讨论, 先定义以下几个常用空间: 考虑在\R 上以 $ 2\pi $ 为周期的函数 $ f $, 它可以限制在 $ [0, 2\pi] $ 上, 取规范化测度 (即测度空间为概率空间的测度) $ \frac{\diff\theta}{2\pi} $, 记
@@ -1758,13 +1957,13 @@
 	\]
 	并称$ D_n $是\textbf{Dirichlet核}.\index{D!Dirichlet核}
 	
-	\begin{Theorem}
+	\begin{Proposition}\label{prop:Dirichlet核反例}
 	设
 	\[
 	G=\left\{ f\in C_{2\pi} : \sup_{n\geqslant 1}\abs{S_n(f)(0)}=\infty \right\},
 	\]
 	则$ G $是$ C_{2\pi} $中稠密的$ \Gd $集.
-	\end{Theorem}
+	\end{Proposition}
 	\begin{Proof}
 	定义
 	\[
@@ -1800,11 +1999,20 @@
 	从而由共鸣定理, $ G $是稠密的$ \Gd $集.\qed
 	\end{Proof}
 	
-	
-	
-	
-	
-	
+	\begin{Proposition}
+	Fourier变换$ \CF : L_{2\pi}^1\to c_0(\Z) $不是满射.
+	\end{Proposition}
+	\begin{Proof}
+	若$ \CF $是满的, 因$ \CF $是连续的单射, 由开映射定理可知$ \CF $是同构, 即
+	\[
+	\exists c>0\,(\norm{f}_{L_{2\pi}^1}\leqslant c\norm{\CF(f)}_\infty=c\sup_{k\in\Z}\abs{\hat{f}(k)})
+	\]
+	考虑$ f=D_n $, 则
+	\[
+	\forall n\geqslant 1\,(\norm{D_n}_{L_{2\pi}^1}\leqslant c)
+	\]
+	由命题\,\ref{prop:Dirichlet核反例}\,可知$ \norm{D_n}_{L_{2\pi}^1}=\infty $, 矛盾.\qed
+	\end{Proof}
 	
 \section*{本章习题}
 	\addcontentsline{toc}{section}{本章习题}
