@@ -775,299 +775,9 @@
 	\qed
 	\end{Proof}
 
-	\section{第5章习题}
-
-	\textbf{习题5.1}\ [习题课]\ \ 对任意$ x\in[0,1] $, 设$ f_n(x)=x^n $. 在$ [0,1] $的哪些点处, $ (f_n)_{n\geqslant 1} $等度连续?
-	\begin{Proof}
-	对任意的$ x\in[0,1) $, 有
-	\[
-	\abs{x^n-a^n}=\abs{(x-a)(x^{n-1}+x^{n-2}a+\cdots+a^{n-1})}\leqslant(1+a+\cdots+a^{n-1})\abs{x-a}<\frac{\abs{x-a}}{1-a},
-	\]
-	故$ (f_n)_{n\geqslant 1} $在$ x\in[0,1) $上等度连续. 但$ x=1 $时, 因为对任意的$ x\in(1-\delta,1) $, 有
-	\[
-	\lim_{n\to\infty}\abs{f_n(x)-f_n(1)}=1,
-	\]
-	从而存在$ n_0 $使得$ n\geqslant n_0 $时有
-	\[
-	\abs{f_{n_0}(x)-f_{n_0}(1)}>\frac{1}{2},
-	\]
-	于是$ (f_n)_{n\geqslant 1} $在$ x=1 $处不等度连续.\qed
-	\end{Proof}
-
-	\textbf{习题5.2}\ [作业]\ \ 设$ K $是度量空间而$ E $是赋范空间, $ (f_n)_{n\geqslant 1}\subset C(K,E) $.
-	\begin{enumerate}[(1)]
-	\item 证明: 若$ (f_n)_{n\geqslant 1} $在某一点$ x $等度连续, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x)-f_n(x_n))_{n\geqslant 1} $收敛到0.
-	\item 证明: 若$ (f_n(x))_{n\geqslant 1} $在$ E $中收敛到$ y $, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x_n))_{n\geqslant 1} $也收敛到$ y $.
-	\item 取$ f_n=\sin nx $, 证明$ (f_n)_{n\geqslant 1} $在$ \R $上无处等度连续.
-	\end{enumerate}
-	\begin{Proof}
-	(1) 由$ (f_n)_{n\geqslant 1} $在$ x $处等度连续, 有
-	\[
-	\forall\varepsilon>0\,\exists\delta>0\,(d_K(y,x)<\delta\Rightarrow \norm{f_n(y)-f_n(x)}<\varepsilon),
-	\]
-	设$ (x_n)_{n\geqslant 1} $收敛于$ x $, 那么对上述$ \delta>0 $,
-	\[
-	\exists n_0\in\N\,(n\geqslant n_0\Rightarrow d_K(x_n,x)<\delta)
-	\]
-	即$ \norm{f_n(x_n)-f_n(x)}\leqslant\varepsilon $.
+\section{第4章习题}
 	
-	(2) 进一步, 设$ (f_n(x))_{n\geqslant 1}\to y $, 那么
-	\[
-	\norm{f_n(x)-y}\leqslant\norm{f_n(x_n)-f_n(x)}+\norm{f_n(x)-y},
-	\]
-	由(1)知右侧收敛到0, 从而结论成立.
-	
-	(3) 设$ f_n(x)=\sin nx $, 那么$ x\ne k\pi, k\in\Z $时取$ x_n=x+\pi/n $, 则
-	\[
-	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+\pi)}=2\abs{\sin nx}\not\to 0,
-	\]
-	用反证法, 若$ \sin nx\to 0 $, 那么
-	\[
-	\lim_{n\to\infty}2\sin x\cos nx=\lim_{n\to\infty}\sin(n+1)x-\sin(n-1)x=0,
-	\]
-	又因为$ \sin x\ne 0 $, 从而$ \cos nx\to 0 $. 再由$ \sin^2 nx+\cos^2 nx=1 $, 从而$ \sin nx\to 1 $, 矛盾. 从而$ (\sin nx)_{n\geqslant 1} $在$ x\ne k\pi $时不可能收敛到0.
-	
-	而当$ x=k\pi, k\in\Z $时, 可取$ x_n=x+\pi/2n $, 那么此时
-	\[
-	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+2\pi)}=2\not\to 0,
-	\]
-	从而$ (\sin nx)_{n\geqslant 1} $在$ \R $上无处连续.\qed
-	\end{Proof}
-	\begin{Remark}
-	实际上, 当$ x\ne k\pi, k\in Z $时, $ (\sin nx)_{n\geqslant 1} $不收敛到任何数. 用反证法, 设$ (\sin nx)_{n\geqslant 1} $收敛, 那么$ (\sin(n+1)x)_{n\geqslant 1} $也收敛. 由
-	\[
-	\sin(n+1)x=\sin nx\cos x+\cos nx\sin x
-	\]
-	可知$ (\cos nx)_{n\geqslant 1} $也收敛. 不妨设$ (\sin nx)_{n\geqslant 1} $与$ (\cos nx)_{n\geqslant 1} $分别收敛于$ a $和$ b $, 那么由$ \sin^2 nx+\cos^2 nx=1 $可知$ a, b $不能同时为零. 在
-	\[
-	\begin{cases}
-	\sin(n+1)x=\sin nx\cos x+\cos nx\sin x\\
-	\cos(n+1)x=\cos nx\cos x-\sin nx\sin x
-	\end{cases}
-	\]
-	中令$ n\to \infty $可知
-	\[
-	\begin{cases}
-	a=a\cos x+b\sin x\\
-	b=b\cos x+a\sin x
-	\end{cases}
-	\]
-	也即
-	\[
-	\begin{cases}
-	(\cos x-1)a+\sin x\cdot b=0\\
-	-\sin x\cdot a+(\cos x-1)b=0
-	\end{cases}
-	\]
-	上面的方程组有非零解的充分必要条件是其系数行列式
-	\[
-	\det\begin{bmatrix}
-	\cos x-1 & \sin x\\-\sin x & \cos x-1
-	\end{bmatrix}=0,
-	\]
-	从而$ \cos x=1 $, 即$ x=2k\pi, k\in\Z $, 这与$ x\ne k\pi $矛盾, 因此$ (\sin nx)_{n\geqslant 1} $不收敛.
-	\end{Remark}
-	
-	\textbf{习题5.5}\ [习题课]\ \ 考虑函数序列$ (f_n)_{n\geqslant 1} $, 这里$ f_n(t)=\sin\sqrt{t+4( n\pi )^2} $, 其中$ t\in[0,\infty) $.
-	\begin{enumerate}[(1)]
-	\item 证明$ (f_n)_{n\geqslant 1} $等度连续并且逐点收敛到0.
-	\item 用$ C_b([0,\infty),\R) $表示$ [0,\infty) $上所有有界连续实函数构成的空间, 并赋予范数
-	\[
-	\norm{f}_\infty=\sup_{t\geqslant 0}\abs{f(t)},
-	\]
-	那么$ (f_n)_{n\geqslant 1} $在$ C_b([0,\infty),\R) $中是否相对紧?
-	\end{enumerate}
-	\begin{Proof}
-	(1) 由Lagrange中值定理, 对任意的$ s, t>0 $, 有
-	\[
-	\abs{\frac{f(s)-f(t)}{s-t}}=\abs{f'(\xi)}=\abs{\frac{\cos\sqrt{\xi+4(n\pi)^2}}{2\sqrt{\xi+4(n\pi)^2}}}\leqslant\frac{1}{4\pi},
-	\]
-	即$ \abs{f_n(s)-f_n(t)}\leqslant\abs{s-t}/4\pi $, 从而$ (f_n)_{n\geqslant 1} $等度连续, 且
-	\[
-	\lim_{n\to\infty}f_n(x)=\lim_{n\to\infty}\sin\sqrt{t+4(n\pi)^2}=\lim_{n\to\infty}\sin(\sqrt{t+4(n\pi)^2}-2n\pi)=\lim_{n\to\infty}\sin\frac{t}{\sqrt{t+4(n\pi)^2}+2n\pi}=0,
-	\]
-	从而$ (f_n)_{n\geqslant 1} $逐点收敛到0.
-	
-	(2) 假设$ (f_n)_{n\geqslant 1} $相对紧, 则存在子列$ (f_{n_k})_{k\geqslant 1} $一致收敛到某$ f\in C_b([0,\infty),\R) $, 即$ \lim\limits_{k\to\infty}\norm{f_{n_k}-f}_\infty=0 $, 那么$ \forall t $都有$ \lim\limits_{k\to\infty}f_{n_k}(t)=f(t) $. 由(1)可知$ f=0 $, 又因为
-	\[
-	f_{n_k}(t)=\sin\frac{t}{\sqrt{t+4(n_{k}\pi)^2}+2n_{k}\pi}
-	\]
-	且
-	\[
-	\abs{\frac{t}{\sqrt{t+4(n_{k}\pi)^2}+2n_{k}\pi}}\leqslant 1,
-	\]
-	从而对$ \forall\varepsilon>0 $, 有$ \abs{f_{n_k}(t)}<\varepsilon $当且仅当$ t/(\sqrt{t+4(n_{k}\pi)^2}+2n_{k}\pi)<\arcsin\varepsilon $. 取$ \varepsilon=1/2 $, 则若记$ \theta=\pi/6 $
-	\[
-	\begin{aligned}
-	\abs{f_{n_k}(t)}<\frac{1}{2} & \Longleftrightarrow \frac{t}{\sqrt{t+4(n_{k}\pi)^2}+2n_k\pi}<\theta \\
-	& \Longleftrightarrow t-2n_k\pi\theta\leqslant\theta\sqrt{t+4(n_k\pi)^2} \\
-	& \Longleftrightarrow (t-2n_k\pi\leqslant 0)\lor\left( \left( t-2n_k\pi\theta\geqslant 0 \right)\land\left( \left(t-2n_k\pi\theta\right)^2\leqslant\theta^2(t+4(n_k\pi)^2) \right) \right),
-	\end{aligned}
-	\]
-	而后者等价于$ 2n_k\pi\theta\leqslant t\leqslant 4n_k\pi\theta+\theta^2 $, 故上式等价于$ t\leqslant 4n_k\pi\theta+\theta^2 $, 这意味着$ (f_{n_k})_{k\geqslant 1} $不可能一致收敛到0, 因此$ (f_n)_{n\geqslant 1} $在$ C_b([0,\infty),\R) $上不是相对紧的.\qed
-	\end{Proof}
-	\begin{Remark}
-	本题说明了在定理\,\ref{thm:逐点->一致}\,和\,\ref{thm:Ascoli}\,中去掉$ K $的紧性后, 结论不再成立.
-	\end{Remark}
-	
-	\textbf{习题5.10}\ [作业]\ \ 设$ (K,d) $是紧度量空间, 证明所有从$ K $到$ \R $的Lipschitz函数构成的集合在$ C(K,\R) $中稠密.
-	\begin{Proof}
-	设$ \CA $是$ K $到$ \R $的Lipschitz函数全体, 易证$ \CA $是一个线性空间, 且对任意$ f, g\in\CA $, 其中$ f $的常数为$ c_1 $, $ g $的常数为$ c_2 $, 由
-	\[
-	\begin{aligned}
-	\abs{(f\cdot g)(x)-(f\cdot g)(y)}&\leqslant\abs{f(x)}\abs{g(x)-g(y)}+\abs{g(y)}\abs{f(x)-f(y)}\\
-	&\leqslant(c_2\norm{f}_\infty+c_1\norm{g}_\infty)d_K(x,y),
-	\end{aligned}
-	\]
-	且因$ K $是紧的而$ f, g $是连续的, 应有$ \norm{f}_\infty,\norm{g}_\infty $都是有限的, 从而$ f\cdot g\in\CA $, 也即$ \CA $是一个代数.
-	
-	取$ d_x(y)=d(x,y) $, 由三角不等式可知$ d_x $是常数为1的Lipschitz函数, 且$ x\ne y $时$ d_x(x)\ne d_x(y) $, 故$ \CA $是可分点的. 又有$ 1\in\CA $是显然的, 则由Stone-Weierstrass定理可知命题成立.\qed
-	\end{Proof}
-
-	\section{Problem Set系列}
-
-	\textbf{补充题1\,(张恭庆1.4.2)}\ [习题课]\ \ 设$ C(0,1] $表示$ (0,1] $上连续有界的函数全体, 在$ C(0,1] $上定义$ \norm{x}=\sup\limits_{0<t\leqslant 1}\abs{x(t)} $, 证明:
-	\begin{enumerate}[(1)]
-	\item $ \norm{\cdot} $是$ C(0,1] $上的范数;
-	\item $ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.
-	\end{enumerate}
-	\begin{Proof}
-	(1) 由
-	\[
-	\norm{x}=0\Longleftrightarrow\sup_{0<t\leqslant 1}\abs{x(t)}=0\Longleftrightarrow x=0
-	\]
-	可知正定性成立, 由
-	\[
-	\norm{\lambda x}=\sup_{0<t\leqslant 1}\abs{\lambda x(t)}=\abs{\lambda}\sup_{0<t\leqslant 1}\abs{x(t)}=\abs{\lambda}\norm{x}
-	\]
-	可知齐次性成立, 再由
-	\[
-	\norm{x+y}=\sup_{0<t\leqslant 1}\abs{x(t)+y(t)}\leqslant\sup_{0<t\leqslant 1}\abs{x(t)}+\sup_{0<t\leqslant 1}\abs{y(t)}=\norm{x}+\norm{y}
-	\]
-	可知三角不等式成立. 于是$ \norm{\cdot} $的确是$ C(0,1] $上的范数.
-	
-	(2) 考虑映射
-	\[
-	T : \ell_\infty\to C(0,1],\qquad (x_n)_{n\geqslant 1}\mapsto f=\sum_{n\geqslant 1}\left(\frac{x_{n+1}-x_n}{\frac{1}{n+1}-\frac{1}{n}}\left(t-\frac{1}{n}\right)+x_n\right)1_{\left( \frac{1}{n+1},\frac{1}{n} \right]},
-	\]
-	其中 $ f $ 是以$ (1/n,x_n)_{n\geqslant 1} $为节点的分段线性函数. 容易证明$ T $是一个线性映射, 又因为
-	\[
-	f=0\Longrightarrow \forall n\geqslant 1, x_n=f\left(\frac{1}{n}\right)=0
-	\]
-	即$ \ker T=\{ (0)_{n\geqslant 1} \} $从而$ T $是单射, 且$ \norm{f}=\sup\limits_{n\geqslant 1}\abs{x_n} $, 于是$ T $是一个等距同构映射. 从而$ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.\qed
-	\end{Proof}
-
-	\textbf{补充题2\,(Ps1010-6)}\ [习题课]\ \ 设$ F_1,F_2\subset E $是赋范空间的线性子空间, 且$ F_1 $闭, $ F_2 $有限维. 那么$ F_1+F_2 $是闭的.
-	\begin{Proof}
-	取商映射
-	\[
-	\pi : E\to E/F_1,\qquad x\mapsto [x]=x+F_1,
-	\]
-	则$ \pi(F_1+F_2)=\pi(F_2) $. 注意到$ \dim\pi(F_2)<\infty $, 从而$ \pi(F_2) $是$ E/F_1 $的闭子集. 由于
-	\[
-	F_1+F_2=\pi^{-1}(\pi(F_2)),
-	\]
-	于是$ F_1+F_2 $是闭集.\qed
-	\end{Proof}
-
-	\textbf{补充题3\,(Ps1010-7)}\ [习题课]\ \ 设
-	\[
-	A=\begin{bmatrix}1 & t\\0 & 0\\\end{bmatrix} 
-	\]
-	计算$ \norm{A} $.
-	\begin{Solution}
-	由于$ \norm{A}=\norm{AA^\dagger}^{1/2} $, 从而由
-	\[
-	AA^\dagger=\begin{bmatrix}1&t\\0&0\\\end{bmatrix}
-	\begin{bmatrix}1&0\\\bar{t}&0\\\end{bmatrix}=\begin{bmatrix}
-	1+\abs{t}^2&0\\0&0\\
-	\end{bmatrix}
-	\]
-	可知$ \norm{A}=\sqrt{1+\abs{t}^2} $.
-	\end{Solution}	
-
-	\textbf{补充题4\,(Ps1022-4)}\ \ 设$ E $是线性空间, $ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $是$ E $上任意两个范数, 若$ (x_n)_{n\geqslant 1} $分别在$ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $下收敛到$ a $和$ b $, 判断$ a $与$ b $是否相等.
-	\begin{Solution}
-	不一定相等. 反例如下: 取$ P $是一切实系数多项式按照通常线性运算构成的线性空间, 对$ x(t)=a_0+a_1t+\cdots+a_nt^n\in P $, 定义其范数
-	\[
-	\norm{x}_N=\abs{\sum_{j=0}^na_j}+\sum_{j\ne N}\frac{\abs{a_j}}{j+1},
-	\]
-	其中$ N $是某个给定的正整数. $ \norm{\cdot}_N $是$ P $上的范数, 因
-	\[
-	\norm{x+y}_N\leqslant\norm{x}_N+\norm{y}_N,\qquad\norm{\lambda x}=\abs{\lambda}\norm{x}_N
-	\]
-	成立, 而$ \norm{x}_N\geqslant 0 $显然, 且
-	\[
-	\norm{x}_N=0\Longleftrightarrow\begin{cases}
-	\abs{\sum_{j=0}^na_j}=0\\\sum_{j\ne N}\frac{\abs{a_j}}{j+1}=0
-	\end{cases}\Longleftrightarrow x=0.
-	\]
-	令$ x_n(t)=t^n $, 那么由
-	\[
-	\norm{t^n-t^N}_N=\frac{1}{n+1}\to 0
-	\]
-	可知$ (x_n)_{n\geqslant 1} $在$ (P,\norm{\cdot}_N) $上收敛到$ t^N $. 取$ N_1\ne N_2 $, 那么$ t^{N_1}\ne t^{N_2} $, 但$ \norm{t^n-t^{N_1}}_{N_1}\to 0 $与$ \norm{t^n-t^{N_2}}_{N_2}\to 0 $同时成立.
-	\end{Solution}
-	
-	\textbf{补充题5\,(Ps1022-5)} 试说明商映射$ \pi : E\to E/F $何时取到$ \norm{\pi}=1 $.
-	\begin{Solution}
-	因为$ \norm{\pi}=\sup\limits_{\norm{x}\ne 0}\norm{\pi x}/\norm{x} $, 由
-	\[
-	\norm{x+F}=\inf_{y\in F}\norm{x+y}\leqslant \norm{x}
-	\]
-	可知$ \norm{\pi}=1 $当且仅当存在$ x\in E $使得$ \norm{\pi x}=\norm{x} $. 而$ \forall x\in E $, 都有
-	\[
-	x=y+z,\qquad y\in F,\ z\in E/F,
-	\]
-	即只需存在$ x\in E $使得$ y=0 $即可, 也即$ F^c\ne\{ 0 \} $即可. 从而只需$ F\ne E $.
-	\end{Solution}
-
-	\textbf{补充题6}\ \ 计算 $ \mathbb{M}_{2}(\C) $ 中投影算子的一般形式. 
-
-	\begin{Solution}
-		设 $ P $ 是投影算子, 则 $ P=P^{\dagger}, P=P^{2} $, 由 $ P $ 自伴, 可设
-		\[
-			P=\begin{bmatrix}
-				a & c \\
-				\bar{c} & b
-			\end{bmatrix}
-		\]
-		其中 $ a, b\in\R $, $ c\in\C $, 再由 $ P $ 幂等
-		\[
-			\begin{bmatrix}a & c \\\bar{c} & b \end{bmatrix}\begin{bmatrix}a & c \\\bar{c} & b \end{bmatrix} = \begin{bmatrix}a^{2}+\abs{c}^{2} & c(a+b) \\ \bar{c}(a+b) & b^{2}+\abs{c}^{2}\end{bmatrix}= \begin{bmatrix}a & c \\ \bar{c} & b\end{bmatrix},
-		\]
-		从而
-		\[
-			\begin{cases}
-				a^{2}+\abs{c}^{2} = a\\
-				b^{2}+\abs{c}^{2} = b\\
-				c(a+b) = c
-			\end{cases}
-		\]
-		当 $ c=0 $ 时, $ a^{2}=a $, $ b^{2}=b $, 故 $ a=0\text{\,或\,}1 $, $ b=0\text{\,或\,}1 $. 此时
-		\[
-			P = 0\text{\,或\,}P=\diag\{0, 1\}\text{\,或\,}P=\diag\{0, 1\}\text{\,或\,}P=\1_{2}.
-		\]
-		当 $ c\ne0 $ 时, 由 $ c(a+b)=c $ 知 $ a+b=1 $, 从而
-		\[
-			P=\begin{bmatrix}
-				a & \sqrt{a(1-a)}\exp(\imag\theta) \\
-				\sqrt{a(1-a)}\exp(-\imag\theta) & a
-			\end{bmatrix}, \quad a\in\R, \theta\in[0, 2\pi].
-		\]
-		进一步, 对一般的 Hilbert空间 $ H $, 有一类特殊的投影算子:
-		\[
-			P = \begin{bmatrix}
-				A & \sqrt{A(\1-A)}\cdot u\\
-				\Star{u}\cdot\sqrt{A(\1-A)} & \1-A
-			\end{bmatrix}
-		\]
-		其中 $ 0\leqslant A\leqslant\1\footnote{若矩阵 $ A-B $ 为半正定的, 则记 $ A\leqslant B $ } $, $ u $ 是酉算子.
-	\end{Solution}
-
-\section{第11周习题课(2019年11月11日)}
-	
-	\textbf{习题4.2}\ [作业]\ \ 设 $ A $ 是 $ \ell_{2} $ 的子集, 其元素 $ x = (x_{n})_{n\geqslant1} $ 满足 $ \abs{x_{n}}\leqslant1/n, n\geqslant1 $. 证明 $ A $ 是紧集. 
+\textbf{习题4.2}\ [作业]\ \ 设 $ A $ 是 $ \ell_{2} $ 的子集, 其元素 $ x = (x_{n})_{n\geqslant1} $ 满足 $ \abs{x_{n}}\leqslant1/n, n\geqslant1 $. 证明 $ A $ 是紧集. 
 	\begin{Proof}
 		$ \ell_{2} $ 是 Hilbert空间且易证 $ A $ 是闭集, 故 $ A $ 完备. 为证 $ A $ 是紧集, 只需证 $ A $ 是预紧的. 
 
@@ -1227,9 +937,158 @@
 			\baro{\Span\{ (e_{n})_{n\geqslant1} \}}=L_{2}[0, 1]
 		\]
 		从而 $ (e_{n})_{n\geqslant1} $ 是 $ L_{2}[0, 1] $ 的规范正交基. \qed
+	\end{Proof}	
+
+\section{第5章习题}
+
+	\textbf{习题5.1}\ [习题课]\ \ 对任意$ x\in[0,1] $, 设$ f_n(x)=x^n $. 在$ [0,1] $的哪些点处, $ (f_n)_{n\geqslant 1} $等度连续?
+	\begin{Proof}
+	对任意的$ x\in[0,1) $, 有
+	\[
+	\abs{x^n-a^n}=\abs{(x-a)(x^{n-1}+x^{n-2}a+\cdots+a^{n-1})}\leqslant(1+a+\cdots+a^{n-1})\abs{x-a}<\frac{\abs{x-a}}{1-a},
+	\]
+	故$ (f_n)_{n\geqslant 1} $在$ x\in[0,1) $上等度连续. 但$ x=1 $时, 因为对任意的$ x\in(1-\delta,1) $, 有
+	\[
+	\lim_{n\to\infty}\abs{f_n(x)-f_n(1)}=1,
+	\]
+	从而存在$ n_0 $使得$ n\geqslant n_0 $时有
+	\[
+	\abs{f_{n_0}(x)-f_{n_0}(1)}>\frac{1}{2},
+	\]
+	于是$ (f_n)_{n\geqslant 1} $在$ x=1 $处不等度连续.\qed
 	\end{Proof}
 
-	\textbf{习题5.15}\ [习题课]\ \ 设 $ f\in L_{2\pi}^{1} $, 其 \textbf{Fourier 级数}定义为
+	\textbf{习题5.2}\ [作业]\ \ 设$ K $是度量空间而$ E $是赋范空间, $ (f_n)_{n\geqslant 1}\subset C(K,E) $.
+	\begin{enumerate}[(1)]
+	\item 证明: 若$ (f_n)_{n\geqslant 1} $在某一点$ x $等度连续, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x)-f_n(x_n))_{n\geqslant 1} $收敛到0.
+	\item 证明: 若$ (f_n(x))_{n\geqslant 1} $在$ E $中收敛到$ y $, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x_n))_{n\geqslant 1} $也收敛到$ y $.
+	\item 取$ f_n=\sin nx $, 证明$ (f_n)_{n\geqslant 1} $在$ \R $上无处等度连续.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由$ (f_n)_{n\geqslant 1} $在$ x $处等度连续, 有
+	\[
+	\forall\varepsilon>0\,\exists\delta>0\,(d_K(y,x)<\delta\Rightarrow \norm{f_n(y)-f_n(x)}<\varepsilon),
+	\]
+	设$ (x_n)_{n\geqslant 1} $收敛于$ x $, 那么对上述$ \delta>0 $,
+	\[
+	\exists n_0\in\N\,(n\geqslant n_0\Rightarrow d_K(x_n,x)<\delta)
+	\]
+	即$ \norm{f_n(x_n)-f_n(x)}\leqslant\varepsilon $.
+	
+	(2) 进一步, 设$ (f_n(x))_{n\geqslant 1}\to y $, 那么
+	\[
+	\norm{f_n(x)-y}\leqslant\norm{f_n(x_n)-f_n(x)}+\norm{f_n(x)-y},
+	\]
+	由(1)知右侧收敛到0, 从而结论成立.
+	
+	(3) 设$ f_n(x)=\sin nx $, 那么$ x\ne k\pi, k\in\Z $时取$ x_n=x+\pi/n $, 则
+	\[
+	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+\pi)}=2\abs{\sin nx}\not\to 0,
+	\]
+	用反证法, 若$ \sin nx\to 0 $, 那么
+	\[
+	\lim_{n\to\infty}2\sin x\cos nx=\lim_{n\to\infty}\sin(n+1)x-\sin(n-1)x=0,
+	\]
+	又因为$ \sin x\ne 0 $, 从而$ \cos nx\to 0 $. 再由$ \sin^2 nx+\cos^2 nx=1 $, 从而$ \sin nx\to 1 $, 矛盾. 从而$ (\sin nx)_{n\geqslant 1} $在$ x\ne k\pi $时不可能收敛到0.
+	
+	而当$ x=k\pi, k\in\Z $时, 可取$ x_n=x+\pi/2n $, 那么此时
+	\[
+	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+2\pi)}=2\not\to 0,
+	\]
+	从而$ (\sin nx)_{n\geqslant 1} $在$ \R $上无处连续.\qed
+	\end{Proof}
+	\begin{Remark}
+	实际上, 当$ x\ne k\pi, k\in Z $时, $ (\sin nx)_{n\geqslant 1} $不收敛到任何数. 用反证法, 设$ (\sin nx)_{n\geqslant 1} $收敛, 那么$ (\sin(n+1)x)_{n\geqslant 1} $也收敛. 由
+	\[
+	\sin(n+1)x=\sin nx\cos x+\cos nx\sin x
+	\]
+	可知$ (\cos nx)_{n\geqslant 1} $也收敛. 不妨设$ (\sin nx)_{n\geqslant 1} $与$ (\cos nx)_{n\geqslant 1} $分别收敛于$ a $和$ b $, 那么由$ \sin^2 nx+\cos^2 nx=1 $可知$ a, b $不能同时为零. 在
+	\[
+	\begin{cases}
+	\sin(n+1)x=\sin nx\cos x+\cos nx\sin x\\
+	\cos(n+1)x=\cos nx\cos x-\sin nx\sin x
+	\end{cases}
+	\]
+	中令$ n\to \infty $可知
+	\[
+	\begin{cases}
+	a=a\cos x+b\sin x\\
+	b=b\cos x+a\sin x
+	\end{cases}
+	\]
+	也即
+	\[
+	\begin{cases}
+	(\cos x-1)a+\sin x\cdot b=0\\
+	-\sin x\cdot a+(\cos x-1)b=0
+	\end{cases}
+	\]
+	上面的方程组有非零解的充分必要条件是其系数行列式
+	\[
+	\det\begin{bmatrix}
+	\cos x-1 & \sin x\\-\sin x & \cos x-1
+	\end{bmatrix}=0,
+	\]
+	从而$ \cos x=1 $, 即$ x=2k\pi, k\in\Z $, 这与$ x\ne k\pi $矛盾, 因此$ (\sin nx)_{n\geqslant 1} $不收敛.
+	\end{Remark}
+	
+	\textbf{习题5.5}\ [习题课]\ \ 考虑函数序列$ (f_n)_{n\geqslant 1} $, 这里$ f_n(t)=\sin\sqrt{t+4( n\pi )^2} $, 其中$ t\in[0,\infty) $.
+	\begin{enumerate}[(1)]
+	\item 证明$ (f_n)_{n\geqslant 1} $等度连续并且逐点收敛到0.
+	\item 用$ C_b([0,\infty),\R) $表示$ [0,\infty) $上所有有界连续实函数构成的空间, 并赋予范数
+	\[
+	\norm{f}_\infty=\sup_{t\geqslant 0}\abs{f(t)},
+	\]
+	那么$ (f_n)_{n\geqslant 1} $在$ C_b([0,\infty),\R) $中是否相对紧?
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由Lagrange中值定理, 对任意的$ s, t>0 $, 有
+	\[
+	\abs{\frac{f(s)-f(t)}{s-t}}=\abs{f'(\xi)}=\abs{\frac{\cos\sqrt{\xi+4(n\pi)^2}}{2\sqrt{\xi+4(n\pi)^2}}}\leqslant\frac{1}{4\pi},
+	\]
+	即$ \abs{f_n(s)-f_n(t)}\leqslant\abs{s-t}/4\pi $, 从而$ (f_n)_{n\geqslant 1} $等度连续, 且
+	\[
+	\lim_{n\to\infty}f_n(x)=\lim_{n\to\infty}\sin\sqrt{t+4(n\pi)^2}=\lim_{n\to\infty}\sin(\sqrt{t+4(n\pi)^2}-2n\pi)=\lim_{n\to\infty}\sin\frac{t}{\sqrt{t+4(n\pi)^2}+2n\pi}=0,
+	\]
+	从而$ (f_n)_{n\geqslant 1} $逐点收敛到0.
+	
+	(2) 假设$ (f_n)_{n\geqslant 1} $相对紧, 则存在子列$ (f_{n_k})_{k\geqslant 1} $一致收敛到某$ f\in C_b([0,\infty),\R) $, 即$ \lim\limits_{k\to\infty}\norm{f_{n_k}-f}_\infty=0 $, 那么$ \forall t $都有$ \lim\limits_{k\to\infty}f_{n_k}(t)=f(t) $. 由(1)可知$ f=0 $, 又因为
+	\[
+	f_{n_k}(t)=\sin\frac{t}{\sqrt{t+4(n_{k}\pi)^2}+2n_{k}\pi}
+	\]
+	且
+	\[
+	\abs{\frac{t}{\sqrt{t+4(n_{k}\pi)^2}+2n_{k}\pi}}\leqslant 1,
+	\]
+	从而对$ \forall\varepsilon>0 $, 有$ \abs{f_{n_k}(t)}<\varepsilon $当且仅当$ t/(\sqrt{t+4(n_{k}\pi)^2}+2n_{k}\pi)<\arcsin\varepsilon $. 取$ \varepsilon=1/2 $, 则若记$ \theta=\pi/6 $
+	\[
+	\begin{aligned}
+	\abs{f_{n_k}(t)}<\frac{1}{2} & \Longleftrightarrow \frac{t}{\sqrt{t+4(n_{k}\pi)^2}+2n_k\pi}<\theta \\
+	& \Longleftrightarrow t-2n_k\pi\theta\leqslant\theta\sqrt{t+4(n_k\pi)^2} \\
+	& \Longleftrightarrow (t-2n_k\pi\leqslant 0)\lor\left( \left( t-2n_k\pi\theta\geqslant 0 \right)\land\left( \left(t-2n_k\pi\theta\right)^2\leqslant\theta^2(t+4(n_k\pi)^2) \right) \right),
+	\end{aligned}
+	\]
+	而后者等价于$ 2n_k\pi\theta\leqslant t\leqslant 4n_k\pi\theta+\theta^2 $, 故上式等价于$ t\leqslant 4n_k\pi\theta+\theta^2 $, 这意味着$ (f_{n_k})_{k\geqslant 1} $不可能一致收敛到0, 因此$ (f_n)_{n\geqslant 1} $在$ C_b([0,\infty),\R) $上不是相对紧的.\qed
+	\end{Proof}
+	\begin{Remark}
+	本题说明了在定理\,\ref{thm:逐点->一致}\,和\,\ref{thm:Ascoli}\,中去掉$ K $的紧性后, 结论不再成立.
+	\end{Remark}
+	
+	\textbf{习题5.10}\ [作业]\ \ 设$ (K,d) $是紧度量空间, 证明所有从$ K $到$ \R $的Lipschitz函数构成的集合在$ C(K,\R) $中稠密.
+	\begin{Proof}
+	设$ \CA $是$ K $到$ \R $的Lipschitz函数全体, 易证$ \CA $是一个线性空间, 且对任意$ f, g\in\CA $, 其中$ f $的常数为$ c_1 $, $ g $的常数为$ c_2 $, 由
+	\[
+	\begin{aligned}
+	\abs{(f\cdot g)(x)-(f\cdot g)(y)}&\leqslant\abs{f(x)}\abs{g(x)-g(y)}+\abs{g(y)}\abs{f(x)-f(y)}\\
+	&\leqslant(c_2\norm{f}_\infty+c_1\norm{g}_\infty)d_K(x,y),
+	\end{aligned}
+	\]
+	且因$ K $是紧的而$ f, g $是连续的, 应有$ \norm{f}_\infty,\norm{g}_\infty $都是有限的, 从而$ f\cdot g\in\CA $, 也即$ \CA $是一个代数.
+	
+	取$ d_x(y)=d(x,y) $, 由三角不等式可知$ d_x $是常数为1的Lipschitz函数, 且$ x\ne y $时$ d_x(x)\ne d_x(y) $, 故$ \CA $是可分点的. 又有$ 1\in\CA $是显然的, 则由Stone-Weierstrass定理可知命题成立.\qed
+	\end{Proof}
+
+\textbf{习题5.15}\ [习题课]\ \ 设 $ f\in L_{2\pi}^{1} $, 其 \textbf{Fourier 级数}定义为
 	\[
 		f\sim \sum_{n=-\infty}^{\infty}\hat{f}(n)\exp(\imag nt).
 	\]
@@ -1293,4 +1152,354 @@
 			\norm{f(t)-S_{N}(f)(t)}_{\infty}=\sup_{0\leqslant t\leqslant2\pi}\abs{f(t)-S_{N}(f)(t)}\leqslant\sqrt{\frac{2}{N}}\norm{f'}_{2}.
 		\]
 		命题得证.\qed
+	\end{Proof}
+
+	\section{Problem Set系列}
+
+	\textbf{补充题1\,(张恭庆1.4.2)}\ [习题课]\ \ 设$ C(0,1] $表示$ (0,1] $上连续有界的函数全体, 在$ C(0,1] $上定义$ \norm{x}=\sup\limits_{0<t\leqslant 1}\abs{x(t)} $, 证明:
+	\begin{enumerate}[(1)]
+	\item $ \norm{\cdot} $是$ C(0,1] $上的范数;
+	\item $ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由
+	\[
+	\norm{x}=0\Longleftrightarrow\sup_{0<t\leqslant 1}\abs{x(t)}=0\Longleftrightarrow x=0
+	\]
+	可知正定性成立, 由
+	\[
+	\norm{\lambda x}=\sup_{0<t\leqslant 1}\abs{\lambda x(t)}=\abs{\lambda}\sup_{0<t\leqslant 1}\abs{x(t)}=\abs{\lambda}\norm{x}
+	\]
+	可知齐次性成立, 再由
+	\[
+	\norm{x+y}=\sup_{0<t\leqslant 1}\abs{x(t)+y(t)}\leqslant\sup_{0<t\leqslant 1}\abs{x(t)}+\sup_{0<t\leqslant 1}\abs{y(t)}=\norm{x}+\norm{y}
+	\]
+	可知三角不等式成立. 于是$ \norm{\cdot} $的确是$ C(0,1] $上的范数.
+	
+	(2) 考虑映射
+	\[
+	T : \ell_\infty\to C(0,1],\qquad (x_n)_{n\geqslant 1}\mapsto f=\sum_{n\geqslant 1}\left(\frac{x_{n+1}-x_n}{\frac{1}{n+1}-\frac{1}{n}}\left(t-\frac{1}{n}\right)+x_n\right)1_{\left( \frac{1}{n+1},\frac{1}{n} \right]},
+	\]
+	其中 $ f $ 是以$ (1/n,x_n)_{n\geqslant 1} $为节点的分段线性函数. 容易证明$ T $是一个线性映射, 又因为
+	\[
+	f=0\Longrightarrow \forall n\geqslant 1, x_n=f\left(\frac{1}{n}\right)=0
+	\]
+	即$ \ker T=\{ (0)_{n\geqslant 1} \} $从而$ T $是单射, 且$ \norm{f}=\sup\limits_{n\geqslant 1}\abs{x_n} $, 于是$ T $是一个等距同构映射. 从而$ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.\qed
+	\end{Proof}
+
+	\textbf{补充题2\,(Ps1010-6)}\ [习题课]\ \ 设$ F_1,F_2\subset E $是赋范空间的线性子空间, 且$ F_1 $闭, $ F_2 $有限维. 那么$ F_1+F_2 $是闭的.
+	\begin{Proof}
+	取商映射
+	\[
+	\pi : E\to E/F_1,\qquad x\mapsto [x]=x+F_1,
+	\]
+	则$ \pi(F_1+F_2)=\pi(F_2) $. 注意到$ \dim\pi(F_2)<\infty $, 从而$ \pi(F_2) $是$ E/F_1 $的闭子集. 由于
+	\[
+	F_1+F_2=\pi^{-1}(\pi(F_2)),
+	\]
+	于是$ F_1+F_2 $是闭集.\qed
+	\end{Proof}
+
+	\textbf{补充题3\,(Ps1010-7)}\ [习题课]\ \ 设
+	\[
+	A=\begin{bmatrix}1 & t\\0 & 0\\\end{bmatrix} 
+	\]
+	计算$ \norm{A} $.
+	\begin{Solution}
+	由于$ \norm{A}=\norm{AA^\dagger}^{1/2} $, 从而由
+	\[
+	AA^\dagger=\begin{bmatrix}1&t\\0&0\\\end{bmatrix}
+	\begin{bmatrix}1&0\\\bar{t}&0\\\end{bmatrix}=\begin{bmatrix}
+	1+\abs{t}^2&0\\0&0\\
+	\end{bmatrix}
+	\]
+	可知$ \norm{A}=\sqrt{1+\abs{t}^2} $.
+	\end{Solution}	
+
+	\textbf{补充题4\,(Ps1022-4)}\ \ 设$ E $是线性空间, $ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $是$ E $上任意两个范数, 若$ (x_n)_{n\geqslant 1} $分别在$ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $下收敛到$ a $和$ b $, 判断$ a $与$ b $是否相等.
+	\begin{Solution}
+	不一定相等. 反例如下: 取$ P $是一切实系数多项式按照通常线性运算构成的线性空间, 对$ x(t)=a_0+a_1t+\cdots+a_nt^n\in P $, 定义其范数
+	\[
+	\norm{x}_N=\abs{\sum_{j=0}^na_j}+\sum_{j\ne N}\frac{\abs{a_j}}{j+1},
+	\]
+	其中$ N $是某个给定的正整数. $ \norm{\cdot}_N $是$ P $上的范数, 因
+	\[
+	\norm{x+y}_N\leqslant\norm{x}_N+\norm{y}_N,\qquad\norm{\lambda x}=\abs{\lambda}\norm{x}_N
+	\]
+	成立, 而$ \norm{x}_N\geqslant 0 $显然, 且
+	\[
+	\norm{x}_N=0\Longleftrightarrow\begin{cases}
+	\abs{\sum_{j=0}^na_j}=0\\\sum_{j\ne N}\frac{\abs{a_j}}{j+1}=0
+	\end{cases}\Longleftrightarrow x=0.
+	\]
+	令$ x_n(t)=t^n $, 那么由
+	\[
+	\norm{t^n-t^N}_N=\frac{1}{n+1}\to 0
+	\]
+	可知$ (x_n)_{n\geqslant 1} $在$ (P,\norm{\cdot}_N) $上收敛到$ t^N $. 取$ N_1\ne N_2 $, 那么$ t^{N_1}\ne t^{N_2} $, 但$ \norm{t^n-t^{N_1}}_{N_1}\to 0 $与$ \norm{t^n-t^{N_2}}_{N_2}\to 0 $同时成立.
+	\end{Solution}
+	
+	\textbf{补充题5\,(Ps1022-5)} 试说明商映射$ \pi : E\to E/F $何时取到$ \norm{\pi}=1 $.
+	\begin{Solution}
+	因为$ \norm{\pi}=\sup\limits_{\norm{x}\ne 0}\norm{\pi x}/\norm{x} $, 由
+	\[
+	\norm{x+F}=\inf_{y\in F}\norm{x+y}\leqslant \norm{x}
+	\]
+	可知$ \norm{\pi}=1 $当且仅当存在$ x\in E $使得$ \norm{\pi x}=\norm{x} $. 而$ \forall x\in E $, 都有
+	\[
+	x=y+z,\qquad y\in F,\ z\in E/F,
+	\]
+	即只需存在$ x\in E $使得$ y=0 $即可, 也即$ F^c\ne\{ 0 \} $即可. 从而只需$ F\ne E $.
+	\end{Solution}
+
+	\textbf{补充题6}\ \ 计算 $ \mathbb{M}_{2}(\C) $ 中投影算子的一般形式. 
+
+	\begin{Solution}
+		设 $ P $ 是投影算子, 则 $ P=P^{\dagger}, P=P^{2} $, 由 $ P $ 自伴, 可设
+		\[
+			P=\begin{bmatrix}
+				a & c \\
+				\bar{c} & b
+			\end{bmatrix}
+		\]
+		其中 $ a, b\in\R $, $ c\in\C $, 再由 $ P $ 幂等
+		\[
+			\begin{bmatrix}a & c \\\bar{c} & b \end{bmatrix}\begin{bmatrix}a & c \\\bar{c} & b \end{bmatrix} = \begin{bmatrix}a^{2}+\abs{c}^{2} & c(a+b) \\ \bar{c}(a+b) & b^{2}+\abs{c}^{2}\end{bmatrix}= \begin{bmatrix}a & c \\ \bar{c} & b\end{bmatrix},
+		\]
+		从而
+		\[
+			\begin{cases}
+				a^{2}+\abs{c}^{2} = a\\
+				b^{2}+\abs{c}^{2} = b\\
+				c(a+b) = c
+			\end{cases}
+		\]
+		当 $ c=0 $ 时, $ a^{2}=a $, $ b^{2}=b $, 故 $ a=0\text{\,或\,}1 $, $ b=0\text{\,或\,}1 $. 此时
+		\[
+			P = 0\text{\,或\,}P=\diag\{0, 1\}\text{\,或\,}P=\diag\{0, 1\}\text{\,或\,}P=\1_{2}.
+		\]
+		当 $ c\ne0 $ 时, 由 $ c(a+b)=c $ 知 $ a+b=1 $, 从而
+		\[
+			P=\begin{bmatrix}
+				a & \sqrt{a(1-a)}\exp(\imag\theta) \\
+				\sqrt{a(1-a)}\exp(-\imag\theta) & a
+			\end{bmatrix}, \quad a\in\R, \theta\in[0, 2\pi].
+		\]
+		进一步, 对一般的 Hilbert空间 $ H $, 有一类特殊的投影算子:
+		\[
+			P = \begin{bmatrix}
+				A & \sqrt{A(\1-A)}\cdot u\\
+				\Star{u}\cdot\sqrt{A(\1-A)} & \1-A
+			\end{bmatrix}
+		\]
+		其中 $ 0\leqslant A\leqslant\1\footnote{若矩阵 $ A-B $ 为半正定的, 则记 $ A\leqslant B $ } $, $ u $ 是酉算子.
+	\end{Solution}
+
+\section{第12周习题课(2019年11月18日)}	
+
+	\textbf{习题4.13}\ [作业]\ \ 设$ E=C[0,1] $上赋有以下内积
+	\[
+	\lrangle{f,g}=\int_0^1f(t)\baro{g(t)}\diff t,
+	\]
+	并设$ E_0 $表示在$ [0,1] $上积分为0的函数组成的$ E $的线性子空间. 考虑$ E $的线性子空间$ H=\{ f\in E : f(1)=0 \} $且$ H_0=E_0\cap H $.
+	\begin{enumerate}[(1)]
+	\item 验证$ H_0 $是$ H $的闭真线性子空间.
+	\item 设$ h(t)=t-1/2 $, $ t\in[0,1] $, 证明:
+	\begin{enumerate}[(i)]
+	\item $ E=\Span\{H,h\} $且$ E_0=\Span\{H_0,h\} $;
+	\item $ h $属于$ H_0 $在$ E $中的闭包.
+	\end{enumerate}
+	\item 以$ H $为全空间, 证明$ H_0^\bot=\{0\} $, 并解释所得结果蕴涵的意义.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由于$ E_0 $与$ H $都是线性空间, 故$ E_0\cap H $也是线性空间. 不妨设$ (f_n)_{n\geqslant 1}\subset E_0 $, 且存在$ f\in E $使得$ \norm{f_n-f}\to 0 $, 则由Cauchy-Schwarz不等式, 有
+	\[
+	\abs{\int_0^1f(t)\diff t}\leqslant\abs{\int_0^1(f-f_n)\diff t}+\abs{\int_0^1f_n\diff t}\leqslant\norm{f-f_n}\to 0.
+	\]
+	即$ f\in E_0 $. 从而$ E_0 $是闭的. 而取$ h(t)=1-t $即得$ H_0\ne H $.
+	
+	(2) (i) 对任意$ f\in E $, 注意到$ f-2f(1)h\in H $, 从而$ E=\Span\{ H,h \} $. 而对任意$ f\in E_0 $, 注意到$ f-2f(1)h\in H_0 $可知$ E_0=\Span\{ H_0,h \} $.
+	
+	(ii) 设$ f_n $是连接$ (0,0),\ (1/n,h(1/n)), (1-1/n,h(1-1/n)), (1,0) $的分段线性函数, 那么由于$ \abs{h-f_n}\leqslant 1 $可知
+	\[
+	\abs{h(t)-f_n(t)}^2\leqslant\abs{h(t)-f_n(t)},\quad\forall t\in [0,1]
+	\]
+	于是
+	\[
+	\int_0^1\abs{h-f_n}^2\diff t\leqslant\int_0^1\abs{h-f_n}\diff t=2\cdot\frac{1}{2}\cdot\frac{1}{n}\cdot\frac{1}{2}=\frac{1}{2n}\to 0\qquad (n\to\infty)
+	\]
+	于是$ \norm{f_n-h}\to 0 $, 且$ f_n\in H_0 $, 这说明$ h $属于$ H_0 $在$ E $中的闭包.
+	
+	(3) 当$ H $是全空间时, 由(2)可知$ E_0\subset\bar{H}_0 $, 从而任取$ f\in H_0^\bot $, 取$ g=f-\int_0^1f(t)\diff t $, 那么有$ g\in E_0\subset \bar{H}_0 $, 由$ f\in\H_0^\bot $可知
+	\[
+	\lrangle{f,g}=\lrangle{f,f}-\abs{\int_0^1f(t)\diff t}^2=\norm{f}^2-\abs{\lrangle{f,1}}^2=0,
+	\]
+	也即$ \norm{f}^2\cdot\norm{1}^2=\abs{\lrangle{f,1}}^2 $, 注意到这就是Cauchy-Schwarz不等式取等, 于是由去等条件可知$ \exists\lambda\in\K $使得$ f=\lambda\cdot 1 $. 又因为$ f(1)=0 $, 从而$ \lambda=0 $, 也即$ f=0 $.
+	
+	本题说明当内积空间$ H $不完备时, 正交分解定理未必成立. 事实上, 若此时正交分解定理成立, 那么
+	\[
+	H=\bar{H}_0\oplus H_0^\bot=\bar{H}_0=H_0,
+	\]
+	而这与(1)矛盾.\qed
+	\end{Proof}
+	
+	\textbf{习题4.15}\ [作业]\ \ 证明下列命题:
+	\begin{enumerate}[(1)]
+	\item 设$ E $和$ F $是Hilbert空间$ H $的两个正交线性子空间, 证明$ E+F $是闭的当且仅当$ E, F $都是闭的.
+	\item 以$ (e_n)_{n\geqslant 1} $表示$ \ell_2 $中的标准正交基, 并设$ E $是$ \{ e_{2n} : n\geqslant 1 \} $的线性扩张的闭包, 而$ F $是$ \{ e_{2n}+\frac{1}{n}e_{2n+1} : n\geqslant 1 \} $的线性扩张的闭包. 证明$ E\cap F=\{0\} $且$ E+F $在$ \ell_2 $中不是闭的.
+	\end{enumerate}
+	\begin{Proof}
+	(1) \textsl{必要性.}\ \ 设$ E+F $是闭的, 若有序列$ (x_n)_{n\geqslant 1}\subset E $使得$ x_n\to z $, 注意到$ x_n=x_n+0\in E+F $, 那么由$ E+F $的闭性可知$ z\in E+F $. 再设$ z=x+y $, 其中$ x\in E,\ y\in F $, 那么
+	\[
+	\norm{z-(x+y)}^2=\norm{z-x}^2+\norm{y}^2\to 0,
+	\]
+	这说明$ \norm{y}^2=0 $, 也即$ y=0 $. 于是$ z\in E $, 这说明$ E $是闭的. 同理可证$ F $也是闭的.
+	
+	(2) \textsl{充分性.}\ \ 设$ E $和$ F $都是闭集, 若有序列$ (z_n)_{n\geqslant 1}\subset E+F $, 其中$ x_n\in E,\ y_n\in F $, 且$ z_n\to z $, 只需证明$ z\in E+F $即可. 由$ (z_n)_{n\geqslant 1} $收敛可知
+	\[
+	\begin{aligned}
+	\norm{x_n-x_m}^2&=\norm{(x_n+y_n)-y_n-(x_m+y_m)+y_m}^2\\
+	&=\norm{(x_n+y_n)-(x_m+y_m)-(y_n-y_m)}^2\\
+	&=\norm{z_n-z_m}^2+\norm{y_n-y_m}^2-2\Re\lrangle{z_n-z_m,y_n-y_m}\\
+	&=\norm{z_n-z_m}^2-\norm{y_n-y_m}^2
+	\end{aligned}
+	\]
+	也即$ \norm{x_n-x_m}^2+\norm{y_n-y_m}^2=\norm{z_n-z_m}^2\to 0 $, 即$ (x_n)_{n\geqslant 1} $和$ (y_n)_{n\geqslant 1} $分别是$ E $和$ F $上的Cauchy列. 由$ E $和$ F $的闭性可知存在$ x\in E,\ y\in F $使得$ x_n\to x,\ y_n\to y $, 从而$ z=x+y\in E+F $, 即$ E+F $是闭的.
+	
+	(2) 任取$ E, F $中的序列, 它们必是这样的形式:
+	\[
+	\begin{aligned}
+	x & = (0,x_2,0,x_4,\dots,0,x_{2n},\dots)\\
+	y & = (0,y_2,y_2,y_4,y_4/2,\dots,y_{2n},y_{2n}/n,\dots)
+	\end{aligned}
+	\]
+	故若$ x=y $, 必有各$ y_n=0 $, 即$ E\cap F=\{0\} $.
+	
+	再证$ E+F $在$ \ell_2 $中不是闭集. 取$ E $中的序列$ a_n=-\sum\limits_{k=1}^ne_{2k} $和$ F $中的序列$ b_n=\sum\limits_{k=1}^n(e_{2k}+e_{2k+1}/k) $, 那么
+	\[
+	a_n+b_n=\sum_{k=1}^n\frac{e_{2k+1}}{k}\in E+F,
+	\]
+	考虑序列$ (a_n+b_n)_{n\geqslant 1} $的极限$ c $, 若$ c=\sum\limits_{k\geqslant 1}e_{2k+1}/k\in E+F $, 那么存在$ x\in E $与$ y\in F $使得
+	\[
+	\begin{aligned}
+	\sum_{k\geqslant 1}\frac{e_{2k+1}}{k}=x+y&=\sum_{k\geqslant 1}x_{2k}e_{2k}+\sum_{k\geqslant 1}y_{2k}e_{2k}+\frac{y_{2k}e_{2k+1}}{k}\\
+	&=\sum_{k\geqslant 1}(x_{2k}+y_{2k})e_{2k}+\sum_{k\geqslant 1}\frac{y_{2k}e_{2k+1}}{k},
+	\end{aligned}
+	\]
+	这说明$ x_{2k}=-1 $且$ y_{2k}=1 $, 于是$ \sum\limits_{k\geqslant 1}\abs{x_k}^2=\infty $, 即$ x\notin E $, 也即$ c\notin E+F $. 故$ E+F $不是$ \ell_2 $中的闭集.\qed
+	\end{Proof}
+	
+	\textbf{习题5.17}\ [习题课]\ \ 对任意$ a\in\R $, 相应的平移变换$ \tau_a(f)(x):=f(x-a) $. 证明对任意$ f\in L_{2\pi}^p $和$ 0<p<\infty $, 都有
+	\[
+	\lim_{a\to 0}\norm{\tau_a(f)-f}_p=0.
+	\]
+	\begin{Proof}
+	设$ f(x)=\exp(\imag nx) $, 其中$ n\in\N $, 那么
+	\[
+	\norm{\tau_a(f)-f}_p=\left(\int_0^{2\pi}\abs{\exp(\imag n(x-a))-\exp(\imag nx)}^p\diff x\right)^{1/p}=\abs{\exp(-\imag na)-1}\to 0\qquad (a\to 0)
+	\]
+	故$ \forall f\in T $, 都有$ \norm{\tau_a(f)-f}_p\to 0 $, 而$ \forall f\in L_{2\pi}^p $, 则
+	\[
+	\forall\varepsilon>0\,\exists g\in T\,\left(\norm{f-g}_p<\frac{\varepsilon}{3}\right)
+	\]
+	而
+	\[
+	\forall g\in T\,\exists\delta>0\,\left(\abs{a}<\delta\Rightarrow\norm{\tau_a(g)-g}_p<\frac{\varepsilon}{3}\right)
+	\]
+	于是
+	\[
+	\norm{\tau_a(f)-f}_p\leqslant\norm{\tau_a(f)-\tau_a(g)}_p+\norm{\tau_a(g)-g}_p+\norm{g-f}_p<\varepsilon.
+	\]
+	从而$ \forall f\in L_{2\pi}^p $, 都有$ \lim\limits_{a\to 0}\norm{\tau_a(f)-f}_p=0 $.\qed
+	\end{Proof}
+	
+	\textbf{习题6.10}\ [习题课]\ \ 设$ E, F $都是Banach空间, $ u\in\CB(E,F) $并满足$ u(B_E) $在$ B_F $中稠密.
+	\begin{enumerate}[(1)]
+	\item 计算$ \norm{u} $.
+	\item 证明: $ u(B_E)=B_F $, 因此$ u $是满的.
+	\item 设$ v $是$ E/\ker u $到$ F $的映射并满足$ v\circ q=u $, 其中$ q : E\to E/\ker u $是商映射. 证明: $ v $是从$ E/\ker u $到$ F $的等距映射.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由已知条件可知$ u(B_E)\subset B_F $, 则$ u(\bar{B}_E)\subset\baro{u(B_E)}\subset \bar{B}_F $, 故$ \norm{u}\leqslant 1 $. 由$ u(B_E) $在$ B_F $中稠密可知$ B_F\subset\baro{u(B_E)} $. 则$ \forall\varepsilon>0 $, 取$ y\in B_F $使得$ \norm{y}=1-\varepsilon/2 $, 则存在$ x\in B_E $使得$ \norm{y-u(x)}<\varepsilon/2 $. 则
+	\[
+	\norm{u(x)}=\norm{u(x)-y+y}\geqslant\norm{y}-\norm{u(x)-y}\geqslant 1-\frac{\varepsilon}{2}-\frac{\varepsilon}{2}=1-\varepsilon.
+	\]
+	由$ \varepsilon $的任意性可知$ \norm{u}\geqslant 1 $, 故$ \norm{u}=1 $.
+	
+	(2) 由题设可知$ B_F\subset\baro{u(B_E)} $, 往证$ B_F\subset u(B_E) $. 设$ y\in B_F $且$ 0<q<1 $, 则存在$ x_0\in B_E $使得
+	\[
+	\norm{y-u(x_0)}<q,
+	\]
+	取$ y_1=\frac{1}{q}(y-u(x_0)) $, 则$ \norm{y_1}\in B_F $, 则存在$ x_1\in B_E $使得
+	\[
+	\norm{y_1-u(x_1)}<q,
+	\]
+	依此进行下去得到一列$ (y_n)_{n\geqslant 1}\subset B_F $且$ (x_n)_{n\geqslant 1}\subset B_E $满足$ \forall n\geqslant 1\,(\norm{y_n-u(x_n)}<q) $. 那么
+	\[
+	\begin{aligned}
+	y=u(x_0)+qy_1&=u(x_0)+qu(x_1)+q^2y_2\\
+	&=\cdots\\
+	&=u(x_0)+qu(x_1)+\cdots+q^nu(x_n)+q^{n+1}y_{n+1}
+	\end{aligned}
+	\]
+	由$ \sum\limits_{k\geqslant 1}q^kx_k $绝对收敛且$ E $完备可知$ x\in\frac{1}{1-q}B_E $, 从而$ y=u(x)\in u\left( \frac{1}{1-q}B_E \right) $. 也即$ (1-q)B_F\subset u(B_E) $. 而
+	\[
+	B_F=\bigcup_{0<q<1}(1-q)B_F\subset u(B_E),
+	\]
+	由此可知$ u(B_E)=B_F $.
+	
+	(3) 取
+	\[
+	v : E/\ker u\to F,\qquad x+\ker u\mapsto u(x),
+	\]
+	则由
+	\[
+	x_1+\ker u=x_2+\ker u\Longleftrightarrow x_1-x_2\in\ker u\Longleftrightarrow u(x_1)=u(x_2)
+	\]
+	可知$ v $是well-defined. 再由$ \forall x\in E $, $ \forall y\in\ker u $都有
+	\[
+	\norm{u(x)}=\norm{u(x+y)}\leqslant\norm{u}\norm{x+y}
+	\]
+	可知$ \norm{u(x)}\leqslant\norm{u}\norm{x+\ker u} $, 则$ \norm{v(x)}\leqslant\norm{u}\norm{x+\ker u} $, 从而$ \norm{v}\leqslant\norm{u} $.
+	
+	由
+	\[
+	\forall f\in F\,\exists e\in E\,(u(e)=f)
+	\]
+	即$ v(e+\ker u)=f $, 故$ v $是满射. 再由
+	\[
+	v(e+\ker u)=u(e)=0\Longleftrightarrow e\in\ker u\Longleftrightarrow e+\ker u=0+\ker u
+	\]
+	可知$ v $是单射. 从而$ v $是连续双射, 由开映射定理可知$ v^{-1} $连续.
+	
+	若$ E/\ker u $与$ F $等距同构, 则有
+	\[
+	\forall e\in E\,(\norm{e+\ker u}=\norm{v(e+\ker u)})
+	\]
+	先说明$ B_{E/\ker u}=q(B_E) $. 由
+	\[
+	\forall e\in B_E\,(\norm{e+\ker u}\leqslant\norm{e}<1)
+	\]
+	可知$ q(B_E)\subset B_{E/\ker u} $. 而$ \forall e+\ker u\in B_{E/\ker u} $, 有$ \norm{u+\ker u}<1 $, 则存在$ a\in\ker u $使得$ \norm{e+a}<1 $. 且$ q(e+a)=e+\ker u $, 从而$ e+\ker u\subset q(B_E) $. 由$ e+\ker u $的任意性可知$ B_{E/\ker u}\subset q(B_E) $. 从而$ B_{E/\ker u}=q(B_E) $.
+	
+	那么
+	\[
+	B_F=u(B_E)=v\circ q(B_E)=v(B_{E/\ker u}),
+	\]
+	故$ v(\baro{B_{E/\ker u}})\subset\baro{v(B_{E/\ker u})}=\bar{B}_F $. 即$ \norm{v}<1 $. 而$ v^{-1}(B_F)=B_{E/\ker u} $, 同理$ \norm{v^{-1}}\leqslant 1 $. 故
+	\[
+	\norm{e+\ker u}\leqslant\norm{v(e+\ker u)}\leqslant\norm{e+\ker u},\qquad \forall e\in E
+	\]
+	从而$ v $等距.\qed
+	\end{Proof}
+	
+	\textbf{习题6.13}\ [习题课]\ \ 证明下列命题:
+	\begin{enumerate}[(1)]
+	\item 设$ E $是赋范空间, $ F $是$ E $的线性子空间. 证明: 若$ F\ne E $, 那么$ F $在$ E $中的内部是空寂.
+	\item 由此证明所有多项式构成的空间$ P $不能赋予完备范数.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 若$ \mathring{F}\ne\varnothing $, 则存在$ B(x_0,r)\subset F $, 这等价于$ x_0\in F $且$ B(0,r)\subset F $. 由于$ F\ne E $, 故存在$ x $使得$ x\in E $但$ x\notin F $. 而$ \frac{r}{2\norm{x}}x\in B(0,r)\subset F $, 这说明$ x\in F $, 矛盾.
+	
+	(2) 记$ P_n=\Span\{ 1,x,\dots,x^n \} $, 那么有$ P=\bigcup_{n\geqslant 1}P_n $. 由于$ P_n $有限维, 故$ P_n $闭. 设在某个范数下$ (P,\norm{\cdot}) $完备, 那么由Baire推论可知$ \bigcup_{n\geqslant 1}\mathring{P}_n $在$ P $稠密. 而由(1)可知$ \forall n\geqslant 1\,(\mathring{P}_n=\varnothing) $, 这即$ \varnothing $在$ P $中稠密. 矛盾.\qed
 	\end{Proof}
