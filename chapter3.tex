@@ -1,0 +1,150 @@
+% !TeX root = main.tex
+
+\chapter{Banach空间的对偶理论}
+\section{半范数}
+	\begin{Definition}[半范数]\label{def:半范数}\index{B!半范数}
+		设 $ E $ 是数域\K 上的线性空间, 托 $ E $ 上的泛函 $ p : E\to \R $ 满足
+		\begin{enumerate}[(1)]
+			\item 非负性: $ \forall x\in E\,(p(x)\geqslant0) $;
+			\item 齐次性: $ \forall \lambda\in\K\,(p(\lambda x)=\abs{\lambda}p(x)) $;
+			\item 三角不等式: $ \forall x, y\in E\,(p(x+y)\leqslant p(x)+p(y)) $.
+		\end{enumerate}
+		则称 $ p $ 是 $ E $ 的一个\textbf{半范数}. 
+	\end{Definition}
+	例如: $ E $ 上的范数 $ \norm{\cdot} $ 是一个半范数, 且对 $ f\in \Star{E} $,  $ \abs{f} $ 是一个半范数.
+	\begin{Definition}[平衡, 吸收]\label{def:平衡吸收}
+		设 $ E $ 是数域 \K 上的线性空间,  $ A\subset E $, 则
+		\begin{enumerate}[(1)]
+			\item 若 $ \forall\abs{\lambda}\leqslant1\,\forall x\in A\,(\lambda x\in A) $, 则称 $ A $ 是\textbf{平衡}的;\index{P!平衡}
+			\item 若 $ \forall x\in E\,\exists \alpha>0\,(\abs{\lambda}\leqslant\alpha\Rightarrow\lambda x \in A) $, 则称 $ A $ 是\textbf{吸收}的. \index{X!吸收}
+			\item 若 $ x\in A\Rightarrow -x\in A $, 则称 $ A $ 是\textbf{对称}的. \index{D!对称} 
+		\end{enumerate}
+	\end{Definition}
+	可以从图~\ref{fig:平衡吸收}~来理解平衡和吸收的概念
+	\begin{figure}[hp!]
+		\begin{center}	
+		\begin{tikzpicture}
+			\draw[-latex] (-1,0) -- (1,0) node[below] {$ \scriptstyle{x} $};
+			\draw[-latex] (0,-1) -- (0,1) node[right] {$ \scriptstyle{y} $};
+			\draw (-1,-0.5) -- (1,0.5); 
+			\node (A1) at (0,-1.3) {\zihao{6} 平衡, 不吸收};
+			\node (B1) at (0.75,-0.75) {$ \mathbb{R}^{2} $};
+			\filldraw[fill=gray!30] (4,0) circle[radius=0.75];
+			\draw[-latex] (3,0) -- (5,0) node[below] {$ \scriptstyle{x} $};
+			\draw[-latex] (4,-1) -- (4,1) node[right] {$ \scriptstyle{y} $};
+			\node (A2) at (4,-1.3) {\zihao{6} 平衡, 吸收};
+			\node (B2) at (4.8,-0.8) {$ \mathbb{C} $};
+			\filldraw[fill=gray!30] (7.25,-0.75) rectangle (8.75,0.75); 
+			\draw[-latex] (7,0) -- (9,0) node[below] {$ \scriptstyle{x} $};
+			\draw[-latex] (8,-1) -- (8,1) node[right] {$ \scriptstyle{y} $};
+			\node (A3) at (8,-1.3) {\zihao{6} 平衡, 吸收, 凸集};
+			\node (B3) at (9,-0.8) {$ \mathbb{R}^{2} $};
+			\filldraw[fill=gray!30] (11.5,-0.5) -- (12.25,0.75) -- ++(0,-0.5) -- ++(0.5,0) -- cycle;
+			\draw[-latex] (11,0) -- ++(2,0) node[below] {$ \scriptstyle{x} $};
+			\draw[-latex] (12,-1) -- ++(0,2) node[right] {$ \scriptstyle{y} $};
+			\node (A4) at (12,-1.3)  {\zihao{6} 不平衡, 吸收} ;
+			\node (B4) at (12.75,-0.75) {$ \mathbb{R}^{2} $};
+		\end{tikzpicture}
+		\caption{平衡， 吸收图例}\label{fig:平衡吸收}
+		\end{center}
+	\end{figure}
+
+
+	\begin{Definition}[Minkowski泛函]\label{def:Minkowski泛函}\index{M!Minkowski泛函}
+		设 $ E $ 是线性空间,  $ \varOmega $ 是 $ E $ 中平衡吸收的凸集, 则称
+		\[
+			P_{\varOmega} : E\to\R\quad x\mapsto \inf\left\{ \lambda>0:\frac{x}{\lambda}\in\varOmega \right\}
+		\]
+		为对应于 $ \varOmega $ 的 \textbf{Minkowski 泛函}.
+	\end{Definition}
+	\begin{Theorem}\label{thm:M凸}
+		设 $ E $ 是线性空间,  $ \varOmega, \varOmega_{1}, \varOmega_{2} $ 是平衡吸收的凸集, 则:
+		\begin{enumerate}[(1)]
+			\item $ p_{\varOmega} $ 是 $ E $ 上的半范数, 且 $ \varOmega\subset\left\{ x\in E : p_{\varOmega}(x)\leqslant1 \right\} $;
+			\item 若 $ \varOmega_{1}\subset\varOmega_{2} $, 则 $ p_{\varOmega_{1}}\geqslant p_{\varOmega_{2}} $;
+			\item 设 $ \varOmega_{3}=\varOmega_{1}\cap \varOmega_{2} $, 则 $ p_{\varOmega_{3}}\geqslant\max\left\{ p_{\varOmega_{1}}, p_{\varOmega_{2}} \right\} $.
+		\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+		(1) 取 $ I(x)=\left\{ \lambda>0 : \frac{x}{\lambda}\in\varOmega \right\} $. 若 $ \lambda\in I(x) $, 则 $ \forall \mu>\lambda $, 有 $ \frac{x}{\mu}=\frac{x}{\lambda}\cdot\frac{\lambda}{\mu}\in\varOmega $, 故 $ \mu\in I(x) $, 即 $ I(x) $ 为一个区间, 而 $ \forall x\in\varOmega $, 有 $ 1\in I(x) $, 故 $ p_{\varOmega}(x)=\inf I(x)\leqslant1 $, 也即
+		\[
+			\varOmega\subset\left\{ x\in E : p_{\varOmega}(x)\leqslant1 \right\}.
+		\]
+		还需说明 $ p_{\varOmega} $ 是半范数. 由 $ p_{\varOmega} $ 定义知 $ p_{\varOmega}\geqslant0 $, 即非负性成立. 而对 $ \alpha\ne 0 $, 有
+		\[
+			I(\alpha x)=\left\{ \lambda>0 : \frac{\alpha x}{\lambda}\in \varOmega \right\}=\left\{ \lambda>0 : \frac{\alpha x/\abs{\alpha}}{\lambda/\abs{\alpha}} \right\},
+		\]
+		因为 $ \alpha x/\abs{\alpha}\in \varOmega $ 与 $ x\in\varOmega $ 等价 (由平衡性可知), 从而
+		\[
+			I(\alpha x)=\left\{ \lambda>0 : \frac{\alpha x/\abs{\alpha}}{\lambda/\abs{\alpha}} \right\}=\left\{ \abs{\alpha}\lambda'>0 : \frac{x}{\lambda'}\in\varOmega \right\} = \abs{\alpha} I(x),
+		\]
+		两侧同取下确界, 有 $ p_{\varOmega}(\alpha x)=\abs{\alpha}p_{\varOmega}(x) $, 即齐次性成立.
+
+		再证三角不等式. 取 $ \lambda\in I(x), \mu\in I(y) $. 则有 $ x/\lambda\in\varOmega $ 且 $ y/\mu\in\varOmega $. 因为
+		\[
+			\frac{x+y}{\lambda+\mu} = \frac{x}{\lambda}\cdot\frac{\lambda}{\lambda+\mu}+\frac{y}{\mu}\cdot\frac{\mu}{\lambda+\mu}.
+		\]
+		因为 $ \abs{\frac{\lambda}{\lambda+\mu}}\leqslant1 $, $ \abs{\frac{\mu}{\lambda+\mu}}\leqslant1 $, 且 $ \frac{\lambda}{\lambda+\mu}+\frac{\mu}{\lambda+\mu}=1 $, 由 $ \varOmega $ 的凸性知 $ \frac{x+y}{\lambda+\mu}\in\varOmega $, 即 $ \lambda+\mu\in I(x+y) $. 也即 $ p_{\varOmega}(x+y)\leqslant\lambda+\mu $, 再由 $ \lambda, \mu $ 的任意性
+		\[
+			p_{\varOmega}(x+y)\leqslant p_{\varOmega}(x)+p_{\varOmega}(y),
+		\]
+		即三角不等式成立.
+
+		(2) 若 $ \varOmega\subset\varOmega $, 则由
+		\[
+			I_{\varOmega_{1}}=\left\{ \lambda>0:\frac{x}{\lambda}\in\varOmega_{1} \right\}\subset\left\{ \lambda>0:\frac{x}{\lambda}\in\varOmega_{2} \right\} = I_{\varOmega_{2}}(x)
+		\]
+		可知 $ p_{\varOmega_{1}}\geqslant p_{\varOmega_{2}} $. 
+
+		(3) 因为 $ \varOmega_{3}\subset\varOmega_{1}, \varOmega_{3}\subset\varOmega_{2} $. 由~(2)~知 $ p_{\varOmega_{3}}\geqslant p_{\varOmega_{1}} $, $ p_{\varOmega_{3}}\geqslant p_{\varOmega_{2}} $, 故 $ p_{\varOmega_{3}}\geqslant\max\left\{ p_{\varOmega_{1}}, p_{\varOmega_{2}} \right\} $.\qed
+	\end{Proof}
+
+	\begin{Proposition}
+		设 $ E $ 是赋范空间, $ \varOmega $ 是平衡吸收的闭凸集, 则
+		\begin{enumerate}[(1)]
+			\item $ \varOmega = \{ x\in E : p_{\varOmega}(x)\leqslant 1 \} $;
+			\item 若 $ \varOmega $ 有界, 则 $ p_{\varOmega}(x)=0 $ 的充分必要条件是 $ x=0 $;
+			\item 若 $ 0 $ 是 $ \varOmega $ 的内点, 则 $ p_{\varOmega} $ 一致连续. 
+		\end{enumerate}
+	\end{Proposition}
+	\begin{Proof}
+		(1) 由定理~\ref{thm:M凸}~, 有 $ \varOmega\subset\{ x\in E : p_{\varOmega}(x)\leqslant1 \} $. 而
+		\[
+			\forall n\geqslant 1\,\left( \frac{x}{1+1/n}\in\varOmega \right)
+		\]
+		令 $ n\to \infty $, 有 $ x\in\varOmega $, 于是 $ \varOmega = \{ x\in E : p_{\varOmega}(x)\leqslant 1 \} $.
+
+		(2) 因为 $ \varOmega $ 有界, 则存在 $ r>0 $ 使得 $ \varOmega\subset B(0, r) $, 从而对任意 $ x $, 有 $ \frac{rx}{\norm{x}}\notin\varOmega $. 于是
+		\[
+			p_{\varOmega}(x)\geqslant\frac{\norm{x}}{r},
+		\]
+		从而 $ p_{\varOmega}(x)=0\Longleftrightarrow\norm{x}=0\Longleftrightarrow x=0 $.
+
+		(3) $ 0 $ 是 $ \varOmega $ 的内点, 即存在 $ r>0 $ 使得 $ B(0, r)\subset\varOmega $, 则对任意 $ x $, 都有 $ \frac{rx}{2\norm{x}}\in \varOmega $, 于是
+		\[
+			p_{\varOmega}(x)\leqslant\frac{2\norm{x}}{r},
+		\]
+		从而
+		\[
+			\abs{p_{\varOmega}(x)-p_{\varOmega}(y)}\leqslant\max\{ p_{\varOmega}(x-y), p_{\varOmega}(y-x) \}\leqslant\frac{2\norm{x-y}}{r}
+		\]
+		即 $ p_{\varOmega} $ 是 Lipschitz 的, 从而一致连续. (因为 $ \varOmega $ 是平衡的, 所以实际上 $ p_{\varOmega}(x-y) = p_{\varOmega}(y-x) $.)\qed
+	\end{Proof}
+	\begin{Remark}
+		若 $ \varOmega $ 是平衡吸收的开凸集, 则 $ \varOmega=\{ x\in E:p_{\varOmega}(x)<1 \} $. 若 $ \varOmega $ 只是吸收的凸集, 仍可定义 Minkowski 泛函 $ p_{\varOmega} $, 但此时 $ p_{\varOmega} $ 不是半范数, 但 $ p_{\varOmega} $ 仍满足
+		\begin{enumerate}[(1)]
+			\item $ \forall t>0\,(p_{\varOmega}(tx)=tp_{\varOmega}(x)) $;
+			\item $ \forall x, y\in\varOmega\,(p_{\varOmega}(x+y)\leqslant p_{\varOmega}(x)+p_{\varOmega}(y)) $;
+			\item 设 $ E $ 是赋范空间,  $ \varOmega $ 是开集, 则 $ \{ x\in E:p_{\varOmega}(x)<1 \}=\varOmega $, 即 $ \forall x\notin\varOmega, p_{\varOmega}(x)\geqslant1 $.
+		\end{enumerate}
+	\end{Remark}
+	推广上述 Minkowski 泛函, 有
+	\begin{Definition}[次线性泛函]\label{def:次线性泛函}\index{C!次线性泛函}
+		设 $ E $ 是\R 上的线性空间, 若泛函 $ p:E\to \R $ 满足
+		\begin{enumerate}[(1)]
+			\item 齐次性: $ \forall t>0\,\forall x\in E\,(p(tx)=tp(x)) $;
+			\item 次加性: $ \forall x, y\in E\,(p(x+y)\leqslant p(x)+p(y)) $.
+		\end{enumerate}
+		则称泛函 $ p $ 是 $ E $ 上的\textbf{次线性泛函}. 
+	\end{Definition}
+	例如: $ E $ 上的线性泛函是次线性泛函; Minkowski 泛函是次线性泛函; 半范数也是次线性泛函. 
