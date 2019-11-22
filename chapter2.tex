@@ -1583,7 +1583,7 @@
 	即$ \norm{u}<\infty $. 于是$ \norm{u}\leqslant\liminf\limits_{n\to\infty}\norm{u_n} $.\qed
 	\end{Proof}
 	
-	\begin{Corollary}
+	\begin{Corollary}\label{cor:双线性映射连续性}
 	设$ E, F $是Banach空间, $ G $是赋范空间, $ B : E\times F\to G $是双线性映射. 若$ B $对两个变量均连续, 则$ B $在$ E\times F $中连续.
 	\end{Corollary}
 	\begin{Proof}
@@ -1773,7 +1773,7 @@
 	设$ E $是赋范空间而$ X, Y $代数互补. 若$ P_X $连续, 则称$ X $与$ Y $\textbf{拓扑互补}.
 	\end{Definition}
 	
-	\begin{Proposition}
+	\begin{Proposition}\label{prop:拓扑代数}
 	设$ E $是赋范空间, $ X, Y $代数互补, 则以下命题等价:
 	\begin{enumerate}[(1)]
 	\item $ X, Y $拓扑互补;
@@ -1800,6 +1800,52 @@
 	\]
 	可知$ \norm{P_X}\leqslant\norm{\varPhi^{-1}}<\infty $.\qed
 	\end{Proof}
+	\begin{Corollary}
+		设 $ E $ 是 Banach 空间,  $ X, Y $ 代数互补, 则 $ X, Y $ 拓扑互补, 则 $ X, Y $ 拓扑互补当且仅当 $ X, Y $ 是闭集. 
+	\end{Corollary}
+	\begin{Proof}
+		\textsl{必要性}. 若 $ X, Y $ 拓扑互补, 则 $ P_{X}, P_{Y} $ 连续, 注意到 $ \ker P_{X} = Y $,  $ \ker P_{Y}=X $, 由 $ \{0\} $ 是闭集知 $ X, Y $ 均是闭集. 
+
+		\textsl{充分性}.  若 $ X, Y $ 均是闭集, 则　$ X, Y $　均为 Banach 空间, 从而 $ X\times Y $ 是 Banach 空间， 而 $ \phi : X\times Y\to E $ 是线性双射, 由开映射定理可知 $ \phi $ 是同构. 再由命题~\ref{prop:拓扑代数}~知 $ X, Y $ 拓扑互补. \qed
+	\end{Proof}
+
+	\begin{Theorem}
+		设 $ E $ 是Banach空间,  $ F_{1}, F_{2} $ 是 $ E $ 中闭线性子空间且 $ F_{1}\cap F_{2}=\{ 0 \} $. 则 $ F_{1}+F_{2} $ 是闭集当且仅当 $ \exists c>0\,\forall x\in F_{1}\,\forall y\in F_{2}\,\left( \norm{x}\leqslant x\norm{x+y} \right) $. 
+	\end{Theorem}
+	\begin{Proof}
+		\textsl{必要性}. 由 $ F_{1}+F_{2} $ 闭, 故 $ F_{1}+F_{2} $ 是 Banach 空间,  $ F_{1}, F_{2} $ 在 $ F_{1}+F_{2} $ 中拓扑互补, 故 $ P_{F_{1}} $ 连续. 也即 $ \exists c>0 $, 使得 $ \norm{P_{F_{1}}} $, 故对任意 $ x\in F_{1}, y_{F_{2}} $, 有
+		\[
+			\norm{x} = \norm{P_{F_{1}}(x+y)}\leqslant c\norm{x+y}.
+		\]
+		
+		\textsl{充分性}. 设 $ (e_{n})_{n\geqslant1} $ 是 $ F_{1} $ 中的 Cauchy 列, 且收敛于 $ e\in E $. 往证 $ e\in F_{1}+F_{2} $. 设 $ e_{n}=x_{n}+y_{n} $, 其中 $ x_{n}\in F_{1} $, $ y\in F_{2} $, 则
+		\[
+			\norm{x_{n}-x_{m}}\leqslant c\norm{e_{n}-e_{m}}\to 0.
+		\]
+		故 $ (x_{n})_{n\geqslant1} $ 是 $ F_{1} $ 中的 Cauchy 列, 则存在 $ x\in F_{1} $ 使得 $ x_{n}\to x $. 同理存在  $ y\in F_{2} $ 使得  $ y_{n}\to y $, 则有 $ e=x+y\in F_{1}+F_{2} $, 故 $ F_{1}+F_{2} $ 是闭集. \qed
+	\end{Proof}
+
+	这一章的定理推导关系如图~\ref{fig:Baire}~所示.
+	\begin{figure}[hb!]
+		\begin{center}
+			\begin{tikzpicture}
+				\node[draw] (A) at (0,2) {Baire定理};
+				\node[draw] (B) at(-3.5,0) {开映射定理};
+				\node[draw] (C) at (0,0) {范数等价定理};
+				\node[draw] (D) at (3.5,0) {一致有界定理};
+				\node[draw] (E) at (-3.5,-2) {闭图像定理};
+				\draw[-Implies, double equal sign distance] (A.west) -- (B.north);
+				\draw[-Implies, double equal sign distance] (A.south) -- (C.north);
+				\draw[-Implies, double equal sign distance] (A.east) -- (D.north);
+				\draw[-Implies, double equal sign distance] (B.east) -- (C.west);
+				\draw[-Implies, double equal sign distance] (C.east) -- (D.west);
+				\draw[-Implies, double equal sign distance] (B.south) -- (E.north);
+			\end{tikzpicture}
+			\caption{Baire定理及其它定理}
+			\label{fig:Baire}
+		\end{center}
+	\end{figure}
+	
 
 \section{Fourier分析}
 	为方便以下讨论, 先定义以下几个常用空间: 考虑在\R 上以 $ 2\pi $ 为周期的函数 $ f $, 它可以限制在 $ [0, 2\pi] $ 上, 取规范化测度 (即测度空间为概率空间的测度) $ \frac{\diff\theta}{2\pi} $, 记
@@ -2013,6 +2059,7 @@
 	\]
 	由命题\,\ref{prop:Dirichlet核反例}\,可知$ \norm{D_n}_{L_{2\pi}^1}=\infty $, 矛盾.\qed
 	\end{Proof}
+	
 	
 \section*{本章习题}
 	\addcontentsline{toc}{section}{本章习题}

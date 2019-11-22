@@ -1,10 +1,10 @@
 %设定字体
 
-\setCJKmainfont[ItalicFont=STKaiti]{Source Han Serif CN}
+%% \setCJKmainfont[ItalicFont=STKaiti]{Source Han Serif CN}
 %% \textbf为思源宋体
 
-%% \setCJKmainfont[BoldFont=黑体, ItalicFont=STKaiti]{Source Han Serif CN}
-%% \textbf为思源黑体
+\setCJKmainfont[BoldFont=黑体, ItalicFont=STKaiti]{Source Han Serif CN}
+%% \textbf为中易黑体
 
 %% \setCJKsansfont{Source Han Sans CN}
 %% \setCJKmonofont{Source Han Sans CN}
@@ -22,6 +22,7 @@
 \DeclareMathOperator{\Span}{span} %% 因为\span已经在宏中定义, 这里使用大写的\Span来表示线性张成
 \DeclareMathOperator{\cont}{Cont} %% 表示函数的连续点
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\codim}{codim}
 
 
 \newcommand{\me}{\ensuremath{\mathrm{e}}}
@@ -73,6 +74,7 @@
 \fancyhead[OR,EL]{\thepage}
 \fancyfoot[C]{}
 \usepackage[nottoc]{tocbibind}
+\usepackage{imakeidx}
 
 %辅助
 \usepackage{array,diagbox,booktabs,tabularx} 
@@ -140,6 +142,8 @@
 %新定义命令
 \newcommand{\abs}[1]{\ensuremath{\left| #1 \right| }}
 \newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\Babs}[1]{\ensuremath{\Big| #1 \Big| }}
+\newcommand{\Bnorm}[1]{\ensuremath{\Big\| #1 \Big\|}}
 \newcommand{\lrangle}[1]{\left\langle #1 \right\rangle}
 \newcommand{\degree}{\ensuremath{^{\circ}}}
 \newcommand{\sm}{\ensuremath{\setminus}}
