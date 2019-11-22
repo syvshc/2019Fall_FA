@@ -148,3 +148,172 @@
 		则称泛函 $ p $ 是 $ E $ 上的\textbf{次线性泛函}. 
 	\end{Definition}
 	例如: $ E $ 上的线性泛函是次线性泛函; Minkowski 泛函是次线性泛函; 半范数也是次线性泛函. 
+
+\section{Hahn-Banach定理}
+\subsection{分析形式的 Hahn-Banach定理}
+	\begin{Proposition}
+		设 $ E $ 是线性空间,  $ \rho $ 是 $ E $ 上 (推广的) 线性泛函,  $ \rho : E\to \K $, 记 $ F= \ker \rho\subset E $ 则 $ E/ F $ 是线性空间, 且 $ \codim F = \dim E/F=1 $.
+	\end{Proposition}
+	\begin{Proof}
+		若 $ x_{1}+F, x_{2}+F $ 在 $ E/F $ 中线性无关, 则 $ x_{1}+F\ne F, x_{2}+F\ne F $, 即 $ \rho(x_{1})\ne 0, \rho(x_{2})\ne 0 $, 由 $ \rho $ 的线性性可知
+		\[
+			\rho(x_{2}\rho(x_{1})-x_{1}\rho(x_{2}))=\rho(x_{2})\rho(x_{1})-\rho(x_{1})\rho(x_{2})=0
+		\]
+		即 $ x_{2}\rho(x_{1})-x_{1}\rho(x_{2})+F=F $, 也即 $ \rho(x_{1})(x_{2}+F)-\rho(x_{2})(x_{1}+F)=F $. 矛盾.\qed
+	\end{Proof}
+	上一命题说明了对一般的线性空间 $ E $, 余维数为 1 可用
+	\[
+		\exists x\in E\sm F \,(E=F+\K x)
+	\]
+	来刻画.
+
+	\begin{Lemma}
+		设 $ E $ 是线性空间,  $ F $ 是 $ E $ 的线性子空间且 $ \codim F=1 $, 并设 $ p:E\to \R $ 是次线性泛函,  $ f:F\to \R $ 是线性泛函， 在 $ F $ 上成立 $ f\leqslant p $， 则存在线性泛函 $ \tilde{f}:E\to\R $ 使得
+		\[
+			(\tilde{f}|_{F}=f)\land(\forall x\in E\,(\tilde{f}(x)\leqslant p(x))).
+		\]
+	\end{Lemma}
+	\begin{Proof}
+		由 $ \codim F =1 $ 可知 $ \exists x_{0}\in E\sm F $ 使得 $ E = \R x_{0}+F $. 设 $ \tilde{f}:E\to\R $ 是 $ f $ 的线性延拓, 即 $ \tilde{f} $ 线性且 $ \tilde{f}|_{F}=f $. 则
+		\[
+			\forall\lambda\in\R\,\forall x\in F\,(\tilde{f}(\lambda x_{0}+x)=\lambda\tilde{f}(x_{0})+f(x)),
+		\] 
+		即 $ \tilde{f} $ 由其在 $ x_{0} $ 处的取值唯一确定, 不妨设 $ \tilde{f}(x_{0})=a $, 则
+		\[
+			\begin{aligned}
+				\forall x'\in E\,(\tilde{f}(x')\leqslant p(x')) & \Longleftrightarrow \forall\lambda\in \R\,\forall x\in F\,(\tilde{f}(\lambda x_{0}+x)\leqslant p(\lambda x_{0}+x)) \\
+				& \Longleftrightarrow \forall\lambda\in \R\,\forall x\in F\,(\lambda a+f(x)\leqslant p(\lambda x_{0}+x)).
+			\end{aligned}
+		\]
+		从而上式等价于 $ \forall\lambda\in\R $, $ \forall x\in F $.
+		\[
+			\begin{cases}
+				a\leqslant \frac{1}{\lambda}p(\lambda x_{0}+x)-\frac{1}{\lambda}f(x) & ,\lambda\geqslant0\\
+				a\geqslant \frac{1}{\lambda}p(\lambda x_{0}+x)-\frac{1}{\lambda}f(x) & ,\lambda<0
+			\end{cases}\Longleftrightarrow
+			\begin{cases}
+				a\leqslant p\left(x_{0}+\frac{x}{\lambda}\right)-f\left( \frac{x}{\lambda} \right) & ,\lambda\geqslant 0\\
+				a\geqslant-p\left( -x_{0}-\frac{x}{\lambda} \right) + f\left( -\frac{x}{\lambda} \right) & ,\lambda>0
+			\end{cases}
+		\]
+		注意到上式对任意的 $ x\in F $ 成立. 故可将 $ -x/\lambda $ 替换为 $ x $, 将 $ x/\lambda $ 替换为 $ y $. 则上式化为
+		\[
+			\forall x, y\in F\,(f(x)-p(-x_{0}+x)\leqslant a\leqslant p(x_{0}+y)-f(y)),
+		\]
+		故 $ a $ 的存在性等价于
+		\[
+			f(x)-p(x_{0}+x)\leqslant p(x_{0}+y)-f(y),
+		\]
+		也即
+		\[
+			f(x)+f(y)\leqslant p(x_{0}+y)+p(-x_{0}+x),
+		\]
+		而注意到
+		\[
+			f(x)+f(y)=f(x+y)\leqslant p(x+y)\leqslant p(x-x_{0})+p(x_{0}+y),
+		\]
+		故存在 $ a $ 满足 $ a\in\Big[\sup\limits_{x\in F}(f(x)-p(-x_{0}+x)), \inf\limits_{y\in F}(p(x_{0}+y)-f(y))\Big] $\qed
+	\end{Proof}
+	本节称上一定理为延拓定理。 则由延拓定理, $ \codim F<\infty $ 时重复使用这一定理即可. $ \codim F=\aleph_{0} $ 时由归纳法也有相应命题成立, 而对 $ \codim F > \aleph_{0} $ 的情形则不可避免地用到 Zorn 引理.
+
+	\begin{Theorem}[Hahn-Banach 定理: 实情形]
+		设 $ E $ 是实线性空间, $ F $ 是 $ E $ 的线性子空间, $ p: E\to\R $ 是次线性泛函, $ f : F\to\R $ 为线性泛函, 且在 $ F $ 上成立 $ f\leqslant p $, 则存在 $ f $ 的线性延拓 $ \tilde{f}:E\to\R $ 使得
+		\[
+			(\tilde{f}|_{F}=f)\land(\forall x\in E\,(\tilde{f}(x)\leqslant p(x))).
+		\]
+	\end{Theorem}
+	\begin{Proof}
+		设 $ \CF $ 是二元组 $ (G, g) $ 的全体, 其中 $ (G, g) $ 满足
+		\begin{enumerate}[(1)]
+			\item $ G $ 是 $ E $ 的线性子空间且 $ F\subset G $;
+			\item $ g:G\to \R $ 是线性泛函, $ g|_{F}=f $ 且在 $ G $ 上成立 $ g\leqslant p $.
+		\end{enumerate}
+		并定义 $ \CF $ 上的偏序:
+		\[
+			(G, g)\leqslant (H, h)\Longleftrightarrow G\subset H \land h|_{G}=g.
+		\]
+		则 $ (\CF, \leqslant) $ 为一个偏序集. 任取 $ \CG $ 为 $ \CF $ 的全序子集, 并令 $ H = \bigcup_{(G, g)\in\CG}G $, 定义 $ h:H\to\R $ 使得
+		\[
+			\forall (G, g)\in\CG\,\forall x\in G\,(h(x)=g(x)).
+		\]
+		则 $ (H, h) $ 是 $ \CG $ 的上界 (此因对 $ \forall (G, g)\in\CG $ 都有 $ h|_{G}=g $ 且 $ h\leqslant p $). 由 Zorn 引理, $ \CF $ 有极大元 $ (M, m) $.
+
+		往证 $ M=E $. 否则 $ \exists x_{0}\in E\sm M $, 令 $ G = \Span\{ M, x_{0} \}=M+\R x_{0} $, 此时 $ \codim_{G}M=1 $, 由延拓定理可知存在 $ g:G\to\R $, 使得
+		\[
+			(g|_{M} = m) \land (g\leqslant p).
+		\]
+		即 $ (M, m)\leqslant(G, g) $. 这与 $ (M, m) $ 是极大元矛盾, 故 $ M = E $, 此时取 $ \tilde{f}=m $ 即可.\qed
+	\end{Proof}
+	\begin{Theorem}[Hahn-Banach]
+		设 $ E $ 是 \K 上的线性空间,  $ F\subset E $ 是线性子空间, 并设 $ p:E\to\R $ 是半范数,  $ f:F\to\K $ 是线性泛函, 且在 $ F $ 上成立 $ \abs{f}\leqslant p $. 则存在线性泛函 $ \tilde{f}:E\to\R $ 使得
+		\[
+			(\tilde{f}|_{F}=f)\land(\forall x\in E\,(\abs{f(x)}\leqslant p(x))).
+		\]
+	\end{Theorem}
+	\begin{Proof}
+		当 $ \K = \R $ 时, 因为 $ F $ 上成立 $ f\leqslant p $, 由 Hahn-Banach 的实情形可知存在 $ \tilde{f}:E\to \R $ 使得 $ \tilde{f}|_{F}=f $, 且 $ \forall x\in E\,(\tilde{f}(x)\leqslant p(x)) $, 从而
+		\[
+			\tilde{f}(-x)\leqslant p(-x) = p(x).
+		\]
+		故 $ \forall x\in E\,(\abs{\tilde{f}(x)}\leqslant p(x)) $.
+
+		当 $ \K=\C $ 时, 因为 $ f=\Re f+\imag \Im f $, 令 $ \varphi = \Re f $. 则 $ \varphi:E\to\R $ 是实线性泛函. 注意到
+		\[
+			f(\imag x)= \imag \Re f(x) - \Im f(x),
+		\]
+		从而 $ \varphi(\imag x)=-\Im f(x) $. 于是可以写成
+		\[
+			f(x)=\varphi(x)-\imag \varphi(\imag x).
+		\]
+		由 $ \abs{f}\leqslant p $ 知 $ \tilde{f}(x)=\tilde{\varphi}(x)-\imag\tilde{\varphi}(\imag x) $, 则 $ \tilde{f} $ 是复线性泛函, 则 $ \forall x\in F $, 有
+		\[
+			\tilde{f}(x)=\tilde{\varphi}(x)-\imag\tilde{\varphi}(\imag x)= \varphi(x)-\imag\varphi(\imag x)=f(x),
+		\]
+		即 $ \tilde{f}|_{F}=f $.
+
+		而 $ \forall x\in E $, 令 $ \lambda=\sgn\tilde{f}(x) $, 有 $ \abs{\lambda}=1 $, 从而
+		\[
+			|\tilde{f}(x)|=\lambda\tilde{f}(x)=\tilde{f}(\lambda x)= \tilde{\varphi}(\lambda x)-\imag \tilde{\varphi}(\imag\lambda x)=\tilde{\varphi}(\lambda x)\leqslant p(\lambda x)=p(x).
+		\]
+		\qed
+	\end{Proof}
+	下面是 Hahn-Banach 定理的推论:
+	\begin{Corollary}\label{cor:保范延拓}
+		设 $ E $ 是 \K 上的赋范空间,  $ F $ 是 $ E $ 的线性子空间, $ f:F\to\K $ 是连续线性泛函, 则存在 $ f $ 的连续线性延拓 $ \tilde{f}:E\to\K $ 使得
+		\[
+			(\tilde{f}|_{F}=f)\land (\|\tilde{f}\|=\norm{f}),
+		\]
+		称 $ \tilde{f} $ 为 $ f $ 的\textbf{保范延拓}.
+	\end{Corollary}
+	\begin{Proof}
+		因为 $ \forall x\in F $ 成立 $ \abs{f(x)}\leqslant\norm{f}\norm{x} $. 由 Hahn-Banach 定理可知存在 $ \tilde{f} $ 使得 $ \tilde{f}|_{F}=f $, 且
+		\[
+			\forall x\in E\,(|\tilde{f}(x)|\leqslant p(x)=\norm{f}\norm{x}),
+		\]
+		即 $ \|\tilde{f}\|\leqslant \norm{f} $, 由 $ \tilde{f}|_{F}=f $ 可知 $ \|\tilde{f}\|=\norm{f} $.\qed
+	\end{Proof}
+	\begin{Corollary}\label{cor:HB2}
+		设 $ E $ 是赋范空间, $ x_{0}\in E $ 且 $ x_{0}\ne 0 $, 则 $ \exists f\in \Star{E} $ 使得 $ f(x_{0})=\norm{x_{0}} $ 且 $ \norm{f}=1 $.
+	\end{Corollary}
+	\begin{Proof}
+		令 $ F=\K x_{0} $, 则定义 $ F $ 上的线性泛函 $ f_{0} $ 满足: $ f_{0}(\lambda x_{0})=\lambda\norm{x_{0}} $. 由推论~\ref{cor:保范延拓}~可知存在 $ f\in\Star{E} $ 使得 $ f|_{F}=f_{0} $ 且 $ \norm{f}=\norm{f_{0}}=1 $, 即 $ f(x_{0})=\norm{x_{0}} $.\qed
+	\end{Proof}
+	\begin{Corollary}\label{cor:HB3}
+		设 $ E $ 是赋范空间, 则任取 $ x\in E $, 有
+		\[
+			\norm{x}=\sup\{ \abs{f(x)}:f\in\Star{E}, \norm{f}\leqslant1 \},
+		\]
+		且上确界可达.
+	\end{Corollary}
+	\begin{Proof}
+		记等式右侧为 $ \alpha $, 则 $ \forall f\in \Star{E} $, 由 $ \abs{f(x)}\leqslant\norm{f}\norm{x} $ 可知 $ \alpha \leqslant\norm{x} $. 而由推论~\ref{cor:HB2}~可知对任意 $ x\in E, x\ne 0 $, 存在 $ f_{0}\in \Star{E} $, 使得 $ f_{0}(x)=\norm{x} $ 且 $ \norm{f_{0}}=1 $, 故 $ \alpha =\norm{x} $.\qed
+	\end{Proof}
+	推论~\ref{cor:HB3}~说明 $ x\in E $ 的范数可被 $ \Star{E} $ 中的元素表达, 考虑双线性泛函
+	\[
+		B:E\times\Star{E}\to\K\quad(x, f)\mapsto f(x).
+	\]
+	则 $ \forall(x, f)\in E\times\Star{E} $, 都有 $ \abs{B(x, f)}\leqslant\norm{x}\norm{f} $, 由推论~\ref{cor:双线性映射连续性}~知 $ B $ 连续. 从而对任意给定的 $ x\in E $, 都有 $ B(x, \cdot):\Star{E}\to\K $ 连续, 也即
+	\[
+		B(x,\cdot)\in\Star{(\Star{E})}=: E^{**}\quad x\mapsto B(x, \cdot)
+	\]
+	是等距同构, 此时记 $ E\hookrightarrow E^{**} $, 称 $ E $ 可\textbf{等距嵌入} $ E^{**} $.
