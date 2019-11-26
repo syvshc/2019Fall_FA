@@ -150,7 +150,7 @@
 	例如: $ E $ 上的线性泛函是次线性泛函; Minkowski 泛函是次线性泛函; 半范数也是次线性泛函. 
 
 \section{Hahn-Banach定理}
-\subsection{分析形式的 Hahn-Banach定理}
+	\subsection{分析形式的 Hahn-Banach定理}
 	\begin{Proposition}
 		设 $ E $ 是线性空间,  $ \rho $ 是 $ E $ 上 (推广的) 线性泛函,  $ \rho : E\to \K $, 记 $ F= \ker \rho\subset E $ 则 $ E/ F $ 是线性空间, 且 $ \codim F = \dim E/F=1 $.
 	\end{Proposition}
@@ -251,7 +251,7 @@
 		\]
 	\end{Theorem}
 	\begin{Proof}
-		当 $ \K = \R $ 时, 因为 $ F $ 上成立 $ f\leqslant p $, 由 Hahn-Banach 的实情形可知存在 $ \tilde{f}:E\to \R $ 使得 $ \tilde{f}|_{F}=f $, 且 $ \forall x\in E\,(\tilde{f}(x)\leqslant p(x)) $, 从而
+		当 $ \K = \R $ 时, 因为 $ F $ 上成立 $ f\leqslant p $, 由 Hahn-Banach 定理的实情形可知存在 $ \tilde{f}:E\to \R $ 使得 $ \tilde{f}|_{F}=f $, 且 $ \forall x\in E\,(\tilde{f}(x)\leqslant p(x)) $, 从而
 		\[
 			\tilde{f}(-x)\leqslant p(-x) = p(x).
 		\]
@@ -317,3 +317,133 @@
 		B(x,\cdot)\in\Star{(\Star{E})}=: E^{**}\quad x\mapsto B(x, \cdot)
 	\]
 	是等距同构, 此时记 $ E\hookrightarrow E^{**} $, 称 $ E $ 可\textbf{等距嵌入} $ E^{**} $.
+	
+	之所以使用嵌入是因为$ E $未必完备, 当$ E $不完备时, 若将$ \hat{x}=B(x,\cdot) $与$ x $等同, 则有$ E\subset E^{**} $.
+	
+	\begin{Corollary}\label{cor:HB4}
+	设$ E $是赋范空间, $ F\subset E $是闭线性子空间, 且$ F\ne E $. 取定$ x\in E\sm F $, 则存在$ f\in\Star{E} $使得$ \norm{f}=1 $, $ f\rvert_F $=0且$ f(x)=d(x,F) $.
+	\end{Corollary}
+	\begin{Proof}
+	考虑空间$ \K x+F $, 定义其上的线性泛函
+	\[
+	\varphi : \K x+F\to\K,\qquad tx+y\mapsto td(x,F),
+	\]
+	显然$ t=0 $时有$ \varphi(y)=0 $, 而$ t\ne 0 $时注意到
+	\[
+	\abs{\varphi(tx+y)}=\abs{td(x,F)}=\inf_{z\in F}\abs{t}\norm{x-z}=\inf_{z\in F}\norm{tx-tz}=\inf_{z\in F}\norm{tx+z}\leqslant\norm{tx+y},
+	\]
+	即$ \abs{\varphi(tx+y)}\leqslant\norm{tx+y} $, 从而$ \norm{\varphi}\leqslant 1 $于$ \K x+F $. 再由距离的定义可知
+	\[
+	\forall n\geqslant 1\,\exists y_n\in F\,\left(d(x,F)\leqslant\norm{x-y_n}\leqslant d(x,F)+\frac{1}{n}\right)
+	\]
+	从而
+	\[
+	\norm{\varphi}\geqslant\frac{\abs{\varphi(x-y_n)}}{\norm{x-y_n}}=\frac{d(x,F)}{d(x,F)+1/n}.
+	\]
+	令$ n\to\infty $后可知$ \norm{\varphi}\geqslant 1 $, 于是$ \norm{\varphi}=1 $. 由推论~\ref{cor:保范延拓}~可知存在$ f\in\Star{E} $使得$ f\rvert_{\K x+F}=\varphi $, 且$ \norm{f}=\norm{\varphi}=1 $. 而$ f\rvert_F=\varphi\rvert_F=0 $, 且有$ f(x)=d(x,F) $.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ E $是赋范空间, $ F\subset E $, $ x_0\in E $, 则$ x_0\in\bar{F} $当且仅当对任意满足$ f\rvert_F=0 $的$ f\in\Star{E} $, 都有$ f(x_0)=0 $成立.
+	\end{Corollary}
+	\begin{Proof}
+	\textsl{必要性.} 若$ x_0\in \bar{F} $, 由$ f\rvert_F=0 $与$ f $的连续性可知$ f\rvert_{\bar{F}}=0 $, 于是$ f(x_0)=0 $.
+	
+	\textsl{充分性.} 若$ x_0\notin \bar{F} $, 由推论~\ref{cor:HB4}~可知存在$ g\in\Star{E} $使得$ g\rvert_{\bar{F}}=0 $, 且$ g(x_0)=d(x_0,\bar{F})>0 $, 这与$ g(x_0)=0 $是矛盾的. 故$ x_0\in\bar{F} $.\qed
+	\end{Proof}
+	
+	\subsection{几何形式的 Hahn-Banach 定理(凸集隔离定理)}
+	
+	\begin{Theorem}[Hahn-Banach/凸集隔离定理]
+	设$ E $是$ \K $上的线性空间, $ A, B $都是非空凸子集且$ A\cap B=\varnothing $, 若$ A $是开集, 则$ \exists f\in\Star{E} $, $ \exists\alpha\in \R $使得
+	\[
+	\forall a\in A\,\forall b\in B\,((\Re f)(a)<\alpha\leqslant(\Re f)(b)).
+	\]
+	\end{Theorem}
+	\begin{Proof}
+	先考虑$ \K=\R $的情形, 设$ a_0\in A $且$ b_0\in B $, 令$ C=A-B-(a_0-b_0)=A-B+x_0 $, 其中$ x_0=b_0-a_0 $, 那么
+	\begin{enumerate}[(1)]
+	\item $ C $是凸集, 此因$ A, B $都是凸集.
+	\item $ C $是开集, 此因$ C=\bigcup_{y\in B}(A-y+x_0) $而$ A-y+x_0 $总是开集.
+	\item $ 0\in C $, 此因$ a_0-b_0+x_0=0 $.
+	\item $ x_0\notin C $, 此因$ A\cap B=\varnothing $.
+	\end{enumerate}
+	从而$ C $是一个吸收凸集, 且$ C $是开集, 于是$ C $上的Minkowski泛函$ p_C $是一个次线性泛函. 且$ C=\{ x : p_C(x)<1 \} $. 由0是$ C $的内点可知存在$ r>0 $使得$ p_C(x)\leqslant\frac{2\norm{x}}{r} $, 从而$ p_C $一致连续.
+	
+	取$ f_0 $是$ \K x_0 $上的线性泛函, 且$ f_0(x_0)=p_C(x_0)\geqslant 1 $, 由Hahn-Banach定理可知存在$ f\in\Star{E} $使得$ f(x_0)=p_C(x_0) $且$ f(x)\leqslant p_C(x) $, 则$ \forall x\in E $, 都有
+	\[
+	-f(x)=f(-x)\leqslant p_C(-x)\leqslant\frac{2\norm{x}}{r},
+	\]
+	即$ -f(x)\leqslant\frac{2\norm{x}}{r} $, 从而$ \abs{f(x)}\leqslant\frac{2\norm{x}}{r} $. 于是$ \norm{f}<\infty $, 这意味着$ f $连续. 而由$ a-b+x_0 $可知
+	\[
+	f(a-b+x_0)=f(a)-f(b)+f(x_0)=f(a)-f(b)+p_C(x_0)\leqslant p_C(a-b+x_0)<1,
+	\]
+	从而
+	\[
+	f(a)\leqslant f(b)+1-p_C(a-b+x_0)\leqslant f(b),
+	\]
+	即$ \forall a\in A\,\forall b\in B\,(f(a)\leqslant f(b)) $.
+	
+	还需说明$ f(A) $是一个开集. 因为$ A $是凸集, 故$ f(A) $是区间, 取$ x\in A $, 由$ A $是开集可知存在$ \eta>0 $使得$ \abs{t}<\eta $时, 有$ x+tx_0\in A $, 则
+	\[
+	f(x+tx_0)=f(x)+tf(x_0)\in f(A),
+	\]
+	从而
+	\[
+	\varnothing\ne(f(x)-\eta f(x_0),f(x)+\eta f(x_0))\subset f(A),
+	\]
+	即$ f(A) $是开区间, 记$ f(A)=(\beta,\alpha) $后有$ \forall a\in A\,\forall b\in B\,(f(a)<\alpha\leqslant f(b)) $.
+	
+	当$ \K=\C $时, 将$ E $看作实线性空间, 则由$ \K=\R $的讨论可知存在$ \varphi : E\to \R $与常数$ \alpha\in\R $使得$ \forall a\in A\,\forall b\in B\,(\varphi(a)<\alpha\leqslant\varphi(b)) $. 取
+	\[
+	f(x)=\varphi(x)-\imag\varphi(\imag x)
+	\]
+	后可知$ f\in\Star{E} $满足条件.\qed
+	\end{Proof}
+	
+	\begin{Theorem}[Hahn-Banach严格隔离定理]
+	设$ E $是赋范空间, $ A, B $是非空凸子集且$ A\cap B=\varnothing $. 若$ A $是紧集且$ B $是闭集, 则存在$ f\in\Star{E} $与常数$ \alpha,\beta\in\R $使得
+	\[
+	\sup_{a\in A}(\Re f)(a)<\alpha<\beta<\inf_{b\in B}(\Re f)(b).
+	\]
+	\end{Theorem}
+	\begin{Proof}
+	因为$ A\cap B=\varnothing,\ \forall x\in A $都有$ x\in B^c $. 则存在$ r_x>0 $使得$ x+B(0,r_x)\subset B^c $. 于是$ A\subset\bigcup_{x\in A}(x+B(0,r_x)) $. 由$ A $的紧性可知存在有限个$ x_1,x_2,\dots,x_n\in A $使得
+	\[
+	A\subset\bigcup_{k=1}^n\left(x_k+B\left(0,\frac{r_{x_k}}{2}\right)\right).
+	\]
+	令$ r=\min\{ r_{x_1}/2,r_{x_2}/2,\dots,r_{x_n}/2 \} $, 并令$ \tilde{A}=A+B(0,x) $, 则$ \tilde{A} $是凸集且是开集, 往证$ \tilde{A}\subset B^c $. 取$ \tilde{x}\in\tilde{A} $, $ \tilde{x}=x+y $, 其中$ x\in A,\ y\in B(0,r) $, 则对$ x $, 存在$ x_k $使得$ x\in B(x_k,r_{x_k}/2)=x_k+B(0,r_{x_k}/2) $. 从而
+	\[
+	\tilde{x}\in x_k+B\left(0,\frac{r_{x_k}}{2}\right)+B(0,r)\subset x_k+B\left(0,\frac{r_{x_k}}{2}+r\right)\subset x_k+B(0,r_{x_k})\subset B^c,
+	\]
+	从而$ \tilde{A}\subset B^c $. 由凸集隔离定理可知$ \exists f\in\Star{E} $, $ \exists r>0 $有
+	\[
+	\forall a\in\tilde{A}\,\forall b\in B\,((\Re f)(a)<r\leqslant(\Re f)(b))
+	\]
+	注意到$ A $紧, 故$ f(A) $紧, 设$ f(A)=[r_1,r_2] $, 则$ r_2<r $. 故存在$ \alpha,\beta\in\R $使得$ r_2<\alpha<\beta<r $, 此时
+	\[
+	\forall a\in A\,\forall b\in B\,((\Re f)(a)<\alpha<\beta<(\Re f)(b))
+	\]
+	命题成立.\qed
+	\end{Proof}
+	
+	\begin{Definition}[超平面]\index{C!超平面}
+	设$ E $是是线性空间, $ f $是$ E $上的线性泛函, 则$ \forall\alpha\in\R $, 称
+	\[
+	\{ x\in E : f(x)=\alpha \}
+	\]
+	是$ E $中的\textbf{超平面.}
+	\end{Definition}
+	\begin{Remark}
+	凸集隔离定理说明两个不相交的凸集可被一个超平面分离:
+	\[
+	E=\{ x : (\Re f)(x)<\alpha \}\amalg\{ x : (\Re f)(x)\geqslant\alpha \}.
+	\]
+	每一部分称为一个半空间. 则若$ A\cap B=\varnothing $, 则可使得$ A, B $分别位于两个半空间中.
+	\end{Remark}
+	
+	
+	
+	
+	
+	
