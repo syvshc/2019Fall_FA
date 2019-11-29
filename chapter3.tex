@@ -354,7 +354,7 @@
 	
 	\subsection{几何形式的 Hahn-Banach 定理(凸集隔离定理)}
 	
-	\begin{Theorem}[Hahn-Banach/凸集隔离定理]
+	\begin{Theorem}[Hahn-Banach/凸集隔离定理]\label{thm:凸集隔离定理}
 	设$ E $是$ \K $上的线性空间, $ A, B $都是非空凸子集且$ A\cap B=\varnothing $, 若$ A $是开集, 则$ \exists f\in\Star{E} $, $ \exists\alpha\in \R $使得
 	\[
 	\forall a\in A\,\forall b\in B\,((\Re f)(a)<\alpha\leqslant(\Re f)(b)).
@@ -441,6 +441,152 @@
 	\]
 	每一部分称为一个半空间. 则若$ A\cap B=\varnothing $, 则可使得$ A, B $分别位于两个半空间中.
 	\end{Remark}
+	
+	将几何概念明确之后, 我们可以不使用分析形式的Hahn-Banach定理来证明定理~\ref{thm:凸集隔离定理}~.
+	
+	\textbf{另证}\ \ 不妨设$ E $是实线性空间, 考虑$ A-B $, 这是一个开凸集, 且由$ A\cap B=\varnothing $可知$ 0\notin A-B $.
+	
+	\textbf{(Step 1)} 构造最大凸集$ C $.
+	
+	令$ \mathcal{C} $是以下开凸集全体: $ 0\notin C $, $ A-B\subset C $. 并在$ \mathcal C $上以包含关系作为偏序关系, 则$ (\mathcal C,\leqslant) $是一个偏序集. 取$ \mathcal C_0 $是$ \mathcal C $的全序子集, 作$ \tilde{C}=\bigcup\mathcal C_0 $, 则$ \tilde{C} $是$ \mathcal C $的上界. 由Zorn引理可知$ \mathcal C $有极大元$ C $.
+	
+	再考虑集合$ D=\{\lambda x : x\in C,\lambda>0\} $. 由$ C $是开凸集可知$ D $也是开凸集, 且$ C\subset D $, $ 0\notin D $. 于是$ A-B\subset D $, 这说明$ C\subset D $. 由$ C $的极大性可知$ C=D $. 且由这一形式可知$ C\cap -C=\varnothing $, 于是
+	\[
+	\forall x,y\in C\,\forall\lambda,\mu>0\,(\lambda x+\mu y\in C)
+	\]
+	
+	\textbf{(Step 2)} 证明$ E\sm(C\cup-C) $是线性空间.
+	
+	为此, 只需证明$ \forall x,y\notin C\,\forall\lambda,\mu>0\,(\lambda x+\mu y\notin C) $即可. 用反证法, 若$ \lambda x+\mu y\in C $, 则$ \forall r>0 $, 有
+	\[
+	r((\lambda x+\mu y)+(\lambda x-\mu y))=2r\lambda x\notin C,
+	\]
+	从而只能$ r(\lambda x-\mu y)\notin C $. 考虑
+	\[
+	C_1=\{ z-r(\lambda x-\mu y) : z\in C,\ r\geqslant 0 \},
+	\]
+	这是一个开凸集, 且$ 0\notin C_1 $(否则$ r=0 $时只能$ z=0 $, 矛盾). 特别地, 取$ r=0 $可知$ C\subset C_1 $, 从而由$ C $的极大性可知$ C=C_1 $. 取$ r=-1 $, $ z=\lambda x+\mu y $后可知
+	\[
+	\lambda x+\mu y-(\lambda x-\mu y)=2\mu y\in C,
+	\]
+	这说明$ y\in C $, 矛盾. 从而只能$ \lambda x+\mu y\notin C $.
+	
+	再任取$ x', y'\in E\sm(C\cup-C) $, 往证$ \forall\lambda,\mu\in\R\,(\lambda x'+\mu y'\in E\sm(C\cup -C)) $. 当$ \lambda,\mu $至少一个为零时命题显然成立, 故只需考虑$ \lambda,\mu $均不为零的情形. 由$ x',y'\in E\sm(C\cup-C) $可知$ x'\notin C,\ x'\notin -C,\ y'\notin C,\ y\notin -C $. 从而对$ \lambda,\mu>0 $, 注意到
+	\[
+	\begin{aligned}
+	\lambda x'+\mu y'\notin C,&\qquad (-\lambda)x'+(-\mu)y'=\lambda(-x')+\mu(-y')\notin C,\\
+	(-\lambda)x'+\mu y'=\lambda(-x')+\mu y'\notin C,&\qquad \lambda x'+(-\mu)y'=\lambda x'+\mu(-y')\notin C,
+	\end{aligned}
+	\]
+	从而命题成立, 于是$ E\sm(C\cup-C) $是一个线性空间.
+	
+	\textbf{(Step 3)} 构造超平面.
+	
+	记$ E_0=E\sm(C\cup-C) $, 往证$ E_0 $余1维. 设$ \tilde{x},\tilde{y}\in E\sm E_0 $, 则$ \tilde{x},\tilde{y}\ne 0 $. 往证$ \exists \lambda,\mu\ne 0 $是的$ \lambda\tilde{x}+\mu\tilde{y}\in E_0 $. 不妨$ \tilde{x}\in C $而$ \tilde{y}\in -C $. 令
+	\[
+	S_0=\{ s\in[0,1] : \tilde{x}+s(\tilde{y}-\tilde{x})\in C \},\qquad S_1=\{ s\in[0,1] : \tilde{x}+s(\tilde{y}-\tilde{x})\in -C \}
+	\]
+	由$ C $是开集可知$ S_0, S_1 $都是开集. 再由$ C\cap -C=\varnothing $可知$ S_0\cap S_1=\varnothing $, 且$ S_0\cup S_1\ne[0,1] $, 故存在$ s\in[0,1] $使得
+	\[
+	(1-s)\tilde{x}+s\tilde{y}\in E_0.
+	\]
+	从而$ E_0 $是余1维的.
+	
+	由$ C\cup -C $是开集可知$ E_0=E\sm(C\cup-C) $是闭集. 于是可以定义$ E $上的线性泛函$ f $使得$ f(\lambda x_0+x)=\lambda d(x_0,E_0) $,(这里$ E_0 $的闭性保证了距离well-defined), 其中$ x_0\in E\sm E_0 $. 从而$ \lambda\ne 0 $时对任意$ x\in E_0 $, 都有
+	\[
+	\abs{f(\lambda x_0+x)}=\abs{\lambda}d(x_0,E_0)\leqslant\abs{\lambda}\cdot\norm{x_0+\frac{r}{\lambda}}=\norm{\lambda x_0+x}.
+	\]
+	从而$ f\in\Star{E} $且$ \norm{f}\leqslant 1 $. 故$ 0\notin f(C)=f(A-B) $是区间, 且一定形如$ (a,\infty) $(当$ a>0 $)或$ (-\infty,a) $(当$ a<0 $). 再由$ C=D $的性质可知$ f(C) $必形如$ (0,\infty) $或$ (-\infty,0) $. 不妨$ f(C)=(-\infty,0) $, 即$ f(A)-f(B)<0 $, 也即$ f(A)<f(B) $, 即
+	\[
+	\forall a\in A\,\forall b\in B\,(f(a)<f(b)),
+	\]
+	取$ \alpha=\sup\limits_{a\in A}f(a) $, 则
+	\[
+	\forall a\in A\,\forall b\in B\,(f(a)<\alpha\leqslant f(b))
+	\]
+	即超平面$ \{ x : f(x)=\alpha \} $分离$ A, B $.
+	
+	复线性空间的情形与原证明方法类似.\qed
+	
+	注意到另证本质上只用到了$ f $的连续性, 于是上面的证明可以毫无困难地推广到$ E $是局部凸的Hausdorff空间的情形.
+	
+	\begin{Corollary}\label{col:HB严格1}
+	设$ E $是赋范空间, $ B $是平衡的闭凸集, $ x_0\in B^c $. 则存在$ f\in\Star{E} $使得$ f(x_0)>1 $且$ \sup\limits_{x\in B}\abs{f(x)}\leqslant 1 $.
+	\end{Corollary}
+	\begin{Proof}
+	对$ \{ x_0 \} $与$ B $使用Hahn-Banach严格隔离定理, 则存在$ \tilde{f}\in\Star{E} $与$ \alpha,\beta\in\R $使得$ \forall b\in B $都有
+	\[
+	(\Re\tilde{f})(b)<\alpha<\beta<(\Re\tilde{f})(x_0)
+	\]
+	注意到$ B $是平衡集, 于是$ 0\in B $, 从而$ x_0\ne 0 $, 且$ 0<\alpha<\beta<(\Re\tilde{f})(x_0) $.
+	
+	取$ f=\frac{1}{\alpha}\sgn\tilde{f}(x_0)\tilde{f} $, 则有
+	\[
+	f(x_0)=\frac{\Babs{\tilde f(x_0)}}{\alpha}>\frac{(\Re \tilde{f})(x_0)}{\alpha}>1,
+	\]
+	再由$ B $是平衡集可知$ \sup\limits_{b\in B}(\Re f)(b)=\sup\limits_{b\in B}\abs{f(b)} $, 且$ f(b)\ne 0 $. 取$ \lambda=\sgn f(b) $后可知$ \abs{\lambda}=1 $, 且由$ f(b)=\lambda\abs{f(b)} $知$ \abs{f(b)}=\bar{\lambda}f(b) $. 从而$ (\Re f)(\bar{\lambda}b)=\abs{f(b)} $, 则
+	\[
+	\sup_{b\in B}\abs{f(b)}=\sup_{b\in B}\frac{\Babs{\tilde{f}(b)}}{\alpha}=\frac{1}{\alpha}\sup_{b\in B}(\Re\tilde{f})(b)<1.
+	\]
+	\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ E $是赋范空间, $ B $是闭线性子空间, $ x_0\notin B $. 则存在$ f\in\Star{E} $使得$ f(x_0)=1 $且$ f\rvert_B=0 $.
+	\end{Corollary}
+	\begin{Proof}
+	在推论~\ref{col:HB严格1}~中取$ f=\sgn\tilde{f}(x_0)\tilde{f} $类似可证.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ E $是赋范空间, 则$ \Star{E} $可分点.
+	\end{Corollary}
+	\begin{Proof}
+	当$ x\ne y $时, 对$ \{x\},\ \{y\} $使用Hahn-Banach严格隔离定理, 存在$ f\in\Star{E} $与$ \alpha,\beta\in\R $使得
+	\[
+	(\Re f)(x)<\alpha<\beta<(\Re f)(y)
+	\]
+	故$ f(x)\ne f(y) $, 即$ \Star{E} $可分点.\qed
+	\end{Proof}
+	
+	\begin{Corollary}[Mazur]
+	设$ E $是线性空间, $ \tau_1,\ \tau_2 $是$ E $上的Hausdorff拓扑, 且$ (E,\tau_1) $与$ (E,\tau_2) $都是局部凸空间, 若$ \forall f\in\Star{E} $, 都有$ f $是$ \tau_1 $-连续的当且仅当$ f $是$ \tau_2 $-连续, 即
+	\[
+	(E,\tau_1)^*=(E,\tau_2)^*
+	\]
+	则对$ E $中任意凸集$ A $. 它是$ \tau_1 $-闭的当且仅当它是$ \tau_2 $-闭的.
+	\end{Corollary}
+	\begin{Proof}
+	用反证法. 设$ A\subset E $是凸集且$ \tau_1 $-闭, 但$ A $不$ \tau_2 $-闭. 则存在$ x_0\in(\bar{A})^{\tau_2} $但$ x_0\notin A $, 由Hahn-Banach严格隔离定理, 存在$ f\in(E,\tau_1)^* $, $ \exists\alpha\in\R $使
+	\[
+	\sup_{a\in A}(\Re f)(a)<\alpha<(\Re f)(x_0)
+	\]
+	而由题设, $ f $也是$ \tau_2 $-连续的. 但$ x_0\in(\bar{A})^{\tau_2} $. 故由$ \sup\limits_{a\in A}(\Re f)(a)<\alpha $可知$ (\Re f)(x_0)\leqslant\alpha $. 矛盾.\qed
+	\end{Proof}
+	\begin{Remark}
+	若$ A $不是凸集, 则结论未必成立. 另外, 凸的$ \tau_1 $-开集未必是$ \tau_2 $-开集.
+	\end{Remark}
+	
+\section{弱拓扑与弱*拓扑}	
+	\subsection{弱收敛}
+	
+	\begin{Definition}[弱收敛]\index{R!弱收敛}\index{R!弱极限}
+	设$ E $是赋范空间, $ (x_n)_{n\geqslant 1} $是$ E $中序列. 弱存在$ x\in E $使得$ \forall f\in\Star{E} $都有
+	\[
+	\lim_{n\to\infty}f(x_n)=f(x),
+	\]
+	则称$ (x_n)_{n\geqslant 1} $\textbf{弱收敛}到$ x $, 记作$ x_n\weakto x $, 并称$ x $是$ (x_n)_{n\geqslant 1} $的\textbf{弱极限}.
+	\end{Definition}
+	
+	\begin{Remark}
+	下面是一些关于弱收敛的注记:
+	\begin{enumerate}[(1)]
+	\item 由共鸣定理可知若$ x_n\weakto x $, 则有$ \sup\limits_{n\geqslant 1}\norm{x_n}<\infty $.
+	\item 称原本定义的(依度量收敛)的极限为强极限, 若$ x_n\to x $, 则$ x_n\weakto x $.
+	\item 若$ E $是Hilbert空间, 则$ x_n\weakto x $当且仅当$ \forall y\in E\,(\lrangle{x_n,y}\to\lrangle{x,y}) $. (必要性显然而充分性由Riesz表示定理立即可得)
+	\end{enumerate}
+	\end{Remark}
+	
 	
 	
 	
