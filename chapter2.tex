@@ -1437,7 +1437,7 @@
 		即 $ x'\in\{ x\in E : \omega_{f}(x)<\varepsilon \} $, 从而由 $ x' $ 的任意性, $ U\subset\{ x\in E : \omega_{f}(x)<\varepsilon \}  $, 再由 $ x $ 的任意性, 可知$\{ x\in E : \omega_{f}(x)<\varepsilon \}$是开集. 由此可得 $ \cont(f) $ 是 $ \CG_{\delta} $ 集. \qed
 	\end{Proof}
 		
-	\begin{Theorem}
+	\begin{Theorem}\label{thm:连续点是Gd集}
 		设 $ E $ 是 Banach空间, $ (F, d) $  是度量空间, 并设映射序列 $ (f_{n})_{n\geqslant1}\subset C(E, F) $ 逐点收敛到 $ f $, 则 $ f $ 的连续点构成的集合 $ \cont(f) $ 是一个在 $ E $ 中稠密的 $ \CG_{\delta} $ 集. 
 	\end{Theorem}
 	\begin{Proof}
@@ -1565,7 +1565,7 @@
 	若$ \varOmega_n $不稠密, 则$ \mathring{F}_n\ne\varnothing $, 即$ (u_i)_{i\in\alpha} $一致有界, 由共鸣定理可知矛盾. 从而$ \varOmega_n $稠密, 由Baire定理可知$ G $也稠密.\qed
 	\end{Proof}
 	
-	\begin{Corollary}
+	\begin{Corollary}\label{coro:逐点收敛}
 	设$ E $是Banach空间而$ F $是赋范空间, $ (u_n)_{n\geqslant 1}\subset\CB(E,F) $. 若$ (u_n)_{n\geqslant 1} $逐点收敛到$ u $, 则$ u\in\CB(E,F) $且
 	\[
 	\norm{u}\leqslant\liminf_{n\to\infty}\norm{u_n}.
