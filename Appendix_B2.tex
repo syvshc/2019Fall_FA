@@ -1,0 +1,540 @@
+\section{第6章习题}
+	
+	\textbf{习题6.1}\ [作业] 证明以下命题:
+	\begin{enumerate}[(1)]
+		\item 证明 \J 是 \R 上的 \Gd 集, 并导出 \Q 不是 \Gd 集, 且不存在函数 $ f:\R\to\R $ 使得 $ \cont(f)=\Q $;
+		\item 定义函数 $ f:\R\to\R $, 当 $ x\in\J $ 时, $ f(x)=0 $; $ f(0)=1 $; 若 $ x $ 是非零有理数 $ p/q $, 这里 $ p/q $ 是 $ x $ 的不可约形式, $ p\in\Z, q\in\N $, 令 $ f(x)=1/q $, 证明 $ \cont(f)=\J $;
+		\item 设 $ f=1_{\Q} $, 证明 $ f $ 不是第一纲的 (即 $ f $ 不是任一连续函数列的极限函数), 但是存在一列第一纲的函数逐点收敛于 $ f $.
+	\end{enumerate}
+	\begin{Proof}
+		(1) 设 $ \{ x_{n}:n\geqslant1\} $ 是 \Q 的一个排列, 则由 $ \Q=\bigcup_{n\geqslant1}\{ x_{n} \} $ 可知 $ \J =\bigcap_{n\geqslant1}\{ x_{n} \}^{c} $ 是 \Gd 集, 再说明 \Q 不是 \Gd 集. 用反证法, 若 \Q 是 \Gd 集, 则存在开集 $ (O_{n})_{n\geqslant1} $ 使得 $ \Q = \bigcap_{n\geqslant1}O_{n} $, 从而 $ \forall n\geqslant1\,(\Q\subset O_{n}) $, 由 \Q 在 \R 中稠密知 $ O_{n} $ 在 \R 中稠密, 则 $ O_{n}^{c} $ 在 \R 中无内点, 从而由 Baire 定理可知
+		\[
+			\R = \Q\cup\J = \Big( \bigcup_{n\geqslant1}\{ x_{n} \} \Big)\cup\Big( \bigcup_{n\geqslant1}O_{n}^{c} \Big)
+		\]
+		为一个无内点的闭集, 矛盾. 
+
+		(另证: 若 \Q 是 \Gd 集, 则\Q 是稠密的 \Gd 集, 而 \J 也是稠密的 \Gd 集, 则 $ \Q\cap\J=\varnothing $ 也是稠密的 \Gd 集, 矛盾.)
+
+		(2) 注意到 $ f $ 是周期为 1 的函数, 只需考虑 $ f|_{[0, 1]} $, 此因对任意 $ k\in\Z $, 都有 $ (p, q)=(p, q+kp)=1 $, 而 $ f|_{[0, 1]} $ 在 $ [0, 1]\cap\Q $ 上显然不连续, 只需证 $ f|_{[0, 1]} $ 在 $ [0, 1]\cap\J $ 上连续即可. 记 $ R = f|_{[0, 1]} $, 则 $ \forall \varepsilon>0, \forall x\in[0, 1]\cap\J $, 满足 $ R(p/q)=1/q>\varepsilon $ 的 $ q $ 只有有限个, 而相应的 $ p $ 也只有有限个, 故
+		\[
+			A=\left\{ \frac{p}{q}:R\left( \frac{p}{q} \right)=\frac{1}{q}>\varepsilon \right\}
+		\]
+		是有限集, 取 $ \delta = d(x_{0}, A) $, 则 $ \forall x\in B(x_{0}, \delta) $ 都有
+		\[
+			\abs{R(x)-R(x_{0})}<\varepsilon
+		\]
+		即 $ R $ 在 $ [0, 1]\cap\J $ 上连续.
+
+		(3) 先证 $ 1_{\Q} $ 不是第一纲的. 用反证法, 若 $ 1_{\Q} $ 是第一纲的, 由定理~\ref{thm:连续点是Gd集}~知 $ \cont(1_{\Q}) $ 是稠密的 \Gd 集, 矛盾. 再证 $ 1_{\Q} $ 是一列第一纲函数的极限.
+
+		设 $ \{ x_{n}:n\geqslant1\} $ 是\Q 的一个排列, 设
+		\[
+			f_{n}(x)=\begin{cases}
+				1 & , x\in\{ \seq{x} \}\\
+				0 & , x\in\R\sm\{ \seq{x} \}
+			\end{cases}
+		\]
+		且注意到 $ \forall n\geqslant1 $, $ f_{n} $ 可以用折线函数逼近, 则 $ f_{n} $ 是第一纲的.
+
+		(另证: $ 1_{\Q}=\lim\limits_{n\to \infty}\lim\limits_{k\to\infty}\cos^{2k}(n!\pi x) $.)
+	\end{Proof}	
+
+	\textbf{习题6.8}\ [作业]\ \ 设 $ E $ 是 $ (C[0, 1], \norm{\cdot}_{\infty}) $ 的闭线性子空间, 并假设 $ E $ 中的所有元素都是 Lipschitz 函数.
+	\begin{enumerate}[(1)]
+		\item 设 $ x, y\in[0, 1] $ 且 $ x\ne y $, 定义泛函 $ \varPhi_{x, y}:E\to\R $ 为
+		\[
+			\varPhi_{x, y}(f)=\frac{f(y)-f(x)}{y-x}.
+		\]
+		证明 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 是 $ \Star{E} $ 中的有界集.
+		\item 导出 $ E $ 中的闭单位球在 $ [0, 1] $ 上等度连续, 且 $ \dim E<\infty $.
+	\end{enumerate}
+	\begin{Proof}
+		(1) 由
+		\[
+			\abs{\varPhi_{x, y}(f)}=\abs{\frac{f(y)-f(x)}{y-x}}\leqslant\frac{2\norm{f}}{\abs{y-x}}
+		\]
+		知 $ \varPhi_{x, y} $ 连续且 $ \norm{\varPhi_{x, y}}\leqslant2/\abs{y-x} $, 且 $ \forall f\in E, \exists k_{f}>0 $ 使得
+		\[
+			\abs{f(y)-f(x)}\leqslant k_{f}\abs{y-x}\Longrightarrow \abs{\varPhi_{x, y}(f)}\leqslant k_{f},
+		\]
+		则 $\sup\limits_{x\ne y}\abs{\varPhi_{x, y}(f)}<k_{f} $. 由共鸣定理 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 有界.
+
+		(2) 由 (1) 知 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 在 $ \Star{E} $ 上有界, 设 $ M=\sum\limits_{x\ne y}\norm{\varPhi_{x, y}} $ 则对 $ \forall f\in\baro{B_{E}} $ 都有
+		\[
+			\norm{\varPhi_{x, y}(f)}\leqslant M\norm{f}\leqslant M,
+		\]
+		即 $ \abs{f(y)-f(x)}\leqslant M\abs{y-x} $ 对 $ \forall f\in\baro{B_{E}} $ 成立, 故 $ \baro{B_{E}} $ 等度连续, 且 $ \forall x\in[0. 1] $ 都有 $ \abs{f(x)}\leqslant 1 $, 则 $ \{ f(x):f\in\baro{B_{E}} \} $ 预紧, 由 Arzel\`a-Ascoli 定理知 $ \baro{B_{E}} $ 紧, 故 $ E $ 有限维.\qed
+	\end{Proof}
+
+	\textbf{习题6.10}\ [习题课]\ \ 设$ E, F $都是Banach空间, $ u\in\CB(E,F) $并满足$ u(B_E) $在$ B_F $中稠密.
+	\begin{enumerate}[(1)]
+	\item 计算$ \norm{u} $.
+	\item 证明: $ u(B_E)=B_F $, 因此$ u $是满的.
+	\item 设$ v $是$ E/\ker u $到$ F $的映射并满足$ v\circ q=u $, 其中$ q : E\to E/\ker u $是商映射. 证明: $ v $是从$ E/\ker u $到$ F $的等距映射.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 由已知条件可知$ u(B_E)\subset B_F $, 则$ u(\bar{B}_E)\subset\baro{u(B_E)}\subset \bar{B}_F $, 故$ \norm{u}\leqslant 1 $. 由$ u(B_E) $在$ B_F $中稠密可知$ B_F\subset\baro{u(B_E)} $. 则$ \forall\varepsilon>0 $, 取$ y\in B_F $使得$ \norm{y}=1-\varepsilon/2 $, 则存在$ x\in B_E $使得$ \norm{y-u(x)}<\varepsilon/2 $. 则
+	\[
+	\norm{u(x)}=\norm{u(x)-y+y}\geqslant\norm{y}-\norm{u(x)-y}\geqslant 1-\frac{\varepsilon}{2}-\frac{\varepsilon}{2}=1-\varepsilon.
+	\]
+	由$ \varepsilon $的任意性可知$ \norm{u}\geqslant 1 $, 故$ \norm{u}=1 $.
+	
+	(2) 由题设可知$ B_F\subset\baro{u(B_E)} $, 往证$ B_F\subset u(B_E) $. 设$ y\in B_F $且$ 0<q<1 $, 则存在$ x_0\in B_E $使得
+	\[
+	\norm{y-u(x_0)}<q,
+	\]
+	取$ y_1=\frac{1}{q}(y-u(x_0)) $, 则$ \norm{y_1}\in B_F $, 则存在$ x_1\in B_E $使得
+	\[
+	\norm{y_1-u(x_1)}<q,
+	\]
+	依此进行下去得到一列$ (y_n)_{n\geqslant 1}\subset B_F $且$ (x_n)_{n\geqslant 1}\subset B_E $满足$ \forall n\geqslant 1\,(\norm{y_n-u(x_n)}<q) $. 那么
+	\[
+	\begin{aligned}
+	y=u(x_0)+qy_1&=u(x_0)+qu(x_1)+q^2y_2\\
+	&=\cdots\\
+	&=u(x_0)+qu(x_1)+\cdots+q^nu(x_n)+q^{n+1}y_{n+1}
+	\end{aligned}
+	\]
+	由$ \sum\limits_{k\geqslant 1}q^kx_k $绝对收敛且$ E $完备可知$ x\in\frac{1}{1-q}B_E $, 从而$ y=u(x)\in u\left( \frac{1}{1-q}B_E \right) $. 也即$ (1-q)B_F\subset u(B_E) $. 而
+	\[
+	B_F=\bigcup_{0<q<1}(1-q)B_F\subset u(B_E),
+	\]
+	由此可知$ u(B_E)=B_F $.
+	
+	(3) 取
+	\[
+	v : E/\ker u\to F,\qquad x+\ker u\mapsto u(x),
+	\]
+	则由
+	\[
+	x_1+\ker u=x_2+\ker u\Longleftrightarrow x_1-x_2\in\ker u\Longleftrightarrow u(x_1)=u(x_2)
+	\]
+	可知$ v $是well-defined. 再由$ \forall x\in E $, $ \forall y\in\ker u $都有
+	\[
+	\norm{u(x)}=\norm{u(x+y)}\leqslant\norm{u}\norm{x+y}
+	\]
+	可知$ \norm{u(x)}\leqslant\norm{u}\norm{x+\ker u} $, 则$ \norm{v(x)}\leqslant\norm{u}\norm{x+\ker u} $, 从而$ \norm{v}\leqslant\norm{u} $.
+	
+	由
+	\[
+	\forall f\in F\,\exists e\in E\,(u(e)=f)
+	\]
+	即$ v(e+\ker u)=f $, 故$ v $是满射. 再由
+	\[
+	v(e+\ker u)=u(e)=0\Longleftrightarrow e\in\ker u\Longleftrightarrow e+\ker u=0+\ker u
+	\]
+	可知$ v $是单射. 从而$ v $是连续双射, 由开映射定理可知$ v^{-1} $连续.
+	
+	若$ E/\ker u $与$ F $等距同构, 则有
+	\[
+	\forall e\in E\,(\norm{e+\ker u}=\norm{v(e+\ker u)})
+	\]
+	先说明$ B_{E/\ker u}=q(B_E) $. 由
+	\[
+	\forall e\in B_E\,(\norm{e+\ker u}\leqslant\norm{e}<1)
+	\]
+	可知$ q(B_E)\subset B_{E/\ker u} $. 而$ \forall e+\ker u\in B_{E/\ker u} $, 有$ \norm{u+\ker u}<1 $, 则存在$ a\in\ker u $使得$ \norm{e+a}<1 $. 且$ q(e+a)=e+\ker u $, 从而$ e+\ker u\subset q(B_E) $. 由$ e+\ker u $的任意性可知$ B_{E/\ker u}\subset q(B_E) $. 从而$ B_{E/\ker u}=q(B_E) $.
+	
+	那么
+	\[
+	B_F=u(B_E)=v\circ q(B_E)=v(B_{E/\ker u}),
+	\]
+	故$ v(\baro{B_{E/\ker u}})\subset\baro{v(B_{E/\ker u})}=\bar{B}_F $. 即$ \norm{v}<1 $. 而$ v^{-1}(B_F)=B_{E/\ker u} $, 同理$ \norm{v^{-1}}\leqslant 1 $. 故
+	\[
+	\norm{e+\ker u}\leqslant\norm{v(e+\ker u)}\leqslant\norm{e+\ker u},\qquad \forall e\in E
+	\]
+	从而$ v $等距.\qed
+	\end{Proof}
+	
+	\textbf{习题6.13}\ [习题课]\ \ 证明下列命题:
+	\begin{enumerate}[(1)]
+	\item 设$ E $是赋范空间, $ F $是$ E $的线性子空间. 证明: 若$ F\ne E $, 那么$ F $在$ E $中的内部是空集.
+	\item 由此证明所有多项式构成的空间$ P $不能赋予完备范数.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 若$ \mathring{F}\ne\varnothing $, 则存在$ B(x_0,r)\subset F $, 这等价于$ x_0\in F $且$ B(0,r)\subset F $. 由于$ F\ne E $, 故存在$ x $使得$ x\in E $但$ x\notin F $. 而$ \frac{r}{2\norm{x}}x\in B(0,r)\subset F $, 这说明$ x\in F $, 矛盾.
+	
+	(2) 记$ P_n=\Span\{ 1,x,\dots,x^n \} $, 那么有$ P=\bigcup_{n\geqslant 1}P_n $. 由于$ P_n $有限维, 故$ P_n $闭. 设在某个范数下$ (P,\norm{\cdot}) $完备, 那么由Baire推论可知$ \bigcup_{n\geqslant 1}\mathring{P}_n $在$ P $稠密. 而由(1)可知$ \forall n\geqslant 1\,(\mathring{P}_n=\varnothing) $, 这即$ \varnothing $在$ P $中稠密. 矛盾.\qed
+	\end{Proof}
+	
+	\textbf{习题 6.14}\ [习题课]\ \ 设 $ E $ 是 Banach 空间, $ F, G $ 都是 $ E $ 是闭线性子空间, 并且 $ F+G $ 也是闭线性子空间. 证明: 存在一个常数 $ C\geqslant0 $, 使得 $ \forall x\in F+G $, $ \exists(f, g)\in F\times G $, 满足
+	\[
+		x=f+g, \norm{f}\leqslant c\norm{x}, \norm{g}\leqslant c\norm{x}.
+	\]
+	\begin{Proof}
+		定义
+		\[
+			u:F\times G\to F+G,\quad (f, g)\mapsto f+g,
+		\]
+		显然 $ u $ 是满的, 且由 
+		\[
+			\norm{f+g}\leqslant 2\max\{ \norm{f}, \norm{g} \}=2\norm{(f, g)}
+		\]
+		知 $ u $ 连续, 由开映射定理可知 $ \exists r>0\,(rB_{F+G}\subset u(B_{F\times G})) $, 且有
+		\[
+			\frac{r}{2}\baro{B_{F+G}}\subset rB_{F+G}\subset U(B_{F\times G}),
+		\]
+		取 $ c=2/r $, 有 $ \frac{1}{c}\baro{F+G}\subset u(B_{F\times G}) $, 从而 $ \forall x\in F+G, \frac{x}{c\norm{x}}\in\baro{B_{F+G}} $, 则 $ \exists (f_{0}, g_{0})\in B_{F\times G} $ 使得
+		\[
+			\frac{x}{c\norm{x}}=f_{0}+g_{0}=u(f_{0}, g_{0}),
+		\]
+		即 $ x = c\norm{x}f_{0}+c\norm{g_{0}} $, 取 $ f=c\norm{x}f_{0} , g = c\norm{x}g_{0} $ 即可.\qed
+	\end{Proof}
+	
+	\textbf{习题 6.15}\ [习题课]\ \ 设 $ H $ 是 Hilbert空间, 且线性映射 $ u:H\to H $ 满足
+	\[
+		\lrangle{u(x), y}=\lrangle{x, u(y)}, \quad x, y\in H,
+	\]
+	证明: $ u $ 连续.
+	\begin{Proof}
+		取 $ (x_{n})_{n\geqslant1}\subset H $ 使得 $ x_{n}\to 0, u(x_{n})\to y $, 由闭图像定理往证 $ y=0 $, 因为 $ \forall z\in H $
+		\[
+			\lrangle{u(x_{n}, z)}=\lrangle{x_{n}, u(z)}\to 0,\quad n\to \infty,
+		\]
+		且 $ \lim\limits_{n\to\infty}\lrangle{(u(x_{n}, z))}=\lrangle{y, z} $. 故对任意的 $ z\in H $, $ \lrangle{y, z}=0 $, 即 $ y=0 $.\qed
+	\end{Proof}
+	
+	\textbf{习题 6.19}\ [习题课]\ \ 设 $ (X, \CA, \mu) $ 是 $ \sigma $-有限的测度空间.
+	\begin{enumerate}[(1)]
+		\item 假设当 $ 1\leqslant p<q\leqslant\infty $ 时, 有 $ L_{q}(X, \CA, \mu)\subset L_{p}(X, \CA, \mu) $. 证明存在常数 $ C\geqslant0 $, 使得对任意的 $ f\in L_{q}(X, \CA, \mu) $, 有 $ \norm{f}_{p}\leqslant c\norm{f}_{q} $.
+		\item 导出下列命题的等价性
+		\begin{enumerate}[a. ]
+			\item 存在 $ 1\leqslant p<q\leqslant\infty $, 使得 $ L_{q}(X, \CA, \mu)\subset L_{p}(X, \CA, \mu) $;
+			\item $ \mu(X)<\infty $;
+			\item 任取 $ 1\leqslant p<q\leqslant\infty $, 有 $ L_{q}(X, \CA, \mu)\subset L_{p}(X, \CA, \mu) $.
+		\end{enumerate}
+	\end{enumerate}
+	\begin{Proof}
+		(1) 因为 $ X $ 是 $ \sigma $-有限的, 故存在一列递增的可列集 $ (A_{n})_{n\geqslant1} $ 时 $ X=\bigcup_{n\geqslant1}A_{n} $, 且 $ \forall n\geqslant1:\mu(A_{n})<\infty $, 考虑线性映射:
+		\[
+			I_{n}: L_{q}(X)\to L_{p}(X), \quad f\mapsto f\cdot 1_{A_{n}}.
+		\] 
+		则由习题 3.11 有
+		\[
+			\norm{I_{n}(f)}_{p}=\left( \int_{A_{n}}\abs{f}^{p}\diff\mu \right)^{1/p}\leqslant \mu(A_{n})^{1/p-1/q}\left( \int_{A_{n}\abs{f}^{q}}\diff\mu \right)^{1/q}=\mu(A_{n})^{1/p-1/q}\norm{f}_{q},
+		\]
+		即 $ \norm{I_{n}}\leqslant\mu(A_{n})^{1/p-1/q} $, 则 $ \lim\limits_{n\to\infty}I_{n}=\id $, 由推论~\ref{coro:逐点收敛}~知 $ \id $ 连续, 且 $ \sup\limits_{n\leqslant1}\norm{I_{n}}<\infty $, 且 $ \norm{\id}\leqslant\liminf\limits_{n\to\infty}\norm{I_{n}} $. 记 $ c=\liminf\limits_{n\to\infty}\norm{f_{n}} $, 则 $ \norm{f}_{p}\leqslant c\norm{f}_{q} $.
+		
+		(2) a $ \Rightarrow $ b. 用反证法, 设 $ \mu(X)=\infty $, 则 $ \forall n\geqslant1 $, 存在 $ \mu $-可列集 $ B_{n} $ 使得 $ \mu(B_{n})\geqslant n $, 取 $ f = 1_{B_{n}} $, 则
+		\[
+			\norm{f}_{p}=\left( \int_{B_{n}}1\diff\mu \right)^{1/p}=\mu(B_{n})^{1/p}=n^{1/p}.
+		\]
+		即 $ n^{1/p}\leqslant c\mu(B_{n})^{1/q}\Longrightarrow n^{1/p-1/q}\leqslant c $. 令 $ n\to \infty $ 知 $ c=\infty $ 矛盾.
+
+		b $ \Rightarrow $ c. 由习题 3.11 可得.
+
+		c $ \Rightarrow $ a. 显然.\qed
+	\end{Proof}
+
+\section{Problem Set系列}
+
+	\begin{ExtraExample}[张恭庆1.4.2]
+		设$ C(0,1] $表示$ (0,1] $上连续有界的函数全体, 在$ C(0,1] $上定义$ \norm{x}=\sup\limits_{0<t\leqslant 1}\abs{x(t)} $, 证明:
+		\begin{enumerate}[(1)]
+			\item $ \norm{\cdot} $是$ C(0,1] $上的范数;
+			\item $ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.
+		\end{enumerate}
+	\end{ExtraExample}
+	\begin{Proof}
+	(1) 由
+	\[
+	\norm{x}=0\Longleftrightarrow\sup_{0<t\leqslant 1}\abs{x(t)}=0\Longleftrightarrow x=0
+	\]
+	可知正定性成立, 由
+	\[
+	\norm{\lambda x}=\sup_{0<t\leqslant 1}\abs{\lambda x(t)}=\abs{\lambda}\sup_{0<t\leqslant 1}\abs{x(t)}=\abs{\lambda}\norm{x}
+	\]
+	可知齐次性成立, 再由
+	\[
+	\norm{x+y}=\sup_{0<t\leqslant 1}\abs{x(t)+y(t)}\leqslant\sup_{0<t\leqslant 1}\abs{x(t)}+\sup_{0<t\leqslant 1}\abs{y(t)}=\norm{x}+\norm{y}
+	\]
+	可知三角不等式成立. 于是$ \norm{\cdot} $的确是$ C(0,1] $上的范数.
+	
+	(2) 考虑映射
+	\[
+	T : \ell_\infty\to C(0,1],\qquad (x_n)_{n\geqslant 1}\mapsto f=\sum_{n\geqslant 1}\left(\frac{x_{n+1}-x_n}{\frac{1}{n+1}-\frac{1}{n}}\left(t-\frac{1}{n}\right)+x_n\right)1_{\left( \frac{1}{n+1},\frac{1}{n} \right]},
+	\]
+	其中 $ f $ 是以$ (1/n,x_n)_{n\geqslant 1} $为节点的分段线性函数. 容易证明$ T $是一个线性映射, 又因为
+	\[
+	f=0\Longrightarrow \forall n\geqslant 1, x_n=f\left(\frac{1}{n}\right)=0
+	\]
+	即$ \ker T=\{ (0)_{n\geqslant 1} \} $从而$ T $是单射, 且$ \norm{f}=\sup\limits_{n\geqslant 1}\abs{x_n} $, 于是$ T $是一个等距同构映射. 从而$ \ell_\infty $与$ C(0,1] $的一个子空间等距同构.\qed
+	\end{Proof}
+
+	\begin{ExtraExample}[Ps1010-6]
+		设$ F_1,F_2\subset E $是赋范空间的线性子空间, 且$ F_1 $闭, $ F_2 $有限维. 那么$ F_1+F_2 $是闭的.
+	\end{ExtraExample}
+	\begin{Proof}
+	取商映射
+	\[
+	\pi : E\to E/F_1,\qquad x\mapsto [x]=x+F_1,
+	\]
+	则$ \pi(F_1+F_2)=\pi(F_2) $. 注意到$ \dim\pi(F_2)<\infty $, 从而$ \pi(F_2) $是$ E/F_1 $的闭子集. 由于
+	\[
+	F_1+F_2=\pi^{-1}(\pi(F_2)),
+	\]
+	于是$ F_1+F_2 $是闭集.\qed
+	\end{Proof}
+
+	\begin{ExtraExample}[Ps1010-7]		
+		设
+		\[
+		A=\begin{bmatrix}1 & t\\0 & 0\\\end{bmatrix} 
+		\]
+		计算$ \norm{A} $.
+	\end{ExtraExample}
+	\begin{Solution}
+	由于$ \norm{A}=\norm{AA^\dagger}^{1/2} $, 从而由
+	\[
+	AA^\dagger=\begin{bmatrix}1&t\\0&0\\\end{bmatrix}
+	\begin{bmatrix}1&0\\\bar{t}&0\\\end{bmatrix}=\begin{bmatrix}
+	1+\abs{t}^2&0\\0&0\\
+	\end{bmatrix}
+	\]
+	可知$ \norm{A}=\sqrt{1+\abs{t}^2} $.
+	\end{Solution}	
+
+	\begin{ExtraExample}[Ps1022-4]
+		设$ E $是线性空间, $ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $是$ E $上任意两个范数, 若$ (x_n)_{n\geqslant 1} $分别在$ \norm{\cdot}_1 $与$ \norm{\cdot}_2 $下收敛到$ a $和$ b $, 判断$ a $与$ b $是否相等.
+	\end{ExtraExample}
+	\begin{Solution}
+	不一定相等. 反例如下: 取$ P $是一切实系数多项式按照通常线性运算构成的线性空间, 对$ x(t)=a_0+a_1t+\cdots+a_nt^n\in P $, 定义其范数
+	\[
+	\norm{x}_N=\abs{\sum_{j=0}^na_j}+\sum_{j\ne N}\frac{\abs{a_j}}{j+1},
+	\]
+	其中$ N $是某个给定的正整数. $ \norm{\cdot}_N $是$ P $上的范数, 因
+	\[
+	\norm{x+y}_N\leqslant\norm{x}_N+\norm{y}_N,\qquad\norm{\lambda x}=\abs{\lambda}\norm{x}_N
+	\]
+	成立, 而$ \norm{x}_N\geqslant 0 $显然, 且
+	\[
+	\norm{x}_N=0\Longleftrightarrow\begin{cases}
+	\abs{\sum_{j=0}^na_j}=0\\\sum_{j\ne N}\frac{\abs{a_j}}{j+1}=0
+	\end{cases}\Longleftrightarrow x=0.
+	\]
+	令$ x_n(t)=t^n $, 那么由
+	\[
+	\norm{t^n-t^N}_N=\frac{1}{n+1}\to 0
+	\]
+	可知$ (x_n)_{n\geqslant 1} $在$ (P,\norm{\cdot}_N) $上收敛到$ t^N $. 取$ N_1\ne N_2 $, 那么$ t^{N_1}\ne t^{N_2} $, 但$ \norm{t^n-t^{N_1}}_{N_1}\to 0 $与$ \norm{t^n-t^{N_2}}_{N_2}\to 0 $同时成立.
+	\end{Solution}
+
+	\begin{ExtraExample}[Ps1022-5]
+		试说明商映射$ \pi : E\to E/F $何时取到$ \norm{\pi}=1 $.
+	\end{ExtraExample}
+	\begin{Solution}
+	因为$ \norm{\pi}=\sup\limits_{\norm{x}\ne 0}\norm{\pi x}/\norm{x} $, 由
+	\[
+	\norm{x+F}=\inf_{y\in F}\norm{x+y}\leqslant \norm{x}
+	\]
+	可知$ \norm{\pi}=1 $当且仅当存在$ x\in E $使得$ \norm{\pi x}=\norm{x} $. 而$ \forall x\in E $, 都有
+	\[
+	x=y+z,\qquad y\in F,\ z\in E/F,
+	\]
+	即只需存在$ x\in E $使得$ y=0 $即可, 也即$ F^c\ne\{ 0 \} $即可. 从而只需$ F\ne E $.
+	\end{Solution}
+
+	\begin{ExtraExample}
+		计算 $ \mathbb{M}_{2}(\C) $ 中投影算子的一般形式. 
+	\end{ExtraExample}
+	\begin{Solution}
+		设 $ P $ 是投影算子, 则 $ P=P^{\dagger}, P=P^{2} $, 由 $ P $ 自伴, 可设
+		\[
+			P=\begin{bmatrix}
+				a & c \\
+				\bar{c} & b
+			\end{bmatrix}
+		\]
+		其中 $ a, b\in\R $, $ c\in\C $, 再由 $ P $ 幂等
+		\[
+			\begin{bmatrix}a & c \\\bar{c} & b \end{bmatrix}\begin{bmatrix}a & c \\\bar{c} & b \end{bmatrix} = \begin{bmatrix}a^{2}+\abs{c}^{2} & c(a+b) \\ \bar{c}(a+b) & b^{2}+\abs{c}^{2}\end{bmatrix}= \begin{bmatrix}a & c \\ \bar{c} & b\end{bmatrix},
+		\]
+		从而
+		\[
+			\begin{cases}
+				a^{2}+\abs{c}^{2} = a\\
+				b^{2}+\abs{c}^{2} = b\\
+				c(a+b) = c
+			\end{cases}
+		\]
+		当 $ c=0 $ 时, $ a^{2}=a $, $ b^{2}=b $, 故 $ a=0\text{\,或\,}1 $, $ b=0\text{\,或\,}1 $. 此时
+		\[
+			P = 0\text{\,或\,}P=\diag\{0, 1\}\text{\,或\,}P=\diag\{0, 1\}\text{\,或\,}P=\1_{2}.
+		\]
+		当 $ c\ne0 $ 时, 由 $ c(a+b)=c $ 知 $ a+b=1 $, 从而
+		\[
+			P=\begin{bmatrix}
+				a & \sqrt{a(1-a)}\exp(\imag\theta) \\
+				\sqrt{a(1-a)}\exp(-\imag\theta) & a
+			\end{bmatrix}, \quad a\in\R, \theta\in[0, 2\pi].
+		\]
+		进一步, 对一般的 Hilbert空间 $ H $, 有一类特殊的投影算子:
+		\[
+			P = \begin{bmatrix}
+				A & \sqrt{A(\1-A)}\cdot u\\
+				\Star{u}\cdot\sqrt{A(\1-A)} & \1-A
+			\end{bmatrix}
+		\]
+		其中 $ 0\leqslant A\leqslant\1\footnote{若矩阵 $ A-B $ 为半正定的, 则记 $ A\leqslant B $ } $, $ u $ 是酉算子.
+	\end{Solution}
+	
+	\begin{ExtraExample}
+		设 $ E $ 是\R 上的赋范空间, $ \varOmega $ 是 $ E $ 中原点处的吸收凸邻域, $ p_{\varOmega} $ 是 $ \varOmega $ 上的 Minkowski 泛函, 验证 $ p_{\varOmega} $ 是 $ E $ 上的次线性泛函.
+	\end{ExtraExample}
+	\begin{Proof}
+		由 Minkowski 泛函的定义
+		\[
+			p_{\varOmega}(x)=\inf\left\{ \lambda>0: \frac{x}{\lambda}\in\varOmega \right\},
+		\]
+		则
+		\[
+			p_{\varOmega}(\alpha x)=\inf\left\{ \lambda>0: \frac{x}{\lambda/\alpha}\in\varOmega \right\} = \inf\left\{ \alpha\cdot\frac{\lambda}{\alpha}>0:\frac{x}{\lambda/\alpha}\in\varOmega \right\}=\alpha p_{\varOmega}(x).
+		\]
+		即齐次性成立. 又设 $ x/\lambda\in\varOmega $, $ y/\mu\in\varOmega $, 则由
+		\[
+			\frac{x+y}{\lambda+\mu}=\frac{\lambda}{\lambda+\mu}\cdot\frac{x}{\lambda}+\frac{\mu}{\lambda+\mu}\cdot\frac{y}{\mu}
+		\]
+		与 $ \varOmega $ 的凸性可知 $ \frac{x+y}{\lambda+\mu}\in\varOmega $, 从而
+		\[
+			p_{\varOmega}(x+y)\leqslant \lambda+\mu,
+		\]
+		而由 $ \lambda, \mu $ 的任意性可知 $ p_{\varOmega}(x+y)\leqslant p_{\varOmega}(x)+p_{\varOmega}(y) $.\qed
+	\end{Proof}
+	\begin{Remark}
+		若 $ \varOmega $ 平衡, 则 $ p_{\varOmega} $ 为半范数. (见定理~\ref{thm:M凸}~).
+	\end{Remark}
+
+\section{第14周习题课(2019年12月2日)}
+
+	\textbf{习题6.6}\ [作业]\ \ 设$ E $和$ F $都是Banach空间, $ (u_n)_{n\geqslant 1} $是$ \CB(E,F) $的序列. 证明以下命题等价:
+	\begin{enumerate}[(a)]
+	\item $ (u_n(x))_{n\geqslant 1} $在每个$ x\in E $处收敛.
+	\item 设$ A\subset E $且$ \Span A $在$ E $中稠密, 有$ (u_n(a))_{n\geqslant 1} $对每个$ a\in A $均收敛, 且$ (u_n)_{n\geqslant 1} $有界.
+	\end{enumerate}
+	\begin{Proof}
+	(a)$ \Rightarrow $(b) : 由$ (u_n(x))_{n\geqslant 1} $对任意$ x\in E $收敛可知$ (u_n(a))_{n\geqslant 1} $收敛显然, 且可知其对任意$ x\in E $有界, 从而由共鸣定理可知$ \sup\limits_{n\geqslant 1}\norm{u_n}<\infty $.
+	
+	(b)$ \Rightarrow $(a) : 由$ (u_n)_{n\geqslant 1} $有界, 可知存在$ M>0 $使得$ \sup\limits_{n\geqslant 1}\norm{u_n}\leqslant M $. 则$ \forall x\in E\,\exists a\in\Span A\,(\norm{x-a}<\varepsilon/4M) $. 且$ \exists n_0\in\N $使得$ m,n\geqslant n_0 $时有$ \norm{u_n(a)-u_m(a)}<\varepsilon/2 $(此因$ \Span A $中的元素是$ A $中元素的有限线性组合), 那么
+	\[
+	\begin{aligned}
+	\norm{u_n(x)-u_m(x)}&\leqslant\norm{u_n(x)-u_n(a)}+\norm{u_n(a)-u_m(a)}+\norm{u_m(a)-u_m(x)}\\
+	&\leqslant M\cdot\frac{\varepsilon}{4M}+\frac{\varepsilon}{2}+M\cdot\frac{\varepsilon}{4M}\\
+	&=\varepsilon
+	\end{aligned}
+	\]
+	则$ (u_n(x))_{n\geqslant 1} $是$ F $中的Cauchy列, 故收敛.\qed
+	\end{Proof}
+	
+	\textbf{习题6.16}\ [作业]\ \ 设$ X=C^1([0,1],\R) $, 即由$ [0,1] $上连续可微的函数构成的集合, 其上赋予连续一致范数$ \norm\cdot_\infty $. 并设$ Y=C([0,1],\R) $, 其上也赋予一直范数. 考虑映射$ u : X\to Y $, $ u(f)=f' $. 证明: $ u $的图像是闭的, 但$ u $不连续. 并解释该结论的意义.
+	\begin{Proof}
+	设$ (x_n)_{n\geqslant 1}\subset X,\ y\in Y $满足$ x_n\to 0 $且$ x'_n\to y $. 为证明$ G(u) $是闭的, 只需证明$ y=0 $. 任取$ t\in[0,1] $, 则
+	\[
+	0=\lim_{n\to\infty}x_n(t)-x_n(0)=\lim_{n\to\infty}\int_0^tx_n\diff t=\int_0^ty\diff t,
+	\]
+	由$ y $的连续性可知$ y=0 $. 从而$ G(u) $闭集.
+	
+	取$ x_n=t^n $, 那么$ \norm{x_n}=1 $但$ \norm{u(x_n)}=n\to\infty $, 从而$ u $不连续. 这说明当$ X $不完备时闭图像定理不成立.\qed
+	\end{Proof}
+	
+	\textbf{习题8.3}\ [习题课]\ \ 设$ E $是数域$ \K $上的赋范空间, $ A\subset E $, 并设$ f : A\to\K $以及常数$ \lambda\geqslant 0 $. 证明: 存在$ \hat{f}\in\Star{E} $使得
+	\[
+	(\hat{f}\rvert_A=f)\land (\tnorm{\hat{f}}\leqslant\lambda)
+	\]
+	的充分必要条件是
+	\[
+	\abs{\sum_{k=1}^n\alpha_kf(a_k)}\leqslant\lambda\norm{\sum_{k=1}^n\alpha_ka_k}
+	\]
+	对任意$ n\in\N $, $ (\seq{a})\in A^n $, $ (\seq{\alpha})\in\K^n $成立.
+	\begin{Proof}
+	\textsl{必要性}. 由
+	\[
+	\abs{\sum_{k=1}^n\alpha_kf(a_k)}=\abs{\sum_{k=1}^n\alpha_k\hat{f}(a_k)}=\abs{\hat{f}\left( \sum_{k=1}^n\alpha_ka_k \right)}\leqslant\lambda\norm{\sum_{k=1}^n\alpha_ka_k}
+	\]
+	可得.
+	
+	\textsl{充分性}. 考虑$ f $在$ \Span A $上的线性扩张
+	\[
+	\tilde{f} : \Span A\to\K,\qquad \sum_{k=1}^n\alpha_ka_k\mapsto\sum_{k=1}^n\alpha_kf(a_k),
+	\]
+	先证$ \tilde{f} $well-defined. 若$ \sum\limits_{k=1}^n\alpha_ka_k=\sum\limits_{l=1}^n\beta_lb_l $, 其中$ a_k, b_l\in A $, 则由
+	\[
+	\abs{\sum_{k=1}^n\alpha_kf(a_k)-\sum_{l=1}^n\beta_lb_l}\leqslant\lambda\norm{\sum_{k=1}^n\alpha_ka_k-\sum_{l=1}^n\beta_lb_l}=0
+	\]
+	可知$ \tilde{f} $well-defined且$ \tilde{f} $连续, $ \tnorm{\tilde{f}}\leqslant\lambda $. 由Hahn-Banach定理可知$ \tilde{f} $可以延拓为$ E $上的连续线性泛函$ \hat{f} $, 且它满足$ \hat{f}\rvert_A $和$ \tnorm{\hat{f}}\leqslant\lambda $.\qed
+	\end{Proof}
+	
+	\textbf{习题8.4}\ [习题课]\ \ 设$ E $是Hausdorff拓扑向量空间, $ A $是$ E $中包含原点的开凸集且$ x_0\in E\sm A $.
+	\begin{enumerate}[(1)]
+	\item 证明: 存在$ f\in\Star{E} $使得$ \Re f(x_0)=1 $且在$ A $上成立$ \Re f<1 $.
+	\item 假设$ A $还是平衡的. 证明: 可以选择$ f\in\Star{E} $满足$ f(x_0)=1 $且在$ A $上成立$ \abs{f}<1 $.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 对$ \{x_0\} $与$ A $使用凸集隔离定理可知存在$ f_0\in\Star{E} $, 存在常数$ \alpha\in\R $使得
+	\[
+	\forall a\in A\,(\Re f_0(a)<\alpha\leqslant\Re f_0(x_0)),
+	\]
+	因$ 0\in A $, 故$ \alpha>0 $. 从而可取$ f=\frac{1}{\Re f_0(x_0)}f_0 $, 命题成立.
+	
+	(2) 对$ \{ x_0 \} $与$ A $使用凸集隔离定理可知存在$ g\in\Star{E} $和常数$ \alpha\in\R $使得
+	\[
+	\forall a\in A\,(\Re g(a)<\alpha\leqslant\Re g(x_0))
+	\]
+	由$ \Re g(x_0)\leqslant\abs{g(x_0)} $, 取$ \lambda=\sgn g(x_0) $后有$ \abs{g(x_0)}=\bar{\lambda}g(x_0) $. 再令$ f=\frac{\bar{\lambda}}{\abs{g(x_0)}}g $, 那么$ f\in\Star{E} $且
+	\[
+	f(x_0)=\frac{\baro{g(x_0)}}{\abs{g(x_0)}^2}\cdot g(x_0)=1,
+	\]
+	而$ \forall a\in A $都有
+	\[
+	\abs{f(a)}=\baro{\sgn f(a)}\cdot f(a)=\frac{g(\baro{\sgn f(a)}\cdot a)}{\abs{g(x_0)}}<\frac{\abs{g(x_0)}}{\abs{g(x_0)}}=1.
+	\]
+	\qed
+	\end{Proof}
+	
+	\textbf{习题8.9}\ [习题课]\ \ 设$ E $是数域$ \K $上的拓扑向量空间, 称$ E $的线性子空间$ H $是超平面, 若存在$ x_0\in E\sm H $使得$ E=H+\K x_0 $.
+	\begin{enumerate}[(1)]
+	\item 证明: 若$ H $是超平面, 则对任意$ x\in E\sm H $, 都有$ E=H+\K x $成立.
+	\item 证明: 一个超平面或者是$ E $中的稠密集, 或者是$ E $中的闭集.
+	\item 证明: $ H $是超平面当且仅当存在$ E $上的一个非零线性泛函使得$ H=\ker f $. 因而$ H $是闭的等价于$ f $是连续的.
+	\end{enumerate}
+	\begin{Proof}
+	(1) 任取$ x\in E\sm H $, 那么$ x=h+\alpha x_0 $, 其中$ h\in H $, $ \alpha\ne 0\in\K $. 那么$ x_0=(x-h)/\alpha $, 于是
+	\[
+	E=H+\K x_0=H+\K\frac{x-h}{\alpha}=H+\K\frac{-h}{\alpha}+\K\frac{x}{\alpha}=H+\K x.
+	\]
+	
+	(2) 若$ H $稠密, 则命题得证. 若$ H $不稠密, 往证$ H $是闭集. 用反证法, 设$ (x_n)_{n\geqslant 1}]\subset H $使得$ x_n\to x_0\notin H $, 则$ E=H+\K x_0 $. 任取$ y\in E\sm H $, 那么$ y=h+\alpha x_0 $, 其中$ h\in H $, $ \alpha\in\K $, 则
+	\[
+	\begin{aligned}
+	d(y,H)=\inf_{z\in H}\norm{y-z}=\inf_{z\in H}\norm{h+\alpha x_0-z}&=\inf_{z\in H}\norm{\alpha x_0-(z-h)}\\&=\inf_{z\in H}\norm{\alpha x_0-z}=\abs{\alpha}\cdot d(x_0,H)=0
+	\end{aligned}
+	\]
+	最后一个等号因
+	\[
+	\forall\varepsilon>0\,\exists z\in H\,\exists n_0\in\N\,((d(x_0,z)<d(x_0,H)+\varepsilon)\land(n\geqslant n_0\Rightarrow d(x_n,x_0)<\varepsilon))
+	\]
+	这与$ y\notin H $矛盾, 从而$ x_0\in H $, 故$ H $是闭的.
+	(另证: 设$ H $是超平面, 则存在$ x_0\in E\sm H $使得$ E=H+\K x_0 $. 若$ x_0\in\bar{H} $, 则$ E=H+\K x_0\subset\bar{H} $, 则$ E=\bar{H} $, 故$ H $稠密. 若$ x_0\notin \bar{H} $, 则存在$ f\in\Star{E} $使得$ f\rvert_H=0 $且$ f(x_0)\ne 0 $. 则$ H\subset\ker f $. 又因为$ \forall x\in E $有$ x=h+\alpha x_0 $, 则$ f(x)=0\Rightarrow\alpha f(x_0)=0\Rightarrow \alpha=0 $, 故$ x=h\in H $. 这说明$ \ker f=H $, 则$ H $是闭的.)
+	
+	(3a) \textsl{充分性}. 由题设可知存在$ x_0\in E\sm H $使得$ f(x_0)=0 $且$ H=\ker f $, 则任取$ e\in E $都有
+	\[
+	e=e-\frac{f(e)}{f(x_0)}x_0+\frac{f(e)}{f(x_0)}x_0\Longrightarrow E=H+\K x_0,
+	\]
+	这说明$ \ker f $是超平面.
+	
+	\textsl{必要性}. 若$ H $是超平面, 那么存在$ x_0\in E\sm H $使得$ E=H+\K x_0 $. 则$ \forall x\in E $, $ x=h+\alpha x_0 $, 其中$ h\in H $, $ \alpha\in\K $. 定义$ f(x)=\alpha $, 则$ \ker f=H $且$ f(x_0)=1\ne 0 $, 故$ f $非零.
+	
+	(3b) \textsl{充分性}. $ f $连续, 则$ \ker f $闭.
+	
+	\textsl{必要性}. 设$ \ker f $闭, 则任取$ x\in E $都有$ x=h+\alpha x_0 $. 只需构造$ f(x)=\alpha $即可. 取线性泛函
+	\[
+	\tilde{f}(h+\alpha x_0)=\alpha d(x_0,H),
+	\]
+	则$ \tilde{f} $连续, 从而$ f=\frac{1}{d(x_0,H)}\tilde{f} $是连续的.\qed
+	\end{Proof}
+	\begin{Remark}
+	若$ f : X\to Y $是一般地赋范空间之间的线性映射, 则$ \ker f $闭未必就有$ f $连续. 反例如下: 取$ X=C^1([0,1],\R) $, $ Y=C([0,1],\R) $, 定义
+	\[
+	u : X\to Y , f\mapsto f'
+	\]
+	则$ \ker u=\{ c : c\in\R \} $是闭集, 其中$ c $是常函数, 但$ u $不连续.
+	\end{Remark}
