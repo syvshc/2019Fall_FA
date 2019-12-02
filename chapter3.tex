@@ -3,7 +3,7 @@
 \chapter{Banach空间的对偶理论}
 \section{半范数}
 	\begin{Definition}[半范数]\label{def:半范数}\index{B!半范数}
-		设 $ E $ 是数域\K 上的线性空间, 托 $ E $ 上的泛函 $ p : E\to \R $ 满足
+		设 $ E $ 是数域\K 上的线性空间, 设 $ E $ 上的泛函 $ p : E\to \R $ 满足
 		\begin{enumerate}[(1)]
 			\item 非负性: $ \forall x\in E\,(p(x)\geqslant0) $;
 			\item 齐次性: $ \forall \lambda\in\K\,(p(\lambda x)=\abs{\lambda}p(x)) $;
@@ -255,7 +255,7 @@
 		\[
 			\tilde{f}(-x)\leqslant p(-x) = p(x).
 		\]
-		故 $ \forall x\in E\,(\abs{\tilde{f}(x)}\leqslant p(x)) $.
+		故 $ \forall x\in E\,(|\tilde{f}(x)|\leqslant p(x)) $.
 
 		当 $ \K=\C $ 时, 因为 $ f=\Re f+\imag \Im f $, 令 $ \varphi = \Re f $. 则 $ \varphi:E\to\R $ 是实线性泛函. 注意到
 		\[
