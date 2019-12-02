@@ -3,7 +3,7 @@
 \chapter{Banach空间的对偶理论}
 \section{半范数}
 	\begin{Definition}[半范数]\label{def:半范数}\index{B!半范数}
-		设 $ E $ 是数域\K 上的线性空间, 设 $ E $ 上的泛函 $ p : E\to \R $ 满足
+		设 $ E $ 是数域\K 上的线性空间, 托 $ E $ 上的泛函 $ p : E\to \R $ 满足
 		\begin{enumerate}[(1)]
 			\item 非负性: $ \forall x\in E\,(p(x)\geqslant0) $;
 			\item 齐次性: $ \forall \lambda\in\K\,(p(\lambda x)=\abs{\lambda}p(x)) $;
@@ -255,7 +255,7 @@
 		\[
 			\tilde{f}(-x)\leqslant p(-x) = p(x).
 		\]
-		故 $ \forall x\in E\,(|\tilde{f}(x)|\leqslant p(x)) $.
+		故 $ \forall x\in E\,(\abs{\tilde{f}(x)}\leqslant p(x)) $.
 
 		当 $ \K=\C $ 时, 因为 $ f=\Re f+\imag \Im f $, 令 $ \varphi = \Re f $. 则 $ \varphi:E\to\R $ 是实线性泛函. 注意到
 		\[
@@ -380,7 +380,7 @@
 	\]
 	从而
 	\[
-	f(a)\leqslant f(b)+1-p_C(a-b+x_0)\leqslant f(b),
+	f(a)\leqslant f(b)+1-p_C(x_0)\leqslant f(b),
 	\]
 	即$ \forall a\in A\,\forall b\in B\,(f(a)\leqslant f(b)) $.
 	
@@ -412,7 +412,7 @@
 	\[
 	A\subset\bigcup_{k=1}^n\left(x_k+B\left(0,\frac{r_{x_k}}{2}\right)\right).
 	\]
-	令$ r=\min\{ r_{x_1}/2,r_{x_2}/2,\dots,r_{x_n}/2 \} $, 并令$ \tilde{A}=A+B(0,x) $, 则$ \tilde{A} $是凸集且是开集, 往证$ \tilde{A}\subset B^c $. 取$ \tilde{x}\in\tilde{A} $, $ \tilde{x}=x+y $, 其中$ x\in A,\ y\in B(0,r) $, 则对$ x $, 存在$ x_k $使得$ x\in B(x_k,r_{x_k}/2)=x_k+B(0,r_{x_k}/2) $. 从而
+	令$ r=\min\{ r_{x_1}/2,r_{x_2}/2,\dots,r_{x_n}/2 \} $, 并令$ \tilde{A}=A+B(0,r) $, 则$ \tilde{A} $是凸集且是开集, 往证$ \tilde{A}\subset B^c $. 取$ \tilde{x}\in\tilde{A} $, $ \tilde{x}=x+y $, 其中$ x\in A,\ y\in B(0,r) $, 则对$ x $, 存在$ x_k $使得$ x\in B(x_k,r_{x_k}/2)=x_k+B(0,r_{x_k}/2) $. 从而
 	\[
 	\tilde{x}\in x_k+B\left(0,\frac{r_{x_k}}{2}\right)+B(0,r)\subset x_k+B\left(0,\frac{r_{x_k}}{2}+r\right)\subset x_k+B(0,r_{x_k})\subset B^c,
 	\]
@@ -448,7 +448,7 @@
 	
 	\textbf{(Step 1)} 构造最大凸集$ C $.
 	
-	令$ \mathcal{C} $是以下开凸集全体: $ 0\notin C $, $ A-B\subset C $. 并在$ \mathcal C $上以包含关系作为偏序关系, 则$ (\mathcal C,\leqslant) $是一个偏序集. 取$ \mathcal C_0 $是$ \mathcal C $的全序子集, 作$ \tilde{C}=\bigcup\mathcal C_0 $, 则$ \tilde{C} $是$ \mathcal C $的上界. 由Zorn引理可知$ \mathcal C $有极大元$ C $.
+	令$ \mathcal{C} $是以下开凸集全体: $ 0\notin C $, $ A-B\subset C $. 并在$ \mathcal C $上以包含关系作为偏序关系, 则$ (\mathcal C,\leqslant) $是一个偏序集. 取$ \mathcal C_0 $是$ \mathcal C $的全序子集, 作$ \tilde{C}=\bigcup\mathcal C_0 $, 则$ \tilde{C} $是$ \mathcal C_0 $的上界. 由Zorn引理可知$ \mathcal C $有极大元$ C $.
 	
 	再考虑集合$ D=\{\lambda x : x\in C,\lambda>0\} $. 由$ C $是开凸集可知$ D $也是开凸集, 且$ C\subset D $, $ 0\notin D $. 于是$ A-B\subset D $, 这说明$ C\subset D $. 由$ C $的极大性可知$ C=D $. 且由这一形式可知$ C\cap -C=\varnothing $, 于是
 	\[
@@ -465,7 +465,7 @@
 	\[
 	C_1=\{ z-r(\lambda x-\mu y) : z\in C,\ r\geqslant 0 \},
 	\]
-	这是一个开凸集, 且$ 0\notin C_1 $(否则$ r=0 $时只能$ z=0 $, 矛盾). 特别地, 取$ r=0 $可知$ C\subset C_1 $, 从而由$ C $的极大性可知$ C=C_1 $. 取$ r=-1 $, $ z=\lambda x+\mu y $后可知
+	这是一个开凸集, 且$ 0\notin C_1 $(否则$ r=0 $时只能$ z=0 $, 矛盾). 特别地, 取$ r=0 $可知$ C\subset C_1 $, 从而由$ C $的极大性可知$ C=C_1 $. 取$ r=1 $, $ z=\lambda x+\mu y $后可知
 	\[
 	\lambda x+\mu y-(\lambda x-\mu y)=2\mu y\in C,
 	\]
@@ -571,7 +571,7 @@
 	\subsection{弱收敛}
 	
 	\begin{Definition}[弱收敛]\index{R!弱收敛}\index{R!弱极限}
-	设$ E $是赋范空间, $ (x_n)_{n\geqslant 1} $是$ E $中序列. 弱存在$ x\in E $使得$ \forall f\in\Star{E} $都有
+	设$ E $是赋范空间, $ (x_n)_{n\geqslant 1} $是$ E $中序列. 若存在$ x\in E $使得$ \forall f\in\Star{E} $都有
 	\[
 	\lim_{n\to\infty}f(x_n)=f(x),
 	\]
