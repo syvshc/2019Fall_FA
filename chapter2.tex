@@ -413,7 +413,7 @@
 	由证明过程可知等号成立当且仅当$ \lrangle{x+\lambda y,x+\lambda y}=0 $, 也即$ x=-\lambda y $, 此时$ x,y $是线性相关的.\qed
 	\end{Proof}
 	
-	\begin{Corollary}\label{col:内积诱导范数}
+	\begin{Corollary}\label{cor:内积诱导范数}
 	设$ H $是内积空间, 则$ \norm{x}=\sqrt{\lrangle{x,x}} $是范数.
 	\end{Corollary}
 	\begin{Proof}
@@ -428,7 +428,7 @@
 	\end{Proof}
 	
 	\begin{Definition}[Hilbert空间]\index{H!Hilbert空间}\label{def:Hilbert空间}
-	设$ H $是一个内积空间, 称推论\,\ref{col:内积诱导范数}\,中的范数$ \norm{\cdot} $是由内积$ \lrangle{\cdot,\cdot} $诱导出的范数, 从而$ (H,\norm{\cdot}) $是赋范空间. 若它是一个Banach空间, 则称$ H $是\textbf{Hilbert空间}.
+	设$ H $是一个内积空间, 称推论\,\ref{cor:内积诱导范数}\,中的范数$ \norm{\cdot} $是由内积$ \lrangle{\cdot,\cdot} $诱导出的范数, 从而$ (H,\norm{\cdot}) $是赋范空间. 若它是一个Banach空间, 则称$ H $是\textbf{Hilbert空间}.
 	\end{Definition}
 	
 	由Cauchy-Schwarz不等式可以导出内积相对于自身诱导的范数是连续的. 同时, 类似于赋范空间的结论, 内积空间$ H $的完备化$ \tilde{H} $是Hilbert空间.
@@ -1565,7 +1565,7 @@
 	若$ \varOmega_n $不稠密, 则$ \mathring{F}_n\ne\varnothing $, 即$ (u_i)_{i\in\alpha} $一致有界, 由共鸣定理可知矛盾. 从而$ \varOmega_n $稠密, 由Baire定理可知$ G $也稠密.\qed
 	\end{Proof}
 	
-	\begin{Corollary}\label{coro:逐点收敛}
+	\begin{Corollary}\label{cor:逐点收敛}
 	设$ E $是Banach空间而$ F $是赋范空间, $ (u_n)_{n\geqslant 1}\subset\CB(E,F) $. 若$ (u_n)_{n\geqslant 1} $逐点收敛到$ u $, 则$ u\in\CB(E,F) $且
 	\[
 	\norm{u}\leqslant\liminf_{n\to\infty}\norm{u_n}.
@@ -1662,15 +1662,15 @@
 	由(1)可知$ \exists r>0\,(rB_F\subset u(B_E)) $, 从而$ y_0+r\varepsilon B_F\subset y_0+u(\varepsilon B_E)\subset u(O) $. 由$ y_0 $的任意性可知$ u(O) $是开集.\qed
 	\end{Proof}
 	
-	\begin{Corollary}[开映射定理]\label{col:开映射定理形式2}
+	\begin{Corollary}[开映射定理]\label{cor:开映射定理形式2}
 	设$ E, F $是Banach空间, $ u\in\CB(E,F) $是满射, 则$ u $是开映射, 且$ \exists r>0\,(rB_F\subset u(B_E)) $.
 	\end{Corollary}
 	
-	\begin{Corollary}\label{col:开映射定理推论}
+	\begin{Corollary}\label{cor:开映射定理推论}
 	设$ E, F $是Banach空间, $ u: E\to F $是连续线性映射, 则$ u^{-1} $连续. 即$ u $是一个同构映射.
 	\end{Corollary}
 	
-	为叙述方便, 在之后使用定理\,\ref{thm:开映射定理形式1}\,,推论\,\ref{col:开映射定理形式2}\,,推论\,\ref{col:开映射定理推论}\,时, 都统一称作使用了开映射定理.
+	为叙述方便, 在之后使用定理\,\ref{thm:开映射定理形式1}\,,推论\,\ref{cor:开映射定理形式2}\,,推论\,\ref{cor:开映射定理推论}\,时, 都统一称作使用了开映射定理.
 	
 	\begin{Corollary}[范数等价定理]
 	设$ E $是线性空间, 其上有范数$ \norm{\cdot}_1,\ \norm{\cdot}_2 $. 若$ E $关于两范数为Banach空间, 且$ \norm{\cdot}_2 $比$ \norm{\cdot}_1 $强, 即$ \exists c>0 $使得$ \norm{\cdot}_1\leqslant c\cdot\norm{\cdot}_2 $, 则两范数等价.
@@ -1680,7 +1680,7 @@
 	\[
 	\id_E : (E,\norm{\cdot}_2)\to(E,\norm{\cdot}_1)
 	\]
-	是连续的. 由推论\,\ref{col:开映射定理推论}\,可知$ \id_E^{-1} $连续, 从而$ \id_E $是同构映射, 即
+	是连续的. 由推论\,\ref{cor:开映射定理推论}\,可知$ \id_E^{-1} $连续, 从而$ \id_E $是同构映射, 即
 	\[
 	\norm{x}_2\leqslant\norm{\id_E^{-1}}\norm{x}_1.
 	\]
