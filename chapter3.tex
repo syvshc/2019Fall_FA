@@ -732,7 +732,7 @@
 		设 $ E $ 是赋范空间, $ A\subset E $, 则称 $ (A\degree)\degree=A\degree{}\degree $ 为 $ A $ 的\textbf{双极}.
 	\end{Definition}
 
-	\begin{Theorem}[双极定理]
+	\begin{Theorem}[双极定理]\label{thm:双极定理}
 		设 $ E $ 是赋范空间, $ A\subset E, B\subset\Star{E} $, 则
 		\begin{enumerate}[(1)]
 			\item $ A\degree{}\degree=A $ 当且仅当 $ A $ 是凸平衡的 $ w $--闭集;
@@ -746,8 +746,244 @@
 
 		(2) 与 (1) 类似可证.\qed
 	\end{Proof}
+
+\section{共轭算子}
+	\begin{Definition}[自然嵌入]\index{Z!自然嵌入}\label{def:自然嵌入}
+		称
+		\[
+			\iota: E\to E^{**}\qquad x\mapsto \hat{x}
+		\]
+		为 $ E $ 到 $ E^{**} $ 的\textbf{自然嵌入}, 其中 $ \hat{x}(f)=f(x) $.
+	\end{Definition}
+	\begin{Theorem}
+		设 $ E, F $ 是赋范空间,  $ u\in\CB(E, F) $, 则存在唯一的 $ \Star{u}\in\CB(\Star{F}, \Star{E}) $ 使得
+		\[
+			\forall x\in E\,\forall f\in\Star{E}\,((\Star{u}(f)(x)=f(u(x)))\land \norm{\Star{u}}=\norm{u}),
+		\]
+		并称 $ \Star{u} $ 是 $ u $ 的\textbf{共轭算子}.
+	\end{Theorem}
+
+	我们约定以 $ \lrangle{\Star{x}, x} $ 来记 $ \Star{x}(x) $, 即 $ \forall x\in E, \forall\Star{x}\in\Star{E} $ 都有 $ \lrangle{\Star{x}, x}:=\Star{x}(x) $, 则定理中共轭算子的性质可写作
+	\[
+		\forall x\in E\,\forall f\in\Star{E}\,((\lrangle{\Star{u}f, x}=\lrangle{f, u(x)})\land\norm{\Star{u}}=\norm{u}).
+	\]
+	\begin{Proof}
+		由题设 $ \forall f\in F: \Star{u}f=fu\in\Star{E} $, 且
+		\[
+			\norm{\Star{u}f}=\norm{fu}\leqslant\norm{f}\norm{u}\Longrightarrow\norm{\Star{u}}\leqslant\norm{u}<\infty,
+		\]
+		从而 $ \Star{u}\in\CB(\Star{F}, \Star{E}) $ well-defined.
+
+		设存在 $ \Star{v}\in\CB(\Star{F}, \Star{E}) $ 使得
+		\[
+			\forall x\in E\,\forall x\in\Star{F}\,(\lrangle{\Star{v}f, x}=\lrangle{f, u(x)}),
+		\]
+		即 $ \Star{v}f=\Star{u}f $ 对任意 $ f\in\Star{F} $ 成立, 于是有 $ \Star{u}=\Star{v} $. 唯一性得证.
+
+		再由
+		\[
+			\begin{aligned}
+				\norm{\Star{u}}=\sup_{\norm{f}=1}\norm{\Star{u}f} & = \sup_{\norm{f}=1}\norm{f(u)}=\sup_{\norm{f}=1}\sup_{\norm{x}=1}\norm{f(u(x))}\\
+				& = \sup_{\norm{x}=1}\norm{u(x)}=\norm{u}.
+			\end{aligned}
+		\]
+		即 $ \norm{\Star{u}}=\norm{u} $. \qed
+	\end{Proof}
 	
+	上一定理的交换图如图所示.
+	% \begin{figure}[!hp]
+		\begin{center}
+			\begin{tikzpicture}
+				\node (E) at (0, 0) {$E$};
+				\node (F) at (2, 0) {$F$};
+				\node (K) at (2, -2) {\K};
+				\draw[-latex] (E) --node[above] {$u$} (F);
+				\draw[-latex] (F) --node[right] {$ f $} (K);
+				\draw[-latex] (E) --node[left] {$ \Star{u}f $\phantom{a}} (K);
+			\end{tikzpicture}
+		\end{center}
+	% \end{figure}
+	\begin{Remark}
+		上一定理说明
+		\[
+			\varphi:\CB(E, F)\to \CB(\Star{F}, \Star{E})\qquad u\mapsto\Star{u}
+		\]
+		是线性等距映射, 但 $ F $ 是完备时 $ \varphi $ 不是满射.
+	\end{Remark}
+
+	\begin{Proposition}
+		设 $ E, F, G $ 都是赋范线性空间, $ u\in\CB(E, F), v\in\CB(F, G) $, 则 $ (vu)^{*}=\Star{u}\Star{v} $.
+	\end{Proposition}
+	\begin{Proof}
+		任取 $ x\in E, f\in\Star{E} $, 都有
+		\[
+			\lrangle{\Star{(vu)}f, x}=\lrangle{f, vu(x)}=\lrangle{\Star{v}f, u(x)}=\lrangle{\Star{u}\Star{v}f, x},
+		\]
+		从而 $ (vu)^{*}=\Star{u}\Star{v} $.\qed
+	\end{Proof}
+
+	\begin{Example}
+		设 $ E $ 是赋范空间,  $ F $ 是 $ E $ 的线性子空间, 记
+		\[
+			\varphi: F\to E\qquad x\mapsto x,
+		\]
+		则其共轭
+		\[
+			\Star{\varphi}: \Star{E}\to\Star{F}\qquad f\mapsto f|_{F}.
+		\]
+		特别地, 若 $ E=F $, 则 $ \varphi=\id_{E} $, 从而有 $ \Star{\id_{E}}=\id_{\Star{E}} $.
+	\end{Example}	
+	\begin{Theorem}
+		设 $ E, F $ 是赋范空间, $ u\in\CB(E, F) $
+		\begin{enumerate}[(1)]
+			\item 若 $ u $ 是同构,则 $ \Star{u} $ 也是同构;
+			\item 若 $ E $ 完备, 且 $ \Star{u} $ 是同构, 则 $ u $ 是同构.
+		\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+		(1) 由 $ u $ 是同构可知 $ \exists u^{-1}\in\CB(F, E) $ 使得 $ uu^{-1}=\id_{F}, u^{-1}u=\id_{E} $, 同时对两侧取共轭, 则 $ (u^{-1})^{*}\Star{u}=\id_{\Star{F}},\Star{u}(u^{-1})^{*}=\id_{\Star{E}}  $. 从而有
+		\[
+			(u^{-1})^{*}=(\Star{u})^{-1},
+		\]
+		即 $ \Star{u} $ 的逆存在, 从而 $ \Star{u} $ 是同构.
+
+		(2) 设 $ \Star{u} $ 是同构, 则由 (1) 可知 $ u^{**}: E^{**}\to F^{**} $ 也是同构, 则
+		\[
+			\forall x^{**}\in E^{**}\,\left(\frac{\norm{x^{**}}}{\norm{(u^{**})^{-1}}}\leqslant\norm{u^{**}(x^{**})}\leqslant\norm{u^{**}}\norm{x^{**}}\right).
+		\]
+		则 $ \forall x\in E, \forall f\in\Star{F} $, 有
+		\[
+			\lrangle{u^{**}(\hat{x}), f}=\lrangle{\hat{x}, \Star{u}f}=\lrangle{\Star{u}f, x}=\lrangle{f, u(x)}=\lrangle{\widehat{u(x)}, f}.
+		\]
+		即 $ u^{**}(\hat{x})=\widehat{u(x)} $, 也即 $ u^{**}|_{E}=u $, 故有
+		\[
+			\forall x\in E\,\left( \frac{\norm{x}}{\norm{(u^{**})^{-1}}}\leqslant\norm{u(x)}\leqslant\norm{u}\norm{x} \right),
+		\]
+		则 $ u(x)=0\Longrightarrow x=0 $, 即 $ u $ 是单射, 可知 $ u^{-1} $ 在 $ u(E) $ 上有定义, 则 $ \forall y\in u(E) $ 有
+		\[
+			\norm{u^{-1}(y)}\leqslant\norm{(u^{**})^{-1}}\norm{y}\Rightarrow \norm{u^{-1}}\leqslant\norm{(u^{**})^{-1}}.
+		\]
+		由 $ E $ 完备知 $ u(E) $, 则 $ u(E) $ 在 $ F $ 中闭.
+
+		还需说明 $ u(E)=F $. 若 $ u(E)\ne F $, 取 $ y\in F\sm u(E) $, 由 Hahn-Banach 定理, 可知 $ \exists f\in\Star{F} $ 使得 $ f|_{u(E)}=0, f(y)=1 $, 则
+		\[
+			\forall x\in E\,(f(u(x))=0)\Rightarrow \Star{u}(f)=0,
+		\]
+		因此 $ \Star{u} $ 是同构, 故只能 $ f=0 $, 矛盾, 从而 $ u(E)=F $.\qed
+	\end{Proof}
+
+	\begin{Definition}[零化子空间, 预零化子空间]\index{L!零化子空间}\index{Y!预零化子空间}\label{def:零化子空间}
+		设 $ E $ 是赋范空间, $ F $ 是 $ E $ 的线性子空间, $ G $ 是 $ \Star{E} $ 的线性子空间, 称
+		\[
+			F^{\bot}:=\{ \Star{x}\in\Star{E}:\lrangle{\Star{x}, x}=0, \forall x\in F \}
+		\]	
+		为 $ F $ 的\textbf{零化子空间}, 再称
+		\[
+			G_{\bot}:=\{ x\in E:\lrangle{\Star{x}, x}=0, \forall \Star{x}\in G \}
+		\]
+		为 $ G $ 的\textbf{预零化子空间}.
+	\end{Definition}
+
+	\begin{Remark}
+		因为 $ F, G $ 都是线性子空间, 则 $ F^{\bot} $ 和 $ G_{\bot} $ 分别是 $ F $ 和 $ G $ 的极, 即
+		\[
+			F^{\bot}=F\degree,\qquad G_{\bot}=G\degree.
+		\]
+		且 $ F^{\bot} $ 是 $ \Star{E} $ 中的 $ \Star{w} $--闭的线性子空间, 而 $ G_{\bot} $ 是 $ E $ 中 $ w $--闭的 (等价于范数闭的) 线性子空间, 那么双极定理~\ref{thm:双极定理}~在此对应着下面的结论:
+		\[
+			(F^{\bot})_{\bot}=\baro{F}^{w}=\baro{F}^{\norm{\cdot}}, \qquad (G_{\bot})^{\bot}=\baro{G}^{\Star{w}}.
+		\]
+	\end{Remark}
+
+	\begin{Theorem}
+		设 $ E, F $ 是赋范空间, 且 $ u\in\CB(E, F) $, 则
+		\begin{enumerate}[(1)]
+			\item $ \ker \Star{u}=(u(E))^{\bot} $;
+			\item $ \ker u=(\Star{u}(\Star{F}))_{\bot} $;
+			\item $ (\ker \Star{u})_{\bot}=\baro{u(E)}^{w}=\baro{u(E)}^{\norm{\cdot}} $;
+			\item $ (\ker u)^{\bot}=\baro{\Star{u}(\Star{F})}^{\Star{w}} $
+		\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+		(1) 由
+		\[
+			\begin{aligned}
+				f\in\ker\Star{u} & \Longleftrightarrow \Star{u}(f) \Longrightarrow \forall x\in E\,((\Star{u}f)(x)=0)\\
+				& \Longleftrightarrow \forall x\in E\,(f(u(x))=0) \Longleftrightarrow \forall x\in E(\lrangle{f, u(x)}=0)\Longleftrightarrow f\in(u(E))^{\bot}.
+			\end{aligned}
+		\]
+		可知.
+
+		(2) 由
+		\[
+			\begin{aligned}
+				x\in\ker u\Longleftrightarrow u(x)=0 &  \Longleftrightarrow \forall f\in\Star{F}\,(\lrangle{f, u(x)}=0)\\
+				& \Longleftrightarrow \forall f\in\Star{F}\,(\lrangle{\Star{u}f, x}=0)\Longleftrightarrow x\in(\Star{u}(F))_{\bot}
+			\end{aligned}
+		\]
+		可知.
+
+		(3) 因为
+		\[
+			(\ker\Star{u})_{\bot}=\left( (u(E))^{\bot} \right)_{\bot}=\baro{u(E)}^{w}=\baro{u(E)}^{\norm{\cdot}},
+		\]
+		其中最后一个等号由 Mazur 定理可证.
+
+		(4) 由
+		\[
+			(\ker u)^{\bot}=\left( (\Star{u}(\Star{F}))_{\bot} \right)^{\bot}=\baro{\Star{u}(\Star{F})}^{\Star{w}}.
+		\]
+		可知.\qed
+	\end{Proof}
+
+	\begin{Corollary}
+		设 $ E, F $ 是赋范空间, $u\in\CB(E, F)$, 则
+		\begin{enumerate}[(1)]
+			\item $ \Star{u} $ 是单射当且仅当 $ u(E) $ 在 $ F $ 中稠密;
+			\item $ u $ 是单射当且仅当 $ \Star{u}(\Star{F}) $ 在 $ \Star{E} $ 中 $ \Star{w} $--稠密.
+		\end{enumerate}	
+	\end{Corollary}
+
+\section{自反性}
+	\begin{Definition}[自反空间]\index{Z!自反空间}\label{def:自反空间}
+		设 $ E $ 是赋范空间, 若在自然嵌入的意义下, 有 $ E=E^{**} $, 则称 $ E $ 是一个\textbf{自反空间}.
+	\end{Definition}
+	\begin{Remark}
+		若 $ E $ 是自反空间, 则由 $ E^{**} $ 完备可知 $ E $ 完备, 即 $ E $ 是 Banach 空间.
+	\end{Remark}
 	
-	
-	
-	
+	\begin{Proposition}
+		有限维赋范空间都是自反的.
+	\end{Proposition}
+	\begin{Proof}
+		设 $ \dim E<\infty $, 并取 $ \seq{e} $ 是一组基, 并且 $ \norm{e_{j}}=1 $, 则存在 $ \seq{f}\in\Star{E} $ 使得 $ f_{j}(e_{k})=\delta_{j, k} $, 且 $ \norm{f_{j}}=1 $, 则 $ \forall f\in\Star{E} $, 有
+		\[
+			f=\sum_{k=1}^{n}f(e_{k})f_{k},
+		\]
+		对 $ \seq{f} $, 取 $ \seq{\tilde{e}}\in E^{**} $ 使得 $ \tilde{e}_{j}(f_{k})=\delta_{j, k} $, 且 $ \norm{\tilde{e}_{j}}=1 $, 则注意到 $ \forall f\in\Star{E} $ 都有
+		\[
+			(\tilde{e}_{k}-\hat{e}_{k})(f)=\sum_{j=1}^{n}(\tilde{e}_{k}-\hat{e}_{k})f_{j}=f(e_{k})-f_{k}(e_{k})=0,
+		\] 
+		故 $ \tilde{e}_{k}=\hat{e}_{k} $, 则 $ \forall z\in E^{**} $ 有
+		\[
+			z=\sum_{k=1}^{n}z_{k}\tilde{e}_{k}=\sum_{k=1}^{n}z_{k}\hat{e}_{k}=\widehat{\sum_{k=1}^{n}z_{k}e_{k}}
+		\]
+		\qed
+	\end{Proof}
+
+	\begin{Proposition}
+		Hilbert 空间是自反的.
+	\end{Proposition}
+	\begin{Proof}
+		设 $ H $ 是Hilbert空间, 则由 Riesz 表示定理, 对 $ \forall \varphi\in\Star{H} $, 存在唯一的 $ y\in H $ 使得 $ \varphi(x)=\lrangle{x, y} $ 且 $ \norm{\varphi}=\norm{y} $, 不妨记其为 $ \varphi_{y} $, 则 $ \forall \varphi\in\Star{H}, \varphi=\varphi_{y} $. 于是任取 $ \varphi, \varphi'\in\Star{H} $, 有
+		\[
+			\lrangle{\varphi, \varphi'}:=\lrangle{\varphi_{y}, \varphi_{y'}}=\lrangle{y', y}.
+		\]
+		(注意到 $ \varphi_{y} $ 本身是共轭线性的, 故 $ y $ 应位于第二变元) 由此 $ \Star{H} $ 是一个 Hilbert 空间.
+
+		而对 $ \forall f\in H^{**} $, 由 Riesz 表示定理, $ \exists\varphi_{f}\in\Star{H} $ 使得 $ \forall \varphi\in\Star{H}\,(f(\varphi)=\lrangle{\varphi, \varphi_{f}}_{\Star{H}}) $. 又存在 $ x, y\in H $ 使得 $ \varphi=\varphi_{x}, \varphi_{f}=\varphi_{y} $ 于是
+		\[
+			f(\varphi_{x})=\lrangle{\varphi_{x}, \varphi_{y}}=\lrangle{y, x}=\lrangle{\hat{y}, \varphi_{x}}=\hat{y}(\varphi_{x}),
+		\]
+		从而 $ f=\hat{y} $, 故 $ H $ 是自反的.\qed
+	\end{Proof}
