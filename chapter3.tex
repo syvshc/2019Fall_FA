@@ -482,7 +482,7 @@
 	
 	\textbf{(Step 3)} 构造超平面.
 	
-	记$ E_0=E\sm(C\cup-C) $, 往证$ E_0 $余1维. 设$ \tilde{x},\tilde{y}\in E\sm E_0 $, 则$ \tilde{x},\tilde{y}\ne 0 $. 往证$ \exists \lambda,\mu\ne 0 $是的$ \lambda\tilde{x}+\mu\tilde{y}\in E_0 $. 不妨$ \tilde{x}\in C $而$ \tilde{y}\in -C $. 令
+	记$ E_0=E\sm(C\cup-C) $, 往证$ E_0 $余1维. 设$ \tilde{x},\tilde{y}\in E\sm E_0 $, 则$ \tilde{x},\tilde{y}\ne 0 $. 往证$ \exists \lambda,\mu\ne 0 $ 使得 $ \lambda\tilde{x}+\mu\tilde{y}\in E_0 $. 不妨$ \tilde{x}\in C $而$ \tilde{y}\in -C $. 令
 	\[
 	S_0=\{ s\in[0,1] : \tilde{x}+s(\tilde{y}-\tilde{x})\in C \},\qquad S_1=\{ s\in[0,1] : \tilde{x}+s(\tilde{y}-\tilde{x})\in -C \}
 	\]
@@ -510,7 +510,7 @@
 	
 	注意到另证本质上只用到了$ f $的连续性, 于是上面的证明可以毫无困难地推广到$ E $是局部凸的Hausdorff空间的情形.
 	
-	\begin{Corollary}\label{col:HB严格1}
+	\begin{Corollary}\label{cor:HB严格1}
 	设$ E $是赋范空间, $ B $是平衡的闭凸集, $ x_0\in B^c $. 则存在$ f\in\Star{E} $使得$ f(x_0)>1 $且$ \sup\limits_{x\in B}\abs{f(x)}\leqslant 1 $.
 	\end{Corollary}
 	\begin{Proof}
@@ -535,10 +535,10 @@
 	设$ E $是赋范空间, $ B $是闭线性子空间, $ x_0\notin B $. 则存在$ f\in\Star{E} $使得$ f(x_0)=1 $且$ f\rvert_B=0 $.
 	\end{Corollary}
 	\begin{Proof}
-	在推论~\ref{col:HB严格1}~中取$ f=\sgn\tilde{f}(x_0)\tilde{f} $类似可证.\qed
+	在推论~\ref{cor:HB严格1}~中取$ f=\sgn\tilde{f}(x_0)\tilde{f} $类似可证.\qed
 	\end{Proof}
 	
-	\begin{Corollary}
+	\begin{Corollary}\label{cor:E*可分点}
 	设$ E $是赋范空间, 则$ \Star{E} $可分点.
 	\end{Corollary}
 	\begin{Proof}
@@ -554,10 +554,10 @@
 	\[
 	(E,\tau_1)^*=(E,\tau_2)^*
 	\]
-	则对$ E $中任意凸集$ A $. 它是$ \tau_1 $-闭的当且仅当它是$ \tau_2 $-闭的.
+	则对$ E $中任意凸集$ A $. 它是$ \tau_1 $--闭的当且仅当它是$ \tau_2 $--闭的.
 	\end{Corollary}
 	\begin{Proof}
-	用反证法. 设$ A\subset E $是凸集且$ \tau_1 $-闭, 但$ A $不$ \tau_2 $-闭. 则存在$ x_0\in(\bar{A})^{\tau_2} $但$ x_0\notin A $, 由Hahn-Banach严格隔离定理, 存在$ f\in(E,\tau_1)^* $, $ \exists\alpha\in\R $使
+	用反证法. 设$ A\subset E $是凸集且$ \tau_1 $--闭, 但$ A $不$ \tau_2 $--闭. 则存在$ x_0\in(\bar{A})^{\tau_2} $但$ x_0\notin A $, 由Hahn-Banach严格隔离定理, 存在$ f\in(E,\tau_1)^* $, $ \exists\alpha\in\R $使
 	\[
 	\sup_{a\in A}(\Re f)(a)<\alpha<(\Re f)(x_0)
 	\]
@@ -568,7 +568,7 @@
 	\end{Remark}
 	
 \section{弱拓扑与弱*拓扑}	
-	\subsection{弱收敛}
+	\subsection{弱收敛与弱*收敛}
 	
 	\begin{Definition}[弱收敛]\index{R!弱收敛}\index{R!弱极限}
 	设$ E $是赋范空间, $ (x_n)_{n\geqslant 1} $是$ E $中序列. 若存在$ x\in E $使得$ \forall f\in\Star{E} $都有
@@ -579,17 +579,413 @@
 	\end{Definition}
 	
 	\begin{Remark}
-	下面是一些关于弱收敛的注记:
-	\begin{enumerate}[(1)]
-	\item 由共鸣定理可知若$ x_n\weakto x $, 则有$ \sup\limits_{n\geqslant 1}\norm{x_n}<\infty $.
-	\item 称原本定义的(依度量收敛)的极限为强极限, 若$ x_n\to x $, 则$ x_n\weakto x $.
-	\item 若$ E $是Hilbert空间, 则$ x_n\weakto x $当且仅当$ \forall y\in E\,(\lrangle{x_n,y}\to\lrangle{x,y}) $. (必要性显然而充分性由Riesz表示定理立即可得)
-	\end{enumerate}
+		下面是一些关于弱收敛的注记:
+		\begin{enumerate}[(1)]
+			\item 由共鸣定理可知若$ x_n\weakto x $, 则有$ \sup\limits_{n\geqslant 1}\norm{x_n}<\infty $.
+			\item 称原本定义的(依度量收敛)的极限为强极限, 若$ x_n\to x $, 则$ x_n\weakto x $.
+			\item 若$ E $是Hilbert空间, 则$ x_n\weakto x $当且仅当$ \forall y\in E\,(\lrangle{x_n,y}\to\lrangle{x,y}) $. (必要性显然而充分性由Riesz表示定理立即可得)
+			\item 若 $ E $ 是有限维赋范空间, 则弱收敛与强收敛等价.
+			\item 若 $ (x_{n})_{n\geqslant1} $ 弱收敛, 则其弱极限唯一.
+		\end{enumerate}
+
+	\end{Remark}
+
+	\begin{Proof}
+		(4) 只需证明弱收敛必强收敛即可, 设 $ \seq{e} $ 是 $ E $ 的一组基, $ (x_{m})_{m\geqslant1} $ 是 $ E $ 中序列, $ x_{m}=\sum\limits_{j=1}^{n}\lambda_{m, j}e_{j} $, 且 $ x_{m}\weakto x, x=\sum\limits_{k=1}^{n}\lambda_{k}e^{k} $, 取 $ f_{k}\in\Star{E}, k = 1, 2, \dots, n $, 使得 $ f_{k}(e_{j})=\delta_{k, j} $, 则因 $ x_{m}\weakto x $ 有
+		\[
+			\lim_{m\to\infty}f_{k}(x_{m})=\lim_{n\to\infty}\lambda_{m, k}=f_{k}(x)=\lambda_{k},
+		\]
+		即 $ \forall k=1, 2, \dots, n $, 有 $ \lambda_{m, k}\to \lambda_{k} $. 从而
+		\[
+			\norm{x_{m}-x}=\norm{\sum_{k=1}^{m}(\lambda_{m, k}-\lambda_{k})e_{k}}\leqslant\sum_{k=1}^{m}(\lambda_{m, k}-\lambda_{k})\norm{e_{k}}\to 0, \quad m\to \infty.
+		\]
+		故 $ x_{m}\to x $.
+
+		(5) 设 $ x_{n}\weakto x, x_{n}\weakto y $, 且 $ x\ne y $, 由 Hahn-Banach 严格隔离定理 (或推论~\ref{cor:E*可分点}~) 知 $ \exists f\in\Star{E} $, 使得 $ f(x)\ne f(y) $. 此时 $ f(x_{n})\to f(x) $ 且 $ f(x_{n})\to f(y) $, 由强极限的唯一性知矛盾, 故只能 $ x=y $.\qed
+	\end{Proof}
+
+	\begin{Theorem}[Mazur]
+		设 $ E $ 是赋范空间,  $ (x_{n})_{n\geqslant1} $ 弱收敛于 $ x_{0} $, 则 $ \forall \varepsilon>0, \exists\seq[m]{\lambda}>0 $ 满足 $ \sum\limits_{i=1}^{m}\lambda_{i}=1 $, 使得 $ \norm{x_{0}-\sum\limits_{i=1}^{m}\lambda_{i}x_{i}}<\varepsilon $.
+	\end{Theorem}
+
+	\begin{Proof}
+		记 $ C = \baro{\conv(x_{n})_{n\geqslant1}} $, 则 $ C $ 是闭凸集, 若 $ x_{0}\ne C $, 由 Hahn-Banach 严格隔离定理可知 $  $, 使
+		\[
+			\exists f\in\Star{E}\,\exists\alpha\in\R\,\forall a\in A\,((\Re f)(x_{0})<\alpha<(\Re f)(a)),
+		\]
+		分别取 $ a=x_{i} $ 可知 $ (\Re f)(x_{n})>\alpha>(\Re f)(x_{0}) $. 由 $ x_{n}\weakto x_{0} $ 可知 $ (\Re f)(x_{n})\to (\Re f)(x_{0}) $, 矛盾, 于是 $ x_{0}\in C $, $ \exists y_{n}\in\conv(x_{n})_{n\geqslant1} $, 使得 $ y_{n}\to x_{0} $.\qed
+	\end{Proof}
+	\begin{Definition}[弱拓扑]\index{R!弱拓扑}\label{def:弱拓扑}
+		对 $ x\in E, f\in\Star{E} $, 定义
+		\[
+			V(x, \seq{f}, \varepsilon):=\{ y:\abs{f_{k}(y)-f_{k}(x)}<\varepsilon, k=1, 2\dots, n \}
+		\]
+		为 $ x $ 点的开邻域, 称以此为开邻域基生成的拓扑为\textbf{弱拓扑}.
+	\end{Definition}
+	\begin{Remark}
+		弱拓扑是使得 $ f\in\Star{E} $ 仍连续的最弱拓扑.
+	\end{Remark}
+	\begin{Remark}
+		当我们考虑 $ E $ 上相应弱拓扑的某个性质的时候, 约定在此性质前面加上前缀``$ w $--''. 比如称 $ A\subset E $ 是 ``$ w $--闭'' 的.
+	\end{Remark}
+
+	\begin{Definition}[弱*收敛]\index{R!弱*收敛}\label{def:弱*收敛}
+		设 $ E $ 是赋范空间, $ (f_{n})_{n\geqslant1} $ 是 $ \Star{E} $ 中的序列, 若 $ \forall x\in E $ 都有
+		\[
+			\lim_{n\to\infty}f_{n}(x)=f(x),
+		\]
+		则称 $ f_{n} $ \textbf{弱*收敛} 到 $ f $, 记作 $ f_{n}\sweakto f $, 并称 $ f $ 是 $ (f_{n})_{n\geqslant1} $ 的\textbf{弱*极限}.
+	\end{Definition}
+	\begin{Definition}[弱*拓扑]\index{R!弱*拓扑}\label{def:弱*拓扑}
+		对 $ f\in\Star{E}, x\in E $, 定义
+		\[
+			V(f, \seq{x}, \varepsilon):=\{ g\in\Star{E}:\abs{g(x_{k})-f(x_{k})}<\varepsilon, k=1, 2\dots, n \}
+		\]
+		是 $ f $ 点的开邻域, 称以此为开邻域基生成的拓扑为\textbf{弱*拓扑}.
+	\end{Definition}
+	\begin{Remark}
+		同样地, 当我们考虑 $ \Star{E} $ 上的相应于弱*拓扑的某个性质时, 约定在此性质前面加上前缀 ``$\Star{w}$--''
+	\end{Remark}
+
+
+\subsection{极性}
+	以下讨论中因涉及 $ E, \Star{E}, E^{**} $, 故接下来只用所带星号数目的不同来区分不同空间中的元素.
+	
+	\begin{Definition}[极]\index{J!极}\label{def:极}
+		设 $ E $ 是赋范空间, $ A\subset E $, 则 $ \Star{E} $ 中的子集
+		\[
+			A\degree = \{ \Star{x}\in\Star{E}:\abs{\Star{x}(x)}\leqslant1, \forall x\in A \}
+		\]
+		称为 $ A $ 的\textbf{极}. (或\textbf{极集})
+	\end{Definition}
+
+	\begin{Remark}
+		若 $ A $ 是线性空间, 则 $ A\degree=\{ \Star{x}\in\Star{E}:\Star{x}|_{A}=0 \} $.
+	\end{Remark}
+	\begin{Proposition}\label{prop:极的w*闭性}
+		设 $ E $ 是赋范空间, $ A\subset E $, 则 $ A\degree $ 是凸平衡的 $ \Star{w} $--闭集.
+	\end{Proposition}
+	\begin{Proof}
+		任取 $ \Star{x}, \Star{y}\in A\degree, t\in[0, 1] $, 由
+		\[
+			\norm{(t\Star{x}+(1-t)\Star{y})(x)}=\norm{t\Star{x}(x)+(1-t)\Star{y}(x)}\leqslant t+1-t=1
+		\]
+		可知 $ A\degree $ 是凸的, 再任取 $ \lambda $ 满足 $ \abs{\lambda}\leqslant1 $. $ \forall \Star{x}\in A\degree $, 由
+		\[
+			\abs{\lambda\Star{x}(x)}=\abs{\lambda}\abs{\Star{x}(x)}\leqslant\abs{\lambda}\leqslant1
+		\]
+		可知 $ \lambda\Star{x}\in A\degree $, 故 $ A\degree $ 是平衡的. 而 $ \forall x\in A $, $ x^{**} $ 在 $ E $ 上 $ \Star{w} $-连续. 从而
+		\[
+			A\degree=\bigcap_{x\in A}\{ \Star{x}\in\Star{E}:\abs{x^{**}(\Star{x})}\leqslant1 \}=\bigcap_{x\in A}(x^{**})^{-1}\left( \bar{B}_{\Star{E}} \right).
+		\]
+		是 $ \Star{w} $--闭的.\qed
+	\end{Proof}
+
+	\begin{Proposition}
+		设 $ E $ 是赋范空间, 则:
+		\begin{enumerate}[(1)]
+			\item 若 $ A\subset B\subset E $, 则 $ B\degree\subset A\degree $;
+			\item $ \forall\lambda\ne 0 $, 有 $ (\lambda A)\degree=\frac{1}{\lambda}A\degree $;
+			\item $\left( \bigcup_{i\in\alpha}A_{i} \right)\degree = \bigcap_{i\in\alpha}A_{i}\degree $.
+		\end{enumerate}
+	\end{Proposition}
+	\begin{Proof}
+		(1) 设 $ \Star{y}\in B\degree $, 则 $ \forall x\in B\,(\abs{\Star{y}(x)}\leqslant1) $. 由 $ A\subset B $ 知 $ \forall x\in A\,(\abs{\Star{y}(x)}\leqslant1) $. 于是 $ \Star{y}\in A\degree $, 即 $ B\degree\subset A\degree $.
+
+		(2) 任取 $ \Star{x}\in(\lambda A)\degree $, 由
+		\[
+			\forall x\in A\,(\abs{\Star{x}(\lambda x)}\leqslant1)\Longleftrightarrow \lambda \Star{x}\in A\degree\Longleftrightarrow \Star{x}\in \frac{1}{\lambda}A\degree
+		\]
+		知 $ (\lambda A)\degree=\frac{1}{\lambda}A\degree $.
+
+		(3) 设 $ \Star{x}\in\big(\bigcup_{i\in\alpha}A_{i}\big)\degree $, 由
+		\[
+			\begin{aligned}
+				\forall x\in\bigcup_{i\in\alpha}A_{i}\,(\abs{\Star{x}(x)}\leqslant1) & \Longleftrightarrow\forall i\in\alpha\,\forall x\in A_{i}\,(\abs{\Star{x}(x)}\leqslant1) \\
+				& \Longleftrightarrow \forall i\in\alpha\,(\Star{x}\in A\degree_{i})\Longleftrightarrow \Star{x}\in\bigcap_{i\in\alpha}A_{i}\degree.
+			\end{aligned}
+		\]
+		知 $ \left( \bigcup_{i\in\alpha}A_{i} \right)\degree = \bigcap_{i\in\alpha}A_{i}\degree $. \qed
+	\end{Proof}
+	记 $ \convba A $ 是 $ A $ 的凸平衡包, 即包含 $ A $ 的最小凸平衡集
+	\[
+		\convba A=\left\{ \sum_{i=1}^{n}\lambda_{i}x_{i}: x_{i}\in A, n\in\N, \sum_{i=1}^{n}\abs{\lambda_{i}}\leqslant1 \right\}.
+	\]
+
+	\begin{Proposition}
+		$ (\baro{\convba A})\degree=A\degree $.
+	\end{Proposition}
+	\begin{Proof}
+		由 $ A\subset\baro{\convba A} $ 知 $ (\baro{\convba A})\degree\subset A\degree $. 下证反向不等式, 设 $ \Star{x}\in A\degree $, 因为对任意 $ x\in A $ 都有 $(\abs{\Star{x}(x)}\leqslant1) $, 则
+		\[
+			\abs{\Star{x}\left( \sum_{i=1}^{n}\lambda_{i}x_{i} \right)}\leqslant\sum_{i=1}^{n}\abs{\lambda_{i}}\abs{\Star{x}(x_{i})}\leqslant\sum_{i=1}^{n}\abs{\lambda_{i}}\leqslant1.
+		\]
+		从而 $ \forall x\in\baro{\convba A}\,(\abs{\Star{x}(x)}\leqslant1) $, 即 $ \Star{x}\in(\baro{\convba A})\degree $, 也即 $ A\degree\subset(\baro{\convba A})\degree $.\qed
+	\end{Proof}
+	
+	\begin{Definition}[对偶空间的极]\label{def:对偶空间的极}
+		设 $ E $ 是赋范空间, $ \Star{E} $ 是 $ E $ 是对偶空间, 对 $ B\subset\Star{E} $, 称
+		\[
+			B\degree=\{ x\in E:\abs{\Star{x}(x)}\leqslant1, \Star{x}\in B \}
+		\]
+		为 $ B $ 的\textbf{极}.
+	\end{Definition}
+	\begin{Definition}[双极]\index{S!双极}\label{def:双极}
+		设 $ E $ 是赋范空间, $ A\subset E $, 则称 $ (A\degree)\degree=A\degree{}\degree $ 为 $ A $ 的\textbf{双极}.
+	\end{Definition}
+
+	\begin{Theorem}[双极定理]\label{thm:双极定理}
+
+		设 $ E $ 是赋范空间, $ A\subset E, B\subset\Star{E} $, 则
+		\begin{enumerate}[(1)]
+			\item $ A\degree{}\degree=A $ 当且仅当 $ A $ 是凸平衡的 $ w $--闭集;
+			\item $ B\degree{}\degree=B $ 当且仅当 $ B $ 是凸平衡的 $ \Star{w} $--闭集.
+		\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+		(1) \textsl{必要性}. 由命题~\ref{prop:极的w*闭性}~知 $ A=(A\degree)\degree $ 是凸平衡的 $ w $--闭集.
+
+		\textsl{充分性}. 由双极的定义可知 $ A\subset A\degree{}\degree $, 若存在 $ x\in A\degree{}\degree\sm A $, 则对 $ \{ x \}, A $ 使用 Hahn-Banach 定理, 知 $ \exists\Star{x}\in\Star{E} $ 使得 $ \Star{x}(x)>1 $ 且 $ \sup\limits_{a\in A}\abs{\Star{x}(a)}\leqslant1 $. 由 Mazur 定理,  $ A $ 在范数诱导的拓扑下是闭的, 由 $ \sup\limits_{a\in A}\abs{\Star{x}(a)}\leqslant1 $ 知 $ \Star{x}\in A\degree $. 但由 $ \Star{x}(x)>1 $ 知 $ x\notin A\degree{}\degree $, 从而 $ A\degree{}\degree\subset A $, 从而 $ A\degree{}\degree= A $
+
+		(2) 与 (1) 类似可证.\qed
+	\end{Proof}
+\section{共轭算子}
+	\begin{Definition}[自然嵌入]\index{Z!自然嵌入}\label{def:自然嵌入}
+		称
+		\[
+			\iota: E\to E^{**}\qquad x\mapsto \hat{x}
+		\]
+		为 $ E $ 到 $ E^{**} $ 的\textbf{自然嵌入}, 其中 $ \hat{x}(f)=f(x) $.
+	\end{Definition}
+	\begin{Theorem}
+		设 $ E, F $ 是赋范空间,  $ u\in\CB(E, F) $, 则存在唯一的 $ \Star{u}\in\CB(\Star{F}, \Star{E}) $ 使得
+		\[
+			\forall x\in E\,\forall f\in\Star{E}\,((\Star{u}(f)(x)=f(u(x)))\land \norm{\Star{u}}=\norm{u}),
+		\]
+		并称 $ \Star{u} $ 是 $ u $ 的\textbf{共轭算子}.
+	\end{Theorem}
+
+	我们约定以 $ \lrangle{\Star{x}, x} $ 来记 $ \Star{x}(x) $, 即 $ \forall x\in E, \forall\Star{x}\in\Star{E} $ 都有 $ \lrangle{\Star{x}, x}:=\Star{x}(x) $, 则定理中共轭算子的性质可写作
+	\[
+		\forall x\in E\,\forall f\in\Star{E}\,((\lrangle{\Star{u}f, x}=\lrangle{f, u(x)})\land\norm{\Star{u}}=\norm{u}).
+	\]
+	\begin{Proof}
+		由题设 $ \forall f\in F: \Star{u}f=fu\in\Star{E} $, 且
+		\[
+			\norm{\Star{u}f}=\norm{fu}\leqslant\norm{f}\norm{u}\Longrightarrow\norm{\Star{u}}\leqslant\norm{u}<\infty,
+		\]
+		从而 $ \Star{u}\in\CB(\Star{F}, \Star{E}) $ well-defined.
+
+		设存在 $ \Star{v}\in\CB(\Star{F}, \Star{E}) $ 使得
+		\[
+			\forall x\in E\,\forall x\in\Star{F}\,(\lrangle{\Star{v}f, x}=\lrangle{f, u(x)}),
+		\]
+		即 $ \Star{v}f=\Star{u}f $ 对任意 $ f\in\Star{F} $ 成立, 于是有 $ \Star{u}=\Star{v} $. 唯一性得证.
+
+		再由
+		\[
+			\begin{aligned}
+				\norm{\Star{u}}=\sup_{\norm{f}=1}\norm{\Star{u}f} & = \sup_{\norm{f}=1}\norm{f(u)}=\sup_{\norm{f}=1}\sup_{\norm{x}=1}\norm{f(u(x))}\\
+				& = \sup_{\norm{x}=1}\norm{u(x)}=\norm{u}.
+			\end{aligned}
+		\]
+		即 $ \norm{\Star{u}}=\norm{u} $. \qed
+	\end{Proof}
+	
+	上一定理的交换图如图所示.
+	% \begin{figure}[!hp]
+		\begin{center}
+			\begin{tikzpicture}
+				\node (E) at (0, 0) {$E$};
+				\node (F) at (2, 0) {$F$};
+				\node (K) at (2, -2) {\K};
+				\draw[-latex] (E) --node[above] {$u$} (F);
+				\draw[-latex] (F) --node[right] {$ f $} (K);
+				\draw[-latex] (E) --node[left] {$ \Star{u}f $\phantom{a}} (K);
+			\end{tikzpicture}
+		\end{center}
+	% \end{figure}
+	\begin{Remark}
+		上一定理说明
+		\[
+			\varphi:\CB(E, F)\to \CB(\Star{F}, \Star{E})\qquad u\mapsto\Star{u}
+		\]
+		是线性等距映射, 但 $ F $ 是完备时 $ \varphi $ 不是满射.
+	\end{Remark}
+
+	\begin{Proposition}
+		设 $ E, F, G $ 都是赋范线性空间, $ u\in\CB(E, F), v\in\CB(F, G) $, 则 $ (vu)^{*}=\Star{u}\Star{v} $.
+	\end{Proposition}
+	\begin{Proof}
+		任取 $ x\in E, f\in\Star{E} $, 都有
+		\[
+			\lrangle{\Star{(vu)}f, x}=\lrangle{f, vu(x)}=\lrangle{\Star{v}f, u(x)}=\lrangle{\Star{u}\Star{v}f, x},
+		\]
+		从而 $ (vu)^{*}=\Star{u}\Star{v} $.\qed
+	\end{Proof}
+
+	\begin{Example}
+		设 $ E $ 是赋范空间,  $ F $ 是 $ E $ 的线性子空间, 记
+		\[
+			\varphi: F\to E\qquad x\mapsto x,
+		\]
+		则其共轭
+		\[
+			\Star{\varphi}: \Star{E}\to\Star{F}\qquad f\mapsto f|_{F}.
+		\]
+		特别地, 若 $ E=F $, 则 $ \varphi=\id_{E} $, 从而有 $ \Star{\id_{E}}=\id_{\Star{E}} $.
+	\end{Example}	
+	\begin{Theorem}
+		设 $ E, F $ 是赋范空间, $ u\in\CB(E, F) $
+		\begin{enumerate}[(1)]
+			\item 若 $ u $ 是同构,则 $ \Star{u} $ 也是同构;
+			\item 若 $ E $ 完备, 且 $ \Star{u} $ 是同构, 则 $ u $ 是同构.
+		\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+		(1) 由 $ u $ 是同构可知 $ \exists u^{-1}\in\CB(F, E) $ 使得 $ uu^{-1}=\id_{F}, u^{-1}u=\id_{E} $, 同时对两侧取共轭, 则 $ (u^{-1})^{*}\Star{u}=\id_{\Star{F}},\Star{u}(u^{-1})^{*}=\id_{\Star{E}}  $. 从而有
+		\[
+			(u^{-1})^{*}=(\Star{u})^{-1},
+		\]
+		即 $ \Star{u} $ 的逆存在, 从而 $ \Star{u} $ 是同构.
+
+		(2) 设 $ \Star{u} $ 是同构, 则由 (1) 可知 $ u^{**}: E^{**}\to F^{**} $ 也是同构, 则
+		\[
+			\forall x^{**}\in E^{**}\,\left(\frac{\norm{x^{**}}}{\norm{(u^{**})^{-1}}}\leqslant\norm{u^{**}(x^{**})}\leqslant\norm{u^{**}}\norm{x^{**}}\right).
+		\]
+		则 $ \forall x\in E, \forall f\in\Star{F} $, 有
+		\[
+			\lrangle{u^{**}(\hat{x}), f}=\lrangle{\hat{x}, \Star{u}f}=\lrangle{\Star{u}f, x}=\lrangle{f, u(x)}=\lrangle{\widehat{u(x)}, f}.
+		\]
+		即 $ u^{**}(\hat{x})=\widehat{u(x)} $, 也即 $ u^{**}|_{E}=u $, 故有
+		\[
+			\forall x\in E\,\left( \frac{\norm{x}}{\norm{(u^{**})^{-1}}}\leqslant\norm{u(x)}\leqslant\norm{u}\norm{x} \right),
+		\]
+		则 $ u(x)=0\Longrightarrow x=0 $, 即 $ u $ 是单射, 可知 $ u^{-1} $ 在 $ u(E) $ 上有定义, 则 $ \forall y\in u(E) $ 有
+		\[
+			\norm{u^{-1}(y)}\leqslant\norm{(u^{**})^{-1}}\norm{y}\Rightarrow \norm{u^{-1}}\leqslant\norm{(u^{**})^{-1}}.
+		\]
+		由 $ E $ 完备知 $ u(E) $, 则 $ u(E) $ 在 $ F $ 中闭.
+
+		还需说明 $ u(E)=F $. 若 $ u(E)\ne F $, 取 $ y\in F\sm u(E) $, 由 Hahn-Banach 定理, 可知 $ \exists f\in\Star{F} $ 使得 $ f|_{u(E)}=0, f(y)=1 $, 则
+		\[
+			\forall x\in E\,(f(u(x))=0)\Rightarrow \Star{u}(f)=0,
+		\]
+		因此 $ \Star{u} $ 是同构, 故只能 $ f=0 $, 矛盾, 从而 $ u(E)=F $.\qed
+	\end{Proof}
+
+	\begin{Definition}[零化子空间, 预零化子空间]\index{L!零化子空间}\index{Y!预零化子空间}\label{def:零化子空间}
+		设 $ E $ 是赋范空间, $ F $ 是 $ E $ 的线性子空间, $ G $ 是 $ \Star{E} $ 的线性子空间, 称
+		\[
+			F^{\bot}:=\{ \Star{x}\in\Star{E}:\lrangle{\Star{x}, x}=0, \forall x\in F \}
+		\]	
+		为 $ F $ 的\textbf{零化子空间}, 再称
+		\[
+			G_{\bot}:=\{ x\in E:\lrangle{\Star{x}, x}=0, \forall \Star{x}\in G \}
+		\]
+		为 $ G $ 的\textbf{预零化子空间}.
+	\end{Definition}
+
+	\begin{Remark}
+		因为 $ F, G $ 都是线性子空间, 则 $ F^{\bot} $ 和 $ G_{\bot} $ 分别是 $ F $ 和 $ G $ 的极, 即
+		\[
+			F^{\bot}=F\degree,\qquad G_{\bot}=G\degree.
+		\]
+		且 $ F^{\bot} $ 是 $ \Star{E} $ 中的 $ \Star{w} $--闭的线性子空间, 而 $ G_{\bot} $ 是 $ E $ 中 $ w $--闭的 (等价于范数闭的) 线性子空间, 那么双极定理~\ref{thm:双极定理}~在此对应着下面的结论:
+		\[
+			(F^{\bot})_{\bot}=\baro{F}^{w}=\baro{F}^{\norm{\cdot}}, \qquad (G_{\bot})^{\bot}=\baro{G}^{\Star{w}}.
+		\]
+	\end{Remark}
+
+	\begin{Theorem}
+		设 $ E, F $ 是赋范空间, 且 $ u\in\CB(E, F) $, 则
+		\begin{enumerate}[(1)]
+			\item $ \ker \Star{u}=(u(E))^{\bot} $;
+			\item $ \ker u=(\Star{u}(\Star{F}))_{\bot} $;
+			\item $ (\ker \Star{u})_{\bot}=\baro{u(E)}^{w}=\baro{u(E)}^{\norm{\cdot}} $;
+			\item $ (\ker u)^{\bot}=\baro{\Star{u}(\Star{F})}^{\Star{w}} $
+		\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+		(1) 由
+		\[
+			\begin{aligned}
+				f\in\ker\Star{u} & \Longleftrightarrow \Star{u}(f) \Longrightarrow \forall x\in E\,((\Star{u}f)(x)=0)\\
+				& \Longleftrightarrow \forall x\in E\,(f(u(x))=0) \Longleftrightarrow \forall x\in E(\lrangle{f, u(x)}=0)\Longleftrightarrow f\in(u(E))^{\bot}.
+			\end{aligned}
+		\]
+		可知.
+
+		(2) 由
+		\[
+			\begin{aligned}
+				x\in\ker u\Longleftrightarrow u(x)=0 &  \Longleftrightarrow \forall f\in\Star{F}\,(\lrangle{f, u(x)}=0)\\
+				& \Longleftrightarrow \forall f\in\Star{F}\,(\lrangle{\Star{u}f, x}=0)\Longleftrightarrow x\in(\Star{u}(F))_{\bot}
+			\end{aligned}
+		\]
+		可知.
+
+		(3) 因为
+		\[
+			(\ker\Star{u})_{\bot}=\left( (u(E))^{\bot} \right)_{\bot}=\baro{u(E)}^{w}=\baro{u(E)}^{\norm{\cdot}},
+		\]
+		其中最后一个等号由 Mazur 定理可证.
+
+		(4) 由
+		\[
+			(\ker u)^{\bot}=\left( (\Star{u}(\Star{F}))_{\bot} \right)^{\bot}=\baro{\Star{u}(\Star{F})}^{\Star{w}}.
+		\]
+		可知.\qed
+	\end{Proof}
+
+	\begin{Corollary}
+		设 $ E, F $ 是赋范空间, $u\in\CB(E, F)$, 则
+		\begin{enumerate}[(1)]
+			\item $ \Star{u} $ 是单射当且仅当 $ u(E) $ 在 $ F $ 中稠密;
+			\item $ u $ 是单射当且仅当 $ \Star{u}(\Star{F}) $ 在 $ \Star{E} $ 中 $ \Star{w} $--稠密.
+		\end{enumerate}	
+	\end{Corollary}
+
+\section{自反性}
+	\begin{Definition}[自反空间]\index{Z!自反空间}\label{def:自反空间}
+		设 $ E $ 是赋范空间, 若在自然嵌入的意义下, 有 $ E=E^{**} $, 则称 $ E $ 是一个\textbf{自反空间}.
+	\end{Definition}
+	\begin{Remark}
+		若 $ E $ 是自反空间, 则由 $ E^{**} $ 完备可知 $ E $ 完备, 即 $ E $ 是 Banach 空间.
 	\end{Remark}
 	
-	
-	
-	
-	
-	
-	
+	\begin{Proposition}
+		有限维赋范空间都是自反的.
+	\end{Proposition}
+	\begin{Proof}
+		设 $ \dim E<\infty $, 并取 $ \seq{e} $ 是一组基, 并且 $ \norm{e_{j}}=1 $, 则存在 $ \seq{f}\in\Star{E} $ 使得 $ f_{j}(e_{k})=\delta_{j, k} $, 且 $ \norm{f_{j}}=1 $, 则 $ \forall f\in\Star{E} $, 有
+		\[
+			f=\sum_{k=1}^{n}f(e_{k})f_{k},
+		\]
+		对 $ \seq{f} $, 取 $ \seq{\tilde{e}}\in E^{**} $ 使得 $ \tilde{e}_{j}(f_{k})=\delta_{j, k} $, 且 $ \norm{\tilde{e}_{j}}=1 $, 则注意到 $ \forall f\in\Star{E} $ 都有
+		\[
+			(\tilde{e}_{k}-\hat{e}_{k})(f)=\sum_{j=1}^{n}(\tilde{e}_{k}-\hat{e}_{k})f_{j}=f(e_{k})-f_{k}(e_{k})=0,
+		\] 
+		故 $ \tilde{e}_{k}=\hat{e}_{k} $, 则 $ \forall z\in E^{**} $ 有
+		\[
+			z=\sum_{k=1}^{n}z_{k}\tilde{e}_{k}=\sum_{k=1}^{n}z_{k}\hat{e}_{k}=\widehat{\sum_{k=1}^{n}z_{k}e_{k}}
+		\]
+		\qed
+	\end{Proof}
+
+	\begin{Proposition}
+		Hilbert 空间是自反的.
+	\end{Proposition}
+	\begin{Proof}
+		设 $ H $ 是Hilbert空间, 则由 Riesz 表示定理, 对 $ \forall \varphi\in\Star{H} $, 存在唯一的 $ y\in H $ 使得 $ \varphi(x)=\lrangle{x, y} $ 且 $ \norm{\varphi}=\norm{y} $, 不妨记其为 $ \varphi_{y} $, 则 $ \forall \varphi\in\Star{H}, \varphi=\varphi_{y} $. 于是任取 $ \varphi, \varphi'\in\Star{H} $, 有
+		\[
+			\lrangle{\varphi, \varphi'}:=\lrangle{\varphi_{y}, \varphi_{y'}}=\lrangle{y', y}.
+		\]
+		(注意到 $ \varphi_{y} $ 本身是共轭线性的, 故 $ y $ 应位于第二变元) 由此 $ \Star{H} $ 是一个 Hilbert 空间.
+
+		而对 $ \forall f\in H^{**} $, 由 Riesz 表示定理, $ \exists\varphi_{f}\in\Star{H} $ 使得 $ \forall \varphi\in\Star{H}\,(f(\varphi)=\lrangle{\varphi, \varphi_{f}}_{\Star{H}}) $. 又存在 $ x, y\in H $ 使得 $ \varphi=\varphi_{x}, \varphi_{f}=\varphi_{y} $ 于是
+		\[
+			f(\varphi_{x})=\lrangle{\varphi_{x}, \varphi_{y}}=\lrangle{y, x}=\lrangle{\hat{y}, \varphi_{x}}=\hat{y}(\varphi_{x}),
+		\]
+		从而 $ f=\hat{y} $, 故 $ H $ 是自反的.\qed
+	\end{Proof}

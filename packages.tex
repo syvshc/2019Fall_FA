@@ -9,7 +9,7 @@
 %% \setCJKsansfont{Source Han Sans CN}
 %% \setCJKmonofont{Source Han Sans CN}
 %% \setCJKfamilyfont{boldsong}{Source Han Serif CN Heavy}
-
+\normalspacedchars{`*}
 %数学式
 \usepackage{mathtools,extarrows,amsfonts,amssymb,bm,mathrsfs} %数学式宏包, 更多箭头, 黑板体等数学字体,leqslant等符号
 \usepackage{amsthm} %定理环境
@@ -23,6 +23,7 @@
 \DeclareMathOperator{\cont}{Cont} %% 表示函数的连续点
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\convba}{Convba}
 
 
 \newcommand{\me}{\ensuremath{\mathrm{e}}}
@@ -65,15 +66,15 @@
 \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry} %边距
 %\usepackage[a4paper,left=1.8cm,right=3.2cm,top=2.5cm,bottom=2cm]{geometry} %当打印时使用此选项
 \setlength{\headheight}{13pt}
-\usepackage{pifont} % 带圈数字
-\usepackage{fancyhdr} % 页眉页脚
+\usepackage{pifont}		% 带圈数字
+\usepackage{fancyhdr} 	% 页眉页脚
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[OL]{\fangsong \nouppercase\rightmark}
 \fancyhead[ER]{\fangsong \nouppercase\leftmark}
 \fancyhead[OR,EL]{\thepage}
 \fancyfoot[C]{}
-\usepackage[nottoc]{tocbibind}
+\usepackage{tocbibind}
 \usepackage{imakeidx}
 
 %辅助
@@ -148,8 +149,9 @@
 \newcommand{\lrangle}[1]{\left\langle #1 \right\rangle}
 \newcommand{\degree}{\ensuremath{^{\circ}}}
 \newcommand{\sm}{\ensuremath{\setminus}}
-\newcommand{\baro}{\overline}
-\newcommand{\weakto}{\ensuremath{\overset{\mathrm{w.}}{\to}}}
+\newcommand{\baro}[1]{\overline{#1}}
+\newcommand{\weakto}{\ensuremath{\overset{w.}{\longrightarrow}}}
+\newcommand{\sweakto}{\ensuremath{\overset{\Star{w.}}{\longrightarrow}}}
 \newcommand{\seq}[2][n]{\ensuremath{#2_{1}, #2_{2}, \dots, #2_{#1}}}
 \renewcommand{\thefootnote}{$\sharp$\arabic{footnote}}
 %\renewcommand{\labelenumi}{(\theenumi)}
