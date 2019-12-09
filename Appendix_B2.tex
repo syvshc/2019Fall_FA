@@ -36,7 +36,7 @@
 		\]
 		且注意到 $ \forall n\geqslant1 $, $ f_{n} $ 可以用折线函数逼近, 则 $ f_{n} $ 是第一纲的.
 
-		(另证: $ 1_{\Q}=\lim\limits_{n\to \infty}\lim\limits_{k\to\infty}\cos^{2k}(n!\pi x) $.)
+		(另证: $ 1_{\Q}=\lim\limits_{n\to \infty}\lim\limits_{k\to\infty}\cos^{2k}(n!\pi x) $.)\qed
 	\end{Proof}	
 
 	\textbf{习题6.8}\ [作业]\ \ 设 $ E $ 是 $ (C[0, 1], \norm{\cdot}_{\infty}) $ 的闭线性子空间, 并假设 $ E $ 中的所有元素都是 Lipschitz 函数.
@@ -157,7 +157,7 @@
 	(2) 记$ P_n=\Span\{ 1,x,\dots,x^n \} $, 那么有$ P=\bigcup_{n\geqslant 1}P_n $. 由于$ P_n $有限维, 故$ P_n $闭. 设在某个范数下$ (P,\norm{\cdot}) $完备, 那么由Baire推论可知$ \bigcup_{n\geqslant 1}\mathring{P}_n $在$ P $稠密. 而由(1)可知$ \forall n\geqslant 1\,(\mathring{P}_n=\varnothing) $, 这即$ \varnothing $在$ P $中稠密. 矛盾.\qed
 	\end{Proof}
 	
-	\textbf{习题 6.14}\ [习题课]\ \ 设 $ E $ 是 Banach 空间, $ F, G $ 都是 $ E $ 是闭线性子空间, 并且 $ F+G $ 也是闭线性子空间. 证明: 存在一个常数 $ C\geqslant0 $, 使得 $ \forall x\in F+G $, $ \exists(f, g)\in F\times G $, 满足
+	\textbf{习题 6.14}\ [习题课]\ \ 设 $ E $ 是 Banach 空间, $ F, G $ 都是 $ E $ 是闭线性子空间, 并且 $ F+G $ 也是闭线性子空间. 证明: 存在一个常数 $ c\geqslant0 $, 使得 $ \forall x\in F+G $, $ \exists(f, g)\in F\times G $, 满足
 	\[
 		x=f+g, \norm{f}\leqslant c\norm{x}, \norm{g}\leqslant c\norm{x}.
 	\]
@@ -425,7 +425,7 @@
 	则$ (u_n(x))_{n\geqslant 1} $是$ F $中的Cauchy列, 故收敛.\qed
 	\end{Proof}
 	
-	\textbf{习题6.16}\ [作业]\ \ 设$ X=C^1([0,1],\R) $, 即由$ [0,1] $上连续可微的函数构成的集合, 其上赋予连续一致范数$ \norm\cdot_\infty $. 并设$ Y=C([0,1],\R) $, 其上也赋予一直范数. 考虑映射$ u : X\to Y $, $ u(f)=f' $. 证明: $ u $的图像是闭的, 但$ u $不连续. 并解释该结论的意义.
+	\textbf{习题6.16}\ [作业]\ \ 设$ X=C^1([0,1],\R) $, 即由$ [0,1] $上连续可微的函数构成的集合, 其上赋予连续一致范数$ \norm\cdot_\infty $. 并设$ Y=C([0,1],\R) $, 其上也赋予一致范数. 考虑映射$ u : X\to Y $, $ u(f)=f' $. 证明: $ u $的图像是闭的, 但$ u $不连续. 并解释该结论的意义.
 	\begin{Proof}
 	设$ (x_n)_{n\geqslant 1}\subset X,\ y\in Y $满足$ x_n\to 0 $且$ x'_n\to y $. 为证明$ G(u) $是闭的, 只需证明$ y=0 $. 任取$ t\in[0,1] $, 则
 	\[
