@@ -2067,18 +2067,144 @@
 	习题后面括号中的序号表示对应书中习题的编号.
 	
 	\begin{enumerate}[label=\textbf{\arabic*.}, ref=\arabic*]
-	\item 设$ E $是数域$ \K $上的有限维线性空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵
+	\item (3.8)设$ E $是数域$ \K $上的有限维线性空间, 其维数$ \dim E=n $, $ \{ e_1,e_2,\cdots,e_n \} $是$ E $的一组基. 任取$ u\in\CL(E) $, 令$ [u] $表示$ u $在这组基下对应的矩阵
 		\begin{enumerate}[(1)]
 		\item 证明映射$ u\mapsto[u] $建立了$ \CL(E) $到$ \mathbb{M}_n(\K) $之间的同构映射.
 		\item 假设$ E=\K^n $且$ \{ e_1,e_2,\cdots,e_n \} $是经典基(即$ e_i=[\delta_{i,1},\delta_{i,2},\cdots,\delta{i,n}] $, 这里$ \delta $是Kronecker符号), 并约定$ E=\K^n $上赋予Euclid范数. 证明: 若$ [u] $可被正交相似对角化, 则$ \norm{u}=\max\{ \abs{\lambda_1},\abs{\lambda_2},\cdots,\abs{\lambda_n} \} $, 这里$ \lambda_1,\lambda_2,\cdots,\lambda_n $是$ u $的特征值.
-		\item 取$ \{ e_1,e_2,\cdots,e_n \} $如上, 试由$ [u] $中的元素分别确定$ p=1 $与$ p=\infty $时$ u : (\K^n,\norm{\cdot}_p)\to(\K^n,\norm{\cdot}_p) $的范数. (3.8)
+		\item 取$ \{ e_1,e_2,\cdots,e_n \} $如上, 试由$ [u] $中的元素分别确定$ p=1 $与$ p=\infty $时$ u : (\K^n,\norm{\cdot}_p)\to(\K^n,\norm{\cdot}_p) $的范数. 
 		\end{enumerate}
-	\item 设$ E $是Banach空间.
+	\item (3.9)设$ E $是Banach空间.
 		\begin{enumerate}[(1)]
 		\item 设$ u\in\CB(E) $且$ \norm{u}<1 $, 证明$ \id_E-u $在$ \CB(E) $中可逆;
 		\item 设$ GL(E) $是$ \CB(E) $中可逆元构成的集合, 证明: $ GL(E) $关于复合运算构成一个群, 且它是$ \CB(E) $中的开集;
-		\item 证明$ u\mapsto u^{-1} $是$ GL(E) $上的同胚. (3.9)
+		\item 证明$ u\mapsto u^{-1} $是$ GL(E) $上的同胚. 
 		\end{enumerate}
+	\item (4.2)设 $ A $ 是 $ \ell_{2} $ 的子集, 其元素 $ x = (x_{n})_{n\geqslant1} $ 满足 $ \abs{x_{n}}\leqslant1/n, n\geqslant1 $. 证明 $ A $ 是紧集. 
+	\item (4.6)设 $ H $ 是内积空间,  $ x_{n}, x\in H $, 并假设
+		\[
+			\lim_{n\to\infty}\norm{x_{n}}=\norm{x}\ \ \text{且}\ \  \lim_{n\to\infty}\lrangle{y, x_{n}}=\lrangle{y, x},\quad y\in H
+		\]
+		证明 $ \lim\limits_{n\to\infty}\norm{x_{n}-x}=0 $. 
+	\item (4.10)证明以下命题:
+		\begin{enumerate}[(1)]
+			\item 设 $ H $ 是 Hilbert空间, $ D_{n}=\{ -1, 1 \}^{n} $. 证明
+			\[
+				\frac{1}{2^{n}}\sum_{(\varepsilon_{k})\in D_{n}}\norm{\varepsilon_{1}x_{1}+\cdots+\varepsilon_{n}x_{n}}^{2}=\norm{x_{1}}^{2}+\cdots+\norm{x_{2}}^{2}, \quad \forall x_{1}, x_{2}, \dots, x_{n}\in H
+			\]
+	  		\item 设 $ (X, \norm{\cdot}) $ 是Banach空间, 并假设有一个 $ X $ 上的内积范数 $ \abs{\cdot} $ 等价于 $ \norm{\cdot} $. 证明存在正常数 $ a $ 和 $ b $, 使得
+	  		\[
+				a\sum_{k=1}^{n}\norm{x_{k}}^{2}\leqslant\frac{1}{2^{n}}\sum_{(\varepsilon_{k})\in D_{n}}\norm{\sum_{k=1}^{n}\varepsilon_{k}x_{k}}^{2}\leqslant b\sum_{k=1}^{n}\norm{x_{k}}^{2}, \quad \forall x_{1}, x_{2}, \dots, x_{n} \in X.
+			\]
+			\item 设 $ 1\leqslant p\ne2\leqslant\infty $ 证明空间 $ c_{0}, \ell_{p}, L_{p} $ 中没有等价的内积范数. 
+		\end{enumerate}
+	\item (4.11)设 $ (C_{n})_{n\geqslant1} $ 是 Hilbert空间 $ H $ 中的一个递增非空闭凸子集列,  $ C $ 是所有 $ C_{n} $ 并集的闭包, 证明 
+		\[
+			P_{C}(x) = \lim_{n\to \infty}P_{C_{n}}(x), \quad \forall x\in H.
+		\]
+	\item (4.13)设$ E=C[0,1] $上赋有以下内积
+		\[
+		\lrangle{f,g}=\int_0^1f(t)\baro{g(t)}\diff t,
+		\]
+		并设$ E_0 $表示在$ [0,1] $上积分为0的函数组成的$ E $的线性子空间. 考虑$ E $的线性子空间$ H=\{ f\in E : f(1)=0 \} $且$ H_0=E_0\cap H $.
+		\begin{enumerate}[(1)]
+		\item 验证$ H_0 $是$ H $的闭真线性子空间.
+		\item 设$ h(t)=t-1/2 $, $ t\in[0,1] $, 证明:
+		\begin{enumerate}[(i)]
+		\item $ E=\Span\{H,h\} $且$ E_0=\Span\{H_0,h\} $;
+		\item $ h $属于$ H_0 $在$ E $中的闭包.
+		\end{enumerate}
+		\item 以$ H $为全空间, 证明$ H_0^\bot=\{0\} $, 并解释所得结果蕴涵的意义. 
+		\end{enumerate}
+	\item (补充6)计算 $ \mathbb{M}_{2}(\C) $ 中投影算子的一般形式. 
+	\item (4.15)证明下列命题:
+		\begin{enumerate}[(1)]
+		\item 设$ E $和$ F $是Hilbert空间$ H $的两个正交线性子空间, 证明$ E+F $是闭的当且仅当$ E, F $都是闭的.
+		\item 以$ (e_n)_{n\geqslant 1} $表示$ \ell_2 $中的标准正交基, 并设$ E $是$ \{ e_{2n} : n\geqslant 1 \} $的线性扩张的闭包, 而$ F $是$ \{ e_{2n}+\frac{1}{n}e_{2n+1} : n\geqslant 1 \} $的线性扩张的闭包. 证明$ E\cap F=\{0\} $且$ E+F $在$ \ell_2 $中不是闭的. 
+		\end{enumerate}
+	\item (4.19)令 $ H=L_{2}(0, 1) $; 并设 $ (e_{n})_{n\geqslant1} $ 是 $ H $ 中的规范正交集, 证明 $ (e_{n})_{n\geqslant1} $ 是 $ H $ 上的规范正交基的充分必要条件是 
+		\[
+			\sum_{n\geqslant1}\abs{\int_{0}^{x}e_{n}(t)\diff t}^{2} = x, \quad \forall x\in[0, 1].
+		\]
+	\item (6.1)证明以下命题:
+		\begin{enumerate}[(1)]
+			\item 证明 \J 是 \R 上的 \Gd 集, 并导出 \Q 不是 \Gd 集, 且不存在函数 $ f:\R\to\R $ 使得 $ \cont(f)=\Q $;
+			\item 定义函数 $ f:\R\to\R $, 当 $ x\in\J $ 时, $ f(x)=0 $; $ f(0)=1 $; 若 $ x $ 是非零有理数 $ p/q $, 这里 $ p/q $ 是 $ x $ 的不可约形式, $ p\in\Z, q\in\N $, 令 $ f(x)=1/q $, 证明 $ \cont(f)=\J $;
+			\item 设 $ f=1_{\Q} $, 证明 $ f $ 不是第一纲的 (即 $ f $ 不是任一连续函数列的极限函数), 但是存在一列第一纲的函数逐点收敛于 $ f $. 
+		\end{enumerate}
+	\item (6.6)设$ E $和$ F $都是Banach空间, $ (u_n)_{n\geqslant 1} $是$ \CB(E,F) $的序列. 证明以下命题等价:
+		\begin{enumerate}[(a)]
+		\item $ (u_n(x))_{n\geqslant 1} $在每个$ x\in E $处收敛.
+		\item 设$ A\subset E $且$ \Span A $在$ E $中稠密, 有$ (u_n(a))_{n\geqslant 1} $对每个$ a\in A $均收敛, 且$ (u_n)_{n\geqslant 1} $有界. 
+		\end{enumerate}
+	\item (6.8)设 $ E $ 是 $ (C[0, 1], \norm{\cdot}_{\infty}) $ 的闭线性子空间, 并假设 $ E $ 中的所有元素都是 Lipschitz 函数.
+		\begin{enumerate}[(1)]
+			\item 设 $ x, y\in[0, 1] $ 且 $ x\ne y $, 定义泛函 $ \varPhi_{x, y}:E\to\R $ 为
+			\[
+				\varPhi_{x, y}(f)=\frac{f(y)-f(x)}{y-x}.
+			\]
+			证明 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 是 $ \Star{E} $ 中的有界集.
+			\item 导出 $ E $ 中的闭单位球在 $ [0, 1] $ 上等度连续, 且 $ \dim E<\infty $. 
+		\end{enumerate}
+	\item (6.10)设$ E, F $都是Banach空间, $ u\in\CB(E,F) $并满足$ u(B_E) $在$ B_F $中稠密.
+		\begin{enumerate}[(1)]
+		\item 计算$ \norm{u} $.
+		\item 证明: $ u(B_E)=B_F $, 因此$ u $是满的.
+		\item 设$ v $是$ E/\ker u $到$ F $的映射并满足$ v\circ q=u $, 其中$ q : E\to E/\ker u $是商映射. 证明: $ v $是从$ E/\ker u $到$ F $的等距映射. 
+		\end{enumerate}
+	\item (6.13)证明下列命题:
+		\begin{enumerate}[(1)]
+		\item 设$ E $是赋范空间, $ F $是$ E $的线性子空间. 证明: 若$ F\ne E $, 那么$ F $在$ E $中的内部是空集.
+		\item 由此证明所有多项式构成的空间$ P $不能赋予完备范数. 
+		\end{enumerate}
+	\item (6.14)设 $ E $ 是 Banach 空间, $ F, G $ 都是 $ E $ 是闭线性子空间, 并且 $ F+G $ 也是闭线性子空间. 证明: 存在一个常数 $ c\geqslant0 $, 使得 $ \forall x\in F+G $, $ \exists(f, g)\in F\times G $, 满足 
+		\[
+			x=f+g, \norm{f}\leqslant c\norm{x}, \norm{g}\leqslant c\norm{x}.
+		\]
+	\item (6.15)设 $ H $ 是 Hilbert空间, 且线性映射 $ u:H\to H $ 满足
+		\[
+			\lrangle{u(x), y}=\lrangle{x, u(y)}, \quad x, y\in H,
+		\]
+		证明: $ u $ 连续. 
+	\item (6.16)设$ X=C^1([0,1],\R) $, 即由$ [0,1] $上连续可微的函数构成的集合, 其上赋予连续一致范数$ \norm\cdot_\infty $. 并设$ Y=C([0,1],\R) $, 其上也赋予一致范数. 考虑映射$ u : X\to Y $, $ u(f)=f' $. 证明: $ u $的图像是闭的, 但$ u $不连续. 并解释该结论的意义. 
+	\item (6.19)设 $ (X, \CA, \mu) $ 是 $ \sigma $-有限的测度空间.
+		\begin{enumerate}[(1)]
+			\item 假设当 $ 1\leqslant p<q\leqslant\infty $ 时, 有 $ L_{q}(X, \CA, \mu)\subset L_{p}(X, \CA, \mu) $. 证明存在常数 $ C\geqslant0 $, 使得对任意的 $ f\in L_{q}(X, \CA, \mu) $, 有 $ \norm{f}_{p}\leqslant c\norm{f}_{q} $.
+			\item 导出下列命题的等价性
+			\begin{enumerate}[a. ]
+				\item 存在 $ 1\leqslant p<q\leqslant\infty $, 使得 $ L_{q}(X, \CA, \mu)\subset L_{p}(X, \CA, \mu) $;
+				\item $ \mu(X)<\infty $;
+				\item 任取 $ 1\leqslant p<q\leqslant\infty $, 有 $ L_{q}(X, \CA, \mu)\subset L_{p}(X, \CA, \mu) $. 
+			\end{enumerate}
+		\end{enumerate}
+	\item (5.15, \textbf{Fourier级数})设 $ f\in L_{2\pi}^{1} $, 其 \textbf{Fourier 级数}定义为
+		\[
+			f\sim \sum_{n=-\infty}^{\infty}\hat{f}(n)\exp(\imag nt).
+		\]
+		并定义相应的 $ n $\textbf{次部分和}为
+		\[
+			S_{n}(f)(t)=\sum_{k = -n}^{n}\hat{f}(k)\exp(\imag kt).
+		\]
+		在本习题中, 假设 $ f $ 属于分段的 $ C^{1} $ 函数类, 也就是说, $ f\in C_{2\pi} $ 且存在 $ [0, 2\pi] $ 上的划分 $ 0=a_{0}<a_{1}<\cdots a_{k}=2\pi $, 使得 $ f $ 在每一个子区间 $ (a_{j}, a_{j+1}) $ 内属于 $ C^{1} $ 函数类, 并且 $ f' $ 在点 $ a_{j} $ 的右极限和点 $ a_{j+1} $ 的左极限都存在, 证明 $ f $ 的Fourier级数依无穷范数收敛到 $ f $, 而且
+		\[
+			\norm{f-S_{N}(f)}_{\infty}\leqslant\sqrt{\frac{2}{N}}\norm{f'}_{2}, \quad N\geqslant1.
+		\]
+		注意这里的导数 $ f' $ 在 $ f $ 的不可导点取左右导数. 
+	\item (5.17)对任意$ a\in\R $, 相应的平移变换$ \tau_a(f)(x):=f(x-a) $. 证明对任意$ f\in L_{2\pi}^p $和$ 0<p<\infty $, 都有 
+		\[
+		\lim_{a\to 0}\norm{\tau_a(f)-f}_p=0.
+		\]
 	\end{enumerate}
+\section*{本章注记}	
+	\addcontentsline{toc}{section}{本章注记}
 	
-
+	\begin{enumerate}
+	\item 本章中以下命题/结论/注记未在正文中进行证明, 其证明参见附录A的相关内容:
+	
+	\hspace{4em}定义\,\ref{def:Hilbert空间}\,下的注记, 注\,\ref{rmk:正交性与正交补}.
+	\item 以下习题给出了一部分反例:
+		\begin{enumerate}[(1)]
+		\item 全空间不完备时正交分解定理的反例参见附录B的习题4.13.
+		\item 定义域不完备时闭图像定理的反例参见附录B的习题6.16.
+		\end{enumerate}
+	\item 有关Fourier级数平移算子的性质参见附录B的习题5.17.
+	\end{enumerate}
