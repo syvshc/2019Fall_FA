@@ -954,6 +954,8 @@
 		若 $ E $ 是自反空间, 则由 $ E^{**} $ 完备可知 $ E $ 完备, 即 $ E $ 是 Banach 空间.
 	\end{Remark}
 	
+	下面我们给出几个自反空间的例子. 前两个例子是平凡的, 即有限维赋范空间和Hilbert空间. 后两个例子与对赋范空间的讨论相同, 我们考虑一类特殊的空间, 即$ \ell_p $空间与$ L_p $空间.
+	
 	\begin{Proposition}
 		有限维赋范空间都是自反的.
 	\end{Proposition}
@@ -989,3 +991,183 @@
 		\]
 		从而 $ f=\hat{y} $, 故 $ H $ 是自反的.\qed
 	\end{Proof}
+	
+	需要注意到括号的性质在Banach空间上与在Hilbert空间上性质的不同. 在Hilbert空间上的内积是共轭线性的, 而在Banach空间上约定的``括号"只具有线性性.
+	
+	\begin{Proposition}
+		设$ 1<p<\infty $, $ (p,q) $是一对共轭指数, 则$ \Star{\ell_p}\simeq\ell_q $. 另外, 有$ \Star{c_0}\simeq\ell_1 $.
+	\end{Proposition}
+	\begin{Proof}
+		对任意的$ x\in\ell_p $, 其中$ x=(x_n)_{n\geqslant 1}=\sum\limits_{n\geqslant 1}x_ne_n $, 则
+		\[
+		\norm{\sum_{k=1}^nx_ke_k-x}_p=\norm{\sum_{k\geqslant n+1}x_ke_k}_p=\sum_{k\geqslant n+1}\abs{x_n}^p\to 0,\qquad(n\to\infty)
+		\]
+		即$ x=\sum\limits_{n\geqslant 1}x_ne_n=\lim\limits_{n\to\infty}\sum\limits_{k=1}^nx_ke_k $. 同理, 对任意的$ x\in c_0 $, 由于
+		\[
+		\norm{\sum_{k=1}^nx_ke_k-x}_\infty=\sup_{k\geqslant n+1}\abs{x_k}\to 0,\qquad(n\to\infty)
+		\]
+		即$ x=\sum\limits_{n\geqslant 1}x_ne_n=\lim\limits_{n\to\infty}\sum\limits_{k=1}^nx_ke_k $.
+		
+		先证$ \ell_p $的情形, $ \forall x=(x_k)_{k\geqslant 1}\in\ell_p,\ \forall f\in\Star{\ell_p} $, 则有
+		\[
+		f(x)=f\Big( \sum_{n\geqslant 1}x_ne_n \Big)=\sum_{n\geqslant 1}x_nf(e_n),
+		\]
+		即$ f $完全由$ (f(e_n))_{n\geqslant 1} $确定, 定义
+		\[
+		\varphi : \Star{\ell_p}\to\ell_\infty,\qquad f\mapsto(f(e_n))_{n\geqslant 1}
+		\]
+		这里只将$ \ell_\infty $看作线性空间而不在其上赋范. 需要说明$ (f(e_n))_{n\geqslant 1}\in\ell_q $. 取
+		\[
+		x_k=\begin{cases}
+		\baro{f(e_k)}\cdot\abs{f(e_k)}^{q-2} & ,1\leqslant k\leqslant n\\
+		0 & , k>n\\
+		\end{cases}
+		\]
+		则
+		\[
+		\begin{aligned}
+		\abs{f\left(\sum_{k\geqslant 1}x_ke_k\right)}&=\abs{\sum_{k=1}^nx_kf(e_k)}=\sum_{k=1}^n\abs{f(e_k)}^q\\
+		&\leqslant\norm{f}\cdot\norm{\sum_{k\geqslant 1}x_ke_k}_p=\norm{f}\left(\sum_{k=1}^n(\abs{f(e_k)}^{q-1})^p\right)^{1/p}=\norm{f}\left(\sum_{k=1}^n\abs{f(e_k)}^q\right)^{1/p},
+		\end{aligned}
+		\]
+		即$ \sum\limits_{k=1}^n\abs{f(e_k)}^q\leqslant\norm{f}\left(\sum\limits_{k=1}^n\abs{f(e_n)}^q\right)^{1/p} $. 注意到$ \sum\limits_{k=1}^n\abs{f(e_k)}^q\ne 0 $, 于是
+		\[
+		\left(\sum_{k=1}^n\abs{f(e_k)}^q\right)^{1/q}\leqslant\norm{f},
+		\]
+		并且注意到$ \left(\left(\sum\limits_{k=1}^n\abs{f(e_n)}^q\right)^{1/q}\right)_{n\geqslant 1} $单调递增有上界, 故其极限存在, 于是
+		\[
+		\norm{\varphi(f)}_q\leqslant\norm{f}<\infty,
+		\]
+		即$ \varphi : \Star{\ell_p}\to\ell_q $.
+		
+		往证$ \varphi $是等距同构, 由
+		\[
+		\varphi(f)=0\Longrightarrow\forall k\geqslant 1\,(f(e_k)=0)\Longrightarrow\forall x\in\ell_p\,(f(x)=0)\Longrightarrow f=0
+		\]
+		可知$ \varphi $是单射. 再对$ \forall y=(y_n)_{n\geqslant 1}\in\ell_q $, 定义$ f_y(x)=\sum\limits_{n\geqslant 1}x_ny_n $, 则由
+		\[
+		\norm{f_y(x)}\leqslant\norm{y}_q\norm{x}_p
+		\]
+		可知$ \norm{f_y}\leqslant\norm{y}_q<\infty $, 即$ f_y\in\Star{\ell_p} $. 注意到$ \varphi(f_y)=y $, 于是$ \varphi $是满的. 再由
+		\[
+		\norm{\varphi^{-1}(y)}=\norm{f_y}\leqslant\norm{y}_q
+		\]
+		知$ \norm{\varphi^{-1}}\leqslant 1 $. 取$ y=e_k $后$ \norm{\varphi^{-1}}=1 $, 于是$ \varphi $是等距同构, 故$ \Star{\ell_p}\simeq\ell_q $.
+		
+		再证$ c_0 $的情形. 对任意$ x=(x_n)_{n\geqslant 1}\in c_0 $和任意$ f\in\Star{c_0} $, 有
+		\[
+		f(x)=f\Big( \sum_{n\geqslant 1}x_ne_n \Big)=\sum_{n\geqslant 1}x_nf(e_n),
+		\]
+		取
+		\[
+		x_k=\begin{cases}
+		\baro{f(e_k)}/\abs{f(e_k)} & ,1\leqslant k\leqslant n\,\text{且}\,f(e_k)\ne 0\\
+		0 & ,k>n\,\text{或}\,f(e_k)=0
+		\end{cases}
+		\]
+		则
+		\[
+		\abs{f\left(\sum_{n\geqslant 1}x_ne_n\right)}=\sum_{k=1}^n\abs{f(e_k)}\leqslant\norm{f}\norm{\sum_{k=1}^nx_ke_k}=\norm{f},
+		\]
+		注意到$ \left(\sum\limits_{k=1}^n\abs{f(e_k)}\right)_{n\geqslant 1} $单调递增有上界, 定义
+		\[
+		\varphi : \Star{c_0}\to\ell_1,\qquad f\mapsto(f(e_n))_{n\geqslant 1}
+		\]
+		与$ \ell_p $情形类似可证$ \varphi $是等距同构, 故$ \Star{c_0}\simeq\ell_1 $.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+		$ c_0 $不是自反的, $ \ell_p $当$ 1<p<\infty $时是自反的.
+	\end{Corollary}
+	
+	\begin{Theorem}
+		Banach空间是自反的当且仅当它的对偶也是自反的.
+	\end{Theorem}
+	\begin{Proof}
+		\textsl{必要性.} 设$ E $是自反的Banach空间, 则$ E=E^{**} $, 从而
+		\[
+		(\Star{E})^{**}=E^{***}=(E^{**})^*,
+		\]
+		即$ \Star{E} $是自反的.
+	
+		\textsl{必要性.} 设$ \Star{E} $是自反的, 则有
+		\[
+		\Star{E}=(\Star E)^{**}=(E^{**})^*,
+		\]
+		假设$ E\subset E^{**} $且$ E\ne E^{**} $, 则由Hahn-Banach定理可知存在$ f\in(E^{**})^* $且$ f\ne 0 $使得$ f|_E=0 $. 又由$ (E^{**})^*=\Star{E} $可知$ f\in\Star{E} $, 且由$ f|_E=0 $可知$ f=0 $, 这与$ f\ne 0 $矛盾. 于是$ E=E^{**} $, 即$ E $是自反的.\qed
+	\end{Proof}
+	
+	下面开始讨论$ L_p $空间的对偶, 设$ (X,\CA,\mu) $是一个$ \sigma $-有限的测度空间, 并以$ L_p $记$ L_p(X,\CA,\mu) $, $ (p,q) $是一对共轭指数.
+	
+	\begin{Theorem}
+		设$ 1\leqslant p<\infty,\ \forall g\in L_q $, 定义
+		\[
+		J(g) : L_p\to\K,\qquad f\mapsto\int_Xfg\diff\mu,
+		\]
+		则$ J $是$ L_q $到$ \Star{L_p} $的等距同构, 即$ \Star{L_p}\simeq L_q $.
+	\end{Theorem}
+	\begin{Proof}
+		只证$ \K=\C $的情形, 先说明$ J $是等距的. 由H\"older不等式
+		\[
+		\abs{J(g)(f)}=\abs{\int_Xfg\diff\mu}\leqslant\norm{f}_p\norm{g}_q,
+		\]
+		从而$ \norm{J(g)}\leqslant\norm{g}_q $, 可知$ \norm{J}\leqslant 1 $.
+	
+		当$ p>1 $时取$ f=\frac{\bar{g}}{\abs{g}}\cdot\frac{\abs{g}^{q-1}}{\norm g_q^{q-1}} $, 则因
+		\[
+		\int_X\abs{f}^p\diff\mu=\int_X\frac{(\norm{g}^{q-1})^p}{(\norm{g}_q^{q-1})^p}\diff\mu=\frac{1}{\norm{g}_q^q}\int_X\abs{g}^q\diff\mu=\frac{\norm{g}_q^q}{\norm{g}_q^q}=1,
+		\]
+		知$ \norm{f}_p^p=1 $, 从而$ \norm{f}_p=1 $, 且
+		\[
+		\abs{J(g)(f)}=\abs{\int_Xfg\diff\mu}=\int_X\frac{\abs{g}^q}{\norm{g}_q^{q-1}}\diff\mu=\norm{g}_q,
+		\]
+		即$ \norm{J(g)}\geqslant\norm{g}_q $可知$ \norm{J}\geqslant 1 $, 于是$ \norm{J}=1 $, 即$ J $是等距的.
+	
+		当$ p=1 $时, 取$ A_\varepsilon=\{ x : \abs{g(x)}\geqslant\norm		g_\infty-\varepsilon \} $. 由本性上确界的定义可知$ \mu(A_\varepsilon)\ne 0 $. 因为$ \mu $是$ \sigma $-有限的, 不妨设$ \mu(A_\varepsilon)<\infty $. 令$ f_\varepsilon=\frac{1}{\mu(A_\varepsilon)}\cdot\frac{\bar{g}}{\abs{g}}1_{A_\varepsilon} $, 则$ \norm{f_\varepsilon}_1=1 $, 且
+		\[
+		\abs{J(g)(f_\varepsilon)}=\frac{1}{\mu(A_\varepsilon)}\int_{A_\varepsilon}\frac{\bar{g}}{\abs{g}}g\diff\mu\geqslant\frac{1}{\mu(A_\varepsilon)}(\norm{g}_\infty-\varepsilon)\mu(A_\varepsilon)=\norm{g}_\infty-\varepsilon,
+		\]
+		由$ \varepsilon $的任意性可知$ \norm{J(g)}\geqslant\norm{g}_\infty $, 即$ \norm{J}\geqslant 1 $, 于是$ J $是等距的.
+	
+		由
+		\[
+		\abs{J(g)}=0\Longrightarrow\forall f\in L_p\,\left(\int_Xfg\diff\mu=0\right)\Longrightarrow g=0
+		\]
+		可知$ J $是单射, 还需说明$ J $是满射. $ \forall \varphi\in\Star{L_p},\ \exists g\in L_q $使得$ J(g)=\varphi $, 定义集函数$ \nu $使得对任意$ \mu $-有限的可测集$ A\subset X $, 都有
+		\[
+		\nu(A)=\varphi(1_A),
+		\]
+		则由可测函数的简单逼近性质和$ \nu $的可列加性可知$ \nu $是一个复测度, 对使得$ \mu(A)=0 $的可测集$ A $, 有
+		\[
+		\abs{\nu(A)}=\abs{\varphi(1_A)}\leqslant\norm{\varphi}\int_X1_A\diff\mu=\norm{\varphi}\mu(A)=0
+		\]
+		于是$ \nu(A)=0 $. 这说明$ \nu $依$ \mu $绝对连续. 由Radon-Nikodym定理, 存在可测函数$ g $使得$ \diff\nu=g\diff\mu $. 下证$ g\in L_q $.
+	
+		形式上, 有$ \varphi(f)=\int_Xfg\diff\mu $, 当$ 1<p<\infty $时, 令$ E_n=\{ x : \abs{g(x)}\leqslant n \} $, 并令$ f=1_{E_n}\abs{g}^{q-2}\bar{g} $. 则
+		\[
+		\int_{E_n}\abs{g}^q\diff\mu=\int_Xfg\diff\mu=\varphi(f)\leqslant\norm{\varphi}\cdot\norm{f}_p=\norm{\varphi}\left(\int_{E_n}\abs{g}^q\diff\mu\right)^{1/p}
+		\]
+		即
+		\[
+		\left(\int_{E_n}\abs{g}^q\diff\mu\right)^{1-1/p}=\left( \int_{E_n}\abs{g}^q\diff\mu \right)^{1/q}\leqslant\norm{\varphi},
+		\]
+		令$ n\to\infty $, 注意到$ ((\int_{E_n}\abs{g}^q\diff\mu)^{1/q})_{n\geqslant 1} $单调递增有上界, 故极限存在. 则$ \norm{g}_q\leqslant\norm{\varphi}<\infty $, 故$ g\in L_q $.
+	
+		当$ p=1 $时, $ q=\infty $, 作$ A_\varepsilon=\{ x : \abs{g(x)}\geqslant\norm{\varphi}+\varepsilon \} $, 往证$ \mu(A_\varepsilon)=0 $. 取$ f=1_{E_n}\cdot1_{A_\varepsilon}\cdot\frac{\bar{g}}{\abs{g}} $, 则$ \norm{f_n}_1=\int_{E_n\cap A_\varepsilon}1\diff\mu=\mu(E_n\cap A_\varepsilon) $, 则
+		\[
+		\varphi(f_n)=\int_{A_\varepsilon\cap E_n}\abs{g}\diff\mu\geqslant(\norm{\varphi}+\varepsilon)\mu(E_n\cap A_\varepsilon),
+		\]
+		又
+		\[
+		\abs{\varphi(f_n)}\leqslant\norm{\varphi}\norm{f_n}_1=\norm{\varphi}\cdot\mu(E_n\cap A_\varepsilon),
+		\]
+		于是
+		\[
+		(\norm{\varphi}+\varepsilon)\mu(E_n\cap A_\varepsilon)\leqslant\norm{\varphi}\cdot\mu(E_n\cap A_\varepsilon)
+		\]
+		只能$ \mu(E_n\cap A_\varepsilon)=0 $, 令$ n\to\infty $就有$ \mu(A_\varepsilon)=0 $. 从而$ \norm{g}_\infty\leqslant\norm{\varphi}<\infty $, 即$ g\in L_\infty $.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+		$ L_p(X,\mu) $在$ 1<p<\infty $时是自反的.
+	\end{Corollary}
