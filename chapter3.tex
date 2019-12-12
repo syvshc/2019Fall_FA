@@ -648,7 +648,7 @@
 	\end{Remark}
 
 
-\subsection{极性}
+	\subsection{极性}
 	以下讨论中因涉及 $ E, \Star{E}, E^{**} $, 故接下来只用所带星号数目的不同来区分不同空间中的元素.
 	
 	\begin{Definition}[极]\index{J!极}\label{def:极}
@@ -1171,3 +1171,87 @@
 	\begin{Corollary}
 		$ L_p(X,\mu) $在$ 1<p<\infty $时是自反的.
 	\end{Corollary}
+	
+\section{弱*紧性}
+	
+	\begin{Theorem}[Banach-Alaoglu]
+	设$ E $是赋范空间, 则$ \bar{B}_{\Star{E}} $是$ w^* $--紧的.
+	\end{Theorem}
+	\begin{Proof}
+	\textsl{这是一个不正式的证明.}
+	
+	对$ f\in\bar{B}_{\Star{E}} $, 有$ f : E\to\C $使得$ \abs{f(x)}\leqslant\norm{x} $. 定义$ D_x=\{ z\in\C : \abs{z}\leqslant\norm{x} \} $, 下面建立$ f $与$ \prod\limits_{x\in E}D_x $的映射. 定义
+	\[
+	\varPhi : \bar{B}_{\Star{E}}\to\prod_{x\in E}D_x,\qquad f\mapsto(f(x))_{x\in E},
+	\]
+	这是一个单射, 往证$ \varPhi $与$ \varPhi^{-1} $都连续.
+	
+	(方法1, 使用开集的方式) 取$ D_{x_0} $中的开圆盘$ B(y_0,r) $, 则$ \prod\limits_{x\ne x_0}D_x\times B(y_0,r) $是一个基础开集, 则其在$ \varPhi $下的原像
+	\[
+	\{ f : \abs{f(x_0)-y_0}<r \}
+	\]
+	是$ w^* $--拓扑下的开集. 更一般地, 考虑有限个开圆盘$ B(y_i,r_i)\subset D_{x_i} $, 其中$ i=1,2,\dots,n $, 则$ \prod\limits_{x\ne x_j}D_x\times\prod\limits_{i=1}^nB(y_i,r_i) $的原像
+	\[
+	\{ f : \abs{f(x_i)-y_i}<r_i,\ \forall i = 1,2,\dots,n \}
+	\]
+	是$ w^* $--拓扑下的开集, 故$ \varPhi $是连续的.
+	
+	注意到$ \varPhi(\bar{B}_{x\in E}) $是由$ \prod\limits_{\Star{E}}D_x $的乘积拓扑限制得到, 取$ \bar{B}_{\Star{E}} $中$ w^* $--拓扑开集
+	\[
+	V(f_0,\seq{x},\varepsilon):=\{ f : \abs{f(x_i)-f_0(x_i)}<\varepsilon_i,\ \forall i=1,2,\dots,n \}
+	\]
+	则
+	\[
+	\varPhi(V(f_0,\seq{x},\varepsilon))=\varPhi(\bar{B}_{\Star{E}})\cap\left(\prod_{x\ne x_j}D_x\times\prod_{i=1}^nB(f_0(x_i),\varepsilon_i)\right)
+	\]
+	是开集, 故$ \varPhi^{-1} $是连续的.
+	
+	(方法2, 使用网的极限) 取$ (f_i)_{i\uparrow\alpha} $是$ \bar{B}_{\Star{E}} $中的网, 且$ f_i\sweakto f $, 则
+	\[
+	\forall x\in E\,(f_i(x)\to f(x))\Longrightarrow (f_i(x))_{x\in E}\to(f(x))_{x\in E}
+	\]
+	故$ \varPhi $连续. 反之, 再在$ \bar{B}_{\Star{E}} $中取$ (f_i(x))_{x\in E}\to (f(x))_{x\in E} $, 则
+	\[
+	\forall x\in E\,(f_i(x)\to f(x))\Longrightarrow f_i\sweakto f.
+	\]
+	故$ \varPhi^{-1} $连续.
+	
+	往证$ \varPhi(\bar{B}_{\Star{E}}) $是$ \prod\limits_{x\in E}D_x $中的闭集(\textsl{这一结果并非平凡的}). 因为
+	\[
+	\begin{aligned}
+	\varPhi(\bar{B}_{\Star{E}})&=\left\{ (g_x)_{x\in E}\in\prod_{x\in E}D_x : g_{ax+by}=ag_x+bg_y,\ \forall a,b\in\C,\ \forall x,y\in E \right\}\\
+	&=\bigcap_{a,b\in\C}\bigcap_{x,y\in E}\left\{ (g_x)_{x\in E}\in\prod_{x\in E}D_x : g_{ax+by}=ag_x+bg_y \right\}
+	\end{aligned}
+	\]
+	若有$ (g_x^{(i)})_{x\in E} $在$ \prod\limits_{x\in E}D_x $中收敛到$ (g_x)_{x\in E} $, 则
+	\[
+	\begin{aligned}
+	\forall x\in E(g_x^{(i)}\to g(x))&\Longrightarrow g_{ax'+by'}^{(i)}=ag_{x'}^{(i)}+bg_{y'}^{(i)}\\
+	&\Longrightarrow g_{ax'+by'}=ag_{x'}+bg_{y'}\Longrightarrow g_x\in\varPhi(\bar{B}_{\Star{E}})
+	\end{aligned}
+	\]
+	即$ \varPhi(\bar{B}_{\Star{E}}) $是闭的. 由Tychonoff定理可知$ \prod\limits_{x\in E}D_x $紧, 从而$ \varPhi(\bar{B}_{\Star{E}}) $也是紧的, 于是$ \bar{B}_{\Star{E}} $是$ w^* $--紧的.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ H $是Hilbert空间, 则$ \bar{B}_H $是$ w $--紧的.
+	\end{Corollary}
+	
+	\begin{Theorem}[Goldstine]
+	设$ E $是赋范空间, 则$ \bar{B}_E^{\Star{w}}=\bar{B}_{E^{**}} $.
+	\end{Theorem}
+	
+	这一定理的证明超出本课程要求, 此处略去.
+	
+	\begin{Corollary}[Banach]
+	设$ E $是赋范空间, 则$ E $是自反的当且仅当$ \bar{B}_E $是$ w $--紧的.
+	\end{Corollary}
+	\begin{Proof}
+	\textsl{必要性}. 由$ E $是自反的可知$ E=E^{**} $, 从而$ \bar{B}_E=\bar{B}_{E^{**}} $. 由Banach-Alaoglu定理可知$ \bar{B}_{E^{**}} $是$ w $--紧的, 于是$ \bar{B}_E $是$ w $--紧的.
+	
+	\textsl{充分性}. 由$ \bar{B}_E $是$ w $--紧的可知$ \bar{B}_E\hookrightarrow\bar{B}_{E^{**}} $是$ \Star{w} $--紧的, 故$ \bar{B}_E $是$ \Star{w} $--紧的. 则$ \bar{B}_E $在$ \bar{B}_{E^{**}} $中$ \Star{w} $--闭, 即$ \bar{B}_E=\bar{B}_E^{\Star{w}} $. 由Goldstine定理可知$ \bar{B}_E^{\Star{w}}=\bar{B}_{E^{**}} $, 从而$ \bar{B}_E=\bar{B}_{E^{**}} $, 这说明$ E=E^{**} $, 即$ E $是自反的.\qed
+	\end{Proof}
+	
+	\begin{Remark}
+	在$ E $上有三种拓扑, 其中范数拓扑强于弱拓扑, 而弱拓扑强于弱*拓扑. 在三种拓扑下$ \Star{E} $的单位球的紧性对应了$ E $的不同性质. 其中$ \bar{B}_{\Star{E}} $紧等价于$ \dim \Star{E}<\infty $, 进一步等价于$ \dim E<\infty $. 而$ \bar{B}_{\Star{E}} $弱紧当且仅当$ \Star{E} $是自反的, 它等价于$ E $是自反的. 而$ \bar{B}_{\Star{E}} $总是$ \Star{w} $--紧的.
+	\end{Remark}
