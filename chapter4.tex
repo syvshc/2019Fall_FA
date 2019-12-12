@@ -1,0 +1,43 @@
+% !TeX root = main.tex
+
+\chapter{紧算子}
+
+\section{有限秩算子与紧算子}
+
+	\begin{Definition}[有限秩算子, 紧算子]\index{Y!有限秩算子}\index{J!紧算子}
+	设$ E, F $均为Banach空间, $ T : E\to F $是线性算子(在本章中以后直接称为算子).
+	\begin{enumerate}[(1)]
+	\item 若$ T : E\to F $连续, 且$ \dim T(E)<\infty $, 则称$ T $是\textbf{有限秩算子}, 其全体记作$ \Fr(E,F) $.
+	\item 若$ T(B_E) $相对紧, 则称$ T $是\textbf{紧算子}, 其全体记作$ \CK(E,F) $.
+	\end{enumerate}
+	特别地, 若$ E=F $, 记$ \Fr(E)=\Fr(E,F) $, $ \CK(E)=\CK(E,F) $.
+	\end{Definition}
+	
+	\begin{Example}~
+	\begin{enumerate}[(1)]
+	\item 若$ E $有限维, 则$ T : E\to F $是有限秩算子.
+	\item 设$ H $是Hilbert空间, $ F\subset H $是有限维子空间, 且$ \{ \seq{f} \} $是$ F $的规范正交基, 令
+	\[
+	T : H\to F,\qquad x\mapsto\sum_{k=1}^n\lrangle{x,f_k}f_k
+	\]
+	则$ T $是有限秩的.
+	\item 有限秩算子一定是紧算子, 这因$ \baro{T(B_E)}\subset\norm{T}\bar{B}_{T(E)} $是紧的.
+	\item 设$ H $是Hilbert空间, $ (e_n)_{n\geqslant 1} $是$ H $的规范正交基, 令
+	\[
+	T : H\to H,\qquad x\mapsto\sum_{n\geqslant 1}\frac{1}{n}\lrangle{x,e_n}e_n
+	\]
+	则$ T $是紧的.
+	\item 由(3)知$ \Fr(E,F)\subset\CK(E,F) $. 又因为相对紧集是有界集, 可知$ \CK(E,F)\subset\CB(E,F) $, 则
+	\[
+	\Fr(E,F)\subset\CK(E,F)\subset\CB(E,F).
+	\]
+	\end{enumerate}
+	\end{Example}
+	
+	\begin{Definition}[理想]\index{L!理想}
+	设$ \CB $是一个代数, $ \CA\subset\CB $, 若
+	\[
+	\forall x\in\CB\,\forall a\in\CA\,(ax\in\CA\land xa\in\CA)
+	\]
+	则称$ \CA $是$ \CB $的一个\textbf{理想}.
+	\end{Definition}
