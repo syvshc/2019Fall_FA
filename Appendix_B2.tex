@@ -39,6 +39,25 @@
 		(另证: $ 1_{\Q}=\lim\limits_{n\to \infty}\lim\limits_{k\to\infty}\cos^{2k}(n!\pi x) $.)\qed
 	\end{Proof}	
 
+	\textbf{习题6.6}\ [作业]\ \ 设$ E $和$ F $都是Banach空间, $ (u_n)_{n\geqslant 1} $是$ \CB(E,F) $的序列. 证明以下命题等价:
+	\begin{enumerate}[(a)]
+	\item $ (u_n(x))_{n\geqslant 1} $在每个$ x\in E $处收敛.
+	\item 设$ A\subset E $且$ \Span A $在$ E $中稠密, 有$ (u_n(a))_{n\geqslant 1} $对每个$ a\in A $均收敛, 且$ (u_n)_{n\geqslant 1} $有界.
+	\end{enumerate}
+	\begin{Proof}
+	(a)$ \Rightarrow $(b) : 由$ (u_n(x))_{n\geqslant 1} $对任意$ x\in E $收敛可知$ (u_n(a))_{n\geqslant 1} $收敛显然, 且可知其对任意$ x\in E $有界, 从而由共鸣定理可知$ \sup\limits_{n\geqslant 1}\norm{u_n}<\infty $.
+	
+	(b)$ \Rightarrow $(a) : 由$ (u_n)_{n\geqslant 1} $有界, 可知存在$ M>0 $使得$ \sup\limits_{n\geqslant 1}\norm{u_n}\leqslant M $. 则$ \forall x\in E\,\exists a\in\Span A\,(\norm{x-a}<\varepsilon/4M) $. 且$ \exists n_0\in\N $使得$ m,n\geqslant n_0 $时有$ \norm{u_n(a)-u_m(a)}<\varepsilon/2 $(此因$ \Span A $中的元素是$ A $中元素的有限线性组合), 那么
+	\[
+	\begin{aligned}
+	\norm{u_n(x)-u_m(x)}&\leqslant\norm{u_n(x)-u_n(a)}+\norm{u_n(a)-u_m(a)}+\norm{u_m(a)-u_m(x)}\\
+	&\leqslant M\cdot\frac{\varepsilon}{4M}+\frac{\varepsilon}{2}+M\cdot\frac{\varepsilon}{4M}\\
+	&=\varepsilon
+	\end{aligned}
+	\]
+	则$ (u_n(x))_{n\geqslant 1} $是$ F $中的Cauchy列, 故收敛.\qed
+	\end{Proof}
+
 	\textbf{习题6.8}\ [作业]\ \ 设 $ E $ 是 $ (C[0, 1], \norm{\cdot}_{\infty}) $ 的闭线性子空间, 并假设 $ E $ 中的所有元素都是 Lipschitz 函数.
 	\begin{enumerate}[(1)]
 		\item 设 $ x, y\in[0, 1] $ 且 $ x\ne y $, 定义泛函 $ \varPhi_{x, y}:E\to\R $ 为
@@ -194,6 +213,17 @@
 		且 $ \lim\limits_{n\to\infty}\lrangle{(u(x_{n}, z))}=\lrangle{y, z} $. 故对任意的 $ z\in H $, $ \lrangle{y, z}=0 $, 即 $ y=0 $.\qed
 	\end{Proof}
 	
+	\textbf{习题6.16}\ [作业]\ \ 设$ X=C^1([0,1],\R) $, 即由$ [0,1] $上连续可微的函数构成的集合, 其上赋予连续一致范数$ \norm\cdot_\infty $. 并设$ Y=C([0,1],\R) $, 其上也赋予一致范数. 考虑映射$ u : X\to Y $, $ u(f)=f' $. 证明: $ u $的图像是闭的, 但$ u $不连续. 并解释该结论的意义.
+	\begin{Proof}
+	设$ (x_n)_{n\geqslant 1}\subset X,\ y\in Y $满足$ x_n\to 0 $且$ x'_n\to y $. 为证明$ G(u) $是闭的, 只需证明$ y=0 $. 任取$ t\in[0,1] $, 则
+	\[
+	0=\lim_{n\to\infty}x_n(t)-x_n(0)=\lim_{n\to\infty}\int_0^tx_n\diff t=\int_0^ty\diff t,
+	\]
+	由$ y $的连续性可知$ y=0 $. 从而$ G(u) $闭集.
+	
+	取$ x_n=t^n $, 那么$ \norm{x_n}=1 $但$ \norm{u(x_n)}=n\to\infty $, 从而$ u $不连续. 这说明当$ X $不完备时闭图像定理不成立.\qed
+	\end{Proof}
+
 	\textbf{习题 6.19}\ [习题课]\ \ 设 $ (X, \CA, \mu) $ 是 $ \sigma $-有限的测度空间.
 	\begin{enumerate}[(1)]
 		\item 假设当 $ 1\leqslant p<q\leqslant\infty $ 时, 有 $ L_{q}(X, \CA, \mu)\subset L_{p}(X, \CA, \mu) $. 证明存在常数 $ C\geqslant0 $, 使得对任意的 $ f\in L_{q}(X, \CA, \mu) $, 有 $ \norm{f}_{p}\leqslant c\norm{f}_{q} $.
@@ -404,38 +434,8 @@
 		若 $ \varOmega $ 平衡, 则 $ p_{\varOmega} $ 为半范数. (见定理~\ref{thm:M凸}~).
 	\end{Remark}
 
-\section{第14周习题课(2019年12月2日)}
+\section{第8章习题}
 
-	\textbf{习题6.6}\ [作业]\ \ 设$ E $和$ F $都是Banach空间, $ (u_n)_{n\geqslant 1} $是$ \CB(E,F) $的序列. 证明以下命题等价:
-	\begin{enumerate}[(a)]
-	\item $ (u_n(x))_{n\geqslant 1} $在每个$ x\in E $处收敛.
-	\item 设$ A\subset E $且$ \Span A $在$ E $中稠密, 有$ (u_n(a))_{n\geqslant 1} $对每个$ a\in A $均收敛, 且$ (u_n)_{n\geqslant 1} $有界.
-	\end{enumerate}
-	\begin{Proof}
-	(a)$ \Rightarrow $(b) : 由$ (u_n(x))_{n\geqslant 1} $对任意$ x\in E $收敛可知$ (u_n(a))_{n\geqslant 1} $收敛显然, 且可知其对任意$ x\in E $有界, 从而由共鸣定理可知$ \sup\limits_{n\geqslant 1}\norm{u_n}<\infty $.
-	
-	(b)$ \Rightarrow $(a) : 由$ (u_n)_{n\geqslant 1} $有界, 可知存在$ M>0 $使得$ \sup\limits_{n\geqslant 1}\norm{u_n}\leqslant M $. 则$ \forall x\in E\,\exists a\in\Span A\,(\norm{x-a}<\varepsilon/4M) $. 且$ \exists n_0\in\N $使得$ m,n\geqslant n_0 $时有$ \norm{u_n(a)-u_m(a)}<\varepsilon/2 $(此因$ \Span A $中的元素是$ A $中元素的有限线性组合), 那么
-	\[
-	\begin{aligned}
-	\norm{u_n(x)-u_m(x)}&\leqslant\norm{u_n(x)-u_n(a)}+\norm{u_n(a)-u_m(a)}+\norm{u_m(a)-u_m(x)}\\
-	&\leqslant M\cdot\frac{\varepsilon}{4M}+\frac{\varepsilon}{2}+M\cdot\frac{\varepsilon}{4M}\\
-	&=\varepsilon
-	\end{aligned}
-	\]
-	则$ (u_n(x))_{n\geqslant 1} $是$ F $中的Cauchy列, 故收敛.\qed
-	\end{Proof}
-	
-	\textbf{习题6.16}\ [作业]\ \ 设$ X=C^1([0,1],\R) $, 即由$ [0,1] $上连续可微的函数构成的集合, 其上赋予连续一致范数$ \norm\cdot_\infty $. 并设$ Y=C([0,1],\R) $, 其上也赋予一致范数. 考虑映射$ u : X\to Y $, $ u(f)=f' $. 证明: $ u $的图像是闭的, 但$ u $不连续. 并解释该结论的意义.
-	\begin{Proof}
-	设$ (x_n)_{n\geqslant 1}\subset X,\ y\in Y $满足$ x_n\to 0 $且$ x'_n\to y $. 为证明$ G(u) $是闭的, 只需证明$ y=0 $. 任取$ t\in[0,1] $, 则
-	\[
-	0=\lim_{n\to\infty}x_n(t)-x_n(0)=\lim_{n\to\infty}\int_0^tx_n\diff t=\int_0^ty\diff t,
-	\]
-	由$ y $的连续性可知$ y=0 $. 从而$ G(u) $闭集.
-	
-	取$ x_n=t^n $, 那么$ \norm{x_n}=1 $但$ \norm{u(x_n)}=n\to\infty $, 从而$ u $不连续. 这说明当$ X $不完备时闭图像定理不成立.\qed
-	\end{Proof}
-	
 	\textbf{习题8.3}\ [习题课]\ \ 设$ E $是数域$ \K $上的赋范空间, $ A\subset E $, 并设$ f : A\to\K $以及常数$ \lambda\geqslant 0 $. 证明: 存在$ \hat{f}\in\Star{E} $使得
 	\[
 	(\hat{f}\rvert_A=f)\land (\tnorm{\hat{f}}\leqslant\lambda)
@@ -538,3 +538,200 @@
 	\]
 	则$ \ker u=\{ c : c\in\R \} $是闭集, 其中$ c $是常函数, 但$ u $不连续.
 	\end{Remark}
+
+\section{第15周习题课(2019年12月9日)}
+	\textbf{习题8.1}\ [作业]\ \ 设 $ 1\leqslant p\leqslant\infty $, 考虑 $ \R^{2} $ 上的 $ p $ 范数:
+	\[
+		\norm{(x_{1}, x_{2})}_{p}=
+		\begin{cases}
+			\big( \abs{x_{1}}^{p}+\abs{x_{2}}^{2} \big)^{1/p} & ,p<\infty\\
+			\max\{\abs{x_{1}}, \abs{x_{2}}\} & ,p = \infty
+		\end{cases}
+	\]
+	设 $ F=\R\times\{ 0 \} $, 即由 $ e_{1}=(1, 0) $ 生成的线性子空间, 并设 $ f:F\to\R $ 是线性泛函, 满足 $ f(e_{1})=1 $.
+	\begin{enumerate}[(1)]
+		\item 当 $ \R^{2} $ 上赋予 $ \norm{\cdot}_{1} $ 范数时, 确定 $ f $ 从 $ F $ 到 $ \R^{2} $ 的所有保范延拓;
+		\item 当 $ \R^{2} $ 上赋予 $ \norm{\cdot}_{p} $ 范数时, 考虑同样的问题.
+	\end{enumerate}
+	\begin{Proof}
+		(1) 设 $ \tilde{f} $ 是 $ f $ 的保范延拓, 则 $ \forall x\in\R^{2} $, 记 $ x=x_{1}e_{1}+x_{2}e_{2} $, 都有
+		\[
+			\tilde{f} = x_{1}\tilde{f}(e_{1})+x_{2}\tilde{f}(e_{2})=x_{1}+x_{2}\tilde{f}(e_{2}),
+		\]
+		即 $ \tilde{f} $ 由其在 $ e_{2} $ 上的取值唯一确定, 记 $ c=\tilde{f}(e_{2}) $, 由 $ \tnorm{\tilde{f}} $ 知 $ \abs{c}=\tabs{\tilde{f}(e_{2})}\leqslant\norm{e_{2}}=1 $. 反之, 对任意的 $ c $ 满足 $ \abs{c}<1 $, 形如 $ \tilde{f}(x)=x_{1}+x_{2}c $ 的泛函是 $ f $ 的保范延拓.
+
+		(2) 当 $ 1<p<\infty $ 时, 与 (1) 同理, 只需确定 $ c $ 使 $ \tnorm{\tilde{f}}=1 $, 则
+		\[
+			\begin{aligned}
+				\tnorm{\tilde{f}}=1 & \Longleftrightarrow \forall x_{1}, x_{2}\in\R\,\left( \frac{\abs{x_{1}+cx_{2}}}{(\abs{x_{1}}^{p}+\abs{x_{2}}^{p})^{1/p}}\leqslant1 \right)\\
+				& \Longleftrightarrow\forall x_{1}, x_{2}\in\R\,\left(\abs{x_{1}+c\abs{x_{2}}}\leqslant(\abs{x_{1}}^{p}+\abs{x_{2}}^{p})^{1/p} \right)\\
+				& \Longleftrightarrow \forall x_{1}, x_{2}\in\R\,\left( \abs{c}\leqslant\frac{(\abs{x_{1}}^{p}+\abs{x_{2}}^{p})^{1/p}-\abs{x_{1}}}{\abs{x_{2}}} \right)\\
+				& \Longleftrightarrow \forall t\geqslant0\,(\abs{c}\leqslant(t^{p}+1)^{1/p}-t)\\
+				&\Longleftrightarrow \abs{c}\leqslant\inf_{t\geqslant0}\left( (t^{p}+1)^{1/p}-t \right)
+			\end{aligned}
+		\]
+		注意到
+		\[
+			\begin{aligned}
+				\lim_{t\to\infty}(t^{p}+1)^{1/p}-t & =\lim_{t\to\infty}t\left( \frac{(t^{p}+1)^{1/p}}{t}-1 \right)\\
+				& = \lim_{t\to\infty}\frac{(t^{p}+1)^{1/p}/t-1}{1/t}\\
+				& = \lim_{\alpha\to0}\frac{(1-\alpha^{p})^{1/p}-1}{\alpha}=\left( (1+\alpha^{p})^{1/p} \right)'\Big|_{\alpha=0}=0
+			\end{aligned}
+		\]
+		从而 $ \abs{c}\leqslant0\Longrightarrow c=0 $, 故形如 
+		\[
+			\tilde{f}(x_{1}e_{1}+x_{2}e_{2})=x_{1}
+		\]
+		的泛函全体是 $ f $ 的保范延拓.
+
+		若 $ p=\infty $, 有
+		\[
+			\begin{aligned}
+				\tnorm{f}=1\Longleftrightarrow \forall x_{1}, x_{2}\in\R\,(\abs{x_{1}+cx_{2}}& \leqslant\max\{ \abs{x_{1}}, \abs{x_{2}} \})\\
+				& \Longleftrightarrow x_{1}, x_{2}\in\R\,(\abs{x_{1}}+c\abs{x_{2}}\leqslant\max\{ \abs{x_{1}}, \abs{x_{2}} \}).
+			\end{aligned}	
+		\]
+		当 $ \abs{x_{1}}\geqslant\abs{x_{2}} $ 时, $ \abs{x_{1}}+c\abs{x_{2}}\leqslant\abs{x_{1}}\Longrightarrow c=0 $ (取 $ x_{2}\ne 0 $ 即可) 从而形如
+		\[
+			\tilde{f}(x_{1}e_{1}+x_{2}e_{2})=x_{1}
+		\]
+		的泛函的全体是 $ f $ 的保范延拓.\qed
+	\end{Proof}
+	\begin{Definition}[严格凸]\index{Y!严格凸}\label{def:严格凸}
+		设 $ E $  是一个赋范空间, 若其单位球面 $ S_{E} $ 上每个点是 $ \baro{B_{E}} $ 的端点, 则称 $ E $ 是\textbf{严格凸}的.(即任取 $ x\in S_{E} $, 不存在 $ \baro{B_{E}} $ 中相异的两点 $ x_{1}, x_{2} $, 使得 $ x=(x_{1}+x_{2})/2 $.)
+	\end{Definition}
+	\begin{ExtraExample}
+		判断 $ (\R^{2}, \norm{\cdot}_{p}), 1\leqslant p\leqslant\infty $ 的严格凸性.
+	\end{ExtraExample}
+	\begin{minipage}{.6\textwidth}
+		\begin{Proof}
+		$ 1<p<\infty $ 时 $ (\R^{2}, \norm{\cdot}_{p}) $ 严格凸. 此因其上的单位球面
+		\[
+			S_{p}=\{ (x_{1}, x_{2}): \abs{x_{1}}^{p}+\abs{x_{2}}^{p}=1 \}
+		\]
+		严格凸. 而 $ p=1 $ 或 $ p=\infty $ 时
+		\[
+			\begin{aligned}
+				& S_{1} =\{ (x_{1}, x_{2}):\abs{x_{1}}+\abs{x_{2}}=1 \}\\
+				& S_{\infty} = \{ (x_{1}, x_{2}):\max\{ \abs{x_{1}}, \abs{x_{2}} \}=1 \}
+			\end{aligned}
+		\]
+		不是严格凸的.\qed
+		\end{Proof}
+	\end{minipage}\quad
+	\begin{minipage}{.3\textwidth}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[-latex] (-1.5, 0)--(1.5, 0) node[below] {{$\scriptstyle x $}};
+				\draw[-latex] (0, -1.5)--(0, 1.5) node[right] {{$\scriptstyle y $}};
+				\draw (1, 1)-- ++(0, -2)-- ++(-2, 0)-- ++(0, 2)-- cycle;
+				\node (pinfty) at (1.5, 1.5) {$ p=\infty $};
+				\draw[-latex] (pinfty.west) -- (.7, 1.1);
+				\draw (1, 0) -- (0, -1) --(-1, 0) -- (0, 1) -- cycle;
+				\node (p1) at (1.5, -1.5) {$ p=1 $};
+				\draw[-latex] (p1.north) -- (.6, -.6);
+				\draw[smooth, samples=100, domain=0:1]plot(\x, {(1-(\x)^3)^(1/3)});
+				\draw[smooth, samples=100, domain=-1:0]plot(\x, {(1+(\x)^3)^(1/3)});
+				\draw[smooth, samples=100, domain=0:1]plot(\x, {-(1-(\x)^3)^(1/3)});
+				\draw[smooth, samples=100, domain=-1:0]plot(\x, {-(1+(\x)^3)^(1/3)});
+				% \draw plot (\x, {(cos(\x r))^(1/3)});
+				\node (1pinfty) at (-1.3, -1.5) {$ 1<p<\infty $};
+				\draw[-latex] (1pinfty.north) -- (-.85, -.85);
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}\\
+
+	\textbf{习题8.15(a)}\ [习题课]\ \ 本习题的目的是刻画连续线性泛函的 Hahn-Banach 延拓的唯一性问题. 设 $ E $ 是一个维数至少为 2 的赋范空间, 证明: $ E $ 的线性子空间 $ F $ 上的每个连续线性泛函有唯一的保范延拓的充分不要条件是 $ \Star{E} $ 是严格凸的.
+	
+	\begin{Proof}
+		\textsl{充分性}. 用反证法. 若存在 $ f\in \Star{F} $ 使得它有两个不同的保范延拓 $ f_{1}, f_{2} $, 且 $ f_{1}\ne f_{2} $, 则:
+		\[
+			(f_{1}\big|_{F}=f_{2}\big|_{F}=f)\land (\norm{f_{1}}=\norm{f_{2}}=\norm{f}).
+		\]
+		从而取 $ \tilde{f}=(f_{1}+f_{2})/2 $, 由 $ \Star{E} $ 的凸性知 $ \tilde{f}\in\Star{E} $, 而:
+		\[
+			\norm{f}=\tnorm{\tilde{f}\big|_{F}}\leqslant\tnorm{\tilde{f}}\leqslant\frac{\norm{f_{1}}+\norm{f_{2}}}{2}=\norm{f},
+		\]
+		但由 $ \Star{E} $ 严格凸, 只能 $ \tnorm{\tilde{f}}\leqslant\norm{f} $. 故 $ \norm{f}<\norm{f} $.
+
+		\textsl{必要性}. 用反证法. 若 $ \Star{E} $ 不是严格凸的, 即 $ \exists f\in S_{\Star{E}}\,(f=(f_{1}+f_{2})/2) $, 其中 $ \norm{f_{1}}=\norm{f_{2}}=1 $ 且 $ f_{1}\ne f_{2} $.
+		
+		因为 $ \norm{(f_{1}+f_{2})/2}=1 $, 故存在 $ (x_{n})_{n\geqslant1} $ 使得 $ \norm{x_{n}}=1 $ 且 $ \frac{f_{1}+f_{2}}{2}(x_{n})\to 1, n\to\infty $. 往证 $ f_{i}(x_{n})\to1, i=1, 2 $. 由
+		\[
+			\norm{f_{1}(x_{n})}\leqslant\norm{f_{1}}\norm{x_{n}}=\norm{f_{1}}=1
+		\]
+		知 $ \abs{f_{1}(x_{n})}\leqslant1 $. 同理 $ \abs{f_{2}(x_{n})}\leqslant1 $, 则
+		\[
+			(f_{1}(x_{n})+f_{2}(x_{n}))-1\leqslant f_{1}(x_{n})+f_{2}(x_{n})-f_{2}(x_{n})=f_{1}(x_{n})\leqslant1.
+		\]
+		令 $ n\to \infty, f_{1}(x_{n})\to 1 $, 同理 $ f_{2}(x_{n})\to1 $.
+
+		再记 $ F=\ker(f_{1}-f_{2}) $, 并记 $ \varphi=f_{1}\big|_{F} $, 则 $ \varphi=f_{2}\big|_{F} $. 往证 $ \norm{\varphi}=1 $. 因为 $ f_{1}\ne f_{2} $, 故存在 $ e\in E $ 使得 $ (f_{1}-f_{2})(e)=1 $, 记 $ y_{n}=x_{n}-a_{n}e $, 其中 $ a_{n}=(f_{1}-f_{2})(x_{n}) $, 则 $ a_{n}\to0 $. 由
+		\[
+			(f_{1}-f_{2})(y_{n})=(f_{1}-f_{2})(x_{n})-a_{n}(f_{1}-f_{2})(e)=0
+		\]
+		知 $ y_{n}\in F $. 从而在
+		\[
+			e\norm{x_{n}}-\abs{a_{n}}\norm{e}\leqslant\norm{y_{n}}\leqslant\norm{y_{n}}+\abs{a_{n}}\norm{e}
+		\]
+		中令 $ n\to\infty $ 知 $ \norm{y_{n}}=\norm{x_{n}}=1 $ 而
+		\[
+			\norm{\varphi}\geqslant\frac{\abs{\varphi(y_{n})}}{\norm{y_{n}}},
+		\]
+		并注意到
+		\[
+			\frac{\abs{\varphi(y_{n})}}{\norm{y_{n}}}=\frac{f_{1}(x_{n}-a_{n}e)}{\norm{y_{n}}}=f_{1}(x_{n})-a_{n}f_{1}(e)\to 1,\qquad (n\to\infty).
+		\]
+		从而 $ \norm{\varphi}\geqslant1 $, 而 $ \norm{\varphi}=\norm{f_{1}\big|_{F}}\leqslant\norm{f_{1}}=1 $, 故 $ \norm{\varphi}=1 $, 即 $ \varphi $ 有两个不同的保范延拓 $ f_{1}, f_{2} $, 矛盾.\qed
+	\end{Proof}
+
+	\textbf{习题8.16}\ [习题课]\ \ 考虑空间 $ \ell_{\infty} $ 和它的线性子空间 $ F $:
+	\[
+		F = \left\{ x\in\ell_{\infty}:\lim_{n\to\infty} m_{n}(x)\ \text{存在} \right\}, \qquad m_{n}(x)=\frac{1}{n}\sum_{k=1}^{n} x_{k}.
+	\]
+	\begin{enumerate}[(1)]
+		\item 定义 $ f:F\to\R $ 为 $ f(x)=\lim\limits_{n\to\infty}m_{n}(x) $. 证明 $ f\in\Star{F} $.
+		\item 证明: 存在 $ \ell_{\infty} $ 上的连续线性泛函 $ m $ 满足下面的性质:
+		\begin{enumerate}[(i)]
+			\item $ \liminf\limits_{n\to\infty}x_{n}\leqslant m(x)\leqslant\limsup\limits_{n\to\infty}x_{n}, \qquad x\in\ell_{\infty} $.
+			\item $ m\circ \tau=m $, 这里 $ \tau: \ell_{\infty}\to\ell_{\infty} $ 是右移算子, 即 $ \tau(x_{n})=x_{n+1} $. ($ m $ 被称为 Banach 平均或 $ \ell_{\infty} $--极限.)
+		\end{enumerate}
+	\end{enumerate}
+	
+	\begin{Proof}
+		(1) 由极限的线性性可知 $ f $ 线性. 再由 $ \forall x\in F $
+		\[
+			\abs{f(x)}=\abs{\lim_{n\to\infty}m_{n}(x)}=\abs{\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^{n}x_{k}}\leqslant \sup_{k\geqslant1}\abs{x_{k}}<\infty
+		\]
+		可知 $ f\in\Star{F} $.
+
+		(2)  由 (1) 知 $ \norm{f}\leqslant1 $, 再由 $ \abs{f(\mathds{1})}=\norm{\mathds{1}}=1 $ 知 $ \norm{f}=1 $. 由 Hahn-Banach 定理, 存在 $ m\in\ell_{\infty}^{*} $ 使得
+		\[
+			(m\big|_{F}=f)\land(\norm{m}=\norm{f}=1).
+		\]
+		下面验证 $ m $ 满足两条性质.
+
+		(i) 因为
+		\[
+			\frac{1}{n}\sum_{k=1}^{n}x_{k}\leqslant\frac{1}{n}\sum_{k=1}^{n}\sup_{i\geqslant1}x_{i},
+		\]
+		由 $ \sup\limits_{i\geqslant k}x_{i}\to\limsup\limits_{n\to\infty}x_{n}, (k\to\infty) $ 知 $ m(x)\leqslant\limsup\limits_{n\to\infty}x_{n} $. 同理, 因为
+		\[
+			\frac{1}{n}\sum_{k=1}^{n}x_{k}\geqslant\frac{1}{n}\sum_{k=1}^{n}\inf_{i\geqslant1}x_{i},
+		\]
+		由 $ \inf\limits_{i\geqslant k}x_{i}\to\liminf\limits_{n\to\infty}x_{n}, (k\to\infty) $ 知 $ m(x)\geqslant\liminf\limits_{n\to\infty}x_{n} $.
+
+		(ii) $ \forall x\in\ell_{\infty} $, 有
+		\[
+			\tau x-x=(x_{2}-x_{1}, x_{3}-x_{2}, \dots)
+		\]
+		则
+		\[ 
+			m_{n}(\tau x-x)=\frac{1}{n}\sum_{k=1}^{n}(x_{k+1}-x_{k})=\frac{1}{n}(x_{n+1}-x_{1})\to 0 ,
+		\]
+		从而 $ \tau x-x\in F $. 于是
+		\[
+			m(\tau x-x)=f(\tau x-x)=0.
+		\]
+		故 $ m(\tau x)=m(x) $, 即 $ m\circ \tau =m $.\qed
+	\end{Proof}
