@@ -587,7 +587,6 @@
 			\item 若 $ E $ 是有限维赋范空间, 则弱收敛与强收敛等价.
 			\item 若 $ (x_{n})_{n\geqslant1} $ 弱收敛, 则其弱极限唯一.
 		\end{enumerate}
-
 	\end{Remark}
 
 	\begin{Proof}
@@ -604,6 +603,42 @@
 		(5) 设 $ x_{n}\weakto x, x_{n}\weakto y $, 且 $ x\ne y $, 由 Hahn-Banach 严格隔离定理 (或推论~\ref{cor:E*可分点}~) 知 $ \exists f\in\Star{E} $, 使得 $ f(x)\ne f(y) $. 此时 $ f(x_{n})\to f(x) $ 且 $ f(x_{n})\to f(y) $, 由强极限的唯一性知矛盾, 故只能 $ x=y $.\qed
 	\end{Proof}
 
+	\begin{Example}
+		下面给出几个有关一致收敛, 强收敛, 弱收敛的例子.
+		\begin{enumerate}[(1)]
+			\item 强收敛但不一致收敛. 考虑 $ \ell_{2} $ 上的左移算子
+			\[
+				\tau: \ell_{2}\to\ell_{2}\qquad (x_{n})_{n\geqslant1}\mapsto (x_{n+1})_{n\geqslant1}.
+			\]
+			并考虑算子列 $ (\tau^{n})_{n\geqslant1} $. 由
+			\[
+				\norm{\tau^{n}}\geqslant\norm{\tau^{n}(e_{n+1})}_{2}=1
+			\]
+			可知 $ (\tau^{n})_{n\geqslant1} $ 不一致收敛到 0, 但由 $ \forall x=(x_{n})_{n\geqslant1}\in\ell_{2} $, 有
+			\[
+				\norm{\tau^{n}x}_{2} = \Big( \sum_{k\geqslant1}\abs{x_{n+k}}^{2} \Big)^{1/2}\to 0
+			\]
+			可知 $ \tau^{n}\to0 $
+			\item  弱收敛但不强收敛. 考虑 $ \ell_{2} $ 上的右移算子
+			\[
+				m: \ell_{2}\to \ell_{2}\qquad (x_{n})_{n\geqslant1}\mapsto (x_{n-1})_{n\geqslant1},
+			\]
+			其中 $ x_{0}=0 $, 并考虑算子列 $ (m^{n})_{n\geqslant1} $, 由 $ \forall x=(x_{n})_{n\geqslant1}\in\ell_{2} $, 有
+			\[
+				m^{n}x=(0, 0, \dots, 0, x_{1}, x_{2}, \dots)
+			\]
+			则 $ \norm{m^{n}x}=\norm{x} $ 可知 $ (m^{n})_{n\geqslant1} $ 不强收敛到 0. 但是 $ \forall y=(y_{n})_{n\geqslant1}\in\ell_{2}^{*}=\ell_{2} $, 有
+			\[
+				\abs{y(m^{n}x)}=\Babs{\sum_{k\geqslant1}y_{n+k}x_{k}}\leqslant\Babs{\sum_{k\geqslant1}\abs{y_{n+k}}^{2}}^{1/2}\norm{x}_{2}\to 0
+			\] 
+			故 $ m^{n}\weakto 0 $.
+			\item 考虑 Riemann-Lebesgue 引理 (证明见《实分析》笔记中例3.4.13). 设 $ (f_{n})_{n\geqslant1} $ 是 $ L_{1}^{*}[0, 2\pi] $ 上的序列, 定义为
+			\[
+				f_{n}(x)=\int_{0}^{2\pi} x(t)\exp(\imag nt)\diff t\qquad x\in L_{1}[0, 2\pi].
+			\]
+			则 $ f_{n}\sweakto 0 $. 但 $ (f_{n})_{n\geqslant1} $ 不强收敛于 0.
+		\end{enumerate}
+	\end{Example}
 	\begin{Theorem}[Mazur]
 		设 $ E $ 是赋范空间, $ (x_{n})_{n\geqslant1} $ 弱收敛于 $ x_{0} $, 则 $ \forall \varepsilon>0, \exists\seq[m]{\lambda}>0 $ 满足 $ \sum\limits_{i=1}^{m}\lambda_{i}=1 $, 使得 $ \norm{x_{0}-\sum\limits_{i=1}^{m}\lambda_{i}x_{i}}<\varepsilon $.
 	\end{Theorem}
