@@ -41,3 +41,160 @@
 	\]
 	则称$ \CA $是$ \CB $的一个\textbf{理想}.
 	\end{Definition}
+
+	\begin{Theorem}
+		$ \Fr（E, F) $ 与 $ \CK(E, F) $ 都是 $ \CB(E, F) $ 的线性子空间, 且 $ \Fr(E) $ 与 $ \CK(E) $ 都是 $ \CB(E) $ 的理想.
+	\end{Theorem}
+	\begin{Proof}
+		(1) 任取 $ T_{1}, T_{2}\in\Fr(E, F) $, 则 $ \dim T_{1}(E)<\infty, \dim T_{2}(E)<\infty $, 由
+		\[
+			(T_{1} + T_{2})(E)<T_{1}(E)+T_{2}(E)
+		\]
+		可知 $ \dim(T_{1}+T_{2})(E)<\infty $, 故 $ T_{1}+T_{2}\in\Fr(E, F) $, 再任取 $ \lambda\in\K $, 由
+		\[
+			(\lambda T_{1})(E)=T_{1}(E)
+		\]
+		知 $ \dim(\lambda T_{1})(E)<\infty $, 故 $ \lambda T_{1}\in\Fr(E, F) $, 于是 $ \Fr(E, f) $ 是 $ \CB(E, F) $ 的线性子空间.
+		
+		再取 $ T_{1}, T_{2}\in \CK(E, F) $, 并定义
+		\[
+			\varphi: F\times F\to F\qquad (x, y)\mapsto x+y.
+		\]
+		则由 $ \norm{\varphi(x, y)}=\norm{x+y}\leqslant 2\max\{ \norm{x}, \norm{y} \} $ 知 $ \varphi $ 连续. 从而
+		\[
+			\varphi(\baro{T_{1}(B_{E}}\times \baro{T_{2}(B_{E}}))=\baro{T_{1}(B_{E})}+\baro{T_{2}(B_{E})}
+		\]
+		是紧集, 故 $ T_{1}(B_{E})+T_{2}(B_{E})\subset\baro{T_{1}(B_{E})}+\baro{T_{2}(B_{E})} $ 相对紧, 也即 $ T_{1}+T_{2}\in\CK(E, F) $. 又由 $ (\lambda T_{1})(B_{E})=\lambda T_{1}(B_{E}) $ 相对紧, 故 $ \lambda T_{1}\in\CK(E, F) $, 于是 $ \CK(E, F) $ 也是 $ \CB(E, F) $ 的线性子空间.
+
+		(2) 任取 $ T\in\Fr(E), S\in\CB(E) $, 由
+		\[
+			(TS)(E) = T(S(E))\subset T(E)
+		\]
+		知 $ \dim(TS)(E)<\infty $, 即 $ TS\in\Fr(E) $. 再由
+		\[
+			(ST)(E)=S(T(E))
+		\]
+		与 $ S $ 的有界性知 $ \dim(ST)(E)<\infty $, 即 $ ST\in\Fr(E) $. 于是 $ \Fr(E) $ 是 $ \CB(E) $ 的理想.
+
+		再任取 $ T\in\CK(E), S\in\CB(E) $. 则由
+		\[
+			(TS)(B_{E}) = T(S(B_{E}))\subset T(\norm{S}B_{E}) = \norm{S}T(B_{E})
+		\]
+		知 $ TS(B_{E}) $ 相对紧, 故 $ TS\in\CK(E) $. 再由
+		\[
+			ST(B_{E})=S(T(B_{E}))
+		\] 
+		与 $ S $ 的连续性知 $ (ST)(B_{E}) $ 相对紧. 故 $ ST\in\CK(E) $, 于是 $ \CK(E) $ 也是 $ \CB(E) $ 的理想.\qed
+	\end{Proof}
+
+	\begin{Theorem}
+		设 $ T\in\CB(E, F) $, 则 $ T $ 紧的充分必要条件是 $ \Star{T} $ 紧.
+	\end{Theorem}
+	\begin{Proof}
+		\textsl{必要性}. 设 $ T $ 是紧算子, 则 $ T(B_{E}) $ 相对紧. 需证 $ \Star{T}(B_{\Star{F}}) $ 相对紧. 只需证明对任意 $ (e_{n})_{n\geqslant1}\subset \Star{T}(B_{\Star{F}}) $ 都有收敛子列. 令 $ (f_{n})_{n\geqslant1}\subset B_{\Star{F}} $ 使得 $ \Star{T}f_{n}=e_{n} $, 即 $ f_{n}\circ T=e_{n} $. 则由 $ \Star{T} $ 的连续性, 只需说明 $ (f_{n})_{n\geqslant1} $ 有收敛子列即可. 注意到 $ f_{n} $ 的定义域为 $ \baro{T(B_{E}} $, 这是一个紧集.
+
+		使用 Arzel\`a-Ascoli 引理, 要说明 $ (f_{n})_{n\geqslant1} $ 等度连续, 只需说用 $ \forall x\in\baro{T(B_{E})} $, 都有 $ (F_{n}(x))_{n\geqslant1} $ 相对紧. 由 $ (f_{n})_{n\geqslant1}\subset B_{\Star{F}} $ 知 $ (f_{n})_{n\geqslant1} $ 有界, 从而 $ (f_{n}(x))_{n\geqslant1} $ 有界. 于是 $ (f_{n}(x))_{n\geqslant1} $ 相对紧, 则 $ \forall\varepsilon>0, \forall x, y\in\baro{T(B_{E})} $, 若 $ \norm{x-y}<\varepsilon $, 则
+		\[
+			\abs{f_{n}(x)-f_{n}(y)} = \abs{f_{n}(x-y)}\leqslant\norm{x-y}<\varepsilon.
+		\] 
+		故 $ (f_{n})_{n\geqslant1} $ 等度连续, 从而 $ (f_{n}){n\geqslant1} $ 相对紧, 则存在 Cauchy 子列,
+		记作 $ (f_{n_{k}})_{k\geqslant1} $, 由
+		\[
+			\begin{aligned}
+				\norm{e_{n_{k}}-e_{n_{j}}} & = \sup_{y\in B_{E}}\norm{\lrangle{e_{n_{k}}-e_{n_{j}}, y}} \\
+				& = \sup_{y\in B_{E}}\norm{\lrangle{\Star{T}f_{n_{k}}, y}-\lrangle{\Star{T}f_{n_{j}}, y}}\\
+				& = \sup_{y\in B_{E}}\norm{\lrangle{f_{n_{k}}, Ty}-\lrangle{f_{n_{j}}, Ty}}\\
+				& =  \sup_{x\in T(B_{E})}\norm{\lrangle{f_{n_{k}}, x}-\lrangle{f_{n_{j}}, x}}\\
+				& \leqslant \norm{f_{n_{k}}-f_{n_{j}}}_{\baro{T(B_{E})}}\to 0.
+			\end{aligned}
+		\]
+		故 $ (e_{n_{k}})_{k\geqslant1} $ 也是 Cauchy 列. 由 $ \Star{E} $ 的完备性可知 $ (e_{n_{k}})_{k\leqslant1} $ 收敛, 故 $ \Star{T}(B_{\Star{F}}) $ 相对紧, 即 $ \Star{T} $ 是紧算子.
+
+		\textsl{充分性}. 若 $ \Star{T} $ 是紧算子, 由必要性可知 $ T^{**} $ 是紧算子, 由 $ T = T^{**}|E $ 可知 $ T(B_{E})\subset T^{**}(B_{E}) $ 相对紧, 故 $ T $ 是紧算子.\qed
+	\end{Proof}
+
+	\begin{Proposition}
+		设 $ E $ 是 Banach 空间, 则 $ \baro{\Fr(E)}=\CB(E) $ 当且仅当 $ \dim E<\infty $.
+	\end{Proposition}
+	\begin{Proof}
+		\textsl{充分性}. 因为 $ \dim E<\infty $, 故 $ \CB(E)=\Fr(E) $.
+
+		\textsl{必要性}. 由 $ \baro{\Fr(E)}=\CB(E) $, 考虑恒同算子 $ \id_{E} $, 则存在 $ T\in\Fr(E) $ 使得 $ \norm{\id_{E}-T}<1 $, 由习题 3.9 结论知 $ \id_{E}-(\id_{E}-T)=T $ 可逆, 从而
+		\[
+			E = T^{-1}(T(E))
+		\]
+		是有限维的.\qed
+	\end{Proof}
+
+	\begin{Definition}[逼近性质]\index{B!逼近性质}\label{def:逼近性质}
+		设 $ E $ 是 Banach 空间, 若 $ \baro{\Fr(E)}=\CK(E) $, 则称 $ E $ 具有\textbf{逼近性制}.
+	\end{Definition}
+
+	\begin{Theorem}
+		Hilbert 空间具有逼近性质.
+	\end{Theorem}
+	\begin{Proof}
+		只考虑 $ H $ 可分的情形, 即 $ H $ 的规范正交基是可数的, 记为 $ (e_{n})_{n\geqslant1} $. 设 $ P_{n} $ 是 $ H $ 到 $ \Span\{ \seq{e} \} $ 的投影, 即
+		\[
+			P_{n}: H\to\Span\{ \seq{e} \}\qquad x\mapsto \sum_{k=1}^{n}\lrangle{x, e_{k}}e_{k},
+		\]
+		则 $ \norm{P_{n}}=1 $. 由 $ \dim P_{n}(H)=n<\infty $ 可知 $ P_{n} $ 有限秩, 由 $ \Fr(H) $ 是理想可知
+		\[
+			\forall T\in\CK(H)\,(TP_{n}\in\Fr(H)\land P_{n}T\in\Fr(H)).
+		\]
+		令 $ T_{n}=P_{n}T $, 需证明 $ (T_{n})_{n\geqslant1} $ 依范数收敛到 $ T $, 对 $ \forall\varepsilon>0 $, 由 $ \baro{T(B_{H})} $ 紧可知存在 $ \seq[m]{x} $ 使得
+		\[
+			\baro{T(B_{H}}\subset\bigcup_{j=1}^{m}B(x_{j}, \varepsilon),
+		\]
+		由此可知
+		\[
+			\norm{(\id -P_{n})(x_{j})}=\Big( \sum_{k\geqslant n+1} \abs{\lrangle{x_{j}, e_{k}}}^{2} \Big)^{1/2}.
+		\]
+		于是 $ \exists n_{0}\in\N $ 使得 $ n>n_{0} $ 时, 有 $ \forall j= 1, 2, \dots, m\,(\norm{(\id-P_{n})(x_{j})}<\varepsilon/2) $, 故对任意的 $ y\in\baro{T(B_{H})} $ 总成立
+		\[
+			\norm{(\id-P_{n})(y)}\leqslant\norm{(\id-P_{n})(y-x_{j})}+\norm{(\id-P_{n})(x_{j})}<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
+		\]
+		从而
+		\[
+			\norm{T-T_{n}}=\sup_{x\in B_{H}}\norm{(T-T_{n})(x)}=\sup_{x\in B_{H}}\norm{(\id-P_{n})(Tx)}<\varepsilon.
+		\]
+		从而 $ (T_{n})_{n\geqslant1} $ 依范数收敛到 $ T $. 于是 $ \CK(H)\subset\baro{\Fr(H)} $.
+
+		下面说明 $ \CK(H) $ 是闭集. 设 $ (T_{n})_{n\geqslant1} $ 是 $ \CK(H) $ 中的序列, 且收敛于 $ T\in\CB(H) $, 往证 $ T\in\CK(H) $. 取 $ (Tx_{n})_{n\geqslant1} $ 是 $ T(B_{E}) $ 中有收敛子列的序列, 由 $ T_{1} $ 紧性知存在子序列使得 $ \left(T_{1}x_{n_{(1, k)}}\right)_{k\geqslant1} $ 收敛. 再由 $ T_{2} $ 紧知存在子序列 $ \left(T_{2}x_{n_{(2, k)}}\right)_{k\geqslant1} $ 收敛, 依此进行下去, 由对角线方法可取序列 $ \left(x_{n_{(k, k)}}\right) $ 满足对 $ \forall j $, 有 $ \left(T_{j}x_{n_{(k, k)}}\right)_{k\geqslant1} $ 收敛, 则
+		\[
+			\begin{aligned}
+				\norm{Tx_{n_{(k, k)}}-Tx_{n_{(k', k')}}} & \leqslant \norm{(T-T_{j})\left(x_{n_{(k, k)}}-x_{n_{(k', k')}}\right)+T_{j}\left(x_{n_{(k, k)}}-x_{x_{(k', k')}}\right)}\\
+				& \leqslant 2\norm{T-T_{j}}+\norm{T_{j}\left(x_{n_{(k, k)}}-x_{n_{(k', k')}}\right)}\to 0.
+			\end{aligned}
+		\] 
+		从而 $ \left( Tx_{x_{(k, k)}} \right)_{k\geqslant1} $ 是 Cauchy 列, 从而 $ T(B_{E}) $ 相对紧, 故 $ T $ 紧. 由 $ \Fr(H)\subset\CK(H) $ 可知 $ \baro{\Fr}\subset \CK(H) $. 再由上证明, $ \CK(H)\subset\baro{\Fr(H)} $, 故 $ \baro{Fr(H)}=\CK(H) $.\qed
+	\end{Proof}
+
+\section{紧算子的谱性质}
+	\begin{Definition}[谱]\index{P!谱}\label{def:谱}
+		设 $ T\in\CB(E) $ 
+		\begin{enumerate}[(1)]
+			\item 令集合 
+			\[
+				\sigma(T) = \{ \lambda\in\K: \lambda\id-T\ \text{不可逆} \}
+			\]
+			称 $ \sigma(T) $ 为 $ T $ 的\textbf{谱集}, 并称 $ \rho(T)=\K\sm\sigma(T) $ 为 $ T $ 的\textbf{预解集}.
+			\item 记 $ \lambda\id-T $ 为 $ \lambda -T $. 若 $ \lambda -T $ 不是单射, 则 $ \exists x\in E, x\ne0 $ 使得
+			\[
+				(\lambda-T)(x)=0.
+			\]
+			也即 $ \lambda x=T x $, 则称 $ \lambda $ 为 $ T $ 的\textbf{特征值}, 称 $ \ker(\lambda -T) $ 为 $ T $ 关于 $ \lambda $ 的\textbf{特征子空间}, 并称非零向量 $ x\in\ker(\lambda-T) $ 为 $ T $ 相应于 $ \lambda $ 的\textbf{特征向量}.
+			\item 对任意 $ \lambda\in\rho(T) $, 称 $ R(\lambda, T)=(\lambda-T)^{-1} $ 为 $ T $ 的\textbf{预解式}.
+		\end{enumerate}
+	\end{Definition}
+
+	\begin{Example}
+		几个谱集的例子
+		\begin{enumerate}[(1)]
+			\item 设 $ T = \left[\begin{smallmatrix}
+				1 & 0 \\ 0 & 2
+			\end{smallmatrix}\right] $, 则 $ \sigma(T)=\{ 1, 2 \} $;
+			\item 对 $ f\in C[0, 1] $, 定义 $ M_{f}g =fg $, 其中 $ g\in C[0, 1] $, 则 $ M_{f}\in\CB(C[0, 1]) $, 且 $ \sigma(M_{f})=\{ f(t):t\in [0, 1] \} $;
+			\item 设 $ T $ 满足 $ Tx=\sum\limits_{n\geqslant1}\frac{1}{n}\lrangle{x, e_{n}}e_{n} $, 则 $ \sigma(T)=\{ 0, 1, \frac{1}{2}, \frac{1}{3}, \dots \} $.
+		\end{enumerate}
+	\end{Example}
