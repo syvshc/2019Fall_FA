@@ -183,7 +183,7 @@
 			\[
 				(\lambda-T)(x)=0.
 			\]
-			也即 $ \lambda x=T x $, 则称 $ \lambda $ 为 $ T $ 的\textbf{特征值}\index{T!特征值}, 称 $ \ker(\lambda -T) $ 为 $ T $ 关于 $ \lambda $ 的\textbf{特征子空间}\index{T!特征性空间}, 并称非零向量 $ x\in\ker(\lambda-T) $ 为 $ T $ 相应于 $ \lambda $ 的\textbf{特征向量}\index{T!特征向量}.
+			也即 $ \lambda x=T x $, 则称 $ \lambda $ 为 $ T $ 的\textbf{特征值}\index{T!特征值}, 称 $ \ker(\lambda -T) $ 为 $ T $ 关于 $ \lambda $ 的\textbf{特征子空间}\index{T!特征子空间}, 并称非零向量 $ x\in\ker(\lambda-T) $ 为 $ T $ 相应于 $ \lambda $ 的\textbf{特征向量}\index{T!特征向量}.
 			\item 对任意 $ \lambda\in\rho(T) $, 称 $ R(\lambda, T)=(\lambda-T)^{-1} $ 为 $ T $ 的\textbf{预解式}\index{Y!预解式}.
 		\end{enumerate}
 	\end{Definition}
@@ -230,6 +230,35 @@
 			\item $ \sigma(T) $ 是 \K 中的紧集, 且 $ \sigma(T)\subset\{ \lambda\in\K:\abs{\lambda}\leqslant r(T) \} $. 
 		\end{enumerate}
 	\end{Theorem}
+	\begin{Proof}
+		(1) 易知$ \liminf\limits_{n\to\infty}\norm{T^n}^{1/n}\geqslant\inf\limits_{n\geqslant 1}\norm{T^n}^{1/n} $, 记右侧为$ a $, 往证$ \forall\varepsilon>0 $, 都有$ \limsup\limits_{n\to\infty}\norm{T^n}^{1/n}\leqslant a+\varepsilon $. 由下确界的定义, 有
+		\[
+		\forall\varepsilon>0\,\exists n_0\in\N\,(\norm{T^{n_0}}^{1/n_0}\leqslant a+\varepsilon)
+		\]
+		且由带余除法定理可知$ \forall n\in\N $, $ n\geqslant n_0 $, 都有
+		\[
+		n=q(n)\cdot n_0+r(n),
+		\]
+		其中$ q(n)\in\N,\ r(n)\in\N $且$ 0\leqslant r(n)<n_0 $. 于是
+		\[
+		\norm{T^n}^{1/n}=\norm{T^{q(n)\cdot n_0+r(n)}}^{1/n}=\left(\norm{T^{n_0}}^{1/n_0}\right)^{q(n)\cdot n_0/n}\cdot\norm{T}^{r(n)/n}
+		\]
+		在上式中令$ n\to\infty $, 注意到$ q(n)\cdot n_0/n\to 1 $而$ r(n)/n\to 0 $, 有
+		\[
+		\limsup_{n\to\infty}\norm{T^n}^{1/n}\leqslant\limsup_{n\to\infty}\left(\norm{T^{n_0}}^{1/n_0}\right)^{q(n)\cdot n_0/n}\cdot\norm{T}^{r(n)/n}\leqslant a+\varepsilon,
+		\]
+		令$ \varepsilon\to 0^+ $即可.
+		
+		(2) 反证法. 若存在$ \lambda\in\sigma(T) $使得$ \abs{\lambda}>r(T) $, 由$ r(T)=\lim\limits_{n\to\infty}\norm{T^n}^{1/n} $可知
+		\[
+		\exists 0<c<1\,\exists n_0\in\N\,(n\geqslant n_0\Rightarrow\norm{T^n}^{1/n}\leqslant c\abs{\lambda})
+		\]
+		从而$ \norm{\left(\frac{T}{\lambda}\right)^n}\leqslant c^n $, 这说明$ \sum\limits_{n\geqslant 0}\left(\frac{T}{\lambda}\right)^n $在$ \CB(E) $中收敛, 且$ (\lambda-T)^{-1}=\frac{1}{\lambda}\sum\limits_{n\geqslant 0}\left(\frac{T}{\lambda}\right)^n $, 矛盾. 从而$ \lambda\notin\sigma(T) $. 作映射
+		\[
+		f : \K\to\CB(E),\qquad \lambda\mapsto\lambda-T,
+		\]
+		易证$ f $连续, 再由习题3.9的结论可知$ GL(E) $是开集, 从而$ \rho(T)=f^{-1}(GL(E)) $是开集, 从而$ \sigma(T)=\K\sm\rho(T) $是闭集. 由上一结论可知$ \sigma(T) $是有界集, 从而$ \sigma(T) $是紧的.\qed
+	\end{Proof}
 
 	\begin{Theorem}[谱半径定理]\index{P!谱半径定理}\label{thm:谱半径定理}
 		设 $ \K=\C, T\in\CB(E) $, 则 $ \sigma(T) $ 非空, 且
@@ -237,9 +266,40 @@
 			r(T)=\sup_{\lambda\in\sigma(T)}\abs{\lambda}.
 		\]
 	\end{Theorem}
+	\begin{Proof}
+		任取$ T\in\CB(E) $, 作映射
+		\[
+		R : \rho(T)\to\CB(E),\qquad \lambda\mapsto(\lambda-T)^{-1}
+		\]
+		由习题3.9的结论可知$ R $是连续的, 再取$ \xi\in\Star{\CB(E)} $, 定义
+		\[
+		\varphi : \rho(T)\to\C,\qquad \lambda\mapsto\xi(R(\lambda))
+		\]
+		那么$ \varphi $在$ \rho(T) $上连续. 任取$ \lambda_0\in\rho(T) $, 当$ \abs{\lambda-\lambda_0}<1/\norm{R(\lambda_0)} $时, 由
+		\[
+		\begin{aligned}
+		(\lambda-T)^{-1}&=(\lambda-\lambda_0+\lambda_0-T)^{-1}\\
+		&=R(\lambda_0)\sum_{n\geqslant 0}(-1)^nR(\lambda_0)^n(\lambda-\lambda_0)^n\\
+		&=\sum_{n\geqslant 0}(-1)^nR(\lambda_0)^{n+1}(\lambda-\lambda_0)^n
+		\end{aligned}
+		\]
+		可知$ \norm{(\lambda-\lambda_0)(\lambda_0-T)^{-1}}\leqslant 1 $, 从而上面的级数在$ \CB(E) $中绝对收敛, 继而收敛, 于是$ \varphi $在$ \rho(T) $上是全纯的.
+		
+		而当$ \abs{\lambda}\geqslant\norm{T} $时, 有$ R(\lambda)=(\lambda-T)^{-1}=\sum\limits_{n\geqslant 0}\frac{T^n}{\lambda^{n+1}} $, 它在$ \CB(E) $中绝对收敛, 从而$ \varphi(\lambda)=\sum\limits_{n\geqslant 0}\frac{\xi(T^n)}{\lambda^{n+1}} $, 于是
+		\[
+		\abs{\varphi(\lambda)}\leqslant\sum_{n\geqslant 0}\frac{\abs{\xi(T^n)}}{\lambda^{n+1}}\leqslant\sum_{n\geqslant 0}\frac{\norm{\xi}\norm{T}^n}{\lambda^{n+1}}=\frac{\norm{\xi}}{\lambda}\cdot\frac{1}{1-\norm{T}/\abs{\lambda}},
+		\]
+		令$ \lambda\to\infty $, 就有$ \varphi(\lambda)\to 0 $. 若$ \sigma(T)=\varnothing $, 那么$ \rho(T)=\C $, 此时由Liouville定理可知$ \varphi=0 $. 这意味着$ (\lambda-T)^{-1} $总是存在的, 从而对任意$ \xi\in\Star{\CB(E)} $, 都有$ \xi((\lambda-T)^{-1})=0 $. 但由Hahn-Banach定理可知存在$ \xi\in\Star{\CB(E)} $使得$ \xi((\lambda-T)^{-1})=0 $, 矛盾. 于是$ \sigma(T)\ne\varnothing $.
+		
+		由定理~\ref{thm:谱半径}~的(2)可知$ r(T)\geqslant\sup\limits_{\lambda\in\sigma(T)}\abs{\lambda} $, 将右侧记作$ \alpha $, 往证$ r(T)\leqslant\alpha $. 任取$ \lambda $使得$ \abs{\lambda}>\alpha $, 则$ \lambda\in\rho(T) $, 由$ \varphi(\lambda) $在$ \C\sm\bar{B}(0,\alpha) $全纯可知$ \varphi(\lambda) $绝对收敛. 记$ S_n=\frac{T^n}{\lambda^{n+1}} $后由一致有界原理可知$ (\norm{S_n})_{n\geqslant 1} $有界, 记$ M=\sup\limits_{n\geqslant 1}\norm{S_n} $, 那么
+		\[
+		\norm{T^n}^{1/n}\leqslant M^{1/n}\abs{\lambda}^{1+1/n},
+		\]
+		在上式中令$ n\to\infty $即可.\qed
+	\end{Proof}
 
 	\begin{Example}
-		~
+		下面是一些算子和其谱半径的例子.
 		\begin{enumerate}[(1)]
 			\item 考虑对角矩阵 $ T=\diag\{ \seq{\lambda} \} $, 则 $ r(T)=\max\limits_{1\leqslant k\leqslant n}\abs{\lambda_{k}} $. 或使用定义, $ \forall m\geqslant1 $ 成立
 			\[
@@ -352,7 +412,7 @@
 	\end{Proof}
 	
 	\begin{Remark}
-		上一定理说明了紧算子具有某种意义上的有限性, 且其限制到闭集上几乎就是可逆的 ( 模掉零空间后可逆).
+		上一定理说明了紧算子具有某种意义上的有限性, 且其限制到闭集上几乎就是可逆的(模掉零空间后可逆).
 	\end{Remark}
 
 	\begin{Theorem}
