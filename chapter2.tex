@@ -1408,6 +1408,17 @@
 		取 $ E=\R $, 则 $ \varnothing $ 与\R 既是 $ \CF_{\sigma} $ 集又是 $ \CG_{\delta} $ 集; $ (0, 1] $ 既是 $ \CF_{\sigma} $ 集又是 $ \CG_{\delta} $ 集, 因为 $ (0, 1]=\bigcap_{n\geqslant1}(0, 1+1/n) $, 且 $ (0, 1]=\bigcup_{n\geqslant1}[1/n, 1] $. 
 	\end{Example}
 
+	\begin{Proposition}
+		无限维的 Banach 空间 $ E $ 的维数一定大于 $ \aleph_{0} $.
+	\end{Proposition}
+	\begin{Proof}
+		反证法. 设 $ E $ 有一组可数的 Hamel 基 $ (e_{n})_{n\geqslant1} $, 则考虑
+		\[
+			S_{n}=\Span\{ \seq{e} \},
+		\]
+		从而 $ S_{n} $ 无处稠密, 由 $ E = \bigcup_{n\geqslant1}S_{n} $ 知 $ E $ 是贫集, 而 $ E $ 是完备度量空间, 从而 $ E $ 是第二纲的. 矛盾\qed
+	\end{Proof}
+
 	\begin{Lemma}
 		设 $ E $ 是 Hausdorff空间,  $ (F, d) $ 是度量空间, 则 $ f : E\to F $ 的连续点集 $ \cont(f) $ 是一个 $ \CG_{\delta} $ 集.
 		\end{Lemma}
@@ -1800,7 +1811,7 @@
 	\]
 	可知$ \norm{P_X}\leqslant\norm{\varPhi^{-1}}<\infty $.\qed
 	\end{Proof}
-	\begin{Corollary}
+	\begin{Corollary}\label{cor:代数互补成为拓扑互补的条件}
 		设 $ E $ 是 Banach 空间,  $ X, Y $ 代数互补, 则 $ X, Y $ 拓扑互补, 则 $ X, Y $ 拓扑互补当且仅当 $ X, Y $ 是闭集. 
 	\end{Corollary}
 	\begin{Proof}
