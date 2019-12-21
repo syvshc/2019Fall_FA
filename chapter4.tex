@@ -43,12 +43,12 @@
 	\end{Definition}
 
 	\begin{Theorem}
-		$ \Fr（E, F) $ 与 $ \CK(E, F) $ 都是 $ \CB(E, F) $ 的线性子空间, 且 $ \Fr(E) $ 与 $ \CK(E) $ 都是 $ \CB(E) $ 的理想.
+		$ \Fr(E, F) $ 与 $ \CK(E, F) $ 都是 $ \CB(E, F) $ 的线性子空间, 且 $ \Fr(E) $ 与 $ \CK(E) $ 都是 $ \CB(E) $ 的理想.
 	\end{Theorem}
 	\begin{Proof}
 		(1) 任取 $ T_{1}, T_{2}\in\Fr(E, F) $, 则 $ \dim T_{1}(E)<\infty, \dim T_{2}(E)<\infty $, 由
 		\[
-			(T_{1} + T_{2})(E)<T_{1}(E)+T_{2}(E)
+			(T_{1} + T_{2})(E)\subset T_{1}(E)+T_{2}(E)
 		\]
 		可知 $ \dim(T_{1}+T_{2})(E)<\infty $, 故 $ T_{1}+T_{2}\in\Fr(E, F) $, 再任取 $ \lambda\in\K $, 由
 		\[
@@ -62,7 +62,7 @@
 		\]
 		则由 $ \norm{\varphi(x, y)}=\norm{x+y}\leqslant 2\max\{ \norm{x}, \norm{y} \} $ 知 $ \varphi $ 连续. 从而
 		\[
-			\varphi(\baro{T_{1}(B_{E}}\times \baro{T_{2}(B_{E}}))=\baro{T_{1}(B_{E})}+\baro{T_{2}(B_{E})}
+			\varphi(\baro{T_{1}(B_{E})}\times \baro{T_{2}(B_{E}}))=\baro{T_{1}(B_{E})}+\baro{T_{2}(B_{E})}
 		\]
 		是紧集, 故 $ T_{1}(B_{E})+T_{2}(B_{E})\subset\baro{T_{1}(B_{E})}+\baro{T_{2}(B_{E})} $ 相对紧, 也即 $ T_{1}+T_{2}\in\CK(E, F) $. 又由 $ (\lambda T_{1})(B_{E})=\lambda T_{1}(B_{E}) $ 相对紧, 故 $ \lambda T_{1}\in\CK(E, F) $, 于是 $ \CK(E, F) $ 也是 $ \CB(E, F) $ 的线性子空间.
 
@@ -91,7 +91,7 @@
 		设 $ T\in\CB(E, F) $, 则 $ T $ 紧的充分必要条件是 $ \Star{T} $ 紧.
 	\end{Theorem}
 	\begin{Proof}
-		\textsl{必要性}. 设 $ T $ 是紧算子, 则 $ T(B_{E}) $ 相对紧. 需证 $ \Star{T}(B_{\Star{F}}) $ 相对紧. 只需证明对任意 $ (e_{n})_{n\geqslant1}\subset \Star{T}(B_{\Star{F}}) $ 都有收敛子列. 令 $ (f_{n})_{n\geqslant1}\subset B_{\Star{F}} $ 使得 $ \Star{T}f_{n}=e_{n} $, 即 $ f_{n}\circ T=e_{n} $. 则由 $ \Star{T} $ 的连续性, 只需说明 $ (f_{n})_{n\geqslant1} $ 有收敛子列即可. 注意到 $ f_{n} $ 的定义域为 $ \baro{T(B_{E}} $, 这是一个紧集.
+		\textsl{必要性}. 设 $ T $ 是紧算子, 则 $ T(B_{E}) $ 相对紧. 需证 $ \Star{T}(B_{\Star{F}}) $ 相对紧. 只需证明对任意 $ (e_{n})_{n\geqslant1}\subset \Star{T}(B_{\Star{F}}) $ 都有收敛子列. 令 $ (f_{n})_{n\geqslant1}\subset B_{\Star{F}} $ 使得 $ \Star{T}f_{n}=e_{n} $, 即 $ f_{n}\circ T=e_{n} $. 则由 $ \Star{T} $ 的连续性, 只需说明 $ (f_{n})_{n\geqslant1} $ 有收敛子列即可. 注意到 $ f_{n} $ 的定义域为 $ \baro{T(B_{E})} $, 这是一个紧集.
 
 		使用 Arzel\`a-Ascoli 引理, 要说明 $ (f_{n})_{n\geqslant1} $ 等度连续, 只需说用 $ \forall x\in\baro{T(B_{E})} $, 都有 $ (F_{n}(x))_{n\geqslant1} $ 相对紧. 由 $ (f_{n})_{n\geqslant1}\subset B_{\Star{F}} $ 知 $ (f_{n})_{n\geqslant1} $ 有界, 从而 $ (f_{n}(x))_{n\geqslant1} $ 有界. 于是 $ (f_{n}(x))_{n\geqslant1} $ 相对紧, 则 $ \forall\varepsilon>0, \forall x, y\in\baro{T(B_{E})} $, 若 $ \norm{x-y}<\varepsilon $, 则
 		\[
@@ -108,7 +108,7 @@
 				& \leqslant \norm{f_{n_{k}}-f_{n_{j}}}_{\baro{T(B_{E})}}\to 0.
 			\end{aligned}
 		\]
-		故 $ (e_{n_{k}})_{k\geqslant1} $ 也是 Cauchy 列. 由 $ \Star{E} $ 的完备性可知 $ (e_{n_{k}})_{k\leqslant1} $ 收敛, 故 $ \Star{T}(B_{\Star{F}}) $ 相对紧, 即 $ \Star{T} $ 是紧算子.
+		故 $ (e_{n_{k}})_{k\geqslant1} $ 也是 Cauchy 列. 由 $ \Star{E} $ 的完备性可知 $ (e_{n_{k}})_{k\geqslant1} $ 收敛, 故 $ \Star{T}(B_{\Star{F}}) $ 相对紧, 即 $ \Star{T} $ 是紧算子.
 
 		\textsl{充分性}. 若 $ \Star{T} $ 是紧算子, 由必要性可知 $ T^{**} $ 是紧算子, 由 $ T = T^{**}|E $ 可知 $ T(B_{E})\subset T^{**}(B_{E}) $ 相对紧, 故 $ T $ 是紧算子.\qed
 	\end{Proof}
@@ -127,7 +127,7 @@
 	\end{Proof}
 
 	\begin{Definition}[逼近性质]\index{B!逼近性质}\label{def:逼近性质}
-		设 $ E $ 是 Banach 空间, 若 $ \baro{\Fr(E)}=\CK(E) $, 则称 $ E $ 具有\textbf{逼近性制}.
+		设 $ E $ 是 Banach 空间, 若 $ \baro{\Fr(E)}=\CK(E) $, 则称 $ E $ 具有\textbf{逼近性质}.
 	\end{Definition}
 
 	\begin{Theorem}
@@ -144,7 +144,7 @@
 		\]
 		令 $ T_{n}=P_{n}T $, 需证明 $ (T_{n})_{n\geqslant1} $ 依范数收敛到 $ T $, 对 $ \forall\varepsilon>0 $, 由 $ \baro{T(B_{H})} $ 紧可知存在 $ \seq[m]{x} $ 使得
 		\[
-			\baro{T(B_{H}}\subset\bigcup_{j=1}^{m}B(x_{j}, \varepsilon),
+			\baro{T(B_{H})}\subset\bigcup_{j=1}^{m}B(x_{j}, \varepsilon),
 		\]
 		由此可知
 		\[
@@ -167,24 +167,24 @@
 				& \leqslant 2\norm{T-T_{j}}+\norm{T_{j}\left(x_{n_{(k, k)}}-x_{n_{(k', k')}}\right)}\to 0.
 			\end{aligned}
 		\] 
-		从而 $ \left( Tx_{x_{(k, k)}} \right)_{k\geqslant1} $ 是 Cauchy 列, 从而 $ T(B_{E}) $ 相对紧, 故 $ T $ 紧. 由 $ \Fr(H)\subset\CK(H) $ 可知 $ \baro{\Fr}\subset \CK(H) $. 再由上证明, $ \CK(H)\subset\baro{\Fr(H)} $, 故 $ \baro{Fr(H)}=\CK(H) $.\qed
+		从而 $ \left( Tx_{n_{(k, k)}} \right)_{k\geqslant1} $ 是 Cauchy 列, 从而 $ T(B_{E}) $ 相对紧, 故 $ T $ 紧. 由 $ \Fr(H)\subset\CK(H) $ 可知 $ \baro{\Fr}\subset \CK(H) $. 再由上证明, $ \CK(H)\subset\baro{\Fr(H)} $, 故 $ \baro{Fr(H)}=\CK(H) $.\qed
 	\end{Proof}
 
 \section{紧算子的谱性质}
-	\begin{Definition}[谱]\index{P!谱}\label{def:谱}
+	\begin{Definition}[谱]\label{def:谱}
 		设 $ T\in\CB(E) $ 
 		\begin{enumerate}[(1)]
 			\item 令集合 
 			\[
 				\sigma(T) = \{ \lambda\in\K: \lambda\id-T\ \text{不可逆} \}
 			\]
-			称 $ \sigma(T) $ 为 $ T $ 的\textbf{谱集}, 并称 $ \rho(T)=\K\sm\sigma(T) $ 为 $ T $ 的\textbf{预解集}.
+			称 $ \sigma(T) $ 为 $ T $ 的\textbf{谱集}\index{P!谱集}, 并称 $ \rho(T)=\K\sm\sigma(T) $ 为 $ T $ 的\textbf{预解集}\index{Y!预解集}.
 			\item 记 $ \lambda\id-T $ 为 $ \lambda -T $. 若 $ \lambda -T $ 不是单射, 则 $ \exists x\in E, x\ne0 $ 使得
 			\[
 				(\lambda-T)(x)=0.
 			\]
-			也即 $ \lambda x=T x $, 则称 $ \lambda $ 为 $ T $ 的\textbf{特征值}, 称 $ \ker(\lambda -T) $ 为 $ T $ 关于 $ \lambda $ 的\textbf{特征子空间}, 并称非零向量 $ x\in\ker(\lambda-T) $ 为 $ T $ 相应于 $ \lambda $ 的\textbf{特征向量}.
-			\item 对任意 $ \lambda\in\rho(T) $, 称 $ R(\lambda, T)=(\lambda-T)^{-1} $ 为 $ T $ 的\textbf{预解式}.
+			也即 $ \lambda x=T x $, 则称 $ \lambda $ 为 $ T $ 的\textbf{特征值}\index{T!特征值}, 称 $ \ker(\lambda -T) $ 为 $ T $ 关于 $ \lambda $ 的\textbf{特征子空间}\index{T!特征性空间}, 并称非零向量 $ x\in\ker(\lambda-T) $ 为 $ T $ 相应于 $ \lambda $ 的\textbf{特征向量}\index{T!特征向量}.
+			\item 对任意 $ \lambda\in\rho(T) $, 称 $ R(\lambda, T)=(\lambda-T)^{-1} $ 为 $ T $ 的\textbf{预解式}\index{Y!预解式}.
 		\end{enumerate}
 	\end{Definition}
 
@@ -198,3 +198,212 @@
 			\item 设 $ T $ 满足 $ Tx=\sum\limits_{n\geqslant1}\frac{1}{n}\lrangle{x, e_{n}}e_{n} $, 则 $ \sigma(T)=\{ 0, 1, \frac{1}{2}, \frac{1}{3}, \dots \} $.
 		\end{enumerate}
 	\end{Example}
+
+	\begin{Proposition}
+		$ \forall \lambda, \mu\in\rho(T) $, 有
+		\[
+			R(\lambda, T)-R(\mu, T)=(\mu-\lambda)R(\lambda, T)R(\mu, T) = (\mu-\lambda)R(\mu, T)R(\lambda, T),
+		\]
+		这被称为\textbf{预解方程}\index{Y!预解方程}.
+	\end{Proposition}
+	\begin{Proof}
+		由
+		\[
+			\begin{aligned}
+				(\mu-\lambda)R(\mu, T)R(\lambda, T) & = R(\lambda, T)(\mu-\lambda)R(\mu, T)\\
+				& = (\lambda-T)^{-1}((\mu-T)-(\lambda-T))(\mu-T)^{-1}\\
+				& = (\lambda-T)^{-1}-(\mu-T)^{-1}\\
+				& = R(\lambda, T)-R(\mu, T)
+			\end{aligned}
+		\]
+		即证.\qed
+	\end{Proof}
+
+	\begin{Theorem}[谱半径]\index{P!谱半径}\label{thm:谱半径}
+		设 $ T\in\CB(E) $
+		\begin{enumerate}[(1)]
+			\item 极限 $ \lim\limits_{n\to\infty} \norm{T^{n}}^{1/n} $ 存在, 且
+			\[
+				\lim_{n\to\infty}\norm{T^{n}}^{1/n}=\inf_{n\geqslant1}\norm{T^{n}}^{1/n},
+			\]
+			并将其记作 $ r(T) $, 称为算子 $ T $ 的\textbf{谱半径}. 
+			\item $ \sigma(T) $ 是 \K 中的紧集, 且 $ \sigma(T)\subset\{ \lambda\in\K:\abs{\lambda}\leqslant r(T) \} $. 
+		\end{enumerate}
+	\end{Theorem}
+
+	\begin{Theorem}[谱半径定理]\index{P!谱半径定理}\label{thm:谱半径定理}
+		设 $ \K=\C, T\in\CB(E) $, 则 $ \sigma(T) $ 非空, 且
+		\[
+			r(T)=\sup_{\lambda\in\sigma(T)}\abs{\lambda}.
+		\]
+	\end{Theorem}
+
+	\begin{Example}
+		~
+		\begin{enumerate}[(1)]
+			\item 考虑对角矩阵 $ T=\diag\{ \seq{\lambda} \} $, 则 $ r(T)=\max\limits_{1\leqslant k\leqslant n}\abs{\lambda_{k}} $. 或使用定义, $ \forall m\geqslant1 $ 成立
+			\[
+				\norm{T^{m}}^{1/m}=\norm{\diag\{ \seq{\lambda^{m}} \}}^{1/m}=\max_{1\leqslant k\leqslant n}\abs{\lambda_{k}^{m}}^{1/m}=\max_{1\leqslant k\leqslant n}\abs{\lambda_{k}}.
+			\]
+			\item 考虑 Jordan 块
+			\[
+				T = J(0, 3)=\begin{bmatrix}
+					0 & 1 & 0\\
+					0 & 0 & 1\\
+					0 & 0 & 0
+				\end{bmatrix}
+			\]
+			则 $ r(T)=0 $, 此因 $ T^{3}=0 $. 进一步, 幂零矩阵的谱半径都是 0.
+			\item 考虑算子 $ M_{f} $, 则
+			\[
+				r(M_{f}) = \lim_{n\to\infty}\norm{M_{f}^{n}}^{1/n}=\lim_{n\to\infty}\norm{M_{f^{n}}}^{1/n}=\lim_{n\to\infty}\norm{f^{n}}^{1/n}=\norm{f}.
+			\]
+			\item 考虑算子 $ T: x\mapsto\sum\limits_{n\geqslant1}\frac{1}{n}\lrangle{x, e_{n}}e_{n} $, 则 $ r(T)=1 $.
+			\item 设 $ (e_{n})_{n\geqslant1} $ 是可分 Hilbert 空间 $ H $ 上的规范正交基, 考虑右移算子
+			\[
+				s: H\to H\qquad e_{n}\mapsto e_{n+1}\qquad (\forall n\geqslant1).
+			\]
+			由
+			\[
+				\Bnorm{s^{m}\sum_{n\geqslant1}\lambda_{n}e_{n}}=\Bnorm{\sum_{n\geqslant1}\lambda_{n}e_{n+m}}=\Big( \sum_{n\geqslant1}\abs{\lambda_{n}}^{2} \Big)^{1/2}
+			\]
+			知 $ \norm{s^{m}}\leqslant1 $. 又由 $ \norm{s^{m}e_{n}}=\norm{e_{n+m}} $ 知 $ \norm{s^{m}}=1 $, 故 $ r(s)=1 $. 
+		\end{enumerate}
+	\end{Example}
+
+	\begin{Corollary}
+		设 $ T\in\CB(E) $, 则 $ r(T)\leqslant\norm{T} $.
+	\end{Corollary}
+	\begin{Proof}
+		由定义
+		\[
+			r(T)=\lim_{n\to\infty}\norm{T^{n}}^{1/n}\leqslant\lim_{n\to\infty}(\norm{T}^{n})^{1/n}=\norm{T}
+		\]
+		即证.\qed
+	\end{Proof}
+	
+	\begin{Theorem}\label{thm:lambda-T的性质}
+		设 $ T\in\CK(E), \lambda\in\K $ 且 $ \lambda\ne0 $, 有
+		\begin{enumerate}[(1)]
+			\item $ \forall n\in\N $, 有 $ \dim\ker(\lambda-T)^{n}<\infty $.
+			\item $ \forall n\in\N $, $ (\lambda-T)^{n}(E) $ 是闭集.
+			\item $ \exists n\in\N $, 使得 $ \ker(\lambda-T)^{n+1}=\ker(\lambda-T)^{n} $.
+			\item $ \exists n\in\N $, 使得 $ (\lambda-T)^{n+1}(E)=(\lambda-T)^{n}(E) $.
+		\end{enumerate}
+	\end{Theorem}
+
+	\begin{Proof}
+		若 $ E $ 有限维, 命题显然成立, 不妨设 $ E $ 是无限维的.
+
+		(1) 先考虑 $ n=1 $ 时的情形, 若 $ \ker(\lambda-T) $ 无限维, 记 $ K_{1}=\ker(\lambda-T) $ 后有 $ (\lambda-T)B_{K_{1}}=0 $, 即 $ \lambda B_{K_{1}}=T(B_{K_{1}}) $. 因为 $ T\in\CK(E) $, 故 $ T(B_{K_{1}}) $ 相对紧, 从而有 $ \lambda B_{K_{1}} $ 也相对紧, 而这说明 $ K_{1} $ 有限维, 矛盾.
+		
+		注意到 
+		\[
+			(\lambda-T)^{n}=\sum_{k=0}^{n}(-1)^{k}\binom{n}{k}\lambda^{n-k}T^{k} = \lambda^{n}-\sum_{k=1}^{n}(-1)^{k-1}\binom{n}{k}\lambda^{n-k}T^{k},
+		\]
+		故类似 $ n=1 $ 的情形可证.
+
+		(2) 令 $ H_{n}= (\lambda-T)^{n}(E) $. 先考虑 $ n=1 $ 的情形, 作映射
+		\[
+			\tilde{T}: E/K_{1}\to H_{1}\qquad x+K_{1}\mapsto (\lambda-T)(x),
+		\]
+		只需说明 $ \tilde{T}^{-1} $ 有界即可. 用反证法, 假设 $ \tilde{T}^{-1} $ 无界, 则 $ \exists (x_{n}+K_{1})_{n\geqslant1} $ 使得 $ \norm{x_{n}+x_{1}}_{E/K_{1}}=1 $ 且 $ \tilde{T}(x_{n}+K_{1})\to 0 $. 由商模的定义可知 $ \forall n\geqslant1, \exists x_{n}' $ 使得  $ x_{n}' $ 是 $ x_{n}+K_{1} $ 的代表元: 满足 $ 1\leqslant\norm{x_{n}'}<2 $ 且 $ (\lambda-T)x_{n}'\to 0 $. 因为 $ T $ 紧, 故存在 $ (x_{n_{k}}')_{k\geqslant1}\subset(x_{n}')_{n\geqslant1} $ 使得 $ (Tx_{n_{k}}')_{k\leqslant1} $ 收敛, 记其极限为 $ z $, 则
+		\[
+			\lambda x_{n_{k}}'=Tx_{n_{k}}'+(\lambda-T)x-{n_{k}}'\to z+0=z
+		\]
+		即 $ x_{n_{k}}'\to z/\lambda $, 于是 $ (\lambda-T)x_{n_{k}}'\to (\lambda-T)z/\lambda=0 $, 由此可知 $ z\in\K_{1} $, 则
+		\[
+			\norm{x_{n_{k}}'+K_{1}}_{E/K_{1}}\leqslant\norm{x_{n_{k}}'-\frac{z}{\lambda}}\to 0,
+		\]
+		但这与 $ \norm{x_{n}+K_{1}}_{E/K_{1}}=1 $ 矛盾, 故 $ \tilde{T}^{-1} $ 有界, 从而 $ H_{1} $ 是闭集.
+
+		下面使用归纳法, 设 $ \seq{H} $ 都是闭集, 则它们都是 Banach 空间. 因为
+		\[
+			H_{n+1}=(\lambda-T)^{n+1}(E)=(\lambda-T)(\lambda-T)^{n}(E)=(\lambda-T)(H_{n})
+		\]
+		则 $ \forall x\in E $, 由
+		\[
+			T(\lambda-T)^{n}(x)=(\lambda-T)^{n}(Tx)
+		\]
+		知 $ T(H_{n})\subset H_{n} $. 由 $ T|_{H_{n}} $ 紧知 $ \dim K_{n}<\infty $, 类似 $ n=1 $ 的情形可证 $ H_{n+1} $ 闭.
+
+		(3) 注意到
+		\[
+			K_{1}\subset K_{2}\subset\cdots\subset K_{n}\subset\cdots
+		\]
+		假设所有包含关系都是严格的, 则 $ \exists x_{n}\in K_{n+1} $ 使得 $ \norm{x_{n}}=1 $ 且 $ d(x_{n}, K_{n})\geqslant1/2 $, 则对 $ m>n $, 有
+		\[
+			\begin{aligned}
+				Tx_{m}-Tx_{n} & = Tx_{m}-\lambda x_{m}+\lambda x_{m}-\lambda x_{n}+\lambda x_{n}-Tx_{n}\\
+				& = \lambda x_{m}+((T-\lambda)x_{m}-\lambda x_{n}+(\lambda-T)x_{n})
+			\end{aligned}
+		\]
+		记 $ y=(T-\lambda)x_{m}-\lambda x_{n}+(\lambda-T)x_{n}\in K_{m} $, 则有
+		\[
+			\norm{Tx_{{m}}-Tx_{n}}=\abs{\lambda}\norm{x_{m}+\frac{y}{\lambda}}\geqslant\abs{\lambda}\cdot\frac{1}{2}
+		\]
+		即 $ (Tx_{n})_{n\geqslant1} $ 无收敛子列, 这与 $ T $ 是紧算子矛盾.
+
+		(4) 因为 $ T $ 紧, 故 $ \Star{T} $ 紧. 由 (3) 知 $ \exists n\in\N $ 使
+		\[
+			\ker(\lambda-\Star{T})^{n+1}=\ker(\lambda-\Star{T})^{n}
+		\]
+		由双极定理, 有 $ \baro{(\lambda-T)^{n+1}(E)}=\baro{(\lambda-T)^{n}(E)} $, 再由 (2) 知 $ (\lambda-T)^{n}(E) $ 是闭集, 故命题得证.\qed
+	\end{Proof}
+	
+	\begin{Remark}
+		上一定理说明了紧算子具有某种意义上的有限性, 且其限制到闭集上几乎就是可逆的 ( 模掉零空间后可逆).
+	\end{Remark}
+
+	\begin{Theorem}
+		设 $ T\in\CB(E), \lambda\in\K $, 有
+		\begin{enumerate}[(1)]
+			\item 任取 $ \lambda\in\sigma(T)\sm \{ 0 \} $, 必有 $ \lambda\in\sigma_{p}(T) $, 其中 $ \sigma_{p}(T) $ 是 $ T $ 的所有特征值的集合, 称为 $ T $ 的\textbf{点谱集}.
+			\item $ T $ 的非零特征值至多可数, 从而 $ \sigma_{p}(T) $ 至多可数, 特别地,  $ \sigma_{p}(T) $ 是紧集. 若将其所有的特征值排成一列 $ (\lambda_{n}) $, 当 $ (\lambda_{n}) $ 无限时, 必有 $ \lim\limits_{n\to\infty}\lambda_{n}=0 $.
+		\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+		(1) 设 $ \lambda\in\sigma(T)\sm\{ 0 \} $, 若 $ \lambda-T $ 是单射, 则由定理~\ref{thm:lambda-T的性质}~知
+		\[
+			\exists n\in\N\,((\lambda-T)^{n+1}(E)=(\lambda-T)^{n}(E)),
+		\]
+		则
+		\[
+			\forall x\in E\exists y\in E\,((\lambda-T)^{n+1}(y)=(\lambda-T)^{n}(x)),
+		\]
+		由 $ \lambda-T $ 是单射可知 $ x=(\lambda-T)y $, 由 $ x $ 的任意性可知 $ \lambda-T $ 是满射, 由开映射定理知 $ \lambda-T $ 是同构, 即 $ \lambda-T $ 可逆. 这与 $ \lambda\in\sigma(T) $ 矛盾. 从而 $ \lambda-T $ 不是单射. 即 $ \ker(\lambda-T)\ne\{ 0 \} $. 这意味着 $ \exists x\ne 0 $ 使得 $ \lambda x=Tx $, 也即 $ \lambda\in\sigma_{p}(T)\sm\{ 0 \} $. 
+
+		(2) 只需说明 $ \forall \eta>0 $, 只存在有限多个不同的 $ \lambda\in\sigma_{p}(T)\sm\{ 0 \} $ 使得 $ \lambda\leqslant\eta $ 即可.
+
+		用反证法. 设 $ \exists\eta>0 $ 使得有无穷多个不同的 $ \lambda_{n}\in\sigma_{p}(T) $ 使得 $ \abs{\lambda_{n}}\geqslant\eta $, 则设 $ e_{n} $ 是对应的特征向量, 有 $ Te_{n}=\lambda_{n}e_{n} $, 并记 $ E_{n}=\Span\{ \seq{e} \} $.
+
+		先证明 $ \seq{e} $ 线性无关. 否则存在不全为 0 的 $ \seq{a} $ 使得
+		\[
+			\begin{bmatrix}
+				1 & 1 & \cdots & 1\\
+				\lambda_{1} & \lambda_{2} & \cdots & \lambda_{n}\\
+				\vdots & \vdots & \ddots & \vdots \\
+				\lambda_{1}^{n} & \lambda_{2}^{n} & \cdots & \lambda_{n}^{n}
+			\end{bmatrix}\begin{bmatrix}
+				a_{1}e_{1}\\
+				a_{2}e_{2}\\
+				\vdots\\
+				a_{n}e_{n}
+			\end{bmatrix}=0
+		\]
+		注意到系数矩阵是 Vandermonde 矩阵, 记作 $ V_{n} $, 由 $ \seq{\lambda} $ 互不相同知 $ \det V_{n}\ne0 $, 即方程只有零解, 矛盾.
+
+		再说明存在某序列 $ (Ty_{n})_{n\geqslant1} $ 没有收敛子列, 其中 $ y_{n}\in\bar{B}_{E} $. 注意到
+		\[
+			E_{1}\subset E_{2}\subset\cdots\subset E_{n}\subset\cdots
+		\]
+		且所有的包含关系都是严格的, 从而 $ \exists y_{n}\in E_{n+1} $ 使得 $ \norm{y_{n}}=1 $ 且 $ d(y_{n}, E_{n})\geqslant1/2 $, 对 $ m>n $ 有
+		\[
+			\norm{Ty_{m}-Ty_{n}}=\norm{-\lambda_{m+1}y_{m}+Ty_{m}-Ty_{n}+\lambda_{m+1}y_{m}}
+		\]
+		并注意到 $ -\lambda_{m+1}y_{m}+Ty_{m}-Ty_{n}\in E_{m} $, 从而有
+		\[
+			\norm{Ty_{m}-Ty_{n}}\geqslant\abs{\lambda_{m+1}}\cdot\frac{1}{2}\geqslant\frac{\eta}{2}
+		\]
+		矛盾.\qed
+	\end{Proof}
