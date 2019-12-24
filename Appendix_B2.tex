@@ -619,15 +619,98 @@
 	\end{Proof}
 
 \section{第9章习题}
-	
-	\textbf{习题9.2(a)}\ [习题课]\ \ 设$ E $是Banach空间, $ B\subset\Star{E} $, 证明: $ B $是相对$ \Star{w} $--紧的当且仅当$ B $是有界的.
+
+	\textbf{习题 9.1}\ [作业]\ \ 设 $ E $ 是赋范空间, 并设 $ \Star{E} $ 是可分的.
+	\begin{enumerate}[(1)]
+		\item 令 $ (f_{n})_{n\geqslant1} $ 是 $ \Star{E} $ 中的稠密子集. 选出 $ E $ 中的序列 $ (x_{n})_{n\geqslant1} $ 使得 $ f_{n}(x_{n})\geqslant \norm{f_{n}}/2 $.
+		\item 任取 $ f\in\Star{E} $. 证明: 若对每个 $ x_{n} $ 有 $ f(x_{n})=0 $, 则 $ f=0 $. 
+		\item 由此导出 $ \Span(x_{1}, x_{2}, \dots) $ 在 $ E $ 中稠密且 $ E $ 是可分的.
+		\item 证明: 一个 Banach 空间是可分且自反的当且仅当它的对偶空间是可分且自反的.
+		\item 举一个可分赋范空间但其对偶空间不可分的例子. 
+	\end{enumerate}
 	\begin{Proof}
-	\textsl{必要性}. 设$ B $相对$ \Star{w} $--紧, 即$ \bar{B}^{\Star{w}} $是$ \Star{w} $--紧的. 任取$ x\in E $, 都有$ \hat{x} $是连续的, 于是$ \hat{x}(\bar{B}^{\Star{w}}) $是$ \K $中的紧集, 即是有界闭集, 故$ \{ f(x) \}_{f\in \bar{B}^{\Star{w}}} $有界. 由一致有界原理可知$ \{ f\in\bar{B} \} $有界, 即$ B $是有界的.
+		(1) 设 $ \Star{E} $ 可分, 则存在一列 $ (f_{n})_{n\geqslant1}\subset\Star{E} $ 使得 $ \baro{(f_{n})_{n\geqslant1}}=\Star{E} $, 且 $ \norm{f_{n}}=\sup\limits_{\norm{x}=1}\abs{f_{n}(x)} $, 则存在 $ x_{n} $ 使得, $ \abs{f_{n}(x_{n})}\geqslant\norm{f_{n}}/2 $.
+
+		(2) 由 $ (f_{n})_{n\geqslant1} $ 是 $ \Star{E} $ 中稠密子集, 有
+		\[
+			\forall f\in\Star{E}\,\forall \varepsilon>0\,\exists N\in\N\,(\norm{f-f_{n}}<\varepsilon),
+		\]
+		设 $ \forall n\in\N $, $ f(x_{n})=0 $, 则有
+		\[
+			\norm{f}\leqslant\norm{f-f_{n}}+\norm{f_{n}}<\varepsilon + 2\abs{f_{n}(x_{n})}\leqslant \varepsilon 2\norm{f_{n}},
+		\]
+		而又由
+		\[
+			\frac{1}{2}\norm{f_{n}}\leqslant\abs{f_{n}(x_{n})}=\abs{f(x_{n})-f_{n}(x_{n})}<\varepsilon
+		\]
+		故 $ \norm{f_{n}}<2\varepsilon $, 于是
+		\[
+			\norm{f}\leqslant\varepsilon+2\cdot 2\varepsilon=5\varepsilon,
+		\]
+		故 $ \norm{f}=0 $, 即 $ f=0 $.
+
+		(3) 设 $ M=\Span(x_{n})_{n\geqslant1} $, 由线性性有 $ f|_{M}=0\Rightarrow f=0 $. 从而 $ \baro{\Span(x_{n})_{n\geqslant1}}=E $, 即 $ M $ 在 $ E $ 中稠密, 再用有理数作系数线性组合就有 $ E $ 可分.
+
+		(4) \textsl{充分性}. 由 (3) 结论, 由 $ \Star{E} $ 可分知 $ E $ 可分, 由 $ \Star{E} $ 的自反性可知 $ E $ 自反.
+
+		\textsl{必要性}. 由 $ E $ 自反知 $ E=E^{**} $, 从而由 $ E^{**} $ 可分知 $ \Star{E} $ 可分, 由 $ E^{**} $ 自反可知 $ E $ 自反.
+
+		(5) $ \ell_{1} $ 可分, 但 $ \Star{\ell_{1}}=\ell_{\infty} $ 不可分.\qed
+	\end{Proof}
+	
+	\textbf{习题9.2}\ [习题课]\ \ 设$ E $是Banach空间, $ B\subset\Star{E} $
+	\begin{enumerate}[(1)]
+		\item 证明: $ B $是相对$ \Star{w} $--紧的当且仅当$ B $是有界的.
+		\item 假设 $ B $ 是有界的且 $ E $ 是可分的. 证明: $ (B, \sigma(\Star{E}, E)) $ 可度量化.
+	\end{enumerate}
+	\begin{Proof}
+	(1) \textsl{必要性}. 设$ B $相对$ \Star{w} $--紧, 即$ \bar{B}^{\Star{w}} $是$ \Star{w} $--紧的. 任取$ x\in E $, 都有$ \hat{x} $是连续的, 于是$ \hat{x}(\bar{B}^{\Star{w}}) $是$ \K $中的紧集, 即是有界闭集, 故$ \{ f(x) \}_{f\in \bar{B}^{\Star{w}}} $有界. 由一致有界原理可知$ \{ f\in\bar{B} \} $有界, 即$ B $是有界的.
 	
 	\textsl{充分性}. 若$ B $是有界的, 则存在$ M>0 $使得$ B\subset MB_{\Star{E}} $, 从而$ \bar{B}^{\Star{w}}\subset M\bar{B}_{\Star{E}}^{\Star{w}} $. 由Banach-Alaoglu定理可知$ \bar{B}^{\Star{w}} $是$ \Star{w} $--紧的, 故$ B $是相对$ \Star{w} $--紧的.
+
+	(2) 由 (1) 知 $ \bar{B}^{\Star{w}}\subset M\bar{B}_{\Star{E}} $, 故 $ \bar{B}^{\Star{w}}  $ 有界. 故不妨假设 $ B $ 是 $ \Star{w} $--闭的且有界的.
+
+	因为可分度量空间的任意子空间仍然可分, 故存在 $ (x_{n})_{n\geqslant}\in\bar{B}_{E} $ 使得 $ \baro{(x_{n})_{n\geqslant1}}_{n\geqslant1}=\bar{B}_{E} $. 于是
+	\[
+		\forall \Star{x}, \Star{y}\in B\Big(d(\Star{x}, \Star{y})=\sum_{n\geqslant1}\norm{\lrangle{\Star{x}-\Star{y}, x_{n}}}\Big)
+	\]
+	是 $ B $ 上的一个度量, 只需验证 $ d(\Star{x}, \Star{y})=0\Longrightarrow \Star{x}=\Star{y} $, 即
+	\[
+		d(\Star{x}, \Star{y})=0\Longleftrightarrow \forall n\geqslant1\,(\lrangle{\Star{x}-\Star{y}, x_{n}}=0)\Longleftrightarrow \Star{x}-\Star{y}=0.
+	\]
+	将 $ d $ 诱导的拓扑记作 $ \tau_{d} $. 往证 $ \tau_{d} $ 与 $ B $ 上的 $ \Star{w} $--拓扑相同, 
+
+	先证 $ \tau_{d}\leqslant\sigma(\Star{E}, E) $. 对 $ \forall\Star{x}\in B, \forall r>0 $, 往证 $ \{ \Star{y}: d(\Star{x}, \Star{y}<r) \} $ 是 $ \Star{x} $ 点的一个 $ \Star{w} $--邻域. 设常数 $ M>0 $, 对 $ \forall \Star{x}\in B $ 有 $ \norm{\Star{x}}\leqslant M $, 由 $ \sum\limits_{n\geqslant1}2^{-n} $ 收敛, 则存在充分大的 $ N $ 使得
+	\[
+		\sum_{n\geqslant N}2^{-n}\abs{\lrangle{\Star{x}-\Star{y}, x_{n}}}\leqslant 2M\sum_{n\geqslant N}2^{-n}<\frac{r}{2}.
+	\]
+	对取定的 $ N $, 存在充分小的 $ r_{1} $ 使得
+	\[
+		\forall n=1, 2, \dots, N\,(\abs{\lrangle{\Star{x}-\Star{y}, x_{n}}}<r_{1})\Longrightarrow \sum_{n=1}^{N} 2^{-n}\abs{\lrangle{\Star{x}-\Star{y}, x_{n}}}<\frac{r}{2}.
+	\]
+	此时 $ d(\Star{x}, \Star{y})<r $, 于是
+	\[
+		\{ \Star{y}:d(\Star{x}, \Star{y}<r) \}\supset \bigcap_{n=1}^{N}\{ \Star{y}:\abs{\lrangle{\Star{x}-\Star{y}, x_{n}}}<r_{1} \}.
+	\]
+	故 $ \{ \Star{y}: d(\Star{x}, \Star{y})<r \} $ 是 $ \Star{x} $ 的一个邻域, 又因为形如这样的邻域全体构成 $ \Star{x} $ 的一个邻域基, 故 $ \tau_{d}\leqslant\sigma(\Star{E}, E) $, 则
+	\[
+		\id: (B, \sigma(\Star{E}, E))\to B(\tau_{d})
+	\]
+	是一个连续双射, 双射部分由 (1) 知 $ (B, \sigma(\Star{E},Ｅ)) $ 紧, 则 $ \id $ 是同胚, 故 $ \tau_{d}=\sigma(\Star{E}, E) $.\qed
 	\end{Proof}
 	
 	(一个小练习: 赋范空间中弱收敛的序列一定有界.)
+
+	\textbf{习题 9.4}\ [作业]\ \ 设 $ E $ 是自反空间, 证明: $ E $ 中的每个有界序列 $ (x_{n})_{n\geqslant1} $ 有弱收敛子序列.
+	\begin{Proof}
+		由自反空间的闭子空间仍然自反知 $ F=\baro{\Span(x_{n})_{n\geqslant1}} $ 可分且自反, 即 $ F=F^{**}=(\Star{F})^{*} $, 从而由 9.1 题结论知 $ \Star{F} $ 可分. 再由题 9.2(2) 知 $ F $ 中任意有界子集可度量化, 其度量为 $ d $, 即为 9.2 中的 $ d $. 由 $ B:=(x_{n})_{n\geqslant1}\subset F $ 有界可知 $ \bar{B}^{\sigma((\Star{F})^{*}, \Star{F})} $ 是 $ \sigma((\Star{F})^{*}, \Star{F}) $ --紧的, 于是 $ (\bar{B}^{\Star{w}}, d) $ 是紧度量空间. 从而完备. 所以 $ (x_{n})_{n\geqslant1} $ 有 $ d $--收敛的子序列 $ (x_{n_{k}})_{k\geqslant1} $, 即 $ \Star{w} $--收敛, 其极限 $ x\in\bar{B}^{\Star{w}}\subset\baro{\Span B}^{\Star{w}} $, 又由 Mazur 定理知 $ \baro{\Span B}^{\Star{w}}=\baro{\Span B} $, 故 $ x\in F $.
+
+		现在对 $ \forall f\in\Star{F} $, 都有 $  f(x_{n_{k}})\to f(x) $. 则对 $ \forall \tilde{f}\in\Star{E} $, 记 $ f = \tilde{f}|_{F} $, 有
+		\[
+			\tilde{f}(x_{n_{k}})=f(x_{n_{k}})\to f(x)=\tilde{f}(x),
+		\]
+		故 $ x_{n_{k}}\weakto x $.\qed
+	\end{Proof}
 	
 	\textbf{习题9.6(a)}\ [习题课]\ \ 令$ E $和$ F $是两个Banach空间, 且$ u\in\CB(E,F) $. 证明: $ u $是从$ E $到$ F $的满的等距映射当且仅当$ \Star{u} $是$ \Star{F} $到$ \Star{E} $的满的等距映射.
 	\begin{Proof}
@@ -670,6 +753,159 @@
 	f=f\circ(\id-P)+f\circ P\in R^\bot\oplus N^\bot,
 	\]
 	故$ \Star{X}=R^\bot\oplus N^\bot $.\qed
+	\end{Proof}
+
+	\textbf{习题 9.16}\ [习题课]\ \ 称 Banach 空间 $ E $ 为\textbf{一致凸}\index{Y!一致凸}的, 若对任意 $ \varepsilon>0 $, 存在 $ \delta>0 $, 使得
+	\[
+		\forall x, y\in\bar{B}_{E}\,\left(\norm{x-y}\geqslant\varepsilon\Rightarrow \norm{\frac{x+y}{2}\leqslant 1-\delta}\right).
+	\]
+	设 $ (x_{n})_{n\geqslant1} $ 是一致凸空间 $ E $ 中弱收敛到 $ x $ 的序列, 并有 $ \lim\limits_{n\to\infty}\norm{x_{n}}=\norm{x} $. 证明 $ (x_{n})_{n\geqslant1} $ 依范数收敛到 $ x $. 用例子说明条件 $ \lim\limits_{n\to\infty}\norm{x_{n}}=\norm{x} $ 是必需的.
+	\begin{Proof}
+		设 $ x_{n}\weakto x $ 有界, 因为 $ \frac{x_{n}}{\norm{x_{n}}}\weakto\frac{x}{\norm{x}} $, 不妨设 $ (x_{n})_{\geqslant1}\subset\bar{B}_{E} $.
+		\begin{enumerate}[(1)]
+			\item 若 $ \norm{x}=0 $, 则 $ x_{n}\to x $.
+			\item 若 $ \norm{x}\ne 0 $, 则 $ \exists f\in\Star{E} $, $ f(x)=\norm{x}=1 $, 其中 $ \norm{f}=1 $. 若 $ (x_{n})_{n\geqslant1} $ 是 Cauchy 列, 即 $ \norm{x_{n}, x_{m}}\to 0\ (n, m\to\infty) $, 则
+			\[
+				2\norm{x}\leftarrow f(x_{n})+f(x_{m})=f(x_{n}+x_{m})\leqslant\norm{f}\norm{x_{n}+x_{m}}\leqslant\norm{x_{m}}+x_{n}\to 2\norm{x},
+			\]
+			则 $ \norm{x_{n}+x_{m}}\to 2\norm{x}=2\Longrightarrow \norm{\frac{x_{n}+x_{m}}{2}}\to \norm{x}=1 $.
+
+			若 $ \norm{x_{n}-x_{m}}\not\to 0 $, 则 $ \exists\varepsilon_{0}\,(\norm{x_{n_{k}}-x_{m_{k}}}\geqslant\varepsilon_{0}) $, 故 $ \exists \delta_{0}>0 $ 使得
+			\[
+				\norm{\frac{x_{n_{k}}+x_{m_{k}}}{2}}\leqslant1-\delta<1
+			\]
+			矛盾. 于是 $ x_{n}\to y\Rightarrow x_{n}\weakto y $, 由弱极限唯一性知 $ y=x $.\qed
+		\end{enumerate}
+	\end{Proof}
+	\begin{Proof}[另证]
+		设 $ E $ 一致凸, $ x_{n}\weakto x $, 且 $ \norm{x_{n}}\to\norm{x} $. 不妨设 $ x\ne 0 $. 令 $ y_{n}=x_{n}/\norm{x_{n}}, y=x/\norm{x} $. 则 $ \norm{y_{n}}=\norm{y}=1 $, 则 $ y_{n}\weakto y $, 即
+		\[
+			\forall f\in\Star{E}\,\left( \lrangle{f, \frac{y_{n}+y}{2}}\to \lrangle{f, y} \right).
+		\]
+		由一致有界原理的推论可知
+		\[
+			1=y\leqslant\liminf_{n\to\infty}\norm{\frac{y_{n}+y}{2}}.
+		\]
+		又 $ \norm{\frac{y_{n}+y}{2}}\leqslant1 $, 则 $ \lim\limits_{n\to\infty}\norm{\frac{y_{n}+y}{2}}=1 $. 由一致凸性知 $ \norm{y_{n}-y}\to 0 $, 则
+		\[
+			\begin{aligned}
+				\norm{x_{n}-x} & = \norm{\norm{x_{n}}\frac{x_{n}}{\norm{x_{n}}}-\norm{x}\frac{x}{\norm{x}}}\\
+				& = \norm{\norm{x_{n}}y_{n}-\norm{x}y}\\
+				& \leqslant\norm{\norm{x_{n}}y_{n}-\norm{x_{n}}y}+\norm{\norm{x_{n}}y-\norm{x}y}\to 0\qquad (n\to\infty)
+			\end{aligned}
+		\]
+		则 $ x_{n}\to x $.
+
+		反例: 以 $ \ell_{2} $ 空间为例 (因为 Hilbert 空间是一致凸的), 设 $ (e_{n})_{n\geqslant1} $ 是 $ \ell_{2} $ 的规范正交基. 则 $ e_{n}\weakto 0 $. 但 $ \norm{e_{n}}=1\not\to 0 $.qed
+	\end{Proof}
+
+\section{第 11 章习题}
+	\textbf{习题 11.1}\ [习题课]\ \ 设 $ E $ 是 Banach 空间, $ T\in\CB(E) $. 并设 $ (\lambda_{n})_{n\geqslant1} $ 是 $ \rho(T) $ 中收敛到 $ \lambda\in\K $ 的数列. 证明: 若 $ (R(\lambda_{n}, T)) $ 在 $ \CB(E) $ 中有界, 则 $ \lambda\in\rho(T) $.
+	\begin{Proof}
+		因为 $ (R(\lambda_{n}, T))_{n\geqslant1} $ 在 $ \CB(E) $ 中有界, 则 $ \exists M\geqslant0 $ 使得
+		\[
+			\forall n\geqslant1\,(\norm{R(\lambda_{n}, T)}\leqslant M).
+		\]
+		由预解方程, 有 $ \forall m, n\in\N $
+		\[
+			\begin{aligned}
+				\norm{R(\lambda_{n}, T)-R(\lambda_{m}, T)} & \leqslant \abs{\lambda_{m}-\lambda_{n}}\norm{R(\lambda_{n}, T)}\norm{R(\lambda_{m}, T)}\\
+				& \leqslant\abs{\lambda_{m}-\lambda_{n}}M^{2},
+			\end{aligned}
+		\]
+		因为 $ (\lambda_{n})_{n\geqslant1} $ 收敛, 故 $ (\lambda_{n})_{n\geqslant1} $ 为 Cauchy 列. 令 $ n, m\to\infty $ 后, $ (R(\lambda_{n}, T))_{n\geqslant1} $ 也是 Cauchy 列, 记其极限为 $ S\in\CB(E) $. 再由
+		\[
+			\lim_{n\to\infty}(\lambda_{n}-T)R(\lambda_{n}, T)=(\lambda-T)S
+		\]
+		且 $ \forall n\geqslant1\,((\lambda_{n}-T)R(\lambda_{n}, T))=\id $ 知 $ (\lambda-T)S=\id $. 再由
+		\[
+			\lim_{n\to\infty} R(\lambda_{n}, T)(\lambda_{n}-T)=S(\lambda-T)
+		\]
+		且 $ \forall n\geqslant1\,(R(\lambda_{n}, T)(\lambda_{n}-T)=\id) $ 知 $ S(\lambda-T)=\id $. 从而 $ S=(\lambda-T)^{-1} $ 可逆. 于是 $ \lambda\in\rho(T) $.\qed
+	\end{Proof}
+
+	\textbf{习题 11.3}\ [习题课]\ \ 设 $ 1\leqslant p\leqslant\infty $ 定义 $ \ell_{p} $ 上的算子 $ S $ (前移算子) 为 $ S(x)(n)=x(n+1) $, 这里 $ x=(x(n))_{n\geqslant1}\in\ell_{p} $.
+	\begin{enumerate}[(1)]
+		\item 证明: 当 $ p<\infty $ 时, $ \sigma_{p}(S)=\{ \lambda\in\K:\abs{\lambda}<1 \} $; 当 $ p=\infty $ 时, $ \sigma_{p}(S)=\{ \lambda\in\K:\abs{\lambda}\leqslant1 \} $.
+		\item 由此导出 $ \sigma(S)=\{ \lambda\in\K:\abs{\lambda}\leqslant1 \} $.
+	\end{enumerate}
+	\begin{Proof}
+		(1) 对任意 $ \lambda\in\sigma_{p}(S) $, 由 $ \lambda-S $ 不可逆知存在非零元素 $ x\ne 0 $ 使得
+		\[
+			(\lambda-S)x=0\Longleftrightarrow \lambda x=Sx\Longleftrightarrow \forall n\geqslant1\,(\lambda x_{n}=x_{n+1})
+		\]
+		则取 $ x=(x_{1}, \lambda x_{1}, \lambda^{2}x_{1}, \dots) $, 若要 $ x\in\ell_{p} $, 必须
+		\[
+			\norm{x}_{p}=\Big( x_{1}^{p}\sum_{n\geqslant0}\lambda^{np} \Big)^{1/p}=x_{1}\Big( \sum_{n\geqslant0}\lambda^{pn} \Big)^{1/p}<\infty
+		\]
+		只需: $ \sum\limits_{n\geqslant0}\lambda^{pn}<\infty $ 即可, 从而只需 $ \abs{\lambda}<1 $.
+
+		反之. 取 $ x=(x_{1}, \lambda x_{1}, \lambda^{2}x_{1}, \dots)\ne0 $ 即可.
+
+		若 $ p=\infty $, 类似可得, 只需
+		\[
+			\sup_{n\geqslant1}x_{1}\lambda^{n-1}<\infty,
+		\]
+		则只需 $ \abs{\lambda}\leqslant1 $, 反之, 取 $ x=(x_{1}, \lambda x_{1}, \lambda^{2}x_{1}, \dots)\ne 0 $ 即可.
+
+		(2) 因为 $ r(T)=\sup\limits_{\lambda\in\sigma(T)}\abs{\lambda} $ 知 $ r(S)=1 $, 从而:
+		\[
+			\sigma(S)\subset\{ \lambda\in\K:\abs{\lambda}\leqslant1 \}.
+		\]
+		再由 $ \sigma(S) $ 闭知 $ \baro{\sigma_{p}(S)}\subset\sigma(S) $ 即证.\qed
+	\end{Proof}
+
+	\textbf{习题 11.8}\ [习题课]\ \ 设 $ E $ 和 $ F $ 是赋范空间, 证明下面的命题成立:
+	\begin{enumerate}[(1)]
+		\item 若 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中弱收敛的序列, 则 $ (x_{n})_{n\geqslant1} $ 有界.
+		\item 若 $ T\in\CB(E, F) $ 且 $ x_{n} $ 弱收敛到 $ x $, 则 $ T(x_{n}) $ 弱收敛到 $ T(x) $.
+		\item 若 $ T\in\CB(E, F) $ 是紧算子且 $ x_{n} $ 弱收敛到 $ x $ 时, 有 $ T(x_{n}) $ 依范数收敛到 $ T(x) $, 则 $ T $ 是紧算子. 
+		\item 若 $ E $ 自反, $ T\in\CB(E, \ell_{1}) $ 或 $ T\in\CB(c_{0}, E) $, 则 $ T $ 是紧算子.
+	\end{enumerate}
+	\begin{Proof}
+		(1) 由一致有界原理直接可得.
+
+		(2) 设 $ x_{n} $ 弱收敛到 $ x $, 注意到对任意的 $ f\in\Star{F}, f\circ T\in\Star{E} $, 则
+		\[
+			f(T(x_{n}))\to f(T(x)), n\to\infty.
+		\]
+
+		(3) 先证明任意的贩范空间 $ F $ 中任意范数紧的子集 $ A $ 上范数拓扑等于弱拓扑. 恒等映射 $ \id: (A, \norm{\cdot})\to (A, \sigma(F, \Star{F})) $ 为连续双射, 又 $ (A, \norm{\cdot}) $ 紧, 故 $ \id $ 为同胚映射.
+		
+		由 $ (x_{n})_{n\geqslant1} $ 弱收敛知 $ (x_{n})_{n\geqslant1} $ 有界, 则存在 $ M>0 $ 使得 $ (x_{n})_{n\geqslant 1}\cup\{ x \}\subset MB_{E} $. 因为 $ T $ 为紧算子, 则 $ T(MB_{E})=MT(B_{E}) $ 是范数意义下相对紧的, 因此 $ \baro{T(MB_{E})} $ 上范数拓扑等于弱拓扑, 又因为 $ T(x_{n}) $ 弱收敛到 $ T(x) $, 则 $ T(x_{n}) $ 依范数收敛到 $ T(x) $.
+
+		(4) 只需证明 $ T(B_{E}) $ 相对紧, 则只需证明 $ T(B_{E}) $ 中任意无穷序列都有收敛于 $ F $ 中元素的子列. 设 $ (y_{n})_{n\geqslant1} $ 是 $ T(B_{E}) $ 中的一个无穷序列, 则存在 $ (x_{n})_{n\geqslant \subset B_{E}} $ 使得 $ y_{n}=T(x_{n}), \forall n\geqslant1 $. 由习题 9.4 知 $ (x_{n})_{n\geqslant1} $ 有收敛于某个 $ x\in E $ 的子列 $ (x_{n_{k}})_{k\geqslant1} $, 由题知 $ T(x_{n_{k}}) $ 依范数收敛于 $ T(x) $, 即 $ (y_{n_{k}}) $ 依范数收敛于 $ T(x)\in F $, 故 $ T(B_{E}) $ 相对紧.
+
+		(5) 设 $ E $ 自反, 注意到 $ T $ 为紧算子当且仅当 $ \Star{T} $ 为紧算子, 又因为 $ (c_{0})^{*}=\ell_{1} $, 所以只需证明 $ \forall T\in \CB(E, \ell_{1}) $ 是紧算子. 由 (4) 知只需证明当 $ x_{n} $ 弱收敛到 $ x $ 时有 $ T(x_{n}) $ 依范数收敛到 $ T(x) $. 当 $ x_{n} $ 弱收敛到 $ x $ 时, $ T(x_{n}) $ 弱收敛到 $ T(x) $, 由下面的命题可知 $ T(x_{n}) $ 依范数收敛到 $ T(x) $.\qed
+	\end{Proof}
+	\begin{Proposition}
+		$ \ell_{1} $ 中弱收敛的序列一定依范数收敛. 
+	\end{Proposition}
+	\begin{Proof}
+		设 $ (x_{n})_{n\geqslant1} $ 弱收敛到 0, 用反证法. 假设 $ (x_{n})_[n\geqslant1] $ 不依范数收敛到 0, 则存在 $ \varepsilon_{0}>0 $, 子列 $ (x_{n_{k}}) $ 使得 $ \norm{x_{n_{k}}}\geqslant\varepsilon_{0} $, 记 $ (x_{n_{k}}) $ 为 $ (y_{n})_{n\geqslant1} $. 由 $ (y_{1}^{k})\in\ell_{1} $ 可知存在 $ k_{1} $ 使得
+		\[
+			\sum_{k\geqslant k_{1}+1}\abs{y_{1}^{k}}<1, \qquad \sum_{k\leqslant k_{1}}\abs{y_{1}^{k}}\geqslant\norm{y_{1}}-1,
+		\]
+		由 $ (y_{n})_{n\geqslant1} $ 弱收敛 (则逐点收敛), 对于取定的 $ k_{1} $, 存在 $ n_{2}>1 $ 使得 $ \sum\limits_{k\leqslant k_{1}}\abs{y_{n_{2}}^{k}}<2^{=1} $. 由 $ y_{n_{2}}\in\ell_{2} $ 知存在 $ k_{2}>k_{1} $ 使得
+		\[
+			\sum_{k\geqslant k_{2}+1}\abs{y_{n_{2}}^[k]}<2^{-1}, \qquad \sum_{k = k_{1}+1}^{k_{2}}\abs{y_{n_{2}}^{k}}\geqslant \norm{y_{n_{2}}}-2\cdot2^{-1}, 
+		\]
+		对于取定的 $ k_{2} $, 存在 $ n_{3}>n_{2} $ 使得 $ \sum\limits_{k\leqslant k_{2}}\abs{y_{n_{3}}^{k}}<1/3 $. 以此类推, 对任意的 $ s\geqslant 2 $, 存在严格增加的 $ k_{s} $ 使得
+		\[
+			\sum_{k\leqslant k_{s-1}}\abs{y_{n_{s}}^{k}}< s^{-1},\qquad \sum_{k\geqslant k_{s}+1}\abs{y_{n_{s}}^{k}}< s^{-1}, \qquad \sum_{k = k_{s-1}+1}^{k_{s}} \abs{y_{n_{s}}^{k}}\geqslant \norm{y_{n_{s}}}-2s^{-1},
+		\]
+		令 $ z=(z^{k}) $ 满足
+		\[
+			z^{k}=\begin{cases}
+				\baro{\sgn(y_{1}^{k})} & , k<k_{1};\\
+				\baro{\sgn(y_{s}^{k})} & , k_{s-1}+1\leqslant k\leqslant k_{s}, s\leqslant 2.
+			\end{cases}
+		\]
+		则对任意的 $ s\leqslant1 $ 有
+		\[
+			\abs{\lrangle{z, x_{n_{s}}}}\geqslant \sum_{k=k_{s-1}+1}^{k_{s}}z^{k}y_{n_{s}}^{k}-\Babs{\sum_{k\leqslant k_{s-1}}z^{k}y_{n_{s}}^{k}}-\Babs{\sum_{k\geqslant k_{s}+1}z^{k}y_{n_{s}}^{k}}\geqslant\norm{y_{n+{s}}}-4s^{-1}\geqslant\varepsilon_{0}-4s^{-1},
+		\]
+		当 $ s $ 充分大时, 有 $ \varepsilon_{0}-4s^{-1}>\varepsilon_{0}/2 $, 故 $ (y_{n_{s}})_{s\geqslant1} $ 不是弱收敛的, 矛盾.\qed
 	\end{Proof}
 
 \section{Problem Set系列}
@@ -856,7 +1092,7 @@
 	\begin{ExtraExample}
 		判断 $ (\R^{2}, \norm{\cdot}_{p}), 1\leqslant p\leqslant\infty $ 的严格凸性.
 	\end{ExtraExample}
-	\begin{minipage}{.6\textwidth}
+	\noindent\begin{minipage}{.6\textwidth}
 		\begin{Proof}
 		$ 1<p<\infty $ 时 $ (\R^{2}, \norm{\cdot}_{p}) $ 严格凸. 此因其上的单位球面
 		\[
@@ -871,7 +1107,7 @@
 		\]
 		不是严格凸的.\qed
 		\end{Proof}
-	\end{minipage}\quad
+	\end{minipage}\qquad
 	\begin{minipage}{.3\textwidth}
 		\begin{center}
 			\begin{tikzpicture}
@@ -893,5 +1129,3 @@
 			\end{tikzpicture}
 		\end{center}
 	\end{minipage}\\
-	
-\section{第17周习题课(2019年12月23日)}
