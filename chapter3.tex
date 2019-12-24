@@ -1357,8 +1357,33 @@
 				\end{enumerate}
 			\end{enumerate}
 		\item (8.21) 设$ e_n(t)=\exp(\imag nt) $, 其中$ t\in[0,2\pi] $.
-			\begin{enumerate}[(1)]
+		\begin{enumerate}[(1)]
 			\item 证明: 对每个$ 1\leqslant p<\infty $, $ (e_n)_{n\geqslant 1} $在$ L_p(0,2\pi) $中弱收敛到0但不依范数收敛到0.
 			\item 设$ f_n=\frac{1}{n}\sum\limits_{k=1}^{n^2}e_k $. 证明: $ (f_n)_{n\geqslant 1} $在$ L_2(0,2\pi) $中弱收敛到0但不依范数收敛到0.
-			\end{enumerate}
+		\end{enumerate}
+		\item (9.1) 设 $ E $ 是赋范空间, 并设 $ \Star{E} $ 是可分的.
+		\begin{enumerate}[(1)]
+			\item 令 $ (f_{n})_{n\geqslant1} $ 是 $ \Star{E} $ 中的稠密子集. 选出 $ E $ 中的序列 $ (x_{n})_{n\geqslant1} $ 使得 $ f_{n}(x_{n})\geqslant \norm{f_{n}}/2 $.
+			\item 任取 $ f\in\Star{E} $. 证明: 若对每个 $ x_{n} $ 有 $ f(x_{n})=0 $, 则 $ f=0 $. 
+			\item 由此导出 $ \Span(x_{1}, x_{2}, \dots) $ 在 $ E $ 中稠密且 $ E $ 是可分的.
+			\item 证明: 一个 Banach 空间是可分且自反的当且仅当它的对偶空间是可分且自反的.
+			\item 举一个可分赋范空间但其对偶空间不可分的例子. 
+		\end{enumerate}
+		\item (9.2) 设$ E $是Banach空间, $ B\subset\Star{E} $
+		\begin{enumerate}[(1)]
+			\item 证明: $ B $是相对$ \Star{w} $--紧的当且仅当$ B $是有界的.
+			\item 假设 $ B $ 是有界的且 $ E $ 是可分的. 证明: $ (B, \sigma(\Star{E}, E)) $ 可度量化.
+		\end{enumerate}
+		\item (9.4) 设 $ E $ 是自反空间, 证明: $ E $ 中的每个有界序列 $ (x_{n})_{n\geqslant1} $ 有弱收敛子序列.
+		\item (9.6a) 令$ E $和$ F $是两个Banach空间, 且$ u\in\CB(E,F) $. 证明: $ u $是从$ E $到$ F $的满的等距映射当且仅当$ \Star{u} $是$ \Star{F} $到$ \Star{E} $的满的等距映射.
+		\item (9.8) 设$ P $是Banach空间$ X $上的线性映射并满足$ P\circ P=P $, 记$ R=P(X) $且$ N=\ker P $.
+		\begin{enumerate}[(1)]
+			\item 证明: $ X=R\oplus N $, 再证明$ P $连续的充分必要条件是$ R $和$ N $都是闭集.
+			\item 假设$ P $是连续的, 证明: $ R^\bot $和$ N^\bot $在$ \Star{X} $中互补, 且有$ \Star{X}=R^\bot\oplus N^\bot $.
+		\end{enumerate}
+		\item (9.16) 称 Banach 空间 $ E $ 为\textbf{一致凸}\index{Y!一致凸}的, 若对任意 $ \varepsilon>0 $, 存在 $ \delta>0 $, 使得
+		\[
+			\forall x, y\in\bar{B}_{E}\,\left(\norm{x-y}\geqslant\varepsilon\Rightarrow \norm{\frac{x+y}{2}\leqslant 1-\delta}\right).
+		\]
+		设 $ (x_{n})_{n\geqslant1} $ 是一致凸空间 $ E $ 中弱收敛到 $ x $ 的序列, 并有 $ \lim\limits_{n\to\infty}\norm{x_{n}}=\norm{x} $. 证明 $ (x_{n})_{n\geqslant1} $ 依范数收敛到 $ x $. 用例子说明条件 $ \lim\limits_{n\to\infty}\norm{x_{n}}=\norm{x} $ 是必需的.
 	\end{enumerate}
