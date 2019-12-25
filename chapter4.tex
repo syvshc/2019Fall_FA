@@ -415,7 +415,7 @@
 		上一定理说明了紧算子具有某种意义上的有限性, 且其限制到闭集上几乎就是可逆的(模掉零空间后可逆).
 	\end{Remark}
 
-	\begin{Theorem}
+	\begin{Theorem}\label{thm:紧算子的点谱集性质}
 		设 $ T\in\CB(E), \lambda\in\K $, 有
 		\begin{enumerate}[(1)]
 			\item 任取 $ \lambda\in\sigma(T)\sm \{ 0 \} $, 必有 $ \lambda\in\sigma_{p}(T) $, 其中 $ \sigma_{p}(T) $ 是 $ T $ 的所有特征值的集合, 称为 $ T $ 的\textbf{点谱集}.
@@ -466,4 +466,209 @@
 			\norm{Ty_{m}-Ty_{n}}\geqslant\abs{\lambda_{m+1}}\cdot\frac{1}{2}\geqslant\frac{\eta}{2}
 		\]
 		矛盾.\qed
+	\end{Proof}
+	
+\section{Hilbert空间上的自伴紧算子}
+
+	\subsection{自伴算子与正算子}
+	
+	\begin{Definition}[自伴算子, 正算子]\index{Z!自伴算子}\index{Z!正算子}
+	若$ T\in\CB(H) $且$ \Star{T}=T $, 则称$ T $是\textbf{自伴算子}. 若$ T $是自伴的且
+	\[
+	\forall x\in H\,(\lrangle{Tx,x}\geqslant 0)
+	\]
+	则称$ T $是\textbf{正算子}.
+	\end{Definition}
+	
+	\begin{Example}
+	考虑最简单的两种算子: 即$ n $阶复矩阵和乘法算子:
+	\begin{enumerate}[(1)]
+	\item 设$ A\in\mathbb{M}_n(\C) $, 则$ A $是自伴的当且仅当$ A $是Hermite的, 也即$ A^\dagger=A $; $ A $是正的当且仅当$ A $是半正定的.
+	\item 设$ f\in C[0,1] $, $ M_f\in\CB(L_2(0,1)) $, 那么$ M_f $是自伴的当且仅当$ \bar{f}=f $; $ M_f $是正的当且晋档$ f\geqslant 0 $.
+	\end{enumerate}
+	\end{Example}
+	
+	\begin{Remark}
+	(1) 若$ T $是自伴的, 则由
+	\[
+	\baro{\lrangle{Tx,x}}=\lrangle{x,Tx}=\lrangle{\Star{T}x,x}=\lrangle{Tx,x}
+	\]
+	可知$ \lrangle{Tx,x}\in\R $, 但反之未必成立.
+	
+	(2) 若$ T $是正算子, 则映射$ \lrangle{x,y}\mapsto\lrangle{Tx,y} $具有除正定性以外的所有内积的性质, 故有Cauchy-Schwarz不等式成立:
+	\[
+	\abs{\lrangle{Tx,y}}^2\leqslant\lrangle{Tx,x}\lrangle{Ty,y},\qquad\forall x,y\in H
+	\]
+	从而
+	\[
+	\norm{T}=\sup_{\norm{x}=1}\norm{Tx}=\sup_{\norm{x}=\norm{y}=1}\abs{\lrangle{Tx,x}}^{1/2}\abs{\lrangle{Ty,y}}^{1/2}=\sup_{\norm{x}=1}\abs{\lrangle{Tx,x}},
+	\]
+	故$ T $是正算子时, 有$ \norm{T}=\sup\limits_{\norm{x}=1}\abs{\lrangle{Tx,x}} $.
+	\end{Remark}
+	
+	\begin{Theorem}\label{thm:自伴算子的谱性质}
+	设$ T $是$ H $上的自伴算子, 则:
+	\begin{enumerate}[(1)]
+	\item $ r(T)=\norm{T}=\sup\limits_{\norm{x}=1}\abs{\lrangle{Tx,x}} $;
+	\item 令$ m=\inf\limits_{\norm{x}=1}\lrangle{Tx,x} $, $ M=\sup\limits_{\norm{x}=1}\lrangle{Tx,x} $, 那么$ \sigma(T)\subset[m,M] $, 且$ m\in\sigma(T) $, $ M\in\sigma(T) $, 并且有
+	\[
+	r(T)=\norm{T}=\max\{\abs{m},\abs{M}\}=\max_{\lambda\in\sigma_p(T)}\abs{\lambda}.
+	\]
+	\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+	(1) 先证$ r(T)=\norm{T} $. 由$ T $自伴可知$ \Star{T}=T $, 即$ \forall x\in H,\norm{x}=1 $都有
+	\[
+	\norm{Tx}^2=\lrangle{Tx,Tx}=\lrangle{x,\Star{T}Tx}\leqslant\norm{T^2}\norm{x}^2,
+	\]
+	故$ \norm{T^2}\leqslant\norm{T}^2\leqslant\norm{T^2} $, 也即$ \norm{T^2}=\norm{T}^2 $成立. 重复以上过程, 有$ \norm{T}^{2^n}=\tnorm{T^{2^n}} $, 故
+	\[
+	r(T)=\lim_{n\to\infty}\norm{T^n}^{1/n}=\lim_{n\to \infty}\tnorm{T^{2^n}}^{2^{-n}}=\norm{T}.
+	\]
+	
+	下面说明$ \sup\limits_{\norm{x}=1}\abs{\lrangle{Tx,x}}=\norm{T} $, 记左侧为$ \alpha $, 则$ \alpha\leqslant\norm{T} $是显然的. 往证反向不等式成立, 则$ \forall x\in H $, 有
+	\[
+	\abs{\lrangle{Tx,x}}=\norm{x}^2\abs{\lrangle{T\sgn x,\sgn x}}\leqslant\alpha\norm{x}^2,
+	\]
+	在上式中将$ x $替换为$ x+\lambda y $和$ x-\lambda y $, 有
+	\[
+	\begin{aligned}
+	\abs{\lrangle{T(x+\lambda y),x+\lambda y}}&\leqslant\alpha\norm{x+\lambda y}^2\\
+	\abs{\lrangle{T(x-\lambda y),x-\lambda y}}&\leqslant\alpha\norm{x-\lambda y}^2
+	\end{aligned}
+	\]
+	由平行四边形法则
+	\[
+	\abs{\lrangle{T(x+\lambda y),x+\lambda y}-\lrangle{T(x-\lambda y),x-\lambda y}}=4\abs{\Re\bar{\lambda}\lrangle{Tx,y}}
+	\]
+	另一方面
+	\[
+	\begin{aligned}
+	\abs{\lrangle{T(x+\lambda y),x+\lambda y}-\lrangle{T(x-\lambda y),x-\lambda y}}&\leqslant\alpha(\norm{x+\lambda y}^2+\norm{x-\lambda y}^2)\\
+	&=2\alpha(\norm{x}^2+\abs{\lambda}^2\norm{y}^2)
+	\end{aligned}
+	\]
+	故
+	\[
+	2\abs{\Re\bar{\lambda}\lrangle{Tx,y}}\leqslant\alpha(\norm{x}^2+\abs{\lambda}^2\norm{y}^2).
+	\]
+	再由$ \lambda $的任意性, 取$ \lambda=\sgn\baro{\lrangle{Tx,y}} $, 有
+	\[
+	\abs{\lrangle{Tx,y}}\leqslant\frac{\alpha}{2}(\norm{x}^2+\norm{y}^2)
+	\]
+	再令$ y=x $, 就有$ \abs{\lrangle{Tx,x}}\leqslant\alpha $, 故$ \abs{\lrangle{Tx,x}}=\alpha $.
+	
+	(2) 设$ \lambda\in\K $, 且$ \lambda\notin[m,M] $, 记$ d(\lambda)=d(\lambda,[m,M])>0 $. 对$ \norm{x}=1 $, 有
+	\[
+	\abs{\lrangle{(\lambda-T)x,x}}=\abs{\lambda-\lrangle{Tx,x}}\geqslant d(\lambda)>0,
+	\]
+	故
+	\[
+	d(\lambda)\norm{x}^2\leqslant\abs{\lrangle{(\lambda-T)x,x}}\leqslant\norm{(\lambda-T)x}\norm{x},
+	\]
+	即$ d(\lambda)\norm{x}\leqslant\norm{(\lambda-T)x} $, 令$ (\lambda-T)x=0 $知$ x=0 $, 再取$ ((\lambda-T)x_n)_{n\geqslant 1} $是Cauchy列, 可知$ (x_n)_{n\geqslant 1} $也是Cauchy列, 从而$ (\lambda-T)(H) $是闭的. 故由
+	\[
+	(\lambda-T)(H)=\baro{(\lambda-T)(H)}=\ker (\bar{\lambda}-\Star{T})^\bot
+	\]
+	与$ \bar{\lambda}-\Star{T}=\bar{\lambda}-T $可知$ \lambda\notin[m,M]\Rightarrow\bar{\lambda}\notin[m,M] $, 也可验证$ \bar{\lambda}-T $是单射, 故$ \ker(\bar{\lambda}-T)=\{0\} $, 于是$ (\lambda-T)(H) $在$ H $中稠密, 即$ (\lambda-T)(H)=H $, 故$ \lambda\in\rho(T) $. 这说明$ \sigma(T)\subset[m,M] $.
+	
+	再证明$ m\in\sigma(T) $, 由$ m $的定义可知存在$ (x_n)_{n\geqslant}\subset H $且$ \norm{x_n}=1 $使得$ m=\lim\limits_{n\to\infty}\lrangle{Tx_n,x_n} $, 则有
+	\[
+	\lim_{n\to \infty}\lrangle{(T-m)x_n,x_n}=\lim_{n\to\infty}\lrangle{Tx_n,x_n}-m=0,
+	\]
+	由$ m $的定义可知$ T-m $是正的, 由Cauchy-Schwarz不等式可知
+	\[
+	\abs{\lrangle{(T-m)x_n,y}}\leqslant\lrangle{(T-m)x_n,x_n}^{1/2}\lrangle{(T-m)y,y}^{1/2}\leqslant\lrangle{(T-m)x_n,x_n}^{1/2}\norm{T-m}^{1/2}\norm{y},
+	\]
+	令$ y=(T-m)x_n $, 则有
+	\[
+	\norm{(T-m)x_n}^2\leqslant\lrangle{(T-m)x_n,x_n}^{1/2}\norm{T-m}^{1/2}\norm{(T-m)x_n}
+	\]
+	即
+	\[
+	\norm{(T-m)x_n}\leqslant\lrangle{(T-m)x_n,x_n}^{1/2}\norm{T-m}^{1/2}\to 0,
+	\]
+	于是$ (T-m)x_n\to 0 $, 这说明$ T-m $不可逆, 于是$ m\in\sigma(T) $. 类似可证$ M-T $是正算子, 不可逆, 从而$ M\in\sigma(T) $. 由谱半径定理可知$ r(T)=\max\{ \abs{m},\abs{M} \} $.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ T $是自伴算子, 则$ T $是正算子当且仅当$ \sigma(T)\subset[0,\infty) $, 且若$ T $是正算子, 则$ \norm{T}\in\sigma(T) $.
+	\end{Corollary}
+	\begin{Proof}
+	若$ T $是正算子, 由$ \forall x\in H\,(\lrangle{Tx,x}\geqslant 0) $可知$ m\geqslant 0,\ M\geqslant 0 $, 从而
+	\[
+	\sigma(T)\subset[m,M]\subset[0,\infty).
+	\]
+	反之, 若$ \sigma(T)\subset[0,\infty) $, 那么$ m\geqslant 0,\ M\geqslant 0 $, 故
+	\[
+	\forall x\in H(\lrangle{Tx,x}\geqslant 0)
+	\]
+	即$ T $是正的.
+	
+	若$ T $是正算子, 由$ M=r(T)=\norm{T} $可知$ M\in\sigma(T) $.\qed
+	\end{Proof}
+	
+	\begin{Corollary}
+	设$ T $是$ H $上的自伴紧算子, 则存在$ T $的特征值$ \lambda $使得$ \abs{\lambda}=\norm{T} $.
+	\end{Corollary}
+	\begin{Proof}
+	由定理~\ref{thm:自伴算子的谱性质}~的(2)可知$ \norm{T}=\max\limits_{\lambda\in\sigma(T)}\abs{\lambda} $, 再由定理~\ref{thm:紧算子的点谱集性质}~可知$ \forall\lambda\in\sigma(T)\sm\{0\} $, 都有$ \lambda\in\sigma_p(T) $, 故命题得证.\qed
+	\end{Proof}
+	
+	\subsection{自伴紧算子的谱分解}
+	
+	\begin{Definition}[Hilbert空间的直和]\index{Z!直和}
+	设$ \{H_i\}_{i\in\alpha} $是一组Hilbert空间, 令$ \bigoplus\limits_{i\in\alpha}H_i $是$ \prod\limits_{i\in\alpha}H_i $的子集, 其中$ (x_i)_{i\in\alpha}\in\bigoplus\limits_{i\in\alpha}H_i $使得$ \sum\limits_{i\in\alpha}\norm{x_i}^2<\infty $, 即
+	\[
+	\bigoplus_{i\in\alpha}H_i=\left\{ (x_i)_{i\in\alpha} : \sum_{i\in\alpha}\norm{x_i}^2<\infty \right\}
+	\]
+	定义其上的加法和数乘
+	\[
+	(x_i)_{i\in\alpha}+(y_i)_{i\in\alpha}:=(x_i+y_i)_{i\in\alpha},\qquad\lambda(x_i)_{i\in\alpha}:=(\lambda x_i)_{i\in\alpha},
+	\]
+	并赋予范数
+	\[
+	\norm{(x_i)_{i\in\alpha}}=\Big( \sum_{i\in\alpha}\norm{x_i}^2 \Big)^{1/2},
+	\]
+	它可以被以下的内积诱导
+	\[
+	\lrangle{(x_i)_{i\in\alpha},(y_i)_{i\in\alpha}}=\sum_{i\in\alpha}\lrangle{x_i,y_i},
+	\]
+	则由各$ H_i $是Hilbert空间可知$ \bigoplus\limits_{i\in\alpha}H_i $也是Hilbert空间, 并称其为$ \{ H_i \}_{i\in\alpha} $的\textbf{直和}.
+	\end{Definition}
+	
+	\begin{Theorem}[自伴紧算子的谱分解]\label{thm:自伴紧算子的谱分解}
+	设$ T $是$ H $上的自伴紧算子, $ V_\lambda $表示对应于$ \lambda $的特征子空间, 则
+	\begin{enumerate}[(1)]
+	\item $ H=\bigoplus\limits_{\lambda\in\sigma_p(T)}V_\lambda $, 即$ H $有由$ T $的特征向量构成的正交基.
+	\item 空间$ \baro{T(H)} $有一个由特征向量$ (e_n)_{n\geqslant 1} $构成的正交基, 此处$ (e_n)_{n\geqslant 1} $是分别对应于特征值$ (\lambda_n)_{n\geqslant 1} $的特征向量(这里序列$ (\lambda_n)_{n\geqslant 1} $也可以是有限的)使得
+	\[
+	\forall x\in H\,\Big(Tx=\sum_{n\geqslant 1}\lambda_n\lrangle{x,e_n}e_n\Big)
+	\]
+	在范数意义下收敛, 且若$ (\lambda_n)_{n\geqslant 1} $无限, 则成立$ \lim\limits_{n\to\infty}\lambda_n=0 $.
+	\end{enumerate}
+	\end{Theorem}
+	\begin{Proof}
+	(1) 由$ T $是紧算子可知$ \sigma(T) $之多可数, 记作
+	\[
+	\sigma(T)=\{ \seq{\lambda},\dots \}
+	\]
+	且不妨$ \abs{\lambda_1}\geqslant\abs{\lambda_2}\geqslant\cdots\geqslant\abs{\lambda_n}\geqslant\cdots $, 其中序列中的特征值可以重复, 重复次数即为其代数重数. 设$ \lambda $和$ \mu $是$ T $的不同特征值, 则存在非零的$ x,y $使得$ Tx=\lambda x $且$ Ty=\mu y $. 不妨设$ \lambda\ne 0 $, 则
+	\[
+	\lambda\lrangle{x,y}=\lrangle{Tx,y}=\lrangle{x,Ty}=\mu\lrangle{x,y}
+	\]
+	可知$ (\lambda-\mu)\lrangle{x,y}=0 $, 由$ \lambda=\mu\ne0 $可知只能$ \lrangle{x,y}=0 $, 故$ \bigoplus\limits_{\lambda\in\sigma_p(T)}V_\lambda\subset H $.
+	
+	再令$ \tilde{V}=\Big(\bigoplus\limits_{\lambda\in\sigma_p(T)}V_\lambda\Big)^\bot $, 则需证明$ \forall z\in\tilde{V} $都有$ Tz\in\tilde{V} $. 若$ \lambda\ne 0 $, 则有
+	\[
+	\forall y\in V_\lambda\,(\lambda\lrangle{z,y}=0)\Rightarrow\lrangle{z,Ty}=0\Rightarrow\lrangle{Tz,y}=0\Rightarrow T_z\bot V_\lambda.
+	\]
+	若$ \lambda=0 $, 则
+	\[
+	\forall y\in V_0\,(\lrangle{Tz,y}=\lrangle{z,Ty}=0)\Rightarrow Tz\bot V_0,
+	\]
+	从而$ Tz\in\tilde{V} $. 故$ T|_{\tilde V} $有意义且为紧算子, 从而$ \sigma(T|_{\tilde V}) $非空, 若有$ \lambda\in\sigma(T|_{\tilde V}) $非零, 则存在非零向量$ x\in\tilde{V} $使得$ Tx=\lambda x $, 故$ \lambda\in\sigma_p(T) $, 这与$ \tilde{V} $的定义矛盾. 故只能$ \lambda=0 $, 即$ \sigma(T|_{\tilde{V}})=\{0\} $, 从而$ T|_{\tilde V}=0 $, 即$ \tilde{V}=\{0\} $, 也即
+	\[
+	\bigoplus_{\lambda\in\sigma_p(T)}V_\lambda=H.
+	\]
 	\end{Proof}
