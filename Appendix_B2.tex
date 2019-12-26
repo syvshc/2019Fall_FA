@@ -796,11 +796,11 @@
 		\]
 		则 $ x_{n}\to x $.
 
-		反例: 以 $ \ell_{2} $ 空间为例 (因为 Hilbert 空间是一致凸的), 设 $ (e_{n})_{n\geqslant1} $ 是 $ \ell_{2} $ 的规范正交基. 则 $ e_{n}\weakto 0 $. 但 $ \norm{e_{n}}=1\not\to 0 $.qed
+		反例: 以 $ \ell_{2} $ 空间为例 (因为 Hilbert 空间是一致凸的), 设 $ (e_{n})_{n\geqslant1} $ 是 $ \ell_{2} $ 的规范正交基. 则 $ e_{n}\weakto 0 $. 但 $ \norm{e_{n}}=1\not\to 0 $.\qed
 	\end{Proof}
 
 \section{第 11 章习题}
-	\textbf{习题 11.1}\ [习题课]\ \ 设 $ E $ 是 Banach 空间, $ T\in\CB(E) $. 并设 $ (\lambda_{n})_{n\geqslant1} $ 是 $ \rho(T) $ 中收敛到 $ \lambda\in\K $ 的数列. 证明: 若 $ (R(\lambda_{n}, T)) $ 在 $ \CB(E) $ 中有界, 则 $ \lambda\in\rho(T) $.
+	\textbf{习题 11.1}\ [作业]\ \ 设 $ E $ 是 Banach 空间, $ T\in\CB(E) $. 并设 $ (\lambda_{n})_{n\geqslant1} $ 是 $ \rho(T) $ 中收敛到 $ \lambda\in\K $ 的数列. 证明: 若 $ (R(\lambda_{n}, T)) $ 在 $ \CB(E) $ 中有界, 则 $ \lambda\in\rho(T) $.
 	\begin{Proof}
 		因为 $ (R(\lambda_{n}, T))_{n\geqslant1} $ 在 $ \CB(E) $ 中有界, 则 $ \exists M\geqslant0 $ 使得
 		\[
@@ -824,7 +824,7 @@
 		且 $ \forall n\geqslant1\,(R(\lambda_{n}, T)(\lambda_{n}-T)=\id) $ 知 $ S(\lambda-T)=\id $. 从而 $ S=(\lambda-T)^{-1} $ 可逆. 于是 $ \lambda\in\rho(T) $.\qed
 	\end{Proof}
 
-	\textbf{习题 11.3}\ [习题课]\ \ 设 $ 1\leqslant p\leqslant\infty $ 定义 $ \ell_{p} $ 上的算子 $ S $ (前移算子) 为 $ S(x)(n)=x(n+1) $, 这里 $ x=(x(n))_{n\geqslant1}\in\ell_{p} $.
+	\textbf{习题 11.3}\ [作业]\ \ 设 $ 1\leqslant p\leqslant\infty $ 定义 $ \ell_{p} $ 上的算子 $ S $ (前移算子) 为 $ S(x)(n)=x(n+1) $, 这里 $ x=(x(n))_{n\geqslant1}\in\ell_{p} $.
 	\begin{enumerate}[(1)]
 		\item 证明: 当 $ p<\infty $ 时, $ \sigma_{p}(S)=\{ \lambda\in\K:\abs{\lambda}<1 \} $; 当 $ p=\infty $ 时, $ \sigma_{p}(S)=\{ \lambda\in\K:\abs{\lambda}\leqslant1 \} $.
 		\item 由此导出 $ \sigma(S)=\{ \lambda\in\K:\abs{\lambda}\leqslant1 \} $.
@@ -838,9 +838,7 @@
 		\[
 			\norm{x}_{p}=\Big( x_{1}^{p}\sum_{n\geqslant0}\lambda^{np} \Big)^{1/p}=x_{1}\Big( \sum_{n\geqslant0}\lambda^{pn} \Big)^{1/p}<\infty
 		\]
-		只需: $ \sum\limits_{n\geqslant0}\lambda^{pn}<\infty $ 即可, 从而只需 $ \abs{\lambda}<1 $.
-
-		反之. 取 $ x=(x_{1}, \lambda x_{1}, \lambda^{2}x_{1}, \dots)\ne0 $ 即可.
+		只需: $ \sum\limits_{n\geqslant0}\lambda^{pn}<\infty $ 即可, 从而只需 $ \abs{\lambda}<1 $. 反之. 取 $ x=(x_{1}, \lambda x_{1}, \lambda^{2}x_{1}, \dots)\ne0 $ 即可.
 
 		若 $ p=\infty $, 类似可得, 只需
 		\[
@@ -859,7 +857,8 @@
 	\begin{enumerate}[(1)]
 		\item 若 $ (x_{n})_{n\geqslant1} $ 是 $ E $ 中弱收敛的序列, 则 $ (x_{n})_{n\geqslant1} $ 有界.
 		\item 若 $ T\in\CB(E, F) $ 且 $ x_{n} $ 弱收敛到 $ x $, 则 $ T(x_{n}) $ 弱收敛到 $ T(x) $.
-		\item 若 $ T\in\CB(E, F) $ 是紧算子且 $ x_{n} $ 弱收敛到 $ x $ 时, 有 $ T(x_{n}) $ 依范数收敛到 $ T(x) $, 则 $ T $ 是紧算子. 
+		\item 若 $ T\in\CB(E, F) $ 是紧算子且 $ x_{n} $ 弱收敛到 $ x $, 则 $ T(x_{n}) $ 依范数收敛到 $ T(x) $.
+		\item 若$ E $自反, $ T\in\CB(E,F) $且当$ x_n $弱收敛到$ x $时, 有$ T(x_n) $依范数收敛到$ T(x) $, 则$ T $是紧算子. 
 		\item 若 $ E $ 自反, $ T\in\CB(E, \ell_{1}) $ 或 $ T\in\CB(c_{0}, E) $, 则 $ T $ 是紧算子.
 	\end{enumerate}
 	\begin{Proof}
