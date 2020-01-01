@@ -421,7 +421,7 @@
 	\[
 		\begin{aligned}
 		\norm{x+y}^2=\lrangle{x+y,x+y}&=\lrangle{x,x}+\lrangle{x,y}+\baro{\lrangle{x,y}}+\lrangle{y,y}\\
-		&\leqslant\norm{x}^2+2\Re\lrangle{x,y}+\norm{y}^2\leqslant\norm{x}^2+2\norm{x}\norm y+\norm y^2=(\norm x+\norm y)^2.
+		&=\norm{x}^2+2\Re\lrangle{x,y}+\norm{y}^2\leqslant\norm{x}^2+2\norm{x}\norm y+\norm y^2=(\norm x+\norm y)^2.
 		\end{aligned}
 	\]
 	从而$ \norm{x+y}\leqslant\norm x+\norm y $.\qed
@@ -589,7 +589,7 @@
 		\]
 		其中第一个不等号是因为
 		\[
-			\norm{2x-(y_{m}+y_{n})}^{2}=4\norm{x-\frac{y_{m}+y_{n}}{2}}^{2}\leqslant4d^{2}
+			\norm{2x-(y_{m}+y_{n})}^{2}=4\norm{x-\frac{y_{m}+y_{n}}{2}}^{2}\geqslant4d^{2}
 		\]
 		从而 $ (y_{n})_{n\geqslant1} $ 是 Cauchy列, 则 $ \exists y\in H $ 使得 $ \lim\limits_{n\to\infty}y_{n}=y $, 因为 $ C $ 是闭集, 则 $ y\in C $ 且 $ \norm{x-y}=d $.
 
@@ -793,7 +793,7 @@
 		\]
 		即 $ y=e/\norm{e}^{2} $. 若存在 $ y' $, 使得 $ \varphi(x)=\lrangle{x, y'}=\lrangle{x, y} $, 则 $ \lrangle{x, y-y'}=0 $, 即 $ y=y' $. 故唯一性得证. 且
 		\[
-			\norm{\varphi}=\sup_{\norm{x}=1}=\sup_{\norm{x}=1}\lrangle{x, y}\leqslant\norm{y},
+			\norm{\varphi}=\sup_{\norm{x}=1}\norm{\varphi(x)}=\sup_{\norm{x}=1}\lrangle{x, y}\leqslant\norm{y},
 		\]
 		取 $ x=y/\norm{y} $ 后, 由 $ \varphi(x)=\norm{y} $ 知 $ \norm{\varphi}=\norm{y} $.
 
@@ -855,7 +855,7 @@
 	
 	\begin{Remark}~
 		\begin{enumerate}[(1)]
-			\item 特别地, $ A\in\mathbb{M}_{n}(\C) $ 时, $ \Star{A}=A^{H} $;
+			\item 特别地, $ A\in\mathbb{M}_{n}(\C) $ 时, $ \Star{A}=A^{\dagger} $;
 			\item $ u\in\CB(H, K) $, 有 $ \Star{(\Star{u})}=u $;
 			\item 映射 $ u\mapsto \Star{u} $ 是共轭线性的等距双射;
 			\item 设 $ H, K, J $ 都是Hilbert空间, $ u\in\CB(H, K), v\in\CB(K, J) $, 则有 $ \Star{(vu)}=\Star{u}\Star{v} $, 而若 $ u\in\CB(H) $, $ u $ 可逆, 有
@@ -1349,11 +1349,11 @@
 	\begin{Proof}
 		任取 $ \varOmega $ 是 $ E $ 的开子集, 只需证 $ \varOmega\cap O\ne\varnothing $.
 
-		因为 $ O_{1} $ 是　$ E $ 中稠密子集, 则存在 $ \baro{B(x_{1}, r_{1})}\subset \varOmega\cap O_{1} $, 不妨设 $ r_{1}<1 $, 再由 $ O_{2} $ 是稠密子集, 则存在 $ \baro{B(x_{2}, r_{2})}\subset B(x_{1}, r_{1})\cap O_{2} $, 不妨设 $ r_{2}<1/2 $, 依此进行下去, 得一闭球套 $ (\baro{B(x_{n}, r_{n})})_{n\geqslant1} $ 满足:
+		因为 $ O_{1} $ 是 $ E $ 中稠密子集, 则存在 $ \baro{B(x_{1}, r_{1})}\subset \varOmega\cap O_{1} $, 不妨设 $ r_{1}<1 $, 再由 $ O_{2} $ 是稠密子集, 则存在 $ \baro{B(x_{2}, r_{2})}\subset B(x_{1}, r_{1})\cap O_{2} $, 不妨设 $ r_{2}<1/2 $, 依此进行下去, 得一闭球套 $ (\baro{B(x_{n}, r_{n})})_{n\geqslant1} $ 满足:
 		\[
 			\baro{B(x_{n}, r_{n})}\supset \baro{B(x_{n+1}, r_{n+1})}
 		\]
-		且 $ \lim\limits_{n\to\infty}r_{n}=0 $, 由闭集套定理知存在 $ x\in E $ 使 $ x\in\bigcap_{n\geqslant1}\baro{B(x_{n}, r_{n})}\subset\bigcap_{n\geqslant1}O_{n}=0 $, 且 $ x\in\varOmega\cap O_{1} $, 故 $ x\in\varOmega\cap O\ne\varnothing $.\qed
+		且 $ \lim\limits_{n\to\infty}r_{n}=0 $, 由闭集套定理知存在 $ x\in E $ 使 $ x\in\bigcap_{n\geqslant1}\baro{B(x_{n}, r_{n})}\subset\bigcap_{n\geqslant1}O_{n}=O $, 且 $ x\in\varOmega\cap O_{1} $, 故 $ x\in\varOmega\cap O\ne\varnothing $.\qed
 	\end{Proof}
 
 	\begin{Definition}[Baire空间]\index{B!Baire空间}\label{def:Baire空间}
@@ -1376,7 +1376,7 @@
 		\]
 		故只能 $ \bigcap_{n\geqslant1}O_{n} $ 在 $ \varOmega $ 上稠密, 即 $ \varOmega $ 是 Baire空间.
 
-		(2) 取 $ \varOmega $ 是 $ E $ 中开集, 往证 $ \varOmega\cap\bigcup_{n\geqslant1}\mathring F_{n}=\varnothing $ 成立, 即证 $ \bigcup_{n\geqslant1}(\varOmega\cap F_{n})\degree=\varnothing $, 即证存在  $ n $ 使得 $ \varOmega\cap\mathring{F}_{n}\ne0 $.
+		(2) 取 $ \varOmega $ 是 $ E $ 中开集, 往证 $ \varOmega\cap\bigcup_{n\geqslant1}\mathring F_{n}\ne\varnothing $ 成立, 即证 $ \bigcup_{n\geqslant1}(\varOmega\cap F_{n})\degree\ne\varnothing $, 即证存在  $ n $ 使得 $ \varOmega\cap\mathring{F}_{n}\ne\varnothing $.
 
 		用反证法. 若对任意 $ n $ 都有 $ \varOmega\cap\mathring{F}_{n}=\varnothing $ 成立, 即 $ \varOmega $ 不含 $ F_{n} $ 的任何内点, 即 $ (\varOmega\cap F_{n})\degree=\varnothing $, 则 $ (\varOmega\cap F_{n})^{c}\cap\varOmega $ 在 $ \varOmega $ 中稠密, 也即 $ \varOmega\cap F_{n}^{c} $ 在 $ \varOmega $ 中稠密, 由~(1)~可知 $ \bigcap_{n\geqslant1}(\varOmega\cap F_{n}^{c}) $ 在 $ \varOmega $ 中稠密, 而
 		\[
@@ -1385,7 +1385,7 @@
 		这与它在 $ \varOmega $ 中稠密矛盾.\qed
 	\end{Proof}
 	\begin{Example}
-		由 Baire定理, 完备度量空间是 Baire空间, 则 Banach空间, Hilbert空间也是Baire空间. 进一步, 局部紧的 Hausdorff空间也是 Baire空间, 而 \Q 不是 Baire空间, 因为 $ \Q=\bigcup_{n\geqslant F_{n}} $, 其中 $ F_{n} $ 均有限, 则 $ F_{n} $ 闭,  $ \mathring{F}_{n}=\varnothing $, 有 $ \bigcup_{n\geqslant1}\mathring{F}_{n}=\varnothing $, 由上一定理的~(2)~可知. 
+		由 Baire定理, 完备度量空间是 Baire空间, 则 Banach空间, Hilbert空间也是Baire空间. 进一步, 局部紧的 Hausdorff空间也是 Baire空间, 而 \Q 不是 Baire空间, 因为 $ \Q=\bigcup_{n\geqslant1}F_{n} $, 其中 $ F_{n} $ 均有限, 则 $ F_{n} $ 闭,  $ \mathring{F}_{n}=\varnothing $, 有 $ \bigcup_{n\geqslant1}\mathring{F}_{n}=\varnothing $, 由上一定理的~(2)~可知. 
 	\end{Example}
 	\begin{Definition}[纲集]\index{G!纲集}\index{P!贫集}\index{S!剩余集}\label{def:纲集}
 		设 $ E $ 是拓扑空间,
@@ -1706,7 +1706,7 @@
 	\[
 	\norm x_s=\norm x+\sup_{i\in\alpha}\norm{u_i(x)},
 	\]
-	易证这是一个范数, 且$ \norm{\cdot}\leqslant\norm{\cdot}_s $. 秩序说明$ (E,\norm{\cdot}_s) $是一个Banach空间即可.
+	易证这是一个范数, 且$ \norm{\cdot}\leqslant\norm{\cdot}_s $. 只需说明$ (E,\norm{\cdot}_s) $是一个Banach空间即可.
 	
 	任取$ (E,\norm{\cdot}_s) $中的Cauchy列$ (x_n)_{n\geqslant 1} $, 那么
 	\[
@@ -1792,7 +1792,7 @@
 	\end{enumerate}
 	\end{Proposition}
 	\begin{Proof}
-	(1) $ \Rightarrow $ (2): 易证$ \varPhi $是线性映射. 因为$ X, Y $代数互补, 则$ \varPhi $是单射(这因$ x+y=0\Longrightarrow x=0 $或$ y=0 $), 由定义知$ \varPhi $是满的, 又由
+	(1) $ \Rightarrow $ (2): 易证$ \varPhi $是线性映射. 因为$ X, Y $代数互补, 则$ \varPhi $是单射(这因$ x+y=0\Longrightarrow x=0 $且$ y=0 $), 由定义知$ \varPhi $是满的, 又由
 	\[
 	\norm{\varPhi(x,y)}=\norm{x+y}\leqslant\norm{x}+\norm{y}\leqslant 2\max\{ \norm{x},\norm{y} \}
 	\]
@@ -1800,7 +1800,7 @@
 	\[
 	\begin{aligned}
 	\norm{\varPhi^{-1}(e)}=\norm{(x,y)}&=\max\{ \norm{x},\norm{y} \}\\
-	&\leqslant\max\{ \norm{P_X}\norm{x}, \norm{P_Y}\norm{x} \}\leqslant\max\{ \norm{P_X},\norm{P_Y} \}\norm{x},
+	&\leqslant\max\{ \norm{P_X}\norm{e}, \norm{P_Y}\norm{e} \}\leqslant\max\{ \norm{P_X},\norm{P_Y} \}\norm{e},
 	\end{aligned}
 	\]
 	故$ \norm{\varPhi}\leqslant 2 $且$ \norm{\varPhi^{-1}}\leqslant\max\{ \norm{P_X},\norm{P_Y} \} $, 从而$ \varPhi $是同构.
@@ -1812,7 +1812,7 @@
 	可知$ \norm{P_X}\leqslant\norm{\varPhi^{-1}}<\infty $.\qed
 	\end{Proof}
 	\begin{Corollary}\label{cor:代数互补成为拓扑互补的条件}
-		设 $ E $ 是 Banach 空间,  $ X, Y $ 代数互补, 则 $ X, Y $ 拓扑互补, 则 $ X, Y $ 拓扑互补当且仅当 $ X, Y $ 是闭集. 
+		设 $ E $ 是 Banach 空间,  $ X, Y $ 代数互补, 则 $ X, Y $ 拓扑互补当且仅当 $ X, Y $ 是闭集. 
 	\end{Corollary}
 	\begin{Proof}
 		\textsl{必要性}. 若 $ X, Y $ 拓扑互补, 则 $ P_{X}, P_{Y} $ 连续, 注意到 $ \ker P_{X} = Y $,  $ \ker P_{Y}=X $, 由 $ \{0\} $ 是闭集知 $ X, Y $ 均是闭集. 
