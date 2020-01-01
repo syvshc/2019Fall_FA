@@ -78,7 +78,7 @@
 		\]
 		则 $\sup\limits_{x\ne y}\abs{\varPhi_{x, y}(f)}<k_{f} $. 由共鸣定理 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 有界.
 
-		(2) 由 (1) 知 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 在 $ \Star{E} $ 上有界, 设 $ M=\sum\limits_{x\ne y}\norm{\varPhi_{x, y}} $ 则对 $ \forall f\in\baro{B_{E}} $ 都有
+		(2) 由 (1) 知 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 在 $ \Star{E} $ 上有界, 设 $ M=\sup\limits_{x\ne y}\norm{\varPhi_{x, y}} $ 则对 $ \forall f\in\baro{B_{E}} $ 都有
 		\[
 			\norm{\varPhi_{x, y}(f)}\leqslant M\norm{f}\leqslant M,
 		\]
@@ -191,9 +191,9 @@
 		\]
 		知 $ u $ 连续, 由开映射定理可知 $ \exists r>0\,(rB_{F+G}\subset u(B_{F\times G})) $, 且有
 		\[
-			\frac{r}{2}\baro{B_{F+G}}\subset rB_{F+G}\subset U(B_{F\times G}),
+			\frac{r}{2}\baro{B_{F+G}}\subset rB_{F+G}\subset u(B_{F\times G}),
 		\]
-		取 $ c=2/r $, 有 $ \frac{1}{c}\baro{F+G}\subset u(B_{F\times G}) $, 从而 $ \forall x\in F+G, \frac{x}{c\norm{x}}\in\baro{B_{F+G}} $, 则 $ \exists (f_{0}, g_{0})\in B_{F\times G} $ 使得
+		取 $ c=2/r $, 有 $ \frac{1}{c}\baro{B_{F+G}}\subset u(B_{F\times G}) $, 从而 $ \forall x\in F+G, \frac{x}{c\norm{x}}\in\baro{B_{F+G}} $, 则 $ \exists (f_{0}, g_{0})\in B_{F\times G} $ 使得
 		\[
 			\frac{x}{c\norm{x}}=f_{0}+g_{0}=u(f_{0}, g_{0}),
 		\]
@@ -208,16 +208,16 @@
 	\begin{Proof}
 		取 $ (x_{n})_{n\geqslant1}\subset H $ 使得 $ x_{n}\to 0, u(x_{n})\to y $, 由闭图像定理往证 $ y=0 $, 因为 $ \forall z\in H $
 		\[
-			\lrangle{u(x_{n}, z)}=\lrangle{x_{n}, u(z)}\to 0,\quad n\to \infty,
+			\lrangle{u(x_{n}, z), z}=\lrangle{x_{n}, u(z)}\to 0,\quad n\to \infty,
 		\]
-		且 $ \lim\limits_{n\to\infty}\lrangle{(u(x_{n}, z))}=\lrangle{y, z} $. 故对任意的 $ z\in H $, $ \lrangle{y, z}=0 $, 即 $ y=0 $.\qed
+		且 $ \lim\limits_{n\to\infty}\lrangle{u(x_{n}), z}=\lrangle{y, z} $. 故对任意的 $ z\in H $, $ \lrangle{y, z}=0 $, 即 $ y=0 $.\qed
 	\end{Proof}
 	
 	\textbf{习题6.16}\ [作业]\ \ 设$ X=C^1([0,1],\R) $, 即由$ [0,1] $上连续可微的函数构成的集合, 其上赋予连续一致范数$ \norm\cdot_\infty $. 并设$ Y=C([0,1],\R) $, 其上也赋予一致范数. 考虑映射$ u : X\to Y $, $ u(f)=f' $. 证明: $ u $的图像是闭的, 但$ u $不连续. 并解释该结论的意义.
 	\begin{Proof}
 	设$ (x_n)_{n\geqslant 1}\subset X,\ y\in Y $满足$ x_n\to 0 $且$ x'_n\to y $. 为证明$ G(u) $是闭的, 只需证明$ y=0 $. 任取$ t\in[0,1] $, 则
 	\[
-	0=\lim_{n\to\infty}x_n(t)-x_n(0)=\lim_{n\to\infty}\int_0^tx_n\diff t=\int_0^ty\diff t,
+	0=\lim_{n\to\infty}x_n(t)-x_n(0)=\lim_{n\to\infty}\int_0^tx'_n\diff t=\int_0^ty\diff t,
 	\]
 	由$ y $的连续性可知$ y=0 $. 从而$ G(u) $闭集.
 	
