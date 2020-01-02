@@ -791,13 +791,13 @@
 		\]
 		对上述的 $ n_{0} $, 令 $ F=\{ (\seq[n_{0}]{x}, 0, \dots, 0, \dots) : x_{i}\in\C, 1\leqslant i\leqslant n_{0} \}\subset\ell_{2} $. 则 $ F $ 有限维, 再令
 		\[
-			B = \left\{ x= (\seq[n_{0}]{x}, 0,\dots, 0\dots) : \abs{x_{i}}<\frac{1}{i} \right\}\subset A, 
+			B = \left\{ x= (\seq[n_{0}]{x}, 0,\dots, 0\dots) : \abs{x_{i}}\leqslant\frac{1}{i} \right\}\subset A, 
 		\]
 		取 $ B $ 中元素的前 $ n_{0} $ 项构成 $ \tilde{B} $, 即
 		\[
-			\tilde{B}=\left\{ x= (\seq[n_{0}]{x}) : \abs{x_{i}}<\frac{1}{i} \right\}
+			\tilde{B}=\left\{ x= (\seq[n_{0}]{x}) : \abs{x_{i}}\leqslant\frac{1}{i} \right\}
 		\]
-		显然 $ B $ 与 $ \tilde{B} $ 同构. 且 $ B $ 在 $ F $ 中闭, 又 $ \abs{x_{1}}^{2}+\cdots+\abs{x_{n_{0}}}^{2}\leqslant1+1=2 $, 故 $ B $ 在 $ F $ 中有界闭, 从而紧, 所以有 $ \tilde{B} $ 在 $ \C^{n_{0}} $ 中紧, 于是 $ \tilde{B} $ 预紧, 即存在 $ \C^{n_{0}} $ 中有限个点 $ y^{(1)}, y^{(2)}, \dots, y^{(k)} $, 其中
+		显然 $ B $ 与 $ \tilde{B} $ 同构. 且 $ B $ 在 $ F $ 中闭, 又 $ \abs{x_{1}}^{2}+\cdots+\abs{x_{n_{0}}}^{2}\leqslant1+1=2 $, 故 $ B $ 在 $ F $ 中有界闭, 从而紧, 所以有 $ \tilde{B} $ 在 $ \C^{n_{0}} $ 中紧, 于是 $ \tilde{B} $ 预紧, 即存在 $ \tilde{B} $ 中有限个点 $ y^{(1)}, y^{(2)}, \dots, y^{(k)} $, 其中
 		\[
 			y^{(i)}=(y^{(i)}_{1}, \dots, y^{(i)}_{n_{0}} ), \quad i = 1, 2, \dots, k
 		\]
@@ -851,14 +851,14 @@
 		故 
 		\[
 			\begin{aligned}
-				\frac{1}{2^{n}}\sum_{(\varepsilon_{k})\in D_{n}}\norm{\sum_{k=1}^{n}\varepsilon_{k}x_{k}}^{2} & \leqslant \frac{M^{2}}{2^{n}}\sum_{(\varepsilon_{k})\in D_{k}}\abs{\sum_{i=1}^{n}\varepsilon_{i}x_{i}}  \\
+				\frac{1}{2^{n}}\sum_{(\varepsilon_{k})\in D_{n}}\norm{\sum_{k=1}^{n}\varepsilon_{k}x_{k}}^{2} & \leqslant \frac{M^{2}}{2^{n}}\sum_{(\varepsilon_{k})\in D_{k}}\abs{\sum_{k=1}^{n}\varepsilon_{k}x_{k}}^{2}  \\
 				& = M^{2}\left(\sum_{k=1}^{n}\abs{x_{k}}^{2}\right)\leqslant \frac{M^{2}}{m^{2}}\left(\sum_{k=1}^{n}\norm{x_{k}}^{2}\right)
 			\end{aligned}
 		\]
 		同理有
 		\[
 			\begin{aligned}
-				\frac{1}{2^{n}}\sum_{\left(\varepsilon_{k}\right)\in D_{n}}\norm{\sum_{k=1}^{n}\varepsilon_{k}x_{k}}^{2} & \geqslant \frac{m^{2}}{2^{n}}\sum_{\left(\varepsilon_{k}\right)\in D_{k}}\abs{\sum_{i=1}^{n}\varepsilon_{i}x_{i}}  \\
+				\frac{1}{2^{n}}\sum_{\left(\varepsilon_{k}\right)\in D_{n}}\norm{\sum_{k=1}^{n}\varepsilon_{k}x_{k}}^{2} & \geqslant \frac{m^{2}}{2^{n}}\sum_{\left(\varepsilon_{k}\right)\in D_{k}}\abs{\sum_{k=1}^{n}\varepsilon_{k}x_{k}}^{2}  \\
 				 & = m^{2}\left(\sum_{k=1}^{n}\abs{x_{k}}^{2}\right)\geqslant \frac{m^{2}}{M^{2}}\left(\sum_{k=1}^{n}\norm{x_{k}}^{2}\right)
 			\end{aligned}
 		\]

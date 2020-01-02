@@ -152,7 +152,7 @@
 	\[
 	\forall e\in B_E\,(\norm{e+\ker u}\leqslant\norm{e}<1)
 	\]
-	可知$ q(B_E)\subset B_{E/\ker u} $. 而$ \forall e+\ker u\in B_{E/\ker u} $, 有$ \norm{u+\ker u}<1 $, 则存在$ a\in\ker u $使得$ \norm{e+a}<1 $. 且$ q(e+a)=e+\ker u $, 从而$ e+\ker u\subset q(B_E) $. 由$ e+\ker u $的任意性可知$ B_{E/\ker u}\subset q(B_E) $. 从而$ B_{E/\ker u}=q(B_E) $.
+	可知$ q(B_E)\subset B_{E/\ker u} $. 而$ \forall e+\ker u\in B_{E/\ker u} $, 有$ \norm{e+\ker u}<1 $, 则存在$ a\in\ker u $使得$ \norm{e+a}<1 $. 且$ q(e+a)=e+\ker u $, 从而$ e+\ker u\subset q(B_E) $. 由$ e+\ker u $的任意性可知$ B_{E/\ker u}\subset q(B_E) $. 从而$ B_{E/\ker u}=q(B_E) $.
 	
 	那么
 	\[
@@ -224,7 +224,7 @@
 	取$ x_n=t^n $, 那么$ \norm{x_n}=1 $但$ \norm{u(x_n)}=n\to\infty $, 从而$ u $不连续. 这说明当$ X $不完备时闭图像定理不成立.\qed
 	\end{Proof}
 
-	\textbf{习题 6.19}\ [习题课]\ \ 设 $ (X, \CA, \mu) $ 是 $ \sigma $-有限的测度空间.
+	\textbf{习题 6.19}\ [习题课]\ \ 设 $ (X, \CA, \mu) $ 是 $ \sigma $--有限的测度空间.
 	\begin{enumerate}[(1)]
 		\item 假设当 $ 1\leqslant p<q\leqslant\infty $ 时, 有 $ L_{q}(X, \CA, \mu)\subset L_{p}(X, \CA, \mu) $. 证明存在常数 $ C\geqslant0 $, 使得对任意的 $ f\in L_{q}(X, \CA, \mu) $, 有 $ \norm{f}_{p}\leqslant c\norm{f}_{q} $.
 		\item 导出下列命题的等价性
@@ -235,17 +235,17 @@
 		\end{enumerate}
 	\end{enumerate}
 	\begin{Proof}
-		(1) 因为 $ X $ 是 $ \sigma $-有限的, 故存在一列递增的可列集 $ (A_{n})_{n\geqslant1} $ 时 $ X=\bigcup_{n\geqslant1}A_{n} $, 且 $ \forall n\geqslant1:\mu(A_{n})<\infty $, 考虑线性映射:
+		(1) 因为 $ X $ 是 $ \sigma $-有限的, 故存在一列递增的可测集 $ (A_{n})_{n\geqslant1} $ 时 $ X=\bigcup_{n\geqslant1}A_{n} $, 且 $ \forall n\geqslant1:\mu(A_{n})<\infty $, 考虑线性映射:
 		\[
 			I_{n}: L_{q}(X)\to L_{p}(X), \quad f\mapsto f\cdot 1_{A_{n}}.
 		\] 
 		则由习题 3.11 有
 		\[
-			\norm{I_{n}(f)}_{p}=\left( \int_{A_{n}}\abs{f}^{p}\diff\mu \right)^{1/p}\leqslant \mu(A_{n})^{1/p-1/q}\left( \int_{A_{n}\abs{f}^{q}}\diff\mu \right)^{1/q}=\mu(A_{n})^{1/p-1/q}\norm{f}_{q},
+			\norm{I_{n}(f)}_{p}=\left( \int_{A_{n}}\abs{f}^{p}\diff\mu \right)^{1/p}\leqslant \mu(A_{n})^{1/p-1/q}\left( \int_{A_{n}}\abs{f}^{q}\diff\mu \right)^{1/q}=\mu(A_{n})^{1/p-1/q}\norm{f}_{q},
 		\]
 		即 $ \norm{I_{n}}\leqslant\mu(A_{n})^{1/p-1/q} $, 则 $ \lim\limits_{n\to\infty}I_{n}=\id $, 由推论~\ref{cor:逐点收敛}~知 $ \id $ 连续, 且 $ \sup\limits_{n\leqslant1}\norm{I_{n}}<\infty $, 且 $ \norm{\id}\leqslant\liminf\limits_{n\to\infty}\norm{I_{n}} $. 记 $ c=\liminf\limits_{n\to\infty}\norm{f_{n}} $, 则 $ \norm{f}_{p}\leqslant c\norm{f}_{q} $.
 		
-		(2) a $ \Rightarrow $ b. 用反证法, 设 $ \mu(X)=\infty $, 则 $ \forall n\geqslant1 $, 存在 $ \mu $-可列集 $ B_{n} $ 使得 $ \mu(B_{n})\geqslant n $, 取 $ f = 1_{B_{n}} $, 则
+		(2) a $ \Rightarrow $ b. 用反证法, 设 $ \mu(X)=\infty $, 则 $ \forall n\geqslant1 $, 存在 $ \mu $-可测集 $ B_{n} $ 使得 $ \mu(B_{n})\geqslant n $, 取 $ f = 1_{B_{n}} $, 则
 		\[
 			\norm{f}_{p}=\left( \int_{B_{n}}1\diff\mu \right)^{1/p}=\mu(B_{n})^{1/p}=n^{1/p}.
 		\]
@@ -276,7 +276,7 @@
 		\[
 			\tilde{f} = x_{1}\tilde{f}(e_{1})+x_{2}\tilde{f}(e_{2})=x_{1}+x_{2}\tilde{f}(e_{2}),
 		\]
-		即 $ \tilde{f} $ 由其在 $ e_{2} $ 上的取值唯一确定, 记 $ c=\tilde{f}(e_{2}) $, 由 $ \tnorm{\tilde{f}} $ 知 $ \abs{c}=\tabs{\tilde{f}(e_{2})}\leqslant\norm{e_{2}}=1 $. 反之, 对任意的 $ c $ 满足 $ \abs{c}<1 $, 形如 $ \tilde{f}(x)=x_{1}+x_{2}c $ 的泛函是 $ f $ 的保范延拓.
+		即 $ \tilde{f} $ 由其在 $ e_{2} $ 上的取值唯一确定, 记 $ c=\tilde{f}(e_{2}) $, 由 $ \tnorm{\tilde{f}}=1 $ 知 $ \abs{c}=\tabs{\tilde{f}(e_{2})}\leqslant\norm{e_{2}}=1 $. 反之, 对任意的 $ c $ 满足 $ \abs{c}<1 $, 形如 $ \tilde{f}(x)=x_{1}+x_{2}c $ 的泛函是 $ f $ 的保范延拓.
 
 		(2) 当 $ 1<p<\infty $ 时, 与 (1) 同理, 只需确定 $ c $ 使 $ \tnorm{\tilde{f}}=1 $, 则
 		\[
@@ -338,9 +338,9 @@
 	\]
 	先证$ \tilde{f} $well-defined. 若$ \sum\limits_{k=1}^n\alpha_ka_k=\sum\limits_{l=1}^n\beta_lb_l $, 其中$ a_k, b_l\in A $, 则由
 	\[
-	\abs{\sum_{k=1}^n\alpha_kf(a_k)-\sum_{l=1}^n\beta_lb_l}\leqslant\lambda\norm{\sum_{k=1}^n\alpha_ka_k-\sum_{l=1}^n\beta_lb_l}=0
+	\abs{\sum_{k=1}^n\alpha_kf(a_k)-\sum_{l=1}^n\beta_lf(b_l)}\leqslant\lambda\norm{\sum_{k=1}^n\alpha_ka_k-\sum_{l=1}^n\beta_lb_l}=0
 	\]
-	可知$ \tilde{f} $well-defined且$ \tilde{f} $连续, $ \tnorm{\tilde{f}}\leqslant\lambda $. 由Hahn-Banach定理可知$ \tilde{f} $可以延拓为$ E $上的连续线性泛函$ \hat{f} $, 且它满足$ \hat{f}\rvert_A $和$ \tnorm{\hat{f}}\leqslant\lambda $.\qed
+	可知$ \tilde{f} $well-defined且$ \tilde{f} $连续, $ \tnorm{\tilde{f}}\leqslant\lambda $. 由Hahn-Banach定理可知$ \tilde{f} $可以延拓为$ E $上的连续线性泛函$ \hat{f} $, 且它满足$ \hat{f}\rvert_A=f $和$ \tnorm{\hat{f}}\leqslant\lambda $.\qed
 	\end{Proof}
 	
 	\textbf{习题8.4}\ [习题课]\ \ 设$ E $是Hausdorff拓扑向量空间, $ A $是$ E $中包含原点的开凸集且$ x_0\in E\sm A $.
@@ -382,20 +382,21 @@
 	E=H+\K x_0=H+\K\frac{x-h}{\alpha}=H+\K\frac{-h}{\alpha}+\K\frac{x}{\alpha}=H+\K x.
 	\]
 	
-	(2) 若$ H $稠密, 则命题得证. 若$ H $不稠密, 往证$ H $是闭集. 用反证法, 设$ (x_n)_{n\geqslant 1}]\subset H $使得$ x_n\to x_0\notin H $, 则$ E=H+\K x_0 $. 任取$ y\in E\sm H $, 那么$ y=h+\alpha x_0 $, 其中$ h\in H $, $ \alpha\in\K $, 则
-	\[
-	\begin{aligned}
-	d(y,H)=\inf_{z\in H}\norm{y-z}=\inf_{z\in H}\norm{h+\alpha x_0-z}&=\inf_{z\in H}\norm{\alpha x_0-(z-h)}\\&=\inf_{z\in H}\norm{\alpha x_0-z}=\abs{\alpha}\cdot d(x_0,H)=0
-	\end{aligned}
-	\]
-	最后一个等号因
-	\[
-	\forall\varepsilon>0\,\exists z\in H\,\exists n_0\in\N\,((d(x_0,z)<d(x_0,H)+\varepsilon)\land(n\geqslant n_0\Rightarrow d(x_n,x_0)<\varepsilon))
-	\]
-	这与$ y\notin H $矛盾, 从而$ x_0\in H $, 故$ H $是闭的.
-	(另证: 设$ H $是超平面, 则存在$ x_0\in E\sm H $使得$ E=H+\K x_0 $. 若$ x_0\in\bar{H} $, 则$ E=H+\K x_0\subset\bar{H} $, 则$ E=\bar{H} $, 故$ H $稠密. 若$ x_0\notin \bar{H} $, 则存在$ f\in\Star{E} $使得$ f\rvert_H=0 $且$ f(x_0)\ne 0 $. 则$ H\subset\ker f $. 又因为$ \forall x\in E $有$ x=h+\alpha x_0 $, 则$ f(x)=0\Rightarrow\alpha f(x_0)=0\Rightarrow \alpha=0 $, 故$ x=h\in H $. 这说明$ \ker f=H $, 则$ H $是闭的.)
+	(2) 设$ H $是超平面, 则存在$ x_0\in E\sm H $使得$ E=H+\K x_0 $. 若$ x_0\in\bar{H} $, 则$ E=H+\K x_0\subset\bar{H} $, 则$ E=\bar{H} $, 故$ H $稠密. 若$ x_0\notin \bar{H} $, 则存在$ f\in\Star{E} $使得$ f\rvert_H=0 $且$ f(x_0)\ne 0 $. 则$ H\subset\ker f $. 又因为$ \forall x\in E $有$ x=h+\alpha x_0 $, 则$ f(x)=0\Rightarrow\alpha f(x_0)=0\Rightarrow \alpha=0 $, 故$ x=h\in H $. 这说明$ \ker f=H $, 则$ H $是闭的.
+
+	% 若$ H $稠密, 则命题得证. 若$ H $不稠密, 往证$ H $是闭集. 用反证法, 设$ (x_n)_{n\geqslant 1}\subset H $使得$ x_n\to x_0\notin H $, 则$ E=H+\K x_0 $. 任取$ y\in E\sm H $, 那么$ y=h+\alpha x_0 $, 其中$ h\in H $, $ \alpha\in\K $, 则
+	% \[
+	% \begin{aligned}
+	% d(y,H)=\inf_{z\in H}\norm{y-z}=\inf_{z\in H}\norm{h+\alpha x_0-z}&=\inf_{z\in H}\norm{\alpha x_0-(z-h)}\\&=\inf_{z\in H}\norm{\alpha x_0-z}=\abs{\alpha}\cdot d(x_0,H)=0
+	% \end{aligned}
+	% \]
+	% 最后一个等号因
+	% \[
+	% \forall\varepsilon>0\,\exists z\in H\,\exists n_0\in\N\,((d(x_0,z)<d(x_0,H)+\varepsilon)\land(n\geqslant n_0\Rightarrow d(x_n,x_0)<\varepsilon))
+	% \]
+	% 这与$ y\notin H $矛盾, 从而$ x_0\in H $, 故$ H $是闭的.
 	
-	(3a) \textsl{充分性}. 由题设可知存在$ x_0\in E\sm H $使得$ f(x_0)=0 $且$ H=\ker f $, 则任取$ e\in E $都有
+	(3a) \textsl{充分性}. 由题设可知存在$ x_0\in E\sm H $使得$ f(x_0)\ne0 $且$ H=\ker f $, 则任取$ e\in E $都有
 	\[
 	e=e-\frac{f(e)}{f(x_0)}x_0+\frac{f(e)}{f(x_0)}x_0\Longrightarrow E=H+\K x_0,
 	\]
@@ -427,7 +428,7 @@
 	\end{aligned}
 	\]
 	\begin{enumerate}[(1)]
-	\item 证明: $ A_0 $与$ B $都是$ \ell_1 $的线性子空间, 且$ A_0+B=\ell_1 $中稠密;
+	\item 证明: $ A_0 $与$ B $都是$ \ell_1 $的闭线性子空间, 且$ A_0+B$ 在 $\ell_1 $中稠密;
 	\item 设$ c\in\ell_1 $满足$ x_{2n-1}=0 $及$ c_{2n}=2^{-n} $, 并设$ A=A_0-c $. 证明: $ c\notin A_0+B $且$ A\cap B=\varnothing $, 并证明: 不存在非零的$ f\in\Star{\ell_1} $和$ \alpha\in\R $使得$ A\subset\{ f\leqslant\alpha \} $且$ B\subset\{ f\geqslant\alpha \} $.
 	\end{enumerate}
 	\begin{Proof}
@@ -476,10 +477,10 @@
 	\[
 	f(A_0-c)\leqslant\alpha\Longrightarrow f(A_0)\leqslant\alpha+f(c),
 	\]
-	由$ f $的线性性与$ A_0 $是线性子空间可知只能$ f|_{A_0}=0 $. 同理, 由$ f(B)\geqslant\alpha $可知$ f|_B=0 $. 于是$ f\_{A_0+B}=0 $. 由$ A_0+B $在$ \ell_1 $中稠密, 则$ f=0 $.\qed
+	由$ f $的线性性与$ A_0 $是线性子空间可知只能$ f|_{A_0}=0 $. 同理, 由$ f(B)\geqslant\alpha $可知$ f|_B=0 $. 于是$ f|_{A_0+B}=0 $. 由$ A_0+B $在$ \ell_1 $中稠密, 则$ f=0 $.\qed
 	\end{Proof}
 	
-	\textbf{习题8.15(a)}\ [习题课]\ \ 本习题的目的是刻画连续线性泛函的 Hahn-Banach 延拓的唯一性问题. 设 $ E $ 是一个维数至少为 2 的赋范空间, 证明: $ E $ 的线性子空间 $ F $ 上的每个连续线性泛函有唯一的保范延拓的充分不要条件是 $ \Star{E} $ 是严格凸的.
+	\textbf{习题8.15(a)}\ [习题课]\ \ 本习题的目的是刻画连续线性泛函的 Hahn-Banach 延拓的唯一性问题. 设 $ E $ 是一个维数至少为 2 的赋范空间, 证明: $ E $ 的线性子空间 $ F $ 上的每个连续线性泛函有唯一的保范延拓的充分必要条件是 $ \Star{E} $ 是严格凸的.
 	
 	\begin{Proof}
 		\textsl{充分性}. 用反证法. 若存在 $ f\in \Star{F} $ 使得它有两个不同的保范延拓 $ f_{1}, f_{2} $, 且 $ f_{1}\ne f_{2} $, 则:
@@ -490,7 +491,7 @@
 		\[
 			\norm{f}=\tnorm{\tilde{f}\big|_{F}}\leqslant\tnorm{\tilde{f}}\leqslant\frac{\norm{f_{1}}+\norm{f_{2}}}{2}=\norm{f},
 		\]
-		但由 $ \Star{E} $ 严格凸, 只能 $ \tnorm{\tilde{f}}\leqslant\norm{f} $. 故 $ \norm{f}<\norm{f} $.
+		但由 $ \Star{E} $ 严格凸, 只能 $ \tnorm{\tilde{f}}<\norm{f} $. 故 $ \norm{f}<\norm{f} $, 矛盾.
 
 		\textsl{必要性}. 用反证法. 若 $ \Star{E} $ 不是严格凸的, 即 $ \exists f\in S_{\Star{E}}\,(f=(f_{1}+f_{2})/2) $, 其中 $ \norm{f_{1}}=\norm{f_{2}}=1 $ 且 $ f_{1}\ne f_{2} $.
 		
@@ -637,7 +638,7 @@
 		\]
 		设 $ \forall n\in\N $, $ f(x_{n})=0 $, 则有
 		\[
-			\norm{f}\leqslant\norm{f-f_{n}}+\norm{f_{n}}<\varepsilon + 2\abs{f_{n}(x_{n})}\leqslant \varepsilon 2\norm{f_{n}},
+			\norm{f}\leqslant\norm{f-f_{n}}+\norm{f_{n}}<\varepsilon + 2\abs{f_{n}(x_{n})}\leqslant \varepsilon + 2\norm{f_{n}},
 		\]
 		而又由
 		\[
@@ -757,14 +758,14 @@
 
 	\textbf{习题 9.16}\ [习题课]\ \ 称 Banach 空间 $ E $ 为\textbf{一致凸}\index{Y!一致凸}的, 若对任意 $ \varepsilon>0 $, 存在 $ \delta>0 $, 使得
 	\[
-		\forall x, y\in\bar{B}_{E}\,\left(\norm{x-y}\geqslant\varepsilon\Rightarrow \norm{\frac{x+y}{2}\leqslant 1-\delta}\right).
+		\forall x, y\in\bar{B}_{E}\,\left(\norm{x-y}\geqslant\varepsilon\Rightarrow \norm{\frac{x+y}{2}}\leqslant 1-\delta\right).
 	\]
 	设 $ (x_{n})_{n\geqslant1} $ 是一致凸空间 $ E $ 中弱收敛到 $ x $ 的序列, 并有 $ \lim\limits_{n\to\infty}\norm{x_{n}}=\norm{x} $. 证明 $ (x_{n})_{n\geqslant1} $ 依范数收敛到 $ x $. 用例子说明条件 $ \lim\limits_{n\to\infty}\norm{x_{n}}=\norm{x} $ 是必需的.
 	\begin{Proof}
 		设 $ x_{n}\weakto x $ 有界, 因为 $ \frac{x_{n}}{\norm{x_{n}}}\weakto\frac{x}{\norm{x}} $, 不妨设 $ (x_{n})_{\geqslant1}\subset\bar{B}_{E} $.
 		\begin{enumerate}[(1)]
 			\item 若 $ \norm{x}=0 $, 则 $ x_{n}\to x $.
-			\item 若 $ \norm{x}\ne 0 $, 则 $ \exists f\in\Star{E} $, $ f(x)=\norm{x}=1 $, 其中 $ \norm{f}=1 $. 若 $ (x_{n})_{n\geqslant1} $ 是 Cauchy 列, 即 $ \norm{x_{n}, x_{m}}\to 0\ (n, m\to\infty) $, 则
+			\item 若 $ \norm{x}\ne 0 $, 则 $ \exists f\in\Star{E} $, $ f(x)=\norm{x}=1 $, 其中 $ \norm{f}=1 $. 若 $ (x_{n})_{n\geqslant1} $ 是 Cauchy 列, 即 $ \norm{x_{n}- x_{m}}\to 0\ (n, m\to\infty) $, 则
 			\[
 				2\norm{x}\leftarrow f(x_{n})+f(x_{m})=f(x_{n}+x_{m})\leqslant\norm{f}\norm{x_{n}+x_{m}}\leqslant\norm{x_{m}}+x_{n}\to 2\norm{x},
 			\]
@@ -1046,7 +1047,7 @@
 		\[
 			P=\begin{bmatrix}
 				a & \sqrt{a(1-a)}\exp(\imag\theta) \\
-				\sqrt{a(1-a)}\exp(-\imag\theta) & a
+				\sqrt{a(1-a)}\exp(-\imag\theta) & 1-a
 			\end{bmatrix}, \quad a\in\R, \theta\in[0, 2\pi].
 		\]
 		进一步, 对一般的 Hilbert空间 $ H $, 有一类特殊的投影算子:
