@@ -565,7 +565,7 @@
 		设 $ H $ 是 Hilbert空间, $ C\subset H $ 是非空的闭凸子集, 则有:
 		\begin{enumerate}[(1)]
 			\item $ \forall x\in H\,\exists!y\in C\,(\norm{x-y}=d(x, C)) $, 并称 $ y $ 是 $ x $ 在$ C $ 上的\textbf{投影}, 记作 $ P_{C}(x) $;
-			\item 对$ \forall y\in H $, $ y=P_{C}(x) $ 的充分必要条件是 $ \Re\lrangle{x-y, z-y}\leqslant0 $;
+			\item 对$ \forall y\in H $, $ y=P_{C}(x) $ 的充分必要条件是 $ \forall z\in C\,(\Re\lrangle{x-y, z-y}\leqslant0) $;
 			\item 映射 $ x\mapsto P_{C}(x) $ 是常数为 $ 1 $ 的 Lipschitz映射, 即 $ \forall x, x'\in H $, 有
 			\[
 				\norm{P_{C}(x)-P_{C}(x')}\leqslant \norm{x-x'};
@@ -678,7 +678,7 @@
 	\end{Remark}	
 	
 		\begin{Theorem}[投影线性算子]
-			 设 $ H $ 是 Hilbert 空间, $ E\subset H $ 是闭线性子空间,  对任意 $ x\in H $, $ P_{E}(x) $ 是满足 $ x\bot y\in E $ 的唯一元素 $ y $, 且 $ P_{E} $ 是从 $ H $ 到 $ E $ 的线性算子, 其范数 $ \norm{P_{E}}\leqslant1 $.
+			 设 $ H $ 是 Hilbert 空间, $ E\subset H $ 是闭线性子空间,  对任意 $ x\in H $, $ P_{E}(x) $ 是满足 $ x- y\bot E $ 的唯一元素 $ y $, 且 $ P_{E} $ 是从 $ H $ 到 $ E $ 的线性算子, 其范数 $ \norm{P_{E}}\leqslant1 $.
 		\end{Theorem}
 			
 		\begin{Proof}
@@ -704,7 +704,7 @@
 			\[
 				\norm{P_{E}}=\sup_{\norm{x}=1}\norm{P_{E}(x)}=\sup_{\norm{x}=1}\norm{P_{E}(x)-P_{E}(0)}\leqslant\sup_{\norm{x}=1}\norm{x}=1,
 			\]
-			且若 $ E\ne \{ 0 \} $, 即 $ \exists x\ne 0, x\in E $ 使 $ P_{E}(x)=\norm{x} $, 则 $ E\ne 0 $ 时有 $ \norm{P_{E}}=1 $.\qed
+			且若 $ E\ne \{ 0 \} $, 即 $ \exists x\ne 0, x\in E $ 使 $ P_{E}(x)=x $, 则 $ E\ne 0 $ 时有 $ \norm{P_{E}}=1 $.\qed
 		\end{Proof}
 		 
 		\begin{Example}
@@ -1372,7 +1372,7 @@
 	\begin{Proof}
 		(1) 任取开集 $ \varOmega\subset E $, 并取 $ (O_{n})_{n\geqslant1} $ 是 $ \varOmega $ 中可数的稠密开集列, 则 $ O_{n} $ 也是 $ E $ 中开集, 取 $ E $ 中开集 $ O'_{n}=O_{n}\cup\bar{\varOmega}^{c} $, 则 $ (O'_{n})_{n\geqslant1} $ 是 $ E $ 中可数的稠密开集, 由 Baire定理, $ O'=\bigcap_{n\geqslant1}(O'_{n}) $ 在 $ E $ 中稠密, 而
 		\[
-			O'=\bigcap_{n\geqslant1}O_{n}'=\bigcup(O_{n}\cup\bar{\varOmega}^{c})=\bigcap_{n\geqslant1}O_{n}\cup \bar{\varOmega}^{c}
+			O'=\bigcap_{n\geqslant1}O_{n}'=\bigcap_{n\geqslant1}(O_{n}\cup\bar{\varOmega}^{c})=\bigcap_{n\geqslant1}O_{n}\cup \bar{\varOmega}^{c}
 		\]
 		故只能 $ \bigcap_{n\geqslant1}O_{n} $ 在 $ \varOmega $ 上稠密, 即 $ \varOmega $ 是 Baire空间.
 
@@ -1817,14 +1817,14 @@
 	\begin{Proof}
 		\textsl{必要性}. 若 $ X, Y $ 拓扑互补, 则 $ P_{X}, P_{Y} $ 连续, 注意到 $ \ker P_{X} = Y $,  $ \ker P_{Y}=X $, 由 $ \{0\} $ 是闭集知 $ X, Y $ 均是闭集. 
 
-		\textsl{充分性}.  若 $ X, Y $ 均是闭集, 则　$ X, Y $　均为 Banach 空间, 从而 $ X\times Y $ 是 Banach 空间， 而 $ \phi : X\times Y\to E $ 是线性双射, 由开映射定理可知 $ \phi $ 是同构. 再由命题~\ref{prop:拓扑代数}~知 $ X, Y $ 拓扑互补. \qed
+		\textsl{充分性}.  若 $ X, Y $ 均是闭集, 则 $ X, Y $ 均为 Banach 空间, 从而 $ X\times Y $ 是 Banach 空间， 而 $ \phi : X\times Y\to E $ 是线性双射, 由开映射定理可知 $ \phi $ 是同构. 再由命题~\ref{prop:拓扑代数}~知 $ X, Y $ 拓扑互补. \qed
 	\end{Proof}
 
 	\begin{Theorem}
-		设 $ E $ 是Banach空间,  $ F_{1}, F_{2} $ 是 $ E $ 中闭线性子空间且 $ F_{1}\cap F_{2}=\{ 0 \} $. 则 $ F_{1}+F_{2} $ 是闭集当且仅当 $ \exists c>0\,\forall x\in F_{1}\,\forall y\in F_{2}\,\left( \norm{x}\leqslant x\norm{x+y} \right) $. 
+		设 $ E $ 是Banach空间,  $ F_{1}, F_{2} $ 是 $ E $ 中闭线性子空间且 $ F_{1}\cap F_{2}=\{ 0 \} $. 则 $ F_{1}+F_{2} $ 是闭集当且仅当 $ \exists c>0\,\forall x\in F_{1}\,\forall y\in F_{2}\,\left( \norm{x}\leqslant c\norm{x+y} \right) $. 
 	\end{Theorem}
 	\begin{Proof}
-		\textsl{必要性}. 由 $ F_{1}+F_{2} $ 闭, 故 $ F_{1}+F_{2} $ 是 Banach 空间,  $ F_{1}, F_{2} $ 在 $ F_{1}+F_{2} $ 中拓扑互补, 故 $ P_{F_{1}} $ 连续. 也即 $ \exists c>0 $, 使得 $ \norm{P_{F_{1}}} $, 故对任意 $ x\in F_{1}, y_{F_{2}} $, 有
+		\textsl{必要性}. 由 $ F_{1}+F_{2} $ 闭, 故 $ F_{1}+F_{2} $ 是 Banach 空间,  $ F_{1}, F_{2} $ 在 $ F_{1}+F_{2} $ 中拓扑互补, 故 $ P_{F_{1}} $ 连续. 也即 $ \exists c>0 $, 使得 $ \norm{P_{F_{1}}}\leqslant c $, 故对任意 $ x\in F_{1}, y\in F_{2} $, 有
 		\[
 			\norm{x} = \norm{P_{F_{1}}(x+y)}\leqslant c\norm{x+y}.
 		\]

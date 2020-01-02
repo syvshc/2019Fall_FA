@@ -3,7 +3,7 @@
 \chapter{Banach空间的对偶理论}
 \section{半范数}
 	\begin{Definition}[半范数]\label{def:半范数}\index{B!半范数}
-		设 $ E $ 是数域\K 上的线性空间, 托 $ E $ 上的泛函 $ p : E\to \R $ 满足
+		设 $ E $ 是数域\K 上的线性空间, 若 $ E $ 上的泛函 $ p : E\to \R $ 满足
 		\begin{enumerate}[(1)]
 			\item 非负性: $ \forall x\in E\,(p(x)\geqslant0) $;
 			\item 齐次性: $ \forall \lambda\in\K\,(p(\lambda x)=\abs{\lambda}p(x)) $;
@@ -90,7 +90,7 @@
 		\]
 		即三角不等式成立.
 
-		(2) 若 $ \varOmega\subset\varOmega $, 则由
+		(2) 若 $ \varOmega_{1}\subset\varOmega_{2} $, 则由
 		\[
 			I_{\varOmega_{1}}=\left\{ \lambda>0:\frac{x}{\lambda}\in\varOmega_{1} \right\}\subset\left\{ \lambda>0:\frac{x}{\lambda}\in\varOmega_{2} \right\} = I_{\varOmega_{2}}(x)
 		\]
@@ -247,7 +247,7 @@
 	\begin{Theorem}[Hahn-Banach]
 		设 $ E $ 是 \K 上的线性空间, $ F\subset E $ 是线性子空间, 并设 $ p:E\to\R $ 是半范数, $ f:F\to\K $ 是线性泛函, 且在 $ F $ 上成立 $ \abs{f}\leqslant p $. 则存在线性泛函 $ \tilde{f}:E\to\R $ 使得
 		\[
-			(\tilde{f}|_{F}=f)\land(\forall x\in E\,(\abs{f(x)}\leqslant p(x))).
+			(\tilde{f}|_{F}=f)\land(\forall x\in E\,(\tabs{\tilde{f}(x)}\leqslant p(x))).
 		\]
 	\end{Theorem}
 	\begin{Proof}
@@ -338,7 +338,7 @@
 	\]
 	从而
 	\[
-	\norm{\varphi}\geqslant\frac{\abs{\varphi(x-y_n)}}{\norm{x-y_n}}=\frac{d(x,F)}{d(x,F)+1/n}.
+	\norm{\varphi}\geqslant\frac{\abs{\varphi(x-y_n)}}{\norm{x-y_n}}\geqslant\frac{d(x,F)}{d(x,F)+1/n}.
 	\]
 	令$ n\to\infty $后可知$ \norm{\varphi}\geqslant 1 $, 于是$ \norm{\varphi}=1 $. 由推论~\ref{cor:保范延拓}~可知存在$ f\in\Star{E} $使得$ f\rvert_{\K x+F}=\varphi $, 且$ \norm{f}=\norm{\varphi}=1 $. 而$ f\rvert_F=\varphi\rvert_F=0 $, 且有$ f(x)=d(x,F) $.\qed
 	\end{Proof}
@@ -511,7 +511,7 @@
 	注意到另证本质上只用到了$ f $的连续性, 于是上面的证明可以毫无困难地推广到$ E $是局部凸的Hausdorff空间的情形.
 	
 	\begin{Corollary}\label{cor:HB严格1}
-	设$ E $是赋范空间, $ B $是平衡的闭凸集, $ x_0\in B^c $. 则存在$ f\in\Star{E} $使得$ f(x_0)>1 $且$ \sup\limits_{x\in B}\abs{f(x)}\leqslant 1 $.
+	设$ E $是赋范空间, $ B $是平衡的闭凸集, $ x_0\in B^c $. 则存在$ f\in\Star{E} $使得$ f(x_0)>1 $且$ \sup\limits_{x\in B}\abs{f(x)}< 1 $.
 	\end{Corollary}
 	\begin{Proof}
 	对$ \{ x_0 \} $与$ B $使用Hahn-Banach严格隔离定理, 则存在$ \tilde{f}\in\Star{E} $与$ \alpha,\beta\in\R $使得$ \forall b\in B $都有
@@ -522,11 +522,11 @@
 	
 	取$ f=\frac{1}{\alpha}\sgn\tilde{f}(x_0)\tilde{f} $, 则有
 	\[
-	f(x_0)=\frac{\Babs{\tilde f(x_0)}}{\alpha}>\frac{(\Re \tilde{f})(x_0)}{\alpha}>1,
+	f(x_0)=\frac{\tabs{\tilde f(x_0)}}{\alpha}>\frac{(\Re \tilde{f})(x_0)}{\alpha}>1,
 	\]
 	再由$ B $是平衡集可知$ \sup\limits_{b\in B}(\Re f)(b)=\sup\limits_{b\in B}\abs{f(b)} $, 且$ f(b)\ne 0 $. 取$ \lambda=\sgn f(b) $后可知$ \abs{\lambda}=1 $, 且由$ f(b)=\lambda\abs{f(b)} $知$ \abs{f(b)}=\bar{\lambda}f(b) $. 从而$ (\Re f)(\bar{\lambda}b)=\abs{f(b)} $, 则
 	\[
-	\sup_{b\in B}\abs{f(b)}=\sup_{b\in B}\frac{\Babs{\tilde{f}(b)}}{\alpha}=\frac{1}{\alpha}\sup_{b\in B}(\Re\tilde{f})(b)<1.
+	\sup_{b\in B}\abs{f(b)}=\sup_{b\in B}\frac{\tabs{\tilde{f}(b)}}{\alpha}=\frac{1}{\alpha}\sup_{b\in B}(\Re\tilde{f})(b)<1.
 	\]
 	\qed
 	\end{Proof}
@@ -592,11 +592,11 @@
 	\begin{Proof}
 		(4) 只需证明弱收敛必强收敛即可, 设 $ \seq{e} $ 是 $ E $ 的一组基, $ (x_{m})_{m\geqslant1} $ 是 $ E $ 中序列, $ x_{m}=\sum\limits_{j=1}^{n}\lambda_{m, j}e_{j} $, 且 $ x_{m}\weakto x, x=\sum\limits_{k=1}^{n}\lambda_{k}e^{k} $, 取 $ f_{k}\in\Star{E}, k = 1, 2, \dots, n $, 使得 $ f_{k}(e_{j})=\delta_{k, j} $, 则因 $ x_{m}\weakto x $ 有
 		\[
-			\lim_{m\to\infty}f_{k}(x_{m})=\lim_{n\to\infty}\lambda_{m, k}=f_{k}(x)=\lambda_{k},
+			\lim_{m\to\infty}f_{k}(x_{m})=\lim_{m\to\infty}\lambda_{m, k}=f_{k}(x)=\lambda_{k},
 		\]
 		即 $ \forall k=1, 2, \dots, n $, 有 $ \lambda_{m, k}\to \lambda_{k} $. 从而
 		\[
-			\norm{x_{m}-x}=\norm{\sum_{k=1}^{m}(\lambda_{m, k}-\lambda_{k})e_{k}}\leqslant\sum_{k=1}^{m}(\lambda_{m, k}-\lambda_{k})\norm{e_{k}}\to 0, \quad m\to \infty.
+			\norm{x_{m}-x}=\norm{\sum_{k=1}^{n}(\lambda_{m, k}-\lambda_{k})e_{k}}\leqslant\sum_{k=1}^{n}(\lambda_{m, k}-\lambda_{k})\norm{e_{k}}\to 0, \quad m\to \infty.
 		\]
 		故 $ x_{m}\to x $.
 
@@ -644,14 +644,17 @@
 	\end{Theorem}
 
 	\begin{Proof}
-		记 $ C = \baro{\conv(x_{n})_{n\geqslant1}} $, 则 $ C $ 是闭凸集, 若 $ x_{0}\ne C $, 由 Hahn-Banach 严格隔离定理可知
+		记 $ C = \baro{\conv(x_{n})_{n\geqslant1}} $, 则 $ C $ 是闭凸集, 若 $ x_{0}\notin C $, 由 Hahn-Banach 严格隔离定理可知
 		\[
 			\exists f\in\Star{E}\,\exists\alpha\in\R\,\forall a\in C\,((\Re f)(x_{0})<\alpha<(\Re f)(a)),
 		\]
-		分别取 $ a=x_{n} $ 可知 $ (\Re f)(x_{n})>\alpha>(\Re f)(x_{0}) $. 由 $ x_{n}\weakto x_{0} $ 可知 $ (\Re f)(x_{n})\to (\Re f)(x_{0}) $, 矛盾, 于是 $ x_{0}\in C $, $ \exists y_{n}\in\conv(x_{n})_{n\geqslant1} $, 使得 $ y_{n}\to x_{0} $.\qed
+		分别取 $ a=x_{n} $ 可知 $ (\Re f)(x_{n})>\alpha>(\Re f)(x_{0}) $. 由 $ x_{n}\weakto x_{0} $ 可知 $ (\Re f)(x_{n})\to (\Re f)(x_{0}) $, 矛盾, 于是 $ x_{0}\in C $, $ \exists (y_{n})_{n\geqslant1}\subset\conv(x_{n})_{n\geqslant1} $, 使得 $ y_{n}\to x_{0} $.\qed
 	\end{Proof}
+
+	Mazur 定理说明当 $ A $ 是凸集时, 有 $ \bar{A}^{w}=\bar{A}^{\norm{\cdot}} $.
+
 	\begin{Definition}[弱拓扑]\index{R!弱拓扑}\label{def:弱拓扑}
-		对 $ x\in E, (f_{k})_{k=1}^{n}\in\Star{E} $, 定义
+		对 $ x\in E, (f_{k})_{k=1}^{n}\subset\Star{E} $, 定义
 		\[
 			V(x, \seq{f}, \varepsilon):=\{ y:\abs{f_{k}(y)-f_{k}(x)}<\varepsilon, k=1, 2\dots, n \}
 		\]
@@ -672,7 +675,7 @@
 		则称 $ f_{n} $ \textbf{弱*收敛} 到 $ f $, 记作 $ f_{n}\sweakto f $, 并称 $ f $ 是 $ (f_{n})_{n\geqslant1} $ 的\textbf{弱*极限}.
 	\end{Definition}
 	\begin{Definition}[弱*拓扑]\index{R!弱*拓扑}\label{def:弱*拓扑}
-		对 $ f\in\Star{E}, (x_{k})_{k=1}^{n}\in E $, 定义
+		对 $ f\in\Star{E}, (x_{k})_{k=1}^{n}\subset E $, 定义
 		\[
 			V(f, \seq{x}, \varepsilon):=\{ g\in\Star{E}:\abs{g(x_{k})-f(x_{k})}<\varepsilon, k=1, 2\dots, n \}
 		\]
@@ -703,13 +706,13 @@
 	\begin{Proof}
 		任取 $ \Star{x}, \Star{y}\in A\degree, t\in[0, 1] $, 由
 		\[
-			\norm{(t\Star{x}+(1-t)\Star{y})(x)}=\norm{t\Star{x}(x)+(1-t)\Star{y}(x)}\leqslant t+1-t=1
+			\abs{(t\Star{x}+(1-t)\Star{y})(x)}=\abs{t\Star{x}(x)+(1-t)\Star{y}(x)}\leqslant t+1-t=1
 		\]
 		可知 $ A\degree $ 是凸的, 再任取 $ \lambda $ 满足 $ \abs{\lambda}\leqslant1 $. $ \forall \Star{x}\in A\degree $, 由
 		\[
 			\abs{\lambda\Star{x}(x)}=\abs{\lambda}\abs{\Star{x}(x)}\leqslant\abs{\lambda}\leqslant1
 		\]
-		可知 $ \lambda\Star{x}\in A\degree $, 故 $ A\degree $ 是平衡的. 而 $ \forall x\in A $, $ x^{**} $ 在 $ E $ 上 $ \Star{w} $-连续. 从而
+		可知 $ \lambda\Star{x}\in A\degree $, 故 $ A\degree $ 是平衡的. 而 $ \forall x\in A $, $ x^{**} $ 在 $ E $ 上 $ \Star{w} $--连续. 从而
 		\[
 			A\degree=\bigcap_{x\in A}\{ \Star{x}\in\Star{E}:\abs{x^{**}(\Star{x})}\leqslant1 \}=\bigcap_{x\in A}(x^{**})^{-1}\left( \bar{B}_{\Star{E}} \right).
 		\]
@@ -795,32 +798,32 @@
 	\begin{Theorem}
 		设 $ E, F $ 是赋范空间, $ u\in\CB(E, F) $, 则存在唯一的 $ \Star{u}\in\CB(\Star{F}, \Star{E}) $ 使得
 		\[
-			\forall x\in E\,\forall f\in\Star{E}\,((\Star{u}(f)(x)=f(u(x)))\land (\norm{\Star{u}}=\norm{u})),
+			\forall x\in E\,\forall f\in\Star{F}\,((\Star{u}(f)(x)=f(u(x)))\land (\norm{\Star{u}}=\norm{u})),
 		\]
 		并称 $ \Star{u} $ 是 $ u $ 的\textbf{共轭算子}.,
 	\end{Theorem}
 
 	我们约定以 $ \lrangle{\Star{x}, x} $ 来记 $ \Star{x}(x) $, 即 $ \forall x\in E, \forall\Star{x}\in\Star{E} $ 都有 $ \lrangle{\Star{x}, x}:=\Star{x}(x) $, 则定理中共轭算子的性质可写作
 	\[
-		\forall x\in E\,\forall f\in\Star{E}\,((\lrangle{\Star{u}f, x}=\lrangle{f, u(x)})\land\norm{\Star{u}}=\norm{u}).
+		\forall x\in E\,\forall f\in\Star{E}\,((\lrangle{\Star{u}(f), x}=\lrangle{f, u(x)})\land\norm{\Star{u}}=\norm{u}).
 	\]
 	\begin{Proof}
-		由题设 $ \forall f\in F: \Star{u}f=fu\in\Star{E} $, 且
+		由题设 $ \forall f\in \Star{F}: \Star{u}(f)=fu\in\Star{E} $, 且
 		\[
-			\norm{\Star{u}f}=\norm{fu}\leqslant\norm{f}\norm{u}\Longrightarrow\norm{\Star{u}}\leqslant\norm{u}<\infty,
+			\norm{\Star{u}(f)}=\norm{fu}\leqslant\norm{f}\norm{u}\Longrightarrow\norm{\Star{u}}\leqslant\norm{u}<\infty,
 		\]
 		从而 $ \Star{u}\in\CB(\Star{F}, \Star{E}) $ well-defined.
 
 		设存在 $ \Star{v}\in\CB(\Star{F}, \Star{E}) $ 使得
 		\[
-			\forall x\in E\,\forall x\in\Star{F}\,(\lrangle{\Star{v}f, x}=\lrangle{f, u(x)}),
+			\forall x\in E\,\forall f\in\Star{F}\,(\lrangle{\Star{v}(f), x}=\lrangle{f, u(x)}),
 		\]
-		即 $ \Star{v}f=\Star{u}f $ 对任意 $ f\in\Star{F} $ 成立, 于是有 $ \Star{u}=\Star{v} $. 唯一性得证.
+		即 $ \Star{v}(f)=\Star{u}(f) $ 对任意 $ f\in\Star{F} $ 成立, 于是有 $ \Star{u}=\Star{v} $. 唯一性得证.
 
 		再由
 		\[
 			\begin{aligned}
-				\norm{\Star{u}}=\sup_{\norm{f}=1}\norm{\Star{u}f} & = \sup_{\norm{f}=1}\norm{f(u)}=\sup_{\norm{f}=1}\sup_{\norm{x}=1}\norm{f(u(x))}\\
+				\norm{\Star{u}}=\sup_{\norm{f}=1}\norm{\Star{u}(f)} & = \sup_{\norm{f}=1}\norm{fu}=\sup_{\norm{f}=1}\sup_{\norm{x}=1}\abs{f(u(x))}\\
 				& = \sup_{\norm{x}=1}\norm{u(x)}=\norm{u}.
 			\end{aligned}
 		\]
@@ -836,7 +839,7 @@
 				\node (K) at (2, -2) {\K};
 				\draw[-latex] (E) --node[above] {$u$} (F);
 				\draw[-latex] (F) --node[right] {$ f $} (K);
-				\draw[-latex] (E) --node[left] {$ \Star{u}f $\phantom{a}} (K);
+				\draw[-latex] (E) --node[left] {$ \Star{u}(f) $\phantom{a}} (K);
 			\end{tikzpicture}
 		\end{center}
 	% \end{figure}
@@ -845,7 +848,7 @@
 		\[
 			\varphi:\CB(E, F)\to \CB(\Star{F}, \Star{E})\qquad u\mapsto\Star{u}
 		\]
-		是线性等距映射, 但 $ F $ 是完备时 $ \varphi $ 不是满射.
+		是线性等距映射, 但 $ F $ 不完备时 $ \varphi $ 不是满射.
 	\end{Remark}
 
 	\begin{Proposition}
@@ -854,7 +857,7 @@
 	\begin{Proof}
 		任取 $ x\in E, f\in\Star{E} $, 都有
 		\[
-			\lrangle{\Star{(vu)}f, x}=\lrangle{f, vu(x)}=\lrangle{\Star{v}f, u(x)}=\lrangle{\Star{u}\Star{v}f, x},
+			\lrangle{\Star{(vu)}f, x}=\lrangle{f, vu(x)}=\lrangle{\Star{v}(f), u(x)}=\lrangle{\Star{u}\Star{v}(f), x},
 		\]
 		从而 $ (vu)^{*}=\Star{u}\Star{v} $.\qed
 	\end{Proof}
@@ -890,7 +893,7 @@
 		\]
 		则 $ \forall x\in E, \forall f\in\Star{F} $, 有
 		\[
-			\lrangle{u^{**}(\hat{x}), f}=\lrangle{\hat{x}, \Star{u}f}=\lrangle{\Star{u}f, x}=\lrangle{f, u(x)}=\lrangle{\widehat{u(x)}, f}.
+			\lrangle{u^{**}(\hat{x}), f}=\lrangle{\hat{x}, \Star{u}(f)}=\lrangle{\Star{u}(f), x}=\lrangle{f, u(x)}=\langle\widehat{u(x)}, f\rangle.
 		\]
 		即 $ u^{**}(\hat{x})=\widehat{u(x)} $, 也即 $ u^{**}|_{E}=u $, 故有
 		\[
@@ -945,7 +948,7 @@
 		(1) 由
 		\[
 			\begin{aligned}
-				f\in\ker\Star{u} & \Longleftrightarrow \Star{u}(f) \Longrightarrow \forall x\in E\,((\Star{u}f)(x)=0)\\
+				f\in\ker\Star{u} & \Longleftrightarrow \Star{u}(f)=0 \Longrightarrow \forall x\in E\,(\Star{u}(f)(x)=0)\\
 				& \Longleftrightarrow \forall x\in E\,(f(u(x))=0) \Longleftrightarrow \forall x\in E(\lrangle{f, u(x)}=0)\Longleftrightarrow f\in(u(E))^{\bot}.
 			\end{aligned}
 		\]
@@ -955,7 +958,7 @@
 		\[
 			\begin{aligned}
 				x\in\ker u\Longleftrightarrow u(x)=0 &  \Longleftrightarrow \forall f\in\Star{F}\,(\lrangle{f, u(x)}=0)\\
-				& \Longleftrightarrow \forall f\in\Star{F}\,(\lrangle{\Star{u}f, x}=0)\Longleftrightarrow x\in(\Star{u}(F))_{\bot}
+				& \Longleftrightarrow \forall f\in\Star{F}\,(\lrangle{\Star{u}(f), x}=0)\Longleftrightarrow x\in(\Star{u}(F))_{\bot}
 			\end{aligned}
 		\]
 		可知.
@@ -1001,7 +1004,7 @@
 		\]
 		对 $ \seq{f} $, 取 $ \seq{\tilde{e}}\in E^{**} $ 使得 $ \tilde{e}_{j}(f_{k})=\delta_{j, k} $, 且 $ \norm{\tilde{e}_{j}}=1 $, 则注意到 $ \forall f\in\Star{E} $ 都有
 		\[
-			(\tilde{e}_{k}-\hat{e}_{k})(f)=\sum_{j=1}^{n}(\tilde{e}_{k}-\hat{e}_{k})f_{j}=f(e_{k})-f_{k}(e_{k})=0,
+			(\tilde{e}_{k}-\hat{e}_{k})(f)=\sum_{j=1}^{n}(\tilde{e}_{k}-\hat{e}_{k})f_{j}=\tilde{e}_{k}(f_{k})-f_{k}(e_{k})=0,
 		\] 
 		故 $ \tilde{e}_{k}=\hat{e}_{k} $, 则 $ \forall z\in E^{**} $ 有
 		\[
@@ -1027,7 +1030,7 @@
 		从而 $ f=\hat{y} $, 故 $ H $ 是自反的.\qed
 	\end{Proof}
 	
-	需要注意到括号的性质在Banach空间上与在Hilbert空间上性质的不同. 在Hilbert空间上的内积是共轭线性的, 而在Banach空间上约定的``括号"只具有线性性.
+	需要注意到``括号''的性质在Banach空间上与在Hilbert空间上性质的不同. 在Hilbert空间上的内积是共轭线性的, 而在Banach空间上约定的``括号''只具有线性性.
 	
 	\begin{Proposition}
 		设$ 1<p<\infty $, $ (p,q) $是一对共轭指数, 则$ \Star{\ell_p}\simeq\ell_q $. 另外, 有$ \Star{c_0}\simeq\ell_1 $.
@@ -1035,7 +1038,7 @@
 	\begin{Proof}
 		对任意的$ x\in\ell_p $, 其中$ x=(x_n)_{n\geqslant 1}=\sum\limits_{n\geqslant 1}x_ne_n $, 则
 		\[
-		\norm{\sum_{k=1}^nx_ke_k-x}_p=\Bnorm{\sum_{k\geqslant n+1}x_ke_k}_p=\sum_{k\geqslant n+1}\abs{x_n}^p\to 0,\qquad(n\to\infty)
+		\norm{\sum_{k=1}^nx_ke_k-x}_p=\Bnorm{\sum_{k\geqslant n+1}x_ke_k}_p=\Big(\sum_{k\geqslant n+1}\abs{x_n}^p\Big)^{1/p}\to 0,\qquad(n\to\infty)
 		\]
 		即$ x=\sum\limits_{n\geqslant 1}x_ne_n=\lim\limits_{n\to\infty}\sum\limits_{k=1}^nx_ke_k $. 同理, 对任意的$ x\in c_0 $, 由于
 		\[
@@ -1284,11 +1287,11 @@
 	\begin{Proof}
 	\textsl{必要性}. 由$ E $是自反的可知$ E=E^{**} $, 从而$ \bar{B}_E=\bar{B}_{E^{**}} $. 由Banach-Alaoglu定理可知$ \bar{B}_{E^{**}} $是$ w $--紧的, 于是$ \bar{B}_E $是$ w $--紧的.
 	
-	\textsl{充分性}. 由$ \bar{B}_E $是$ w $--紧的可知$ \bar{B}_E\hookrightarrow\bar{B}_{E^{**}} $是$ \Star{w} $--紧的, 故$ \bar{B}_E $是$ \Star{w} $--紧的. 则$ \bar{B}_E $在$ \bar{B}_{E^{**}} $中$ \Star{w} $--闭, 即$ \bar{B}_E=\bar{B}_E^{\Star{w}} $. 由Goldstine定理可知$ \bar{B}_E^{\Star{w}}=\bar{B}_{E^{**}} $, 从而$ \bar{B}_E=\bar{B}_{E^{**}} $, 这说明$ E=E^{**} $, 即$ E $是自反的.\qed
+	\textsl{充分性}. 由$ \bar{B}_E $是$ w $--紧的可知$ \bar{B}_E\hookrightarrow\bar{B}_{E^{**}} $, 因为 $ \bar{B}_{E^{**}} $ 是$ \Star{w} $--紧的, 故$ \bar{B}_E $是$ \Star{w} $--紧的. 则$ \bar{B}_E $在$ \bar{B}_{E^{**}} $中$ \Star{w} $--闭, 即$ \bar{B}_E=\bar{B}_E^{\Star{w}} $. 由Goldstine定理可知$ \bar{B}_E^{\Star{w}}=\bar{B}_{E^{**}} $, 从而$ \bar{B}_E=\bar{B}_{E^{**}} $, 这说明$ E=E^{**} $, 即$ E $是自反的.\qed
 	\end{Proof}
 	
 	\begin{Remark}
-	在$ E $上有三种拓扑, 其中范数拓扑强于弱拓扑, 而弱拓扑强于弱*拓扑. 在三种拓扑下$ \Star{E} $的单位球的紧性对应了$ E $的不同性质. 其中$ \bar{B}_{\Star{E}} $紧等价于$ \dim \Star{E}<\infty $, 进一步等价于$ \dim E<\infty $. 而$ \bar{B}_{\Star{E}} $弱紧当且仅当$ \Star{E} $是自反的, 它等价于$ E $是自反的. 而$ \bar{B}_{\Star{E}} $总是$ \Star{w} $--紧的.
+	在$ E $上有三种拓扑, 其中范数拓扑强于弱拓扑, 而弱拓扑强于弱*拓扑. 在三种拓扑下$ \Star{E} $的单位球的紧性对应了$ E $的不同性质. 其中$ \bar{B}_{\Star{E}} $紧等价于$ \dim \Star{E}<\infty $, 进一步等价于$ \dim E<\infty $. 而$ \bar{B}_{\Star{E}} $$ w $--紧当且仅当$ \Star{E} $是自反的, 它等价于$ E $是自反的. 而$ \bar{B}_{\Star{E}} $总是$ \Star{w} $--紧的.
 	\end{Remark}
 	
 \section*{本章习题}
@@ -1340,10 +1343,10 @@
 			\end{aligned}
 			\]
 			\begin{enumerate}[(1)]
-			\item 证明: $ A_0 $与$ B $都是$ \ell_1 $的线性子空间, 且$ A_0+B=\ell_1 $中稠密;
-			\item 设$ c\in\ell_1 $满足$ x_{2n-1}=0 $及$ c_{2n}=2^{-n} $, 并设$ A=A_0-c $. 证明: $ c\notin A_0+B $且$ A\cap B=\varnothing $, 并证明: 不存在非零的$ f\in\Star{\ell_1} $和$ \alpha\in\R $使得$ A\subset\{ f\leqslant\alpha \} $且$ B\subset\{ f\geqslant\alpha \} $.
+			\item 证明: $ A_0 $与$ B $都是$ \ell_1 $的闭线性子空间, 且$ A_0+B $在$\ell_1 $中稠密;
+			\item 设$ c\in\ell_1 $满足$ c_{2n-1}=0 $及$ c_{2n}=2^{-n} $, 并设$ A=A_0-c $. 证明: $ c\notin A_0+B $且$ A\cap B=\varnothing $, 并证明: 不存在非零的$ f\in\Star{\ell_1} $和$ \alpha\in\R $使得$ A\subset\{ f\leqslant\alpha \} $且$ B\subset\{ f\geqslant\alpha \} $.
 			\end{enumerate}
-		\item (8.15) 本习题的目的是刻画连续线性泛函的 Hahn-Banach 延拓的唯一性问题. 设 $ E $ 是一个维数至少为 2 的赋范空间, 证明: $ E $ 的线性子空间 $ F $ 上的每个连续线性泛函有唯一的保范延拓的充分不要条件是 $ \Star{E} $ 是严格凸的.
+		\item (8.15) 本习题的目的是刻画连续线性泛函的 Hahn-Banach 延拓的唯一性问题. 设 $ E $ 是一个维数至少为 2 的赋范空间, 证明: $ E $ 的线性子空间 $ F $ 上的每个连续线性泛函有唯一的保范延拓的充分必要条件是 $ \Star{E} $ 是严格凸的.
 		\item (8.16) 考虑空间 $ \ell_{\infty} $ 和它的线性子空间 $ F $:
 			\[
 				F = \left\{ x\in\ell_{\infty}:\lim_{n\to\infty} m_{n}(x)\ \text{存在} \right\}, \qquad m_{n}(x)=\frac{1}{n}\sum_{k=1}^{n} x_{k}.
@@ -1383,7 +1386,7 @@
 		\end{enumerate}
 		\item (9.16) 称 Banach 空间 $ E $ 为\textbf{一致凸}\index{Y!一致凸}的, 若对任意 $ \varepsilon>0 $, 存在 $ \delta>0 $, 使得
 		\[
-			\forall x, y\in\bar{B}_{E}\,\left(\norm{x-y}\geqslant\varepsilon\Rightarrow \norm{\frac{x+y}{2}\leqslant 1-\delta}\right).
+			\forall x, y\in\bar{B}_{E}\,\left(\norm{x-y}\geqslant\varepsilon\Rightarrow \norm{\frac{x+y}{2}}\leqslant 1-\delta\right).
 		\]
 		设 $ (x_{n})_{n\geqslant1} $ 是一致凸空间 $ E $ 中弱收敛到 $ x $ 的序列, 并有 $ \lim\limits_{n\to\infty}\norm{x_{n}}=\norm{x} $. 证明 $ (x_{n})_{n\geqslant1} $ 依范数收敛到 $ x $. 用例子说明条件 $ \lim\limits_{n\to\infty}\norm{x_{n}}=\norm{x} $ 是必需的.
 	\end{enumerate}

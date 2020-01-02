@@ -35,7 +35,7 @@
 	
 	我们希望证明一个更强的命题, 尽管实分析课程中已经介绍过相关概念, (但是我猜可能考完试就忘记了), 所以在这里也再次重复一遍:
 	\begin{Definition}
-		对一般的准序集$ (P, \lesssim) $, 若$ \forall x_1, x_2\in P, \exists x\in P : (x_1\lesssim x)\land (x_2\lesssim x) $, 则称$ P $是\textbf{上定向}的; 若$ \forall x_1, x_2\in P, \exists x\in P : (x_1\gtrsim x)\land (x_2\gtrsim x) $, 则称$ P $是\textbf{下定向}的. 若$ P $上定向或者下定向, 则称$ P $是一个\textbf{定向集}.
+		对一般的准序集$ (P, \lesssim) $, 若$ \forall x_1, x_2\in P, \exists x\in P\,((x_1\lesssim x)\land (x_2\lesssim x)) $, 则称$ P $是\textbf{上定向}的; 若$ \forall x_1, x_2\in P, \exists x\in P\,((x_1\gtrsim x)\land (x_2\gtrsim x)) $, 则称$ P $是\textbf{下定向}的. 若$ P $上定向或者下定向, 则称$ P $是一个\textbf{定向集}.
 		
 		当$ \alpha $是一个定向集时, 一个$ \alpha $-组称为一个\textbf{网}. 当$ (x_i)_{i\uparrow\alpha} $是$ (P,\lesssim) $上的一个网时, 形式地定义\textbf{上极限}
 		\[
@@ -227,7 +227,7 @@
 	
 	\textbf{定义\,\ref{def:Hilbert空间}\,下的注记}\ \ 内积空间的完备化是Hilbert空间.
 	\begin{Proof}
-	设内积空间$ H $上的内积$ \lrangle{\cdot,\cdot} $诱导范数$ \norm{\cdot} $, 范数$ \norm{\cdot} $诱导度量$ d(\cdot,\cdot) $, 对度量空间$ (H,d) $作完备化$ (\hat{H},d) $, 那么任取$ H $中一Cauchy列$ (x_n)_{n\geqslant 1} $, 存在$ \hat{x}\in\hat{H} $使得$ d(x_n,\hat{x})to 0 $成立.
+	设内积空间$ H $上的内积$ \lrangle{\cdot,\cdot} $诱导范数$ \norm{\cdot} $, 范数$ \norm{\cdot} $诱导度量$ d(\cdot,\cdot) $, 对度量空间$ (H,d) $作完备化$ (\hat{H},d) $, 那么任取$ H $中一Cauchy列$ (x_n)_{n\geqslant 1} $, 存在$ \hat{x}\in\hat{H} $使得$ d(x_n,\hat{x})\to 0 $成立.
 	
 	定义$ \hat{H} $上的范数$ \norm{x-y}:=d(x,y) $, 这一定义在$ H $上的限制即为$ H $中的范数, 由度量的连续性可知$ \norm{x_n}\to\norm{x} $. 再由范数可以定义一个内积
 	\[

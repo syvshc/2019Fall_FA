@@ -91,18 +91,18 @@
 		设 $ T\in\CB(E, F) $, 则 $ T $ 紧的充分必要条件是 $ \Star{T} $ 紧.
 	\end{Theorem}
 	\begin{Proof}
-		\textsl{必要性}. 设 $ T $ 是紧算子, 则 $ T(B_{E}) $ 相对紧. 需证 $ \Star{T}(B_{\Star{F}}) $ 相对紧. 只需证明对任意 $ (e_{n})_{n\geqslant1}\subset \Star{T}(B_{\Star{F}}) $ 都有收敛子列. 令 $ (f_{n})_{n\geqslant1}\subset B_{\Star{F}} $ 使得 $ \Star{T}f_{n}=e_{n} $, 即 $ f_{n}\circ T=e_{n} $. 则由 $ \Star{T} $ 的连续性, 只需说明 $ (f_{n})_{n\geqslant1} $ 有收敛子列即可. 注意到 $ f_{n} $ 的定义域为 $ \baro{T(B_{E})} $, 这是一个紧集.
+		\textsl{必要性}. 设 $ T $ 是紧算子, 则 $ T(B_{E}) $ 相对紧. 需证 $ \Star{T}(B_{\Star{F}}) $ 相对紧. 只需证明对任意 $ (e_{n})_{n\geqslant1}\subset \Star{T}(B_{\Star{F}}) $ 都有收敛子列. 令 $ (f_{n})_{n\geqslant1}\subset B_{\Star{F}} $ 使得 $ \Star{T}(f_{n})=e_{n} $, 即 $ f_{n}\circ T=e_{n} $. 则由 $ \Star{T} $ 的连续性, 只需说明 $ (f_{n})_{n\geqslant1} $ 有收敛子列即可. 注意到 $ f_{n} $ 的定义域为 $ \baro{T(B_{E})} $, 这是一个紧集.
 
-		使用 Arzel\`a-Ascoli 引理, 要说明 $ (f_{n})_{n\geqslant1} $ 等度连续, 只需说用 $ \forall x\in\baro{T(B_{E})} $, 都有 $ (F_{n}(x))_{n\geqslant1} $ 相对紧. 由 $ (f_{n})_{n\geqslant1}\subset B_{\Star{F}} $ 知 $ (f_{n})_{n\geqslant1} $ 有界, 从而 $ (f_{n}(x))_{n\geqslant1} $ 有界. 于是 $ (f_{n}(x))_{n\geqslant1} $ 相对紧, 则 $ \forall\varepsilon>0, \forall x, y\in\baro{T(B_{E})} $, 若 $ \norm{x-y}<\varepsilon $, 则
+		使用 Arzel\`a-Ascoli 引理, 要说明 $ (f_{n})_{n\geqslant1} $ 等度连续, 且对任意 $ x\in\baro{T(B_{E})} $, 都有 $ (f_{n}(x))_{n\geqslant1} $ 相对紧. 由 $ (f_{n})_{n\geqslant1}\subset B_{\Star{F}} $ 知 $ (f_{n})_{n\geqslant1} $ 有界, 从而 $ (f_{n}(x))_{n\geqslant1} $ 有界. 于是 $ (f_{n}(x))_{n\geqslant1} $ 相对紧, 则 $ \forall\varepsilon>0, \forall x, y\in\baro{T(B_{E})} $, 若 $ \norm{x-y}<\varepsilon $, 则
 		\[
 			\abs{f_{n}(x)-f_{n}(y)} = \abs{f_{n}(x-y)}\leqslant\norm{x-y}<\varepsilon.
 		\] 
-		故 $ (f_{n})_{n\geqslant1} $ 等度连续, 从而 $ (f_{n}){n\geqslant1} $ 相对紧, 则存在 Cauchy 子列,
+		故 $ (f_{n})_{n\geqslant1} $ 等度连续, 从而 $ (f_{n})_{n\geqslant1} $ 相对紧, 则存在 Cauchy 子列,
 		记作 $ (f_{n_{k}})_{k\geqslant1} $, 由
 		\[
 			\begin{aligned}
 				\norm{e_{n_{k}}-e_{n_{j}}} & = \sup_{y\in B_{E}}\norm{\lrangle{e_{n_{k}}-e_{n_{j}}, y}} \\
-				& = \sup_{y\in B_{E}}\norm{\lrangle{\Star{T}f_{n_{k}}, y}-\lrangle{\Star{T}f_{n_{j}}, y}}\\
+				& = \sup_{y\in B_{E}}\norm{\lrangle{\Star{T}(f_{n_{k}}), y}-\lrangle{\Star{T}(f_{n_{j}}), y}}\\
 				& = \sup_{y\in B_{E}}\norm{\lrangle{f_{n_{k}}, Ty}-\lrangle{f_{n_{j}}, Ty}}\\
 				& =  \sup_{x\in T(B_{E})}\norm{\lrangle{f_{n_{k}}, x}-\lrangle{f_{n_{j}}, x}}\\
 				& \leqslant \norm{f_{n_{k}}-f_{n_{j}}}_{\baro{T(B_{E})}}\to 0.
@@ -110,7 +110,7 @@
 		\]
 		故 $ (e_{n_{k}})_{k\geqslant1} $ 也是 Cauchy 列. 由 $ \Star{E} $ 的完备性可知 $ (e_{n_{k}})_{k\geqslant1} $ 收敛, 故 $ \Star{T}(B_{\Star{F}}) $ 相对紧, 即 $ \Star{T} $ 是紧算子.
 
-		\textsl{充分性}. 若 $ \Star{T} $ 是紧算子, 由必要性可知 $ T^{**} $ 是紧算子, 由 $ T = T^{**}|E $ 可知 $ T(B_{E})\subset T^{**}(B_{E}) $ 相对紧, 故 $ T $ 是紧算子.\qed
+		\textsl{充分性}. 若 $ \Star{T} $ 是紧算子, 由必要性可知 $ T^{**} $ 是紧算子, 由 $ T = T^{**}|_{E} $ 可知 $ T(B_{E})\subset T^{**}(B_{E}) $ 相对紧, 故 $ T $ 是紧算子.\qed
 	\end{Proof}
 
 	\begin{Proposition}
@@ -138,7 +138,7 @@
 		\[
 			P_{n}: H\to\Span\{ \seq{e} \}\qquad x\mapsto \sum_{k=1}^{n}\lrangle{x, e_{k}}e_{k},
 		\]
-		则 $ \norm{P_{n}}=1 $. 由 $ \dim P_{n}(H)=n<\infty $ 可知 $ P_{n} $ 有限秩, 由 $ \Fr(H) $ 是理想可知
+		则 $ \norm{P_{n}}=1 $. 由 $ \dim P_{n}(H)=n<\infty $ 可知 $ P_{n} $ 有限秩, 由 $ \Fr(H) $ 是 $ \CB(H) $ 的理想可知
 		\[
 			\forall T\in\CK(H)\,(TP_{n}\in\Fr(H)\land P_{n}T\in\Fr(H)).
 		\]
