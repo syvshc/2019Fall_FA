@@ -1455,8 +1455,8 @@
 		因为每一个 $ f_{n} $ 连续, 定义
 		\[
 			\begin{aligned}
-				F_{N, k} & :=\left\{ x\in E: d(f_{n}(x), f_{m}(x))<\frac{1}{k}, \forall m, n\geqslant N \right\} \\
-				& = \bigcap_{m,n\geqslant N}\left\{ x\in E: d(f_{n}(x), f_{m}(x))<\frac{1}{k} \right\}
+				F_{N, k} & :=\left\{ x\in E: d(f_{n}(x), f_{m}(x))\leqslant\frac{1}{k}, \forall m, n\geqslant N \right\} \\
+				& = \bigcap_{m,n\geqslant N}\left\{ x\in E: d(f_{n}(x), f_{m}(x))\leqslant\frac{1}{k} \right\}
 			\end{aligned}
 		\]
 		故 $ F_{N, k} $ 是闭集, 再由 $ (f_{n})_{n\geqslant1} $ 逐点收敛可知
@@ -1678,7 +1678,7 @@
 	\end{Corollary}
 	
 	\begin{Corollary}\label{cor:开映射定理推论}
-	设$ E, F $是Banach空间, $ u: E\to F $是连续线性映射, 则$ u^{-1} $连续. 即$ u $是一个同构映射.
+	设$ E, F $是Banach空间, $ u: E\to F $是连续线性双射, 则$ u^{-1} $连续. 即$ u $是一个同构映射.
 	\end{Corollary}
 	
 	为叙述方便, 在之后使用定理\,\ref{thm:开映射定理形式1}\,,推论\,\ref{cor:开映射定理形式2}\,,推论\,\ref{cor:开映射定理推论}\,时, 都统一称作使用了开映射定理.
