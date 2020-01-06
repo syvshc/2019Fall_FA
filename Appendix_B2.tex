@@ -11,7 +11,7 @@
 		\[
 			\R = \Q\cup\J = \Big( \bigcup_{n\geqslant1}\{ x_{n} \} \Big)\cup\Big( \bigcup_{n\geqslant1}O_{n}^{c} \Big)
 		\]
-		为一个无内点的闭集, 矛盾. 
+		为一个无内点的闭集, 矛盾.  而任意 $ f: \R\to\R $ 的连续点集 $ \cont{f} $ 是一个 \Gd 集, 故不存在函数 $ f:\R\to\R $ 使得 $ \cont(f)=\Q $.
 
 		(另证: 若 \Q 是 \Gd 集, 则\Q 是稠密的 \Gd 集, 而 \J 也是稠密的 \Gd 集, 则 $ \Q\cap\J=\varnothing $ 也是稠密的 \Gd 集, 矛盾.)
 
@@ -45,9 +45,12 @@
 	\item 设$ A\subset E $且$ \Span A $在$ E $中稠密, 有$ (u_n(a))_{n\geqslant 1} $对每个$ a\in A $均收敛, 且$ (u_n)_{n\geqslant 1} $有界.
 	\end{enumerate}
 	\begin{Proof}
-	(a)$ \Rightarrow $(b) : 由$ (u_n(x))_{n\geqslant 1} $对任意$ x\in E $收敛可知$ (u_n(a))_{n\geqslant 1} $收敛显然, 且可知其对任意$ x\in E $有界, 从而由共鸣定理可知$ \sup\limits_{n\geqslant 1}\norm{u_n}<\infty $.
+	(a)$ \Rightarrow $(b) : 由$ (u_n(x))_{n\geqslant 1} $对任意$ x\in E $收敛可知$ (u_n(a))_{n\geqslant 1} $收敛, 且可知其对任意$ x\in E $有界, 从而由共鸣定理可知$ \sup\limits_{n\geqslant 1}\norm{u_n}<\infty $.
 	
-	(b)$ \Rightarrow $(a) : 由$ (u_n)_{n\geqslant 1} $有界, 可知存在$ M>0 $使得$ \sup\limits_{n\geqslant 1}\norm{u_n}\leqslant M $. 则$ \forall x\in E\,\exists a\in\Span A\,(\norm{x-a}<\varepsilon/4M) $. 且$ \exists n_0\in\N $使得$ m,n\geqslant n_0 $时有$ \norm{u_n(a)-u_m(a)}<\varepsilon/2 $(此因$ \Span A $中的元素是$ A $中元素的有限线性组合), 那么
+	(b)$ \Rightarrow $(a) : 由$ (u_n)_{n\geqslant 1} $有界, 可知存在$ M>0 $使得$ \sup\limits_{n\geqslant 1}\norm{u_n}\leqslant M $. 则
+	\[ \forall x\in E\,\exists a\in\Span A\,(\norm{x-a}<\varepsilon/4M).
+	\]
+	且$ \exists n_0\in\N $使得$ m,n\geqslant n_0 $时有$ \norm{u_n(a)-u_m(a)}<\varepsilon/2 $(此因$ \Span A $中的元素是$ A $中元素的有限线性组合), 那么
 	\[
 	\begin{aligned}
 	\norm{u_n(x)-u_m(x)}&\leqslant\norm{u_n(x)-u_n(a)}+\norm{u_n(a)-u_m(a)}+\norm{u_m(a)-u_m(x)}\\
@@ -68,7 +71,7 @@
 		\item 导出 $ E $ 中的闭单位球在 $ [0, 1] $ 上等度连续, 且 $ \dim E<\infty $.
 	\end{enumerate}
 	\begin{Proof}
-		(1) 由
+		(1) 由 $ \varPhi_{x, y} $ 的定义可知期为线性映射. 再由
 		\[
 			\abs{\varPhi_{x, y}(f)}=\abs{\frac{f(y)-f(x)}{y-x}}\leqslant\frac{2\norm{f}}{\abs{y-x}}
 		\]
@@ -78,11 +81,11 @@
 		\]
 		则 $\sup\limits_{x\ne y}\abs{\varPhi_{x, y}(f)}<k_{f} $. 由共鸣定理 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 有界.
 
-		(2) 由 (1) 知 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 在 $ \Star{E} $ 上有界, 设 $ M=\sup\limits_{x\ne y}\norm{\varPhi_{x, y}} $ 则对 $ \forall f\in\baro{B_{E}} $ 都有
+		(2) 由 (1) 知 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 在 $ \Star{E} $ 上有界, 设 $ M=\sup\limits_{x\ne y}\norm{\varPhi_{x, y}} $ 则对 $ \forall f\in\bar{B}_{E} $ 都有
 		\[
 			\norm{\varPhi_{x, y}(f)}\leqslant M\norm{f}\leqslant M,
 		\]
-		即 $ \abs{f(y)-f(x)}\leqslant M\abs{y-x} $ 对 $ \forall f\in\baro{B_{E}} $ 成立, 故 $ \baro{B_{E}} $ 等度连续, 且 $ \forall x\in[0. 1] $ 都有 $ \abs{f(x)}\leqslant 1 $, 则 $ \{ f(x):f\in\baro{B_{E}} \} $ 预紧, 由 Arzel\`a-Ascoli 定理知 $ \baro{B_{E}} $ 紧, 故 $ E $ 有限维.\qed
+		即 $ \abs{f(y)-f(x)}\leqslant M\abs{y-x} $ 对 $ \forall f\in\bar{B}_{E} $ 成立, 故 $ \bar{B}_{E} $ 等度连续, 且 $ \forall x\in[0, 1] $ 都有 $ \abs{f(x)}\leqslant 1 $, 则 $ \{ f(x):f\in\bar{B}_{E} \} $ 预紧, 由 Arzel\`a-Ascoli 定理知 $ \bar{B}_{E} $ 紧, 故 $ E $ 有限维.\qed
 	\end{Proof}
 
 	\textbf{习题6.10}\ [习题课]\ \ 设$ E, F $都是Banach空间, $ u\in\CB(E,F) $并满足$ u(B_E) $在$ B_F $中稠密.
@@ -102,7 +105,7 @@
 	\[
 	\norm{y-u(x_0)}<q,
 	\]
-	取$ y_1=\frac{1}{q}(y-u(x_0)) $, 则$ \norm{y_1}\in B_F $, 则存在$ x_1\in B_E $使得
+	取$ y_1=\frac{1}{q}(y-u(x_0)) $, 则$ y_1\in B_F $, 则存在$ x_1\in B_E $使得
 	\[
 	\norm{y_1-u(x_1)}<q,
 	\]
@@ -158,7 +161,7 @@
 	\[
 	B_F=u(B_E)=v\circ q(B_E)=v(B_{E/\ker u}),
 	\]
-	故$ v(\baro{B_{E/\ker u}})\subset\baro{v(B_{E/\ker u})}=\bar{B}_F $. 即$ \norm{v}<1 $. 而$ v^{-1}(B_F)=B_{E/\ker u} $, 同理$ \norm{v^{-1}}\leqslant 1 $. 故
+	故$ v(\bar{B}_{E/\ker u})\subset\baro{v(B_{E/\ker u})}=\bar{B}_F $. 即$ \norm{v}<1 $. 而$ v^{-1}(B_F)=B_{E/\ker u} $, 同理$ \norm{v^{-1}}\leqslant 1 $. 故
 	\[
 	\norm{e+\ker u}\leqslant\norm{v(e+\ker u)}\leqslant\norm{e+\ker u},\qquad \forall e\in E
 	\]
@@ -191,9 +194,9 @@
 		\]
 		知 $ u $ 连续, 由开映射定理可知 $ \exists r>0\,(rB_{F+G}\subset u(B_{F\times G})) $, 且有
 		\[
-			\frac{r}{2}\baro{B_{F+G}}\subset rB_{F+G}\subset u(B_{F\times G}),
+			\frac{r}{2}\bar{B}_{F+G}\subset rB_{F+G}\subset u(B_{F\times G}),
 		\]
-		取 $ c=2/r $, 有 $ \frac{1}{c}\baro{B_{F+G}}\subset u(B_{F\times G}) $, 从而 $ \forall x\in F+G, \frac{x}{c\norm{x}}\in\baro{B_{F+G}} $, 则 $ \exists (f_{0}, g_{0})\in B_{F\times G} $ 使得
+		取 $ c=2/r $, 有 $ \frac{1}{c}\bar{B}_{F+G}\subset u(B_{F\times G}) $, 从而 $ \forall x\in F+G, \frac{x}{c\norm{x}}\in\frac{1}{c}\bar{B}_{F+G} $, 则 $ \exists (f_{0}, g_{0})\in B_{F\times G} $ 使得
 		\[
 			\frac{x}{c\norm{x}}=f_{0}+g_{0}=u(f_{0}, g_{0}),
 		\]
@@ -217,7 +220,7 @@
 	\begin{Proof}
 	设$ (x_n)_{n\geqslant 1}\subset X,\ y\in Y $满足$ x_n\to 0 $且$ x'_n\to y $. 为证明$ G(u) $是闭的, 只需证明$ y=0 $. 任取$ t\in[0,1] $, 则
 	\[
-	0=\lim_{n\to\infty}x_n(t)-x_n(0)=\lim_{n\to\infty}\int_0^tx'_n\diff t=\int_0^ty\diff t,
+	0=\lim_{n\to\infty}(x_n(t)-x_n(0))=\lim_{n\to\infty}\int_0^tx'_n\diff t=\int_0^ty\diff t,
 	\]
 	由$ y $的连续性可知$ y=0 $. 从而$ G(u) $闭集.
 	
@@ -262,7 +265,7 @@
 	\[
 		\norm{(x_{1}, x_{2})}_{p}=
 		\begin{cases}
-			\big( \abs{x_{1}}^{p}+\abs{x_{2}}^{2} \big)^{1/p} & ,p<\infty\\
+			\big( \abs{x_{1}}^{p}+\abs{x_{2}}^{p} \big)^{1/p} & ,p<\infty\\
 			\max\{\abs{x_{1}}, \abs{x_{2}}\} & ,p = \infty
 		\end{cases}
 	\]
@@ -282,11 +285,15 @@
 		\[
 			\begin{aligned}
 				\tnorm{\tilde{f}}=1 & \Longleftrightarrow \forall x_{1}, x_{2}\in\R\,\left( \frac{\abs{x_{1}+cx_{2}}}{(\abs{x_{1}}^{p}+\abs{x_{2}}^{p})^{1/p}}\leqslant1 \right)\\
-				& \Longleftrightarrow\forall x_{1}, x_{2}\in\R\,\left(\abs{x_{1}+c\abs{x_{2}}}\leqslant(\abs{x_{1}}^{p}+\abs{x_{2}}^{p})^{1/p} \right)\\
+				& \Longleftrightarrow\forall x_{1}, x_{2}\in\R\,\left(\abs{x_{1}}+\abs{c}\abs{x_{2}}\leqslant(\abs{x_{1}}^{p}+\abs{x_{2}}^{p})^{1/p} \right)\\
 				& \Longleftrightarrow \forall x_{1}, x_{2}\in\R\,\left( \abs{c}\leqslant\frac{(\abs{x_{1}}^{p}+\abs{x_{2}}^{p})^{1/p}-\abs{x_{1}}}{\abs{x_{2}}} \right)\\
 				& \Longleftrightarrow \forall t\geqslant0\,(\abs{c}\leqslant(t^{p}+1)^{1/p}-t)\\
 				&\Longleftrightarrow \abs{c}\leqslant\inf_{t\geqslant0}\left( (t^{p}+1)^{1/p}-t \right)
 			\end{aligned}
+		\]
+		因为 $ (1+t^{p})^{1/p}-t $ 单调下降, 则
+		\[
+			\inf_{t\geqslant0}\left( (t^{p}+1)^{1/p}-t \right)=\lim_{t\to\infty}\left( (t^{p}+1)^{1/p}-t \right).
 		\]
 		注意到
 		\[
@@ -305,11 +312,11 @@
 		若 $ p=\infty $, 有
 		\[
 			\begin{aligned}
-				\tnorm{f}=1\Longleftrightarrow \forall x_{1}, x_{2}\in\R\,(\abs{x_{1}+cx_{2}}& \leqslant\max\{ \abs{x_{1}}, \abs{x_{2}} \})\\
-				& \Longleftrightarrow x_{1}, x_{2}\in\R\,(\abs{x_{1}}+c\abs{x_{2}}\leqslant\max\{ \abs{x_{1}}, \abs{x_{2}} \}).
+				\tnorm{f}=1& \Longleftrightarrow \forall x_{1}, x_{2}\in\R\,(\abs{x_{1}+cx_{2}} \leqslant\max\{ \abs{x_{1}}, \abs{x_{2}} \})\\
+				& \Longleftrightarrow x_{1}, x_{2}\in\R\,(\abs{x_{1}}+\abs{c}\abs{x_{2}}\leqslant\max\{ \abs{x_{1}}, \abs{x_{2}} \}).
 			\end{aligned}	
 		\]
-		当 $ \abs{x_{1}}\geqslant\abs{x_{2}} $ 时, $ \abs{x_{1}}+c\abs{x_{2}}\leqslant\abs{x_{1}}\Longrightarrow c=0 $ (取 $ x_{2}\ne 0 $ 即可) 从而形如
+		当 $ \abs{x_{1}}\geqslant\abs{x_{2}} $ 时, $ \abs{x_{1}}+\abs{c}\abs{x_{2}}\leqslant\abs{x_{1}}\Longrightarrow c=0 $ (取 $ x_{2}\ne 0 $ 即可) 从而形如
 		\[
 			\tilde{f}(x_{1}e_{1}+x_{2}e_{2})=x_{1}
 		\]
@@ -335,12 +342,12 @@
 	\textsl{充分性}. 考虑$ f $在$ \Span A $上的线性扩张
 	\[
 	\tilde{f} : \Span A\to\K,\qquad \sum_{k=1}^n\alpha_ka_k\mapsto\sum_{k=1}^n\alpha_kf(a_k),
-	\]
-	先证$ \tilde{f} $well-defined. 若$ \sum\limits_{k=1}^n\alpha_ka_k=\sum\limits_{l=1}^n\beta_lb_l $, 其中$ a_k, b_l\in A $, 则由
+	\]d
+	先证$ \tilde{f} $ well-defined. 若$ \sum\limits_{k=1}^n\alpha_ka_k=\sum\limits_{l=1}^n\beta_lb_l $, 其中$ a_k, b_l\in A, \alpha_{k}, \beta_{l}\in\K $, 则由
 	\[
 	\abs{\sum_{k=1}^n\alpha_kf(a_k)-\sum_{l=1}^n\beta_lf(b_l)}\leqslant\lambda\norm{\sum_{k=1}^n\alpha_ka_k-\sum_{l=1}^n\beta_lb_l}=0
 	\]
-	可知$ \tilde{f} $well-defined且$ \tilde{f} $连续, $ \tnorm{\tilde{f}}\leqslant\lambda $. 由Hahn-Banach定理可知$ \tilde{f} $可以延拓为$ E $上的连续线性泛函$ \hat{f} $, 且它满足$ \hat{f}\rvert_A=f $和$ \tnorm{\hat{f}}\leqslant\lambda $.\qed
+	可知$ \tilde{f} $ well-defined且$ \tilde{f} $连续, $ \tnorm{\tilde{f}}\leqslant\lambda $. 由Hahn-Banach定理可知$ \tilde{f} $可以延拓为$ E $上的连续线性泛函$ \hat{f} $, 且它满足$ \hat{f}\rvert_A=f $和$ \tnorm{\hat{f}}\leqslant\lambda $.\qed
 	\end{Proof}
 	
 	\textbf{习题8.4}\ [习题课]\ \ 设$ E $是Hausdorff拓扑向量空间, $ A $是$ E $中包含原点的开凸集且$ x_0\in E\sm A $.
@@ -359,13 +366,13 @@
 	\[
 	\forall a\in A\,(\Re g(a)<\alpha\leqslant\Re g(x_0))
 	\]
-	由$ \Re g(x_0)\leqslant\abs{g(x_0)} $, 取$ \lambda=\sgn g(x_0) $后有$ \abs{g(x_0)}=\bar{\lambda}g(x_0) $. 再令$ f=\frac{\bar{\lambda}}{\abs{g(x_0)}}g $, 那么$ f\in\Star{E} $且
+	取$ \lambda=\sgn g(x_0) $后有$ \abs{g(x_0)}=\bar{\lambda}g(x_0) $. 再令$ f=\frac{\bar{\lambda}}{\abs{g(x_0)}}g $, 那么$ f\in\Star{E} $且
 	\[
 	f(x_0)=\frac{\baro{g(x_0)}}{\abs{g(x_0)}^2}\cdot g(x_0)=1,
 	\]
-	而$ \forall a\in A $都有
+	因为$ \Re g(x_0)\leqslant\abs{g(x_0)} $, 且对$ \forall a\in A $都有
 	\[
-	\abs{f(a)}=\baro{\sgn f(a)}\cdot f(a)=\frac{g(\baro{\sgn f(a)}\cdot a)}{\abs{g(x_0)}}<\frac{\abs{g(x_0)}}{\abs{g(x_0)}}=1.
+	\abs{f(a)}=\baro{\sgn f(a)}\cdot f(a)=\frac{g(\bar{\lambda}\baro{\sgn f(a)}\cdot a)}{\abs{g(x_0)}}<\frac{\abs{g(x_0)}}{\abs{g(x_0)}}=1.
 	\]
 	\qed
 	\end{Proof}
@@ -454,7 +461,7 @@
 	\]
 	即可. 若$ f|_{A_0+B}=0 $, 则$ f|_{A_0}=0 $且$ f|_B=0 $, 即
 	\[
-	\forall n\geqslant 1\,\left(f(e_{2n-1})=0\land f\left(e_{2n}+\frac{e_{2n-1}}{2^n}\right)=0\right)
+	\forall n\geqslant 1\,\left(f(e_{2n-1})=0\land f\left(e_{2n-1}+\frac{e_{2n}}{2^n}\right)=0\right)
 	\]
 	故$ f(e_{2n})=0 $. 从而由$ \forall n\geqslant 1\,(f(e_n)=0) $可知$ f=0 $, 即$ A_0+B $在$ \ell_1 $中是稠密的.
 	
@@ -462,7 +469,7 @@
 	\[
 	\begin{aligned}
 	x=\sum_{n\geqslant 1}x_ne_n&=\lim_{k\to\infty}\sum_{n=1}^kx_{2n}e_{2n}+x_{2n-1}e_{2n-1}\\
-	&=\lim_{k\to\infty}\sum_{n=1}^k(2^nx_{2n}e_{2n-1}+x_{2n}e_{2n})+(x_{2n-1}-2^nx_n)e_{2n-1}\in\baro{A_0+B}.
+	&=\lim_{k\to\infty}\sum_{n=1}^k(2^nx_{2n}e_{2n-1}+x_{2n}e_{2n})+(x_{2n-1}-2^nx_{2n})e_{2n-1}\in\baro{A_0+B}.
 	\end{aligned}
 	\]
 	)
@@ -473,7 +480,7 @@
 	\]
 	可知$ y_{2n-1}=1 $, 从而$ \norm{y}_1=\infty $, 与$ y\in B $矛盾, 故$ c\notin A_0+B $.
 	
-	下证$ A_0-c\cap B=\varnothing $, 否则存在$ a\in A_0,\ b\in B $使得$ a_0-c=b $, 也即$ c=a_0-b\in A_0+B $, 矛盾. 故$ A_0-c\cap B=\varnothing $. 若有非零的$ f\in\Star{\ell_1} $使得$ A\subset\{ f\leqslant\alpha \} $且$ B\subset\{ f\geqslant\alpha \} $. 则
+	下证$ (A_0-c)\cap B=\varnothing $, 否则存在$ a\in A_0,\ b\in B $使得$ a_0-c=b $, 也即$ c=a_0-b\in A_0+B $, 矛盾. 故$ (A_0-c)\cap B=\varnothing $. 若有非零的$ f\in\Star{\ell_1} $使得$ A\subset\{ f\leqslant\alpha \} $且$ B\subset\{ f\geqslant\alpha \} $. 则
 	\[
 	f(A_0-c)\leqslant\alpha\Longrightarrow f(A_0)\leqslant\alpha+f(c),
 	\]
@@ -533,7 +540,7 @@
 		\item 证明: 存在 $ \ell_{\infty} $ 上的连续线性泛函 $ m $ 满足下面的性质:
 		\begin{enumerate}[(i)]
 			\item $ \liminf\limits_{n\to\infty}x_{n}\leqslant m(x)\leqslant\limsup\limits_{n\to\infty}x_{n}, \qquad x\in\ell_{\infty} $.
-			\item $ m\circ \tau=m $, 这里 $ \tau: \ell_{\infty}\to\ell_{\infty} $ 是右移算子, 即 $ \tau(x_{n})=x_{n+1} $. ($ m $ 被称为 Banach 平均或 $ \ell_{\infty} $--极限.)
+			\item $ m\circ \tau=m $, 这里 $ \tau: \ell_{\infty}\to\ell_{\infty} $ 是左移算子, 即 $ (\tau(x))_{n}=x_{n+1} $. ($ m $ 被称为 Banach 平均或 $ \ell_{\infty} $--极限.)
 		\end{enumerate}
 	\end{enumerate}
 	\begin{Proof}
@@ -551,7 +558,7 @@
 
 		(i) 因为
 		\[
-			\frac{1}{n}\sum_{k=1}^{n}x_{k}\leqslant\frac{1}{n}\sum_{k=1}^{n}\sup_{i\geqslant1}x_{i},
+			\frac{1}{n}\sum_{k=1}^{n}x_{k}\leqslant\frac{1}{n}\sum_{k=1}^{n}\sup_{i\geqslant k}x_{i},
 		\]
 		由 $ \sup\limits_{i\geqslant k}x_{i}\to\limsup\limits_{n\to\infty}x_{n}, (k\to\infty) $ 知 $ m(x)\leqslant\limsup\limits_{n\to\infty}x_{n} $. 同理, 因为
 		\[
@@ -634,7 +641,7 @@
 
 		(2) 由 $ (f_{n})_{n\geqslant1} $ 是 $ \Star{E} $ 中稠密子集, 有
 		\[
-			\forall f\in\Star{E}\,\forall \varepsilon>0\,\exists N\in\N\,(\norm{f-f_{n}}<\varepsilon),
+			\forall f\in\Star{E}\,\forall \varepsilon>0\,\exists N\in\N\,\forall n>N\,(\norm{f-f_{n}}<\varepsilon),
 		\]
 		设 $ \forall n\in\N $, $ f(x_{n})=0 $, 则有
 		\[
@@ -697,7 +704,7 @@
 	\[
 		\id: (B, \sigma(\Star{E}, E))\to B(\tau_{d})
 	\]
-	是一个连续双射, 双射部分由 (1) 知 $ (B, \sigma(\Star{E},Ｅ)) $ 紧, 则 $ \id $ 是同胚, 故 $ \tau_{d}=\sigma(\Star{E}, E) $.\qed
+	是一个连续双射, 双射部分由 (1) 知 $ (B, \sigma(\Star{E}, E)) $ 紧, 则 $ \id $ 是同胚, 故 $ \tau_{d}=\sigma(\Star{E}, E) $.\qed
 	\end{Proof}
 	
 	(一个小练习: 赋范空间中弱收敛的序列一定有界.)
@@ -717,20 +724,20 @@
 	\begin{Proof}
 	由对偶关系可知
 	\[
-	\forall x\in E\,\forall\Star{f}\in\Star{E}\,(\lrangle{\Star{u}\Star{f},x}=\lrangle{\Star{f},u(x)}).
+	\forall x\in E\,\forall\Star{f}\in\Star{F}\,(\lrangle{\Star{u}(\Star{f}),x}=\lrangle{\Star{f},u(x)}).
 	\]
 	
 	\textsl{必要性}. 由
 	\[
-	\norm{\Star{u}\Star{f}}=\sup_{\norm{x}\leqslant 1}\abs{\lrangle{\Star{u}\Star{f},x}}=\sup_{\norm{x}\leqslant 1}\abs{\lrangle{\Star{f},u(x)}}
+	\norm{\Star{u}(\Star{f})}=\sup_{\norm{x}\leqslant 1}\abs{\lrangle{\Star{u}(\Star{f}),x}}=\sup_{\norm{x}\leqslant 1}\abs{\lrangle{\Star{f},u(x)}}
 	\]
-	因$ u $是满的等距映射, $ u(\bar{B}_E)=\bar{B}_F $, 从而$ \sup\limits_{\norm{x}\leqslant 1}\abs{\lrangle{\Star{f},u(x)}}=\norm{\Star{f}} $, 也即$ \norm{\Star{u}\Star{f}} $.
+	因$ u $是满的等距映射, $ u(\bar{B}_E)=\bar{B}_F $, 从而$ \sup\limits_{\norm{x}\leqslant 1}\abs{\lrangle{\Star{f},u(x)}}=\norm{\Star{f}} $, 也即$ \norm{\Star{u}(\Star{f})}=1 $.
 	
 	\textsl{充分性}. 注意到$ \tnorm{\widehat{u(x)}}=\norm{u(x)} $, 此因等距嵌入, 则
 	\[
-	\norm{u(x)}=\sup_{\norm{\Star{f}}\leqslant 1}\abs{\lrangle{\Star{f},u(x)}}=\sup_{\norm{\Star{f}}\leqslant 1}\abs{\lrangle{\Star{u}\Star{f},x}}
+	\norm{u(x)}=\sup_{\norm{\Star{f}}\leqslant 1}\abs{\lrangle{\Star{f},u(x)}}=\sup_{\norm{\Star{f}}\leqslant 1}\abs{\lrangle{\Star{u}(\Star{f}),x}}
 	\]
-	因$ \Star{u} $是满的等距映射, $ \Star{u}(\bar{B}_{\Star{F}})=\bar{B}_{\Star{E}} $, 从而$ \sup\limits_{\norm{\Star{f}}\leqslant 1}\abs{\lrangle{\Star{u}\Star{f},x}}=\norm{x} $, 也即$ \norm{u(x)}=\norm{x} $.\qed
+	因$ \Star{u} $是满的等距映射, $ \Star{u}(\bar{B}_{\Star{F}})=\bar{B}_{\Star{E}} $, 从而$ \sup\limits_{\norm{\Star{f}}\leqslant 1}\abs{\lrangle{\Star{u}(\Star{f}),x}}=\norm{x} $, 也即$ \norm{u(x)}=\norm{x} $.\qed
 	\end{Proof}
 	
 	\textbf{习题9.8}\ [习题课]\ \ 设$ P $是Banach空间$ X $上的线性映射并满足$ P\circ P=P $, 记$ R=P(X) $且$ N=\ker P $.
@@ -741,7 +748,7 @@
 	\begin{Proof}
 	(1) $ \forall x\in X $, 有$ x=Px+x-Px $, 又注意到$ P $是幂等的, 于是$ P(x-Px)=0 $, 故$ x\in R+N $. 又$ R\cap N=\{0\} $是显然的, 故$ X=R\oplus N $, 由推论~\ref{cor:代数互补成为拓扑互补的条件}~可知结论成立.
 	
-	(2) $ \forall f\in R^\bot\cap N^\bot $, 有$ f|_R=0 $且$ f|_N $, 故$ f|_{R\oplus N}=0 $, 从而$ f=0 $, 故$ R^\bot\cap N^\bot =\{0\} $, 而
+	(2) $ \forall f\in R^\bot\cap N^\bot $, 有$ f|_R=0 $且$ f|_N=0 $, 故$ f|_{R\oplus N}=0 $, 从而$ f=0 $, 故$ R^\bot\cap N^\bot =\{0\} $, 而
 	\[
 	\forall z\in X\,\exists!x\in R\,y\in N\,(z=x+y)
 	\]
@@ -762,12 +769,12 @@
 	\]
 	设 $ (x_{n})_{n\geqslant1} $ 是一致凸空间 $ E $ 中弱收敛到 $ x $ 的序列, 并有 $ \lim\limits_{n\to\infty}\norm{x_{n}}=\norm{x} $. 证明 $ (x_{n})_{n\geqslant1} $ 依范数收敛到 $ x $. 用例子说明条件 $ \lim\limits_{n\to\infty}\norm{x_{n}}=\norm{x} $ 是必需的.
 	\begin{Proof}
-		设 $ x_{n}\weakto x $ 有界, 因为 $ \frac{x_{n}}{\norm{x_{n}}}\weakto\frac{x}{\norm{x}} $, 不妨设 $ (x_{n})_{\geqslant1}\subset\bar{B}_{E} $.
+		设 $ x_{n}\weakto x $ 有界, 因为 $ \frac{x_{n}}{\norm{x_{n}}}\weakto\frac{x}{\norm{x}} $, 不妨设 $ (x_{n})_{n\geqslant1}\subset\bar{B}_{E} $.
 		\begin{enumerate}[(1)]
 			\item 若 $ \norm{x}=0 $, 则 $ x_{n}\to x $.
 			\item 若 $ \norm{x}\ne 0 $, 则 $ \exists f\in\Star{E} $, $ f(x)=\norm{x}=1 $, 其中 $ \norm{f}=1 $. 若 $ (x_{n})_{n\geqslant1} $ 是 Cauchy 列, 即 $ \norm{x_{n}- x_{m}}\to 0\ (n, m\to\infty) $, 则
 			\[
-				2\norm{x}\leftarrow f(x_{n})+f(x_{m})=f(x_{n}+x_{m})\leqslant\norm{f}\norm{x_{n}+x_{m}}\leqslant\norm{x_{m}}+x_{n}\to 2\norm{x},
+				2\norm{x}\leftarrow f(x_{n})+f(x_{m})=f(x_{n}+x_{m})\leqslant\norm{f}\norm{x_{n}+x_{m}}\leqslant\norm{x_{m}}+\norm{x_{n}}\to 2\norm{x},
 			\]
 			则 $ \norm{x_{n}+x_{m}}\to 2\norm{x}=2\Longrightarrow \norm{\frac{x_{n}+x_{m}}{2}}\to \norm{x}=1 $.
 
@@ -818,7 +825,7 @@
 		\[
 			\lim_{n\to\infty}(\lambda_{n}-T)R(\lambda_{n}, T)=(\lambda-T)S
 		\]
-		且 $ \forall n\geqslant1\,((\lambda_{n}-T)R(\lambda_{n}, T))=\id $ 知 $ (\lambda-T)S=\id $. 再由
+		且 $ \forall n\geqslant1\,((\lambda_{n}-T)R(\lambda_{n}, T)=\id) $ 知 $ (\lambda-T)S=\id $. 再由
 		\[
 			\lim_{n\to\infty} R(\lambda_{n}, T)(\lambda_{n}-T)=S(\lambda-T)
 		\]
@@ -874,7 +881,7 @@
 		
 		由 $ (x_{n})_{n\geqslant1} $ 弱收敛知 $ (x_{n})_{n\geqslant1} $ 有界, 则存在 $ M>0 $ 使得 $ (x_{n})_{n\geqslant 1}\cup\{ x \}\subset MB_{E} $. 因为 $ T $ 为紧算子, 则 $ T(MB_{E})=MT(B_{E}) $ 是范数意义下相对紧的, 因此 $ \baro{T(MB_{E})} $ 上范数拓扑等于弱拓扑, 又因为 $ T(x_{n}) $ 弱收敛到 $ T(x) $, 则 $ T(x_{n}) $ 依范数收敛到 $ T(x) $.
 
-		(4) 只需证明 $ T(B_{E}) $ 相对紧, 则只需证明 $ T(B_{E}) $ 中任意无穷序列都有收敛于 $ F $ 中元素的子列. 设 $ (y_{n})_{n\geqslant1} $ 是 $ T(B_{E}) $ 中的一个无穷序列, 则存在 $ (x_{n})_{n\geqslant \subset B_{E}} $ 使得 $ y_{n}=T(x_{n}), \forall n\geqslant1 $. 由习题 9.4 知 $ (x_{n})_{n\geqslant1} $ 有收敛于某个 $ x\in E $ 的子列 $ (x_{n_{k}})_{k\geqslant1} $, 由题知 $ T(x_{n_{k}}) $ 依范数收敛于 $ T(x) $, 即 $ (y_{n_{k}}) $ 依范数收敛于 $ T(x)\in F $, 故 $ T(B_{E}) $ 相对紧.
+		(4) 只需证明 $ T(B_{E}) $ 相对紧, 则只需证明 $ T(B_{E}) $ 中任意无穷序列都有收敛于 $ F $ 中元素的子列. 设 $ (y_{n})_{n\geqslant1} $ 是 $ T(B_{E}) $ 中的一个无穷序列, 则存在 $ (x_{n})_{n\geqslant1}\subset B_{E} $ 使得 $ y_{n}=T(x_{n}), \forall n\geqslant1 $. 由习题 9.4 知 $ (x_{n})_{n\geqslant1} $ 有收敛于某个 $ x\in E $ 的子列 $ (x_{n_{k}})_{k\geqslant1} $, 由题知 $ T(x_{n_{k}}) $ 依范数收敛于 $ T(x) $, 即 $ (y_{n_{k}}) $ 依范数收敛于 $ T(x)\in F $, 故 $ T(B_{E}) $ 相对紧.
 
 		(5) 设 $ E $ 自反, 注意到 $ T $ 为紧算子当且仅当 $ \Star{T} $ 为紧算子, 又因为 $ (c_{0})^{*}=\ell_{1} $, 所以只需证明 $ \forall T\in \CB(E, \ell_{1}) $ 是紧算子. 由 (4) 知只需证明当 $ x_{n} $ 弱收敛到 $ x $ 时有 $ T(x_{n}) $ 依范数收敛到 $ T(x) $. 当 $ x_{n} $ 弱收敛到 $ x $ 时, $ T(x_{n}) $ 弱收敛到 $ T(x) $, 由下面的命题可知 $ T(x_{n}) $ 依范数收敛到 $ T(x) $.\qed
 	\end{Proof}
@@ -1087,7 +1094,7 @@
 	\end{Remark}
 	
 	\begin{Definition}[严格凸]\index{Y!严格凸}\label{def:严格凸}
-		设 $ E $  是一个赋范空间, 若其单位球面 $ S_{E} $ 上每个点是 $ \baro{B_{E}} $ 的端点, 则称 $ E $ 是\textbf{严格凸}的.(即任取 $ x\in S_{E} $, 不存在 $ \baro{B_{E}} $ 中相异的两点 $ x_{1}, x_{2} $, 使得 $ x=(x_{1}+x_{2})/2 $.)
+		设 $ E $  是一个赋范空间, 若其单位球面 $ S_{E} $ 上每个点是 $ \bar{B}_{E} $ 的端点, 则称 $ E $ 是\textbf{严格凸}的.(即任取 $ x\in S_{E} $, 不存在 $ \bar{B}_{E} $ 中相异的两点 $ x_{1}, x_{2} $, 使得 $ x=(x_{1}+x_{2})/2 $.)
 	\end{Definition}
 	\begin{ExtraExample}
 		判断 $ (\R^{2}, \norm{\cdot}_{p}), 1\leqslant p\leqslant\infty $ 的严格凸性.

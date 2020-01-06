@@ -754,7 +754,7 @@
 		$ (\baro{\convba A})\degree=A\degree $.
 	\end{Proposition}
 	\begin{Proof}
-		由 $ A\subset\baro{\convba A} $ 知 $ (\baro{\convba A})\degree\subset A\degree $. 下证反向不等式, 设 $ \Star{x}\in A\degree $, 因为对任意 $ x\in A $ 都有 $(\abs{\Star{x}(x)}\leqslant1) $, 则
+		由 $ A\subset\baro{\convba A} $ 知 $ (\baro{\convba A})\degree\subset A\degree $. 下证反向不等式, 设 $ \Star{x}\in A\degree $, 因为对任意 $ x\in A $ 都有 $\abs{\Star{x}(x)}\leqslant1 $, 则
 		\[
 			\abs{\Star{x}\left( \sum_{i=1}^{n}\lambda_{i}x_{i} \right)}\leqslant\sum_{i=1}^{n}\abs{\lambda_{i}}\abs{\Star{x}(x_{i})}\leqslant\sum_{i=1}^{n}\abs{\lambda_{i}}\leqslant1.
 		\]
@@ -793,7 +793,7 @@
 		\[
 			\iota: E\to E^{**}\qquad x\mapsto \hat{x}
 		\]
-		为 $ E $ 到 $ E^{**} $ 的\textbf{自然嵌入}, 其中 $ \hat{x}(f)=f(x) $.
+		为 $ E $ 到 $ E^{**} $ 的\textbf{自然嵌入}, 其中对任意 $ f\in\Star{E} $, 都有 $ \hat{x}(f)=f(x) $.
 	\end{Definition}
 	\begin{Theorem}
 		设 $ E, F $ 是赋范空间, $ u\in\CB(E, F) $, 则存在唯一的 $ \Star{u}\in\CB(\Star{F}, \Star{E}) $ 使得
@@ -855,7 +855,7 @@
 		设 $ E, F, G $ 都是赋范线性空间, $ u\in\CB(E, F), v\in\CB(F, G) $, 则 $ (vu)^{*}=\Star{u}\Star{v} $.
 	\end{Proposition}
 	\begin{Proof}
-		任取 $ x\in E, f\in\Star{E} $, 都有
+		任取 $ x\in E, f\in\Star{G} $, 都有
 		\[
 			\lrangle{\Star{(vu)}f, x}=\lrangle{f, vu(x)}=\lrangle{\Star{v}(f), u(x)}=\lrangle{\Star{u}\Star{v}(f), x},
 		\]
@@ -941,14 +941,14 @@
 			\item $ \ker \Star{u}=(u(E))^{\bot} $;
 			\item $ \ker u=(\Star{u}(\Star{F}))_{\bot} $;
 			\item $ (\ker \Star{u})_{\bot}=\baro{u(E)}^{w}=\baro{u(E)}^{\norm{\cdot}} $;
-			\item $ (\ker u)^{\bot}=\baro{\Star{u}(\Star{F})}^{\Star{w}} $
+			\item $ (\ker u)^{\bot}=\baro{\Star{u}(\Star{F})}^{\Star{w}} $.
 		\end{enumerate}
 	\end{Theorem}
 	\begin{Proof}
 		(1) 由
 		\[
 			\begin{aligned}
-				f\in\ker\Star{u} & \Longleftrightarrow \Star{u}(f)=0 \Longrightarrow \forall x\in E\,(\Star{u}(f)(x)=0)\\
+				f\in\ker\Star{u} & \Longleftrightarrow \Star{u}(f)=0 \Longleftrightarrow \forall x\in E\,(\Star{u}(f)(x)=0)\\
 				& \Longleftrightarrow \forall x\in E\,(f(u(x))=0) \Longleftrightarrow \forall x\in E(\lrangle{f, u(x)}=0)\Longleftrightarrow f\in(u(E))^{\bot}.
 			\end{aligned}
 		\]
@@ -1021,7 +1021,7 @@
 		\[
 			\lrangle{\varphi, \varphi'}:=\lrangle{\varphi_{y}, \varphi_{y'}}=\lrangle{y', y}.
 		\]
-		(注意到 $ \varphi_{y} $ 本身是共轭线性的, 故 $ y $ 应位于第二变元) 由此 $ \Star{H} $ 是一个 Hilbert 空间.
+		(注意到 $ \varphi_{y} $ 本身对 $ y $ 是共轭线性的, 故 $ y $ 应位于第二变元) 由此 $ \Star{H} $ 是一个 Hilbert 空间.
 
 		而对 $ \forall f\in H^{**} $, 由 Riesz 表示定理, $ \exists\varphi_{f}\in\Star{H} $ 使得 $ \forall \varphi\in\Star{H}\,(f(\varphi)=\lrangle{\varphi, \varphi_{f}}_{\Star{H}}) $. 又存在 $ x, y\in H $ 使得 $ \varphi=\varphi_{x}, \varphi_{f}=\varphi_{y} $ 于是
 		\[
@@ -1128,7 +1128,7 @@
 		\]
 		即$ \Star{E} $是自反的.
 	
-		\textsl{必要性.} 设$ \Star{E} $是自反的, 则有
+		\textsl{充分性.} 设$ \Star{E} $是自反的, 则有
 		\[
 		\Star{E}=(\Star E)^{**}=(E^{**})^*,
 		\]
@@ -1305,7 +1305,7 @@
 			\[
 				\norm{(x_{1}, x_{2})}_{p}=
 				\begin{cases}
-					\big( \abs{x_{1}}^{p}+\abs{x_{2}}^{2} \big)^{1/p} & ,p<\infty\\
+					\big( \abs{x_{1}}^{p}+\abs{x_{2}}^{p} \big)^{1/p} & ,p<\infty\\
 					\max\{\abs{x_{1}}, \abs{x_{2}}\} & ,p = \infty
 				\end{cases}
 			\]
@@ -1356,7 +1356,7 @@
 				\item 证明: 存在 $ \ell_{\infty} $ 上的连续线性泛函 $ m $ 满足下面的性质:
 				\begin{enumerate}[(i)]
 					\item $ \liminf\limits_{n\to\infty}x_{n}\leqslant m(x)\leqslant\limsup\limits_{n\to\infty}x_{n}, \qquad x\in\ell_{\infty} $.
-					\item $ m\circ \tau=m $, 这里 $ \tau: \ell_{\infty}\to\ell_{\infty} $ 是右移算子, 即 $ \tau(x_{n})=x_{n+1} $. ($ m $ 被称为 Banach 平均或 $ \ell_{\infty} $--极限.)
+					\item $ m\circ \tau=m $, 这里 $ \tau: \ell_{\infty}\to\ell_{\infty} $ 是左移算子, 即 $ (\tau(x))_{n}=x_{n+1} $. ($ m $ 被称为 Banach 平均或 $ \ell_{\infty} $--极限.)
 				\end{enumerate}
 			\end{enumerate}
 		\item (8.21) 设$ e_n(t)=\exp(\imag nt) $, 其中$ t\in[0,2\pi] $.

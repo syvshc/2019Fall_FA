@@ -864,13 +864,13 @@
 		\]
 		取 $ a=m^{2}/M^{2}, b=M^{2}/m^{2} $ 即可. 
 
-		(3) 对 $ c_{0} $. $ \forall n\geqslant1 $, 考虑 $ \seq{e} $, 则 $ \norm{e_{k}}_{\infty}=1 $, 且 $ \norm{\sum\limits_{k=1}^{n}\varepsilon_{k}x_{k}}_{\infty}^{2}=1 $, 故若 $ \norm{\cdot}_{\infty} $ 有等价的内积范数 $ \abs{\cdot} $, 则有
+		(3) 对 $ c_{0} $. $ \forall n\geqslant1 $, 考虑 $ \seq{e} $, 则 $ \norm{e_{k}}_{\infty}=1 $, 且 $ \norm{\sum\limits_{k=1}^{n}\varepsilon_{k}e_{k}}_{\infty}^{2}=1 $, 故若 $ \norm{\cdot}_{\infty} $ 有等价的内积范数 $ \abs{\cdot} $, 则有
 		\[
 			an\leqslant1\leqslant bn, \quad n\in\N
 		\]
 		矛盾. $ \ell_{\infty} $ 与 $ c_{0} $ 同理. 
 
-		对 $ \ell_{p}\,(1\leqslant p\leqslant\infty) $. 考虑 $ \seq{e} $, 则 $ \norm{e_{k}}_{p}=1 $, 且 $ \norm{\sum\limits_{k=1}^{n}\varepsilon_{k}x_{k}}^{2}_{p}=n^{2/p} $, 若 $ \norm{\cdot}_{p} $ 有等价的内积范数 $ \abs{\cdot} $, 有
+		对 $ \ell_{p}\,(1\leqslant p<\infty) $. 考虑 $ \seq{e} $, 则 $ \norm{e_{k}}_{p}=1 $, 且 $ \norm{\sum\limits_{k=1}^{n}\varepsilon_{k}e_{k}}^{2}_{p}=n^{2/p} $, 若 $ \norm{\cdot}_{p} $ 有等价的内积范数 $ \abs{\cdot} $, 有
 		\[
 			an\leqslant n^{2/p} \leqslant bn\Longrightarrow a\leqslant n^{2/p-1}\leqslant b, \quad n\in\N,
 		\]
@@ -880,7 +880,7 @@
 		\[
 			x_{k}=n\cdot1_{[{k}/{n^p}, ({k+1})/{n^p})}, \quad k = 0, 1, \dots, n-1,
 		\]
-		则 $ \norm{x_{k}}_{p}=1 $ 且 $ \norm{\sum\limits_{k=1}^{n}\varepsilon_{k}e_{k}}_{p}^{2}=n^{2/p} $, 与 $ \ell_{p} $ 同理可证. \qed
+		则 $ \norm{x_{k}}_{p}=1 $ 且 $ \norm{\sum\limits_{k=1}^{n}\varepsilon_{k}x_{k}}_{p}^{2}=n^{2/p} $, 与 $ \ell_{p} $ 同理可证. \qed
 	\end{Proof}
 
 	\textbf{习题4.11}\ [作业]\ \ 设 $ (C_{n})_{n\geqslant1} $ 是 Hilbert空间 $ H $ 中的一个递增非空闭凸子集列,  $ C $ 是所有 $ C_{n} $ 并集的闭包, 证明
@@ -946,7 +946,7 @@
 	\[
 	\lrangle{f,g}=\lrangle{f,f}-\abs{\int_0^1f(t)\diff t}^2=\norm{f}^2-\abs{\lrangle{f,1}}^2=0,
 	\]
-	也即$ \norm{f}^2\cdot\norm{1}^2=\abs{\lrangle{f,1}}^2 $, 注意到这就是Cauchy-Schwarz不等式取等, 于是由去等条件可知$ \exists\lambda\in\K $使得$ f=\lambda\cdot 1 $. 又因为$ f(1)=0 $, 从而$ \lambda=0 $, 也即$ f=0 $.
+	也即$ \norm{f}^2\cdot\norm{1}^2=\abs{\lrangle{f,1}}^2 $, 注意到这就是Cauchy-Schwarz不等式取等, 于是由取等条件可知$ \exists\lambda\in\K $使得$ f=\lambda\cdot 1 $. 又因为$ f(1)=0 $, 从而$ \lambda=0 $, 也即$ f=0 $.
 	
 	本题说明当内积空间$ H $不完备时, 正交分解定理未必成立. 事实上, 若此时正交分解定理成立, 那么
 	\[
@@ -963,11 +963,11 @@
 	\begin{Proof}
 	(1) \textsl{必要性.}\ \ 设$ E+F $是闭的, 若有序列$ (x_n)_{n\geqslant 1}\subset E $使得$ x_n\to z $, 注意到$ x_n=x_n+0\in E+F $, 那么由$ E+F $的闭性可知$ z\in E+F $. 再设$ z=x+y $, 其中$ x\in E,\ y\in F $, 那么
 	\[
-	\norm{z-(x+y)}^2=\norm{z-x}^2+\norm{y}^2\to 0,
+	\norm{x_{n}-(x+y)}^2=\norm{x_{n}-x}^2+\norm{y}^2\to 0,\qquad n\to\infty.
 	\]
 	这说明$ \norm{y}^2=0 $, 也即$ y=0 $. 于是$ z\in E $, 这说明$ E $是闭的. 同理可证$ F $也是闭的.
 	
-	(2) \textsl{充分性.}\ \ 设$ E $和$ F $都是闭集, 若有序列$ (z_n)_{n\geqslant 1}\subset E+F $, 其中$ x_n\in E,\ y_n\in F $, 且$ z_n\to z $, 只需证明$ z\in E+F $即可. 由$ (z_n)_{n\geqslant 1} $收敛可知
+	(2) \textsl{充分性.}\ \ 设$ E $和$ F $都是闭集, 若有序列$ (z_n)_{n\geqslant 1}=(x_{n}+y_{n})_{n\geqslant1}\subset E+F $, 其中$ x_n\in E,\ y_n\in F $, 且$ z_n\to z $, 只需证明$ z\in E+F $即可. 由$ (z_n)_{n\geqslant 1} $收敛可知
 	\[
 	\begin{aligned}
 	\norm{x_n-x_m}^2&=\norm{(x_n+y_n)-y_n-(x_m+y_m)+y_m}^2\\
@@ -1017,15 +1017,15 @@
 		\textsl{充分性}. $ \forall x\in[0, 1] $, 由
 		\[
 			\begin{aligned}
-				\norm{1_{[0, x]}-\sum_{k=1}^{n}\abs{\int_{0}^{1}e_{k}(t)\diff t}^{2}}^{2} & = x+\sum_{k=1}^{n}\abs{\lrangle{1_{[0, x]}, e_{k}}}^{2}-2\sum_{k=1}^{n}\abs{\lrangle{1_{[0, x]}, e_{k}}}^{2} \\
-			& = x-\sum_{k=1}^{n}\abs{\lrangle{1_{[0, x]}, e_{k}}}^{2}\to 0,\quad k\to\infty,
+				\norm{1_{[0, x]}-\sum_{k=1}^{n}\lrangle{1_{[0, x]}, e_{k}}e_{k}}^{2} & = x+\sum_{k=1}^{n}\abs{\lrangle{1_{[0, x]}, e_{k}}}^{2}-2\sum_{k=1}^{n}\abs{\lrangle{1_{[0, x]}, e_{k}}}^{2} \\
+			& = x-\sum_{k=1}^{n}\abs{\lrangle{1_{[0, x]}, e_{k}}}^{2}\to 0,\qquad n\to\infty,
 			\end{aligned}
 		\]
 		知 $ 1_{[0, x]} $ 可由 $ \Span\{ (e_{n})_{n\geqslant1} \} $ 中元素逼近. 则 $ \forall a<b $, $ a, b\in[0, 1] $, 由
 		\[
 			1_{[a, b]} = 1_{[0, b]}-1_{[0, a]}
 		\]
-		可知阶梯函数可以由 $ \Span\{ (e_{n})_{n\geqslant1} \} $ 中元素逼近, 从而 $ L_{2}[0, 1] $ 中元素可由阶梯函数逼近, 故
+		可知阶梯函数可以由 $ \Span\{ (e_{n})_{n\geqslant1} \} $ 中元素逼近, 而 $ L_{2}[0, 1] $ 中元素可由阶梯函数逼近, 故
 		\[
 			\baro{\Span\{ (e_{n})_{n\geqslant1} \}}=L_{2}[0, 1]
 		\]
@@ -1054,7 +1054,7 @@
 	\textbf{习题5.2}\ [作业]\ \ 设$ K $是度量空间而$ E $是赋范空间, $ (f_n)_{n\geqslant 1}\subset C(K,E) $.
 	\begin{enumerate}[(1)]
 	\item 证明: 若$ (f_n)_{n\geqslant 1} $在某一点$ x $等度连续, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x)-f_n(x_n))_{n\geqslant 1} $收敛到0.
-	\item 证明: 若$ (f_n(x))_{n\geqslant 1} $在$ E $中收敛到$ y $, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x_n))_{n\geqslant 1} $也收敛到$ y $.
+	\item 进而证明: 若$ (f_n(x))_{n\geqslant 1} $在$ E $中收敛到$ y $, 那么对任意收敛到$ x $的点列$ (x_n)_{n\geqslant 1} $, 都有$ (f_n(x_n))_{n\geqslant 1} $也收敛到$ y $.
 	\item 取$ f_n=\sin nx $, 证明$ (f_n)_{n\geqslant 1} $在$ \R $上无处等度连续.
 	\end{enumerate}
 	\begin{Proof}
@@ -1086,7 +1086,7 @@
 	
 	而当$ x=k\pi, k\in\Z $时, 可取$ x_n=x+\pi/2n $, 那么此时
 	\[
-	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+2\pi)}=2\not\to 0,
+	\abs{f_n(x)-f_n(x_n)}=\abs{\sin nx-\sin(nx+\pi)}=2\not\to 0,
 	\]
 	从而$ (\sin nx)_{n\geqslant 1} $在$ \R $上无处连续.\qed
 	\end{Proof}
