@@ -1,0 +1,36 @@
+% !TeX root = main.tex
+% This is the Appendix C.
+
+\chapter{2019年秋季学期泛函分析基础期末测试题}
+
+\begin{enumerate}
+	\item (10分)设$ f, g\in L_2(0,1) $, 证明:
+	\[
+	\norm{f+g}_2^2+\norm{f-g}_2^2=2(\norm{f}_2^2+\norm{g}_2^2).
+	\]
+	\item (10分)设$ H $是Hilbert空间, $ u\in\CB(H) $. 证明: $ \norm{u}=\norm{\Star u} $.
+	\item (15分)证明无理数集$ \J $是$ \Gd $集, 且不是$ \Fs $集, 并距离说明一个集合可以既是$ \Gd $集也是$ \Fs $集.
+	\item (10分)证明: Hilbert空间是自反的.
+	\item (5分)设$ E, F $都是Banach空间, 证明紧算子全体$ \CK(E,F) $构成向量空间.
+	\item (10分)设$ A\subset\ell_4 $, 且$ x=(x_n)_{n\geqslant 1} $满足$ \abs{x_n}\leqslant1/\sqrt{n} $, 证明$ A $是$ \ell_4 $中的紧集.
+	\item (10分)设$ 1<p\leqslant \infty $, 考虑$ \R^3 $上的$ p $范数:
+	\[
+	\norm{(x_1,x_2,x_3)}_p=\begin{cases}
+	(\abs{x_1}^p+\abs{x_2}^p+\abs{x_3}^p)^{1/p} & ,p<\infty\\
+	\max\{ \abs{x_1},\abs{x_2},\abs{x_3} \} &,p=\infty
+	\end{cases}
+	\]
+	设$ F=\R\times\{0\}\times\{0\} $, 即由$ e_1=(1,0,0) $生成的向量子空间, 并设$ f : F\to\R $是线性泛函, 满足$ f(e_1)=1 $. 请确定所有从$ F $到$ \R^3 $的保范延拓.
+	\item (20分) 考虑$ E=(C[0,1],\norm{\cdot}_\infty) $, 且$ E $中均为Lipschitz函数.
+
+	\hspace{4em}(1) 设 $ x, y\in[0, 1] $ 且 $ x\ne y $, 定义泛函 $ \varPhi_{x, y}:E\to\R $ 为
+		\[
+			\varPhi_{x, y}(f)=\frac{f(y)-f(x)}{y-x}.
+		\]
+	证明 $\{ \varPhi_{x, y}:x, y\in[0, 1], x\ne y \}$ 是 $ \Star{E} $ 中的有界集.
+
+	\hspace{4em}(2) 导出 $ E $ 中的闭单位球在 $ [0, 1] $ 上等度连续, 且 $ \dim E<\infty $.
+	
+	\item (10分) 设$ E $是Banach空间, $ B\subset\Star{E} $, 证明: $ B $是相对$ \Star{w} $--紧的当且仅当$ B $是有界的.
+	\item (5分, 附加题) 设$ E, F $都是Banach空间, $ u\in\CB(E,F) $并满足$ u(B_E) $在$ B_F $中稠密, 证明: $ u(B_E)=B_F $.
+\end{enumerate}
