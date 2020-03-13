@@ -3,7 +3,7 @@
 
 相关笔记的`pdf`文档可以在 [`release`](https://github.com/syvshc/2019Fall_FA/releases) 中找到, 无特殊情况每周日晚更新一次.
 
-编译方式为 `xelatex+zhmakeindex+xelatex+xelatex` , 其中 `zhmakeindex` 为中文索引生成引擎, 可在刘海洋老师的[`Github`](https://github.com/leo-liu/zhmakeindex/releases) 中下载并使用, 使用方法可以参考[LaTeX问答站上的回答](https://wenda.latexstudio.net/q-1351.html)
+编译方式为 `latexmk main`  , 关于 `latexmkrc` 文件中的配置已经写了注释, 其中 `zhmakeindex` 为中文索引生成引擎, 可在刘海洋老师的[`Github`](https://github.com/leo-liu/zhmakeindex/releases) 中下载并使用, 使用方法可以参考[LaTeX问答站上的回答](https://wenda.latexstudio.net/q-1351.html)
 
 关于书写的要求
 
