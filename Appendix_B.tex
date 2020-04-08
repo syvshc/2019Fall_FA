@@ -650,11 +650,11 @@
 	\item 设$ f\in\bigcap_{p<\infty}L_p(X) $且满足$ \limsup\limits_{p\to\infty}\norm{f}_p<\infty $, 证明$ f\in L_\infty(X) $.
 	\end{enumerate}
 	\begin{Proof}
-	(1) 若$ q=\infty $, 结论显然成立, 下设$ p<\infty $. 取$ p'=q/p $而$ q'=q/(q-p) $, 那么$ 1/p+1/q=1 $. 由H\"older不等式可知
+	(1) 若$ q=\infty $, 结论显然成立, 下设$ p<\infty $. 取$ p'=q/p $而$ q'=q/(q-p) $, 那么$ 1/p'+1/q'=1 $. 由H\"older不等式可知
 	\[
 	\begin{aligned}
-	\norm{f}_p^p=\int_X\abs{f}^p\diff\mu&=\int_X\abs{f}^p\cdot 1\diff\mu\\
-	&\leqslant\norm{\abs{f}^p}_{p'}\norm{1}_{q'}=\int_X(\abs{f}^p)^{q/p}\diff\mu\cdot\mu(X)^{q'}=\norm{f}_q^p\cdot\mu(X)^{q'}.
+	\norm{f}_p^p&=\int_X\abs{f}^p\diff\mu=\int_X\abs{f}^p\cdot 1\diff\mu=\norm{\abs{f}^p\cdot 1}_1\\
+	&\leqslant\norm{\abs{f}^p}_{p'}\cdot\norm{1}_{q'}=\left(\int_X(\abs{f}^p)^{p'}\right)^{1/p'}\mu(X)^{1/q'}=\norm{f}_q^p\cdot\mu(X)^{1/q'}
 	\end{aligned}
 	\]
 	即$ \norm{f}_p\leqslant\norm{f}_q\cdot\mu(X)^{1/p-1/q} $, 从而$ \norm{f}_q<\infty\Longrightarrow\norm{f}_p<\infty $, 即$ L_q(X)\subset L_p(X) $.
@@ -1036,11 +1036,11 @@
 
 	\textbf{习题5.1}\ [习题课]\ \ 对任意$ x\in[0,1] $, 设$ f_n(x)=x^n $. 在$ [0,1] $的哪些点处, $ (f_n)_{n\geqslant 1} $等度连续?
 	\begin{Proof}
-	对任意的$ x\in[0,1) $, 有
+	对任意的$ a\in[0,1) $, 有
 	\[
 	\abs{x^n-a^n}=\abs{(x-a)(x^{n-1}+x^{n-2}a+\cdots+a^{n-1})}\leqslant(1+a+\cdots+a^{n-1})\abs{x-a}<\frac{\abs{x-a}}{1-a},
 	\]
-	故$ (f_n)_{n\geqslant 1} $在$ x\in[0,1) $上等度连续. 但$ x=1 $时, 因为对任意的$ x\in(1-\delta,1) $, 有
+	故$ (f_n)_{n\geqslant 1} $在$ x\in[0,1) $上等度连续. 但$ a=1 $时, 因为对任意的$ x\in(1-\delta,1) $, 有
 	\[
 	\lim_{n\to\infty}\abs{f_n(x)-f_n(1)}=1,
 	\]

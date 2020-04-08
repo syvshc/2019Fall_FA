@@ -3,10 +3,12 @@
 
 相关笔记的`pdf`文档可以在 [`release`](https://github.com/syvshc/2019Fall_FA/releases) 中找到, 无特殊情况每周日晚更新一次.
 
+
 * 编译方式为 `latexmk`, 编译后会自动检测文件保存并再次启动更新, 如果不需要可以使用 `latexmk -pvc-` 或者在 `.latexmkrc` 文件中把 `$preview_continuous_mode` 的值设置为 `1` , 关于 `.latexmkrc` 文件中的配置已经写了注释.
 * 如果编译失败也可以依次执行 `xelatex main`, `zhmakeindex main`, `xelatex main`, `xelatex main` 进行编译.
 
 无论哪种编译方式都会启动中文索引引擎 `zhmakeindex`, 可在刘海洋老师的[`Github`](https://github.com/leo-liu/zhmakeindex/releases) 中下载并使用, 使用方法可以参考[LaTeX问答站上的回答](https://wenda.latexstudio.net/q-1351.html). 如果无法使用 `zhmakeindex` 或不需要索引表, 可以在 `.latexmkrc` 文件中将 `$makeindex` 一行注释, 或者将 `$makeindex` 的值改为 `makeindex` 来使用默认的索引引擎.
+
 
 关于书写的要求
 
