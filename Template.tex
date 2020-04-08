@@ -45,6 +45,8 @@
 	\end{tikzpicture}%
 }
 
+\usepackage{titlesec}
+
 \titleformat{name=\chapter}[display]
 {\normalfont\huge\bfseries\sffamily}
 {}
@@ -60,16 +62,13 @@
 {-126pt}
 {33pt}
 
+\titleformat{\section}
+{\normalfont\centering\zihao{4}\bfseries}
+{{\mdseries\S}\ \thesection}{.5em}{}
+
 \setlength\headheight{15pt}
 
 \usepackage{dsfont}
-
-\usepackage{mathrsfs}
-
-\usepackage{cite}
-\usepackage{titlesec}
-
-\usepackage[final]{pdfpages}
 
 \renewcommand{\baselinestretch}{1.5}
 

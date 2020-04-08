@@ -513,12 +513,12 @@
 			\begin{aligned}
 				d(x_{n+1}, x_{n}) & = d(f(x_{n}), f(x_{n-1})) \leqslant \lambda d(x_{n}, x_{n-1}) \\
 				& =\lambda d(f(x_{n-1}), f(x_{n-2}))\leqslant \lambda^{2} d(x_{n-1}, x_{n-2}) \\
-				& \leqslant \lambda^{n} d(x_{2}, x_{1}).
+				& \leqslant \lambda^{n-1} d(x_{2}, x_{1}).
 			\end{aligned}
 		\]
 		则 $ \forall p\in \N $ , 有
 		\[
-			d(x_{n+p}, x_{n})\leqslant\sum_{i=n+1}^{n+p}d(x_{i}, x_{i-1})\leqslant\sum_{i=n+1}^{n+p}\lambda^{i-2}d(x_{2}, x_{1})=\frac{\lambda^{n-1}}{1-\lambda}d(x_{2}, x_{1})\to 0\,(n\to\infty)
+			d(x_{n+p}, x_{n})\leqslant\sum_{i=n+1}^{n+p}d(x_{i}, x_{i-1})\leqslant\sum_{i=n+1}^{n+p}\lambda^{i-2}d(x_{2}, x_{1})\leqslant\frac{\lambda^{n-1}}{1-\lambda}d(x_{2}, x_{1})\to 0\,(n\to\infty)
 		\]
 		从而 $ (x_{n})_{n\geqslant1} $ 是 Cauchy列, 因为 $ E $ 完备, 则存在 $ x\in E $ , 使得 $ \lim\limits_{n\to \infty}x_{n}=x $ , 此时
 		\[
