@@ -1209,7 +1209,302 @@
 	\begin{Corollary}
 		$ L_p(X,\mu) $在$ 1<p<\infty $时是自反的.
 	\end{Corollary}
+
+\section{正则Borel测度和Riesz表示定理}
+
+	\textsl{本节内容不属于授课内容, 于笔者在授课结束后自行补充. 对应于原书的第10章, 因部分内容与之前的《实分析》课程笔记重复, 对原书内容有删减.}
 	
+	在上一节中已经给出了 Hilbert 空间和 $ L_p $ 空间的对偶空间的刻画. 本节的目的是刻画 $ C_0(X) $ 的对偶空间. 在本节中, 若没有特殊说明, 我们总是假定 $ X $ 是一个局部紧的 Hausdorff 空间, 并用 $ \FB $ 来表示 $ X $ 的 Borel 代数. 约定带有或不带有任何指标的 $ K $ 是 $ X $ 的紧子集而带有或不带有任何指标的 $ O $ 是 $ X $ 的开子集. 约定下面的两个符号
+	\[
+		K\prec f\Longleftrightarrow (1_K\leqslant f\leqslant 1), f\prec O\Longleftrightarrow (0\leqslant f\leqslant 1_O).
+	\]
+	
+	以 $ C_c(X) $ 记具有紧支撑的连续函数构成的线性空间, 由 Urysohn引理可知对于任意的 $ K\subset O $, 总存在 $ f\in C_c(X) $ 使得 $ K\prec f\prec O $.
+
+	\subsection{正线性泛函的表示定理}
+
+	\begin{Definition}[正线性泛函]\index{Z!正线性泛函}
+		若 $ \varphi\in\CL(C_c(X),\C) $ 满足
+		\[
+			\forall f\geqslant 0\,(\varphi(f)\geqslant 0),
+		\]
+		则称 $ \varphi $ 是一个\textbf{正线性泛函}.
+	\end{Definition}
+
+	\begin{Definition}[局部有限测度]\index{J!局部有限测度}
+		设 $ \mu $ 是空间 $ (X,\FB) $ 上的一个测度, 若对任意 $ K\subset X $ 都有 $ \abs{\mu(K)}<\infty $, 那么称 $ \mu $ 是 $ (X,\FB) $ 的一个\textbf{局部有限测度}.
+	\end{Definition}
+
+	下面设 $ \mu $ 是 $ (X,\FB) $ 上局部有限的正测度, 已知对任意的 $ f\in C_c(X) $, 总有
+	\[
+		\varphi_\mu(f)=\int_Xf\diff\mu
+	\]
+	是一个正线性泛函. 本小节的目标就是证明它的逆命题, 即下面的 Riesz 定理.
+
+	\begin{Proposition}[Riesz]\index{R!Radon测度}
+		设 $ \varphi $ 是 $ C_c(X) $ 上的正线性泛函, 则存在 $ X $ 上的 $ \sigma $--代数 $ \CA $ 使得 $ \FB\subset\CA $ 且存在 $ \CA $ 上唯一的正测度 $ \mu $ 满足以下条件:
+		\begin{enumerate}[(1)]
+			\item $ \mu $ 是局部有限测度;
+			\item 对任意 $ f\in C_c(X) $, 都有 $ \varphi(f)=\int_Xf\diff\mu $;
+			\item 对任意 $ A\in\CA $, 有 $ \mu(A)=\inf\{\mu(O) : A\subset O\} $;
+			\item 对任意开集或测度有限的 $ A\in\CA $, 有 $ \mu(A)=\sup\{\mu(K) : K\subset A\} $;
+			\item $ (X,\CA,\mu) $ 完备.
+		\end{enumerate}
+		此时称 $ \mu $ 是相对于泛函 $ \varphi $ 的\textbf{Radon测度}.
+	\end{Proposition}
+	\begin{Proof}
+		\textsl{唯一性.} 唯一性是容易的, 不妨设 $ \varphi_{\mu_1}=\varphi_{\mu_2} $, 这意味着对任意的 $ f\in C_c(X) $ 总有 $ \int_Xf\diff\mu_1=\int_Xf\diff\mu_2 $. 由(4)可知只需对任意紧集 $ K $ 成立 $ \mu_1(K)=\mu_2(K) $ 即可. 对任意 $ \varepsilon>0 $ 任取一开集 $ O $ 使得 $ K\subset O $ 且 $ \mu_i(O)\leqslant\mu_i(K)+\varepsilon $ 成立, 那么对使得 $ K\prec f\prec O $ 的 $ f\in C_c(X) $, 由
+		\[
+			\mu_1(K)=\int_Kf\diff\mu_1\leqslant\int_Xf\diff\mu_1=\varphi(f)=\int_Xfd\mu_2\leqslant\int_X1_O|diff\mu_2=\int_O1\diff\mu_2\leqslant\mu_2(K)+\varepsilon
+		\]
+		可知 $ \mu_1(K)\leqslant\mu_2(K) $. 对称地可得反向不等式, 唯一性得证.
+
+		\textsl{存在性.} 正测度 $ \mu $ 的存在性证明稍显冗长. 我们主要分三个部分来证明:
+
+		\textbf{(Step 1)} 构造外测度并进行测度扩张: 在 $ 2^X $ 上定义集函数 $ \mu^* $ 如下:
+		\[
+			\mu^*(A)=\inf_{A\subset O}\sup_{f\prec O}\varphi(f),
+		\]
+		我们需要证明这是一个外测度. 为此只需证明 $ \mu^* $ 在开集族上是一个测度, 只需证明它具有可列加性. 首先考虑可列次加性的部分, 记 $ (O_n)_{n\geqslant 1} $ 是一列开集而 $ O=\bigcup\limits_{n\geqslant 1}O_n $. 任取 $ f\in C_c(X) $ 使得 $ f\prec O $, 再记 $ K=\supp f $ 是紧集, 那么 $ K\subset O $. 由 $ K $ 的紧性可知存在 $ N\in\N $ 使得 $ K\subset\bigcup\limits_{n=1}^NO_n $. 那么任取 $ x\in K $ 总可以找到 $ k $ 使得 $ x\in O_k $. 因为紧集总是局部紧的, 于是存在开邻域 $ U_x $ 使得 $ \bar{U}_x\subset O_k $ 是一个紧邻域. 那么存在有限个 $ x_1,\dots,x_m $ 使得 $ K\subset\bigcup\limits_{i=1}^mU_{x_i} $.
+
+		对每一个 $ k $ 可以定义 $ K_k=\bigcup\limits_{\bar{U}_{x_j}\subset O_k}\bar{U}_{x_j} $, 那么存在 $ g_k\in C_c(X) $ 使得 $ K_k\prec g_k\prec O_k $. 取
+		\[
+			f_1=g_1,\ f_2=(1-g_1)g_2,\ \dots, f_n=g_n\prod_{i=1}^{n-1}(1-g_i)
+		\]
+		后就有 $ f_k\prec O_k $ 且在 $ K $ 上 $ \sum\limits_{i=1}^nf_i=1 $. 于是 $ f $ 在 $ K $ 上可以写成 $ f=\sum\limits_{i=1}^Nff_i $. 从而
+		\[
+			\varphi(f)=\sum_{i=1}^N\varphi(ff_i)\leqslant\sum_{i=1}^N\mu^*(O_i)\leqslant\sum_{n\geqslant 1}\mu^*(O_n).
+		\]
+		由 $ f $ 的任意性, 有限次加性可证.
+
+		再证反向不等式, 这只需注意到对不交开集族 $ (O_n)_{n\geqslant 1} $, 由定义, 对任意的 $ \varepsilon>0 $ 总可以找到 $ f_n\in C_c(X) $ 使得 $ \mu^*(O_n)\leqslant\varphi(f_n)+\varepsilon/2^n $, 再注意到 $ \sum\limits_{n=1}^Nf_n\prec \bigcup\limits_{n\geqslant 1}O_n $ 和有限和式
+		\[
+			\sum_{n=1}^N\mu^*(O_n)\leqslant\sum_{n=1}^N\varphi(f_n)+\sum_{n=1}^N\frac{\varepsilon}{2^n}\leqslant\varphi\left( \sum_{n=1}^Nf_n \right)+\varepsilon
+		\]
+		当 $ N\to\infty $ 的极限即可.
+
+		由此对外测度 $ \mu^* $ 在开集族构成的半环 $ \mathcal{O} $ 上做Carath\'eodory扩张, 并定义可测集族 $ \CA $ 为 $ \mathtt{H}(\mathcal{O}) $ 中满足分割测量性的集合全体. 由 Carath\'eodory扩张可知 $ \mu^* $ 在 $ \CA $ 上的限制是 $ \mu $ 的测度扩张, 同时 $ \CA $ 包含一个 $ \sigma $--代数. 因此我们不妨假设 $ \CA $ 本身就是一个 $ \sigma $--代数.
+
+		接下来, 在不致混淆时总把 $ \mu^* $ 记作 $ \mu $, 由测度的从上连续性和从下连续性可知 (3) 和 (4) 都是成立的. 而局部有限性由紧性总可以写成有限个测度有限的开集之并可得.
+
+		\textbf{(Step 2)} 说明 $ (X,\CA,\mu) $ 是完备的: 取 $ A\in\CA $ 且 $ \mu(A)=0 $, 注意到对任何集合 $ B\subset A $ 总有
+		\[
+			0\leqslant\mu^*(B)\leqslant\mu^*(A)=0,
+		\]
+		这说明 $ \mu(B)=\mu^*(B)=0 $, 得证.
+
+		\textbf{(Step 3)} 证明(2)成立: 考虑到函数的正负分解和实虚部分解, 只需要证明 $ f\geqslant 0 $ 的情形有
+		\[
+			\varphi(f)\leqslant\int_Xf\diff\mu
+		\]
+		即可. 反向不等式可取 $ -f $ 得到. 具有紧支撑的连续函数总是有界的, 于是对任意 $ \varepsilon>0 $, 总存在 $ n\in\N $ 使得 $ \abs{f}<n\varepsilon $ 成立. 若记 $ K=\supp f $, 可取
+		\[
+			A_k=K\cap f^{-1}((k\varepsilon,(k+1)\varepsilon]),\qquad k=0,1,\dots,n-1
+		\]
+		则 $ (A_k)_{k=0}^{n-1} $ 是 $ \CA $ 中测度有限的两两不交的集合列, 总可以选取一列开集 $ (O_k)_{k=0}^{n-1} $ 使得 $ A_k\subset O_k $, $ \mu(O_k)\leqslant\mu(A_k)+\varepsilon/n $, 并且在 $ O_k $ 上有 $ f\leqslant (k+1)\varepsilon $. 那么
+		\[
+			K\subset\bigcup_{k=0}^{n-1}A_k\subset\bigcup_{k=0}^{n-1}O_k.
+		\]
+		从而存在一列函数 $ g_k\in C_c(X) $ 使得 $ g_k\prec O_k $ 且在 $ K $ 上 $ \sum\limits_{k=0}^{n-1}h_k=1 $, 那么 $ f=\sum\limits_{k=0}^{n-1}fh_k $, 因此
+		\[
+			\begin{aligned}
+				\varphi(f)&=\sum_{k=0}^{n-1}\varphi(fh_k)\\
+				&\leqslant\sum_{k=0}^{n-1}(k+1)\varepsilon\varphi(h_k)\\
+				&\leqslant\sum_{k=0}^{n-1}(k+1)\varepsilon\left(\mu(A_k)+\frac{\varepsilon}{n}\right)\\
+				&\leqslant\varepsilon\mu(K)+\frac{\varepsilon}{n}\sum_{k=0}^{n-1}(k+1)\varepsilon+\sum_{k=0}^{n-1}k\varepsilon\mu(A_k)\\
+				&\leqslant\varepsilon\mu(K)+\frac{n+1}{2}\varepsilon+\int_Xf\diff\mu
+			\end{aligned}
+		\]
+		由 $ \varepsilon $ 的任意性得证.\qed
+	\end{Proof}
+
+	\subsection{正则测度}
+
+	回顾一些实分析中的概念和结论:
+
+	\begin{Definition}[正则测度]\index{Z!正则测度}
+		设 $ \mu $ 是 $ \FB $ 上的正测度, 称 $ \mu $ 是
+		\begin{enumerate}[(1)]
+			\item \textbf{外正则的}, 若 $ \forall A\in\FB\,(\mu(A)=\inf\{\mu(O) : A\subset O\}) $;
+			\item \textbf{内正则的}, 若 $ \forall A\in\FB\,(\mu(A)=\sup\{\mu(K) : K\subset A\}) $;
+		\end{enumerate}
+		若 $ \mu $ 既是外正则的又是内正则的, 则称 $ \mu $ 是一个正则测度.
+	\end{Definition}
+
+	对于正则测度, 在实分析中有以下结论:
+	
+	\begin{Proposition}
+		设 $ \mu $ 是 $ (X,\CA) $ 上的正则测度, $ X $ 是 $ \sigma $--紧的测度空间, 那么
+		\begin{enumerate}[(1)]
+			\item 对任意 $ A\in\CA $ 和 $ \varepsilon>0 $, 存在开集 $ O $ 和闭集 $ E $ 使得 $ E\subset A\subset O $, 且
+			\[
+				\mu(A\sm E)<\varepsilon,\qquad\mu(O\sm A)<\varepsilon
+			\]
+			\item 对任意 $ A\in\CA $ 和 $ \varepsilon>0 $, 存在\Gd 集 $ G $ 和\Fs 集 $ F $ 使得 $ F\subset A\subset G $, 且
+			\[
+				\mu(A\sm F)=\mu(G\sm A)=0.
+			\]
+		\end{enumerate}
+	\end{Proposition}
+
+	从而, 上一小节的 Riesz 表示定理说明正线性泛函 $ \varphi $ 的 Radon 测度 $ \mu $ 是外正则的, 进一步在 $ \sigma $--紧的情形下是内正则的, 注意到 $ (X, \CA, \mu) $ 是 $ (X,\FB,\mu|_{\FB}) $ 的完备化, 故 $ \CA $ 由 $ \varphi $ 唯一地确定.
+
+	用 $ M_+(X) $ 记 $ X $ 上全体局部有限的 Borel 正测度. 下面建立 $ C_c(X) $ 上的正线性泛函与 $ M_+(X) $ 之间的双射.
+
+	\begin{Proposition}
+		设 $ X $ 是局部紧的 Hausdorff 空间, 且每一个开集都是 $ \sigma $--紧的, 则对任意 $ \mu\in M_+(X) $ 定义
+		\[
+			\varphi_\mu(f)=\int_Xf\diff\mu,
+		\]
+		则
+		\begin{enumerate}[(1)]
+			\item 对任意 $ \mu\in M_+(X) $, $ \mu $ 是正则测度;
+			\item 映射 $ \mu\mapsto\varphi_\mu $ 是 $ M_+(X) $ 到 $ C_c(X) $ 上正线性泛函全体的双射.
+		\end{enumerate}
+	\end{Proposition}
+	\begin{Proof}
+		由定义可知 $ \varphi_\mu $ 是 $ C_c(X) $ 上的正线性泛函, 设其在 $ (X,\CA_{\varphi_\mu}) $ 上产生的局部有限正则测度为 $ \lambda $ 只需要证明 $ \mu=\lambda $. 任取 $ O\subset X $, 因 $ O $ 是 $ \sigma $--紧的, 于是存在一列单调递增的紧集 $ (K_n)_{n\geqslant 1} $ 使得 $ O=\bigcup\limits_{n\geqslant 1}K_n $, 由 $ \mu $ 的从下连续性可知
+		\[
+			\mu(O)=\lim_{n\to\infty}\mu(K_n),
+		\]
+		取 $ f_n\in C_c(X) $ 使得 $ K_n\prec f_n\prec O $ 后可知
+		\[
+			\begin{aligned}
+				\mu(O)=\lim_{n\to\infty}\mu(K_n)&=\lim_{n\to\infty}\int_X1_{K_n}\diff\mu\\
+				&\lim_{n\to\infty}\int_Xf_n\diff\mu=\lim_{n\to\infty}\int_Xf_n\diff\lambda\leqslant\lim_{n\to\infty}\int_X1_O\diff\lambda=\lambda(O),
+			\end{aligned}
+		\]
+		同理可证反向不等式, 从而 $ \mu(O)=\lambda(O) $.
+
+		而对于任意 $ A\in\FB $, 由 $ \mu $ 的正则性可知
+		\[
+			\forall\varepsilon>0\,\exists O\subset X\,\exists K\subset X\,(K\subset A\subset O)
+		\]
+		且
+		\[
+			\mu(A)\leqslant\mu(O)=\lambda(O)\leqslant\lambda(A)+\lambda(O\sm A)<\lambda(A)+\varepsilon,
+		\]
+		即 $ \mu(A)\leqslant\lambda(A) $, 同理可证反向不等式, 得证.\qed
+	\end{Proof}
+
+	至此, 只剩最后一步准备:
+
+	\begin{Proposition}
+		设 $ \mu\in M_+(X) $, 则 $ \forall 0<p<\infty $, 有 $ C_c(X) $ 在 $ L_p(X,\FB,\mu) $ 上稠密.
+	\end{Proposition}
+	\begin{Proof}
+		因 $ L_p(X,\FB,\mu) $ 上的函数可被简单逼近, 故只需
+		\[
+			\forall A\in\FB\,(\mu(A)<\infty)\,\forall \varepsilon>0\,\exists f\in C_c(X)\left( \int_X\abs{1_A-f}^p\diff\mu<\varepsilon \right)
+		\]
+		即可.
+
+		由 $ \mu $ 的正则性可知
+		\[
+			\exists O\subset X\,\exists K\subset X\,(K\subset A\subset O\land\mu(O\sm K)<\varepsilon)
+		\]
+		而存在 $ f\in C_c(X) $ 使得 $ K\prec f\prec O $, 从而
+		\[
+			\int_X\abs{1_A-f}^p\diff\mu\leqslant\int_X1_{O\sm K}\diff\mu=\mu(O\sm K)<\varepsilon,
+		\]
+		得证.\qed
+	\end{Proof}
+
+	\subsection{Riesz表示定理}
+
+	最终, 完成本节的目的, 刻画 $ C_0^*(X) $, 此处 $ C_0(X) $ 表示 $ X $ 上消失于无穷的连续函数赋予一致范数 $ \norm{f}:=\sup\limits_{x\in X}\abs{f(x)} $ 后构成的 Banach 空间, 即
+	\[
+		\forall f\in C_0(X)\,\forall\varepsilon>0\,\exists K\subset X\,\forall x\in X\sm K\,(\norm{f}<\varepsilon).
+	\]
+	对一般的复 Borel 测度 $ \mu $, 当它的全变差测度 $ \mu^\lor $ 正则时, 就称 $ \mu $ 是正则的. 用 $ M(X) $ 表示 $ X $ 上正则复 Borel 测度的全体, 赋予范数
+	\[
+		\norm{\mu}=\mu^\lor(X)
+	\]
+	后有 $ (M(X),\norm{\cdot}) $ 成为一个 Banach 空间.
+
+	对 $ f\in C_0(X) $, 记 $ \varphi_\mu(f)=\int_Xf\diff\mu $, 那么 $ \varphi_\mu $ 是 $ C_0(X) $ 上的连续线性泛函, 且 $ \norm{\varphi_\mu}\leqslant\norm{\mu} $ 是显然的. 而 $ \varphi_\mu $ 是正线性泛函当且仅当 $ \mu $ 是正的.
+
+	\begin{Theorem}[Riesz]
+		设 $ \varphi $ 是 $ C_0(X) $ 上的连续线性泛函, 存在唯一的 $ \mu\in M(X) $ 使得 $ \varphi=\varphi_\mu $, 且 $ \norm{\varphi}=\norm{\mu} $. 因此 $ \mu\mapsto\varphi_\mu $ 是从 $ M(X) $ 到 $ C_0^*(X) $ 上的等距同构.
+	\end{Theorem}
+	\begin{Proof}
+		任取 $ \varphi\in C_0^*(X) $, 构造关于 $ \varphi $ 的 $ C_0(X) $ 上的正线性泛函. 为此, 不妨先考虑正函数 $ f $, 取
+		\[
+			\psi(f):=\sup\{\abs{\varphi(g) : g\in C_0(X), \abs{g}\leqslant f}\},
+		\]
+		下面验证 $ \psi $ 是一个正线性泛函, 且满足齐次性. 齐次性是容易的, 简单说明一下线性. 取 $ g\in C_0(X) $ 使得 $ \abs{g}\leqslant f_1+f_2 $, 那么取
+		\[
+			g_1=\frac{f_1}{f_1+f_2}g,\qquad g_2=\frac{f_2}{f_1+f_2}g,
+		\]
+		并约定 $ f_1+f_2 $ 取零值时 $ g_1 $ 与 $ g_2 $ 相应地取零值, 那么 $ \abs{g_i}\leqslant f_i $ 且 $ g=g_1+g_2 $, 从而由
+		\[
+			\abs{\varphi(g)}\leqslant\abs{\varphi(g_1)}+\abs{\varphi(g_2)}\leqslant\abs{\psi(f_1)}+\abs{\psi(f_2)}
+		\]
+		可知 $ \psi(f_1+f_2)\leqslant\psi(f_1)+\psi(f_2) $. 反向不等式由
+		\[
+			\begin{aligned}
+			\abs{\varphi(g_1)}+\abs{\varphi(g_2)}&=\sgn\varphi(g_1)\cdot\varphi(g_1)+\sgn\varphi(g_2)\cdot\varphi(g_2)\\
+			&=\varphi(\sgn\varphi(g_1)\cdot\varphi(g_1)+\sgn\varphi(g_2)\cdot\varphi(g_2))\leqslant\psi(f_1+f_2)
+			\end{aligned}
+		\]
+		可得.
+
+		对一般的 $ f\in C_0(X) $, 只需要注意到
+		\[
+			f=(\Re f)^+ - (\Re f)^- + (\Im f)^+ - (\Im f)^-,
+		\]
+		而这4部分每一部分都是正函数, 即可对应地定义 $ \psi $.
+
+		对任意 $ f\in C_0(X) $, 注意到 $ \abs{f} $ 是一个正函数, 那么由
+		\[
+			\abs{\varphi(f)}\leqslant\psi(\abs{f})\leqslant\sup_{\abs{g}\leqslant\abs{f}}\abs{\varphi(g)}\leqslant\sup_{\abs{g}\leqslant\abs{f}}\norm{\varphi}\norm{g}_\infty\leqslant\norm{\varphi}\norm{f}_\infty
+		\]
+		可知 $ \abs{\varphi(f)}\leqslant\psi(\abs{f})\leqslant\norm{\varphi}\norm{f}_{\infty} $, 于是由
+		\[
+			\begin{aligned}
+				\norm{\psi}&=\sup\{\abs{\psi(f)} : f\in C_0(X), \norm{f}_\infty\leqslant 1\}\\
+				&\sup\{\psi(f) : f\,\text{是正函数}, f\in C_0(X) ,\norm{f}_\infty\leqslant 1\}\leqslant\norm{\varphi},
+			\end{aligned}
+		\]
+		和
+		\[
+			\norm{\varphi}=\sup_{\norm{f}_\infty\leqslant 1}\abs{\varphi(f)}\leqslant\sup_{\norm{f}_\infty\leqslant 1}\psi(\abs{f})=\sup_{\norm{f}_\infty\leqslant 1}\abs{\psi(f)}\leqslant\norm{\psi}
+		\]
+		可知 $ \norm{\psi}=\norm{\varphi} $.
+
+		至此, 我们构造了一个 $ C_c(x) $ 上的正线性泛函 $ \psi $, 由 Riesz 定理可知存在 $ X $ 上的正 Borel 测度 $ \nu $ 使得 $ \psi(f)=\int_X\diff\nu $, 且由
+		\[
+			\nu(X)=\sup\{\psi(f) : f\prec x, f\in C_c(X)\}\leqslant\norm{\psi}<\infty
+		\]
+		知 $ \psi $ 正则, 即 $ \nu\in M(X) $. 从而
+		\[
+			\abs{\varphi(f)}\leqslant\psi(\abs{f})=\int_X\abs{f}\diff\nu=\norm{f}_{L_1(\diff\nu)}.
+		\]
+		从而关于 $ \diff\nu $, $ \varphi $ 是一个连续线性泛函. 由 $ C_c(X) $ 在 $ L_1(\diff\nu) $ 上稠密可知 $ \varphi $ 可以保范延拓到 $ L_1(\diff\nu) $ 上, 从而存在 $ g\in L_\infty(\diff\nu) $ 且 $ \abs{g}\leqslant 1 $ a.e., 使得
+		\[
+			\varphi(f)=\int_Xfg\diff\nu,\qquad f\in C_c(X).
+		\]
+		再由 $ C_c(X) $ 在 $ C_0(X) $ 中稠密知上式对 $ f\in C_0(X) $ 也成立. 取 $ \diff\mu=g\diff\nu $ 后有 $ \mu\in M(X) $ 满足题设条件.
+
+		由 Hahn 分解的结论可知令 $ h_\mu=1_{H_\mu^+}-1_{H_\mu^-} $ 后有 $ \diff\mu=h_\mu\diff\mu^\lor $ 和 $ \diff\mu=\bar{h}_\mu\diff\mu^\lor $ (这实际上是极分解) , 此处 $ \abs{h_\mu}=1 $ 在 $ \mu $ 和 $ \mu^\lor $ 下均几乎处处成立, 于是
+		\[
+			\mu^\lor(A)=\int_A\bar{h}_\mu g\diff\nu=\int_A\abs{g}\diff\mu=\nu(A)
+		\]
+		对任意 $ A\in\FB $ 均成立, 于是 $ \nu=\mu^\lor $. 从而证明了存在 $ \mu\in M(X) $ 使得
+		\[
+			\norm{\varphi}=\norm{\varphi_\mu}=\norm{\mu}.
+		\]
+
+		而唯一性由一列 $ (f_n)_{n\geqslant 1}\subset C_c(X) $ 依 $ L_1(\diff\mu^\lor) $ 趋近于 $ \bar{h_\mu} $ 做逼近
+		\[
+			\mu^\lor(X)=\int_X\bar{h}_\mu h\diff\mu^\lor=\int_X\bar{h}_\mu h_\mu\diff\mu^\lor-\int_Xf_n\diff\mu\leqslant\int_X\abs{f_n-\bar{h}_\mu}\diff\mu^\lor\to 0
+		\]
+		后 $ \mu^\lor(X)=0 $ 推得 $ \mu=0 $ 可证.\qed
+	\end{Proof}
+
+	Riesz定理意味着对带号测度(或复测度)的Jordan分解(或极分解)可以推广到线性泛函上.
+
+
 \section{弱*紧性}
 	
 	\begin{Theorem}[Banach-Alaoglu]
