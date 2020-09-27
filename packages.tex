@@ -30,6 +30,7 @@
 \newcommand{\imag}{\mathrm{i}}
 \newcommand{\Star}[1]{#1^{*}}
 \newcommand{\1}{\mathds{1}}
+\newcommand{\supp}{\mathrm{supp}\,}
 
 %% \C已被定义, 重定义在交叉引用部分
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
@@ -49,6 +50,8 @@
 \newcommand{\CL}{\mathcal{L}}
 \newcommand{\CN}{\mathcal{N}}
 
+\newcommand{\FB}{\mathfrak{B}}
+
 \renewcommand{\Re}{\mathrm{Re\,}}
 \renewcommand{\Im}{\mathrm{Im\,}}
 \newcommand{\sgn}{\mathrm{sgn}\,}
@@ -57,6 +60,12 @@
 \newcommand{\Fs}{\ensuremath{\CF_{\sigma}}}
 \newcommand{\Gd}{\ensuremath{\CG_{\delta}}}
 \newcommand{\Fr}{\ensuremath{\CF_{r}}}
+
+
+\usepackage{tasks}
+\NewTasks[counter-format=(tsk[1]), item-indent=2em, label-offset=1em, label-align=right]{lpbn}
+\NewTasks[counter-format=(tsk[a]), item-indent=2em, label-offset=1em]{alpbn}
+\NewTasks[counter-format=tsk[A].]{xrze}[*]
 
 %版式
 \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry} %边距

@@ -1255,7 +1255,10 @@
 	\begin{Proof}
 		\textsl{唯一性.} 唯一性是容易的, 不妨设 $ \varphi_{\mu_1}=\varphi_{\mu_2} $, 这意味着对任意的 $ f\in C_c(X) $ 总有 $ \int_Xf\diff\mu_1=\int_Xf\diff\mu_2 $. 由(4)可知只需对任意紧集 $ K $ 成立 $ \mu_1(K)=\mu_2(K) $ 即可. 对任意 $ \varepsilon>0 $ 任取一开集 $ O $ 使得 $ K\subset O $ 且 $ \mu_i(O)\leqslant\mu_i(K)+\varepsilon $ 成立, 那么对使得 $ K\prec f\prec O $ 的 $ f\in C_c(X) $, 由
 		\[
-			\mu_1(K)=\int_Kf\diff\mu_1\leqslant\int_Xf\diff\mu_1=\varphi(f)=\int_Xfd\mu_2\leqslant\int_X1_O|diff\mu_2=\int_O1\diff\mu_2\leqslant\mu_2(K)+\varepsilon
+			\begin{aligned}
+			\mu_1(K)=\int_Kf\diff\mu_1\leqslant\int_Xf\diff\mu_1=\varphi(f)&=\int_Xf\diff\mu_2\\
+			&\leqslant\int_X1_O\diff\mu_2=\int_O1\diff\mu_2\leqslant\mu_2(K)+\varepsilon
+			\end{aligned}
 		\]
 		可知 $ \mu_1(K)\leqslant\mu_2(K) $. 对称地可得反向不等式, 唯一性得证.
 
@@ -1463,7 +1466,7 @@
 		\[
 			\begin{aligned}
 				\norm{\psi}&=\sup\{\abs{\psi(f)} : f\in C_0(X), \norm{f}_\infty\leqslant 1\}\\
-				&\sup\{\psi(f) : f\,\text{是正函数}, f\in C_0(X) ,\norm{f}_\infty\leqslant 1\}\leqslant\norm{\varphi},
+				&=\sup\{\psi(f) : f\,\text{是正函数}, f\in C_0(X) ,\norm{f}_\infty\leqslant 1\}\leqslant\norm{\varphi},
 			\end{aligned}
 		\]
 		和
@@ -1495,7 +1498,7 @@
 			\norm{\varphi}=\norm{\varphi_\mu}=\norm{\mu}.
 		\]
 
-		而唯一性由一列 $ (f_n)_{n\geqslant 1}\subset C_c(X) $ 依 $ L_1(\diff\mu^\lor) $ 趋近于 $ \bar{h_\mu} $ 做逼近
+		而唯一性由一列 $ (f_n)_{n\geqslant 1}\subset C_c(X) $ 依 $ L_1(\diff\mu^\lor) $ 趋近于 $ \bar{h}_\mu $ 做逼近
 		\[
 			\mu^\lor(X)=\int_X\bar{h}_\mu h\diff\mu^\lor=\int_X\bar{h}_\mu h_\mu\diff\mu^\lor-\int_Xf_n\diff\mu\leqslant\int_X\abs{f_n-\bar{h}_\mu}\diff\mu^\lor\to 0
 		\]
