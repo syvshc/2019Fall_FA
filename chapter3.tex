@@ -1248,7 +1248,7 @@
 			\item 对任意 $ f\in C_c(X) $, 都有 $ \varphi(f)=\int_Xf\diff\mu $;
 			\item 对任意 $ A\in\CA $, 有 $ \mu(A)=\inf\{\mu(O) : A\subset O\} $;
 			\item 对任意开集或测度有限的 $ A\in\CA $, 有 $ \mu(A)=\sup\{\mu(K) : K\subset A\} $;
-			\item $ (X,\CA,\mu) $ 完备.
+			\item $ (X,\CA,\mu) $ 完备;
 		\end{enumerate}
 		此时称 $ \mu $ 是相对于泛函 $ \varphi $ 的\textbf{Radon测度}.
 	\end{Proposition}
@@ -1374,7 +1374,7 @@
 		\[
 			\begin{aligned}
 				\mu(O)=\lim_{n\to\infty}\mu(K_n)&=\lim_{n\to\infty}\int_X1_{K_n}\diff\mu\\
-				&\lim_{n\to\infty}\int_Xf_n\diff\mu=\lim_{n\to\infty}\int_Xf_n\diff\lambda\leqslant\lim_{n\to\infty}\int_X1_O\diff\lambda=\lambda(O),
+				&\leqslant\lim_{n\to\infty}\int_Xf_n\diff\mu=\lim_{n\to\infty}\int_Xf_n\diff\lambda\leqslant\lim_{n\to\infty}\int_X1_O\diff\lambda=\lambda(O),
 			\end{aligned}
 		\]
 		同理可证反向不等式, 从而 $ \mu(O)=\lambda(O) $.
@@ -1433,7 +1433,7 @@
 	\begin{Proof}
 		任取 $ \varphi\in C_0^*(X) $, 构造关于 $ \varphi $ 的 $ C_0(X) $ 上的正线性泛函. 为此, 不妨先考虑正函数 $ f $, 取
 		\[
-			\psi(f):=\sup\{\abs{\varphi(g) : g\in C_0(X), \abs{g}\leqslant f}\},
+			\psi(f):=\sup\{\abs{\varphi(g)} : g\in C_0(X), \abs{g}\leqslant f\},
 		\]
 		下面验证 $ \psi $ 是一个正线性泛函, 且满足齐次性. 齐次性是容易的, 简单说明一下线性. 取 $ g\in C_0(X) $ 使得 $ \abs{g}\leqslant f_1+f_2 $, 那么取
 		\[
@@ -1477,7 +1477,7 @@
 
 		至此, 我们构造了一个 $ C_c(x) $ 上的正线性泛函 $ \psi $, 由 Riesz 定理可知存在 $ X $ 上的正 Borel 测度 $ \nu $ 使得 $ \psi(f)=\int_X\diff\nu $, 且由
 		\[
-			\nu(X)=\sup\{\psi(f) : f\prec x, f\in C_c(X)\}\leqslant\norm{\psi}<\infty
+			\nu(X)=\sup\{\psi(f) : f\prec X, f\in C_c(X)\}\leqslant\norm{\psi}<\infty
 		\]
 		知 $ \psi $ 正则, 即 $ \nu\in M(X) $. 从而
 		\[
