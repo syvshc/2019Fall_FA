@@ -22,7 +22,7 @@ $pdflatex = "xelatex -file-line-error -halt-on-error  -interaction=nonstopmode -
 
 
 # Process index. [Use Chinese index program]
-$makeindex = 'zhmakeindex %O -o %D %S';
+$makeindex = './zhmakeindex/zhmakeindex %O -o %D %S';
 
 # Preview mode 
 # [1 is for running a previewer after building]
