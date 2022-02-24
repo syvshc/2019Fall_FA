@@ -1,5 +1,5 @@
 
-@default_files = ('main.tex');
+@default_files = ('2019Fall_FA.tex');
 
 # Cleanup mode 
 # [2 is for doing aux files cleanup before building, ex]
